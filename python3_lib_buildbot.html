@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python库介绍-buildbot教程</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_lib_buildbot.html" rel="bookmark"
+           title="Permalink to python库介绍-buildbot教程">python库介绍-buildbot教程</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-25T19:23:00+08:00">
+                Published: 日 25 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <p>Buildbot是python实现的开源持续构建和持续交付工具，为Python, Mozilla, Chromium, WebKit等知名项目使用。</p>
+<p>与Jenkins相比，Buildbot在大陆使用者较少。原因在于Jenkins的界面相对较美观，更容易上手；Jenkins的中文文档比较丰富。但是Jenkins因为资源消耗庞大、不太方便定制而不受一些有实力的公司欢迎。这些不少把目光聚焦在Buildbot。</p>
+<p>究竟Buildbot有哪些优点让这些公司青睐呢？Buildbot基于python网络框架Twisted，分布式做得好。Buildbot可以直接使用python包，轻松拥有上万库，具备强大的扩展能力。如果你觉得Jenkins已经轻松地满足你的需求，你不需要Buildbot。如果你在Jenkins时觉得效率低下、扩展困难、一些用python等脚本可以实现的动作在Jenkins困难重重，那么可以看看Buildbot。</p>
+<p>python的buildbot站点：　http://buildbot.python.org/all/#/</p>
+<p>Buildbot是开源的自动化软件构建，测试，发布流程的框架。</p>
+<p>Buildbot支持跨平台，分布式，并行执行jobs，与版本控制系统的灵活集成，丰富的状态报告等等。</p>
+<p>Buildbot是一个作业调度系统：它会对作业进行排队，在所需要的资源可用时执行任务，并报告结果。</p>
+<p>Buildbot有一个或多个主机和从机。主机监控源代码库的变化，调配从机，并给用户和开发者报告结果。从机可在多种操作系统上运行。</p>
+<p>可以配置Python脚本到主机。这个脚本可以简单到只配置内置组件，也可以充分发挥python所长，可以动态生成的配置，定制的组件及其他任何你能想到的。</p>
+<p>该框架基于Twisted实现，并与所有主要的操作系统兼容。</p>
+<p>Buildbot支持持续集成，持续部署，发布管理等的。Buildbot支持持续集成测试，自动化复杂的编译系统，应用程序部署和复杂的软件发布流程管理。比CruiseControl或Jenkins更适合混合语言的环境。在 Chromium,WebKit, Firefox, Python和Twisted等有广泛的使用。</p>
+<p>缺点：buildbot对多项目支持并不好。</p>
+<p>本文代码地址：https://github.com/xurongzhong/mobile_data/tree/master/buildbot/</p>
+<p><a href="https://xurongzhong.github.io/python3_lib_buildbot.html">本文最新版本地址</a></p>
+<ul>
+<li>你的赞助是我们前进的动力：</li>
+</ul>
+<p>一流企业专家自动化性能接口测试 数据分析 python一对一教，非骗人的培训机构(多数大陆培训机构的老师实际未入门）承接excel合并，电脑自动化操作等工程 联系qq：37391319 并欢迎讨论中医草药风水相学等道家国学</p>
+<p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 184175668 中医草药湿热湿疹胃病 291184506 python高级人工智能视觉 6089740</p>
+<ul>
+<li>参考资料：</li>
+</ul>
+<p>https://en.wikipedia.org/wiki/Buildbot</p>
+<p>http://buildbot.readthedocs.org/en/v0.8.9</p>
+<p>https://docs.buildbot.net/</p>
+<p>https://www.ibm.com/developerworks/cn/linux/l-buildbot/</p>
+<p>https://pypi.python.org/pypi/buildbot</p>
+<p>http://buildbot.net/ </p>
+<p>https://www.digitalocean.com/community/tutorials/how-to-set-up-continuous-integration-with-buildbot-on-ubuntu-16-04</p>
+<h3>安装</h3>
+<h4>目的</h4>
+<p>本教程从零开始，尽可能快地运行您的第一个buildbot master和worker，而不会更改默认配置。</p>
+<p>本教程假设您正在运行Linux，但可能适用于Windows。</p>
+<h4>准备</h4>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">buildbot</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">buildbot</span><span class="o">-</span><span class="n">www</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">buildbot</span><span class="o">-</span><span class="n">grid</span><span class="o">-</span><span class="n">view</span> 
+<span class="n">pip3</span> <span class="n">install</span>  <span class="n">buildbot</span><span class="o">-</span><span class="n">console_view</span>
+<span class="n">pip3</span> <span class="n">install</span>  <span class="n">buildbot</span><span class="o">-</span><span class="n">worker</span>
+<span class="n">pip3</span> <span class="n">install</span>  <span class="n">setuptools</span><span class="o">-</span><span class="n">trial</span>
+</pre></div>
+</td></tr></table>
+
+<h4>创建master</h4>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">buildbot</span> <span class="n">create</span><span class="o">-</span><span class="n">master</span> <span class="n">master</span>
+<span class="n">mkdir</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">master</span>
+<span class="n">creating</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">master</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">sample</span>
+<span class="n">creating</span> <span class="n">database</span> <span class="p">(</span><span class="n">sqlite</span><span class="p">:</span><span class="o">///</span><span class="n">state</span><span class="o">.</span><span class="n">sqlite</span><span class="p">)</span>
+<span class="n">buildmaster</span> <span class="n">configured</span> <span class="ow">in</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">master</span>
+<span class="err">$</span> <span class="n">mv</span> <span class="n">master</span><span class="o">/</span><span class="n">master</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">sample</span> <span class="n">master</span><span class="o">/</span><span class="n">master</span><span class="o">.</span><span class="n">cfg</span>
+<span class="err">$</span> <span class="n">buildbot</span> <span class="n">start</span> <span class="n">master</span>
+<span class="n">Following</span> <span class="n">twistd</span><span class="o">.</span><span class="n">log</span> <span class="n">until</span> <span class="n">startup</span> <span class="n">finished</span><span class="o">..</span>
+<span class="n">The</span> <span class="n">buildmaster</span> <span class="n">appears</span> <span class="n">to</span> <span class="n">have</span> <span class="p">(</span><span class="n">re</span><span class="p">)</span><span class="n">started</span> <span class="n">correctly</span><span class="o">.</span>
+</pre></div>
+</td></tr></table>
+
+<p>日志在master/twistd.log</p>
+<p>此时访问　http://localhost:8010/</p>
+<p><img alt="Screenshot from 2018-01-24 14-46-23.png" src="https://bitbucket.org/repo/nxXxkM/images/752054204-Screenshot%20from%202018-01-24%2014-46-23.png"></p>
+<h4>创建worker</h4>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">buildbot</span><span class="o">-</span><span class="n">worker</span> <span class="n">create</span><span class="o">-</span><span class="n">worker</span> <span class="n">worker</span> <span class="n">localhost</span> <span class="n">example</span><span class="o">-</span><span class="n">worker</span> <span class="k">pass</span>
+<span class="n">mkdir</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">worker</span>
+<span class="n">mkdir</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">worker</span><span class="o">/</span><span class="n">info</span>
+<span class="n">Creating</span> <span class="n">info</span><span class="o">/</span><span class="n">admin</span><span class="p">,</span> <span class="n">you</span> <span class="n">need</span> <span class="n">to</span> <span class="n">edit</span> <span class="n">it</span> <span class="n">appropriately</span><span class="o">.</span>
+<span class="n">Creating</span> <span class="n">info</span><span class="o">/</span><span class="n">host</span><span class="p">,</span> <span class="n">you</span> <span class="n">need</span> <span class="n">to</span> <span class="n">edit</span> <span class="n">it</span> <span class="n">appropriately</span><span class="o">.</span>
+<span class="n">Not</span> <span class="n">creating</span> <span class="n">info</span><span class="o">/</span><span class="n">access_uri</span> <span class="o">-</span> <span class="n">add</span> <span class="n">it</span> <span class="k">if</span> <span class="n">you</span> <span class="n">wish</span>
+<span class="n">Please</span> <span class="n">edit</span> <span class="n">the</span> <span class="n">files</span> <span class="ow">in</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">worker</span><span class="o">/</span><span class="n">info</span> <span class="n">appropriately</span><span class="o">.</span>
+<span class="n">worker</span> <span class="n">configured</span> <span class="ow">in</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">worker</span>
+<span class="err">$</span> <span class="n">buildbot</span><span class="o">-</span><span class="n">worker</span> <span class="n">start</span> <span class="n">worker</span>
+<span class="n">Following</span> <span class="n">twistd</span><span class="o">.</span><span class="n">log</span> <span class="n">until</span> <span class="n">startup</span> <span class="n">finished</span><span class="o">..</span>
+<span class="n">The</span> <span class="n">buildbot</span><span class="o">-</span><span class="n">worker</span> <span class="n">appears</span> <span class="n">to</span> <span class="n">have</span> <span class="p">(</span><span class="n">re</span><span class="p">)</span><span class="n">started</span> <span class="n">correctly</span><span class="o">.</span>
+</pre></div>
+</td></tr></table>
+
+<p>日志在worker/twistd.log</p>
+<h3>快速入门</h3>
+<p>本章从<a href="https://github.com/xurongzhong/mobile_data">mobile_data</a>拉取代码，调用ｐｙｔｅｓｔ执行buildbot/hello-world/hello下的单元测试。</p>
+<h4>配置项目名和URL</h4>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">vi</span> <span class="n">master</span><span class="o">/</span><span class="n">master</span><span class="o">.</span><span class="n">cfg</span>
+<span class="c1"># -*- python -*-</span>
+<span class="c1"># ex: set filetype=python:</span>
+
+<span class="kn">from</span> <span class="nn">buildbot.plugins</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># This is a sample buildmaster config file. It must be installed as</span>
+<span class="c1"># &#39;master.cfg&#39; in your buildmaster&#39;s base directory.</span>
+
+<span class="c1"># This is the dictionary that the buildmaster pays attention to. We also use</span>
+<span class="c1"># a shorter alias to save typing.</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">BuildmasterConfig</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1">####### WORKERS</span>
+
+<span class="c1"># The &#39;workers&#39; list defines the set of recognized workers. Each element is</span>
+<span class="c1"># a Worker object, specifying a unique worker name and password.  The same</span>
+<span class="c1"># worker name and password must be configured on the worker.</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;workers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">worker</span><span class="o">.</span><span class="n">Worker</span><span class="p">(</span><span class="s2">&quot;example-worker&quot;</span><span class="p">,</span> <span class="s2">&quot;pass&quot;</span><span class="p">)]</span>
+
+<span class="c1"># &#39;protocols&#39; contains information about protocols which master will use for</span>
+<span class="c1"># communicating with workers. You must define at least &#39;port&#39; option that workers</span>
+<span class="c1"># could connect to your master with this protocol.</span>
+<span class="c1"># &#39;port&#39; must match the value configured into the workers (with their</span>
+<span class="c1"># --master option)</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;protocols&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pb&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;port&#39;</span><span class="p">:</span> <span class="mi">9989</span><span class="p">}}</span>
+
+<span class="c1">####### CHANGESOURCES</span>
+
+<span class="c1"># the &#39;change_source&#39; setting tells the buildmaster how it should find out</span>
+<span class="c1"># about source code changes.  Here we point to the buildbot version of a python hello-world project.</span>
+
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;change_source&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;change_source&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">changes</span><span class="o">.</span><span class="n">GitPoller</span><span class="p">(</span>
+        <span class="s1">&#39;git://github.com/xurongzhong/mobile_data.git&#39;</span><span class="p">,</span>
+        <span class="n">workdir</span><span class="o">=</span><span class="s1">&#39;gitpoller-workdir&#39;</span><span class="p">,</span> <span class="n">branch</span><span class="o">=</span><span class="s1">&#39;master&#39;</span><span class="p">,</span>
+        <span class="n">pollinterval</span><span class="o">=</span><span class="mi">300</span><span class="p">))</span>
+
+<span class="c1">####### SCHEDULERS</span>
+
+<span class="c1"># Configure the Schedulers, which decide how to react to incoming changes.  In this</span>
+<span class="c1"># case, just kick off a &#39;runtests&#39; build</span>
+
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;schedulers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;schedulers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">schedulers</span><span class="o">.</span><span class="n">SingleBranchScheduler</span><span class="p">(</span>
+                            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span>
+                            <span class="n">change_filter</span><span class="o">=</span><span class="n">util</span><span class="o">.</span><span class="n">ChangeFilter</span><span class="p">(</span><span class="n">branch</span><span class="o">=</span><span class="s1">&#39;master&#39;</span><span class="p">),</span>
+                            <span class="n">treeStableTimer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                            <span class="n">builderNames</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;runtests&quot;</span><span class="p">]))</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;schedulers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">schedulers</span><span class="o">.</span><span class="n">ForceScheduler</span><span class="p">(</span>
+                            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;force&quot;</span><span class="p">,</span>
+                            <span class="n">builderNames</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;runtests&quot;</span><span class="p">]))</span>
+
+<span class="c1">####### BUILDERS</span>
+
+<span class="c1"># The &#39;builders&#39; list defines the Builders, which tell Buildbot how to perform a build:</span>
+<span class="c1"># what steps, and which workers can execute them.  Note that any particular build will</span>
+<span class="c1"># only take place on one worker.</span>
+
+<span class="n">factory</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">BuildFactory</span><span class="p">()</span>
+<span class="c1"># check out the source</span>
+<span class="n">factory</span><span class="o">.</span><span class="n">addStep</span><span class="p">(</span><span class="n">steps</span><span class="o">.</span><span class="n">Git</span><span class="p">(</span><span class="n">repourl</span><span class="o">=</span><span class="s1">&#39;git://github.com/xurongzhong/mobile_data.git&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;incremental&#39;</span><span class="p">))</span>
+<span class="c1"># run the tests (note that this will require that &#39;trial&#39; is installed)</span>
+<span class="n">factory</span><span class="o">.</span><span class="n">addStep</span><span class="p">(</span><span class="n">steps</span><span class="o">.</span><span class="n">ShellCommand</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pytest&quot;</span><span class="p">,</span> <span class="s2">&quot;buildbot/hello-world/hello&quot;</span><span class="p">]))</span>
+
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;builders&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;builders&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+    <span class="n">util</span><span class="o">.</span><span class="n">BuilderConfig</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;runtests&quot;</span><span class="p">,</span>
+      <span class="n">workernames</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;example-worker&quot;</span><span class="p">],</span>
+      <span class="n">factory</span><span class="o">=</span><span class="n">factory</span><span class="p">))</span>
+
+<span class="c1">####### BUILDBOT SERVICES</span>
+
+<span class="c1"># &#39;services&#39; is a list of BuildbotService items like reporter targets. The</span>
+<span class="c1"># status of each build will be pushed to these targets. buildbot/reporters/*.py</span>
+<span class="c1"># has a variety to choose from, like IRC bots.</span>
+
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;services&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">####### PROJECT IDENTITY</span>
+
+<span class="c1"># the &#39;title&#39; string will appear at the top of this buildbot installation&#39;s</span>
+<span class="c1"># home pages (linked to the &#39;titleURL&#39;).</span>
+
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Hello World CI&quot;</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;titleURL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/xurongzhong/mobile_data&quot;</span>
+
+<span class="c1"># the &#39;buildbotURL&#39; string should point to the location where the buildbot&#39;s</span>
+<span class="c1"># internal web server is visible. This typically uses the port number set in</span>
+<span class="c1"># the &#39;www&#39; entry below, but with an externally-visible host name which the</span>
+<span class="c1"># buildbot cannot figure out without some help.</span>
+
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;buildbotURL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:8010/&quot;</span>
+
+<span class="c1"># minimalistic config to activate new web UI</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;www&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">8010</span><span class="p">,</span>
+                <span class="n">plugins</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">waterfall_view</span><span class="o">=</span><span class="p">{},</span> <span class="n">console_view</span><span class="o">=</span><span class="p">{},</span> <span class="n">grid_view</span><span class="o">=</span><span class="p">{}))</span>
+
+<span class="c1">####### DB URL</span>
+
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;db&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># This specifies what database buildbot uses to store its state.  You can leave</span>
+    <span class="c1"># this at its default for all but the largest installations.</span>
+    <span class="s1">&#39;db_url&#39;</span> <span class="p">:</span> <span class="s2">&quot;sqlite:///state.sqlite&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="err">$</span> <span class="err">$</span> <span class="n">buildbot</span> <span class="n">reconfig</span> <span class="n">master</span>
+<span class="n">sending</span> <span class="n">SIGHUP</span> <span class="n">to</span> <span class="n">process</span> <span class="mi">4194</span>
+<span class="sa">b</span><span class="s1">&#39;2018-01-24 15:13:07+0800 [-] beginning configuration update&#39;</span>
+<span class="sa">b</span><span class="s2">&quot;2018-01-24 15:13:07+0800 [-] Loading configuration from &#39;/opt/master/master.cfg&#39;&quot;</span>
+<span class="sa">b</span><span class="s1">&#39;2018-01-24 15:13:07+0800 [-] /usr/local/lib/python3.5/dist-packages/buildbot/config.py:102: buildbot.config.ConfigWarning: [0.9.0 and later] `buildbotNetUsageData` is not configured and defaults to basic.&#39;</span>
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">This parameter helps the buildbot development team to understand the installation base.&#39;</span>
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">No personal information is collected.&#39;</span>
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">Only installation software version info and plugin usage is sent.&#39;</span>
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">You can `opt-out` by setting this variable to None.&#39;</span>
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">Or `opt-in` for more information by setting it to &quot;full&quot;.&#39;</span>
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span>
+<span class="sa">b</span><span class="s2">&quot;2018-01-24 15:13:07+0800 [-] gitpoller: using workdir &#39;/opt/master/gitpoller-workdir&#39;&quot;</span>
+<span class="sa">b</span><span class="s2">&quot;2018-01-24 15:13:08+0800 [-] initializing www plugin &#39;waterfall_view&#39;&quot;</span>
+<span class="sa">b</span><span class="s2">&quot;2018-01-24 15:13:08+0800 [-] initializing www plugin &#39;console_view&#39;&quot;</span>
+<span class="sa">b</span><span class="s2">&quot;2018-01-24 15:13:08+0800 [-] initializing www plugin &#39;grid_view&#39;&quot;</span>
+<span class="sa">b</span><span class="s1">&#39;2018-01-24 15:13:08+0800 [-] configuration update complete&#39;</span>
+<span class="n">Reconfiguration</span> <span class="n">appears</span> <span class="n">to</span> <span class="n">have</span> <span class="n">completed</span> <span class="n">successfully</span>
+</pre></div>
+</td></tr></table>
+
+<h4>首次构建</h4>
+<p>打开：http://localhost:8010/#/builders</p>
+<p>点击右上角的force，表单可以什么都不填，点击“Start Build”就会开始构建。</p>
+<p><img alt="force-build.png" src="https://bitbucket.org/repo/nxXxkM/images/1073109964-force-build.png"></p>
+<p>很快可以看到输出：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">SESSION</span><span class="o">=</span><span class="n">ubuntu</span>
+  <span class="n">SESSIONTYPE</span><span class="o">=</span><span class="n">gnome</span><span class="o">-</span><span class="n">session</span>
+  <span class="n">SESSION_MANAGER</span><span class="o">=</span><span class="n">local</span><span class="o">/</span><span class="n">andrew</span><span class="o">-</span><span class="n">MS</span><span class="o">-</span><span class="mi">7</span><span class="n">A71</span><span class="p">:</span><span class="err">@</span><span class="o">/</span><span class="n">tmp</span><span class="o">/.</span><span class="n">ICE</span><span class="o">-</span><span class="n">unix</span><span class="o">/</span><span class="mi">2824</span><span class="p">,</span><span class="n">unix</span><span class="o">/</span><span class="n">andrew</span><span class="o">-</span><span class="n">MS</span><span class="o">-</span><span class="mi">7</span><span class="n">A71</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/.</span><span class="n">ICE</span><span class="o">-</span><span class="n">unix</span><span class="o">/</span><span class="mi">2824</span>
+  <span class="n">SHELL</span><span class="o">=/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+  <span class="n">SHLVL</span><span class="o">=</span><span class="mi">1</span>
+  <span class="n">SSH_AUTH_SOCK</span><span class="o">=/</span><span class="n">run</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="mi">1000</span><span class="o">/</span><span class="n">keyring</span><span class="o">/</span><span class="n">ssh</span>
+  <span class="n">TERM</span><span class="o">=</span><span class="n">xterm</span>
+  <span class="n">TMDB_API_KEY</span><span class="o">=</span><span class="n">ee6623075bcc5519ef16be16e1f139e7</span>
+  <span class="n">UPSTART_EVENTS</span><span class="o">=</span><span class="n">xsession</span> <span class="n">started</span>
+  <span class="n">UPSTART_INSTANCE</span><span class="o">=</span>
+  <span class="n">UPSTART_JOB</span><span class="o">=</span><span class="n">unity7</span>
+  <span class="n">UPSTART_SESSION</span><span class="o">=</span><span class="n">unix</span><span class="p">:</span><span class="n">abstract</span><span class="o">=/</span><span class="n">com</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">upstart</span><span class="o">-</span><span class="n">session</span><span class="o">/</span><span class="mi">1000</span><span class="o">/</span><span class="mi">2570</span>
+  <span class="n">USER</span><span class="o">=</span><span class="n">andrew</span>
+  <span class="n">XAUTHORITY</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/.</span><span class="n">Xauthority</span>
+  <span class="n">XDG_CONFIG_DIRS</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">xdg</span><span class="o">/</span><span class="n">xdg</span><span class="o">-</span><span class="n">ubuntu</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">upstart</span><span class="o">/</span><span class="n">xdg</span><span class="p">:</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">xdg</span>
+  <span class="n">XDG_CURRENT_DESKTOP</span><span class="o">=</span><span class="n">Unity</span>
+  <span class="n">XDG_DATA_DIRS</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">ubuntu</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">gnome</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">snapd</span><span class="o">/</span><span class="n">desktop</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">snapd</span><span class="o">/</span><span class="n">desktop</span>
+  <span class="n">XDG_GREETER_DATA_DIR</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">lightdm</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">andrew</span>
+  <span class="n">XDG_MENU_PREFIX</span><span class="o">=</span><span class="n">gnome</span><span class="o">-</span>
+  <span class="n">XDG_RUNTIME_DIR</span><span class="o">=/</span><span class="n">run</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="mi">1000</span>
+  <span class="n">XDG_SEAT</span><span class="o">=</span><span class="n">seat0</span>
+  <span class="n">XDG_SEAT_PATH</span><span class="o">=/</span><span class="n">org</span><span class="o">/</span><span class="n">freedesktop</span><span class="o">/</span><span class="n">DisplayManager</span><span class="o">/</span><span class="n">Seat0</span>
+  <span class="n">XDG_SESSION_DESKTOP</span><span class="o">=</span><span class="n">ubuntu</span>
+  <span class="n">XDG_SESSION_ID</span><span class="o">=</span><span class="n">c2</span>
+  <span class="n">XDG_SESSION_PATH</span><span class="o">=/</span><span class="n">org</span><span class="o">/</span><span class="n">freedesktop</span><span class="o">/</span><span class="n">DisplayManager</span><span class="o">/</span><span class="n">Session0</span>
+  <span class="n">XDG_SESSION_TYPE</span><span class="o">=</span><span class="n">x11</span>
+  <span class="n">XDG_VTNR</span><span class="o">=</span><span class="mi">7</span>
+  <span class="n">XMODIFIERS</span><span class="o">=</span><span class="nd">@im</span><span class="o">=</span><span class="n">fcitx</span>
+  <span class="n">_</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">buildbot</span><span class="o">-</span><span class="n">worker</span>
+ <span class="n">using</span> <span class="n">PTY</span><span class="p">:</span> <span class="bp">False</span>
+<span class="o">=============================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">==============================</span>
+<span class="n">platform</span> <span class="n">linux2</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">2.7</span><span class="o">.</span><span class="mi">12</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">2.8</span><span class="o">.</span><span class="mi">7</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.4</span><span class="o">.</span><span class="mi">31</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">1</span>
+<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">worker</span><span class="o">/</span><span class="n">runtests</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">buildbot</span><span class="o">/</span><span class="n">hello</span><span class="o">-</span><span class="n">world</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span> 
+<span class="n">collected</span> <span class="mi">2</span> <span class="n">items</span>
+<span class="n">buildbot</span><span class="o">/</span><span class="n">hello</span><span class="o">-</span><span class="n">world</span><span class="o">/</span><span class="n">hello</span><span class="o">/</span><span class="n">test_hello</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>
+<span class="o">===========================</span> <span class="mi">2</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.01</span> <span class="n">seconds</span> <span class="o">===========================</span>
+<span class="n">program</span> <span class="n">finished</span> <span class="k">with</span> <span class="nb">exit</span> <span class="n">code</span> <span class="mi">0</span>
+<span class="n">elapsedTime</span><span class="o">=</span><span class="mf">0.168047</span>
+</pre></div>
+</td></tr></table>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

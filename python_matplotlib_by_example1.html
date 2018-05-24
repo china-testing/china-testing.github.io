@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>matplotlib实例1-快速入门</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python_matplotlib_by_example1.html" rel="bookmark"
+           title="Permalink to matplotlib实例1-快速入门">matplotlib实例1-快速入门</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-02T09:20:00+08:00">
+                Published: 一 02 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <h2>快速入门</h2>
+<p>什么是Matplotlib？
+Matplotlib是一个多功能的Python库，可生成数据可视化图。支持多种类型和精炼的样式选项，它非常适合创建专业演示文稿和科学出版物。Matplotlib能简单的生成图片，从幻灯片演示，高质量的海报打印和动画到基于网络的交互式。 除了典型的2D图，还支持基本的3D绘图。另外还可以支持python以外的语言。</p>
+<ul>
+<li>你的赞助是我们前进的动力：</li>
+</ul>
+<p>一流企业专家自动化性能接口测试 数据分析 python一对一教，非骗人的培训机构(多数大陆培训机构的老师实际未入门）承接excel合并，电脑自动化操作等工程 并欢迎讨论中医草药风水相学等道家国学</p>
+<p>qq群python 测试开发自动化测试 144081101 教你做免费的线上博客(放在简历中增加亮点)，自动化测试平台，性能测试工具等，让你有实际项目经验  联系qq：37391319 </p>
+<p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 184175668 中医草药湿热湿疹胃病 291184506 python高级人工智能视觉 6089740</p>
+<p>安装</p>
+<div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">matplotlib</span>
+</pre></div>
+
+
+<p>Jupyter notebook以前叫IPython notebook。与本地Python控制台不同，代码和导入的数据可以很容易重用。 还有markdown功能，可以让你像真实笔记本一样记笔记。 代码和其他内容可以分成块 (cells)以便更好地组织。 特别的，它提供了与matplotlib库进行无缝集成的绘图显示。Jupyter notebook可以在浏览器显示。</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">sudo</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">jupyter</span>
+<span class="err">$</span> <span class="n">jupyter</span> <span class="n">notebook</span> <span class="c1"># 修改端口 --port={port number}</span>
+</pre></div>
+
+
+<p><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown教程</a></p>
+<p><a href="http://pandoc.org/installing.html">pandoc</a> 可以把notebook转换成.pdf或Latex格式。</p>
+<p>安装</p>
+<div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">texlive</span><span class="o">-</span><span class="n">xetex</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">pandoc</span>
+</pre></div>
+
+
+<p><a href="https://support.microsoft.com/en-us/help/827745/how-to-change-the-export-resolution-of-a-powerpoint-slide">dpi参考</a></p>
+<p>Screen height (pixel) | Resolution (dpi)
+:--------:|:--------:|
+720 | 96 (default)
+750 | 100
+1125 | 150
+1500 | 200
+1875 | 250
+2250 | 300<br>
+Poster presentation | 300 dpi+
+Web | 72 dpi+ (SVG that can scale responsively is recommended)  </p>
+<p>[代码地址](</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    xurongzhong#126.com wechat:pythontesting qq群:630011153</span>
+<span class="c1"># CreateDate: 2018-04-02</span>
+<span class="c1"># quick.py</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="c1"># 注意pylab已经不推荐使用，建议分别导入Matplotlib.pyplot和numpy</span>
+
+<span class="n">evens</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">102</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">evens</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="c1"># matplotlib2.0不推荐使用Gimp Drawing Kit (GDK)，默认不支持JPG、TIFF</span>
+<span class="c1"># dot per inch (dpi). Slideshow 96 dpi+</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;output.png&#39;</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># 要保存和show图片的情况下，show尽量在后面。</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+
+<p><img alt="Alt Text" src="/images/matplotlib_quick.png"> </p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

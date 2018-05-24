@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python库介绍-pwd：密码数据库</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_lib_pwd.html" rel="bookmark"
+           title="Permalink to python库介绍-pwd：密码数据库">python库介绍-pwd：密码数据库</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-22T19:20:00+08:00">
+                Published: 四 22 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <h2>简介</h2>
+<p>pwd可以访问Unix用户帐户和密码数据库。 </p>
+<p>密码数据库项由结构体passwd(类似元组)表示，参见pwd.h：</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">pw_name</td>
+<td align="center">Login name</td>
+</tr>
+<tr>
+<td align="center">pw_passwd</td>
+<td align="center">Optional encrypted password</td>
+</tr>
+<tr>
+<td align="center">pw_uid</td>
+<td align="center">Numerical user ID</td>
+</tr>
+<tr>
+<td align="center">pw_gid</td>
+<td align="center">Numerical group ID</td>
+</tr>
+<tr>
+<td align="center">pw_gecos</td>
+<td align="center">User name or comment field</td>
+</tr>
+<tr>
+<td align="center">pw_dir</td>
+<td align="center">User home directory</td>
+</tr>
+<tr>
+<td align="center">pw_shell</td>
+<td align="center">User command interpreter</td>
+</tr>
+</tbody>
+</table>
+<p>除了pw_uid和pw_gid是整数外，其他都是字符串。</p>
+<h2>参考资料：</h2>
+<ul>
+<li>
+<p>python中文库参考项目：  https://bitbucket.org/xurongzhong/python-chinese-library</p>
+</li>
+<li>
+<p>python中文库参考项目文档：https://bitbucket.org/xurongzhong/python-chinese-library/wiki/browse/</p>
+</li>
+<li>
+<p>你的赞助是我们前进的动力：</p>
+</li>
+</ul>
+<p>一流企业专家自动化性能接口测试 数据分析 python一对一教，非骗人的培训机构(多数大陆培训机构的老师实际未入门）承接excel合并，电脑自动化操作等工程 联系qq：37391319 并欢迎讨论中医草药风水相学等道家国学</p>
+<p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 184175668 中医草药湿热湿疹胃病 291184506 python高级人工智能视觉 6089740</p>
+<p>商务合作微信：pythontesting</p>
+<ul>
+<li>
+<p>相关文档下载地址：https://bitbucket.org/xurongzhong/python-chinese-library/downloads</p>
+</li>
+<li>
+<p>python官方文档：https://docs.python.org/3/library/pwd.html</p>
+</li>
+<li>
+<p>pymotw文档：https://pymotw.com/3/enum/index.html</p>
+</li>
+<li>
+<p>完稿日期：2016.08.23</p>
+</li>
+</ul>
+<h2>pwd方法</h2>
+<ul>
+<li>pwd.getpwuid(uid): Return the password database entry for the given numeric user ID.</li>
+<li>pwd.getpwnam(name)    Return the password database entry for the given user name.</li>
+<li>pwd.getpwall()    Return a list of all available password database entries, in arbitrary order.</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author Rongzhong Xu 2016-08-22 wechat: pythontesting</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Name: pwd_demo.py</span>
+
+<span class="sd">Tesed in python3.5/2.7/2.6</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pwd</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">pwd</span><span class="o">.</span><span class="n">getpwuid</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getuid</span><span class="p">()))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pwd</span><span class="o">.</span><span class="n">getpwnam</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;------ All users ------&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">pwd</span><span class="o">.</span><span class="n">getpwall</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python</span> <span class="n">pwd_demo</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pwd</span><span class="o">.</span><span class="n">struct_passwd</span><span class="p">(</span><span class="n">pw_name</span><span class="o">=</span><span class="s1">&#39;andrew&#39;</span><span class="p">,</span> <span class="n">pw_passwd</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">pw_uid</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">pw_gid</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">pw_gecos</span><span class="o">=</span><span class="s1">&#39;andrew,,,&#39;</span><span class="p">,</span> <span class="n">pw_dir</span><span class="o">=</span><span class="s1">&#39;/home/andrew&#39;</span><span class="p">,</span> <span class="n">pw_shell</span><span class="o">=</span><span class="s1">&#39;/bin/bash&#39;</span><span class="p">)</span>
+<span class="n">pwd</span><span class="o">.</span><span class="n">struct_passwd</span><span class="p">(</span><span class="n">pw_name</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">pw_passwd</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">pw_uid</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pw_gid</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pw_gecos</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">pw_dir</span><span class="o">=</span><span class="s1">&#39;/root&#39;</span><span class="p">,</span> <span class="n">pw_shell</span><span class="o">=</span><span class="s1">&#39;/bin/bash&#39;</span><span class="p">)</span>
+<span class="o">------</span> <span class="n">All</span> <span class="n">users</span> <span class="o">------</span>
+<span class="n">pwd</span><span class="o">.</span><span class="n">struct_passwd</span><span class="p">(</span><span class="n">pw_name</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">pw_passwd</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">pw_uid</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pw_gid</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pw_gecos</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">pw_dir</span><span class="o">=</span><span class="s1">&#39;/root&#39;</span><span class="p">,</span> <span class="n">pw_shell</span><span class="o">=</span><span class="s1">&#39;/bin/bash&#39;</span><span class="p">)</span>
+
+<span class="o">...</span>
+</pre></div>
+</td></tr></table>
+
+<p>这种方式通常已经看不到密码，因为密码大多存在/etc/shadows，建议使用spwd。</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
