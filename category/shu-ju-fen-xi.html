@@ -38,7 +38,7 @@
 <p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
 
 </footer><!-- /.post-info --><p>技术支持qq群：437355848 630011153 144081101</p>
-<p><a href="https://xurongzhong.github.io/python_scrapy_cookbook2.html">本文最新版本</a></p>
+<p><a href="https://china-testing.github.io/python_scrapy_cookbook2.html">本文最新版本</a></p>
 <p>python爬虫cookbook第二章 数据采集和提取</p>
 <p>在本章中，我们将介绍：</p>
 <ul>
@@ -67,14 +67,14 @@
 14
 15
 16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># Author:    xurongzhong#126.com wechat:pythontesting qq群:144081101</span>
+<span class="c1"># Author:    china-testing#126.com wechat:pythontesting qq群:144081101</span>
 <span class="c1"># CreateDate: 2018-05-08</span>
 <span class="c1"># 02_blog_01_html.py</span>
 
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
-<span class="n">html</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://xurongzhong.github.io/address.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<span class="n">html</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://china-testing.github.io/address.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
 <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="s2">&quot;lxml&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;######### 第一行 #########&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">div</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">tr</span><span class="p">)</span>
@@ -230,7 +230,7 @@ Scrapy提供了许多值得一提的强大功能：
 </pre></div>
 </td></tr></table>
 
-<p>课后习题： 用scrapy爬取https://xurongzhong.github.io/首页的博客标题，共10条。</p>
+<p>课后习题： 用scrapy爬取https://china-testing.github.io/首页的博客标题，共10条。</p>
 <p>参考答案：</p>
 <p>03_blog_with_scrapy.py</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -258,7 +258,7 @@ Scrapy提供了许多值得一提的强大功能：
 <span class="k">class</span> <span class="nc">PythonEventsSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;pythoneventsspider&#39;</span>
 
-    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://xurongzhong.github.io/&#39;</span><span class="p">,]</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://china-testing.github.io/&#39;</span><span class="p">,]</span>
     <span class="n">found_events</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
@@ -426,7 +426,7 @@ Scrapy提供了许多值得一提的强大功能：
 <p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
 
 </footer><!-- /.post-info -->                <p>技术支持qq群：437355848 630011153 144081101</p>
-<p><a href="https://xurongzhong.github.io/python_scrapy_cookbook1.html">本文最新版本</a></p>
+<p><a href="https://china-testing.github.io/python_scrapy_cookbook1.html">本文最新版本</a></p>
 <p>第一章 爬虫入门</p>
 <ul>
 <li>Requests和Beautiful Soup 爬取python.org</li>
@@ -465,8 +465,8 @@ Scrapy提供了许多值得一提的强大功能：
 <p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
 
 </footer><!-- /.post-info -->                <p>技术支持qq群：pandas数据分析scrapy爬虫 521070358  Python数据分析pandasopencv 6089740 python自动化测试Flask 144081101</p>
-<p><a href="https://github.com/xurongzhong/mobile_data/tree/master/pandas/python_data_analyse_crash_course">源码下载</a></p>
-<p><a href="https://xurongzhong.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
+<p><a href="https://github.com/china-testing/mobile_data/tree/master/pandas/python_data_analyse_crash_course">源码下载</a></p>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
 <p>我们需要的所有信息可能记录在单独的文件和数据帧中。例如，可能有一个公司信息单独表和股票价格表，数据被分成独立的表格以减少冗余信息。</p>
 <h3>连接</h3>
 <ul>
@@ -530,8 +530,8 @@ Scrapy提供了许多值得一提的强大功能：
 </footer><!-- /.post-info -->                <h2>介绍</h2>
 <p>紧张整理中，多谢关注！</p>
 <p>技术支持qq群：pandas数据分析scrapy爬虫 521070358  Python数据分析pandasopencv 6089740 python自动化测试Flask 144081101</p>
-<p><a href="https://github.com/xurongzhong/mobile_data/tree/master/pandas/python_data_analyse_crash_course">源码下载</a></p>
-<p><a href="https://xurongzhong.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a> </p>
+<p><a href="https://github.com/china-testing/mobile_data/tree/master/pandas/python_data_analyse_crash_course">源码下载</a></p>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a> </p>
                 <a class="readmore" href="/python_pandas_crash_tutorial6.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -605,8 +605,8 @@ Scrapy提供了许多值得一提的强大功能：
 <li>如何重新编码并使用缺失值进行计算</li>
 </ul>
 <p>技术支持qq群：pandas数据分析scrapy爬虫 521070358  Python数据分析pandasopencv 6089740 python自动化测试Flask 144081101</p>
-<p><a href="https://github.com/xurongzhong/mobile_data/tree/master/pandas/python_data_analyse_crash_course">源码下载</a></p>
-<p><a href="https://xurongzhong.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a> </p>
+<p><a href="https://github.com/china-testing/mobile_data/tree/master/pandas/python_data_analyse_crash_course">源码下载</a></p>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a> </p>
 <h3>什么是缺失值</h3>
 <p>可以从numpy中获得NaN值，在Python中看到缺失值使用几种方式显示：NaN，NAN或nan，他们都是相等的。</p>
 <p>NaN不等于0或空字符串''。</p>
@@ -735,14 +735,14 @@ Scrapy提供了许多值得一提的强大功能：
 <p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
 
 </footer><!-- /.post-info -->                <ul>
-<li><a href="https://xurongzhong.github.io/python_pandas_crash_tutorial1.html">python数据分析快速入门教程1-开胃菜</a></li>
-<li><a href="https://xurongzhong.github.io/python_pandas_crash_tutorial2.html">python数据分析快速入门教程2-pandas数据结构</a></li>
-<li><a href="https://xurongzhong.github.io/python_pandas_crash_tutorial3.html">python数据分析快速入门教程3-绘图</a></li>
-<li><a href="https://xurongzhong.github.io/python_pandas_crash_tutorial4.html">python数据分析快速入门教程4-pandas数据结构</a></li>
-<li><a href="https://xurongzhong.github.io/python_pandas_crash_tutorial5.html">python数据分析快速入门教程5-处理缺失数据</a></li>
-<li><a href="https://xurongzhong.github.io/python_pandas_crash_tutorial6.html">python数据分析快速入门教程6-重整</a></li>
-<li><a href="https://xurongzhong.github.io/python_pandas_excel.html">python数据分析快速入门教程7-处理excel</a></li>
-<li><a href="https://xurongzhong.github.io/python_pandas_excel.html">python数据分析快速入门教程8-性能优化实例</a></li>
+<li><a href="https://china-testing.github.io/python_pandas_crash_tutorial1.html">python数据分析快速入门教程1-开胃菜</a></li>
+<li><a href="https://china-testing.github.io/python_pandas_crash_tutorial2.html">python数据分析快速入门教程2-pandas数据结构</a></li>
+<li><a href="https://china-testing.github.io/python_pandas_crash_tutorial3.html">python数据分析快速入门教程3-绘图</a></li>
+<li><a href="https://china-testing.github.io/python_pandas_crash_tutorial4.html">python数据分析快速入门教程4-pandas数据结构</a></li>
+<li><a href="https://china-testing.github.io/python_pandas_crash_tutorial5.html">python数据分析快速入门教程5-处理缺失数据</a></li>
+<li><a href="https://china-testing.github.io/python_pandas_crash_tutorial6.html">python数据分析快速入门教程6-重整</a></li>
+<li><a href="https://china-testing.github.io/python_pandas_excel.html">python数据分析快速入门教程7-处理excel</a></li>
+<li><a href="https://china-testing.github.io/python_pandas_excel.html">python数据分析快速入门教程8-性能优化实例</a></li>
 </ul>
                 <a class="readmore" href="/python_pandas_crash_tutorial.html">read more</a>
                 </div><!-- /.entry-content -->
@@ -768,8 +768,8 @@ Scrapy提供了许多值得一提的强大功能：
 </footer><!-- /.post-info -->                <h3>简介</h3>
 <p>Pandas是用于数据分析的开源Python库,也是目前数据分析最重要的开源库。它能够处理类似电子表格的数据，用于快速数据加载，操作，对齐，合并等。为Python提供这些增强功能，Pandas的数据类型为：Series和DataFrame。DataFrame为整个电子表格或矩形数据，而Series是DataFrame的列。DataFrame也可以被认为是字典或Series的集合。</p>
 <p>技术支持qq群：pandas数据分析scrapy爬虫 521070358  Python数据分析pandasopencv 6089740 python自动化测试Flask 144081101</p>
-<p><a href="https://github.com/xurongzhong/mobile_data/tree/master/pandas/python_data_analyse_crash_course">源码下载</a></p>
-<p><a href="https://xurongzhong.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
+<p><a href="https://github.com/china-testing/mobile_data/tree/master/pandas/python_data_analyse_crash_course">源码下载</a></p>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
 <h3>加载数据</h3>
 <p>load.py</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1

@@ -43,7 +43,7 @@
 <p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
 
 </footer><!-- /.post-info -->      <p>技术支持qq群：437355848 630011153 144081101</p>
-<p><a href="https://xurongzhong.github.io/python_scrapy_cookbook1.html">本文最新版本</a></p>
+<p><a href="https://china-testing.github.io/python_scrapy_cookbook1.html">本文最新版本</a></p>
 <p>第一章 爬虫入门</p>
 <ul>
 <li>Requests和Beautiful Soup 爬取python.org</li>
@@ -118,7 +118,7 @@
 </td></tr></table>
 
 <p>注意：因为事件的内容未必相同，所以每次的结果也不会一样</p>
-<p>课后习题： 用requests爬取https://xurongzhong.github.io/首页的博客标题，共10条。</p>
+<p>课后习题： 用requests爬取https://china-testing.github.io/首页的博客标题，共10条。</p>
 <p>参考答案：</p>
 <p>01_blog_title.py</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -151,7 +151,7 @@
         <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
         <span class="k">print</span><span class="p">(</span><span class="n">event_details</span><span class="p">)</span>
 
-<span class="n">get_upcoming_events</span><span class="p">(</span><span class="s1">&#39;https://xurongzhong.github.io/&#39;</span><span class="p">)</span>
+<span class="n">get_upcoming_events</span><span class="p">(</span><span class="s1">&#39;https://china-testing.github.io/&#39;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -282,7 +282,7 @@ Scrapy提供了许多值得一提的强大功能：
 </pre></div>
 </td></tr></table>
 
-<p>课后习题： 用scrapy爬取https://xurongzhong.github.io/首页的博客标题，共10条。</p>
+<p>课后习题： 用scrapy爬取https://china-testing.github.io/首页的博客标题，共10条。</p>
 <p>参考答案：</p>
 <p>03_blog_with_scrapy.py</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -310,7 +310,7 @@ Scrapy提供了许多值得一提的强大功能：
 <span class="k">class</span> <span class="nc">PythonEventsSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;pythoneventsspider&#39;</span>
 
-    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://xurongzhong.github.io/&#39;</span><span class="p">,]</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://china-testing.github.io/&#39;</span><span class="p">,]</span>
     <span class="n">found_events</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>

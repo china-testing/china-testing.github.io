@@ -88,7 +88,7 @@
 19
 20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># Author:    xurongzhong@126.com wechat:pythontesting qq群:144081101</span>
+<span class="c1"># Author:    china-testing@126.com wechat:pythontesting qq群:144081101</span>
 <span class="c1"># CreateDate: 2018-04-25</span>
 <span class="kn">import</span> <span class="nn">pytesseract</span> <span class="kn">as</span> <span class="nn">pt</span>
 <span class="kn">import</span> <span class="nn">requests</span>
@@ -96,13 +96,13 @@
 
 <span class="c1">#img = Image.open(&quot;textinimage.png&quot;)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;英文:&quot;</span><span class="p">)</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://xurongzhong.github.io/images/python_lib_ocr_en.png&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://china-testing.github.io/images/python_lib_ocr_en.png&quot;</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">raw</span><span class="p">)</span>
 <span class="n">text</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">image_to_string</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="c1">#img = Image.open(&quot;textinimage.png&quot;)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;中文:&quot;</span><span class="p">)</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://xurongzhong.github.io/images/python_lib_ocr.PNG&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://china-testing.github.io/images/python_lib_ocr.PNG&quot;</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">raw</span><span class="p">)</span>
 <span class="n">text</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">image_to_string</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;chi_sim&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
@@ -133,7 +133,7 @@
 <p>可见中文识别的效果并不太好，为此很多公司进行机器学习来改进。</p>
 <p>另外网易的有道云笔记的OCR效果做得很不错，白描的凑合能用，qq的扫二维码也可以识别文字，但是做得比较烂。</p>
 <p>ocr可以做python项目对初学者进行实践，请联系微信：pythontesting</p>
-<p><a href="https://github.com/xurongzhong/mobile_data/tree/master/python3_libraries/pytesseract">本文最新代码地址</a>，后续相关ocr的资料也会放在这里。</p>
+<p><a href="https://github.com/china-testing/mobile_data/tree/master/python3_libraries/pytesseract">本文最新代码地址</a>，后续相关ocr的资料也会放在这里。</p>
 <p>另外tesseract也可以命令行执行：</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">tesseract</span> <span class="n">test22</span><span class="o">.</span><span class="n">png</span>  <span class="n">stdout</span> <span class="o">-</span><span class="n">l</span> <span class="n">chi_sim</span>

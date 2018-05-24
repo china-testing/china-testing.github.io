@@ -59,10 +59,10 @@
 <p>IT主要技术体现为英文，要想提升到比较高的水平，必须要有流利的英文阅读能力。</p>
 <p>搜索引擎方面要珍惜生命，远离竞价排名，做个有良知不受骗的人，从不用死不悔改的*度开始，优选google，其他的还有<a href="http://t.cn/R3PpEcF">360搜索</a>， <a href="http://t.cn/R3PE0GQ">必应</a>  <a href="http://t.cn/R3PmV2Q">雅虎</a>, 很多QQ群还有免费fanqiang工具。google的搜索通常能直中目标，stackoverlow的回答通常是首选方案。</p>
 <p>选择有水平的业内人士帮助是掌握linux、python和测试基础之后一个迅速提升的方法。</p>
-<p><a href="https://xurongzhong.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></p>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></p>
 <h3>自动化测试的层次</h3>
 <p><img alt="Alt Text" src="/images/testing_automation_tips1.png"> </p>
-<p>从图看出自动化尽量以单元、接口为主，如果你有志在自动化测试深入，还在死磕QTP，selenium等的话，建议看下pytest、pexpect、<a href="https://xurongzhong.github.io/testing_api_10min.html">API测试</a>、单元测试等。</p>
+<p>从图看出自动化尽量以单元、接口为主，如果你有志在自动化测试深入，还在死磕QTP，selenium等的话，建议看下pytest、pexpect、<a href="https://china-testing.github.io/testing_api_10min.html">API测试</a>、单元测试等。</p>
 <h2>脚本</h2>
 <h3>1-1 不要在实际项目中使用录制和回放</h3>
 <p>大多数自动化工具(特别是商业工具)具有记录和播放功能，这个功能的表面简单，实际是一个众所周知的陷阱。录制和回放在广告视频和演示文稿中看起来非常棒。但录制的脚本不使用变量，循环和条件。自动创建的程序和函数的名称通常不直观，通常所有操作都录在一个函数中(可能很大),执行不稳定，维护成本也高。</p>
@@ -160,7 +160,7 @@
 <h3>1-8 使用静态代码分析器</h3>
 <p>对于流行的编程语言，有特殊的代码分析器。例如Python的pylint，JavaScript语言的jslint等。</p>
 <p>特别指出对python这样的动态类型的语言，这个更加重要。</p>
-<p>pylint通常有很多误报，但是mypy的检查则比较实用。参考：<a href="https://github.com/xurongzhong/mobile_data#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%92%8Clintcode-analysis">python代码分析和lint</a>。</p>
+<p>pylint通常有很多误报，但是mypy的检查则比较实用。参考：<a href="https://github.com/china-testing/mobile_data#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%92%8Clintcode-analysis">python代码分析和lint</a>。</p>
 <h3>1-9 随机</h3>
 <p>比如打开菜单有快捷键、下拉菜单、图标等多种方式，尽量写方法随机调用各种方式。以求覆盖各种场景，不过要记得添加日志以便跟踪错误。</p>
 <h3>1-10 不要使用坐标</h3>
@@ -185,10 +185,10 @@
 </pre></div>
 </td></tr></table>
 
-<p>附： <a href="https://github.com/xurongzhong/mobile_data">python自动化测试开发库</a></p>
+<p>附： <a href="https://github.com/china-testing/mobile_data">python自动化测试开发库</a></p>
 <h3>1-12 避免复制和粘贴</h3>
 <p>复制的代码维护成本很高，尽量提取为公共库。</p>
-<p><a href="https://github.com/xurongzhong/mobile_data/blob/master/servers.py">公共测试库示例</a></p>
+<p><a href="https://github.com/china-testing/mobile_data/blob/master/servers.py">公共测试库示例</a></p>
 <h3>1-13 异常捕捉到具体的类</h3>
 <p>异常通常是程序考虑不周到才会发生：</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -304,7 +304,7 @@
 <li>用完关闭与数据源</li>
 <li>数据文件中不要用空行</li>
 </ul>
-<p><a href="https://github.com/xurongzhong/mobile_data/blob/master/servers.py">公共测试库示例</a></p>
+<p><a href="https://github.com/china-testing/mobile_data/blob/master/servers.py">公共测试库示例</a></p>
 <h3>1-15 调试</h3>
 <p>简单的可以多使用print或者logging打印一些信息。更高级的内容有</p>
 <p>•断点
@@ -414,7 +414,7 @@
 <p>建议你在两种情况下优化测试：</p>
 <p>•如果测试运行时间过长，并且测试的应用程序是在测试执行期间空闲。
 •如果您在代码中看到明显的问题，请更正其中的问题。</p>
-<p><a href="https://xurongzhong.github.io/python_pandas_example1.html">pandas大数据分析性能优化实例-read_csv引擎和分组等</a>,这里是一个必要的优化实例。</p>
+<p><a href="https://china-testing.github.io/python_pandas_example1.html">pandas大数据分析性能优化实例-read_csv引擎和分组等</a>,这里是一个必要的优化实例。</p>
 <h3>5-3 定期审查别人的代码</h3>
 <p>定期审查别人的新代码。可以结对编程，甚至是同时一个人写，一个人看。</p>
 <h3>5-4 参与论坛和讨论</h3>
