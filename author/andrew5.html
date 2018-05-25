@@ -28,6 +28,67 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python_scikit-learn_cookbook1.html" rel="bookmark"
+                           title="Permalink to scikit-learn_cookbook1: 高性能机器学习-NumPy">scikit-learn_cookbook1: 高性能机器学习-NumPy</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-08T09:20:00+08:00">
+                Published: 日 08 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ji-qi-xue-xi.html">机器学习</a>.</p>
+
+</footer><!-- /.post-info -->                <p>技术支持qq群：6089740</p>
+<p><a href="https://github.com/china-testing/mobile_data/tree/master/pandas/python_data_analyse_crash_course">源码下载</a></p>
+<p>在本章主要内容：</p>
+<ul>
+<li>NumPy基础知识</li>
+<li>加载iris数据集</li>
+<li>查看iris数据集</li>
+<li>用pandas查看iris数据集</li>
+<li>用NumPy和matplotlib绘图</li>
+<li>最小机器学习配方 - SVM分类</li>
+<li>介绍交叉验证</li>
+<li>以上汇总</li>
+<li>机器学习概述 - 分类与回归</li>
+</ul>
+<h3>简介</h3>
+<p>本章我们将学习如何使用scikit-learn进行预测。 机器学习强调衡量预测能力，并用scikit-learn进行准确和快速的预测。我们将检查iris数据集，该数据集由三种iris的测量结果组成：Iris Setosa，Iris Versicolor和Iris Virginica。</p>
+<p>为了衡量预测，我们将：</p>
+<ul>
+<li>保存一些数据以进行测试</li>
+<li>仅使用训练数据构建模型</li>
+<li>测量测试集的预测能力</li>
+</ul>
+<p>解决问题的方法</p>
+<ul>
+<li>类别(Classification)：</li>
+<li>非文本，比如Iris</li>
+<li>回归</li>
+<li>聚类</li>
+<li>降维</li>
+</ul>
+<h3>NumPy基础</h3>
+<p>数据科学经常处理结构化的数据表。scikit-learn库需要二维NumPy数组。 在本节中，您将学习</p>
+<ul>
+<li>NumPy的shape和dimension</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5 …</pre></div></td></tr></table>
+                <a class="readmore" href="/python_scikit-learn_cookbook1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_matplotlib_by_example2.html" rel="bookmark"
                            title="Permalink to matplotlib实例2-美图">matplotlib实例2-美图</a></h1>
                 </header>
@@ -388,45 +449,6 @@ Matplotlib是一个多功能的Python库，可生成数据可视化图。支持�
 <h2>快速入门</h2>
 <p>argparse是一个完整的参数处理库。参数可以根据add_argument()的action选项触发不同action。支持的action有存储参数（单个，或作为列表的一部分）;存储常量的值（对布尔开关true/false有特殊处理）。默认动作是存储参数值。支持type(指定存储类型)和dest(指定存储变量)等参数 …</p>
                 <a class="readmore" href="/python3_lib_argparse.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_dubbo.html" rel="bookmark"
-                           title="Permalink to python库介绍-dubbo：通过telnet接口访问dubbo服务">python库介绍-dubbo：通过telnet接口访问dubbo服务</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-26T19:20:00+08:00">
-                Published: 一 26 三月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2>简介</h2>
-<p>dubbo服务发布之后，我们可以利用telnet命令进行调试、管理。更多资料参见 <a href="http://alibaba.github.io/dubbo-doc-static/Telnet+Command+Reference-zh-showComments=true&amp;showCommentArea=true.htm">Telnet命令参考手册</a></p>
-<p>项目地址：https://bitbucket.org/china-testing/python-chinese-library/src/46204fd809a04f4d9c7450860d48f2951dec3bc1/libraries/_dubbo/?at=default</p>
-<p>telnet 调用示例：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">telnet</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span> <span class="mi">9097</span>
-<span class="n">Trying</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span><span class="o">...</span>
-<span class="n">Connected</span> <span class="n">to</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span><span class="o">.</span>
-<span class="n">Escape</span> <span class="n">character …</span></pre></div></td></tr></table>
-                <a class="readmore" href="/python3_lib_dubbo.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

@@ -28,6 +28,68 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_spwd.html" rel="bookmark"
+                           title="Permalink to python库介绍-spwd：shadow密码数据库">python库介绍-spwd：shadow密码数据库</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-12T19:20:00+08:00">
+                Published: 一 12 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2>简介</h2>
+<p>pwd可以访问Unix shadow密码数据库。  2.5新增。通常需要为root用户。</p>
+<p>密码数据库项由结构体spwd(类似元组)表示，参见shadow.h：</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">属性</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">sp_nam</td>
+<td align="center">Login name</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">sp_pwd</td>
+<td align="center">Encrypted password</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">sp_lstchg</td>
+<td align="center">Date of last change</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">sp_min</td>
+<td align="center">Minimal number of days between changes</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">sp_max</td>
+<td align="center">Maximum number of days between changes</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">sp_warn</td>
+<td align="center">Number of days before …</td></tr></tbody></table>
+                <a class="readmore" href="/python3_lib_spwd.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_lib_pathlib.html" rel="bookmark"
                            title="Permalink to python库介绍-pathlib: 文件系统对象">python库介绍-pathlib: 文件系统对象</a></h1>
                 </header>
@@ -344,52 +406,6 @@ package之外的类(在<default>中)不能被导入。
 <p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 184175668 中医草药湿热湿疹胃病 291184506 python高级人工智能视觉 6089740</p>
 <p>商务合作微信 …</p>
                 <a class="readmore" href="/testing_performance_tool_ngrinder.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/testing_performance_tool_ngrinder_dubb.html" rel="bookmark"
-                           title="Permalink to 使用jython进行dubbo接口及ngrinder性能测试">使用jython进行dubbo接口及ngrinder性能测试</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-01T19:20:00+08:00">
-                Published: 四 01 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2>快速入门(接口测试)</h2>
-<ul>
-<li>
-<p>确认mvn和jdk、jython安装ok。</p>
-</li>
-<li>
-<p>先下载dubbo的demo，编译运行demo。</p>
-</li>
-</ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># git clone https://github.com/alibaba/dubbo.git dubbo</span>
-<span class="c1"># cd dubbo/</span>
-<span class="c1"># mvn clean install -Dmaven.test.skip</span>
-<span class="c1"># cd dubbo-demo/dubbo-demo-provider/target/</span>
-<span class="c1"># tar xzvf dubbo-demo-provider-2.5.4-SNAPSHOT-assembly.tar.gz</span>
-<span class="c1"># cd dubbo-demo-provider-2.5.4-SNAPSHOT/bin …</span></pre></div></td></tr></table>
-                <a class="readmore" href="/testing_performance_tool_ngrinder_dubb.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

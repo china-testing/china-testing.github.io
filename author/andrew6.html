@@ -28,6 +28,45 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_dubbo.html" rel="bookmark"
+                           title="Permalink to python库介绍-dubbo：通过telnet接口访问dubbo服务">python库介绍-dubbo：通过telnet接口访问dubbo服务</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-26T19:20:00+08:00">
+                Published: 一 26 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2>简介</h2>
+<p>dubbo服务发布之后，我们可以利用telnet命令进行调试、管理。更多资料参见 <a href="http://alibaba.github.io/dubbo-doc-static/Telnet+Command+Reference-zh-showComments=true&amp;showCommentArea=true.htm">Telnet命令参考手册</a></p>
+<p>项目地址：https://bitbucket.org/china-testing/python-chinese-library/src/46204fd809a04f4d9c7450860d48f2951dec3bc1/libraries/_dubbo/?at=default</p>
+<p>telnet 调用示例：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">telnet</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span> <span class="mi">9097</span>
+<span class="n">Trying</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span><span class="o">...</span>
+<span class="n">Connected</span> <span class="n">to</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span><span class="o">.</span>
+<span class="n">Escape</span> <span class="n">character …</span></pre></div></td></tr></table>
+                <a class="readmore" href="/python3_lib_dubbo.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_lib_pypinyin.html" rel="bookmark"
                            title="Permalink to python库介绍-pypinyin: 汉字拼音转换工具及中文排序">python库介绍-pypinyin: 汉字拼音转换工具及中文排序</a></h1>
                 </header>
@@ -436,68 +475,6 @@ os …</pre></div>
 <li>
 <p>python中文库参考项目文档：https://bitbucket …</p></li></ul>
                 <a class="readmore" href="/python3_lib_pwd.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_spwd.html" rel="bookmark"
-                           title="Permalink to python库介绍-spwd：shadow密码数据库">python库介绍-spwd：shadow密码数据库</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-12T19:20:00+08:00">
-                Published: 一 12 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2>简介</h2>
-<p>pwd可以访问Unix shadow密码数据库。  2.5新增。通常需要为root用户。</p>
-<p>密码数据库项由结构体spwd(类似元组)表示，参见shadow.h：</p>
-<table>
-<thead>
-<tr>
-<th align="center">序号</th>
-<th align="center">属性</th>
-<th align="center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">0</td>
-<td align="center">sp_nam</td>
-<td align="center">Login name</td>
-</tr>
-<tr>
-<td align="center">1</td>
-<td align="center">sp_pwd</td>
-<td align="center">Encrypted password</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">sp_lstchg</td>
-<td align="center">Date of last change</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">sp_min</td>
-<td align="center">Minimal number of days between changes</td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="center">sp_max</td>
-<td align="center">Maximum number of days between changes</td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td align="center">sp_warn</td>
-<td align="center">Number of days before …</td></tr></tbody></table>
-                <a class="readmore" href="/python3_lib_spwd.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
