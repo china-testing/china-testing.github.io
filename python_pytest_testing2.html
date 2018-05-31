@@ -419,10 +419,10 @@ $ tasks list
 6
 7
 8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span>andrew@andrew-PowerEdge-T630:~/code/mobile_data/python3_libraries/pytest_testing/ch2/tasks_proj/tests/unit$ pytest test_task.py 
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span>andrew@andrew-PowerEdge-T630:~/code/china-testing/python3_libraries/pytest_testing/ch2/tasks_proj/tests/unit$ pytest test_task.py 
 <span class="o">===========================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">===========================================</span>
 platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0
-rootdir: /home/andrew/code/mobile_data/python3_libraries/pytest_testing/ch2/tasks_proj/tests, inifile: pytest.ini
+rootdir: /home/andrew/code/china-testing/python3_libraries/pytest_testing/ch2/tasks_proj/tests, inifile: pytest.ini
 collected <span class="m">4</span> items                                                                                         
 
 test_task.py ....                                                                                   <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
@@ -501,10 +501,10 @@ test_task.py ....                                                               
 33
 34
 35
-36</pre></div></td><td class="code"><div class="highlight"><pre><span></span>~/code/mobile_data/python3_libraries/pytest_testing/ch2/tasks_proj/tests/unit$ pytest test_task_fail.py 
+36</pre></div></td><td class="code"><div class="highlight"><pre><span></span>~/code/china-testing/python3_libraries/pytest_testing/ch2/tasks_proj/tests/unit$ pytest test_task_fail.py 
 <span class="o">===========================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">===========================================</span>
 platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0
-rootdir: /home/andrew/code/mobile_data/python3_libraries/pytest_testing/ch2/tasks_proj/tests, inifile: pytest.ini
+rootdir: /home/andrew/code/china-testing/python3_libraries/pytest_testing/ch2/tasks_proj/tests, inifile: pytest.ini
 collected <span class="m">2</span> items                                                                                         
 
 test_task_fail.py FF                                                                                <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
@@ -718,47 +718,47 @@ test_task_fail.py:16: <span class="nv">AssertionError</span>
 38
 39
 40
-41</pre></div></td><td class="code"><div class="highlight"><pre><span></span>andrew@andrew-PowerEdge-T630:~/code/mobile_data/python3_libraries/pytest_testing/ch2/tasks_proj/tests/func$  pytest test_api_exceptions.py 
+41</pre></div></td><td class="code"><div class="highlight"><pre><span></span>andrew@andrew-PowerEdge-T630:~/code/china-testing/python3_libraries/pytest_testing/ch2/tasks_proj/tests/func$  pytest test_api_exceptions.py 
 <span class="o">===========================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">===========================================</span>
 platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0
-rootdir: /home/andrew/code/mobile_data/python3_libraries/pytest_testing/ch2/tasks_proj/tests, inifile: pytest.ini
+rootdir: /home/andrew/code/china-testing/python3_libraries/pytest_testing/ch2/tasks_proj/tests, inifile: pytest.ini
 collected <span class="m">7</span> items                                                                                         
 
 test_api_exceptions.py .......                                                                      <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
 <span class="o">========================================</span> <span class="m">7</span> passed in <span class="m">0</span>.03 <span class="nv">seconds</span> <span class="o">=========================================</span>
-andrew@andrew-PowerEdge-T630:~/code/mobile_data/python3_libraries/pytest_testing/ch2/tasks_proj/tests/func$ pytest test_api_exceptions.py  -v -m <span class="s2">&quot;smoke&quot;</span>
+andrew@andrew-PowerEdge-T630:~/code/china-testing/python3_libraries/pytest_testing/ch2/tasks_proj/tests/func$ pytest test_api_exceptions.py  -v -m <span class="s2">&quot;smoke&quot;</span>
 <span class="o">===========================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">===========================================</span>
 platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0 -- /usr/bin/python3
 cachedir: ../.pytest_cache
-rootdir: /home/andrew/code/mobile_data/python3_libraries/pytest_testing/ch2/tasks_proj/tests, inifile: pytest.ini
+rootdir: /home/andrew/code/china-testing/python3_libraries/pytest_testing/ch2/tasks_proj/tests, inifile: pytest.ini
 collected <span class="m">7</span> items / <span class="m">5</span> deselected                                                                          
 
 test_api_exceptions.py::test_list_raises PASSED                                                     <span class="o">[</span> <span class="m">50</span>%<span class="o">]</span>
 test_api_exceptions.py::test_get_raises PASSED                                                      <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
 <span class="o">=================================</span> <span class="m">2</span> passed, <span class="m">5</span> deselected in <span class="m">0</span>.02 <span class="nv">seconds</span> <span class="o">==================================</span>
-andrew@andrew-PowerEdge-T630:~/code/mobile_data/python3_libraries/pytest_testing/ch2/tasks_proj/tests/func$ pytest test_api_exceptions.py  -v -m <span class="s2">&quot;smoke and get&quot;</span>
+andrew@andrew-PowerEdge-T630:~/code/china-testing/python3_libraries/pytest_testing/ch2/tasks_proj/tests/func$ pytest test_api_exceptions.py  -v -m <span class="s2">&quot;smoke and get&quot;</span>
 <span class="o">===========================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">===========================================</span>
 platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0 -- /usr/bin/python3
 cachedir: ../.pytest_cache
-rootdir: /home/andrew/code/mobile_data/python3_libraries/pytest_testing/ch2/tasks_proj/tests, inifile: pytest.ini
+rootdir: /home/andrew/code/china-testing/python3_libraries/pytest_testing/ch2/tasks_proj/tests, inifile: pytest.ini
 collected <span class="m">7</span> items / <span class="m">6</span> deselected                                                                          
 
 test_api_exceptions.py::test_get_raises PASSED                                                      <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
 <span class="o">=================================</span> <span class="m">1</span> passed, <span class="m">6</span> deselected in <span class="m">0</span>.01 <span class="nv">seconds</span> <span class="o">==================================</span>
-andrew@andrew-PowerEdge-T630:~/code/mobile_data/python3_libraries/pytest_testing/ch2/tasks_proj/tests/func$ pytest test_api_exceptions.py  -v -m <span class="s2">&quot;smoke and not get&quot;</span>
+andrew@andrew-PowerEdge-T630:~/code/china-testing/python3_libraries/pytest_testing/ch2/tasks_proj/tests/func$ pytest test_api_exceptions.py  -v -m <span class="s2">&quot;smoke and not get&quot;</span>
 <span class="o">===========================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">===========================================</span>
 platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0 -- /usr/bin/python3
 cachedir: ../.pytest_cache
-rootdir: /home/andrew/code/mobile_data/python3_libraries/pytest_testing/ch2/tasks_proj/tests, inifile: pytest.ini
+rootdir: /home/andrew/code/china-testing/python3_libraries/pytest_testing/ch2/tasks_proj/tests, inifile: pytest.ini
 collected <span class="m">7</span> items / <span class="m">6</span> deselected                                                                          
 
 test_api_exceptions.py::test_list_raises PASSED                                                     <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
 <span class="o">=================================</span> <span class="m">1</span> passed, <span class="m">6</span> deselected in <span class="m">0</span>.01 <span class="nv">seconds</span> <span class="o">==================================</span>
-andrew@andrew-PowerEdge-T630:~/code/mobile_data/python3_libraries/pytest_testing/ch2/tasks_proj/tests/func$ 
+andrew@andrew-PowerEdge-T630:~/code/china-testing/python3_libraries/pytest_testing/ch2/tasks_proj/tests/func$ 
 </pre></div>
 </td></tr></table>
     </div><!-- /.entry-content -->

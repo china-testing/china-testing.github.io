@@ -54,7 +54,7 @@
 <p>该框架基于Twisted实现，并与所有主要的操作系统兼容。</p>
 <p>Buildbot支持持续集成，持续部署，发布管理等的。Buildbot支持持续集成测试，自动化复杂的编译系统，应用程序部署和复杂的软件发布流程管理。比CruiseControl或Jenkins更适合混合语言的环境。在 Chromium,WebKit, Firefox, Python和Twisted等有广泛的使用。</p>
 <p>缺点：buildbot对多项目支持并不好。</p>
-<p>本文代码地址：https://github.com/china-testing/mobile_data/tree/master/buildbot/</p>
+<p>本文代码地址：https://github.com/china-testing/china-testing/tree/master/buildbot/</p>
 <p><a href="https://china-testing.github.io/python3_lib_buildbot.html">本文最新版本地址</a></p>
 <ul>
 <li>你的赞助是我们前进的动力：</li>
@@ -141,7 +141,7 @@
 
 <p>日志在worker/twistd.log</p>
 <h3>快速入门</h3>
-<p>本章从<a href="https://github.com/china-testing/mobile_data">mobile_data</a>拉取代码，调用ｐｙｔｅｓｔ执行buildbot/hello-world/hello下的单元测试。</p>
+<p>本章从<a href="https://github.com/china-testing/china-testing">china-testing</a>拉取代码，调用ｐｙｔｅｓｔ执行buildbot/hello-world/hello下的单元测试。</p>
 <h4>配置项目名和URL</h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
   2
@@ -300,7 +300,7 @@
 
 <span class="n">c</span><span class="p">[</span><span class="s1">&#39;change_source&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">c</span><span class="p">[</span><span class="s1">&#39;change_source&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">changes</span><span class="o">.</span><span class="n">GitPoller</span><span class="p">(</span>
-        <span class="s1">&#39;git://github.com/china-testing/mobile_data.git&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;git://github.com/china-testing/china-testing.git&#39;</span><span class="p">,</span>
         <span class="n">workdir</span><span class="o">=</span><span class="s1">&#39;gitpoller-workdir&#39;</span><span class="p">,</span> <span class="n">branch</span><span class="o">=</span><span class="s1">&#39;master&#39;</span><span class="p">,</span>
         <span class="n">pollinterval</span><span class="o">=</span><span class="mi">300</span><span class="p">))</span>
 
@@ -327,7 +327,7 @@
 
 <span class="n">factory</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">BuildFactory</span><span class="p">()</span>
 <span class="c1"># check out the source</span>
-<span class="n">factory</span><span class="o">.</span><span class="n">addStep</span><span class="p">(</span><span class="n">steps</span><span class="o">.</span><span class="n">Git</span><span class="p">(</span><span class="n">repourl</span><span class="o">=</span><span class="s1">&#39;git://github.com/china-testing/mobile_data.git&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;incremental&#39;</span><span class="p">))</span>
+<span class="n">factory</span><span class="o">.</span><span class="n">addStep</span><span class="p">(</span><span class="n">steps</span><span class="o">.</span><span class="n">Git</span><span class="p">(</span><span class="n">repourl</span><span class="o">=</span><span class="s1">&#39;git://github.com/china-testing/china-testing.git&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;incremental&#39;</span><span class="p">))</span>
 <span class="c1"># run the tests (note that this will require that &#39;trial&#39; is installed)</span>
 <span class="n">factory</span><span class="o">.</span><span class="n">addStep</span><span class="p">(</span><span class="n">steps</span><span class="o">.</span><span class="n">ShellCommand</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pytest&quot;</span><span class="p">,</span> <span class="s2">&quot;buildbot/hello-world/hello&quot;</span><span class="p">]))</span>
 
@@ -351,7 +351,7 @@
 <span class="c1"># home pages (linked to the &#39;titleURL&#39;).</span>
 
 <span class="n">c</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Hello World CI&quot;</span>
-<span class="n">c</span><span class="p">[</span><span class="s1">&#39;titleURL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/china-testing/mobile_data&quot;</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;titleURL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/china-testing/china-testing&quot;</span>
 
 <span class="c1"># the &#39;buildbotURL&#39; string should point to the location where the buildbot&#39;s</span>
 <span class="c1"># internal web server is visible. This typically uses the port number set in</span>
