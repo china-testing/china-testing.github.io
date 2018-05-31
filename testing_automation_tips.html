@@ -160,7 +160,7 @@
 <h3>1-8 使用静态代码分析器</h3>
 <p>对于流行的编程语言，有特殊的代码分析器。例如Python的pylint，JavaScript语言的jslint等。</p>
 <p>特别指出对python这样的动态类型的语言，这个更加重要。</p>
-<p>pylint通常有很多误报，但是mypy的检查则比较实用。参考：<a href="https://github.com/china-testing/china-testing#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%92%8Clintcode-analysis">python代码分析和lint</a>。</p>
+<p>pylint通常有很多误报，但是mypy的检查则比较实用。参考：<a href="https://github.com/china-testing/python-api-tesing#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%92%8Clintcode-analysis">python代码分析和lint</a>。</p>
 <h3>1-9 随机</h3>
 <p>比如打开菜单有快捷键、下拉菜单、图标等多种方式，尽量写方法随机调用各种方式。以求覆盖各种场景，不过要记得添加日志以便跟踪错误。</p>
 <h3>1-10 不要使用坐标</h3>
@@ -185,10 +185,10 @@
 </pre></div>
 </td></tr></table>
 
-<p>附： <a href="https://github.com/china-testing/china-testing">python自动化测试开发库</a></p>
+<p>附： <a href="https://github.com/china-testing/python-api-tesing">python自动化测试开发库</a></p>
 <h3>1-12 避免复制和粘贴</h3>
 <p>复制的代码维护成本很高，尽量提取为公共库。</p>
-<p><a href="https://github.com/china-testing/china-testing/blob/master/servers.py">公共测试库示例</a></p>
+<p><a href="https://github.com/china-testing/python-api-tesing/blob/master/servers.py">公共测试库示例</a></p>
 <h3>1-13 异常捕捉到具体的类</h3>
 <p>异常通常是程序考虑不周到才会发生：</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -304,7 +304,7 @@
 <li>用完关闭与数据源</li>
 <li>数据文件中不要用空行</li>
 </ul>
-<p><a href="https://github.com/china-testing/china-testing/blob/master/servers.py">公共测试库示例</a></p>
+<p><a href="https://github.com/china-testing/python-api-tesing/blob/master/servers.py">公共测试库示例</a></p>
 <h3>1-15 调试</h3>
 <p>简单的可以多使用print或者logging打印一些信息。更高级的内容有</p>
 <p>•断点
