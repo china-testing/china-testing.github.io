@@ -45,11 +45,12 @@
 </footer><!-- /.post-info -->      <h1>Table of Contents</h1>
 <ul>
 <li><a href="#python每周一练">python每周一练</a></li>
+<li><a href="#2018-06-06 json格式转换">2018-06-06 json格式转换</a></li>
 <li><a href="#2018-06-01 正则表达式及拼音排序">2018-06-01 正则表达式及拼音排序</a></li>
 <li><a href="#2018-05-25-旋转图片">2018-05-25 旋转图片</a></li>
 </ul>
 <h1>python每周一练</h1>
-<p>每周五发布python需求，下周五发布参考答案。</p>
+<p>每周五发布python需求，所有需求都来自实际企业。下周五发布参考答案。</p>
 <ul>
 <li>
 <p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
@@ -60,6 +61,73 @@
 </ul>
 <p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
 <p><a href="https://china-testing.github.io/python_weeks.html">本文最新版本</a> </p>
+<h3>2018-06-06 json格式转换</h3>
+<p>现有 人脸标注的海量数据，部分参见：<a href="https://github.com/china-testing/python-api-tesing/tree/master/weeks/2018_06_06/data">data</a></p>
+<p>要求输出：
+1，files.txt </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">image_1515229323784</span><span class="o">.</span><span class="n">ir</span>
+<span class="n">image_1515235832391</span><span class="o">.</span><span class="n">ir</span>
+<span class="n">image_1515208991161</span><span class="o">.</span><span class="n">ir</span>
+<span class="n">image_1515207265358</span><span class="o">.</span><span class="n">ir</span>
+<span class="n">image_1521802748625</span><span class="o">.</span><span class="n">ir</span>
+<span class="n">image_1515387191011</span><span class="o">.</span><span class="n">ir</span>
+<span class="o">...</span>
+</pre></div>
+</td></tr></table>
+
+<p>2, 坐标信息 poses.txt 
+文件名、left, top, right, buttom，width，height</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">image_1515229323784</span><span class="o">.</span><span class="n">ir</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">227</span><span class="p">,</span><span class="mi">234</span><span class="p">,</span><span class="mi">497</span><span class="p">,</span><span class="mi">230</span><span class="p">,</span><span class="mi">270</span>
+<span class="n">image_1515235832391</span><span class="o">.</span><span class="n">ir</span><span class="p">,</span><span class="mi">154</span><span class="p">,</span><span class="mi">89</span><span class="p">,</span><span class="mi">302</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span><span class="mi">148</span><span class="p">,</span><span class="mi">151</span>
+<span class="n">image_1515208991161</span><span class="o">.</span><span class="n">ir</span><span class="p">,</span><span class="mi">76</span><span class="p">,</span><span class="mi">369</span><span class="p">,</span><span class="mi">309</span><span class="p">,</span><span class="mi">576</span><span class="p">,</span><span class="mi">233</span><span class="p">,</span><span class="mi">207</span>
+<span class="n">image_1515207265358</span><span class="o">.</span><span class="n">ir</span><span class="p">,</span><span class="mi">44</span><span class="p">,</span><span class="mi">261</span><span class="p">,</span><span class="mi">340</span><span class="p">,</span><span class="mi">546</span><span class="p">,</span><span class="mi">296</span><span class="p">,</span><span class="mi">285</span>
+<span class="o">...</span>
+</pre></div>
+</td></tr></table>
+
+<p>3，比对文件：</p>
+<p>首先：# 后面的为序列号，从1开始递增
+3 640 480 1及后面3行暂时视为固定。后面一行1 后面为4个坐标left, top, right, buttom。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># 1</span>
+<span class="n">image_1515229323784</span><span class="o">.</span><span class="n">ir</span>
+<span class="mi">3</span> <span class="mi">640</span> <span class="mi">480</span> <span class="mi">1</span>
+<span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">1</span> <span class="mi">4</span> <span class="mi">227</span> <span class="mi">234</span> <span class="mi">497</span> 
+<span class="c1"># 2</span>
+<span class="n">image_1515235832391</span><span class="o">.</span><span class="n">ir</span>
+<span class="mi">3</span> <span class="mi">640</span> <span class="mi">480</span> <span class="mi">1</span>
+<span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">1</span> <span class="mi">154</span> <span class="mi">89</span> <span class="mi">302</span> <span class="mi">240</span>
+<span class="c1"># 3</span>
+<span class="o">...</span>
+</pre></div>
+</td></tr></table>
+
 <h3>2018-06-01 正则表达式及拼音排序</h3>
 <p>有某群的某段<a href="https://github.com/china-testing/python-api-tesing/blob/master/weeks/2018_06_01/test.txt">聊天记录</a></p>
 <p>现在要求输出排序的qq名，结果类似如下：</p>
@@ -67,7 +135,87 @@
 </pre></div>
 </td></tr></table>
 
+<p>需求来源：有个想批量邀请某些qq群的活跃用户到自己的群。又不想铺天盖地去看聊天记录。</p>
 <p>参考资料：<a href="https://github.com/china-testing/python-api-tesing#%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86text-processing">python文本处理库</a></p>
+<p>参考代码：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    xurongzhong@126.com wechat:pythontesting qq:37391319</span>
+<span class="c1"># 技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) </span>
+<span class="c1"># qq群：144081101 591302926  567351477</span>
+<span class="c1"># CreateDate: 2018-6-1</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">pypinyin</span> <span class="kn">import</span> <span class="n">lazy_pinyin</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;test.txt&#39;</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="c1">#print(text)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(:\d+)\s(.*?)\(\d+&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="n">names</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  
+
+<span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">char</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">lazy_pinyin</span><span class="p">(</span><span class="n">char</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">char</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="n">keys</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">compare</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行示例：</p>
+<p>1，把qq群的聊天记录导出为txt格式，重命名为test.txt</p>
+<p>2, 执行：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">qq</span><span class="o">.</span><span class="n">py</span> 
+<span class="p">[</span><span class="s1">&#39;Sally&#39;</span><span class="p">,</span> <span class="s1">&#39;^^O^^&#39;</span><span class="p">,</span> <span class="s1">&#39;aa催乳师&#39;</span><span class="p">,</span> <span class="s1">&#39;bling&#39;</span><span class="p">,</span> <span class="s1">&#39;本草隐士&#39;</span><span class="p">,</span> <span class="s1">&#39;纯中药治疗阳痿早泄&#39;</span><span class="p">,</span> <span class="s1">&#39;长夜无荒&#39;</span><span class="p">,</span> <span class="s1">&#39;东方～慈航&#39;</span><span class="p">,</span> <span class="s1">&#39;干金草&#39;</span><span class="p">,</span> <span class="s1">&#39;广东-曾超庆&#39;</span><span class="p">,</span> <span class="s1">&#39;红梅* 渝&#39;</span><span class="p">,</span> <span class="s1">&#39;jerryyu&#39;</span><span class="p">,</span> <span class="s1">&#39;可怜的樱桃树&#39;</span><span class="p">,</span> <span class="s1">&#39;叻风云&#39;</span><span class="p">,</span> <span class="s1">&#39;欧阳-深圳白芒&#39;</span><span class="p">,</span> <span class="s1">&#39;勝昔堂～元亨&#39;</span><span class="p">,</span> <span class="s1">&#39;蜀中~眉豆。&#39;</span><span class="p">,</span> <span class="s1">&#39;陕西渭南逸清阁*无为&#39;</span><span class="p">,</span> <span class="s1">&#39;吴宁……任&#39;</span><span class="p">,</span> <span class="s1">&#39;系统消息&#39;</span><span class="p">,</span> <span class="s1">&#39;于立伟&#39;</span><span class="p">,</span> <span class="s1">&#39;倚窗望岳&#39;</span><span class="p">,</span> <span class="s1">&#39;烟霞霭霭&#39;</span><span class="p">,</span> <span class="s1">&#39;燕子&#39;</span><span class="p">,</span> <span class="s1">&#39;张强&#39;</span><span class="p">,</span> <span class="s1">&#39;滋味&#39;</span><span class="p">,</span> <span class="s1">&#39;✾买个罐头 吃西餐&#39;</span><span class="p">,</span> <span class="s1">&#39;【大侠】好好&#39;</span><span class="p">,</span> <span class="s1">&#39;【大侠】面向大海～纯中药治烫伤&#39;</span><span class="p">,</span> <span class="s1">&#39;【宗师】吴宁……任&#39;</span><span class="p">,</span> <span class="s1">&#39;【宗师】红梅* 渝&#39;</span><span class="p">,</span> <span class="s1">&#39;【少侠】焚琴煮鹤&#39;</span><span class="p">,</span> <span class="s1">&#39;【少侠】笨笨&#39;</span><span class="p">,</span> <span class="s1">&#39;【掌门】溆浦☞山野人家&#39;</span><span class="p">]</span>
+</pre></div>
+</td></tr></table>
+
+<p><a href="https://github.com/china-testing/python-api-tesing/tree/master/weeks/2018_06_01">上述代码地址</a></p>
 <h3>2018-05-25 旋转图片</h3>
 <p>把/home/andrew/code/tmp_photos2的jpg图片旋转270度，放在/home/andrew/code/tmp_photos3 </p>
 <p>参考资料：<a href="https://github.com/china-testing/python-api-tesing#%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86image-processing">python图像处理库</a></p>
@@ -108,7 +256,77 @@ optional arguments:
 </pre></div>
 </td></tr></table>
 
-<p><a href="https://github.com/china-testing/python-api-tesing/blob/master/tools/rotate.py">参考答案</a></p>
+<p>旋转前：</p>
+<p><img alt="photo.jpg" src="https://upload-images.jianshu.io/upload_images/10819934-f2f74d08c0cd62dc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>旋转后</p>
+<p><img alt="photo.jpg" src="https://upload-images.jianshu.io/upload_images/10819934-6e06decc073c0180.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>需求来源： 用户拍的图片人脸未必是头在上，下巴在下面，但是人脸识别的时扶正的识别效果比较好，为此...</p>
+<p>参考代码：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">os</span> 
+<span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="kn">import</span> <span class="nn">photos</span>
+<span class="kn">import</span> <span class="nn">data_common</span>
+
+<span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+
+<span class="s1">功能：旋转图片</span>
+
+<span class="s1">示例： $ python3 rotate.py /home/andrew/code/tmp_photos2 /home/andrew/code/tmp_photos3 -a 270</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span> 
+                                 <span class="n">formatter_class</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">RawTextHelpFormatter</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;源目录&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;dst&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;目的目录&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;jpg&quot;</span><span class="p">,</span> 
+                    <span class="n">help</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;文件扩展名, 默认为jpg&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;angle&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;旋转角度，默认为90度，方向都为逆时针。&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--version&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;version&#39;</span><span class="p">,</span>
+                    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(prog)s</span><span class="s1"> 1.0 Rongzhong xu 2018 04 26&#39;</span><span class="p">)</span>
+<span class="n">options</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+<span class="n">data_common</span><span class="o">.</span><span class="n">check_directory</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">dst</span><span class="p">)</span>
+<span class="n">files</span> <span class="o">=</span> <span class="n">data_common</span><span class="o">.</span><span class="n">find_files_by_type</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">src</span><span class="p">,</span> <span class="n">filetype</span><span class="o">=</span><span class="n">options</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+<span class="n">photos</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">options</span><span class="o">.</span><span class="n">dst</span><span class="p">,</span> <span class="n">options</span><span class="o">.</span><span class="n">angle</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p><a href="https://github.com/china-testing/python-api-tesing/">上述代码依赖的部分库</a></p>
     </div><!-- /.entry-content -->
 
   </article>
