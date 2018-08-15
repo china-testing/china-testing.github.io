@@ -258,18 +258,13 @@ Matplotlib是一个多功能的Python库，可生成数据可视化图。支持�
 <p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
 <h3>加载数据</h3>
 <p>load.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;../data/gapminder.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> 
-<span class="k">print</span><span class="p">(</span><span class="n">df …</span></pre></div></td></tr></table>
+<p>```#!python</p>
+<p>import pandas as pd</p>
+<p>df = pd.read_csv(r"../data/gapminder.tsv", sep='\t') 
+print(df.head())
+print(type(df))
+print(df.shape)
+print …</p>
                 <a class="readmore" href="/python_pandas_crash_tutorial1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -297,39 +292,16 @@ Matplotlib是一个多功能的Python库，可生成数据可视化图。支持�
 <h3>创建数据</h3>
 <p>Series和python的列表类似。DataFrame则类似值为Series的字典。</p>
 <p>create.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
-<span class="c1"># -*- coding …</span></pre></div></td></tr></table>
+<p>```#!python</p>
+<h1>!/usr/bin/python3</h1>
+<h1>-<em>- coding: utf-8 -</em>-</h1>
+<h1>Author:    china-testing#126.com wechat:pythontesting qq group:630011153</h1>
+<h1>CreateDate: 2018-3-13</h1>
+<h1>create.py</h1>
+<p>import pandas as pd</p>
+<p>s = pd.Series(['banana', 42])
+print(s)</p>
+<p>s = pd.Series(['Wes McKinney', 'Creator …</p>
                 <a class="readmore" href="/python_pandas_crash_tutorial2.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>

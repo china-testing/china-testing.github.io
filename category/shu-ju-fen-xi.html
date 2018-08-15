@@ -778,18 +778,13 @@ Scrapy提供了许多值得一提的强大功能：
 <p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
 <h3>加载数据</h3>
 <p>load.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;../data/gapminder.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> 
-<span class="k">print</span><span class="p">(</span><span class="n">df …</span></pre></div></td></tr></table>
+<p>```#!python</p>
+<p>import pandas as pd</p>
+<p>df = pd.read_csv(r"../data/gapminder.tsv", sep='\t') 
+print(df.head())
+print(type(df))
+print(df.shape)
+print …</p>
                 <a class="readmore" href="/python_pandas_crash_tutorial1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>

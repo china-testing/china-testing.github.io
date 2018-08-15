@@ -495,37 +495,28 @@
 <p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
 <p><a href="https://china-testing.github.io/python_flask_autotest6.html">本文最新版本</a> </p>
 <p>安装mysql</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># apt-get install mysql-server</span>
-<span class="c1"># pip3 install pymysql</span>
-<span class="c1"># python db_setup.py # 创建数据库</span>
-</pre></div>
-</td></tr></table>
+<p>```#!sh</p>
+<h1>apt-get install mysql-server</h1>
+<h1>pip3 install pymysql</h1>
+<h1>python db_setup.py # 创建数据库</h1>
+<div class="highlight"><pre><span></span>dbconfig.py
 
-<p>dbconfig.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="bp">False</span>
-<span class="n">db_user</span> <span class="o">=</span> <span class="s1">&#39;root&#39;</span>
-<span class="n">db_password</span> <span class="o">=</span> <span class="s1">&#39;654321_&#39;</span>
+```#!python
+
+test = False
+db_user = &#39;root&#39;
+db_password = &#39;654321_&#39;
 </pre></div>
-</td></tr></table>
+
 
 <p>db_setup.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13 …</pre></div></td></tr></table>
+<p>```#!python</p>
+<p>import pymysql
+import dbconfig
+connection = pymysql.connect(host='localhost',
+                             user=dbconfig.db_user,
+                             passwd=dbconfig.db_password)</p>
+<p>try …</p>
                 <a class="readmore" href="/python_flask_autotest6.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>

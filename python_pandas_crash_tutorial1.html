@@ -49,86 +49,51 @@
 <p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
 <h3>加载数据</h3>
 <p>load.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<p>```#!python</p>
+<p>import pandas as pd</p>
+<p>df = pd.read_csv(r"../data/gapminder.tsv", sep='\t') 
+print(df.head())
+print(type(df))
+print(df.shape)
+print(df.columns)
+print(df.dtypes)
+print(df.info())</p>
+<div class="highlight"><pre><span></span>执行结果
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;../data/gapminder.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> 
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
-</pre></div>
-</td></tr></table>
 
-<p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">load</span><span class="o">.</span><span class="n">py</span> 
-       <span class="n">country</span> <span class="n">continent</span>  <span class="n">year</span>  <span class="n">lifeExp</span>       <span class="n">pop</span>   <span class="n">gdpPercap</span>
-<span class="mi">0</span>  <span class="n">Afghanistan</span>      <span class="n">Asia</span>  <span class="mi">1952</span>   <span class="mf">28.801</span>   <span class="mi">8425333</span>  <span class="mf">779.445314</span>
-<span class="mi">1</span>  <span class="n">Afghanistan</span>      <span class="n">Asia</span>  <span class="mi">1957</span>   <span class="mf">30.332</span>   <span class="mi">9240934</span>  <span class="mf">820.853030</span>
-<span class="mi">2</span>  <span class="n">Afghanistan</span>      <span class="n">Asia</span>  <span class="mi">1962</span>   <span class="mf">31.997</span>  <span class="mi">10267083</span>  <span class="mf">853.100710</span>
-<span class="mi">3</span>  <span class="n">Afghanistan</span>      <span class="n">Asia</span>  <span class="mi">1967</span>   <span class="mf">34.020</span>  <span class="mi">11537966</span>  <span class="mf">836.197138</span>
-<span class="mi">4</span>  <span class="n">Afghanistan</span>      <span class="n">Asia</span>  <span class="mi">1972</span>   <span class="mf">36.088</span>  <span class="mi">13079460</span>  <span class="mf">739.981106</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span><span class="s1">&#39;&gt;</span>
-<span class="p">(</span><span class="mi">1704</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="n">Index</span><span class="p">([</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;continent&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;lifeExp&#39;</span><span class="p">,</span> <span class="s1">&#39;pop&#39;</span><span class="p">,</span> <span class="s1">&#39;gdpPercap&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;object&#39;</span><span class="p">)</span>
-<span class="n">country</span>       <span class="nb">object</span>
-<span class="n">continent</span>     <span class="nb">object</span>
-<span class="n">year</span>           <span class="n">int64</span>
-<span class="n">lifeExp</span>      <span class="n">float64</span>
-<span class="n">pop</span>            <span class="n">int64</span>
-<span class="n">gdpPercap</span>    <span class="n">float64</span>
-<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span><span class="s1">&#39;&gt;</span>
-<span class="n">RangeIndex</span><span class="p">:</span> <span class="mi">1704</span> <span class="n">entries</span><span class="p">,</span> <span class="mi">0</span> <span class="n">to</span> <span class="mi">1703</span>
-<span class="n">Data</span> <span class="n">columns</span> <span class="p">(</span><span class="n">total</span> <span class="mi">6</span> <span class="n">columns</span><span class="p">):</span>
-<span class="n">country</span>      <span class="mi">1704</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span> <span class="nb">object</span>
-<span class="n">continent</span>    <span class="mi">1704</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span> <span class="nb">object</span>
-<span class="n">year</span>         <span class="mi">1704</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span> <span class="n">int64</span>
-<span class="n">lifeExp</span>      <span class="mi">1704</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span> <span class="n">float64</span>
-<span class="n">pop</span>          <span class="mi">1704</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span> <span class="n">int64</span>
-<span class="n">gdpPercap</span>    <span class="mi">1704</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span> <span class="n">float64</span>
-<span class="n">dtypes</span><span class="p">:</span> <span class="n">float64</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">int64</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="nb">object</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">memory</span> <span class="n">usage</span><span class="p">:</span> <span class="mf">80.0</span><span class="o">+</span> <span class="n">KB</span>
-<span class="bp">None</span>
+```#!python
+
+$ python3 load.py 
+       country continent  year  lifeExp       pop   gdpPercap
+0  Afghanistan      Asia  1952   28.801   8425333  779.445314
+1  Afghanistan      Asia  1957   30.332   9240934  820.853030
+2  Afghanistan      Asia  1962   31.997  10267083  853.100710
+3  Afghanistan      Asia  1967   34.020  11537966  836.197138
+4  Afghanistan      Asia  1972   36.088  13079460  739.981106
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+(1704, 6)
+Index([&#39;country&#39;, &#39;continent&#39;, &#39;year&#39;, &#39;lifeExp&#39;, &#39;pop&#39;, &#39;gdpPercap&#39;], dtype=&#39;object&#39;)
+country       object
+continent     object
+year           int64
+lifeExp      float64
+pop            int64
+gdpPercap    float64
+dtype: object
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1704 entries, 0 to 1703
+Data columns (total 6 columns):
+country      1704 non-null object
+continent    1704 non-null object
+year         1704 non-null int64
+lifeExp      1704 non-null float64
+pop          1704 non-null int64
+gdpPercap    1704 non-null float64
+dtypes: float64(2), int64(2), object(2)
+memory usage: 80.0+ KB
+None
 </pre></div>
-</td></tr></table>
+
 
 <table>
 <thead>
@@ -158,71 +123,36 @@
 </table>
 <h3>行列与单元格</h3>
 <p>col.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<p>```#!python</p>
+<p>import pandas as pd</p>
+<p>df = pd.read_csv(r"../data/gapminder.tsv", sep='\t') </p>
+<h1>列操作</h1>
+<p>country_df = df['country']
+print(country_df.head())
+print(country_df.tail())
+country_df_dot = df.country
+print(country_df_dot.head())
+subset = df[['country', 'continent', 'year']]
+print(subset.head())
+subset = df[[1]]
+print(subset.head())
+subset = df[[0, -1]]
+print(subset.head())
+small_range = list(range(5))
+subset = df[small_range]
+print(subset.head())
+small_range = list(range(3, 6))
+subset = df[small_range]
+print(subset.head())
+small_range = list(range(0, 6, 2))
+subset = df[small_range]
+print(subset.head())</p>
+<div class="highlight"><pre><span></span><span class="err">执行结果</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;../data/gapminder.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> 
 
-<span class="c1"># 列操作</span>
-<span class="n">country_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">country_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="k">print</span><span class="p">(</span><span class="n">country_df</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
-<span class="n">country_df_dot</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">country</span>
-<span class="k">print</span><span class="p">(</span><span class="n">country_df_dot</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="n">subset</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;continent&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">]]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">subset</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="n">subset</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="mi">1</span><span class="p">]]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">subset</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="n">subset</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">subset</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="n">small_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">subset</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">small_range</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">subset</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="n">small_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">subset</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">small_range</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">subset</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="n">small_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">subset</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">small_range</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">subset</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-</pre></div>
-</td></tr></table>
+<span class="sb">``</span><span class="err">`</span><span class="c1">#!python</span>
 
-<p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;../data/gapminder.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> 
 
@@ -235,185 +165,96 @@
 <span class="n">subset</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;continent&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">]]</span>
 <span class="k">print</span><span class="p">(</span><span class="n">subset</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>row.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<p>```#!python</p>
+<p>import pandas as pd</p>
+<p>df = pd.read_csv(r"../data/gapminder.tsv", sep='\t') </p>
+<h1>行操作，注意df.loc[-1]是非法的</h1>
+<p>print(df.loc[0])
+number_of_rows = df.shape[0]
+last_row_index = number_of_rows - 1
+print(df.loc[last_row_index])
+print(df.tail(n=1))</p>
+<p>subset_loc = df.loc[0]
+subset_head = df.head(n=1)
+print(type(subset_loc))
+print(type(subset_head))</p>
+<p>print(df.loc[[0, 99, 999]])
+print(type(df.loc[[0, 99, 999]]))</p>
+<p>print(df.iloc[0])
+print(df.iloc[[0, 99, 999]])</p>
+<div class="highlight"><pre><span></span>执行结果
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;../data/gapminder.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> 
 
-<span class="c1"># 行操作，注意df.loc[-1]是非法的</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">number_of_rows</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">last_row_index</span> <span class="o">=</span> <span class="n">number_of_rows</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">last_row_index</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+```#!python
 
-<span class="n">subset_loc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">subset_head</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">subset_loc</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">subset_head</span><span class="p">))</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">999</span><span class="p">]])</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">999</span><span class="p">]]))</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">999</span><span class="p">]])</span>
+$ python3 row.py 
+country      Afghanistan
+continent           Asia
+year                1952
+lifeExp           28.801
+pop              8425333
+gdpPercap        779.445
+Name: 0, dtype: object
+country      Zimbabwe
+continent      Africa
+year             2007
+lifeExp        43.487
+pop          12311143
+gdpPercap     469.709
+Name: 1703, dtype: object
+       country continent  year  lifeExp       pop   gdpPercap
+1703  Zimbabwe    Africa  2007   43.487  12311143  469.709298
+&lt;class &#39;pandas.core.series.Series&#39;&gt;
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+         country continent  year  lifeExp       pop    gdpPercap
+0    Afghanistan      Asia  1952   28.801   8425333   779.445314
+99    Bangladesh      Asia  1967   43.453  62821884   721.186086
+999     Mongolia      Asia  1967   51.253   1149500  1226.041130
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+country      Afghanistan
+continent           Asia
+year                1952
+lifeExp           28.801
+pop              8425333
+gdpPercap        779.445
+Name: 0, dtype: object
+         country continent  year  lifeExp       pop    gdpPercap
+0    Afghanistan      Asia  1952   28.801   8425333   779.445314
+99    Bangladesh      Asia  1967   43.453  62821884   721.186086
+999     Mongolia      Asia  1967   51.253   1149500  1226.041130
 </pre></div>
-</td></tr></table>
 
-<p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">row</span><span class="o">.</span><span class="n">py</span> 
-<span class="n">country</span>      <span class="n">Afghanistan</span>
-<span class="n">continent</span>           <span class="n">Asia</span>
-<span class="n">year</span>                <span class="mi">1952</span>
-<span class="n">lifeExp</span>           <span class="mf">28.801</span>
-<span class="n">pop</span>              <span class="mi">8425333</span>
-<span class="n">gdpPercap</span>        <span class="mf">779.445</span>
-<span class="n">Name</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
-<span class="n">country</span>      <span class="n">Zimbabwe</span>
-<span class="n">continent</span>      <span class="n">Africa</span>
-<span class="n">year</span>             <span class="mi">2007</span>
-<span class="n">lifeExp</span>        <span class="mf">43.487</span>
-<span class="n">pop</span>          <span class="mi">12311143</span>
-<span class="n">gdpPercap</span>     <span class="mf">469.709</span>
-<span class="n">Name</span><span class="p">:</span> <span class="mi">1703</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
-       <span class="n">country</span> <span class="n">continent</span>  <span class="n">year</span>  <span class="n">lifeExp</span>       <span class="n">pop</span>   <span class="n">gdpPercap</span>
-<span class="mi">1703</span>  <span class="n">Zimbabwe</span>    <span class="n">Africa</span>  <span class="mi">2007</span>   <span class="mf">43.487</span>  <span class="mi">12311143</span>  <span class="mf">469.709298</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">Series</span><span class="s1">&#39;&gt;</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span><span class="s1">&#39;&gt;</span>
-         <span class="n">country</span> <span class="n">continent</span>  <span class="n">year</span>  <span class="n">lifeExp</span>       <span class="n">pop</span>    <span class="n">gdpPercap</span>
-<span class="mi">0</span>    <span class="n">Afghanistan</span>      <span class="n">Asia</span>  <span class="mi">1952</span>   <span class="mf">28.801</span>   <span class="mi">8425333</span>   <span class="mf">779.445314</span>
-<span class="mi">99</span>    <span class="n">Bangladesh</span>      <span class="n">Asia</span>  <span class="mi">1967</span>   <span class="mf">43.453</span>  <span class="mi">62821884</span>   <span class="mf">721.186086</span>
-<span class="mi">999</span>     <span class="n">Mongolia</span>      <span class="n">Asia</span>  <span class="mi">1967</span>   <span class="mf">51.253</span>   <span class="mi">1149500</span>  <span class="mf">1226.041130</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span><span class="s1">&#39;&gt;</span>
-<span class="n">country</span>      <span class="n">Afghanistan</span>
-<span class="n">continent</span>           <span class="n">Asia</span>
-<span class="n">year</span>                <span class="mi">1952</span>
-<span class="n">lifeExp</span>           <span class="mf">28.801</span>
-<span class="n">pop</span>              <span class="mi">8425333</span>
-<span class="n">gdpPercap</span>        <span class="mf">779.445</span>
-<span class="n">Name</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
-         <span class="n">country</span> <span class="n">continent</span>  <span class="n">year</span>  <span class="n">lifeExp</span>       <span class="n">pop</span>    <span class="n">gdpPercap</span>
-<span class="mi">0</span>    <span class="n">Afghanistan</span>      <span class="n">Asia</span>  <span class="mi">1952</span>   <span class="mf">28.801</span>   <span class="mi">8425333</span>   <span class="mf">779.445314</span>
-<span class="mi">99</span>    <span class="n">Bangladesh</span>      <span class="n">Asia</span>  <span class="mi">1967</span>   <span class="mf">43.453</span>  <span class="mi">62821884</span>   <span class="mf">721.186086</span>
-<span class="mi">999</span>     <span class="n">Mongolia</span>      <span class="n">Asia</span>  <span class="mi">1967</span>   <span class="mf">51.253</span>   <span class="mi">1149500</span>  <span class="mf">1226.041130</span>
-</pre></div>
-</td></tr></table>
 
 <p>mix.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;../data/gapminder.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> 
-
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;country&#39;</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">999</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;lifeExp&#39;</span><span class="p">,</span> <span class="s1">&#39;gdpPercap&#39;</span><span class="p">]])</span>
+<p>```#!python</p>
+<p>import pandas as pd</p>
+<p>df = pd.read_csv(r"../data/gapminder.tsv", sep='\t') </p>
+<p>print(df.loc[42, 'country'])
+print(df.iloc[42, 0])
+print(df.loc[[0, 99, 999], ['country', 'lifeExp', 'gdpPercap']])</p>
+<div class="highlight"><pre><span></span>执行结果
 </pre></div>
-</td></tr></table>
 
-<p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">mix</span><span class="o">.</span><span class="n">py</span> 
-<span class="n">Angola</span>
-<span class="n">Angola</span>
-         <span class="n">country</span>  <span class="n">lifeExp</span>    <span class="n">gdpPercap</span>
-<span class="mi">0</span>    <span class="n">Afghanistan</span>   <span class="mf">28.801</span>   <span class="mf">779.445314</span>
-<span class="mi">99</span>    <span class="n">Bangladesh</span>   <span class="mf">43.453</span>   <span class="mf">721.186086</span>
-<span class="mi">999</span>     <span class="n">Mongolia</span>   <span class="mf">51.253</span>  <span class="mf">1226.041130</span>
-</pre></div>
-</td></tr></table>
 
-<h3>分组和聚合</h3>
-<p>group.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<h1>!python</h1>
+<p>$ python3 mix.py 
+Angola
+Angola
+         country  lifeExp    gdpPercap
+0    Afghanistan   28.801   779.445314
+99    Bangladesh   43.453   721.186086
+999     Mongolia   51.253  1226.041130</p>
+<div class="highlight"><pre><span></span><span class="c1">### 分组和聚合</span>
+
+<span class="n">group</span><span class="o">.</span><span class="n">py</span>
+
+
+<span class="sb">``</span><span class="err">`</span><span class="c1">#!python</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;../data/gapminder.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> 
 
@@ -437,27 +278,16 @@
 <span class="c1"># 统计每个洲的国家数</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;continent&#39;</span><span class="p">)[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+
 
 <h3>基本绘图</h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;../data/gapminder.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> 
-
-<span class="n">global_yearly_life_expectancy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)[</span><span class="s1">&#39;lifeExp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">global_yearly_life_expectancy</span><span class="p">)</span>
-
-<span class="n">global_yearly_life_expectancy</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</pre></div>
-</td></tr></table>
-
+<p>```#!python</p>
+<p>import pandas as pd</p>
+<p>df = pd.read_csv(r"../data/gapminder.tsv", sep='\t') </p>
+<p>global_yearly_life_expectancy = df.groupby('year')['lifeExp'].mean()
+print(global_yearly_life_expectancy)</p>
+<p>global_yearly_life_expectancy.plot()</p>
+<p>```</p>
 <p><img alt="捕获.PNG" src="https://bitbucket.org/repo/gaRxAK/images/1132814146-%E6%8D%95%E8%8E%B7.PNG"></p>
     </div><!-- /.entry-content -->
 
