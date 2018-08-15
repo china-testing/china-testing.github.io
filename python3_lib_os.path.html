@@ -42,17 +42,8 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info -->      <p>目的：文件名和路径解析，组合，测试等。</p>
+</footer><!-- /.post-info -->      <p>的：文件名和路径解析，组合，测试等。</p>
 <p>使用os.path模块中包含的函数编写代码以便在多个平台上处理文件非常简单。即使不打算在平台之间移植的程序也应该使用os.path来进行可靠的文件名解析。</p>
-<ul>
-<li>
-<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
-</li>
-<li>
-<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
-</li>
-</ul>
-<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
 <h2 id="_1">解析路径</h2>
 <p>路径解析依赖于在os中定义的几个变量：</p>
 <div class="highlight"><pre><span></span>os.sep - 路径各部分之间的分隔符（例如“/”或“\”）。
@@ -66,20 +57,7 @@ os.curdir - 当前目录 (e.g., “.”)。
 
 
 <p>split()函数将路径分成两个独立的部分，并返回包含结果的元组。元组的第二个元素是路径的最后一个元素，第一个元素是之前的所有元素。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># ospath_split.py</span>
+<div class="highlight"><pre><span></span><span class="c1"># ospath_split.py</span>
 
 <span class="kn">import</span> <span class="nn">os.path</span>
 
@@ -94,16 +72,10 @@ os.curdir - 当前目录 (e.g., “.”)。
 <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">PATHS</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{!r:&gt;17} : {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">path</span><span class="p">)))</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_split</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_split</span><span class="o">.</span><span class="n">py</span>
 
  <span class="s1">&#39;/one/two/three&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="s1">&#39;/one/two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">)</span>
 <span class="s1">&#39;/one/two/three/&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="s1">&#39;/one/two/three&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
@@ -111,21 +83,10 @@ os.curdir - 当前目录 (e.g., “.”)。
               <span class="s1">&#39;.&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
                <span class="s1">&#39;&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>basename()函数返回等价于split()第二部分的值。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
 
 <span class="n">PATHS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;/one/two/three&#39;</span><span class="p">,</span>
@@ -138,16 +99,10 @@ os.curdir - 当前目录 (e.g., “.”)。
 <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">PATHS</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{!r:&gt;17} : {!r}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">)))</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_basename</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_basename</span><span class="o">.</span><span class="n">py</span>
 
  <span class="s1">&#39;/one/two/three&#39;</span> <span class="p">:</span> <span class="s1">&#39;three&#39;</span>
 <span class="s1">&#39;/one/two/three/&#39;</span> <span class="p">:</span> <span class="s1">&#39;&#39;</span>
@@ -155,22 +110,11 @@ os.curdir - 当前目录 (e.g., “.”)。
               <span class="s1">&#39;.&#39;</span> <span class="p">:</span> <span class="s1">&#39;.&#39;</span>
                <span class="s1">&#39;&#39;</span> <span class="p">:</span> <span class="s1">&#39;&#39;</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>完整路径被分解到最后一个元素，无论是指文件还是目录。如果路径在目录分隔符（os.sep）中结束，则basename是空的。</p>
 <p>dirname() 函数返回分割路径的第一部分：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
 
 <span class="n">PATHS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;/one/two/three&#39;</span><span class="p">,</span>
@@ -183,16 +127,10 @@ os.curdir - 当前目录 (e.g., “.”)。
 <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">PATHS</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{!r:&gt;17} : {!r}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)))</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_dirname</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_dirname</span><span class="o">.</span><span class="n">py</span>
 
  <span class="s1">&#39;/one/two/three&#39;</span> <span class="p">:</span> <span class="s1">&#39;/one/two&#39;</span>
 <span class="s1">&#39;/one/two/three/&#39;</span> <span class="p">:</span> <span class="s1">&#39;/one/two/three&#39;</span>
@@ -200,24 +138,11 @@ os.curdir - 当前目录 (e.g., “.”)。
               <span class="s1">&#39;.&#39;</span> <span class="p">:</span> <span class="s1">&#39;&#39;</span>
                <span class="s1">&#39;&#39;</span> <span class="p">:</span> <span class="s1">&#39;&#39;</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>将basename()的结果与dirname()结合起来得到原始路径。</p>
 <p>splitext()工作方式类似于split()，但将扩展分隔符（而不是目录分隔符）的路径分开。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
 
 <span class="n">PATHS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;filename.txt&#39;</span><span class="p">,</span>
@@ -232,18 +157,10 @@ os.curdir - 当前目录 (e.g., “.”)。
 <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">PATHS</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{!r:&gt;21} : {!r}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">)))</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_splitext</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_splitext</span><span class="o">.</span><span class="n">py</span>
 
        <span class="s1">&#39;filename.txt&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">,</span> <span class="s1">&#39;.txt&#39;</span><span class="p">)</span>
            <span class="s1">&#39;filename&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
@@ -253,21 +170,11 @@ os.curdir - 当前目录 (e.g., “.”)。
   <span class="s1">&#39;my-archive.tar.gz&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="s1">&#39;my-archive.tar&#39;</span><span class="p">,</span> <span class="s1">&#39;.gz&#39;</span><span class="p">)</span>
       <span class="s1">&#39;no-extension.&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="s1">&#39;no-extension&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>在查找扩展名时，只使用最后一次出现的os.extsep，所以如果文件名有多个扩展名，则将其分割结果保留在前缀的一部分。</p>
 <p>commonprefix() 将路径列表作为参数，并返回表示所有路径中存在的公共前缀的单个字符串。该值可能表示实际上不存在的路径，并且路径分隔符不包含在考虑因素中，所以前缀可能不会停止在分隔符边界上。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
 
 <span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;/one/two/three/four&#39;</span><span class="p">,</span>
          <span class="s1">&#39;/one/two/threefold&#39;</span><span class="p">,</span>
@@ -279,16 +186,10 @@ os.curdir - 当前目录 (e.g., “.”)。
 <span class="k">print</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;PREFIX:&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">commonprefix</span><span class="p">(</span><span class="n">paths</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_commonprefix</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_commonprefix</span><span class="o">.</span><span class="n">py</span>
 
 <span class="n">PATH</span><span class="p">:</span> <span class="o">/</span><span class="n">one</span><span class="o">/</span><span class="n">two</span><span class="o">/</span><span class="n">three</span><span class="o">/</span><span class="n">four</span>
 <span class="n">PATH</span><span class="p">:</span> <span class="o">/</span><span class="n">one</span><span class="o">/</span><span class="n">two</span><span class="o">/</span><span class="n">threefold</span>
@@ -296,20 +197,10 @@ os.curdir - 当前目录 (e.g., “.”)。
 
 <span class="n">PREFIX</span><span class="p">:</span> <span class="o">/</span><span class="n">one</span><span class="o">/</span><span class="n">two</span><span class="o">/</span><span class="n">three</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>commonpath()则会考虑os.seq。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
 
 <span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;/one/two/three/four&#39;</span><span class="p">,</span>
          <span class="s1">&#39;/one/two/threefold&#39;</span><span class="p">,</span>
@@ -321,16 +212,10 @@ os.curdir - 当前目录 (e.g., “.”)。
 <span class="k">print</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;PREFIX:&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">commonpath</span><span class="p">(</span><span class="n">paths</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_commonpath</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_commonpath</span><span class="o">.</span><span class="n">py</span>
 
 <span class="n">PATH</span><span class="p">:</span> <span class="o">/</span><span class="n">one</span><span class="o">/</span><span class="n">two</span><span class="o">/</span><span class="n">three</span><span class="o">/</span><span class="n">four</span>
 <span class="n">PATH</span><span class="p">:</span> <span class="o">/</span><span class="n">one</span><span class="o">/</span><span class="n">two</span><span class="o">/</span><span class="n">threefold</span>
@@ -338,23 +223,14 @@ os.curdir - 当前目录 (e.g., “.”)。
 
 <span class="n">PREFIX</span><span class="p">:</span> <span class="o">/</span><span class="n">one</span><span class="o">/</span><span class="n">two</span>
 </pre></div>
-</td></tr></table>
+
 
 <p><a href="https://bitbucket.org/china-testing/python-chinese-library/src/dd31f4ee422ce121130f89a4c924bc5f73ba13a2/libraries/os.path/?at=default">本文代码地址</a></p>
 <p><a href="https://china-testing.github.io/python3_lib_os.path.html">本文最新版本地址</a></p>
 <p>交流QQ群：python 测试开发 144081101</p>
 <h2 id="_2">构建路径</h2>
 <p>除了将现有的路径分开之外，通常还需要从其他字符串构建路径。要将多个路径组件合并请使用join()：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
 
 <span class="n">PATHS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">),</span>
@@ -365,31 +241,20 @@ os.curdir - 当前目录 (e.g., “.”)。
 <span class="k">for</span> <span class="n">parts</span> <span class="ow">in</span> <span class="n">PATHS</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{} : {!r}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="o">*</span><span class="n">parts</span><span class="p">)))</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_join</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_join</span><span class="o">.</span><span class="n">py</span>
 
 <span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">)</span> <span class="p">:</span> <span class="s1">&#39;one/two/three&#39;</span>
 <span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">)</span> <span class="p">:</span> <span class="s1">&#39;/one/two/three&#39;</span>
 <span class="p">(</span><span class="s1">&#39;/one&#39;</span><span class="p">,</span> <span class="s1">&#39;/two&#39;</span><span class="p">,</span> <span class="s1">&#39;/three&#39;</span><span class="p">)</span> <span class="p">:</span> <span class="s1">&#39;/three&#39;</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>如果任何连接的参数以os.sep开始，则所有先前的参数都将被丢弃，新的参数将成为返回值的开始。</p>
 <p>也可以使用包含可自动扩展的“可变”组件的路径。例如，expanduser() 将 ~转换为用户主目录的名称。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># ospath_expanduser.py</span>
+<div class="highlight"><pre><span></span><span class="c1"># ospath_expanduser.py</span>
 
 <span class="kn">import</span> <span class="nn">os.path</span>
 
@@ -398,27 +263,18 @@ os.curdir - 当前目录 (e.g., “.”)。
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{!r:&gt;15} : {!r}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">lookup</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">lookup</span><span class="p">)))</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>            <span class="s1">&#39;~&#39;</span> <span class="p">:</span> <span class="s1">&#39;/home/andrew&#39;</span>
+<div class="highlight"><pre><span></span>            <span class="s1">&#39;~&#39;</span> <span class="p">:</span> <span class="s1">&#39;/home/andrew&#39;</span>
       <span class="s1">&#39;~andrew&#39;</span> <span class="p">:</span> <span class="s1">&#39;/home/andrew&#39;</span>
   <span class="s1">&#39;~nosuchuser&#39;</span> <span class="p">:</span> <span class="s1">&#39;~nosuchuser&#39;</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>如果找不到用户的主目录，则字符串将以不变的形式返回，如本示例中的〜nosuchuser一样。</p>
 <p>expandvars()更通用，它展开路径中的所有shell环境变量。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># ospath_expandvars.py</span>
+<div class="highlight"><pre><span></span><span class="c1"># ospath_expandvars.py</span>
 
 <span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -427,31 +283,18 @@ os.curdir - 当前目录 (e.g., “.”)。
 
 <span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="s1">&#39;/path/to/$MYVAR&#39;</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_expandvars</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_expandvars</span><span class="o">.</span><span class="n">py</span>
 
 <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">VALUE</span>
 </pre></div>
-</td></tr></table>
+
 
 <h2 id="_3">规范化路径</h2>
 <p>使用join()或嵌入变量从不同的字符串汇编的路径可能会以额外的分隔符或相对路径组件结束。使用normpath()来清理它们：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># ospath_normpath.py</span>
+<div class="highlight"><pre><span></span><span class="c1"># ospath_normpath.py</span>
 
 <span class="kn">import</span> <span class="nn">os.path</span>
 
@@ -464,38 +307,19 @@ os.curdir - 当前目录 (e.g., “.”)。
 <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">PATHS</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{!r:&gt;22} : {!r}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">path</span><span class="p">)))</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_normpath</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_normpath</span><span class="o">.</span><span class="n">py</span>
 
      <span class="s1">&#39;one//two//three&#39;</span> <span class="p">:</span> <span class="s1">&#39;one/two/three&#39;</span>
    <span class="s1">&#39;one/./two/./three&#39;</span> <span class="p">:</span> <span class="s1">&#39;one/two/three&#39;</span>
 <span class="s1">&#39;one/../alt/two/three&#39;</span> <span class="p">:</span> <span class="s1">&#39;alt/two/three&#39;</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>要将相对路径转换为绝对文件名，请使用abspath()。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># ospath_abspath.py</span>
+<div class="highlight"><pre><span></span><span class="c1"># ospath_abspath.py</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
@@ -512,31 +336,20 @@ os.curdir - 当前目录 (e.g., “.”)。
 <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">PATHS</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{!r:&gt;21} : {!r}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">)))</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_normpath</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_normpath</span><span class="o">.</span><span class="n">py</span>
 
      <span class="s1">&#39;one//two//three&#39;</span> <span class="p">:</span> <span class="s1">&#39;one/two/three&#39;</span>
    <span class="s1">&#39;one/./two/./three&#39;</span> <span class="p">:</span> <span class="s1">&#39;one/two/three&#39;</span>
 <span class="s1">&#39;one/../alt/two/three&#39;</span> <span class="p">:</span> <span class="s1">&#39;alt/two/three&#39;</span>
 </pre></div>
-</td></tr></table>
+
 
 <h2 id="_4">文件时间</h2>
 <p>除了使用路径之外，os.path还包括用于检索文件属性的函数，类似于os.stat（）返回的函数：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;File         :&#39;</span><span class="p">,</span> <span class="vm">__file__</span><span class="p">)</span>
@@ -545,17 +358,11 @@ os.curdir - 当前目录 (e.g., “.”)。
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Change time  :&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getctime</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)))</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Size         :&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>os.path.getatime()返回访问时间，os.path.getmtime()返回修改时间，os.path.getctime()返回创建时间。 os.path.getsize()返回文件中的数据量，用字节表示。</p>
 <p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_properties</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_properties</span><span class="o">.</span><span class="n">py</span>
 
 <span class="n">File</span>         <span class="p">:</span> <span class="n">ospath_properties</span><span class="o">.</span><span class="n">py</span>
 <span class="n">Access</span> <span class="n">time</span>  <span class="p">:</span> <span class="n">Fri</span> <span class="n">Aug</span> <span class="mi">26</span> <span class="mi">16</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mo">05</span> <span class="mi">2016</span>
@@ -563,29 +370,11 @@ os.curdir - 当前目录 (e.g., “.”)。
 <span class="n">Change</span> <span class="n">time</span>  <span class="p">:</span> <span class="n">Fri</span> <span class="n">Aug</span> <span class="mi">26</span> <span class="mi">15</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mi">49</span> <span class="mi">2016</span>
 <span class="n">Size</span>         <span class="p">:</span> <span class="mi">481</span>
 </pre></div>
-</td></tr></table>
+
 
 <h2 id="_5">测试文件</h2>
 <p>当程序遇到路径名时，通常需要知道路径是指文件，目录还是符号链接，以及是否存在。 os.path包含测试所有这些条件的函数。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
 
 <span class="n">FILENAMES</span> <span class="o">=</span> <span class="p">[</span>
     <span class="vm">__file__</span><span class="p">,</span>
@@ -605,47 +394,10 @@ os.curdir - 当前目录 (e.g., “.”)。
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Link Exists?:&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">lexists</span><span class="p">(</span><span class="nb">file</span><span class="p">))</span>
     <span class="k">print</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">does</span><span class="o">/</span><span class="ow">not</span><span class="o">/</span><span class="n">exist</span> <span class="n">broken_link</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">does</span><span class="o">/</span><span class="ow">not</span><span class="o">/</span><span class="n">exist</span> <span class="n">broken_link</span>
 <span class="err">$</span> <span class="n">python3</span> <span class="n">ospath_tests</span><span class="o">.</span><span class="n">py</span>
 
 <span class="n">File</span>        <span class="p">:</span> <span class="s1">&#39;ospath_tests.py&#39;</span>
@@ -684,7 +436,17 @@ os.curdir - 当前目录 (e.g., “.”)。
 <span class="n">Exists</span><span class="err">?</span>     <span class="p">:</span> <span class="bp">False</span>
 <span class="n">Link</span> <span class="n">Exists</span><span class="err">?</span><span class="p">:</span> <span class="bp">True</span>
 </pre></div>
-</td></tr></table>
+
+
+<h2 id="_6">参考资料</h2>
+<ul>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/python3_lib_os.path.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>
     </div><!-- /.entry-content -->
 
   </article>
