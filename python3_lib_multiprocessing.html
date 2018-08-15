@@ -42,7 +42,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info -->      <h2>简介</h2>
+</footer><!-- /.post-info -->      <h2 id="_1">简介</h2>
 <p>进程是运行的程序，每个进程有自己的系统状态，包含了内存、打开文件列表、程序计数器（跟踪执行的指令）、存储函数本地调用变量的堆栈。</p>
 <p>使用os或subprocess可以创建新进程，比如：os.fork(), subprocess.Popen()。子进程和父进程是相互独立执行的。</p>
 <p>interprocess communication (IPC)进程间的通信: 最常见的形式是基于消息传递（message passing）。message是原始字节的缓存，通过I/O channel比如网络socket和管道，使用原语比如send() and recv()来发送接收消息。次常用的有内存映射区：memory-mapped regions，见mmap模块，实际上是共享内存。</p>
@@ -75,12 +75,12 @@
 </li>
 </ul>
 <p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
-<h2>python的并发程序设计</h2>
+<h2 id="python">python的并发程序设计</h2>
 <p>多数系统上，Python支持消息传递和基于线程的并发程序设计。global interpreter lock (the GIL)机制实际每个时间单元只允许单个线程执行，哪怕有多个CPU。如果瓶颈在I/O，使用多线程效果不错；如果在cpu，效果则会更差。还不如使用子进程和消息传递。线程数一多经常出现以下怪异的问题，比如100个线程工作良好，1000个线程就可能出问题了，这种情况一般需要使用异步事件处理系统，比如中央事件循环可能使用select模块监控I/O资源和分发异步到大量的I/O 处理器。asyncore和流行的第三方的Twisted (http://twistedmatrix/com)可以实现这点。</p>
 <p>消息传递在python使用很广，甚至在线程中。它难于出错，减少了锁和同步原语的使用。可以扩展至网络和分布式系统。Python的高级特性比如协程序（coroutines）也使用消息传递抽象。</p>
 <p>multiprocessing支持子进程、通信和共享数据、执行不同形式的同步。</p>
-<h2>multiprocessing</h2>
-<h3>Process类</h3>
+<h2 id="multiprocessing">multiprocessing</h2>
+<h3 id="process">Process类</h3>
 <p>这个类表示子进程中运行的任务：Process([group [, target [, name [, args [, kwargs]]]]])，构造函数中必须使用关键字参数，target表示可调用对象，args表示调用对象的位置参数元组。kwargs表示调用对象的字典。Name为别名。Group实质上不使用。</p>
 <p>方法有：is_alive()、.join([timeout])、run()、start()、terminate()。</p>
 <p>属性有：authkey、daemon（要通过start()设置）、exitcode(进程在运行时为None、如果为–N，表示被信号N结束）、name、pid。</p>
@@ -154,7 +154,7 @@
 </td></tr></table>
 
 <p>注意，要在命令行才能执行，用IDE是不行的。</p>
-<h3>进程通信</h3>
+<h3 id="_2">进程通信</h3>
 <p>multiprocessing支持管道和队列，都是用消息传递来实现的，队列接口和线程中的队列类似。</p>
 <p>Queue([maxsize])：默认不限制大小，队列实质是用管道和锁来实现的。支持线程会给底层管道传送数据。</p>
 <p>方法有：cancel_join_thread()、close()、empty()、full()、get([block [, timeout]])、get_nowait()（等同于get(False)）、join_thread()、put(item [, block [, timeout]])、put_nowait(item)（等同于put(item, False)）、qsize()、JoinableQueue([maxsize])、task_done()、join()</p>
@@ -339,7 +339,7 @@
 </td></tr></table>
 
 <p>实际使用中不局限于使用None，使用其他特殊符号等也是可以的。上面程序从表面看比使用JoinableQueue要复杂，实现的效果又是一样的。实际上这种场景应用更广泛，在consumer比较耗时的情况下，JoinableQueue如果锁住整个函数则互相等待的时间太长，如果不锁，后面几次执行可能丢失数据。</p>
-<h3>管道</h3>
+<h3 id="_3">管道</h3>
 <p>使用管道：Pipe([duplex])，返回值：元组(conn1, conn2)。conn1和conn2为Connection对象，代表管道的末端。管道默认是双向的，如果设置duplex为False，conn1只能接收，conn2只能发送。</p>
 <p>Connection对象的方法和属性如下：</p>
 <p>close()、fileno()、poll([timeout])、recv()、recv_bytes([maxlength]）、recv_bytes_into(buffer [, offset])、send(obj)、send_bytes(buffer [, offset [, size]])</p>
@@ -502,7 +502,7 @@
 </td></tr></table>
 
 <p>send()和recv()使用pickle序列化对象。更高级的程序需要使用远程过程调用，需要使用到进程池。</p>
-<h3>进程池</h3>
+<h3 id="_4">进程池</h3>
 <p>Pool类在简单的情况下可用于管理固定数量的消费者。进程池的功能和列表解析及函数式编程中的map-reduce类似。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -855,7 +855,7 @@
 </pre></div>
 </td></tr></table>
 
-<h3>共享数据和同步</h3>
+<h3 id="_5">共享数据和同步</h3>
 <p>共享内存通过mmap实现。共享内存中创建的是ctypes对象，不需要管道中的序列化。</p>
 <p>Value(typecode, arg1, ... argN, lock),RawValue(typecode, arg1, ..., argN),Array(typecode, initializer, lock),RawArray(typecode, initializer)</p>
 <p>原语有:    Lock，Rlock,Semaphore,BoundedSemaphore,Event,Condition.</p>

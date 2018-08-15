@@ -43,7 +43,7 @@
 <p>In <a href="/category/python.html">python</a>.</p>
 
 </footer><!-- /.post-info -->      <p>目的：使用面向对象的API解析，构建，测试和处理文件名和路径，而不是底层的字符串操作。</p>
-<h2>Path表示</h2>
+<h2 id="path">Path表示</h2>
 <p>pathlib包含用于管理使用POSIX标准或Microsoft Windows语法格式化的文件系统路径的类。它包括所谓的“pure”类，它们对字符串进行操作，但不与实际的文件系统进行交互;“concrete”类将API扩展为包含反映或修改本地文件系统数据的操作。</p>
 <p>pure类PurePosixPath和PureWindowsPath可以在任何操作系统上实例化和使用，因为它们只用于名称。要实例化正确的类来处理真实的文件系统，请使用Path来获取PosixPath或WindowsPath，具体取决于平台。</p>
 <ul>
@@ -55,7 +55,7 @@
 </li>
 </ul>
 <p>[接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲]</p>
-<h2>构建Path</h2>
+<h2 id="path_1">构建Path</h2>
 <p>要实例化路径，字符串作为参数。Path对象的字符串表示是该字符串。要创建引用相对于现有路径的值的新路径，请使用/运算符来扩展路径。运算符的参数可以是字符串或其他路径对象。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -199,7 +199,7 @@
 </pre></div>
 </td></tr></table>
 
-<h2>解析路径</h2>
+<h2 id="_1">解析路径</h2>
 <p>Path对象具有用于从名称中提取部分值的方法和属性。例如，parts属性会生成一系列基于路径分隔符值解析的路径段。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -303,7 +303,7 @@
 </td></tr></table>
 
 <p>尽管suffix和stem与 os.path.splitext()生成的值相似，但值仅基于name而不是完整路径。</p>
-<h2>创建Concrete路径</h2>
+<h2 id="concrete">创建Concrete路径</h2>
 <p>Concrete Path类的实例可以通过引用文件系统上的文件，目录或符号链接的名称（或潜在名称）的字符串参数来创建。 该类还提供了几种便捷方法来构建使用常用位置（如当前工作目录和用户主目录）的实例。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -334,7 +334,7 @@
 </pre></div>
 </td></tr></table>
 
-<h2>目录内容</h2>
+<h2 id="_2">目录内容</h2>
 <p>有三种方法可以访问目录列表，以发现文件系统上可用文件的名称。 iterdir()是生成器，为包含目录中的每个项目生成新的Path实例。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -492,7 +492,7 @@
 </td></tr></table>
 
 <p>上面在指定目录中查找特定类型的文件，或许是pathlib中最有用的功能了。</p>
-<h2>读写文件</h2>
+<h2 id="_3">读写文件</h2>
 <p>每个Path实例都包含处理它所引用的文件内容的方法。 要立即检索内容，请使用read_bytes()或read_text()。 要写入文件，请使用write_bytes()或write_text()。 使用open()方法打开文件并保留文件句柄，而不是将名称传递给内置的open()函数。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -527,7 +527,7 @@
 </pre></div>
 </td></tr></table>
 
-<h2>目录和符号链接</h2>
+<h2 id="_4">目录和符号链接</h2>
 <p>不存在的目录或符号链接的路径可用于创建。</p>
 <p>如果路径已经存在，mkdir()会引发一个FileExistsError。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -611,7 +611,7 @@
 </pre></div>
 </td></tr></table>
 
-<h2>文件类型</h2>
+<h2 id="_5">文件类型</h2>
 <p>Path实例包含几种用于测试路径引用的文件类型的方法。本示例创建了多个不同类型的文件，并测试这些文件以及本地操作系统上可用的一些其他设备特定的文件。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -720,7 +720,7 @@
 </td></tr></table>
 
 <p>这里格式化的方法挺有意思。</p>
-<h2>文件属性</h2>
+<h2 id="_6">文件属性</h2>
 <p>有关文件的详细信息可以使用stat() 或lstat() 方法来访问（用于检查可能是符号链接的状态）。这些方法产生与os.stat() os.lstat() 相同的结果。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -902,7 +902,7 @@
 </pre></div>
 </td></tr></table>
 
-<h2>权限</h2>
+<h2 id="_7">权限</h2>
 <p>在类Unix系统上，可以使用chmod()更改文件权限，将模式作为整数传递。模式值可以使用stat模块中定义的常量来构造。这个例子切换用户的执行权限位。</p>
 <p>脚本假定它具有运行时修改文件模式所需的权限。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -984,7 +984,7 @@
 <p>wechat： pythontesting</p>
 <p>淘宝天猫可以把链接发给qq850766020，为你生成优惠券，降低你的购物成本！</p>
 <p>快来领取支付宝跨年红包！1月1日起还有机会额外获得专享红包哦！复制此消息，打开最新版支付宝就能领取！2C56CV70sA</p>
-<h2>删除</h2>
+<h2 id="_8">删除</h2>
 <p>有两种从文件系统中删除东西的方法，具体取决于类型。要删除空目录，请使用rmdir()。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2

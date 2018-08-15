@@ -42,8 +42,8 @@
         </address>
 <p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
 
-</footer><!-- /.post-info -->      <h2>pandas入门</h2>
-<h3>简介</h3>
+</footer><!-- /.post-info -->      <h2 id="pandas">pandas入门</h2>
+<h3 id="_1">简介</h3>
 <p>pandas包含的数据结构和操作工具能快速简单地清洗和分析数据。</p>
 <p>pandas经常与NumPy和SciPy这样的数据计算工具，statsmodels和scikit-learn之类的分析库及数据可视化库（如matplotlib）等一起用使用。pandas基于NumPy的数组，经常可以不使用循环就能处理好大量数据。</p>
 <p>pandas适合处理表格数据或巨量数据。NumPy则适合处理巨量的数值数组数据。</p>
@@ -53,7 +53,7 @@
 </pre></div>
 </td></tr></table>
 
-<h3>pandas数据结构介绍</h3>
+<h3 id="pandas_1">pandas数据结构介绍</h3>
 <ul>
 <li>
 <p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
@@ -64,7 +64,7 @@
 </ul>
 <p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
 <p>主要数据结构:Series和DataFrame。</p>
-<h4>Series</h4>
+<h4 id="series">Series</h4>
 <p>Series类似于一维数组的对象,它由一组数据(NumPy类似数据类型)以及相关的数据标签(即索引)组成。仅由一组数据即可产生最简单的Series:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -452,7 +452,7 @@
 <p>交流QQ群：python 测试开发 144081101</p>
 <p>wechat： pythontesting</p>
 <p>淘宝天猫可以把链接发给qq850766020，为你生成优惠券，降低你的购物成本！</p>
-<h4>DataFrame</h4>
+<h4 id="dataframe">DataFrame</h4>
 <p>DataFrame是矩状表格型的数据结构，包含有序的列，每列可以是不同的类型(数值、字符串、布尔值等)。DataFrame既有行索引也有列索引，它可以被看做由相同索引的Series组成的字典。DataFrame中的数据是以一个或多个二维块存放的。</p>
 <p>构建DataFrame的办法有很多，最常用的是直接传入等长列表或NumPy数组组成的字典。DataFrame会自动加上索引(跟Series一样)，有序排列。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -859,7 +859,7 @@
 <p>可见可以转置，由Series组成的字典和字典类似。如果设置了DataFrame的index和columns的name属性,则这些信息也会被显示出来。跟Series一样,values属性也会以二维ndarray的形式返回DataFrame中的数据。如果DataFrame各列的数据类型不同,则值数组的数据类型就会选用能兼容所有列的数据类型。</p>
 <p>DataFrame的constructor接受的类型为：2D ndarray、dict of arrays, lists, or tuples、NumPy structured/record、array、dict of Series、dict of dicts、List of dicts or Series、List of lists or tuples、Another DataFrame、NumPy MaskedArray。</p>
 <p>更多参考：　https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html</p>
-<h4>索引对象</h4>
+<h4 id="_2">索引对象</h4>
 <p>pandas的索引对象负责管理轴标签和其他元数据(比如轴名称等)。构建Series或DataFrame时,所用到的任何数组或其他序列的标签都会被转换成Index。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -992,9 +992,9 @@
 <p>Index对象是不可变的,因此用户不能对其进行修改，这样Index对象在多个数据结构之间可安全共享。除了像数组,Index类似固定大小的集合。</p>
 <p>Index的方法和属性有：append,difference,intersection,union,isin,delete,drop,insert，is_monotonic，unique。</p>
 <p>更多参考：　https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Index.html</p>
-<h3>基本功能</h3>
+<h3 id="_3">基本功能</h3>
 <p>本节中,我将介绍操作Series和DataFrame中的数据的基本手段。</p>
-<h4>重新索引</h4>
+<h4 id="_4">重新索引</h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -1167,7 +1167,7 @@
 
 <p>reindex函数的参数有index，method，fill_value，limit，tolerance，level，copy等。</p>
 <p>更多参考：　https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.reindex.html</p>
-<h4>丢弃指定轴上的项</h4>
+<h4 id="_5">丢弃指定轴上的项</h4>
 <p>丢弃某条轴上的一项很简单,只要有索引数组或列表即可。由于需要执行一些数据整理和集合逻辑,所以drop方法返回的是在指定轴上删除了指定值的新对象:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -1363,7 +1363,7 @@
 </pre></div>
 </td></tr></table>
 
-<h4>索引、选取和过滤</h4>
+<h4 id="_6">索引、选取和过滤</h4>
 <p>Series索引(obj[...])的工作方式类似于NumPy数组的索引,只不过Series的索引值不只是整数。下面是几个例子:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -1803,7 +1803,7 @@
 </td></tr></table>
 
 <p>注意ix现在已经不推荐使用。</p>
-<h4>整数索引(Integer Indexes)</h4>
+<h4 id="integer-indexes">整数索引(Integer Indexes)</h4>
 <p>pandas对象的整数索引与内置Python数据的索引语义存在一些差异，以下代码会生成错误：</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -1899,7 +1899,7 @@
 </pre></div>
 </td></tr></table>
 
-<h4>算术和数据对齐</h4>
+<h4 id="_7">算术和数据对齐</h4>
 <p>pandas可在不同索引的对象建进行算术运算，类似数据库的连接：</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -2434,7 +2434,7 @@
 </pre></div>
 </td></tr></table>
 
-<h4>函数应用和映射</h4>
+<h4 id="_8">函数应用和映射</h4>
 <p>NumPy的ufuncs（元素级数组方法）也可用于操作pandas对象：</p>
 <p>另一个常见的操作是将函数应用到由各列或行所形成的一维数组上。DataFrame的apply方法即可实现此功能：</p>
 <p>许多最为常见的数组统计功能都被实现成DataFrame的方法（如sum和mean），因此无需使用apply方法。除标量值外，传递给apply的函数还可以返回由多个值组成的Series：</p>
@@ -2610,7 +2610,7 @@
 </pre></div>
 </td></tr></table>
 
-<h4>排序和排名</h4>
+<h4 id="_9">排序和排名</h4>
 <p>根据条件对数据集排序（sorting）也是重要的内置运算。要对行或列索引进行排序（按字典顺序），可使用sort_index方法，它将返回一个已排序的新对象。</p>
 <p>而对于DataFrame，则可以根据任意轴上的索引进行排序：</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -2948,7 +2948,7 @@
 </tr>
 </tbody>
 </table>
-<h4>带有重复值的轴索引</h4>
+<h4 id="_10">带有重复值的轴索引</h4>
 <p>直到目前为止，我所介绍的所有范例都有着唯一的轴标签（索引值）。虽然许多pandas函数（如reindex）都要求标签唯一，但这并不是强制性的。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -3036,7 +3036,7 @@
 </pre></div>
 </td></tr></table>
 
-<h3>汇总和计算描述统计</h3>
+<h3 id="_11">汇总和计算描述统计</h3>
 <p>pandas对象拥有一组常用的数学和统计方法。它们大部分都属于reduction和summary统计，用于从Series中提取单个值（如sum或mean）或从DataFrame的行或列中提取Series。跟对应的NumPy数组方法相比，它们都是基于没有缺失数据的假设而构建的。接下来看一个简单DataFrame：</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -3321,10 +3321,10 @@
 </tr>
 </tbody>
 </table>
-<h4>相关性和方差</h4>
+<h4 id="_12">相关性和方差</h4>
 <p>一些汇总统计，如相关和方差，是从成对的参数程程。 让我们考虑一些来自Yahoo的股票价格和数量DataFrame! 使用附加的pandas-datareader包，</p>
 <p>暂略</p>
-<h4>唯一值、值计数以及成员资格</h4>
+<h4 id="_13">唯一值、值计数以及成员资格</h4>
 <p>还有一类方法可以从一维Series的值中抽取信息。以下面这个Series为例：</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -3542,10 +3542,10 @@
 </tr>
 </tbody>
 </table>
-<h2>数据清洗和准备</h2>
+<h2 id="_14">数据清洗和准备</h2>
 <p>在进行数据分析和建模的过程中，需要花费大量的时间(80％或更多)在数据准备上：加载，清理，转换和重新排列。有时候数据存储在文件或数据库中的方式不适合特定任务的格式。</p>
 <p>在本章中，我将讨论缺失数据，重复数据，字符串操作，和其他一些分析数据转换。在下一章中，我将重点放在组合上，并以各种方式重新排列数据集。</p>
-<h3>处理缺失数据</h3>
+<h3 id="_15">处理缺失数据</h3>
 <p>数值用浮点数NaN (Not a Number)表示缺失。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -4026,8 +4026,8 @@
 </tr>
 </tbody>
 </table>
-<h3>数据转换</h3>
-<h4>去重</h4>
+<h3 id="_16">数据转换</h3>
+<h4 id="_17">去重</h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -4134,7 +4134,7 @@
 </pre></div>
 </td></tr></table>
 
-<h4>使用函数或者映射(map)转换数据</h4>
+<h4 id="map">使用函数或者映射(map)转换数据</h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -4283,7 +4283,7 @@
 </pre></div>
 </td></tr></table>
 
-<h4>替换</h4>
+<h4 id="_18">替换</h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -4396,7 +4396,7 @@
 </pre></div>
 </td></tr></table>
 
-<h4>索引和列名修改</h4>
+<h4 id="_19">索引和列名修改</h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -4535,9 +4535,9 @@
 </pre></div>
 </td></tr></table>
 
-<h3>离散化和面元划分</h3>
+<h3 id="_20">离散化和面元划分</h3>
 <p>以下暂略</p>
-<h4>字符串处理</h4>
+<h4 id="_21">字符串处理</h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -4826,9 +4826,9 @@
 </tr>
 </tbody>
 </table>
-<h2>数据争夺：连接，合并，和重塑</h2>
+<h2 id="_22">数据争夺：连接，合并，和重塑</h2>
 <p>在许多应用程序中，数据可能分布在多个文件或数据库中，或者是以不易分析的形式。 本章重点介绍连接，合并，和重塑。</p>
-<h3>分层索引</h3>
+<h3 id="_23">分层索引</h3>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
   2
   3
@@ -5041,7 +5041,7 @@
 <li>重新排序和排序级别</li>
 </ul>
 <p>以下暂略</p>
-<h3>联结和合并数据集</h3>
+<h3 id="_24">联结和合并数据集</h3>
 <ul>
 <li>
 <p>pandas.merge可根据键将不同DataFrame中的行连接起来。SQL或其他关系型数据库的用户对此应该会比较
@@ -5054,7 +5054,7 @@
 <p>实例方法combine_first可以将重复数据编接在一起，用一个对象中的值填充另一个对象中的缺失值。</p>
 </li>
 </ul>
-<h4>数据库风格的DataFrame合并</h4>
+<h4 id="dataframe_1">数据库风格的DataFrame合并</h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -5222,7 +5222,7 @@
 </tbody>
 </table>
 <p>上面是多对一合并，下面看下多对多</p>
-<h2>数据聚合与分组运算</h2>
+<h2 id="_25">数据聚合与分组运算</h2>
 <p>对数据集进行分组并对各组应用函数（无论是聚合还是转换）是数据分析工作中的重要环节。在将数据集准备好之后，通常的任务就是计算分组统计或生成透视表。</p>
 <p>pandas提供了灵活高效的gruopby功能，能以自然的方式对数据集进行切片、切块、摘要等操作。关系型数据库和SQL（Structured Query Language，结构化查询语言）能够如此流行的原因之一就是其能够方便地对数据进行连接、过滤、转换和聚合。但是，像SQL这样的查询语
 言所能执行的分组运算的种类很有限。</p>
@@ -5235,7 +5235,7 @@
 <li>计算透视表或交叉表。</li>
 <li>执行分位数分析以及其他分组分析。</li>
 </ul>
-<h3>分组技术</h3>
+<h3 id="_26">分组技术</h3>
 <p>Hadley Wickham（许多热门R语言包的作者）创造了用于表示分组运算的术语"split-apply-combine"（拆分－应用－合并），我觉得这个词很好地描述了整个过程。分组运算的第一个阶段，pandas对象（无论是Series、DataFrame还是其他的）中的数据会根据你所提供的一个或多个键被拆分（split）为多组。拆分操作是在对象的特定轴上执行的。例如，DataFrame可以在其行（axis=0）或列（axis=1）上进行分组。然后，将一个函数应用（apply）到各个分组并产生一个新值。最后，所有这些函数的执行结果会被合并（combine）到最终的结果对象中。结果对象的形式一般取决于数据上所执行的操作。图9-1大致说明了一个简单的分组聚合过程。</p>
 <p><img alt="捕获.PNG" src="https://bitbucket.org/repo/nxXxkM/images/905994903-%E6%8D%95%E8%8E%B7.PNG"></p>
 <p>分组键可以有多种形式，且类型不必相同：

@@ -74,11 +74,11 @@
 <p>https://pypi.python.org/pypi/buildbot</p>
 <p>http://buildbot.net/ </p>
 <p>https://www.digitalocean.com/community/tutorials/how-to-set-up-continuous-integration-with-buildbot-on-ubuntu-16-04</p>
-<h3>安装</h3>
-<h4>目的</h4>
+<h3 id="_1">安装</h3>
+<h4 id="_2">目的</h4>
 <p>本教程从零开始，尽可能快地运行您的第一个buildbot master和worker，而不会更改默认配置。</p>
 <p>本教程假设您正在运行Linux，但可能适用于Windows。</p>
-<h4>准备</h4>
+<h4 id="_3">准备</h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -93,7 +93,7 @@
 </pre></div>
 </td></tr></table>
 
-<h4>创建master</h4>
+<h4 id="master">创建master</h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -117,7 +117,7 @@
 <p>日志在master/twistd.log</p>
 <p>此时访问　http://localhost:8010/</p>
 <p><img alt="Screenshot from 2018-01-24 14-46-23.png" src="https://bitbucket.org/repo/nxXxkM/images/752054204-Screenshot%20from%202018-01-24%2014-46-23.png"></p>
-<h4>创建worker</h4>
+<h4 id="worker">创建worker</h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -143,9 +143,9 @@
 </td></tr></table>
 
 <p>日志在worker/twistd.log</p>
-<h3>快速入门</h3>
+<h3 id="_4">快速入门</h3>
 <p>本章从<a href="https://github.com/china-testing/python-api-tesing">china-testing</a>拉取代码，调用ｐｙｔｅｓｔ执行buildbot/hello-world/hello下的单元测试。</p>
-<h4>配置项目名和URL</h4>
+<h4 id="url">配置项目名和URL</h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
   2
   3
@@ -396,7 +396,7 @@
 </pre></div>
 </td></tr></table>
 
-<h4>首次构建</h4>
+<h4 id="_5">首次构建</h4>
 <p>打开：http://localhost:8010/#/builders</p>
 <p>点击右上角的force，表单可以什么都不填，点击“Start Build”就会开始构建。</p>
 <p><img alt="force-build.png" src="https://bitbucket.org/repo/nxXxkM/images/1073109964-force-build.png"></p>

@@ -42,7 +42,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info -->      <h2>说明</h2>
+</footer><!-- /.post-info -->      <h2 id="_1">说明</h2>
 <ul>
 <li>
 <p><a href="https://pymotw.com/3/argparse/index.html">英文参考</a></p>
@@ -58,7 +58,7 @@
 </li>
 </ul>
 <p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
-<h2>快速入门</h2>
+<h2 id="_2">快速入门</h2>
 <p>argparse是一个完整的参数处理库。参数可以根据add_argument()的action选项触发不同action。支持的action有存储参数（单个，或作为列表的一部分）;存储常量的值（对布尔开关true/false有特殊处理）。默认动作是存储参数值。支持type(指定存储类型)和dest(指定存储变量)等参数。 </p>
 <p>然后使用函数parse_args()进行参数解析，这个函数的输入默认是sys.argv[1:]，也可以使用其他字符串列表。选项使用GNU/POSIX语法处理，可以混合选项和参数值。parse_args的返回值是一个包含命令参数的Namespace。所有参数以属性的形式存在，比如args.myoption。</p>
 <p>下面是一个简单的示例：argparse_short.py</p>
@@ -446,7 +446,7 @@ version 输出版本信息然后退出。</p>
 </pre></div>
 </td></tr></table>
 
-<h2>可选前缀</h2>
+<h2 id="_3">可选前缀</h2>
 <p>ArgumentParser函数中的选项prefix_chars可以指定前缀。默认使用UNIX风格，命令行使用‘-’作为前缀。可以使用windows的’/’或者其他符号。</p>
 <p>argparse_prefix_chars.py</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -558,7 +558,7 @@ version 输出版本信息然后退出。</p>
 </pre></div>
 </td></tr></table>
 
-<h2>处理配置文件中的参数</h2>
+<h2 id="_4">处理配置文件中的参数</h2>
 <p>argparse_with_shlex.py</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -666,7 +666,7 @@ version 输出版本信息然后退出。</p>
 </pre></div>
 </td></tr></table>
 
-<h2>帮助</h2>
+<h2 id="_5">帮助</h2>
 <ul>
 <li>自动生成</li>
 </ul>
@@ -1020,7 +1020,7 @@ version 输出版本信息然后退出。</p>
 </pre></div>
 </td></tr></table>
 
-<h2>组织解析器</h2>
+<h2 id="_6">组织解析器</h2>
 <p>公共解析器:通过父子类来实现。</p>
 <p>见argparse_parent_base.py：</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -1089,7 +1089,7 @@ version 输出版本信息然后退出。</p>
 </pre></div>
 </td></tr></table>
 
-<h2>参数冲突</h2>
+<h2 id="_7">参数冲突</h2>
 <p>argparse_conflict_handler_resolve.py</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -1188,7 +1188,7 @@ version 输出版本信息然后退出。</p>
 </pre></div>
 </td></tr></table>
 
-<h2>参数分组</h2>
+<h2 id="_8">参数分组</h2>
 <p>默认有可选参数和必选参数组。</p>
 <p>argparse_default_grouping.py</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -1314,7 +1314,7 @@ version 输出版本信息然后退出。</p>
 </pre></div>
 </td></tr></table>
 
-<h2>互斥选项</h2>
+<h2 id="_9">互斥选项</h2>
 <p>使用add_mutually_exclusive_group()可以添加互斥选项：</p>
 <p>argparse_mutually_exclusive.py</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -1384,7 +1384,7 @@ version 输出版本信息然后退出。</p>
 </pre></div>
 </td></tr></table>
 
-<h2>嵌套解析</h2>
+<h2 id="_10">嵌套解析</h2>
 <p>argparse_subparsers.py</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -1517,7 +1517,7 @@ version 输出版本信息然后退出。</p>
 </pre></div>
 </td></tr></table>
 
-<h2>高级参数处理</h2>
+<h2 id="_11">高级参数处理</h2>
 <p>可变参数：数字N代表N的参数，？0或者1个参数。*0或者多个参数。+1或者多个参数。</p>
 <p>argparse_nargs.py</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -1673,7 +1673,7 @@ version 输出版本信息然后退出。</p>
 </pre></div>
 </td></tr></table>
 
-<h2>参数类型</h2>
+<h2 id="_12">参数类型</h2>
 <p>argparse_type.py</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -1825,7 +1825,7 @@ version 输出版本信息然后退出。</p>
 </pre></div>
 </td></tr></table>
 
-<h2>文件参数</h2>
+<h2 id="_13">文件参数</h2>
 <p>argparse_FileType.py</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -1908,7 +1908,7 @@ version 输出版本信息然后退出。</p>
 </pre></div>
 </td></tr></table>
 
-<h2>自定义action</h2>
+<h2 id="action">自定义action</h2>
 <p>自定义action是argparse.Action的子类可以处理add_argument中的参数定义相关的参数，并返回一个可调用对象。构造函数会处理参数定义，仅仅需要处理__call__函数。__call__函数中parser代表解释器，namespace用于返回解释结果，value为要处理的参数，option_string用于触发action（对可选参数，永远是None。</p>
 <p>argparse_custom_action.py</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1

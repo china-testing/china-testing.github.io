@@ -43,7 +43,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info -->                <h2>说明</h2>
+</footer><!-- /.post-info -->                <h2 id="_1">说明</h2>
 <ul>
 <li>
 <p><a href="https://pymotw.com/3/argparse/index.html">英文参考</a></p>
@@ -59,7 +59,7 @@
 </li>
 </ul>
 <p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
-<h2>快速入门</h2>
+<h2 id="_2">快速入门</h2>
 <p>argparse是一个完整的参数处理库。参数可以根据add_argument()的action选项触发不同action。支持的action有存储参数（单个，或作为列表的一部分）;存储常量的值（对布尔开关true/false有特殊处理）。默认动作是存储参数值。支持type(指定存储类型)和dest(指定存储变量)等参数。 </p>
 <p>然后使用函数parse_args()进行参数解析，这个函数的输入默认是sys.argv[1:]，也可以使用其他字符串列表。选项使用GNU/POSIX语法处理，可以混合选项和参数值。parse_args的返回值是一个包含命令参数的Namespace …</p>
                 <a class="readmore" href="/python3_lib_argparse.html">read more</a>
@@ -83,7 +83,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info -->                <h2>简介</h2>
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
 <p>dubbo服务发布之后，我们可以利用telnet命令进行调试、管理。更多资料参见 <a href="http://alibaba.github.io/dubbo-doc-static/Telnet+Command+Reference-zh-showComments=true&amp;showCommentArea=true.htm">Telnet命令参考手册</a></p>
 <p>项目地址：https://bitbucket.org/china-testing/python-chinese-library/src/46204fd809a04f4d9c7450860d48f2951dec3bc1/libraries/_dubbo/?at=default</p>
 <p>telnet 调用示例：</p>
@@ -122,7 +122,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info -->                <h2>简介</h2>
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
 <p>将汉字转为拼音。可以用于汉字注音、排序、检索(Russian translation) 。</p>
 <p>中文文档写得很好，这里不再罗嗦： http://pypinyin.readthedocs.io/zh_CN/master/</p>
 <p>另外可以基于该库进行中文排序：</p>
@@ -139,7 +139,7 @@
 </td></tr></table>
 
 <p><a href="https://bitbucket.org/china-testing/python-chinese-library/src/8608aa5693e502050065c0c2dd83df393775a174/libraries/pypinyin/?at=default">代码</a></p>
-<h2>参考资料：</h2>
+<h2 id="_2">参考资料：</h2>
 <ul>
 <li>
 <p>python中文库参考项目：  https://bitbucket.org/china-testing/python-chinese-library</p>
@@ -208,7 +208,7 @@
 </li>
 </ul>
 <p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
-<h2>解析路径</h2>
+<h2 id="_1">解析路径</h2>
 <p>路径解析依赖于在os中定义的几个变量：</p>
 <div class="highlight"><pre><span></span>os.sep - 路径各部分之间的分隔符（例如“/”或“\”）。
 
@@ -242,11 +242,11 @@ os.curdir - 当前目录 (e.g., “.”)。
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info -->                <h3>简介</h3>
+</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
 <p>python-daemon实现Unix守护进程。 参考：<a href="https://www.python.org/dev/peps/pep-3143/">PEP 3143</a></p>
 <p>该库实现了PEP 3143“标准守护进程库”的良好行为守护进程规范。</p>
 <p>DaemonContext实例保存程序的行为和配置的进程环境。</p>
-<h3>快速入门</h3>
+<h3 id="_2">快速入门</h3>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -290,7 +290,7 @@ os.curdir - 当前目录 (e.g., “.”)。
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info -->                <h2>简介</h2>
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
 <p>进程是运行的程序，每个进程有自己的系统状态，包含了内存、打开文件列表、程序计数器（跟踪执行的指令）、存储函数本地调用变量的堆栈。</p>
 <p>使用os或subprocess可以创建新进程，比如：os.fork(), subprocess.Popen()。子进程和父进程是相互独立执行的。</p>
 <p>interprocess communication (IPC)进程间的通信: 最常见的形式是基于消息传递（message passing）。message是原始字节的缓存，通过I/O channel比如网络socket和管道，使用原语比如send() and recv()来发送接收消息。次常用的有内存映射区：memory-mapped regions，见mmap模块，实际上是共享内存。</p>
@@ -325,10 +325,10 @@ os.curdir - 当前目录 (e.g., “.”)。
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info -->                <h2>简介</h2>
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
 <p>Pyjnius是一个用于访问Java类的Python库。</p>
 <p>适用场景：极个别的加密算法等内容，用python不方便实现或者实现较耗时，可基于Pyjnius把java类当做python库使用。</p>
-<h3>参考资料：</h3>
+<h3 id="_2">参考资料：</h3>
 <hr>
 <ul>
 <li>
@@ -369,7 +369,7 @@ os.curdir - 当前目录 (e.g., “.”)。
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info -->                <h3>简介</h3>
+</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
 <p>face_recognition使用世界上最简单的人脸识别库，在Python或命令行中识别和操作人脸。</p>
 <p>使用dlib最先进的人脸识别技术构建而成，并具有深度学习功能。 该模型在<a href="http://vis-www.cs.umass.edu/lfw/">Labeled Faces in the Wild</a>基准中的准确率为99.38％。</p>
 <p>另外还提供了face_recognition命令行工具！</p>
@@ -382,7 +382,7 @@ os.curdir - 当前目录 (e.g., “.”)。
 </li>
 </ul>
 <p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
-<h3>快速入门</h3>
+<h3 id="_2">快速入门</h3>
 <p>本节我们基于ubuntu16.04,python3，使用如下图片：</p>
 <p><img alt="test0.jpg" src="https://bitbucket.org/repo/nxXxkM/images/1640839139-test0.jpg"></p>
 <ul>
@@ -417,7 +417,7 @@ os.curdir - 当前目录 (e.g., “.”)。
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info -->                <h2>简介</h2>
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
 <p>grp可以访问Unix组数据库。 </p>
 <p>组数据库项由结构体group(类似元组)表示，参见pwd.h：</p>
 <table>
@@ -452,7 +452,7 @@ os.curdir - 当前目录 (e.g., “.”)。
 </tbody>
 </table>
 <p>gid整型，name和password为字符串，gr_mem为字符串列表。</p>
-<h2>参考资料：</h2>
+<h2 id="_2">参考资料：</h2>
 <ul>
 <li>
 <p>python中文库参考项目：  https://bitbucket.org/china-testing/python-chinese-library …</p></li></ul>
