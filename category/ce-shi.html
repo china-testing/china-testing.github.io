@@ -26,10 +26,10 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/health_shouxiang_jichu.html">手相学: 天尊山道人看相算命</a></h1>
+                    <h1 class="entry-title"><a href="/python3_crash1.html">软件自动化测试初学者忠告</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2018-08-08T18:20:00+08:00">
-                Published: 三 08 八月 2018
+        <abbr class="published" title="2018-08-15T12:20:00+08:00">
+                Published: 三 15 八月 2018
         </abbr>
 
         <address class="vcard author">
@@ -37,132 +37,477 @@
         </address>
 <p>In <a href="/category/ce-shi.html">测试</a>.</p>
 
-</footer><!-- /.post-info --><h1 id="_1">手相学: 天尊山道人看相算命</h1>
-<p>手并拢，左右手正面，背面，小指侧面共六张照片，(可选：舌象、面相)。光线，自然光较好，非阳光直射。</p>
-<p><img alt="EM4KBJK}Y9Z6ONEL(C~DDV.jpg" src="https://upload-images.jianshu.io/upload_images/10819934-bc299ff3753df60d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>EM4KBJK}Y9Z6ONEL(C~DDV.jpg</p>
-<h2 id="_2">生命线</h2>
-<p>生命线：由拇指与食指间之虎口部位延伸呈弧形线纹，象征生命意志及活力生命线纹若是深明清晰，强而有力的延伸环绕接近手腕处，则为体魄强健，个性执着而好胜心强，行事鲜明果决，具有企图心，也多能凭借个人不断努力，而达到自我想要的成果......</p>
-<p>技术支持ＱＱ群：中医解梦看相八字算命 391441566　草药中医手相面相看相　184175668</p>
-<p>一对一商务服务微信: pythontesting, 看手相、面相、舌相、抽签、体质识别。服务费100元每人次。</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/10819934-3a4cc04505a037e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+</footer><!-- /.post-info --><h2 id="_1">概述</h2>
+<p>本章内容比较多，除了代码部分，其他内容可以后面回头再看。</p>
+<h3 id="_2">简介</h3>
+<p>Python是一门简单易学，功能强大的编程语言。它具有高效的高层次数据结构，简单但有效的方式支持面向对象编程，语法优雅，动态类型，解释执行。使之成为多数平台上很多领域的脚本和快速应用开发的理想语言。它的设计理念强调代码的可读性, 跟C ++或Java等语言比可以用更少的代码实现同样的概念。Python能清晰地实现小型和大型程序。</p>
+<p>Python解释器及其丰富的标准库的源码或者二进制版本可以从<a href="http://www.python.org/">http://www.python.org/</a>免费获取和转发。该还包含很多免费的第三方Python模块、程序、工具的发布链接及附加文档。</p>
+<p>Python的解释器很容易用C或C++(或其他c可以调用的语言)扩展新功能和数据类型。 Python也适用于作为定制应用的扩展语言。</p>
+<p>Python支持多种编程范式，包括面向对象的，命令式和函数式或过程式编程风格。它具有动态类型系统和自动内存管理和拥有庞大而全面的标准库</p>
+<p>Python虚拟机本身几乎可以在所有的作业系统中运行。使用一些诸如py2exe、PyPy、PyInstaller之类的工具可以将Python源代码转换成可以脱离Python解释器运行的程序。</p>
+<p>Python的官方解释器是CPython，该解释器用C语言编写，是一个由社区驱动的自由软件，目前由Python软件基金会管理。</p>
+<p>本教程向读者通俗地介绍Python语言和系统的基本概念和特点。配合Python解释器边学边练最佳，所有例子已经自包含在教程中，也可离线阅读。</p>
+<p>标准对象和模块参见<a href="https://docs.python.org/2/library/index.html#library-index">The Python Standard Library</a>。<a href="https://docs.python.org/2/reference/index.html#reference-index">The Python Language Reference</a>提供了Python更正式的说明。要用C或C++编写扩展参见<a href="https://docs.python.org/2/extending/index.html#extending-index">Extending and Embedding the Python Interpreter</a>和<a href="https://docs.python.org/2/c-api/index.html#c-api-index">Python/C API Reference Manual</a>。</p>
+<p>本教程不会面面俱到。它介绍了许多Python的最引人注目的特性，会让你了解python风格。看完之后可阅读和编写Python模块。</p>
+<p>所有例子基于linux演示，但因为python是跨平台的，通常在MAC和Windows等可以运行。</p>
+<h3 id="python">python的设计哲学与定位</h3>
+<p>Python的设计哲学是“优雅”、“明确”、“简单”。因此其对手Perl语言中“总是有多种方法来做同一件事”的理念在Python开发者中通 常是难以忍受的。Python开发者的哲学是“用一种方法，最好是只有一种方法来做一件事”。在设计Python语言时，如果面临多种选择，Python 开发者一般会拒绝花俏的语法，而选择明确没有或者很少有歧义的语法。由于这种设计观念的差异，Python源代码通常被认为比Perl具备更好的可读性， 并且能够支撑大规模的软件开发。这些准则被称为Python格言。在Python解释器内运行import this可以获得完整的列表。</p>
+<p>Python开发人员尽量避开不成熟或者不重要的优化。一些针对非重要部位的加快运行速度的补丁通常不会被合并到Python内。所以很多人 认为Python很慢。不过，根据二八定律，大多数程序对速度要求不高。在某些对运行速度要求很高的情况，Python设计师倾向于使用JIT技 术，或者用使用C/C++语言改写这部分程序。目前可用的JIT技术是PyPy。</p>
+<p>实际上python很多标准模块，比如numpy、socket等是c实现的，效率通常比一般开发用c语言的实现要高。另外python中的ctypes和 cpython可以达到c语言类似的效率。pypy在科学计算等相关方面效率可以接近C语言，但是在其他方面效率最多和java差不多，远不及C。</p>
+<p>python的哲学基本上符合了伟大的世界历史名人老子的思想</p>
+<h2 id="python_1">python的地位</h2>
+<p>Python是什么，是蟒蛇么？<br>
+什么，是一种编程语言？这个是大陆很多测试从业者的反应。</p>
+<p>我们来看看国际权威机构对python地位的评价：</p>
+<p>IEEE 2018年对python的整体评价：</p>
+<p><img alt="" src="https://oscimg.oschina.net/oscnet/f560b5a49b03c3f612df30300cadd452993.jpg"></p>
+<p>比较常用TIOBE编程排名<a href="http://www.tiobe.com/tiobe_index?page=index">http://www.tiobe.com/tiobe_index?page=index</a>的python位于第4名：</p>
+<p><img alt="" src="https://oscimg.oschina.net/oscnet/17d43fbef3425311acf3abf8cc33ba82c91.jpg"></p>
+<p>编程语言流行指数python位于第1名，如下<a href="http://pypl.github.io/PYPL.html">http://pypl.github.io/PYPL.html</a>：</p>
+<p><img alt="" src="https://oscimg.oschina.net/oscnet/00e45aad78c57e179152860c7670be6eb65.jpg"></p>
+<p>无论那个排名，python都是脚本语言的老大。整体综合python位于第1-3名之间。在大陆，python因为中文资料相对匮乏，使用者偏少，但是也在快速发展中。</p>
+<h2 id="python_2">Python的使用范围</h2>
+<p>在人工智能、大数据、区块链等方面，python是炙手可热的核心语言之一。</p>
+<p>大陆开源软件排名第一的翻墙goagent就是纯python书写的。翻墙软件Shadowsocks也有python实现。</p>
+<p>豆瓣网、知乎、果壳、海淘通、Reddit等公司python占了大头。</p>
+<p>YouTube、Google、Facebook、Yahoo!、NASA等公司python是核心语言。</p>
+<p>阿里巴巴、腾讯、百度、OPPO等有较大规模的python应用。</p>
+<p>安卓电池分析工具：<a href="https://github.com/google/battery-historian">https://github.com/google/battery-historian</a></p>
+<ul>
+<li>人工智能</li>
+</ul>
+<p>在深度学习等领域，<a href="https://github.com/tensorflow/tensorflow">TensorFlow</a>、<a href="http://pytorch.org/">Pytorch</a><br>
+等库占据了统治地位。<a href="https://github.com/china-testing/python-api-tesing#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0deep-learning">更多库参考</a></p>
+<ul>
+<li>Web开发</li>
+</ul>
+<p>Python经常被用于Web开发。比如，通过mod_wsgi模块，Apache可以运行用Python编写的Web程序。使用Python语言编写的 Gunicorn作为Web服务器，也能够运行Python语言编写的Web程序。Python定义了WSGI标准应用接口来协调Http服务器与基于 Python的Web程序之间的沟通。一些Web框架，如Django、Pyramid、TurboGears、web2py、Zope、Flask、tornoda等，可以让程序员轻松地开发和管理复杂的Web程序。<br>
+Python 对于各种网络协议的支持很完善，因此经常被用于编写服务器软件、网络蠕虫。第三方库Twisted支持异步在线编写程序和多数标准的网络协议（包含客户端 和服务器），并且提供了多种工具，被广泛用于编写高性能的服务器软件。另有gevent这个流行的第三方库，同样能够支持高性能高并发的网络开发。</p>
+<p>爬虫相关的库有lxml、re、urllib2、BeautifulSoup、scrapy等。</p>
+<p>根据IEEE统计、Python是仅次于Java的第2大web开发语言。</p>
+<ul>
+<li>GUI开发:</li>
+</ul>
+<p>Python本身包含的Tkinter库能够支持简单的GUI开发。但是越来越多的Python程序员选择wxPython或者PyQt来开发跨平台的桌面软件。使用它们开发的桌面软件运行速度快，与用户的桌面环境相契合。通过PyInstaller还能将程序发布为独立的安装程序包。与C++相比较，使用Python开发桌面软件通常更快更容易。</p>
+<ul>
+<li>操作系统:</li>
+</ul>
+<p>在很多作业系统里，Python是标准的系统组件。大多数Linux发布版以及NetBSD、OpenBSD和Mac OS X都集成了Python，可以在终端机下直接运行Python。有一些Linux发布版的安装器使用Python语言编写，比如Ubuntu的Ubiquity安装器、Red Hat Linux和Fedora的Anaconda安装器。Gentoo Linux使用Python来编写它的Portage包管理系统。Python标准库包含了多个调用作业系统功能的库。通过pywin32这个第三方软件包，Python能够访问Windows的COM服务及其它Windows API。使用IronPython，Python程序能够直接调用.Net Framework。一般说来，Python编写的系统管理脚本在可读性、性能、源代码重用度、扩展性几方面都优于普通的shell脚本。在树莓派等相关硬件的系统中，python是核心语言。</p>
+<ul>
+<li>自动化测试</li>
+</ul>
+<p>多数工具集成python作为开发语言。比如自动化测试工具Appium、Selenium等。性能测试工具Grinder。</p>
+<p>UI测试有uiautomator、sikuli、PyAutoGUI、pywinauto、ldtp、dogtail等。</p>
+<p>Python的性能测试库multi-mechanize和locustio、funkload等模块具备强大的编程能力，通常扩展性和执行效率远强于Loadrunner和Jmeter。</p>
+<p>Python在自动化测试交付很有知名度。比如Scons、buildbot(在谷歌chrome os使用）等。Jenkins有大量的python插件，比如facebook开发的<a href="https://github.com/facebook/buck">https://github.com/facebook/buck</a>。</p>
+<p>自动化测试框架pytest、Lettuce、Robot Framework、behave等有一定名气。</p>
+<p>接口测试Python大量的库支持大量协议，比如HTTP，就可以requests基于pytest很快定制简单的接口测试框架。</p>
+<p>抓包与流量控制有scapy、ATC、mitmproxy等。</p>
+<p>命令行自动化有 pexpect、paramiko、subprocess、Fabric等。</p>
+<p>安全测试：Flawfinder(<a href="http://www.dwheeler.com/flawfinder/">http://www.dwheeler.com/flawfinder/</a>)、knock(<a href="https://github.com/guelfoweb/knock">https://github.com/guelfoweb/knock</a>)等<br>
+死链接检查：LinkChecker等<br>
+bug管理：Trac、roundup等</p>
+<p>python的测试工具之多，以致有一个专门的网页收集：<a href="https://wiki.python.org/moin/PythonTestingToolsTaxonomy">https://wiki.python.org/moin/PythonTestingToolsTaxonomy</a>。</p>
+<ul>
+<li>跨语言协作：胶水语言:</li>
+</ul>
+<p>python是各种语言交互的最佳语言。python本身有c，java，c#的实现，可以直接调用对应语言的相关功能。对于主流的语言，python都可以良好的交互。</p>
+<ul>
+<li>科学计算：</li>
+</ul>
+<p>NumPy、SciPy、Matplotlib可以让Python程序员编写科学计算程序。Python一开始就在科学计算方面很出名，现在也是大数据处理的核心语言，多数云平台选择python作为核心语言。</p>
+<ul>
+<li>游戏</li>
+</ul>
+<p>很多游戏使用C++编写图形显示等高性能模块，而使用Python或者Lua编写游戏的逻辑、服务器。相较于Python，Lua的功能更简单、体积更小；而Python则支持更多的特性和数据类型。很多游戏，如EVE Online使用Python来处理游戏中繁多的逻辑。</p>
+<h2 id="python_3">python历史</h2>
+<p>Python的创始人为吉多·范罗苏姆（Guido van Rossum）。</p>
+<p><img alt="" src="https://oscimg.oschina.net/oscnet/2b6f6b06e250cd574b2e04b12bf3576dfd4.jpg"></p>
+<p>1989年的圣诞节期间，吉多·范罗苏姆为了在阿姆斯特丹打发时间，决心开发一个新的脚本解释程序，作为ABC语言的一种继承。之所以选中Python作为程序的名字，是因为他是一个蒙提·派森的飞行马戏团( <em><a href="https://en.wikipedia.org/wiki/Monty_Python%27s_Flying_Circus">Monty Python's Flying Circus</a></em>)的爱好者。ABC是由吉多参加设计的一种教学语言。就吉多本人看来，ABC这种语言非常优美和强大，是专门为非专业程序员设计的。但认为是非开放造成的。吉多决心在Python中避免这一错误，并取得了非常好的效果，完美结合了C和其他一些语言。</p>
+<p>就这样，Python在吉多手中诞生了。实际上，第一个实现是在Mac机上。可以说，Python是从ABC发展起来，主要受到了Modula-3（另一种相当优美且强大的语言，为小型团体所设计的）的影响。并且结合了Unix shell和C的习惯。</p>
+<p>目前吉多仍然是Python的主要开发者，决定整个Python语言的发展方向。Python社区经常称呼他是仁慈的独裁者。</p>
+<p>Python 2.0于2000年10月16日发布，增加了实现完整的垃圾回收，并且支持Unicode。同时，整个开发过程更加透明，社区对开发进度的影响逐渐扩大。 Python 3.0于2008年12月3日发布，此版不完全兼容之前的Python源代码。不过，很多新特性后来也被移植到旧的Python 2.6/2.7版本。</p>
+<p>Python是完全面向对象的语言。函数、模块、数字、字符串都是对象。并且完全支持继承、重载、派生、多继承，有益于增强源代码的复用性。 Python支持重载运算符，因此Python也支持泛型设计。相对于Lisp这种传统的函数式编程语言，Python对函数式设计只提供了有限的支持。 有两个标准库（functools, itertools）提供了Haskell和Standard ML中久经考验的函数式程序设计工具。</p>
+<p>虽然Python可能被粗略地分类为“脚本语言”（script language），但实际上一些大规模软件开发计划例如Zope、Mnet及BitTorrent，Google也广泛地使用它。Python的支持者 较喜欢称它为一种高级动态编程语言，原因是“脚本语言”泛指仅作简单程序设计任务的语言，如shell script、VBScript等只能处理简单任务的编程语言，并不能与Python相提并论。</p>
+<p>Python本身被设计为可扩充的。并非所有的特性和功能都集成到语言核心。Python提供了丰富的API和工具，以便程序员能够轻松地使用C语 言、C++、Cython来编写扩充模块。Python编译器本身也可以被集成到其它需要脚本语言的程序内。因此，很多人还把Python作为一种“胶水 语言”（glue language）使用。使用Python将其他语言编写的程序进行集成和封装。在Google内部的很多项目，例如Google Engine使用C++编写性能要求极高的部分，然后用Python或Java/Go调用相应的模块。《Python技术手册》的作者马特利（Alex Martelli）说：“这很难讲，不过，2004年，Python已在Google内部使用，Google召募许多Python高手，但在这之前就已决 定使用Python。他们的目的是尽量使用Python，在不得已时改用C++；在操控硬件的场合使用C++，在快速开发时候使用Python。”</p>
+<h2 id="python_4">如何选择python第三方模块</h2>
+<p>1，<a href="http://stackoverflow.com/">http://stackoverflow.com/</a> 是选择模块的首选。在里面搜索python相关内容，一般会有python模块的比较。</p>
+<p>2，pypi（ <a href="https://pypi.python.org/pypi">https://pypi.python.org/pypi</a> ）是选择python模块最重要的依据。</p>
+<p>pypi上面汇集了python的多数模块。比如 <a href="https://pypi.python.org/pypi/pexpect">https://pypi.python.org/pypi/pexpect</a> 是pexpect模块的介绍。</p>
+<p>3，linux的包管理提供了丰富的高质量的python模块，可以尝试使用。</p>
+<p>比如在centos中使用 "yum search all pexpect"</p>
+<p>4，<a href="https://www.anaconda.com/">https://www.anaconda.com/</a> 是占市场份额很大的首选python科学计算平台。自带了大量优质的外部库。</p>
+<h2 id="ide">通用IDE|文本编辑器</h2>
+<p>很多并非集成开发环境软件的文本编辑器，也对Python有不同程度的支持，并且加上专门为Python设计的编辑器插件也会有很高的可用性。</p>
+<ul>
+<li>
+<p>eclipse + pydev插件</p>
+</li>
+<li>
+<p>emacs + 插件</p>
+</li>
+<li>
+<p>NetBeans + 插件</p>
+</li>
+<li>
+<p>SlickEdit</p>
+</li>
+<li>
+<p>Geany <strong>推荐</strong></p>
+</li>
+<li>
+<p>TextMate</p>
+</li>
+<li>
+<p>Vim + 插件</p>
+</li>
+<li>
+<p>Sublime Text + 插件 <strong>推荐</strong></p>
+</li>
+<li>
+<p>EditPlus</p>
+</li>
+<li>
+<p>UltraEdit</p>
+</li>
+<li>
+<p>PSPad</p>
+</li>
+<li>
+<p>Editra 由Python开发的程序编辑器。</p>
+</li>
+<li>
+<p>Notepad++ <strong>推荐</strong></p>
+</li>
+<li>
+<p>vscode <strong>强烈推荐</strong></p>
+</li>
+</ul>
+<h2 id="pythonide">专门为Python设计的IDE软件</h2>
+<p>适用于Python的集成开发环境（IDE）软件，除了标准二进制发布包所附的IDLE之外，还有许多其他选择。其中有些软件设计有语法着色、语法检查、 运行调试、自动补全、智能感知等便利功能。由于Python的跨平台出身，这些软件往往也具备各种操作系统的版本或一定的移植性。</p>
+<ul>
+<li>
+<p>spyder 大数据分析、科学计算等开发测试的首选。 --强烈强烈推荐</p>
+</li>
+<li>
+<p>Eric：基于PyQt的自由软件，功能强大。支持自动补全、智能感知、自动语法检查、工程管理、svn/cvs集成、自动单元测试等功 能。调试功能与Visual Studio和Eclipse类似。目前同时有两个版本。Eric4支持Python2.x，Eric5支持Python3.x。使用前需要先安装相应的 PyQt版本。</p>
+</li>
+<li>
+<p>IDLE：Python“标准”IDE。一般随Python而安装，支持较少的编辑功能。调试功能也比较弱。</p>
+</li>
+<li>
+<p>Komodo和Komodo Edit：后者是前者的免费精简版。也可以用于PHP，Ruby，Javascript，Perl，Web和云开发。</p>
+</li>
+<li>
+<p>PyCharm：由JetBrains打造，该公司的Java IDE软件IntelliJ拥有海量的用户；PyCharm具备一般IDE的功能，比如，调试、语法高亮、Project管理、代码跳转、智能提示、自动 完成、单元测试、版本控制等等，同时另外，PyCharm还提供了一些很好的功能用于Django开发，同时支持Google App Engine，更酷的是，PyCharm支持IronPython。PyCharm是商业软件。 <strong>强烈推荐</strong> 功能强大，比较占用资源，经常有环境变量的坑。</p>
+</li>
+<li>
+<p>PythonWin：包含在pywin32内的编辑器，仅适用于Windows。</p>
+</li>
+<li>
+<p>SPE（Stani's Python Editor）：功能较多的免费软件，依赖wxPython。</p>
+</li>
+<li>
+<p>Ulipad：功能较全的免费软件，依赖wxPython。</p>
+</li>
+<li>
+<p>WingIDE：可能是功能最全的IDE，但不是免费软件。**强烈强烈推荐 <a href="https://github.com/china-testing/python-api-tesing">wingide6专业版破解</a></p>
+</li>
+<li>
+<p>PyScripter：功能较全的开源IDE，使用Delphi开发。</p>
+</li>
+</ul>
+<p>更多参考资料：<a href="https://wiki.python.org/moin/IntegratedDevelopmentEnvironments">https://wiki.python.org/moin/IntegratedDevelopmentEnvironments</a></p>
+<h2 id="_3">开胃菜</h2>
+<p>如果你做很多电脑上工作，最终你发现，有些任务你想实现自动化。例如你在大量的文本文件上执行搜索和替换，或通过复杂的方式重命名和重整一批照片文件。也许你想编写小型的自定义数据库，或者专门的图形用户界面应用程序，或简单的游戏。</p>
+<p>如果你是个专业的软件开发，你可能处理几个C/C++/Java库，编写/编译/测试/重编译周期太慢。也许你正在为库编写测试套件，发现书写测试代码是个体力活。或者应用程序需要一门扩展语言，但是不想设计和实施新的语言。</p>
+<p>Python就是你需要的语言。</p>
+<p>你可以为这些任务写Unix shell脚本或Windows批处理文件，但shell脚本更适合移动文件和更改文本数据，不擅长图形用户界面的应用程序或游戏。你可以写一个 C/C++/Java程序，但需要消耗大量开发时间。 Python易于使用，可用于Windows，Mac OS X和Unix操作系统，并帮助你更快速地完成工作。</p>
+<p>Python虽然使用简单，但是真正的编程语言。跟shell脚本或批处理文件比，它提 供更多的结构并支持大型程序。Python比C提供了更多的错误检查。它是更高级别的语言，内置了的高级数据类型，如灵活的数组和字典。基于这些通用数据 类型， Python相对Awk甚至是Perl可以处理很多领域的难题，很多东东在python中会比其他语言处理起来更容易。</p>
+<p>Python允许你分割程序为模块，以便在其他Python程序重复使用。它包含了丰富的标准模块，你可以调用或学习。一些模块提供如文件I/O，系统调用，socket，甚至像Tk图形用户界面接口。</p>
+<p>Python是解释语言，程序开发时不需要编译和链接而节省可观的时间。解释器可交互使用，方便试验的语言特性，写信手而用的程序，还可在自下而上的程序开发时测试功能，同时是方便的桌面计算器。</p>
+<p>Python编写的应用程序紧凑，可读性好。 Python程序通常同样的C ，C++或Java程序要短得多，原因如下：</p>
+<ul>
+<li>
+<p>高级数据类型允许你在单条语句中表示复杂的操作;</p>
+</li>
+<li>
+<p>语句的组织依赖于缩进而不是开始和结束的括号;</p>
+</li>
+<li>
+<p>变量或参数声明不是必须的。</p>
+</li>
+</ul>
+<p>Python是可扩展的：懂C的话很容易添加新的内置函数或模块到解释器，可以最快速度执行关键操作或链接Python程序到二进制库(如供应商特定的图形库)。等你熟悉之后，可以链接Python解释器到C应用程序，并用它作为扩展或命令语言。</p>
+<p>Python的名字来源于英国广播公司(BBC)节目"Monty Python’s Flying Circus"，与爬行动物无关。</p>
+<p>现在大家已经对Python产生了兴趣，想了解更多。学习一门语言的最好方式就是使用它，让我们首先学习Python解释器。</p>
+<p>教程的其他部分通过实例介绍了Python语言和系统的各种特性。先是简单表达式，语句和数据类型，然后函数和模块，最后是高级概念比如异常和用户定义的类。</p>
+<h2 id="_4">解释器</h2>
+<p>Python的解释器在linux上通常安装在/usr/bin/python，/usr/local/bin/python，/usr/local/bin/python等地方。Windows一般位于C:\Python36，且一般需要设置PATH环境变量。</p>
+<p>退出解释器：Linux上Control-D，Windows上Control-Z，统一的方式：quit()。</p>
+<p>解释器的行编辑功能并不复杂。在Unix上，解释器可能已启用了GNU readline库，它增加了更多的交互编辑和历史记录功能。输入Control-P，如果发出哔哔声表示支持readline;见附录交互式输入编辑和历史替换<a href="https://docs.python.org/3/tutorial/interactive.html#tut-interacting">https://docs.python.org/3/tutorial/interactive.html#tut-interacting</a>。</p>
+<p>解释器的操作有些像Unix Shell：当标准输入连接到tty设备时，它读取并以交互方式执行命令;当文件名参数或以文件作为标准输入设备时，它读取并执行文件中脚本。 启动解释器的第二个方法是python -c command [arg] …，执行command中的语句，等同于Shell的-c选项。因为Python语句通常会包括空格或其他shell的特殊字符是特殊的外壳，建议使 把command放在单引号中。注意因为缩进原因，开始的引号后面不能有空格。</p>
+<div class="highlight"><pre><span></span><span class="c1"># python3 -c &quot;print(&#39;Hello&#39;)&quot;</span>
+<span class="n">Hello</span>
+<span class="c1"># $ python3 -c &#39;print(&quot;Hello&quot;)&#39;</span>
+<span class="n">Hello</span>
+</pre></div>
+
+
+<p>注意: 上面是Linux和MAC的例子，在终端里面执行。Windows下则需要替换python3为python，在cmd命令行窗口执行。</p>
+<p>一些Python模块也作为脚本使用：python -m module [arg] …。</p>
+<p>使用脚本文件时，-i参数可以进入交互模式。</p>
+<p>比如有test.py文件如下：</p>
+<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;World!&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python</span> <span class="o">-</span><span class="n">i</span> <span class="n">test</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Hello</span>
+<span class="n">World</span><span class="err">!</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<h2 id="_5">参数传递</h2>
+<p>脚本名和附加参数转换成字符串列表传递给sys模块中的argv变量。导入sys模块访问这个列表。列表的长度至少为1，在无脚本无参数时，sys.argv[0]是空字符串。当脚本名为"-"(即标准输入)，sys.argv[0]为"-"。使用-c参数时，sys.argv中[0]设置为'-c'。使用-m参数sys.argv中[0]设置为模块的全名。-c或-m之后的选项留在sys.argv中待命令或模块来处理。</p>
+<p>可以用sys.argv来处理参数：</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># encoding: utf-8</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">print</span> <span class="s2">&quot;script name is&quot;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;there are&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;arguments:&quot;</span>
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="k">print</span> <span class="n">arg</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;there are no arguments!&quot;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="o">./</span><span class="n">test</span><span class="o">.</span><span class="n">py</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span>
+<span class="n">script</span> <span class="n">name</span> <span class="ow">is</span> <span class="o">./</span><span class="n">test</span><span class="o">.</span><span class="n">py</span>
+<span class="n">there</span> <span class="n">are</span> <span class="mi">3</span> <span class="n">arguments</span><span class="p">:</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+</pre></div>
+
+
+<p>注意：通常python标准模块argparse处理参数会更合适。</p>
+<h2 id="_6">交互模式</h2>
+<p>当tty读取命令时解释器为交互模式。主命令提示符为(&gt;&gt;&gt;),从命令提示符(…)用于续行。</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">6</span>
+<span class="n">Python</span> <span class="mf">3.6</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Sep</span> <span class="mi">16</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">09</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mo">04</span><span class="p">)</span>
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">4.8</span><span class="o">.</span><span class="mi">2</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">the_world_is_flat</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">if</span> <span class="n">the_world_is_flat</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span> <span class="s2">&quot;Be careful not to fall off!&quot;</span>
+</pre></div>
+
+
+<h2 id="_7">错误处理</h2>
+<p>当错误发生时，解释器打印错误信息和栈跟踪。在交互模式下，它返回主提示符;在文件输入时，打印栈跟踪器后以非零退出状态退出。有些错误致命的，无条件以非零退出的退出，比如内部不一致和内存耗尽。所有的错误信息都写入标准错误流;正常输出写入标准输出。</p>
+<p>输入中断符(通常是Control-C或DEL)可以取消输入，命令执行时输入中断引发一个KeyboardInterrupt异常。</p>
+<h2 id="python_5">执行python脚本</h2>
+<p>Linux系统中，Python脚本可直接执行，就像shell脚本，在文件首行添加如下：</p>
+<div class="highlight"><pre><span></span><span class="ch">#! /usr/bin/env python3</span>
+</pre></div>
+
+
+<p>并添加可执行权限：</p>
+<div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">myscript</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+
+
+<p>Windows系统中Python的安装程序会自动关联_.py到python.exe，双击即可运行。_.pyw则不会出现windows控制台。</p>
+<h2 id="_8">源码编码</h2>
+<p>使用的编码ASCII(默认)以外的字符Python的源文件,可以在行#!之后定义源文件编码：</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: encoding -*-</span>
+</pre></div>
+
+
+<p>根据这个声明，源文件中的所有字符将用该编码的编码，并可能在用选定的编码书写Unicode字符串。编码列表可以在Python库参考手册的codecs<a href="https://docs.python.org/3/library/codecs.html#module-codecs">https://docs.python.org/3/library/codecs.html#module-codecs</a>部分找到。实例：</p>
+<p>一般推荐使用utf-8的格式，在网络上比较通用，可以这样设置：</p>
+<div class="highlight"><pre><span></span><span class="c1"># coding=utf-8</span>
+</pre></div>
+
+
+<p>特殊的中文处理可以使用gbk。通常为了正确显示所有的字符，编辑器必须支持utf-8等格式，并有相应的字体。</p>
+<h2 id="_9">交互式启动文件(非常用)</h2>
+<p>交互式使用Python的时候，常常需要在解释器启动时执行一些标准命令。可设置环境变量PYTHONSTARTUP表示启动命令文件，类似Unix shell的.profile文件。</p>
+<p>文件只对交互会话有效，当 Python 从脚本中读取命令或以终端/dev/tty做为外部命令源(行为和交互式会话类似)。它与解释器执行的命令在同一命名空间，这样它定义或导入的对象可以在 解释器中使用。也可以在这个文件中改变提示符sys.ps1和sys.ps2。</p>
+<p>加载其他文件的方式：</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;.pythonrc.py&#39;</span><span class="p">):</span>
+    <span class="nb">execfile</span><span class="p">(</span><span class="s1">&#39;.pythonrc.py&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>在脚本中使用启动文件如下:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;PYTHONSTARTUP&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">filename</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="nb">execfile</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+
+
+<h2 id="_10">自定义模块(非常用)</h2>
+<p>Python有两个hook: sitecustomize 和 usercustomize。使用它们首先需要知道site-packages目录，方法如下:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span>  <span class="nn">site</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">site</span><span class="o">.</span><span class="n">getusersitepackages</span><span class="p">()</span> 
+<span class="s1">&#39;/usr/local/lib/python3.6/site-packages&#39;</span>
+</pre></div>
+
+
+<p>现在你可以在site-packages的目录下创建文件usercustomize.py，放入你想添加的任何内容。 该文件会影响 python 的每次调用，除非启动的时候加入-s选项禁止自动导入。</p>
+<p>类似的有sitecustomize，但是一般由管理员在全局site-packages创建，在usercustomize之前导入，更多资料参见site模块<a href="https://docs.python.org/3/library/site.html#module-site">https://docs.python.org/3/library/site.html#module-site</a>。</p>
+<h2 id="_11">开始</h2>
+<ul>
+<li>Hello：</li>
+</ul>
+<p>在终端或者cmd等命令行窗口中输入python，即可执行python语句。</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span>
+<span class="n">Python</span> <span class="mf">3.6</span><span class="o">.</span><span class="mi">5</span> <span class="o">|</span><span class="n">Anaconda</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.|</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Apr</span> <span class="mi">29</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">16</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">)</span> 
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">7.2</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">)</span>
+<span class="n">Hello</span><span class="err">!</span>
+<span class="err">$</span> <span class="n">ipython3</span>
+<span class="n">Python</span> <span class="mf">3.6</span><span class="o">.</span><span class="mi">5</span> <span class="o">|</span><span class="n">Anaconda</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.|</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Apr</span> <span class="mi">29</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">16</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">)</span> 
+<span class="n">Type</span> <span class="s1">&#39;copyright&#39;</span><span class="p">,</span> <span class="s1">&#39;credits&#39;</span> <span class="ow">or</span> <span class="s1">&#39;license&#39;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span>
+<span class="n">IPython</span> <span class="mf">6.4</span><span class="o">.</span><span class="mi">0</span> <span class="o">--</span> <span class="n">An</span> <span class="n">enhanced</span> <span class="n">Interactive</span> <span class="n">Python</span><span class="o">.</span> <span class="n">Type</span> <span class="s1">&#39;?&#39;</span> <span class="k">for</span> <span class="n">help</span><span class="o">.</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">)</span>
+<span class="n">Hello</span><span class="err">!</span>
+</pre></div>
+
+
+<ul>
+<li>用turtle绘制长度为10像素的正方形(初级)</li>
+</ul>
+<p><img alt="image.png" src="https://static.oschina.net/uploads/img/201808/15114314_tTzs.png"></p>
+<p>image.png</p>
+<p>参考代码：</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    xurongzhong#126.com wechat:pythontesting qq:37391319</span>
+<span class="c1"># 技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) </span>
+<span class="c1"># qq群：144081101 591302926  567351477</span>
+<span class="c1"># CreateDate: 2018-6-07</span>
+<span class="c1"># square.py</span>
+<span class="c1"># Draw a square</span>
+
+<span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="n">exitonclick</span><span class="p">()</span>
+</pre></div>
+
+
+<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926 567351477</p>
+<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
+<p>注意：pycharm之类的IDE虽然功能比较强大，但是很消耗资源，经常有环境配置的问题，建议使用wingide，spyder，vscode等比较轻便的ide或者直接用命令行执行。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>forward(distance)</td>
+<td>向前移动distance</td>
+</tr>
+<tr>
+<td>backward(distance) or back(distance)</td>
+<td>向后移动distance</td>
+</tr>
+<tr>
+<td>left(angle)</td>
+<td>左转angle度</td>
+</tr>
+<tr>
+<td>right(angle)</td>
+<td>右转angle度</td>
+</tr>
+<tr>
+<td>setheading(angle)</td>
+<td>旋转指向，0为向右，旋转方向为逆时针。</td>
+</tr>
+<tr>
+<td>exitonclick()</td>
+<td>点击时关闭窗口</td>
+</tr>
+<tr>
+<td>pendown()</td>
+<td>移动时绘制</td>
+</tr>
+<tr>
+<td>penup()</td>
+<td>移动时不绘制。</td>
+</tr>
+<tr>
+<td>circle(radius, extent)</td>
+<td>沿给定半径的圆移动。 可选范围指定弧角。</td>
+</tr>
+<tr>
+<td>dot(size)</td>
+<td>在当前位置绘制尺寸为size的点。</td>
+</tr>
+</tbody>
+</table>
+<p>注意：不要将任何程序文件命名为turtle.py，这样无法导入turtle。</p>
+<h3 id="11">1.1习题：</h3>
+<p>1.turtle的初始方向是什么？</p>
+<p>2.turtle.isdown()是什么含义，默认值是什么？</p>
+<p>3.比较运行这两个步骤序列的结果：<br>
+(a)<br>
+forward(100)<br>
+left(90)<br>
+(b)<br>
+left(90)<br>
+forward(100)</p>
+<p><img alt="图片.png" src="https://static.oschina.net/uploads/img/201808/15114314_nyjt.png"></p>
 <p>图片.png</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/10819934-6e1307fe81fc5f5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://static.oschina.net/uploads/img/201808/15114314_ZCrr.png"></p>
 <p>图片.png</p>
-<h2 id="_3">感情线</h2>
-<p>感情线：是由小指的下方横亘手掌的线纹，象征个人情感，感受能力和爱情的运势。感情线纹若横向延伸至食指与中指间，则其人显得成熟稳健，用情适中，内心不会偏颇，心灵与肉体都能够兼顾，且会设身处地为对方着想，能够真诚付出自己的情感......</p>
-<p><img alt="2c230000d38b6185fbce.jpeg" src="https://upload-images.jianshu.io/upload_images/10819934-886ca8abf99efe3b.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>2c230000d38b6185fbce.jpeg</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/10819934-836456334c8662df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>4.比较运行这两个步骤序列的结果：<br>
+(a) backward(100)<br>
+right(90)<br>
+(b) right(90)<br>
+backward(100)</p>
+<p>5.确定此程序绘制的圆的中心：<br>
+circle(100)</p>
+<p>6.确定此程序绘制的圆的中心：<br>
+left(90)<br>
+circle(100)</p>
+<p>7.下面代码的执行结果是？<br>
+forward(100)<br>
+right(90)<br>
+circle(50)<br>
+right(90)<br>
+forward(200)<br>
+right(90)<br>
+circle(50)</p>
+<p><img alt="图片.png" src="https://static.oschina.net/uploads/img/201808/15114314_wNOs.png"></p>
 <p>图片.png</p>
-<h2 id="_4">智慧线</h2>
-<p>智慧线：位于生命线的稍上端，斜越过手掌心的线纹，象征脑力与心智之特性智慧。线纹若是清晰而深长，则其人必是思路清楚，头脑良好之优秀人才，凡事理性思考及计划，能够脚踏实地，步步为营，努力以赴，亦具有旺盛的求知和学习之精神......</p>
-<p><img alt="2c230000d38b6185fbce.jpeg" src="https://upload-images.jianshu.io/upload_images/10819934-dfb6e94ae18e1c4c.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>2c230000d38b6185fbce.jpeg</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/10819934-8c2a6166906b114c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>图片.png</p>
-<h2 id="_5">副感情线</h2>
-<p>手纹出现与感情线平行的一条副线，约从食指，中指间延伸到小指的弧线，这就是副感情线，有此线纹的人，</p>
-<p>若是线纹深而细长，通常拥有艺文方面的才华，用情深厚专一。若是线纹断续不清，则为感情脆弱，个性游移<br>
-且人生情爱多波折，也易生三角纷扰。线纹若是杂乱则深陷情欲，嫉妒多疑，多有人财两失，真爱难寻之感...</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/10819934-2093382e25f0a599.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>图片.png</p>
-<h2 id="_6">事业线</h2>
-<p>由掌心下方朝上延伸至中指下端的线纹，象征工作能力与发展运势事业。线纹若是清晰明秀而深长，其人能凭自身实力与努力来获得事业上的成就，只要能够在工作上专注及持续奋斗，通常至中年时期即可事业有成，得享权名与富贵...</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/10819934-2b0c23cfb092b3bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>图片.png</p>
-<h2 id="_7">太阳线</h2>
-<p>位于无名指下端的直向线纹，象征人际关系是否顺遂与声望名位太阳线。<br>
-若是呈现笔直有力的线条，则其人聪明开朗，才华出众，交游亦广博，属于活跃型的人物，四处受人欢迎与仰慕，在年轻时即能彰显人际与才华，得到众人之肯定...</p>
-<p><img alt="2c230000d38b6185fbce.jpeg" src="https://upload-images.jianshu.io/upload_images/10819934-b7e607565d1a0c74.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>2c230000d38b6185fbce.jpeg</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/10819934-bf9fca4563da5fa6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>图片.png</p>
-<h2 id="_8">财运线</h2>
-<p>位于无名指与小指之间下方的直线纹，象征财帛运势和积储能力财运。<br>
-线纹若是清晰明朗，且平直有力，则其人颇具赚钱与储守能力，若是掌中无其他<br>
-细琐杂纹来干扰，那么必定财禄丰厚，也易积蓄钱财，人生财库无虞匮乏......</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/10819934-2a5cc2732faa43f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>图片.png</p>
-<h2 id="_9">婚姻线</h2>
-<p>位于小指下端，感情线上方的横纹，象征夫妻情感与婚姻缘份之良否线纹。若是清晰明朗，呈水平延伸而且线长适中，又无其他细琐杂纹干扰，则主婚姻理想，能得美满良缘，结婚受到众人祝福和欣羡，而夫妻感情恩爱，情意亦深长..</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/10819934-f16d83c321ba8013.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>图片.png</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/10819934-91d973ba9c85a9be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>图片.png</p>
-<h2 id="_10">健康线</h2>
-<p>健康线：位于月丘稍上方位置的一条斜线纹，象征疾厄、病灾方面的运势。健康线纹其实不宜在掌中出现，若是出现了线纹，那么最好是清晰平直，而无断续或杂纹、岛纹等干扰，则为身心强健，即遇险境亦能吉人天相、逢凶化吉...</p>
-<p><img alt="h111jp15_0.jpg" src="https://upload-images.jianshu.io/upload_images/10819934-d0af35a89d02a220.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>h111jp15_0.jpg</p>
-<h2 id="_11">手腕线</h2>
-<p><img alt="2c230000d38b6185fbce.jpeg" src="https://upload-images.jianshu.io/upload_images/10819934-ec30a655c8aec251.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>2c230000d38b6185fbce.jpeg</p>
-<h2 id="_12">掌中记号</h2>
-<p>小纹和小记号，也刻划着此生所面临的波折状况与发展良否。手掌线纹须具备的良好要点是：主线要明秀，其间勿出现小杂纹、横切纹或岛纹等，掌线须清晰深长而无曲折断续；每人的手掌线纹可说皆不同，且随年岁增长会产生些微变化，一般来说掌线长短粗细或掌中小纹和记号显得紊乱或曲直断续等，皆可做为推论运势和福祸吉凶之方式...</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/10819934-a790b2b1f0e0ac4a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>图片.png</p>
-<h2 id="_13">异动纹与放纵线</h2>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/10819934-5123fc7fbbcfb182.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>图片.png</p>
-<h2 id="_14">手掌气色</h2>
-<p>一个人的手掌气色是否光滑圆润，可以判断其身心状况。</p>
-<p>黄白明润或白里微红为正常。身体状况良好、心性乐观、圆融开朗、运势自然兴旺、诸事顺利、行事稳健而踏实。即便得病，也能很快痊愈</p>
-<p>气血枯黄：身体虚弱或肝脏功能不好，常身心疲累，宜注意饮食，多休息静养。</p>
-<p>整片滞红：需防官司是非，宜收敛心浮气躁及脾气刚烈的性格，需防高血压。</p>
-<p>青色：　掌中泛青，易起烦恼，身心紧张，愿望理想难成。常觉心神难安。金星丘青黯，肠胃功能欠佳，忌食生冷。</p>
-<p>晦白枯涩：　缺乏体力信心、神经衰弱、思虑过度、悲观等。</p>
-<p>枯黑黯滞：防身染急病重症、事业财运不佳，防家宅不安、丧事。</p>
-<p>紫蓝：　多为气血循环不良。也有心脑无力现象。日常行事常感不顺。且多阻滞、有心无力。</p>
-<p>手心潮湿多汗：　大多热情、但容易紧张和心神敏感、常觉疲累。肠胃和肝脏有衰弱迹象。</p>
-<p>手心干燥：过于干燥或脱皮，有便秘的可能。女性可能有生理方面的问题。</p>
-<p>手心苍白冰冷：　缺乏热情、不理性。自私的可能性大、身体虚，可能有贫血。</p>
-<p>看手相是要从手型看到皮肤组织的疏密，五个指甲的形状、血色，握力的强弱、五脏与经络以后，才看掌纹的。</p>
-<p>不过，这要一一叙述，实在太过于专门，而且也相当困难，更不是这样一本小册子所能容纳的，所以，本书是专以手型与条纹，作为研究的对象。在东洋手相学方面，是根据中国的五行思想面分别为金、木、水、火、土的。在西方，就是由巴尔邦基尼把手相分成为七种型，这也就成了西洋手相术的基准，已经成为大家都能接受的一种分类法，且也容易记忆，现在就根据这个分类法来研讨下去。</p>
-<p>1，原始型的手<br>
-2，实际型的手</p>
-<p>3，艺术型的手<br>
-4，活动型的手<br>
-5哲学型的手<br>
-6.空想型的手<br>
-7混合型的手</p>
-<p>原始型的手<br>
-形状:凡是手掌手指都短。整只手全是肥肥短短，皮肤厚而坚韧，接触到时会起一种象是碰上了松树皮的样子看起来很粗野的感觉。手指的前端也是方形的</p>
-<p>四肢发达头脑简单”来形容这种性格:欠缺智悠，如以“四为恰当。只有本能的欲望<br>
-，不会有什么远大的打或理想，只知道吃吃喝喝，享受性的快乐，再无别的爱好。虽然身强力壮但也不愿熬受肉体劳动，有一点持久力。也好争斗，深信神佛及超自然力。一听说到妖神鬼怪的事，倒很容易相信。一旦有毛病，首先想起来的是求神。:为人直率，还能得到别人的好感，好好的教育，还是肯力争上游的</p>
-<p>实际型的手</p>
-<p>形状:一种方形的手，手掌和手指都是方方的，从手背看去，指根和指尖，几乎是一样粗细的，手指的头上也是四四方方，手指的关节，象是多节的木头，大拇指粗而有力拇指球（金星丘）相当发达，具有弹力，在握手时就会感觉到这只手很有点力气。<br>
-性格:凡事都很呆板，说一是一脚踏实地很守规矩，给他一件工作去做时，会不折不扣的完成。可是生性固执对人处事不够圆通，也没有幻想，所以在这个要靠脑筋灵活才有作为的时代，吃亏的地方很多。因此这种人就需要好的顾问和助手。即使赚了钱，也不会去乱花胡来，对于家庭很重视，友谊也厚，如果从事给薪生活的话，倒是一个难得的人。<br>
-即使谈恋爱，也喜欢干脆俐落，找个媒人撮合了事免得拖泥带水的。这种类型的女性，很善于规划，如果为全家庭主妇，实在是再好不过。</p>
-<p>艺术型的手<br>
-形状这种圆形的手整只手型和手指</p>
-<p>67.03％手指尖都长得细细长长的，状如玉笋，看来非常舒服。指尖<br>
-略带圆形，指甲也长。手掌长方形，样子很美，握手时使人感<br>
-到柔软而温暖，这是一种谁看了<br>
-都会欣赏的手。（图8<br>
-性格，这种人的感情非常丰<br>
-月富。具有一种举一反三的机智<br>
-力。对于任何事物，都有兴趣<br>
-很富于幻想。特别对于音乐、美<br>
-术、文艺作品尤有浓厚兴趣。虽<br>
-很自然地向这些方面去深入、探<br>
-图<br>
-讨，但不一定就会获得成功。由<br>
-于这种人都有一点天赋聪敏，所<br>
-以对于任何事情只要一动于，而又能加以持久的努力，还是<br>
-会有相当成就的。不过可惜的是，这种人就是缺少那种始终<br>
-如一的恒心，喜欢改变，见异思迁，所以总是“猪头肉<br>
-不精”的，常以百科大辞典终其身已<br>
-这种人很善于待人接物，谈起话来，内容也很丰富，大<br>
-多具有社交的才能，所以交游相当广，只是在感情方面不善<br>
-于伪装，所以很难得到朋友的谅解<br>
-这种人很富于浪漫情调，容易与异性发生感情，谈起<br>
-恋爱来，热悄奔放，是一个一生永近不会忘记初恋的情人的<br>
-多情种子。不过，当恋爱的美梦一旦被粉碎了时，就会走上<br>
-堕落的歧途，面生活也就会荒唐起来<br>
-这是很象一种纤巧的玻璃制品似的人物，最好是给贴上<br>
-张“移动时请注意1”的红条子，不论男女，这种人物在<br>
-生活上总是容易走极端的qaaz</p>
-<h2 id="_15">参考资料</h2>
+<p>8.绘制边长为100的等边三角形。</p>
+<p>9.绘制以（100，50）为中心，半径为100的圆，圆圈中心有个点。</p>
+<h2 id="_12">参考资料</h2>
 <ul>
 <li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
 <li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
@@ -176,6 +521,42 @@
                     <h1>Other articles</h1>
                     <hr />
                     <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/health_shouxiang_jichu.html" rel="bookmark"
+                           title="Permalink to 手相学: 天尊山道人看相算命">手相学: 天尊山道人看相算命</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-08T18:20:00+08:00">
+                Published: 三 08 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info -->                <h1 id="45">手相学 - 天尊山道人看相算命</h1>
+<p>手并拢，左右手正面，背面，小指侧面共六张照片，(可选：舌象、面相)。光线，自然光较好，非阳光直射。</p>
+<p><img alt="" src="https://oscimg.oschina.net/oscnet/9215903e7830e2915bee9a84bc0d94af532.jpg"></p>
+<h2 id="_1">生命线</h2>
+<p>生命线：由拇指与食指间之虎口部位延伸呈弧形线纹，象征生命意志及活力生命线纹若是深明清晰，强而有力的延伸环绕接近手腕处，则为体魄强健，个性执着而好胜心强，行事鲜明果决，具有企图心，也多能凭借个人不断努力，而达到自我想要的成果……</p>
+<p>技术支持ＱＱ群：中医解梦看相八字算命 391441566　草药中医手相面相看相　184175668</p>
+<p>一对一商务服务微信: pythontesting, 看手相、面相、舌相、抽签、体质识别。服务费100元每人次。</p>
+<p><img alt="" src="https://oscimg.oschina.net/oscnet/2a679d5cf970bfa2291802884af0a18e5d9.jpg"></p>
+<p><img alt="" src="https://oscimg.oschina.net/oscnet/fc0120d1c1366fdc729f492da99c3416f02.jpg"></p>
+<h2 id="_2">感情线</h2>
+<p>感情线：是由小指的下方横亘手掌的线纹，象征个人情感，感受能力和爱情的运势。感情线纹若横向延伸至食指与中指间，则其人显得成熟稳健，用情适中，内心不会偏颇，心灵与肉体都能够兼顾，且会设身处地为对方着想，能够真诚付出自己的情感……</p>
+<p><img alt="" src="https://oscimg.oschina.net/oscnet/e5c2dc522b10ad6cf75aab8799b8454f65e.jpg"></p>
+<p><img alt="" src="https://oscimg.oschina.net/oscnet/a068d3a5a56575a6c5cc0f0ae9db593930e.jpg"></p>
+<h2 id="_3">智慧线</h2>
+<p>智慧线 …</p>
+                <a class="readmore" href="/health_shouxiang_jichu.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
