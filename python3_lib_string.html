@@ -2,7 +2,7 @@
 <html lang="cn">
 <head>
         <meta charset="utf-8" />
-        <title>python库介绍-os.path: 平台独立的文件名操作</title>
+        <title>python标准模块介绍-string:文本常量和模板</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 
         <!--[if IE]>
@@ -28,7 +28,7 @@
     <header>
       <h1 class="entry-title">
         <a href="/python3_lib_string.html" rel="bookmark"
-           title="Permalink to python库介绍-os.path: 平台独立的文件名操作">python库介绍-os.path: 平台独立的文件名操作</a></h1>
+           title="Permalink to python标准模块介绍-string:文本常量和模板">python标准模块介绍-string:文本常量和模板</a></h1>
     </header>
 
     <div class="entry-content">
@@ -49,16 +49,7 @@
 <p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/string">代码地址</a></p>
 <h4 id="_1">函数</h4>
 <p>capwords()的将字符串中所有单词的首字母大写。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="s2">&quot;hello world!&quot;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">capwords</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="s1">&#39;Hello World!&#39;</span>
@@ -69,43 +60,14 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
 <span class="s1">&#39;hello world!&#39;</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>结果等同于先调用split()，把结果列表中各个单词的首字母大写，然后调用join()合并结果。</p>
 <p>因为str对象已经有capitalize()方法，该函数的实际意义并不大。</p>
 <h4 id="_2">模板</h4>
 <p>字符串模板已经作为PEP 292的一部分增加到Python 2.4中，并得到扩展，以替代内置拼接(interpolation)语法类似。使用string.Template拼接时，可以在变量名前面加上前缀$（如$var）来标识变量，如果需要与两侧的文本相区分，还可以用大括号将变量括起（如${var}）。</p>
 <p>下面的例子对简单的模板和使用%操作符及str.format()进行了比较。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;var&#39;</span><span class="p">:</span> <span class="s1">&#39;foo&#39;</span><span class="p">}</span>
 
@@ -136,24 +98,10 @@
 
 <span class="s2">print &#39;INTERPOLATION:&#39;, s % values</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">python3</span> <span class="n">string_template</span><span class="o">.</span><span class="n">py</span> 
+<div class="highlight"><pre><span></span> <span class="n">python3</span> <span class="n">string_template</span><span class="o">.</span><span class="n">py</span> 
 <span class="n">TEMPLATE</span><span class="p">:</span> 
 <span class="n">Variable</span>        <span class="p">:</span> <span class="n">foo</span>
 <span class="n">Escape</span>          <span class="p">:</span> <span class="err">$</span>
@@ -169,23 +117,12 @@
 <span class="n">Escape</span>          <span class="p">:</span> <span class="p">{}</span>
 <span class="n">Variable</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span> <span class="n">fooiable</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>模板与标准字符串拼接的重要区别是模板不考虑参数类型。模板中值会转换为字符串且没有提供格式化选项。例如没有办法控制使用几位有效数字来表示浮点数值。</p>
 <p>通过使用safe_substitute()方法，可以避免未能提供模板所需全部参数值时可能产生的异常。</p>
 <p>tring_template_missing.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
 
 <span class="n">values</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;var&#39;</span><span class="p">:</span> <span class="s1">&#39;foo&#39;</span><span class="p">}</span>
 
@@ -198,42 +135,19 @@
 
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;safe_substitute():&#39;</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">safe_substitute</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>由于values字典中没有对应missing的值，因此substitute()会产生KeyError。不过，safe_substitute()不会抛出这个错误，它将捕获这个异常，并在文本中保留变量表达式。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">string_template_missing</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">string_template_missing</span><span class="o">.</span><span class="n">py</span>
 <span class="n">ERROR</span><span class="p">:</span> <span class="s1">&#39;missing&#39;</span>
 <span class="n">safe_substitute</span><span class="p">():</span> <span class="n">foo</span> <span class="ow">is</span> <span class="n">here</span> <span class="n">but</span> <span class="err">$</span><span class="n">missing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">provided</span>
 </pre></div>
-</td></tr></table>
+
 
 <h4 id="_3">高级模板(非常用)</h4>
 <p>可以修改string.Template的默认语法，为此要调整它在模板体中查找变量名所使用的正则表达式模式。简单的做法是修改delimiter和idpattern类属性。</p>
 <p>string_template_advanced.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
 
 
 <span class="k">class</span> <span class="nc">MyTemplate</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">):</span>
@@ -256,34 +170,20 @@
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Modified ID pattern:&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">safe_substitute</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">string_template_advanced</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">string_template_advanced</span><span class="o">.</span><span class="n">py</span>
 <span class="n">Modified</span> <span class="n">ID</span> <span class="n">pattern</span><span class="p">:</span>
 
   <span class="n">Delimiter</span> <span class="p">:</span> <span class="o">%</span>
   <span class="n">Replaced</span>  <span class="p">:</span> <span class="n">replaced</span>
   <span class="n">Ignored</span>   <span class="p">:</span> <span class="o">%</span><span class="n">notunderscored</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>默认模式</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="s1">&#39;$var&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">pattern</span><span class="o">.</span><span class="n">pattern</span><span class="p">)</span>
 
@@ -294,32 +194,10 @@
       <span class="p">(</span><span class="err">?</span><span class="n">P</span><span class="o">&lt;</span><span class="n">invalid</span><span class="o">&gt;</span><span class="p">)</span>              <span class="c1"># Other ill-formed delimiter exprs</span>
     <span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>string_template_newsyntax.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">string</span>
 
 
@@ -343,45 +221,23 @@
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;MATCHES:&#39;</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">template</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;SUBSTITUTED:&#39;</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">safe_substitute</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="s1">&#39;replacement&#39;</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">string_template_newsyntax</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">string_template_newsyntax</span><span class="o">.</span><span class="n">py</span>
 <span class="n">MATCHES</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;{{&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)]</span>
 <span class="n">SUBSTITUTED</span><span class="p">:</span> 
 <span class="p">{{</span>
 <span class="n">replacement</span>
 </pre></div>
-</td></tr></table>
+
 
 <h4 id="_4">格式化</h4>
 <p>Formatter类实现与str.format()类似。 其功能包括类型转换，对齐，属性和字段引用，命名和位置模板参数以及特定类型的格式选项。 大多数情况下，fformat()方法是这些功能的更方便的接口，但是Formatter是作为父类，用于需要变化的情况。</p>
 <h4 id="_5">常量</h4>
 <p>string模块包含许多与ASCII和数字字符集有关的常量。</p>
 <p>string_constants.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1"># Author:    xurongzhong#126.com wechat:pythontesting qq:37391319</span>
 <span class="c1"># 技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) </span>
@@ -401,27 +257,10 @@
         <span class="k">continue</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%r</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">string_constants</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">string_constants</span><span class="o">.</span><span class="n">py</span>
 <span class="n">ascii_letters</span><span class="o">=</span><span class="s1">&#39;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span>
 
 <span class="n">ascii_lowercase</span><span class="o">=</span><span class="s1">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span>
@@ -440,7 +279,7 @@
 
 <span class="n">whitespace</span><span class="o">=</span><span class="s1">&#39; </span><span class="se">\t\n\r\x0b\x0c</span><span class="s1">&#39;</span>
 </pre></div>
-</td></tr></table>
+
 
 <h2 id="_6">参考资料</h2>
 <ul>
