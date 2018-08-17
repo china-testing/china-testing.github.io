@@ -115,6 +115,66 @@ x86_64-linux-gnu-g++ -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsym
 </pre></div>
 
 
+<h3 id="python3">python3怎么办？</h3>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span>
+<span class="n">Python</span> <span class="mf">3.6</span><span class="o">.</span><span class="mi">5</span> <span class="o">|</span><span class="n">Anaconda</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.|</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Apr</span> <span class="mi">29</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">16</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">)</span> 
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">7.2</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">hello</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">ImportError</span><span class="p">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="n">libboost_python</span><span class="o">-</span><span class="n">py27</span><span class="o">.</span><span class="n">so</span><span class="o">.</span><span class="mf">1.65</span><span class="o">.</span><span class="mi">1</span><span class="p">:</span> <span class="n">undefined</span> <span class="n">symbol</span><span class="p">:</span> <span class="n">PyClass_Type</span>
+</pre></div>
+
+
+<p>setup.py</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="kn">from</span> <span class="nn">distutils.extension</span> <span class="kn">import</span> <span class="n">Extension</span>
+
+<span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;PackageName&quot;</span><span class="p">,</span>
+    <span class="n">ext_modules</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">Extension</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;hellomodule.cpp&quot;</span><span class="p">],</span>
+        <span class="n">libraries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;boost_python&quot;</span><span class="p">])</span>
+    <span class="p">])</span>
+</pre></div>
+
+
+<p>编译：</p>
+<div class="highlight"><pre><span></span>$ python3 setup.py build
+running build
+running build_ext
+building <span class="s1">&#39;hello&#39;</span> extension
+creating build
+creating build/temp.linux-x86_64-3.6
+gcc -pthread -B /usr/local/anaconda/compiler_compat -Wl,--sysroot<span class="o">=</span>/ -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -fPIC -I/usr/local/anaconda/include/python3.6m -c hellomodule.cpp -o build/temp.linux-x86_64-3.6/hellomodule.o
+cc1plus: warning: <span class="nb">command</span> line option ‘-Wstrict-prototypes’ is valid <span class="k">for</span> C/ObjC but not <span class="k">for</span> C++
+creating build/lib.linux-x86_64-3.6
+g++ -pthread -shared -B /usr/local/anaconda/compiler_compat -L/usr/local/anaconda/lib -Wl,-rpath<span class="o">=</span>/usr/local/anaconda/lib -Wl,--no-as-needed -Wl,--sysroot<span class="o">=</span>/ build/temp.linux-x86_64-3.6/hellomodule.o -lboost_python3-py36 -o build/lib.linux-x86_64-3.6/hello.cpython-36m-x86_64-linux-gnu.so
+</pre></div>
+
+
+<p>执行：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> 
+<span class="n">Python</span> <span class="mf">3.6</span><span class="o">.</span><span class="mi">5</span> <span class="o">|</span><span class="n">Anaconda</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.|</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Apr</span> <span class="mi">29</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">16</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">)</span> 
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">7.2</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">hello</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">hello</span><span class="o">.</span><span class="n">say_hello</span><span class="p">(</span><span class="s2">&quot;World&quot;</span><span class="p">)</span>
+<span class="n">Hello</span> <span class="n">World</span><span class="err">!</span>
+</pre></div>
+
+
+<p>如何知道用哪个python so？</p>
+<div class="highlight"><pre><span></span>$ ll /usr/lib/x86_64-linux-gnu/libboost_python*.so
+lrwxrwxrwx <span class="m">1</span> root root <span class="m">31</span> 3月   <span class="m">6</span> <span class="m">18</span>:21 /usr/lib/x86_64-linux-gnu/libboost_python3-py36.so -&gt; libboost_python3-py36.so.1.65.1
+lrwxrwxrwx <span class="m">1</span> root root <span class="m">24</span> 3月   <span class="m">6</span> <span class="m">18</span>:21 /usr/lib/x86_64-linux-gnu/libboost_python3.so -&gt; libboost_python3-py36.so
+lrwxrwxrwx <span class="m">1</span> root root <span class="m">30</span> 3月   <span class="m">6</span> <span class="m">18</span>:21 /usr/lib/x86_64-linux-gnu/libboost_python-py27.so -&gt; libboost_python-py27.so.1.65.1
+lrwxrwxrwx <span class="m">1</span> root root <span class="m">24</span> 3月   <span class="m">6</span> <span class="m">18</span>:21 /usr/lib/x86_64-linux-gnu/libboost_python-py36.so -&gt; libboost_python3-py
+</pre></div>
+
+
 <h2 id="_3">参考资料</h2>
 <ul>
 <li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
