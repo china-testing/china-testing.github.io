@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python3外部库boost介绍 用c++为python编写扩展</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_lib_boost.html" rel="bookmark"
+           title="Permalink to python3外部库boost介绍 用c++为python编写扩展">python3外部库boost介绍 用c++为python编写扩展</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-15T16:20:00+08:00">
+                Published: 三 15 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info -->      <h2 id="_1">概述</h2>
+<p>有不同的方法来用C++扩展Python：</p>
+<ul>
+<li>Swig</li>
+<li>使用Boost.Python，可选择使用Py++预处理</li>
+<li>使用Cython。</li>
+</ul>
+<p>Cython出现之前，Boost.Python是编写C ++扩展模块最爽的方式。</p>
+<p>Boost.Python集成在Boost C++ Libraries中。 要在Ubuntu系统上安装；</p>
+<div class="highlight"><pre><span></span>$ sudo apt-get install libboost-python-dev 
+$ sudo apt-get install python-dev
+</pre></div>
+
+
+<h3 id="_2">快速入门</h3>
+<p>hellomodule.cpp</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">say_hello</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Hello &quot;</span> <span class="o">&lt;&lt;</span>  <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;boost/python/module.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;boost/python/def.hpp&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">boost</span><span class="o">::</span><span class="n">python</span><span class="p">;</span>
+
+<span class="n">BOOST_PYTHON_MODULE</span><span class="p">(</span><span class="n">hello</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">def</span><span class="p">(</span><span class="s">&quot;say_hello&quot;</span><span class="p">,</span> <span class="n">say_hello</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>setup.py</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="kn">from</span> <span class="nn">distutils.extension</span> <span class="kn">import</span> <span class="n">Extension</span>
+
+<span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;PackageName&quot;</span><span class="p">,</span>
+    <span class="n">ext_modules</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">Extension</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;hellomodule.cpp&quot;</span><span class="p">],</span>
+        <span class="n">libraries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;boost_python&quot;</span><span class="p">])</span>
+    <span class="p">])</span>
+</pre></div>
+
+
+<p>编译：</p>
+<div class="highlight"><pre><span></span> python2.7 setup.py build
+running build
+running build_ext
+building <span class="s1">&#39;hello&#39;</span> extension
+creating build/temp.linux-x86_64-2.7
+x86_64-linux-gnu-gcc -pthread -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE<span class="o">=</span><span class="m">2</span> -g -fdebug-prefix-map<span class="o">=</span>/build/python2.7-nbjU53/python2.7-2.7.15~rc1<span class="o">=</span>. -fstack-protector-strong -Wformat -Werror<span class="o">=</span>format-security -fPIC -I/usr/include/python2.7 -c hellomodule.cpp -o build/temp.linux-x86_64-2.7/hellomodule.o
+cc1plus: warning: <span class="nb">command</span> line option ‘-Wstrict-prototypes’ is valid <span class="k">for</span> C/ObjC but not <span class="k">for</span> C++
+creating build/lib.linux-x86_64-2.7
+x86_64-linux-gnu-g++ -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE<span class="o">=</span><span class="m">2</span> -g -fdebug-prefix-map<span class="o">=</span>/build/python2.7-nbjU53/python2.7-2.7.15~rc1<span class="o">=</span>. -fstack-protector-strong -Wformat -Werror<span class="o">=</span>format-security -Wl,-Bsymbolic-functions -Wl,-z,relro -Wdate-time -D_FORTIFY_SOURCE<span class="o">=</span><span class="m">2</span> -g -fdebug-prefix-map<span class="o">=</span>/build/python2.7-nbjU53/python2.7-2.7.15~rc1<span class="o">=</span>. -fstack-protector-strong -Wformat -Werror<span class="o">=</span>format-security build/temp.linux-x86_64-2.7/hellomodule.o -lboost_python -o build/lib.linux-x86_64-2.7/hello.so
+</pre></div>
+
+
+<p>执行：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python2</span><span class="o">.</span><span class="mi">7</span>
+<span class="n">Python</span> <span class="mf">2.7</span><span class="o">.</span><span class="mi">15</span><span class="n">rc1</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Apr</span> <span class="mi">15</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">21</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">34</span><span class="p">)</span> 
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">7.3</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux2</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">hello</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">hello</span><span class="o">.</span><span class="n">say_hello</span><span class="p">(</span><span class="s2">&quot;World&quot;</span><span class="p">)</span>
+<span class="n">Hello</span> <span class="n">World</span><span class="err">!</span>
+</pre></div>
+
+
+<h2 id="_3">参考资料</h2>
+<ul>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_automation_tips.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
