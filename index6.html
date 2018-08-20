@@ -28,6 +28,44 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python_pandas_crash_tutorial1.html" rel="bookmark"
+                           title="Permalink to python数据分析快速入门教程1-开胃菜.">python数据分析快速入门教程1-开胃菜.</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-31T09:20:00+08:00">
+                Published: 六 31 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
+<p>Pandas是用于数据分析的开源Python库,也是目前数据分析最重要的开源库。它能够处理类似电子表格的数据，用于快速数据加载，操作，对齐，合并等。为Python提供这些增强功能，Pandas的数据类型为：Series和DataFrame。DataFrame为整个电子表格或矩形数据，而Series是DataFrame的列。DataFrame也可以被认为是字典或Series的集合。</p>
+<h3 id="_2">加载数据</h3>
+<p>load.py</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># load.py</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;../data/gapminder.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> 
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">查看前五行&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">查看类型&quot;</span><span class="p">)</span>
+<span class="k">print …</span></pre></div>
+                <a class="readmore" href="/python_pandas_crash_tutorial1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_pandas_crash_tutorial2.html" rel="bookmark"
                            title="Permalink to python数据分析快速入门教程2-pandas数据结构">python数据分析快速入门教程2-pandas数据结构</a></h1>
                 </header>
@@ -394,41 +432,6 @@ os.curdir - 当前目录 (e.g., “.”)。
 
 <span class="s1">This library …</span></pre></div></td></tr></table>
                 <a class="readmore" href="/python3_python-daemon.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_multiprocessing.html" rel="bookmark"
-                           title="Permalink to python库介绍-multiprocessing：多进程">python库介绍-multiprocessing：多进程</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-21T19:20:00+08:00">
-                Published: 三 21 三月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>进程是运行的程序，每个进程有自己的系统状态，包含了内存、打开文件列表、程序计数器（跟踪执行的指令）、存储函数本地调用变量的堆栈。</p>
-<p>使用os或subprocess可以创建新进程，比如：os.fork(), subprocess.Popen()。子进程和父进程是相互独立执行的。</p>
-<p>interprocess communication (IPC)进程间的通信: 最常见的形式是基于消息传递（message passing）。message是原始字节的缓存，通过I/O channel比如网络socket和管道，使用原语比如send() and recv()来发送接收消息。次常用的有内存映射区：memory-mapped regions，见mmap模块，实际上是共享内存。</p>
-<p>线程有自己的控制流和执行堆栈，但是共享系统资源和数据。</p>
-<p>并发的难点：同步和数据共享。解决的方法一般是使用互斥锁。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">write_lock</span> <span class="o">=</span> <span class="n">Lock …</span></pre></div></td></tr></table>
-                <a class="readmore" href="/python3_lib_multiprocessing.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
