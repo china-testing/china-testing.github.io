@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python库介绍-python-daemon: 实现python后台程序</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_python-daemon.html" rel="bookmark"
+           title="Permalink to python库介绍-python-daemon: 实现python后台程序">python库介绍-python-daemon: 实现python后台程序</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-22T19:20:00+08:00">
+                Published: 四 22 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <h3 id="_1">简介</h3>
+<p>python-daemon实现Unix守护进程。 参考：<a href="https://www.python.org/dev/peps/pep-3143/">PEP 3143</a></p>
+<p>该库实现了PEP 3143“标准守护进程库”的良好行为守护进程规范。</p>
+<p>DaemonContext实例保存程序的行为和配置的进程环境。</p>
+<h3 id="_2">快速入门</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">with</span> <span class="n">daemon</span><span class="o">.</span><span class="n">DaemonContext</span><span class="p">():</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/test.log&quot;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        Library to implement a well-behaved Unix daemon process.</span>
+
+<span class="s1">This library implements the well-behaved daemon specification of PEP 3143, “Standard daemon process library”.</span>
+
+<span class="s1">A well-behaved Unix daemon process is tricky to get right, but the required steps are much the same for every daemon program. A DaemonContext instance holds the behaviour and configured process environment for the program; use the instance as a context manager to enter a daemon state.</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;{0}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())))</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">daemon1</span><span class="o">.</span><span class="n">py</span> 
+
+<span class="err">$</span> <span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">log</span> 
+<span class="n">This</span> <span class="n">library</span> <span class="n">implements</span> <span class="n">the</span> <span class="n">well</span><span class="o">-</span><span class="n">behaved</span> <span class="n">daemon</span> <span class="n">specification</span> <span class="n">of</span> <span class="n">PEP</span> <span class="mi">3143</span><span class="p">,</span> <span class="err">“</span><span class="n">Standard</span> <span class="n">daemon</span> <span class="n">process</span> <span class="n">library</span><span class="err">”</span><span class="o">.</span>
+
+<span class="n">A</span> <span class="n">well</span><span class="o">-</span><span class="n">behaved</span> <span class="n">Unix</span> <span class="n">daemon</span> <span class="n">process</span> <span class="ow">is</span> <span class="n">tricky</span> <span class="n">to</span> <span class="n">get</span> <span class="n">right</span><span class="p">,</span> <span class="n">but</span> <span class="n">the</span> <span class="n">required</span> <span class="n">steps</span> <span class="n">are</span> <span class="n">much</span> <span class="n">the</span> <span class="n">same</span> <span class="k">for</span> <span class="n">every</span> <span class="n">daemon</span> <span class="n">program</span><span class="o">.</span> <span class="n">A</span> <span class="n">DaemonContext</span> <span class="n">instance</span> <span class="n">holds</span> <span class="n">the</span> <span class="n">behaviour</span> <span class="ow">and</span> <span class="n">configured</span> <span class="n">process</span> <span class="n">environment</span> <span class="k">for</span> <span class="n">the</span> <span class="n">program</span><span class="p">;</span> <span class="n">use</span> <span class="n">the</span> <span class="n">instance</span> <span class="k">as</span> <span class="n">a</span> <span class="n">context</span> <span class="n">manager</span> <span class="n">to</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">daemon</span> <span class="n">state</span><span class="o">.</span>
+<span class="n">Thu</span> <span class="n">Feb</span>  <span class="mi">8</span> <span class="mi">14</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mi">43</span> <span class="mi">2018</span>
+
+<span class="err">$</span> <span class="n">ps</span> <span class="n">afx</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="n">daemon1</span>
+ <span class="mi">8646</span> <span class="n">pts</span><span class="o">/</span><span class="mi">2</span>    <span class="n">S</span><span class="o">+</span>     <span class="mi">0</span><span class="p">:</span><span class="mo">00</span>          <span class="o">|</span>           \<span class="n">_</span> <span class="n">grep</span> <span class="o">--</span><span class="n">color</span><span class="o">=</span><span class="n">auto</span> <span class="o">-</span><span class="n">i</span> <span class="n">daemon1</span>
+ <span class="mi">8640</span> <span class="err">?</span>        <span class="n">S</span>      <span class="mi">0</span><span class="p">:</span><span class="mo">00</span>          \<span class="n">_</span> <span class="n">python3</span> <span class="n">daemon1</span><span class="o">.</span><span class="n">py</span>
+<span class="err">$</span> <span class="n">kill</span> <span class="o">-</span><span class="mi">9</span> <span class="mi">8640</span>
+</pre></div>
+</td></tr></table>
+
+<p>要想停止上述进程，可以通过ps查找到进程号，然后kill。</p>
+<p>注意上述代码在python2没有任何问题，不过在python需要修改库文件runner.py打开文件的方式。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># vi /usr/local/lib/python3.5/dist-packages/daemon/runner.py </span>
+<span class="c1"># 118 -120</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">daemon_context</span> <span class="o">=</span> <span class="n">DaemonContext</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">daemon_context</span><span class="o">.</span><span class="n">stdin</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">stdin_path</span><span class="p">,</span> <span class="s1">&#39;wb+&#39;</span><span class="p">,</span><span class="n">buffering</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">daemon_context</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">stdout_path</span><span class="p">,</span>  <span class="s1">&#39;wb+&#39;</span><span class="p">,</span><span class="n">buffering</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">daemon_context</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+                <span class="n">app</span><span class="o">.</span><span class="n">stderr_path</span><span class="p">,</span> <span class="s1">&#39;wb+&#39;</span><span class="p">,</span> <span class="n">buffering</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="_3">更实用的例子</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">logging.handlers</span>
+<span class="kn">from</span> <span class="nn">daemon</span> <span class="kn">import</span> <span class="n">runner</span>
+
+<span class="k">class</span> <span class="nc">App</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdin_path</span> <span class="o">=</span> <span class="s1">&#39;/dev/null&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout_path</span> <span class="o">=</span> <span class="s1">&#39;/dev/tty&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stderr_path</span> <span class="o">=</span> <span class="s1">&#39;/dev/tty&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pidfile_path</span> <span class="o">=</span>  <span class="s1">&#39;/tmp/foo.pid&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pidfile_timeout</span> <span class="o">=</span> <span class="mi">5</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">logs</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;MyLogger&#39;</span><span class="p">)</span>
+        <span class="n">logs</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+        <span class="n">fh</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">RotatingFileHandler</span><span class="p">(</span>
+            <span class="s1">&#39;/tmp/test.log&#39;</span><span class="p">,</span><span class="n">maxBytes</span><span class="o">=</span><span class="mi">10000000</span><span class="p">,</span><span class="n">backupCount</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">fh</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+        <span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> [</span><span class="si">%(levelname)s</span><span class="s1">] </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">fh</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+        <span class="n">logs</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span>  
+
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+                <span class="n">logs</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Beginning Scan {0}! </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">App</span><span class="p">()</span>
+<span class="n">daemon_runner</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">DaemonRunner</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<span class="n">daemon_runner</span><span class="o">.</span><span class="n">do_action</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python2</span> <span class="n">daemon2</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">usage</span><span class="p">:</span> <span class="n">daemon2</span><span class="o">.</span><span class="n">py</span> <span class="n">start</span><span class="o">|</span><span class="n">stop</span><span class="o">|</span><span class="n">restart</span>
+
+<span class="err">$</span> <span class="n">python3</span> <span class="n">daemon2</span><span class="o">.</span><span class="n">py</span>  <span class="n">start</span>
+<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">MS</span><span class="o">-</span><span class="mi">7</span><span class="n">A71</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">chinese</span><span class="o">-</span><span class="n">library</span><span class="o">/</span><span class="n">libraries</span><span class="o">/</span><span class="n">daemon</span><span class="err">$</span> 
+<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">MS</span><span class="o">-</span><span class="mi">7</span><span class="n">A71</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">chinese</span><span class="o">-</span><span class="n">library</span><span class="o">/</span><span class="n">libraries</span><span class="o">/</span><span class="n">daemon</span><span class="err">$</span> <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.5/dist-packages/lockfile/pidlockfile.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">77</span><span class="p">,</span> <span class="ow">in</span> <span class="n">acquire</span>
+    <span class="n">write_pid_to_pidfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.5/dist-packages/lockfile/pidlockfile.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">161</span><span class="p">,</span> <span class="ow">in</span> <span class="n">write_pid_to_pidfile</span>
+    <span class="n">pidfile_fd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">pidfile_path</span><span class="p">,</span> <span class="n">open_flags</span><span class="p">,</span> <span class="n">open_mode</span><span class="p">)</span>
+<span class="n">FileExistsError</span><span class="p">:</span> <span class="p">[</span><span class="n">Errno</span> <span class="mi">17</span><span class="p">]</span> <span class="n">File</span> <span class="n">exists</span><span class="p">:</span> <span class="s1">&#39;/tmp/foo.pid&#39;</span>
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;daemon2.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">39</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">daemon_runner</span><span class="o">.</span><span class="n">do_action</span><span class="p">()</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.5/dist-packages/daemon/runner.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">274</span><span class="p">,</span> <span class="ow">in</span> <span class="n">do_action</span>
+    <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.5/dist-packages/daemon/runner.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">182</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_start</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">daemon_context</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.5/dist-packages/daemon/daemon.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">389</span><span class="p">,</span> <span class="ow">in</span> <span class="nb">open</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pidfile</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">()</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.5/dist-packages/lockfile/__init__.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">197</span><span class="p">,</span> <span class="ow">in</span> <span class="fm">__enter__</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.5/dist-packages/daemon/pidfile.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">60</span><span class="p">,</span> <span class="ow">in</span> <span class="n">acquire</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">TimeoutPIDLockFile</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.5/dist-packages/lockfile/pidlockfile.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">85</span><span class="p">,</span> <span class="ow">in</span> <span class="n">acquire</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+<span class="n">lockfile</span><span class="o">.</span><span class="n">LockTimeout</span><span class="p">:</span> <span class="n">Timeout</span> <span class="n">waiting</span> <span class="n">to</span> <span class="n">acquire</span> <span class="n">lock</span> <span class="k">for</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">foo</span><span class="o">.</span><span class="n">pid</span>
+
+<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">MS</span><span class="o">-</span><span class="mi">7</span><span class="n">A71</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">chinese</span><span class="o">-</span><span class="n">library</span><span class="o">/</span><span class="n">libraries</span><span class="o">/</span><span class="n">daemon</span><span class="err">$</span> <span class="n">python3</span> <span class="n">daemon2</span><span class="o">.</span><span class="n">py</span>  <span class="n">stop</span>
+<span class="n">Terminating</span> <span class="n">on</span> <span class="n">signal</span> <span class="mi">15</span>
+<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">MS</span><span class="o">-</span><span class="mi">7</span><span class="n">A71</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">chinese</span><span class="o">-</span><span class="n">library</span><span class="o">/</span><span class="n">libraries</span><span class="o">/</span><span class="n">daemon</span><span class="err">$</span> <span class="n">python3</span> <span class="n">daemon2</span><span class="o">.</span><span class="n">py</span>  <span class="n">stop</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;daemon2.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">39</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">daemon_runner</span><span class="o">.</span><span class="n">do_action</span><span class="p">()</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.5/dist-packages/daemon/runner.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">274</span><span class="p">,</span> <span class="ow">in</span> <span class="n">do_action</span>
+    <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.5/dist-packages/daemon/runner.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">224</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_stop</span>
+    <span class="k">raise</span> <span class="n">error</span>
+<span class="n">daemon</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">DaemonRunnerStopFailureError</span><span class="p">:</span> <span class="n">PID</span> <span class="nb">file</span> <span class="s1">&#39;/tmp/foo.pid&#39;</span> <span class="ow">not</span> <span class="n">locked</span>
+</pre></div>
+</td></tr></table>
+
+<p>注意上面的错误是重复启动或者停止时进程并不存在导致的。</p>
+<h3 id="_4">参考资料</h3>
+<p>本文代码地址： http://t.cn/R8scWAe</p>
+<p><a href="https://china-testing.github.io/python3_python-daemon.html">本文最新版本地址</a></p>
+<ul>
+<li>
+<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
+</li>
+<li>
+<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
+</li>
+</ul>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
+<p><a href="https://github.com/thesharp/daemonize">daemonize</a> demo无法运行</p>
+<p>https://pypi.python.org/pypi/python-daemon</p>
+<h3 id="_5">老式书写后台进程的一种方式</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">logging.handlers</span>
+
+
+<span class="n">logs</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;MyLogger&#39;</span><span class="p">)</span>
+<span class="n">logs</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">fh</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">RotatingFileHandler</span><span class="p">(</span>
+    <span class="s1">&#39;/tmp/test.log&#39;</span><span class="p">,</span><span class="n">maxBytes</span><span class="o">=</span><span class="mi">10000000</span><span class="p">,</span><span class="n">backupCount</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">fh</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> [</span><span class="si">%(levelname)s</span><span class="s1">] </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">fh</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+<span class="n">logs</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span>  
+
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">logs</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Beginning Scan {0}! </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>      
+</pre></div>
+</td></tr></table>
+
+<p>这样并不能后台执行，但是可以借助linux的nohup和&amp;。为此添加如下的启动和停止脚本，其实也不麻烦：</p>
+<p>shell脚本参见： http://t.cn/R8scWAe</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">sh</span> <span class="n">startup</span><span class="o">.</span><span class="n">sh</span> 
+<span class="o">================================================================================================================</span>
+<span class="n">Starting</span> <span class="n">older</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="n">PID</span><span class="o">=</span><span class="mi">15315</span><span class="p">)</span><span class="o">...</span><span class="p">[</span><span class="n">Success</span><span class="p">]</span>
+<span class="o">================================================================================================================</span>
+<span class="err">$</span> <span class="n">sh</span> <span class="n">startup</span><span class="o">.</span><span class="n">sh</span> 
+<span class="o">================================================================================================================</span>
+<span class="n">older</span><span class="o">.</span><span class="n">py</span> <span class="n">already</span> <span class="n">started</span><span class="p">(</span><span class="n">PID</span><span class="o">=</span><span class="mi">15315</span><span class="p">)</span>
+<span class="o">================================================================================================================</span>
+<span class="err">$</span> <span class="n">sh</span> <span class="n">shutdown</span><span class="o">.</span><span class="n">sh</span> 
+<span class="o">================================================================================================================</span>
+<span class="n">Stopping</span> <span class="n">older</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="n">PID</span><span class="o">=</span><span class="mi">15315</span><span class="p">)</span><span class="o">...</span><span class="p">[</span><span class="n">Success</span><span class="p">]</span>
+<span class="o">================================================================================================================</span>
+<span class="err">$</span> <span class="n">sh</span> <span class="n">shutdown</span><span class="o">.</span><span class="n">sh</span> 
+<span class="o">================================================================================================================</span>
+<span class="n">older</span><span class="o">.</span><span class="n">py</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">running</span>
+<span class="o">================================================================================================================</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="_6">其他</h3>
+<p><a href="http://supervisord.org/">supervisord</a> 可以linux控制linux进程，当然也可以后台化。</p>
+<p><a href="https://stackoverflow.com/questions/473620/how-do-you-create-a-daemon-in-python">How do you create a daemon in Python?</a></p>
+<p>另外也可以向linux systemd注册为后台进程。</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

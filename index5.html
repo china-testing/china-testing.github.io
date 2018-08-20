@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python自动化测试人工智能</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_opencv3_exmaples0.html" rel="bookmark"
+                           title="Permalink to 使用opencv转换3d图片">使用opencv转换3d图片</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-19T19:20:00+08:00">
+                Published: 四 19 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>最近主流智能手机开始支持3D拍照，这些导出来16-bit .mhd/.raw的图片，无法直接查看，当然使用Fiji/ImageJ可以粗略的查看，但是操作不太方便。</p>
+<p>这里我们以vivo x21为例进行图片转换。</p>
+<ul>
+<li>
+<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
+</li>
+<li>
+<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
+</li>
+</ul>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
+<h2 id="rawdepthir">切分raw为depth和ir</h2>
+<p>split_raw.py </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse …</span></pre></div></td></tr></table>
+                <a class="readmore" href="/python_opencv3_exmaples0.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_opencv3_exmaple2.html" rel="bookmark"
+                           title="Permalink to python opencv3实例(对象识别和增强现实)2-边缘检测和应用图像过滤器">python opencv3实例(对象识别和增强现实)2-边缘检测和应用图像过滤器</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-17T19:20:00+08:00">
+                Published: 二 17 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://github.com/PacktPublishing/OpenCV-3-x-with-Python-By-Example">原书代码地址</a></p>
+<p>在本章中，我们将看到如何将酷视觉效果应用于图片。 我们将学习如何使用基本的图像处理操作器，讨论边缘检测，并了解我们如何使用图像滤镜来应用各种图像影响照片。</p>
+<p>在本章的最后，你会知道：
+<em> 2D卷积是什么，以及如何使用它
+</em> 如何模糊图像
+<em> 如何检测图像中的边缘
+</em> 如何将运动模糊应用于图像
+<em> 如何锐化和浮雕图像
+</em> 如何侵蚀和扩大形象
+<em> 如何创建晕影过滤器
+</em> 如何增强图像对比度</p>
+<h2 id="2d">2D卷积</h2>
+<p>卷积是图像处理中的基本操作，是我们对每个像素应用数学运算符，并在一些像素中更改其值办法。</p>
+<p><img alt="Alt Text" src="/images/python_opencv_example2_kernel.PNG">    </p>
+<p><img alt="Alt Text" src="/images/python_opencv_example2_filter.PNG">    </p>
+<ul>
+<li>你的赞助是我们前进的动力：</li>
+</ul>
+<p>一流企业专家自动化性能接口测试 数据分析 python一对一教，非骗人的培训机构(多数大陆培训机构的老师实际未入门）承接excel合并，电脑自动化操作等工程 并欢迎讨论中医草药风水相学等道家国学</p>
+<p>qq群python 测试开发自动化测试 144081101 教你做免费的线上博客(放在简历中增加亮点)，自动化测试平台，性能测试工具等，让你有实际项目经验  联系qq：37391319 </p>
+<p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 …</p>
+                <a class="readmore" href="/python_opencv3_exmaple2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_numpy_beginner_guide3rd3.html" rel="bookmark"
+                           title="Permalink to numpy学习指南3rd3:常用函数">numpy学习指南3rd3:常用函数</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-12T19:30:00+08:00">
+                Published: 四 12 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/numpy">代码地址</a></p>
+<h3 id="_1">文件读写</h3>
+<p>单位矩阵，即主对角线上的元素均为1，其余元素均为0的正方形矩阵。在NumPy中可以用 eye 函数创建一个这样的二维数组，我们只需要给定一个参数，用于指定矩阵中1的元素个数。</p>
+<p>例如，创建2×2的数组</p>
+<p>genfromtxt.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s2">&quot;eye.txt&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s2">&quot;eye.txt&quot;</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">genfromtxt</span><span class="o">.</span><span class="n">py …</span></pre></div></td></tr></table>
+                <a class="readmore" href="/python_numpy_beginner_guide3rd3.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_numpy_beginner_guide3rd2.html" rel="bookmark"
+                           title="Permalink to numpy学习指南3rd2:NumPy基础">numpy学习指南3rd2:NumPy基础</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-12T19:20:00+08:00">
+                Published: 四 12 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/numpy">代码地址</a></p>
+<h3 id="numpy">NumPy 数组对象</h3>
+<p>arrayattributes.py </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45 …</pre></div></td></tr></table>
+                <a class="readmore" href="/python_numpy_beginner_guide3rd2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pandas_example1.html" rel="bookmark"
+                           title="Permalink to pandas大数据分析性能优化实例-read_csv引擎和分组等">pandas大数据分析性能优化实例-read_csv引擎和分组等</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-11T17:20:00+08:00">
+                Published: 三 11 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">需求</h3>
+<p>人脸识别的人名如下，共452人</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">head</span> <span class="n">i_enroll</span><span class="o">.</span><span class="n">txt</span> 
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">D23</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">I54</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">G23</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">G43</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">F38</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">I20</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">J19</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">E42</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">F31</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">F22</span>
+</pre></div>
+</td></tr></table>
+
+<p>人脸识别的图片列表如下，共269796张</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1 …</pre></div></td></tr></table>
+                <a class="readmore" href="/python_pandas_example1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_numpy_beginner_guide3rd1.html" rel="bookmark"
+                           title="Permalink to numpy学习指南3rd1:NumPy快速入门">numpy学习指南3rd1:NumPy快速入门</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-10T19:20:00+08:00">
+                Published: 二 10 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/numpy">代码地址</a></p>
+<ul>
+<li>你的赞助是我们前进的动力：</li>
+</ul>
+<p>一流企业专家自动化性能接口测试 数据分析 python一对一教，非骗人的培训机构(多数大陆培训机构的老师实际未入门）承接excel合并，电脑自动化操作等工程 并欢迎讨论中医草药风水相学等道家国学</p>
+<p>qq群python 测试开发自动化测试 144081101 教你做免费的线上博客(放在简历中增加亮点)，自动化测试平台，性能测试工具等，让你有实际项目经验  联系qq：37391319 </p>
+<p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 184175668 中医草药湿热湿疹胃病 291184506 python高级人工智能视觉 6089740</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15 …</pre></div></td></tr></table>
+                <a class="readmore" href="/python_numpy_beginner_guide3rd1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_scikit-learn_cookbook1.html" rel="bookmark"
+                           title="Permalink to scikit-learn_cookbook1: 高性能机器学习-NumPy">scikit-learn_cookbook1: 高性能机器学习-NumPy</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-08T09:20:00+08:00">
+                Published: 日 08 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ji-qi-xue-xi.html">机器学习</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://github.com/china-testing/python-api-tesing/tree/master/pandas/python_data_analyse_crash_course">源码下载</a></p>
+<p>在本章主要内容：</p>
+<ul>
+<li>NumPy基础知识</li>
+<li>加载iris数据集</li>
+<li>查看iris数据集</li>
+<li>用pandas查看iris数据集</li>
+<li>用NumPy和matplotlib绘图</li>
+<li>最小机器学习配方 - SVM分类</li>
+<li>介绍交叉验证</li>
+<li>以上汇总</li>
+<li>机器学习概述 - 分类与回归</li>
+</ul>
+<h3 id="_1">简介</h3>
+<p>本章我们将学习如何使用scikit-learn进行预测。 机器学习强调衡量预测能力，并用scikit-learn进行准确和快速的预测。我们将检查iris数据集，该数据集由三种iris的测量结果组成：Iris Setosa，Iris Versicolor和Iris Virginica。</p>
+<p>为了衡量预测，我们将：</p>
+<ul>
+<li>保存一些数据以进行测试</li>
+<li>仅使用训练数据构建模型</li>
+<li>测量测试集的预测能力</li>
+</ul>
+<p>解决问题的方法</p>
+<ul>
+<li>类别(Classification)：</li>
+<li>非文本，比如Iris</li>
+<li>回归</li>
+<li>聚类</li>
+<li>降维</li>
+</ul>
+<p><a href="https://github.com/china-testing/python-api-tesing">可爱的python测试开发库</a>  谢谢在github上点赞。
+<a href="https://www.jianshu.com/p/7353375213ab">python中文库文档汇总</a>
+<a href="https://www.jianshu.com/p/4304156f323c">接口自动化性能测试线上培训大纲</a>
+<a href="https://www.jianshu.com/p/1873035ae75b">python测试开发自动化测试数据分析人工智能自学每周一练</a>
+<a href="https://www.jianshu.com/p/5a009aac9f59">python3标准库-中文版</a>
+更多内容请关注 <a href="https://www.jianshu.com/u/9bc194fde100">雪峰磁针石：简书</a></p>
+<ul>
+<li>
+<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入 …</p></li></ul>
+                <a class="readmore" href="/python_scikit-learn_cookbook1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_matplotlib_by_example2.html" rel="bookmark"
+                           title="Permalink to matplotlib实例2-美图">matplotlib实例2-美图</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-02T09:50:00+08:00">
+                Published: 一 02 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">术语</h2>
+<p><img alt="Alt Text" src="/images/matplotlib_anatomy.png">   </p>
+<p>颜色列表：</p>
+<p>缩写 | 颜色
+:--------:|:--------:|
+b | Blue
+g | Green
+r | Red
+c | Cyan
+m | Magenta
+y | Yellow
+k | Black
+w | White</p>
+<p><a href="https://matplotlib.org/examples/color/named_colors.html">HTML颜色参考</a></p>
+<p>RGB或RGBA，A表示透明度。16进制的表示：'#ff0000'。灰度图的深度比如0.1,0.32, 0.5或0.75.</p>
+<p>设置不同的颜色：colors.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="n">years</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2009</span><span class="p">,</span><span class="mi">2017</span><span class="p">))</span>
+<span class="n">android</span> <span class="o">=</span> <span class="p">[</span><span class="mf">6.8</span><span class="p">,</span><span class="mf">67.22 …</span></pre></div>
+                <a class="readmore" href="/python_matplotlib_by_example2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_matplotlib_by_example1.html" rel="bookmark"
+                           title="Permalink to matplotlib实例1-快速入门">matplotlib实例1-快速入门</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-02T09:20:00+08:00">
+                Published: 一 02 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">快速入门</h2>
+<p>什么是Matplotlib？
+Matplotlib是一个多功能的Python库，可生成数据可视化图。支持多种类型和精炼的样式选项，它非常适合创建专业演示文稿和科学出版物。Matplotlib能简单的生成图片，从幻灯片演示，高质量的海报打印和动画到基于网络的交互式。 除了典型的2D图，还支持基本的3D绘图。另外还可以支持python以外的语言。</p>
+<ul>
+<li>你的赞助是我们前进的动力：</li>
+</ul>
+<p>一流企业专家自动化性能接口测试 数据分析 python一对一教，非骗人的培训机构(多数大陆培训机构的老师实际未入门）承接excel合并，电脑自动化操作等工程 并欢迎讨论中医草药风水相学等道家国学</p>
+<p>qq群python 测试开发自动化测试 144081101 教你做免费的线上博客(放在简历中增加亮点)，自动化测试平台，性能测试工具等，让你有实际项目经验  联系qq：37391319 </p>
+<p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 184175668 中医草药湿热湿疹胃病 291184506 python高级人工智能视觉 6089740</p>
+<p>安装</p>
+<div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">matplotlib …</span></pre></div>
+                <a class="readmore" href="/python_matplotlib_by_example1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pandas_tutorial1.html" rel="bookmark"
+                           title="Permalink to pandas入门">pandas入门</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-31T17:20:00+08:00">
+                Published: 六 31 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="pandas">pandas入门</h2>
+<h3 id="_1">简介</h3>
+<p>pandas包含的数据结构和操作工具能快速简单地清洗和分析数据。</p>
+<p>pandas经常与NumPy和SciPy这样的数据计算工具，statsmodels和scikit-learn之类的分析库及数据可视化库（如matplotlib）等一起用使用。pandas基于NumPy的数组，经常可以不使用循环就能处理好大量数据。</p>
+<p>pandas适合处理表格数据或巨量数据。NumPy则适合处理巨量的数值数组数据。</p>
+<p>这里约定导入方式：</p>
+<p>技术支持qq群：630011153</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="pandas_1">pandas数据结构介绍</h3>
+<ul>
+<li>
+<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
+</li>
+<li>
+<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
+</li>
+</ul>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
+<p>主要数据结构:Series和DataFrame。</p>
+<h4 id="series">Series</h4>
+<p>Series类似于一维数组的对象,它由一组数据(NumPy类似数据类型)以及相关的数据标签(即索引)组成 …</p>
+                <a class="readmore" href="/python_pandas_tutorial1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="/index4.html">&laquo;</a>
+    Page 5 / 8
+        <a href="/index6.html">&raquo;</a>
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
