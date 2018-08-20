@@ -84,59 +84,13 @@
 </tbody>
 </table>
 <p>除了pw_uid和pw_gid是整数外，其他都是字符串。</p>
-<h2 id="_2">参考资料：</h2>
-<ul>
-<li>
-<p>python中文库参考项目：  https://bitbucket.org/china-testing/python-chinese-library</p>
-</li>
-<li>
-<p>python中文库参考项目文档：https://bitbucket.org/china-testing/python-chinese-library/wiki/browse/</p>
-</li>
-<li>
-<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
-</li>
-<li>
-<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
-</li>
-</ul>
-<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
-<ul>
-<li>
-<p>相关文档下载地址：https://bitbucket.org/china-testing/python-chinese-library/downloads</p>
-</li>
-<li>
-<p>python官方文档：https://docs.python.org/3/library/pwd.html</p>
-</li>
-<li>
-<p>pymotw文档：https://pymotw.com/3/enum/index.html</p>
-</li>
-<li>
-<p>完稿日期：2016.08.23</p>
-</li>
-</ul>
 <h2 id="pwd">pwd方法</h2>
 <ul>
 <li>pwd.getpwuid(uid): Return the password database entry for the given numeric user ID.</li>
 <li>pwd.getpwnam(name)    Return the password database entry for the given user name.</li>
 <li>pwd.getpwall()    Return a list of all available password database entries, in arbitrary order.</li>
 </ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1"># Author Rongzhong Xu 2016-08-22 wechat: pythontesting</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -154,16 +108,10 @@
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">pwd</span><span class="o">.</span><span class="n">getpwall</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行结果：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python</span> <span class="n">pwd_demo</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python</span> <span class="n">pwd_demo</span><span class="o">.</span><span class="n">py</span>
 <span class="n">pwd</span><span class="o">.</span><span class="n">struct_passwd</span><span class="p">(</span><span class="n">pw_name</span><span class="o">=</span><span class="s1">&#39;andrew&#39;</span><span class="p">,</span> <span class="n">pw_passwd</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">pw_uid</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">pw_gid</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">pw_gecos</span><span class="o">=</span><span class="s1">&#39;andrew,,,&#39;</span><span class="p">,</span> <span class="n">pw_dir</span><span class="o">=</span><span class="s1">&#39;/home/andrew&#39;</span><span class="p">,</span> <span class="n">pw_shell</span><span class="o">=</span><span class="s1">&#39;/bin/bash&#39;</span><span class="p">)</span>
 <span class="n">pwd</span><span class="o">.</span><span class="n">struct_passwd</span><span class="p">(</span><span class="n">pw_name</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">pw_passwd</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">pw_uid</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pw_gid</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pw_gecos</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">pw_dir</span><span class="o">=</span><span class="s1">&#39;/root&#39;</span><span class="p">,</span> <span class="n">pw_shell</span><span class="o">=</span><span class="s1">&#39;/bin/bash&#39;</span><span class="p">)</span>
 <span class="o">------</span> <span class="n">All</span> <span class="n">users</span> <span class="o">------</span>
@@ -171,9 +119,20 @@
 
 <span class="o">...</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>这种方式通常已经看不到密码，因为密码大多存在/etc/shadows，建议使用spwd。</p>
+<h2 id="_2">参考资料</h2>
+<ul>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/python3_lib_pwd.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li>python官方文档：https://docs.python.org/3/library/pwd.html</li>
+<li>pymotw文档：https://pymotw.com/3/enum/index.html</li>
+</ul>
     </div><!-- /.entry-content -->
 
   </article>
