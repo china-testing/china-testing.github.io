@@ -249,6 +249,85 @@
 
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_binascii.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python标准模块介绍- binascii 二进制和ASCII转换">[雪峰磁针石博客]python标准模块介绍- binascii 二进制和ASCII转换</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-20T16:17:00+08:00">
+                Published: 一 20 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>binascii模块包含很多用来方法来转换二进制和各种ASCII编码的二进制表示法。通常不直接使用这些功能，而是使用封装模块，如uu, base64或binhex。binascii模块包含用C语言编写更快的低级功能，通常为高级模块所使用。</p>
+<ul>
+<li>
+<p>功能：二进制和ASCII转换。</p>
+</li>
+<li>
+<p>类型：标准模块</p>
+</li>
+<li>
+<p>相关模块：</p>
+<ol>
+<li>
+<p>base64 标准模块。</p>
+</li>
+<li>
+<p>binhex 标准模块。</p>
+</li>
+<li>
+<p>uu        标准模块。</p>
+</li>
+<li>
+<p>quopri  标准模块。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="uu">Uu编码</h2>
+<p>uu编码格式现在已经比较少使用（<a href="http://zh.wikipedia.org/wiki/Uuencode">http://zh.wikipedia.org/wiki/Uuencode</a>），相关函数binascii.a2b_uu(string)和binascii.b2a_uu(data)这里不做介绍。 更多资料参见：<a href="http://docs.python.org/2/library/uu.html">http://docs.python.org/2/library/uu.html</a></p>
+<h2 id="binhex">Binhex编码</h2>
+<p>Binhex用于Macintosh平台。这里暂不做介绍。相关函数有：binascii …</p>
+                <a class="readmore" href="/python3_lib_binascii.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_base64.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python标准模块介绍 -Base64： Base64, Base85等数据编码">[雪峰磁针石博客]python标准模块介绍 -Base64： Base64, Base85等数据编码</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-20T16:15:00+08:00">
+                Published: 一 20 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
+<p>功能:RFC 3548: Base16, Base32, Base64 数据编码。转换二进制数据为适合明文协议传输的 ASCII 序列。转换<br>
+8bits 为每个字节包含 6,5 或 4bits 的有效数据,比如 SMTP, URL 的一部分或者 HTTP POST 的一部分。参考: RFC 3548。编码算法不同于 uuencode。  </p>
+<p>类型:标准库<br>
+相关模块:uu, binhex, uu, quopri</p>
+<p>Base64 是一种基于 64 个可打印字符来表示二进制数据的表示方法。由于 2 的 6 次方等于 64,所以每 6 …</p>
+                <a class="readmore" href="/python3_lib_base64.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_lib_platform.html" rel="bookmark"
                            title="Permalink to [雪峰磁针石博客]python模块介绍-platform：底层平台信息">[雪峰磁针石博客]python模块介绍-platform：底层平台信息</a></h1>
                 </header>
@@ -539,94 +618,6 @@
 13
 14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse …</span></pre></div></td></tr></table>
                 <a class="readmore" href="/python_opencv3_exmaples0.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_opencv3_exmaple2.html" rel="bookmark"
-                           title="Permalink to python opencv3实例(对象识别和增强现实)2-边缘检测和应用图像过滤器">python opencv3实例(对象识别和增强现实)2-边缘检测和应用图像过滤器</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-04-17T19:20:00+08:00">
-                Published: 二 17 四月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://github.com/PacktPublishing/OpenCV-3-x-with-Python-By-Example">原书代码地址</a></p>
-<p>在本章中，我们将看到如何将酷视觉效果应用于图片。 我们将学习如何使用基本的图像处理操作器，讨论边缘检测，并了解我们如何使用图像滤镜来应用各种图像影响照片。</p>
-<p>在本章的最后，你会知道：
-<em> 2D卷积是什么，以及如何使用它
-</em> 如何模糊图像
-<em> 如何检测图像中的边缘
-</em> 如何将运动模糊应用于图像
-<em> 如何锐化和浮雕图像
-</em> 如何侵蚀和扩大形象
-<em> 如何创建晕影过滤器
-</em> 如何增强图像对比度</p>
-<h2 id="2d">2D卷积</h2>
-<p>卷积是图像处理中的基本操作，是我们对每个像素应用数学运算符，并在一些像素中更改其值办法。</p>
-<p><img alt="Alt Text" src="/images/python_opencv_example2_kernel.PNG">    </p>
-<p><img alt="Alt Text" src="/images/python_opencv_example2_filter.PNG">    </p>
-<ul>
-<li>你的赞助是我们前进的动力：</li>
-</ul>
-<p>一流企业专家自动化性能接口测试 数据分析 python一对一教，非骗人的培训机构(多数大陆培训机构的老师实际未入门）承接excel合并，电脑自动化操作等工程 并欢迎讨论中医草药风水相学等道家国学</p>
-<p>qq群python 测试开发自动化测试 144081101 教你做免费的线上博客(放在简历中增加亮点)，自动化测试平台，性能测试工具等，让你有实际项目经验  联系qq：37391319 </p>
-<p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 …</p>
-                <a class="readmore" href="/python_opencv3_exmaple2.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_numpy_beginner_guide3rd3.html" rel="bookmark"
-                           title="Permalink to numpy学习指南3rd3:常用函数">numpy学习指南3rd3:常用函数</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-04-12T19:30:00+08:00">
-                Published: 四 12 四月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/numpy">代码地址</a></p>
-<h3 id="_1">文件读写</h3>
-<p>单位矩阵，即主对角线上的元素均为1，其余元素均为0的正方形矩阵。在NumPy中可以用 eye 函数创建一个这样的二维数组，我们只需要给定一个参数，用于指定矩阵中1的元素个数。</p>
-<p>例如，创建2×2的数组</p>
-<p>genfromtxt.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s2">&quot;eye.txt&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s2">&quot;eye.txt&quot;</span><span class="p">))</span>
-</pre></div>
-</td></tr></table>
-
-<p>执行结果：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">genfromtxt</span><span class="o">.</span><span class="n">py …</span></pre></div></td></tr></table>
-                <a class="readmore" href="/python_numpy_beginner_guide3rd3.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
