@@ -26,7 +26,148 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/python3_lib_ftplib.html">[雪峰磁针石博客]python模块介绍-ftplib：FTP协议客户端</a></h1>
+                    <h1 class="entry-title"><a href="/testing_tools_perf.html">[雪峰磁针石博客]软件测试专家工具包2性能测试</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-08-20T16:35:00+08:00">
+                Published: 一 20 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info --><h3 id="locust">Locust(推荐)</h3>
+<p>了解服务器端性能的好工具。 语言python3。<a href="https://github.com/locustio/locust">源码</a> python3+ python2.7+ github上star和fork最多的性能测试工具。</p>
+<p>Locust是易于使用、分布式的用户负载测试工具。用于网站(或其他系统)的负载测试，计算出系统可以处理并发用户数。</p>
+<p>测试时大量蝗虫会攻击你的网站。每只蝗虫(或叫测试用户)可以自定义、测试过程由web界面实时监控。这能帮助测试并确定瓶颈。</p>
+<p>Locust 完全基于的事件，单机可以支持数千用户。它不使用回调，而是基于轻量进程gevent, 能简单地实线各种场景。</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-acaee51940c65dca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="multi-mechanize">Multi-Mechanize(推荐)</h3>
+<p>Multi-Mechanize 是一个开源的性能和负载测试框架，它并发运行多个 Python 脚本对网站或者服务生成负载（组合事务)。测试输出报告保存为HTML或JMeter的兼容的XML。Multi-Mechanize最常用于web性能 和可扩展性（scalability）测试，也适用于任何python可以访问的API。尤其适合后台性能测试。稍微懂点编程的话，这个工具会远强过商业 的性能测试工具。</p>
+<p>主要特性：</p>
+<ul>
+<li>
+<p>支持各种 HTTP methods</p>
+</li>
+<li>
+<p>高级超链接和HTML表单支持</p>
+</li>
+<li>
+<p>支持 SSL</p>
+</li>
+<li>
+<p>自动处理 Cookies</p>
+</li>
+<li>
+<p>可设置HTTP头</p>
+</li>
+<li>
+<p>自动处理重定向</p>
+</li>
+<li>
+<p>支持代理</p>
+</li>
+<li>
+<p>支持 HTTP 认证</p>
+</li>
+</ul>
+<p><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-d4df210201d1fc59?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>--基于python多进程和多线程实现，学习自行开发性能测试的佳品。 Python 2.6 or 2.7 较长时间没有更新，一般只建议改造使用。</p>
+<p><img alt="image" src="https://upload-images.jianshu.io/upload_images/12713060-2ad4113d61eb2f47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="ngrinder">nGrinder(推荐)</h3>
+<p>nGrinder是基于Grinder开源项目，由NHN公司的开发团队进行了重新设计和完善。nGrinder是一款非常易用，有简洁友好的用户界面和controller-agent分布式结构的强大的压力测试工具。
+nGrinder测试基于python测试脚本(groovy也可)，用户按照一定规范编写测试脚本，controller会将脚本一集需要的资源分发到agent，用jython执行。并且在执行的过程中收集运行情况、相应时间、测试目标服务器的运行情况等。并且保存这些数据生成测试报告，以供查看。
+这款框架的一大特点就是非常的简单易用，安装也很容易，可以说是开箱即用。</p>
+<p>源码地址：https://naver.github.io/ngrinder/
+<a href="https://bitbucket.org/xurongzhong/testing/wiki/%5B%E9%9B%AA%E5%B3%B0%E7%A3%81%E9%92%88%E7%9F%B3%E5%8D%9A%E5%AE%A2%5D%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7nGrinder%E4%BB%8B%E7%BB%8D">性能测试工具nGrinder介绍</a></p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-a14e2d087c6dc7d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="grinder">grinder</h3>
+<p>分布式结构的强大的压力测试工具 http://grinder.sourceforge.net/</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-b69fd9d6d05c329f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="gtmetrix">GTmetrix</h3>
+<p>https://gtmetrix.com/ 基于Google的Pagespeed和Yslow，还可以监控网站。</p>
+<ul>
+<li>收集关键性能指标如页面加载时间，总页面大小和请求的总数。</li>
+<li>在真实Android设备上分析页面。</li>
+<li>从世界各地测试你的页面。</li>
+</ul>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-323024f2cbd20e3a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-db41c7fb9b18368b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="loadwise">LoadWise</h3>
+<p>LoadWise是一个简单的性能负载测试工具，使用Firefox浏览器脚本记录器。 也可用于功能测试，免费版本只支持三个用户。</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-0e8d4db96b3455f9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-eeea3d7182f16c36.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="badboy">Badboy</h3>
+<p>Badboy是功能强大的开源工具，专门用于复杂的Web应用的自动化测试和负载测试。支持录制/回放界面、性能测试、报告等功能，很多地方和JMeter类似，在处理AJAX方面更好。</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-ec528527d1cb9a04.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="webperformance">Webperformance</h3>
+<p>Webperformance是商业负载测试工具，无需安装应用程序和配置服务器。测试启动可以创建基于URL和录制。 </p>
+<p>主页：http://www.webperformance.com/</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-c76ed6e32b42ab98.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-38052cf0a63df501.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="webpagetest">webPagetest</h3>
+<p>WebPagetest是用于测量和分析网页性能的开源工具。提交URL后它产生的页面级指标问题的报告，包括加载时间，所有加载时间，第一个字节的时间，开始渲染时间，速度指标，DOM元素和返回码。</p>
+<p>主页：http://www.webpagetest.org/</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-6c6315e41f766cf4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>百度也提供了类似功能，参见：http://developer.baidu.com/apm/</p>
+<h3 id="loaderio">Loader.io</h3>
+<p>Loader.io是免费的负载测试服务，可以对你的webapps和API进行上千并发连接的压力测试。上传token文件验证网站之后即可实时或定时测试。</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-07c5a1dce2926828.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>主页：https://loader.io/</p>
+<h3 id="sourcemonitor">SourceMonitor</h3>
+<p>免费程序SourceMonitor可查看软件源代码大小及相对模块复杂度。</p>
+<ul>
+<li>分析速度：一万行/秒</li>
+<li>支持C++, C, C#, VB.NET, Java, Delphi, Visual Basic (VB6) or HTML</li>
+<li>在软件开发过程中保存检查点指标</li>
+<li>显示和打印度量表格和图表，包括Kiviat图。</li>
+</ul>
+<p>主页：http://www.campwoodsw.com/sourcemonitor.html</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-b711676a3a8d1349.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-d9e0437f46619d23.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>性能测试参考资料：</p>
+<p>https://blazemeter.com/blog/open-source-load-testing-tools-which-one-should-you-use</p>
+<h3 id="bees-with-machine-guns"><a href="https://github.com/newsapps/beeswithmachineguns">Bees with Machine Guns</a></h3>
+<p>进行负载测试的蜜蜂(微型EC2实例)。 语言python3+ python2.6+</p>
+<h3 id="siege"><a href="http://www.joedog.org/siege-home/">Siege</a></h3>
+<p>http负载测试和基准测试工具。 Siege支持基本身份验证，Cookie以及HTTP和HTTPS协议，并允许用户使用可配置数量模拟Web浏览器访问Web服务器。</p>
+<h3 id="apache-bench"><a href="https://httpd.apache.org/docs/2.4/programs/ab.html">Apache Bench</a></h3>
+<p>ApacheBench 是一个用来衡量http服务器性能的单线程命令行工具。原本针对Apache http服务器，但是也适用于其他http服务器。</p>
+<h3 id="httperf"><a href="https://github.com/httperf/httperf">Httperf</a></h3>
+<p>测量Web服务器性能，并为生成各种HTTP工作负载和测量服务器性能提供灵活的工具。重点不是实施特定的基准，而是提供强大的高性能工具，有助于构建微观和宏观基准。 httperf的三个显着特征是强大，包括产生和维持服务器过载的能力;支持HTTP / 1.1和SSL协议;及其对新工作负载生成器和性能测量的可扩展性。</p>
+<h3 id="jmeter"><a href="https://jmeter.apache.org/">JMeter</a>  (推荐)</h3>
+<p>测试静态和动态资源（文件，servlet，Perl脚本，Java对象，数据库和查询，FTP服务器等）的性能。您还可以使用它来模拟服务器，网络或对象上的重负载，以测试其强度或分析不同负载类型下的整体性能。还可对性能进行图形分析，或者在繁重的并发负载下测试服务器/脚本/对象的行为。</p>
+<h3 id="google-pagespeed-insights"><a href="https://developers.google.com/speed/pagespeed/insights/">Google PageSpeed Insights</a></h3>
+<p>分析网页内容并生成建议以加快网页加载速度的服务。</p>
+<h3 id="sitespeedio"><a href="https://www.sitespeed.io/">Sitespeed.io</a></h3>
+<p>根据性能最佳实践和时序指标分析您网站的速度和性能。您可以分析一个站点，分析和比较多个站点，或者在性能不合格时让持续集成服务器停止构建。</p>
+<h3 id="google-ngx_pagespeed"><a href="https://developers.google.com/speed/pagespeed/ngx">Google ngx_pagespeed</a></h3>
+<p>可加快您的网站速度并缩短网页加载时间。此开源Apache服务器模块自动将Web性能最佳实践应用于页面和关联资源CSS，JavaScript，图像。</p>
+<h3 id="google-mod_pagespeed"><a href="https://developers.google.com/speed/pagespeed/mod">Google mod_pagespeed</a></h3>
+<p>可加快您的网站速度并缩短网页加载时间。此开源nginx服务器模块自动将Web性能最佳实践应用于页面和关联资源CSS，JavaScript，图像。</p>
+<h2 id="_1">参考资料</h2>
+<ul>
+<li>[本文相关书籍下载]https://github.com/china-testing/python-api-tesing/blob/master/books.md)</li>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_tools_perf.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_ftplib.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python模块介绍-ftplib：FTP协议客户端">[雪峰磁针石博客]python模块介绍-ftplib：FTP协议客户端</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-08-20T16:20:00+08:00">
                 Published: 一 20 八月 2018
@@ -37,7 +178,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info --><h2 id="_1">概述</h2>
+</footer><!-- /.post-info -->                <h2 id="_1">概述</h2>
 <p>该模块定义了FTP类和一些相关项。FTP类实现了FTP协议的客户端。你可以用它来编写使用FTP的URL。有关FTP（文件传输协议）的详细信息，请参阅Internet RFC959 [tools.ietf.org/html/rfc959.html]。</p>
 <h2 id="_2">快速入门</h2>
 <div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">ftplib</span> <span class="kn">import</span> <span class="n">FTP</span>
@@ -50,202 +191,10 @@
 <span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span>  <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s1">&#39;andrew&#39;</span><span class="p">,</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="s1">&#39;230 Login successful.&#39;</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">ftp</span><span class="o">.</span><span class="n">retrlines</span><span class="p">(</span><span class="s1">&#39;LIST&#39;</span><span class="p">)</span>
-<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>    <span class="mi">2</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">4096</span> <span class="n">Feb</span> <span class="mi">27</span> <span class="mi">11</span><span class="p">:</span><span class="mi">29</span> <span class="n">Desktop</span>
-<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>    <span class="mi">2</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">4096</span> <span class="n">Feb</span> <span class="mi">27</span> <span class="mi">11</span><span class="p">:</span><span class="mi">29</span> <span class="n">Documents</span>
-<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>    <span class="mi">2</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">4096</span> <span class="n">Feb</span> <span class="mi">27</span> <span class="mi">11</span><span class="p">:</span><span class="mi">29</span> <span class="n">Downloads</span>
-<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>    <span class="mi">2</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">4096</span> <span class="n">Feb</span> <span class="mi">27</span> <span class="mi">11</span><span class="p">:</span><span class="mi">29</span> <span class="n">Music</span>
-<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>    <span class="mi">2</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">4096</span> <span class="n">Feb</span> <span class="mi">27</span> <span class="mi">11</span><span class="p">:</span><span class="mi">29</span> <span class="n">Pictures</span>
-<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>    <span class="mi">2</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">4096</span> <span class="n">Feb</span> <span class="mi">27</span> <span class="mi">11</span><span class="p">:</span><span class="mi">29</span> <span class="n">Public</span>
-<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>    <span class="mi">2</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">4096</span> <span class="n">Feb</span> <span class="mi">27</span> <span class="mi">11</span><span class="p">:</span><span class="mi">29</span> <span class="n">Templates</span>
-<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>    <span class="mi">2</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">4096</span> <span class="n">Feb</span> <span class="mi">27</span> <span class="mi">11</span><span class="p">:</span><span class="mi">29</span> <span class="n">Videos</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span>    <span class="mi">1</span> <span class="mi">1000</span>     <span class="mi">1000</span>            <span class="mi">4</span> <span class="n">Apr</span> <span class="mi">08</span> <span class="mo">00</span><span class="p">:</span><span class="mi">23</span> <span class="n">btp</span><span class="o">.</span><span class="n">txt</span>
-<span class="n">drwxrwxr</span><span class="o">-</span><span class="n">x</span>   <span class="mi">43</span> <span class="mi">1000</span>     <span class="mi">1000</span>       <span class="mi">917504</span> <span class="n">Jun</span> <span class="mi">19</span> <span class="mi">14</span><span class="p">:</span><span class="mi">26</span> <span class="n">code</span>
-<span class="n">lrwxrwxrwx</span>    <span class="mi">1</span> <span class="mi">1000</span>     <span class="mi">1000</span>           <span class="mi">49</span> <span class="n">Apr</span> <span class="mi">27</span> <span class="mi">09</span><span class="p">:</span><span class="mi">46</span> <span class="n">compare</span> <span class="o">-&gt;</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">test_tools</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">faceunlock_test_general_meil</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>    <span class="mi">1</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">8980</span> <span class="n">Feb</span> <span class="mi">27</span> <span class="mi">11</span><span class="p">:</span><span class="mi">11</span> <span class="n">examples</span><span class="o">.</span><span class="n">desktop</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>    <span class="mi">1</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">4763</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">11</span><span class="p">:</span><span class="mi">11</span> <span class="n">index</span><span class="o">.</span><span class="n">png</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span>    <span class="mi">1</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">1882</span> <span class="n">Mar</span> <span class="mo">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">27</span> <span class="n">init</span><span class="o">.</span><span class="n">sql</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span>    <span class="mi">1</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">5632</span> <span class="n">Mar</span> <span class="mi">14</span> <span class="mi">21</span><span class="p">:</span><span class="mi">50</span> <span class="n">output</span><span class="o">.</span><span class="n">xls</span>
-<span class="n">drwxrwxr</span><span class="o">-</span><span class="n">x</span>    <span class="mi">3</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">4096</span> <span class="n">Mar</span> <span class="mi">26</span> <span class="mi">10</span><span class="p">:</span><span class="mi">49</span> <span class="n">projects</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span>    <span class="mi">1</span> <span class="mi">1000</span>     <span class="mi">1000</span>          <span class="mi">268</span> <span class="n">Mar</span> <span class="mo">07</span> <span class="mi">09</span><span class="p">:</span><span class="mo">02</span> <span class="n">sensetime</span><span class="o">-</span><span class="n">auth</span><span class="o">-</span><span class="n">sz</span><span class="o">.</span><span class="n">ovpn</span>
-<span class="o">-</span><span class="n">rwxr</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>    <span class="mi">1</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">1726</span> <span class="n">Apr</span> <span class="mi">25</span> <span class="mi">20</span><span class="p">:</span><span class="mi">47</span> <span class="n">shuangtong</span><span class="o">.</span><span class="n">py</span>
-<span class="n">drwxrwxr</span><span class="o">-</span><span class="n">x</span>    <span class="mi">2</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">4096</span> <span class="n">May</span> <span class="mi">17</span> <span class="mi">11</span><span class="p">:</span><span class="mi">45</span> <span class="n">tasks_db</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span>    <span class="mi">1</span> <span class="mi">1000</span>     <span class="mi">1000</span>           <span class="mi">51</span> <span class="n">Jun</span> <span class="mi">15</span> <span class="mi">15</span><span class="p">:</span><span class="mi">13</span> <span class="n">test</span><span class="o">.</span><span class="n">htm</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span>    <span class="mi">1</span> <span class="mi">1000</span>     <span class="mi">1000</span>        <span class="mi">28014</span> <span class="n">Mar</span> <span class="mi">09</span> <span class="mi">15</span><span class="p">:</span><span class="mo">04</span> <span class="n">test2</span><span class="o">.</span><span class="n">jpg</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span>    <span class="mi">1</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">3566</span> <span class="n">Mar</span> <span class="mi">20</span> <span class="mi">08</span><span class="p">:</span><span class="mi">14</span> <span class="n">testing</span><span class="o">.</span><span class="n">log</span>
-<span class="n">drwxrwxr</span><span class="o">-</span><span class="n">x</span>    <span class="mi">6</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">4096</span> <span class="n">Jun</span> <span class="mi">11</span> <span class="mi">16</span><span class="p">:</span><span class="mi">41</span> <span class="n">tmp</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span>    <span class="mi">1</span> <span class="mi">1000</span>     <span class="mi">1000</span>         <span class="mi">4068</span> <span class="n">May</span> <span class="mi">11</span> <span class="mi">10</span><span class="p">:</span><span class="mi">14</span> <span class="n">tmp</span><span class="o">.</span><span class="n">log</span>
-<span class="n">lrwxrwxrwx</span>    <span class="mi">1</span> <span class="mi">1000</span>     <span class="mi">1000</span>           <span class="mi">29</span> <span class="n">May</span> <span class="mi">29</span> <span class="mi">10</span><span class="p">:</span><span class="mi">38</span> <span class="n">tools</span> <span class="o">-&gt;</span> <span class="n">code</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">api</span><span class="o">-</span><span class="n">tesing</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="s1">&#39;226 Directory send OK.&#39;</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span>  <span class="n">ftp</span><span class="o">.</span><span class="n">retrbinary</span><span class="p">(</span><span class="s1">&#39;RETR btp.txt&#39;</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;ftp.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="s1">&#39;226 Transfer complete.&#39;</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">bye</span>
-</pre></div>
-
-
-<h2 id="_3">类介绍<a href="http://automationtesting.sinaapp.com/blog#类介绍"></a></h2>
-<ul>
-<li>class ftplib.FTP([host[, user[, passwd[, acct[, timeout]]]]])：</li>
-</ul>
-<p>返回FTP类的新实例。提供host时调用connect(host)。提供user时调用login(user, passwd, acct)，passwd和acct在没有提供时默认为空。可选timeout参数指定用于像连接尝试之类阻塞操作的超时描述(如果未指定，则timeout 全局默认超时设置)。超时为2.6加入。</p>
-<ul>
-<li>class ftplib.FTP_TLS([host[, user[, passwd[, acct[, keyfile[, certfile[, timeout]]]]]]])</li>
-</ul>
-<p>FTP子类，增加TLS支持到FTP，在RFC4217<a href="http://tools.ietf.org/html/rfc4217.html">http://tools.ietf.org/html/rfc4217.html</a>中描述。TLS的快速了解参见<a href="http://zh.wikipedia.org/wiki/TLS">http://zh.wikipedia.org/wiki/TLS</a>。和通常一样连接到21端口但认证以前已经加密了FTP控制连接。调用prot_p()可以保护数据连接。keyfile和certfile中是可选的 - 它们可以包含PEM格式的私钥和SSL连接的证书链文件名。2.7版本新增。</p>
-<ul>
-<li>exception ftplib.error_reply</li>
-</ul>
-<p>Exception raised when an unexpected reply is received from the server. 从服务器接收到非预期的reply时产生。</p>
-<ul>
-<li>exception ftplib.error_temp</li>
-</ul>
-<p>Exception raised when an error code signifying a temporary error (response codes in the range 400–499) is received. 接收到临时错误(范围400-499响应代码)。</p>
-<ul>
-<li>exception ftplib.error_perm</li>
-</ul>
-<p>Exception raised when an error code signifying a permanent error (response codes in the range 500–599) is received. 接收到永久性的错误(范围500-599响应代码)。。</p>
-<ul>
-<li>exception ftplib.error_proto</li>
-</ul>
-<p>Exception raised when a reply is received from the server that does not fit the response specifications of the File Transfer Protocol, i.e. begin with a digit in the range 1–5. 不符合FTP响应规格的响应，即1-5开头的数字。</p>
-<ul>
-<li>ftplib.all_errors</li>
-</ul>
-<p>The set of all exceptions (as a tuple) that methods of FTP instances may raise as a result of problems with the FTP connection (as opposed to programming errors made by the caller). This set includes the four exceptions listed above as well as socket.error and IOError.FTP示例的异常集合，为元组，包含以上4种异常和socket.error和IOError</p>
-<p>模块netrc可以解析.netrc文件，FTP客户端通常使用.netrc文件加载用于验证信息。python源码中的Tools/scripts/ftpmirror.py可以镜像FTP站点，可以看做本模块的实例。</p>
-<h2 id="ftp">FTP对象<a href="http://automationtesting.sinaapp.com/blog#FTP对象"></a></h2>
-<p>方法分为处理文本文件和二进制文件，方法名分别对应lines和binary。</p>
-<ul>
-<li>FTP.set_debuglevel(level)</li>
-</ul>
-<p>设置实例的调试级别。默认情况为0，不产生任何调试输出。值为1时会产生适量的调试输出，一般每次请求一行。 2或更高的值会产生大量调试输出，记录控制连接上发送和接收的每行。</p>
-<ul>
-<li>FTP.connect(host[, port[, timeout]])</li>
-</ul>
-<p>连接到指定的host和port。默认端口号为21。此函数每个实例只调用一次，如果在创建实例时指定了host则不能调用。所有其他的方法经建立连接后使用。在2.6版本：加入超时。</p>
-<ul>
-<li>FTP.getwelcome()</li>
-</ul>
-<p>Return the welcome message sent by the server in reply to the initial connection. (This message sometimes contains disclaimers or help information that may be relevant to the user.)</p>
-<ul>
-<li>FTP.login([user[, passwd[, acct]]])</li>
-</ul>
-<p>登录为user。passwd和acct参数可选，默认为空字符串。如果没有指定用户，默认为'anonymous'。如果用户是'anonymous'，默认的passwd是'anonymous@'。此函数每个实例只调用一次，acct为"accounting information"，很少有系统实现。</p>
-<ul>
-<li>FTP.abort()</li>
-</ul>
-<p>中止正在传输的文件，使用未必总是有效，但值得一试。</p>
-<ul>
-<li>FTP.sendcmd(command)</li>
-</ul>
-<p>发送简单的命令字符串到服务器，并返回响应字符串。</p>
-<ul>
-<li>FTP.voidcmd(command)</li>
-</ul>
-<p>发送一个简单的命令字符串到服务器，并处理响应。返回None如果接收到成功（范围200-299码。否则报error_reply。</p>
-<ul>
-<li>FTP.retrbinary(command, callback[, maxblocksize[, rest]])</li>
-</ul>
-<p>用二进制传输方式获取文件。命令应该是适当的RETR命令：'RETR filename'。每次接收到数据块时会调用callback函数。</p>
-<ul>
-<li>FTP.retrlines(command[, callback])</li>
-</ul>
-<p>用文本传输方式获取文件。命令应该是适当的RETR命令或LIST, NLST，MLSD。LIST获取文件和信息列表，NLST 获取文件名列表，一些服务器上MLSD返回可读文件和信息的列表。每次接收到一行时会调用callback函数，默认为打印到sys.stdout。</p>
-<ul>
-<li>FTP.set_pasv(boolean)</li>
-</ul>
-<p>是否启用"passive"模式，默认为开启。</p>
-<ul>
-<li>FTP.storbinary(command, file[, blocksize, callback, rest])</li>
-</ul>
-<p>二进制传输方式存储文件。command是适当的STOR命令："STOR filename"。file是打开的文件对象，可以使用其read()方法读取blocksize的数据直到EOF。blocksize默认为8192。2.6版本：callback添加。2.7版本：rest添加。</p>
-<ul>
-<li>FTP.storlines(command, file[, callback])</li>
-</ul>
-<p>文本传输方式存储文件。command是适当的STOR命令："STOR filename"。2.6版本：callback添加。</p>
-<ul>
-<li>FTP.transfercmd(cmd[, rest])</li>
-</ul>
-<p>在数据连接启动传输。如果传输处于active状态，发送EPRT或PORT命令，传输CMD命令，并接受连接。如果服务器是passive的，发送EPSV或PASV命令，连接再开始传输命令。无论哪种方式都返回套接字连接。</p>
-<p>如果有可选的rest，以rest为参数发送REST命令到服务器。rest通常是请求文件中的字节偏移量，告诉服务器重新启动时所要求的偏移发送文件的字节数，跳过最初的字节。但是请注意， RFC 959中只要求休息是包含在可打印范围从ASCII码33为ASCII码126个字符的字符串。transfercmd()方转换rest为字符串，但不检查字符串的内容。如果服务器不能识别REST命令，将引发异常error_reply。如果发生这种情况，只需不附加rest调用transfercmd() 。</p>
-<ul>
-<li>FTP.ntransfercmd(cmd[, rest])</li>
-</ul>
-<p>像transfercmd()，但返回元组，包含数据连接，预期数据大小。如果预期的大小不能计算，返回None。</p>
-<ul>
-<li>FTP.nlst(argument[, ...])</li>
-</ul>
-<p>返回NLST命令返回的文件名列表。可选参数argument是目录(默认为当前服务器的目录)。多多个参数可以用来传递非标准选项给NLST命令。</p>
-<ul>
-<li>FTP.dir(argument[, ...])</li>
-</ul>
-<p>通过LIST命令返回目录列表，打印到标准输出。可选参数argument是目录(默认为当前服务器的目录)。多个参数可以用来传递非标准选项给LIST命令。如果最后一个参数是函数，用来作为retrlines()的回调函数;默认打印到sys.stdout。此方法返回None。</p>
-<ul>
-<li>FTP.rename(fromname, toname)</li>
-</ul>
-<p>重命名文件。</p>
-<ul>
-<li>FTP.cwd(pathname)</li>
-</ul>
-<p>设置当前目录。</p>
-<ul>
-<li>FTP.mkd(pathname)</li>
-</ul>
-<p>创建新目录。</p>
-<ul>
-<li>FTP.pwd()</li>
-</ul>
-<p>返回当前目录。</p>
-<ul>
-<li>FTP.rmd(dirname)</li>
-</ul>
-<p>删除目录。</p>
-<ul>
-<li>FTP.size(filename)</li>
-</ul>
-<p>返回文件大小。不成功返回None。SIZE不标准，但是多数服务器支持。</p>
-<ul>
-<li>FTP.quit()</li>
-</ul>
-<p>发送QUIT命令到服务器并关闭连接。这是礼貌的方式来关闭连接，但是如果服务器返回错误给QUIT命令时可能会引发异常。这意味着在调用close（）方法而呈现的FTP实例无用的后续调用（见下文） 。</p>
-<ul>
-<li>FTP.close()</li>
-</ul>
-<p>单方面关闭连接。不能多次关闭连接或重开连接。</p>
-<h2 id="ftp_tls">FTP_TLS对象<a href="http://automationtesting.sinaapp.com/blog#FTP_TLS对象"></a></h2>
-<p>FTP_TLS继承了FTP，增加了如下：</p>
-<ul>
-<li>
-<p>FTP_TLS.ssl_version：SSL版本，默认为TLSv1</p>
-</li>
-<li>
-<p>FTP_TLS.auth()：使用TLS或SSL(使用何种处决于ssl_version)建立安全控制连接。</p>
-</li>
-<li>
-<p>FTP_TLS.prot_p()：建立安全的数据连接。</p>
-</li>
-<li>
-<p>FTP_TLS.prot_c()：建立明文数据连接。</p>
-</li>
-</ul>
-<h2 id="_4">参考资料</h2>
-<ul>
-<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/python3_lib_ftplib.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-<li>python官方文档：https://docs.python.org/3/library/ftplib.html</li>
-<li>http://effbot.org/librarybook/ftplib.htm</li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<span class="n">In</span> <span class="p">[</span><span class="mi">6 …</span></pre></div>
+                <a class="readmore" href="/python3_lib_ftplib.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -579,42 +528,6 @@ $ sudo apt-get install python-dev
 <p>本教程向读者通俗地介绍Python语言和系统的基本概念和特点。配合Python解释器边学边练最佳，所有例子已经自包含在教程中，也可离线阅读。</p>
 <p>标准对象和模块参见<a href="https://docs.python.org/2/library/index.html#library-index">The Python Standard …</a></p>
                 <a class="readmore" href="/python3_crash1.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/health_shouxiang_jichu.html" rel="bookmark"
-                           title="Permalink to 手相学: 天尊山道人看相算命">手相学: 天尊山道人看相算命</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-08T18:20:00+08:00">
-                Published: 三 08 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi.html">测试</a>.</p>
-
-</footer><!-- /.post-info -->                <h1 id="45">手相学 - 天尊山道人看相算命</h1>
-<p>手并拢，左右手正面，背面，小指侧面共六张照片，(可选：舌象、面相)。光线，自然光较好，非阳光直射。</p>
-<p><img alt="image" src="https://oscimg.oschina.net/oscnet/9215903e7830e2915bee9a84bc0d94af532.jpg"></p>
-<h2 id="_1">生命线</h2>
-<p>生命线：由拇指与食指间之虎口部位延伸呈弧形线纹，象征生命意志及活力生命线纹若是深明清晰，强而有力的延伸环绕接近手腕处，则为体魄强健，个性执着而好胜心强，行事鲜明果决，具有企图心，也多能凭借个人不断努力，而达到自我想要的成果……</p>
-<p>技术支持ＱＱ群：中医解梦看相八字算命 391441566　草药中医手相面相看相　184175668</p>
-<p>一对一商务服务微信: pythontesting, 看手相、面相、舌相、抽签、体质识别。服务费100元每人次。</p>
-<p><img alt="image" src="https://oscimg.oschina.net/oscnet/2a679d5cf970bfa2291802884af0a18e5d9.jpg"></p>
-<p><img alt="image" src="https://oscimg.oschina.net/oscnet/fc0120d1c1366fdc729f492da99c3416f02.jpg"></p>
-<h2 id="_2">感情线</h2>
-<p>感情线：是由小指的下方横亘手掌的线纹，象征个人情感，感受能力和爱情的运势。感情线纹若横向延伸至食指与中指间，则其人显得成熟稳健，用情适中，内心不会偏颇，心灵与肉体都能够兼顾，且会设身处地为对方着想，能够真诚付出自己的情感……</p>
-<p><img alt="image" src="https://oscimg.oschina.net/oscnet/e5c2dc522b10ad6cf75aab8799b8454f65e.jpg"></p>
-<p><img alt="image" src="https://oscimg.oschina.net/oscnet/a068d3a5a56575a6c5cc0f0ae9db593930e.jpg"></p>
-<h2 id="_3">智慧线</h2>
-<p>智慧线 …</p>
-                <a class="readmore" href="/health_shouxiang_jichu.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
