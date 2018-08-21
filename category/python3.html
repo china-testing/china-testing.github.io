@@ -222,14 +222,11 @@ os.curdir - 当前目录 (e.g., “.”)。
 <p>interprocess communication (IPC)进程间的通信: 最常见的形式是基于消息传递（message passing）。message是原始字节的缓存，通过I/O channel比如网络socket和管道，使用原语比如send() and recv()来发送接收消息。次常用的有内存映射区：memory-mapped regions，见mmap模块，实际上是共享内存。</p>
 <p>线程有自己的控制流和执行堆栈，但是共享系统资源和数据。</p>
 <p>并发的难点：同步和数据共享。解决的方法一般是使用互斥锁。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">write_lock</span> <span class="o">=</span> <span class="n">Lock …</span></pre></div></td></tr></table>
+<div class="highlight"><pre><span></span><span class="n">write_lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
+<span class="o">...</span>
+<span class="c1"># Critical section where writing occurs</span>
+<span class="n">write_lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+<span class="n">f …</span></pre></div>
                 <a class="readmore" href="/python3_lib_multiprocessing.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
