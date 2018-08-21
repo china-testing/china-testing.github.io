@@ -2,7 +2,7 @@
 <html lang="cn">
 <head>
         <meta charset="utf-8" />
-        <title>python自动化测试人工智能</title>
+        <title>python代码风格指南(PEP8中文版)</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 
         <!--[if IE]>
@@ -19,14 +19,19 @@
                     <li><a href="/category/common.html">common</a></li>
                     <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
                     <li><a href="/category/linux.html">linux</a></li>
-                    <li><a href="/category/python.html">python</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
                     <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python_pep8.html" rel="bookmark"
+           title="Permalink to python代码风格指南(PEP8中文版)">python代码风格指南(PEP8中文版)</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/python_pep8.html">python代码风格指南(PEP8中文版)</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-08-21T14:50:00+08:00">
                 Published: 二 21 八月 2018
@@ -37,7 +42,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info --><p>本文给出主Python版本标准库的编码约定。CPython的C代码风格参见<a href="https://www.python.org/dev/peps/pep-0007/">PEP7</a>。</p>
+</footer><!-- /.post-info -->      <p>本文给出主Python版本标准库的编码约定。CPython的C代码风格参见<a href="https://www.python.org/dev/peps/pep-0007/">PEP7</a>。</p>
 <p>本文和<a href="https://www.python.org/dev/peps/pep-0257/">PEP 257 文档字符串标准</a>改编自Guido最初的《Python Style Guide》, 并增加了Barry的<a href="http://barry.warsaw.us/software/STYLEGUIDE.txt">GNU Mailman Coding Style Guide</a>的部分内容。</p>
 <p>本文会随着语言改变等而改变。</p>
 <p>许多项目都有自己的编码风格指南，冲突时自己的指南为准。</p>
@@ -852,378 +857,11 @@
 <li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
 <li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
 <li><a href="https://www.python.org/dev/peps/pep-0008/">PEP 8 - Style Guide for Python Code</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/testing_tools_mobile.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]软件测试专家工具包3移动端">[雪峰磁针石博客]软件测试专家工具包3移动端</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-21T11:30:00+08:00">
-                Published: 二 21 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi.html">测试</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="ui-automator">UI Automator</h3>
-<p>UI Automator提供了一组API来构建基于交互UI的测试。API允许你执行操作，如打开设置菜单，非常适合黑盒自动化测试，在测试代码不依赖于应用的内部实现</p>
-<p>uiautomatorviewer提供了一个方便的图形用户界面进行扫描和分析在Android设备上当前显示的UI组件。您可以使用此工具来检查的布局层次和查看UI组件。 </p>
-<p>UiDevice类可以访问设备并进行操作。你可以调用它的方法来访问设备属性，如当前的方向或显示尺寸。该UiDevice类也让您执行操作，例如：旋转设备；按下D-pad按钮；按Back、Home、Menu等；打开通知树栏；当前窗口截图等。</p>
-<p>应用相关的API： UiCollection枚举容器的UI元素以计数，或通过文字(或属性等)针定位子元素; UIObject表示是在设备上可见的UI元素; UiScrollable?：为可滚动UI容器提供查找支持； UiSelector?：查询一个或者多个UI元素; Configurator: 设置参数。</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1edb5256ab4105cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>示例：更改语言</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="kn">from</span> <span class="nn">uiautomator</span> <span class="kn">import</span> <span class="n">device</span> <span class="k">as</span> <span class="n">d</span>
-
-<span class="n">d</span><span class="o">.</span><span class="n">screen …</span></pre></div>
-                <a class="readmore" href="/testing_tools_mobile.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/testing_tools_perf.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]软件测试专家工具包2性能测试">[雪峰磁针石博客]软件测试专家工具包2性能测试</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:35:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi.html">测试</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="locust">Locust(推荐)</h3>
-<p>了解服务器端性能的好工具。 语言python3。<a href="https://github.com/locustio/locust">源码</a> python3+ python2.7+ github上star和fork最多的性能测试工具。</p>
-<p>Locust是易于使用、分布式的用户负载测试工具。用于网站(或其他系统)的负载测试，计算出系统可以处理并发用户数。</p>
-<p>测试时大量蝗虫会攻击你的网站。每只蝗虫(或叫测试用户)可以自定义、测试过程由web界面实时监控。这能帮助测试并确定瓶颈。</p>
-<p>Locust 完全基于的事件，单机可以支持数千用户。它不使用回调，而是基于轻量进程gevent, 能简单地实线各种场景。</p>
-<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-acaee51940c65dca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h3 id="multi-mechanize">Multi-Mechanize(推荐)</h3>
-<p>Multi-Mechanize 是一个开源的性能和负载测试框架，它并发运行多个 Python 脚本对网站或者服务生成负载（组合事务)。测试输出报告保存为HTML或JMeter的兼容的XML。Multi-Mechanize最常用于web性能 和可扩展性（scalability）测试，也适用于任何python可以访问的API。尤其适合后台性能测试。稍微懂点编程的话，这个工具会远强过商业 的性能测试工具。</p>
-<p>主要特性：</p>
-<ul>
-<li>
-<p>支持各种 HTTP methods</p>
-</li>
-<li>
-<p>高级超链接和HTML表单支持 …</p></li></ul>
-                <a class="readmore" href="/testing_tools_perf.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_ftplib.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python模块介绍-ftplib：FTP协议客户端">[雪峰磁针石博客]python模块介绍-ftplib：FTP协议客户端</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:20:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">概述</h2>
-<p>该模块定义了FTP类和一些相关项。FTP类实现了FTP协议的客户端。你可以用它来编写使用FTP的URL。有关FTP（文件传输协议）的详细信息，请参阅Internet RFC959 [tools.ietf.org/html/rfc959.html]。</p>
-<h2 id="_2">快速入门</h2>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">ftplib</span> <span class="kn">import</span> <span class="n">FTP</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">ftp</span> <span class="o">=</span> <span class="n">FTP</span><span class="p">(</span><span class="s1">&#39;ftp.fi.muni.cz&#39;</span><span class="p">)</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>          
-<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span>  <span class="s1">&#39;230-Hello...&#39;</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span>  <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s1">&#39;andrew&#39;</span><span class="p">,</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="s1">&#39;230 Login successful.&#39;</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">6 …</span></pre></div>
-                <a class="readmore" href="/python3_lib_ftplib.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_binascii.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python标准模块介绍- binascii 二进制和ASCII转换">[雪峰磁针石博客]python标准模块介绍- binascii 二进制和ASCII转换</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:17:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>binascii模块包含很多用来方法来转换二进制和各种ASCII编码的二进制表示法。通常不直接使用这些功能，而是使用封装模块，如uu, base64或binhex。binascii模块包含用C语言编写更快的低级功能，通常为高级模块所使用。</p>
-<ul>
-<li>
-<p>功能：二进制和ASCII转换。</p>
-</li>
-<li>
-<p>类型：标准模块</p>
-</li>
-<li>
-<p>相关模块：</p>
-<ol>
-<li>
-<p>base64 标准模块。</p>
-</li>
-<li>
-<p>binhex 标准模块。</p>
-</li>
-<li>
-<p>uu        标准模块。</p>
-</li>
-<li>
-<p>quopri  标准模块。</p>
-</li>
-</ol>
-</li>
 </ul>
-<h2 id="uu">Uu编码</h2>
-<p>uu编码格式现在已经比较少使用（<a href="http://zh.wikipedia.org/wiki/Uuencode">http://zh.wikipedia.org/wiki/Uuencode</a>），相关函数binascii.a2b_uu(string)和binascii.b2a_uu(data)这里不做介绍。 更多资料参见：<a href="http://docs.python.org/2/library/uu.html">http://docs.python.org/2/library/uu.html</a></p>
-<h2 id="binhex">Binhex编码</h2>
-<p>Binhex用于Macintosh平台。这里暂不做介绍。相关函数有：binascii …</p>
-                <a class="readmore" href="/python3_lib_binascii.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+    </div><!-- /.entry-content -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_base64.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python标准模块介绍 -Base64： Base64, Base85等数据编码">[雪峰磁针石博客]python标准模块介绍 -Base64： Base64, Base85等数据编码</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:15:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
-<p>功能:RFC 3548: Base16, Base32, Base64 数据编码。转换二进制数据为适合明文协议传输的 ASCII 序列。转换<br>
-8bits 为每个字节包含 6,5 或 4bits 的有效数据,比如 SMTP, URL 的一部分或者 HTTP POST 的一部分。参考: RFC 3548。编码算法不同于 uuencode。  </p>
-<p>类型:标准库<br>
-相关模块:uu, binhex, uu, quopri</p>
-<p>Base64 是一种基于 64 个可打印字符来表示二进制数据的表示方法。由于 2 的 6 次方等于 64,所以每 6 …</p>
-                <a class="readmore" href="/python3_lib_base64.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_platform.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python模块介绍-platform：底层平台信息">[雪峰磁针石博客]python模块介绍-platform：底层平台信息</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:10:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">解释器信息</h2>
-<ul>
-<li>
-<p>platform.python_version():  返回的Python版本字符串'major.minor.patchlevel'。sys.version有类似功能，但是返回的信息更多。</p>
-</li>
-<li>
-<p>platform.python_version_tuple(): 返回Python版本 (major, minor, patchlevel)。</p>
-</li>
-<li>
-<p>platform.python_build(): 返回元组(buildno, builddate)，即Python版本号和日期。</p>
-</li>
-<li>
-<p>platform.python_compiler()：返回说明编译Python的编译器的字符串。</p>
-</li>
-<li>
-<p>platform.python_branch()：返回说明编译Python分支。</p>
-</li>
-<li>
-<p>platform.python_implementation()：返回Python实现，比如‘CPython’, ‘IronPython’, ‘Jython’, ‘PyPy’。</p>
-</li>
-<li>
-<p>platform.python_revision()：返回Python补丁版本号。  </p>
-</li>
-</ul>
-<p>下面是ubuntu 16.04执行的结果：</p>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">platform</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">platform</span><span class="o">.</span><span class="n">python_version</span><span class="p">()</span>
-<span class="n">Out …</span></pre></div>
-                <a class="readmore" href="/python3_lib_platform.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_crash2.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python3快速入门教程1 turtle绘图-2函数">[雪峰磁针石博客]python3快速入门教程1 turtle绘图-2函数</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T12:20:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">菲波那契序列:</h2>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># Fibonacci series:</span>
-<span class="o">...</span> <span class="c1"># the sum of two elements defines the next</span>
-<span class="o">...</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-<span class="o">...</span>     <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
-<span class="o">...</span>
-<span class="mi">1</span>
-<span class="mi">1</span>
-<span class="mi">2</span>
-<span class="mi">3</span>
-<span class="mi">5</span>
-<span class="mi">8</span>
-</pre></div>
-
-
-<p>本例的新特性。</p>
-<ul>
-<li>
-<p>第一行和最后一行有多赋值：第一行变量a和b同时获得了新的值0和1。最后一行右边首先完成计算，右边的表达式从左到右计算。</p>
-</li>
-<li>
-<p>条件(b &lt; 10)为true时while循环执行。这里Python类似C ，任何非零整数都为true；0为 false。判断条件也可以是字符串或列表等序列；所有长度不为零的为true ，空序列为false。示例中的测试是一个简单的比较。标准比较操作符与C相同： &lt;(小于 …</p></li></ul>
-                <a class="readmore" href="/python3_crash2.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/testing_tools_web.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]软件测试专家工具包1web测试">[雪峰磁针石博客]软件测试专家工具包1web测试</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T11:20:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi.html">测试</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="web">web测试</h2>
-<p>本章主要涉及功能测试、自动化测试(参考： <a href="https://china-testing.github.io/testing_automation_tips.html">软件自动化测试初学者忠告</a>)
-、接口测试(参考：<a href="https://china-testing.github.io/testing_api_10min.html">10分钟学会API测试</a>)、跨浏览器测试、可访问性测试和可用性测试的测试工具列表。 安全测试工具和性能测试工具在其他章节。</p>
-<h3 id="selenium">selenium</h3>
-<p>web ui自动化测试的霸主，在爬虫领域也颇有市场。</p>
-<p>官网 <a href="http://www.seleniumhq.org">http://www.seleniumhq.org</a></p>
-<p>实例：</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
-
-<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
-
-<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.yahoo.com&#39;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="s1">&#39;Yahoo&#39;</span> <span class="ow">in</span> <span class="n">browser</span><span class="o">.</span><span class="n">title</span>
-
-<span class="n">elem</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">find_element_by_name</span><span class="p">(</span><span class="s1">&#39;p …</span></pre></div>
-                <a class="readmore" href="/testing_tools_web.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_string.html" rel="bookmark"
-                           title="Permalink to python标准模块介绍-string:文本常量和模板">python标准模块介绍-string:文本常量和模板</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-16T09:20:00+08:00">
-                Published: 四 16 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p>string—文本常量和模板</p>
-<p>作用：包含处理文本的常量和类。</p>
-<p>Python版本：1.4及以后版本</p>
-<p>最早的Python版本就有string模块。 之前在这个模块中实现的许多函数已经移至str对象的方法。 string模块保留了几个有用的常量和类，用于处理str对象。</p>
-<p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/string">代码地址</a></p>
-<h4 id="_1">函数</h4>
-<p>capwords()的将字符串中所有单词的首字母大写。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="s2">&quot;hello world!&quot;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">capwords</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="s1">&#39;Hello World!&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
-<span class="s1">&#39;hello world!&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
-<span class="s1">&#39;Hello world!&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
-<span class="s1">&#39;hello world!&#39;</span>
-</pre></div>
-
-
-<p>结果等同于先调用split()，把结果列表中各个单词的首字母大写，然后调用join()合并结果。</p>
-<p>因为str对象已经有capitalize()方法，该函数的实际意义并不大。</p>
-<h4 id="_2">模板</h4>
-<p>字符串模板已经作为PEP 292的一部分增加到Python 2.4中，并得到扩展，以替代内置拼接(interpolation …</p>
-                <a class="readmore" href="/python3_lib_string.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 9
-        <a href="/index2.html">&raquo;</a>
-</p>
-                </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
