@@ -51,53 +51,23 @@
 <ul>
 <li>RSS和RSS源简介</li>
 </ul>
-<p>技术支持QQ群：　144081101 591302926 567351477</p>
-<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
-<p><a href="https://china-testing.github.io/python_flask_autotest2.html">本文最新版本</a> </p>
+<p>技术支持QQ群：　144081101 591302926 567351477
+<a href="https://china-testing.github.io/python_flask_autotest2.html">本文最新版本</a> </p>
 <h3 id="rssrss">RSS和RSS源简介</h3>
 <p>我们需要安装feedparser：feedparser。</p>
 <ul>
 <li>问题，如何寻找python库?</li>
 </ul>
-<p>[python测试开发库]https://github.com/china-testing/python-api-tesing， <a href="https://pypi.python.org/pypi">PYPI</a></p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">feedparser</span>
+<p><a href="https://github.com/china-testing/python-api-tesing">python测试开发库</a>， <a href="https://pypi.python.org/pypi">PYPI</a></p>
+<div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">feedparser</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>主要的RSS有WordPress和Blogger,通常会有如下图标。</p>
-<p><img alt="force-build.png" src="https://bitbucket.org/repo/gaRxAK/images/3471977633-force-build.png"></p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-94b58c97d3f33e0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <p>BBC news的rss为： http://feeds.bbci.co.uk/news/rss.xml</p>
 <p>下面的代码需要对HTML有一定的了解，初学者可以参考：http://www.w3school.com.cn/html/index.asp</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">feedparser</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">feedparser</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -128,36 +98,10 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span><span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>执行：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ curl http://172.20.15.200:8000/iol
+<div class="highlight"><pre><span></span>$ curl http://172.20.15.200:8000/iol
 &lt;html&gt;
     &lt;body&gt;
         &lt;h1&gt;Headlines &lt;/h1&gt;
@@ -185,7 +129,19 @@
 
 ...
 </pre></div>
-</td></tr></table>
+
+
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-136589c63d85cd98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="_1">参考资料</h2>
+<ul>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关书籍下载</a></li>
+<li>python测试等IT技术支持qq群144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/python_flask_autotest2.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing/tree/master/flask/flask_web_service">本文代码地址</a></li>
+</ul>
     </div><!-- /.entry-content -->
 
   </article>

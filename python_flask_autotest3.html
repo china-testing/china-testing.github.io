@@ -52,67 +52,35 @@
 <li>
 <p>Jinja模板使用</p>
 </li>
+<li>
+<p><a href="https://www.jianshu.com/p/912f92703d22">本文地址</a></p>
+</li>
 </ul>
-<p>技术支持QQ群：　144081101 591302926 567351477</p>
-<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
-<p><a href="https://china-testing.github.io/python_flask_autotest3.html">本文最新版本</a> </p>
 <h3 id="jinja">介绍Jinja</h3>
 <p>Jinja是一个Python模板引擎。它允许我们轻松定义由Python填充的动态HTML块。即使对于多个静态网页的网站，HTML模板也很有用
 有，如修改页眉和页脚。Flask基于Jinja，尽管可以单独使用Jinja，但Jinja仍然是Flask的固有部分。Flask和Flask提供了几种直接与Jinja工作的方法。默认情况下，Flask假定你存储了所有的Jinja模板位于您的应用程序的templates子目录中。</p>
 <h3 id="jinja_1">Jinja模板使用</h3>
 <p>home.html</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">Headlines</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
-    <span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Headlines</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-        <span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">articles</span> <span class="o">%</span><span class="p">}</span>
-            <span class="o">&lt;</span><span class="n">b</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{{article.link}}&quot;</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">article</span><span class="o">.</span><span class="n">title</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">b</span><span class="o">&gt;&lt;</span><span class="n">br</span> <span class="o">/&gt;</span>
-            <span class="o">&lt;</span><span class="n">i</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">article</span><span class="o">.</span><span class="n">published</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">i</span><span class="o">&gt;&lt;</span><span class="n">br</span> <span class="o">/&gt;</span>
-            <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">article</span><span class="o">.</span><span class="n">summary</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="n">hr</span> <span class="o">/&gt;</span>
-        <span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
-
-    <span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+<p>```#!html</p>
+<p _="%" endfor><html>
+    <head>
+        <title>Headlines</title>
+    </head>
+    <body>
+        <h1>Headlines</h1>
+        {% for article in articles %}
+            <b><a href="{{article.link}}">{{article.title}}</a></b><br />
+            <i>{{article.published}}</i><br />
+            <p>{{article.summary}}</p>
+            <hr /></p>
+<div class="highlight"><pre><span></span>&lt;/body&gt;
 </pre></div>
-</td></tr></table>
 
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">feedparser</span>
+
+<p></html></p>
+<div class="highlight"><pre><span></span><span class="sb">``</span><span class="err">`</span><span class="c1">#!python</span>
+
+<span class="kn">import</span> <span class="nn">feedparser</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span>
 
@@ -133,7 +101,19 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span><span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
+
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-bd9801ada457d014.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="_1">参考资料</h2>
+<ul>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关书籍下载</a></li>
+<li>python测试等IT技术支持qq群144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/python_flask_autotest3.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing/tree/master/flask/flask_web_service">本文代码地址</a></li>
+</ul>
     </div><!-- /.entry-content -->
 
   </article>

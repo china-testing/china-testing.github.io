@@ -48,45 +48,16 @@
 <p>所谓 OCR 是图像识别领域中的一个子领域，该领域专注于对图片中的文字信息进行识别并转换成能被常规文本编辑器编辑的文本。</p>
 <p>Tesseract 已经有 30 年历史，开始它是惠普实验室的一款专利软件，然后在 2005 年开源，自 2006 年后由 Google 赞助进行后续的开发和维护。</p>
 <p>在 1995 年 Tesseract 曾是世界前三的 OCR 引擎，而且在现在的免费 OCR 引擎中，其识别精度也仍然是出类拔萃的。因为其免费与较好的效果，许多的个人开发者以及一些较小的团队在使用着 Tesseract ，诸如验证码识别、车牌号识别等应用中，不难见到 Tesseract 的身影。 </p>
-<p><img alt="Alt Text" src="/images/python_lib_ocr_tesseract.gif"> </p>
+<p><img alt="python_lib_ocr_tesseract.gif" src="https://upload-images.jianshu.io/upload_images/10819934-72e77b66e3bb9146.gif?imageMogr2/auto-orient/strip"></p>
 <h2 id="_2">安装</h2>
 <p>以ubuntu 16.04为例</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pip3 install pytesseract</span>
+<div class="highlight"><pre><span></span><span class="c1"># pip3 install pytesseract</span>
 <span class="c1"># apt install tesseract-ocr tesseract-ocr-chi-sim</span>
 </pre></div>
-</td></tr></table>
 
-<ul>
-<li>联系方式： </li>
-</ul>
-<p>Python测试开发群144081101 </p>
-<ul>
-<li>你的赞助是我们前进的动力：</li>
-</ul>
-<p>一流企业专家自动化性能接口测试 数据分析 python一对一教，非骗人的培训机构(多数大陆培训机构的老师实际未入门）承接excel合并，电脑自动化操作等工程 联系qq：37391319 并欢迎讨论中医草药风水相学等道家国学</p>
-<p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 184175668 中医草药湿热湿疹胃病 291184506 python高级人工智能视觉 6089740</p>
+
 <h2 id="_3">快速入门</h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1"># Author:    china-testing@126.com wechat:pythontesting qq群:144081101</span>
 <span class="c1"># CreateDate: 2018-04-25</span>
@@ -107,19 +78,12 @@
 <span class="n">text</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">image_to_string</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;chi_sim&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
-<p><img alt="Alt Text" src="/images/python_lib_ocr.PNG">   </p>
-<p><img alt="Alt Text" src="/images/python_lib_ocr_en.png">    </p>
+
+<p><img alt="Alt Text" src="http://upload-images.jianshu.io/upload_images/10819934-db089125e90c8447.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="Alt Text" src="http://upload-images.jianshu.io/upload_images/10819934-a35b82b399d5cdca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <p>执行结果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="mo">04</span><span class="n">_10_perform_ocr</span><span class="o">.</span><span class="n">py</span> 
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="mo">04</span><span class="n">_10_perform_ocr</span><span class="o">.</span><span class="n">py</span> 
 <span class="err">英文</span><span class="p">:</span>
 <span class="n">This</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">image</span> <span class="n">containing</span> <span class="n">text</span><span class="o">.</span>
 <span class="n">And</span> <span class="n">some</span> <span class="n">numbers</span> <span class="mi">123456789</span>
@@ -128,21 +92,26 @@
 <span class="err">中文</span><span class="p">:</span>
 <span class="n">pyth0</span><span class="s2">&quot;自动化测试人工智能</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>可见中文识别的效果并不太好，为此很多公司进行机器学习来改进。</p>
 <p>另外网易的有道云笔记的OCR效果做得很不错，白描的凑合能用，qq的扫二维码也可以识别文字，但是做得比较烂。</p>
 <p>ocr可以做python项目对初学者进行实践，请联系微信：pythontesting</p>
 <p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/pytesseract">本文最新代码地址</a>，后续相关ocr的资料也会放在这里。</p>
 <p>另外tesseract也可以命令行执行：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">tesseract</span> <span class="n">test22</span><span class="o">.</span><span class="n">png</span>  <span class="n">stdout</span> <span class="o">-</span><span class="n">l</span> <span class="n">chi_sim</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">tesseract</span> <span class="n">test22</span><span class="o">.</span><span class="n">png</span>  <span class="n">stdout</span> <span class="o">-</span><span class="n">l</span> <span class="n">chi_sim</span>
 <span class="n">pyth0n自动化测试人工智能</span>
 </pre></div>
-</td></tr></table>
 
-<h2 id="_4">参考资料：</h2>
+
+<h2 id="_4">参考资料</h2>
 <ul>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关书籍下载</a></li>
+<li>python测试等IT技术支持qq群144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/python3_lib_pytesseract.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
 <li><a href="https://github.com/ImageMagick/ImageMagick">ImageMagick</a></li>
 <li><a href="http://www.zmonster.me/2015/04/17/tesseract-install-usage.html">Tesseract:安装与命令行使用</a></li>
 <li><a href="https://www.howtoing.com/tesseract-ocr-installation-and-usage-on-ubuntu-16-04">Tesseract OCR：Ubuntu 16.04上的安装和使用</a></li>
