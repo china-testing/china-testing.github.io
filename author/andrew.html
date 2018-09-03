@@ -26,7 +26,421 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/python3_crash_ch8.html">[雪峰磁针石博客]python3快速入门教程8错误和异常</a></h1>
+                    <h1 class="entry-title"><a href="/python3_crash_ch11.html">[雪峰磁针石博客]python3快速入门教程11命令行自动化工具与pexpect</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T13:50:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info --><h2 id="pexpect">命令行自动化与pexpect</h2>
+<h3 id="_1">简介</h3>
+<p>Pexpect 是一个用来启动交互式命令行子程序并对其进行自动控制的 Python 工具模块。 Pexpect 可以用来和像 ssh、ftp、passwd、telnet 等命令行程序进行自动交互。可广泛用于自动化运维和测试，实现同时控制多台设备和自动化。Linux中的知名装包软件就使用了Pexpect。 Pexpect在IBM，alibaba，google等公司有广泛使用，在https://pypi.python.org/pypi/pexpect 的日下载量一万左右。</p>
+<p>纯python实现，依赖pty模块(不支持Windows)。</p>
+<p>最新英文版文档参见：<a href="http://pexpect.readthedocs.org/en/latest/">http://pexpect.readthedocs.org/en/latest/</a></p>
+<p>安装：</p>
+<p>版本要求：Python 2.6、3.2 或以上</p>
+<h3 id="_2">快速入门</h3>
+<p>ssh登录是常用的操作，过程如下：</p>
+<div class="highlight"><pre><span></span><span class="c1"># ssh test@172.17.100.18</span>
+<span class="n">test</span><span class="nd">@172.17.100.18</span><span class="s1">&#39;s password: </span>
+<span class="n">Last</span> <span class="n">login</span><span class="p">:</span> <span class="n">Tue</span> <span class="n">Mar</span> <span class="mi">15</span> <span class="mi">17</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mo">01</span> <span class="mi">2016</span> <span class="kn">from</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">100.19</span>
+</pre></div>
+
+
+<p>下面我们用pexpect来自动实现这个过程：</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">pexpect</span>
+<span class="n">child</span> <span class="o">=</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s1">&#39;ssh test@172.17.100.18&#39;</span><span class="p">)</span>
+<span class="n">child</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="s1">&#39;password: &#39;</span><span class="p">)</span> <span class="c1"># 等待password:字符出现</span>
+<span class="k">print</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">before</span> <span class="o">+</span> <span class="n">child</span><span class="o">.</span><span class="n">after</span><span class="p">)</span> <span class="c1"># 输出password:前后的字符</span>
+<span class="n">child</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s1">&#39;123456&#39;</span><span class="p">)</span>    <span class="c1"># 发送密码</span>
+<span class="n">child</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="s1">&#39;]\$&#39;</span><span class="p">)</span>  <span class="c1"># 等待]$字符出现</span>
+<span class="k">print</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">before</span> <span class="o">+</span> <span class="n">child</span><span class="o">.</span><span class="n">after</span><span class="p">)</span>
+<span class="n">child</span><span class="o">.</span><span class="n">interact</span><span class="p">()</span> <span class="c1"># 把ssh的连接交给用户控制。</span>
+</pre></div>
+
+
+<p>上面最后一句在非交互式的情况下要关闭连接，用child.close()替换即可。</p>
+<p>上 述操作除了interact外，都可以用python的ssh模块：paramiko代替。不过对于一些同时支持telenet、ftp、ssh等协议命 令行的通信设备，可以用pexpect通杀。telenet、ftp、ssh等从协议的层次联系，pexpect会更接近用户使用，更加适合自动化测试。</p>
+<p>两个重要方法： expect()和send() (以及sendline() )。expect可以接受正则表达式作为参数。</p>
+<p>before包含预期字符串之前的信息， after包含匹配模式及其以后的内容。</p>
+<h3 id="_3"><strong>批量操作多台服务器</strong></h3>
+<ul>
+<li>
+<p>功能：实现同时对多台linux服务器通过ssh执行同一命令。</p>
+</li>
+<li>
+<p>技术基础: python pexpect，不支持windows。</p>
+</li>
+<li>
+<p>参数：</p>
+<ul>
+<li>
+<p>固定参数pwd：远程服务器密码，用户名目前写死是root，可自行修改。</p>
+</li>
+<li>
+<p>可选参数-c CMDS：要执行的命令，比如："ls -l","cd /home/test &amp;&amp; test.py&amp;如果不选择，会从当前目前的cmd.txt读取。</p>
+</li>
+<li>
+<p>可选参数-s SERVERS：目标服务器，比如192.168.0.1,最后一位数可以用-表示一个区间，分号用于分割不同的ip。如果不选择，会从当前目前的ip.txt读取。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>库文件：common.py</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:         Rongzhong Xu</span>
+<span class="c1"># CreateDate: 2014-05-06</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">pexpect</span>
+
+
+<span class="k">class</span> <span class="nc">Ssh</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="n">client</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ip</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;123456&quot;</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;]#&#39;</span><span class="p">,</span>
+                <span class="n">silent</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+
+        <span class="c1"># Ssh to remote server</span>
+        <span class="n">ssh_newkey</span> <span class="o">=</span> <span class="s1">&#39;Are you sure you want to continue connecting&#39;</span>
+        <span class="n">child</span> <span class="o">=</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s1">&#39;ssh &#39;</span> <span class="o">+</span> <span class="n">username</span> <span class="o">+</span> <span class="s1">&#39;@&#39;</span> <span class="o">+</span> <span class="n">ip</span><span class="p">,</span> <span class="n">maxread</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1"># Enter password</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">expect</span><span class="p">([</span><span class="n">prompt</span><span class="p">,</span> <span class="s1">&#39;assword:*&#39;</span><span class="p">,</span> <span class="n">ssh_newkey</span><span class="p">,</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">TIMEOUT</span><span class="p">,</span>
+                              <span class="s1">&#39;key.*? failed&#39;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">silent</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">before</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">after</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># find prompt</span>
+                <span class="k">pass</span>
+            <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Enter password</span>
+                <span class="n">child</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">password</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># SSH does not have the public key. Just accept it.</span>
+                <span class="n">child</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s1">&#39;yes</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>  <span class="c1"># Timeout</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;ERROR TIMEOUT! SSH could not login. &#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>  <span class="c1"># new key</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">before</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">after</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/.ssh/known_hosts&#39;</span><span class="p">)</span>
+
+        <span class="n">Ssh</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">child</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">command</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;]#&#39;</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="n">Ssh</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">buffer</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">Ssh</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">cmd</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># Ssh.client.setwinsize(400,400)</span>
+        <span class="n">Ssh</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">silent</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">Ssh</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">before</span><span class="p">,</span> <span class="n">Ssh</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">after</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Ssh</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">before</span><span class="p">,</span> <span class="n">Ssh</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">after</span>
+
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">cls</span><span class="p">,):</span>
+        <span class="n">Ssh</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+
+<p>主脚本batch.py ：</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:         Rongzhong Xu</span>
+<span class="c1"># CreateDate: 2014-05-06</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">common</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;pwd&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">,</span><span class="n">help</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;cmds&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;command&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;servers&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;hosts&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--version&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;version&#39;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(prog)s</span><span class="s1"> 1.1 Rongzhong xu 2014 05 08&#39;</span><span class="p">)</span>
+
+<span class="n">options</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+<span class="n">servers</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">servers</span><span class="p">:</span>
+    <span class="n">raw_server</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">servers</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span> <span class="c1"># ips&#39; decollator is  semicolon</span>
+    <span class="k">for</span> <span class="n">server</span> <span class="ow">in</span> <span class="n">raw_server</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;-&#39;</span> <span class="ow">in</span> <span class="n">server</span><span class="p">:</span> <span class="c1"># - means continuous ips</span>
+            <span class="n">server_list</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+            <span class="n">base</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">server_list</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="n">server_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+            <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">indices</span>
+
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">start</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">end</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">servers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;{0}.{1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">base</span><span class="p">,</span><span class="n">item</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">servers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">server</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;ip.txt&#39;</span><span class="p">):</span>
+        <span class="n">servers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+<span class="n">cmds</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">cmds</span><span class="p">:</span>
+    <span class="n">cmds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">cmds</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;cmd.txt&#39;</span><span class="p">):</span>
+        <span class="n">servers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">host</span> <span class="ow">in</span> <span class="n">servers</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Connect to host: {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host</span><span class="p">))</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">Ssh</span><span class="p">()</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="s1">&#39;root&#39;</span><span class="p">,</span><span class="n">options</span><span class="o">.</span><span class="n">pwd</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">cmds</span><span class="p">:</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+
+<p>执行演示：</p>
+<div class="highlight"><pre><span></span><span class="c1"># ./batch.py -husage: batch.py [-h] [-c CMDS] [-s SERVERS] [--version] pwdpositional arguments:  pwd         password</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="nb">exit</span>
+  <span class="o">-</span><span class="n">c</span> <span class="n">CMDS</span>     <span class="n">command</span>
+  <span class="o">-</span><span class="n">s</span> <span class="n">SERVERS</span>  <span class="n">hosts</span>
+  <span class="o">--</span><span class="n">version</span>   <span class="n">show</span> <span class="n">program</span><span class="s1">&#39;s version number and exit</span>
+
+<span class="c1"># ./batch.py password -s &quot;192.168.0.71-76;123.1.149.26&quot; -c &quot;cat /etc/redhat-release&quot;</span>
+
+<span class="o">********************************************************************************</span>
+
+<span class="n">Connect</span> <span class="n">to</span> <span class="n">host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.71</span>
+<span class="n">Last</span> <span class="n">login</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">May</span>  <span class="mi">8</span> <span class="mi">17</span><span class="p">:</span><span class="mo">04</span><span class="p">:</span><span class="mo">02</span> <span class="mi">2014</span> <span class="kn">from</span> <span class="mf">183.14</span><span class="o">.</span><span class="mf">8.49</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span> <span class="p">]</span><span class="c1"># cat /etc/redhat-release</span>
+<span class="n">CentOS</span> <span class="n">release</span> <span class="mf">5.8</span> <span class="p">(</span><span class="n">Final</span><span class="p">)</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span> <span class="p">]</span><span class="c1">#</span>
+<span class="o">********************************************************************************</span>
+
+<span class="n">Connect</span> <span class="n">to</span> <span class="n">host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.72</span>
+<span class="n">Last</span> <span class="n">login</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">May</span>  <span class="mi">8</span> <span class="mi">17</span><span class="p">:</span><span class="mo">03</span><span class="p">:</span><span class="mo">05</span> <span class="mi">2014</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.232</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span> <span class="p">]</span><span class="c1"># cat /etc/redhat-release</span>
+<span class="n">CentOS</span> <span class="n">release</span> <span class="mf">5.8</span> <span class="p">(</span><span class="n">Final</span><span class="p">)</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span> <span class="p">]</span><span class="c1">#</span>
+<span class="o">********************************************************************************</span>
+
+<span class="n">Connect</span> <span class="n">to</span> <span class="n">host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.73</span>
+<span class="n">Last</span> <span class="n">login</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">May</span>  <span class="mi">8</span> <span class="mi">17</span><span class="p">:</span><span class="mo">02</span><span class="p">:</span><span class="mi">29</span> <span class="mi">2014</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.232</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span> <span class="p">]</span><span class="c1"># cat /etc/redhat-release</span>
+<span class="n">CentOS</span> <span class="n">release</span> <span class="mf">5.8</span> <span class="p">(</span><span class="n">Final</span><span class="p">)</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span> <span class="p">]</span><span class="c1">#</span>
+<span class="o">********************************************************************************</span>
+
+<span class="n">Connect</span> <span class="n">to</span> <span class="n">host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.74</span>
+<span class="n">Last</span> <span class="n">login</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">May</span>  <span class="mi">8</span> <span class="mi">17</span><span class="p">:</span><span class="mo">02</span><span class="p">:</span><span class="mi">32</span> <span class="mi">2014</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.232</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span> <span class="p">]</span><span class="c1"># cat /etc/redhat-release</span>
+<span class="n">CentOS</span> <span class="n">release</span> <span class="mf">5.8</span> <span class="p">(</span><span class="n">Final</span><span class="p">)</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span> <span class="p">]</span><span class="c1">#</span>
+<span class="o">********************************************************************************</span>
+
+<span class="n">Connect</span> <span class="n">to</span> <span class="n">host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.75</span>
+<span class="n">root</span><span class="nd">@192.168.0.75</span><span class="s1">&#39;s p assword:  </span>
+<span class="n">Last</span> <span class="n">login</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">May</span>  <span class="mi">8</span> <span class="mi">17</span><span class="p">:</span><span class="mo">02</span><span class="p">:</span><span class="mi">56</span> <span class="mi">2014</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.232</span><span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span> <span class="p">]</span><span class="c1"># cat /etc/redhat-releaseCentOS release 6.4 (Final)[root@localhost ~ ]#********************************************************************************</span>
+
+<span class="n">Connect</span> <span class="n">to</span> <span class="n">host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.76</span>
+<span class="n">Last</span> <span class="n">login</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">May</span>  <span class="mi">8</span> <span class="mi">17</span><span class="p">:</span><span class="mo">03</span><span class="p">:</span><span class="mo">00</span> <span class="mi">2014</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.232</span><span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span> <span class="p">]</span><span class="c1"># cat /etc/redhat-releaseCentOS release 5.8 (Final)[root@localhost ~ ]#********************************************************************************</span>
+
+<span class="n">Connect</span> <span class="n">to</span> <span class="n">host</span><span class="p">:</span> <span class="mf">123.1</span><span class="o">.</span><span class="mf">149.26</span>
+<span class="n">Last</span> <span class="n">login</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">May</span>  <span class="mi">8</span> <span class="mi">16</span><span class="p">:</span><span class="mi">46</span><span class="p">:</span><span class="mi">56</span> <span class="mi">2014</span> <span class="kn">from</span> <span class="mf">183.56</span><span class="o">.</span><span class="mf">157.199</span><span class="p">[</span><span class="n">root</span><span class="nd">@LINUX</span> <span class="o">~</span> <span class="p">]</span><span class="c1"># cat /etc/redhat-releaseRed Hat Enterprise Linux Server release 6.5 (Santiago)[root@LINUX ~ ]#[root@AutoTest batch]#</span>
+</pre></div>
+
+
+<h3 id="_4"><strong>其他命令自动化工具</strong></h3>
+<p><a href="https://pypi.python.org/pypi/Fabric/">https://pypi.python.org/pypi/Fabric/</a> python远程执行与部署库，运维的最爱。</p>
+<p><a href="https://fedorahosted.org/func/">https://fedorahosted.org/func/</a></p>
+<p><a href="https://pypi.python.org/pypi/pyserial/">https://pypi.python.org/pypi/pyserial/</a></p>
+<p><a href="https://pypi.python.org/pypi/paramiko/1.16.0">https://pypi.python.org/pypi/paramiko/1.16.0</a></p>
+<p><a href="https://docs.python.org/2/library/subprocess.html">https://docs.python.org/2/library/subprocess.html</a></p>
+<p><a href="https://pypi.python.org/pypi/sh">https://pypi.python.org/pypi/sh</a></p>
+<h3 id="api">API概览</h3>
+<h4 id="eoftimeout">EOF与TIMEOUT</h4>
+<p>EOF(End Of File)与TIMEOUT可以在expect方法中使用，它们不是正则表达式，而是常量。</p>
+<p>源于异常，而不是BaseException例外。从BaseException直接继承的例外情况赶上他们几乎总是错误的做法保留。  </p>
+<p>如果子进程已经退出，读取子进程的输出会引发EOF异常。此时子进程的输出全部在before中。  </p>
+<p>expect()接受的参数是正则表达式或正则表达式列表，可匹配多个可选的响应。比如ssh登录的各种情况处理：</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Ssh</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ip</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;123456&quot;</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;]#&#39;</span><span class="p">,</span>
+                <span class="n">silent</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="c1"># Ssh to remote server</span>
+        <span class="n">ssh_newkey</span> <span class="o">=</span> <span class="s1">&#39;Are you sure you want to continue connecting&#39;</span>
+        <span class="n">child</span> <span class="o">=</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s1">&#39;ssh &#39;</span> <span class="o">+</span> <span class="n">username</span> <span class="o">+</span> <span class="s1">&#39;@&#39;</span> <span class="o">+</span> <span class="n">ip</span><span class="p">,</span> <span class="n">maxread</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1"># Enter password</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">expect</span><span class="p">([</span><span class="n">prompt</span><span class="p">,</span> <span class="s1">&#39;assword:*&#39;</span><span class="p">,</span> <span class="n">ssh_newkey</span><span class="p">,</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">TIMEOUT</span><span class="p">,</span>
+                              <span class="s1">&#39;key.*? failed&#39;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">silent</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">before</span> <span class="o">+</span> <span class="n">child</span><span class="o">.</span><span class="n">after</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># find prompt</span>
+                <span class="k">pass</span>
+            <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Enter password</span>
+                <span class="n">child</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">password</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># SSH does not have the public key. Just accept it.</span>
+                <span class="n">child</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s1">&#39;yes</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>  <span class="c1"># Timeout</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;ERROR TIMEOUT! SSH could not login. &#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>  <span class="c1"># new key</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">before</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">after</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/.ssh/known_hosts&#39;</span><span class="p">)</span>
+        <span class="n">Ssh</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">child</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">command</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;]#&#39;</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="n">Ssh</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">buffer</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">Ssh</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">cmd</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># Ssh.client.setwinsize(400,400)</span>
+        <span class="n">Ssh</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">silent</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">Ssh</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">before</span> <span class="o">+</span> <span class="n">Ssh</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">after</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Ssh</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">before</span><span class="p">,</span> <span class="n">Ssh</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">after</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">cls</span><span class="p">,):</span>
+        <span class="n">Ssh</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+
+<p>expect()的超时默认为30秒，超时时生成TIMEOUT异常。可以修改：</p>
+<div class="highlight"><pre><span></span><span class="c1"># Wait no more than 2 minutes (120 seconds) for password prompt.</span>
+<span class="n">child</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="s1">&#39;password:&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+</pre></div>
+
+
+<h4 id="_5">行尾处理</h4>
+<p>Pexpect匹配的正则表达式与标准的有些差异，默认是非贪婪匹配。Pexpect一次读取一个字符读，这样行尾标识$失去了意义。行尾用"\r\n"(CR/LF)表示。Pexpect中的"\n"实际对应"\r\n"。匹配行尾的操作如下：</p>
+<div class="highlight"><pre><span></span><span class="n">child</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>尽量用：</p>
+<div class="highlight"><pre><span></span><span class="n">child</span><span class="o">.</span><span class="n">expect</span> <span class="p">(</span><span class="s1">&#39;.+&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>而不是：</p>
+<div class="highlight"><pre><span></span><span class="n">child</span><span class="o">.</span><span class="n">expect</span> <span class="p">(</span><span class="s1">&#39;.*&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="api_1">API文档</h3>
+<p>pexpect.screen和pexpect.ANSI在版本4已经不推荐使用，建议用pyte替代。</p>
+<h4 id="class-spawn">class spawn</h4>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[],</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">maxread</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
+        <span class="n">searchwindowsize</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">logfile</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+        <span class="n">ignore_sighup</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+</pre></div>
+
+
+<p>调用示例：</p>
+<div class="highlight"><pre><span></span><span class="n">child</span> <span class="o">=</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s1">&#39;/usr/bin/ftp&#39;</span><span class="p">)</span>
+<span class="n">child</span> <span class="o">=</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s1">&#39;/usr/bin/ssh user@example.com&#39;</span><span class="p">)</span>
+<span class="n">child</span> <span class="o">=</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s1">&#39;ls -latr /tmp&#39;</span><span class="p">)</span>
+<span class="n">child</span> <span class="o">=</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s1">&#39;/usr/bin/ftp&#39;</span><span class="p">,</span> <span class="p">[])</span>
+<span class="n">child</span> <span class="o">=</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s1">&#39;/usr/bin/ssh&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;user@example.com&#39;</span><span class="p">])</span>
+<span class="n">child</span> <span class="o">=</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s1">&#39;ls&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;-latr&#39;</span><span class="p">,</span> <span class="s1">&#39;/tmp&#39;</span><span class="p">])</span>
+</pre></div>
+
+
+<p>pexpect不能解释shell元字符，比如 (&gt;, |, or *)，需要启动shell来解决该问题：</p>
+<div class="highlight"><pre><span></span><span class="n">child</span> <span class="o">=</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s1">&#39;/bin/bash -c &quot;ls -l | grep LOG &gt; logs.txt&quot;&#39;</span><span class="p">)</span>
+<span class="n">child</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="n">pexpect</span><span class="o">.</span><span class="n">EOF</span><span class="p">)</span>
+</pre></div>
+
+
+<p>日志输出：</p>
+<div class="highlight"><pre><span></span><span class="n">child</span> <span class="o">=</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s1">&#39;some_command&#39;</span><span class="p">)</span>
+<span class="n">fout</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;mylog.txt&#39;</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+<span class="n">child</span><span class="o">.</span><span class="n">logfile</span> <span class="o">=</span> <span class="n">fout</span>
+</pre></div>
+
+
+<p>输出到stdout</p>
+<div class="highlight"><pre><span></span><span class="c1"># In Python 2:</span>
+<span class="n">child</span> <span class="o">=</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s1">&#39;some_command&#39;</span><span class="p">)</span>
+<span class="n">child</span><span class="o">.</span><span class="n">logfile</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="c1"># </span>
+
+<span class="n">In</span> <span class="n">Python</span> <span class="mi">3</span><span class="p">,</span> <span class="n">spawnu</span> <span class="n">should</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">give</span> <span class="nb">str</span> <span class="n">to</span> <span class="n">stdout</span><span class="p">:</span>
+<span class="n">child</span> <span class="o">=</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">spawnu</span><span class="p">(</span><span class="s1">&#39;some_command&#39;</span><span class="p">)</span>
+<span class="n">child</span><span class="o">.</span><span class="n">logfile</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
+</pre></div>
+
+
+<h2 id="_6">参考资料</h2>
+<ul>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/python3_crash_ch11.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash_ch9_1.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程9重要的标准库-基础篇">[雪峰磁针石博客]python3快速入门教程9重要的标准库-基础篇</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T13:50:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">操作系统接口</h3>
+<p>os模块提供了一些与操作系统交互的函数:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">os</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>      <span class="c1"># Return the current working directory</span>
+<span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Python36&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/server/accesslogs&#39;</span><span class="p">)</span>   <span class="c1"># Change current working directory</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;mkdir today&#39;</span><span class="p">)</span>   <span class="c1"># Run the command mkdir in the system shell</span>
+<span class="mi">0</span>
+</pre></div>
+
+
+<p>用import os而不是from os import *。否则os.open()会覆盖内置函数open()。</p>
+<p>对os这样的大型模块, 内置的open()和help()函数非常有用:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">os</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="n">os</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">returns …</span></pre></div>
+                <a class="readmore" href="/python3_crash_ch9_1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash_ch8.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程8错误和异常">[雪峰磁针石博客]python3快速入门教程8错误和异常</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-09-02T13:40:00+08:00">
                 Published: 日 02 九月 2018
@@ -37,543 +451,27 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info --><p>Python 中(至少)有两种错误：语法错误(syntax errors)和异常(exceptions)。</p>
+</footer><!-- /.post-info -->                <p>Python 中(至少)有两种错误：语法错误(syntax errors)和异常(exceptions)。</p>
 <h2 id="_1">语法错误</h2>
 <p>语法错误又称作解析错误:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="bp">True</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="bp">True</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
   <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
     <span class="k">while</span> <span class="bp">True</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
                            <span class="o">^</span>
 <span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>语法分析器指出错误行，并且在检测到错误的位置前面显示^。 </p>
 <h2 id="_2">异常</h2>
 <p>即使语句或表达式在语法上是正确的，执行时也可能会引发错误。运行期检测到的错误称为异常</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">division</span> <span class="n">by</span> <span class="n">zero</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">spam</span><span class="o">*</span><span class="mi">3</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s1">&#39;spam&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;2&#39;</span> <span class="o">+</span> <span class="mi">2</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">TypeError</span><span class="p">:</span> <span class="n">Can</span><span class="s1">&#39;t convert &#39;</span><span class="nb">int</span><span class="s1">&#39; object to str implicitly</span>
-</pre></div>
-</td></tr></table>
-
-<p>错误信息的最后一行指出发生了什么错误。异常也有不同的类型，异常类型做为错误信息的一部分显示出来：示例中的异常分别为  <a href="https://docs.python.org/3/library/exceptions.html#ZeroDivisionError" title="ZeroDivisionError"><code>ZeroDivisionError</code></a>, <a href="https://docs.python.org/3/library/exceptions.html#NameError" title="NameError"><code>NameError</code></a> 和 <a href="https://docs.python.org/3/library/exceptions.html#TypeError" title="TypeError"><code>TypeError</code></a>。打印错误信息时，异常的类型作为异常的内置名显示。对于所有的内置异常都是如此，不过用户自定义异常就不一定了（尽管这是很有用的约定）。标准异常名是内置的标识符(非保留关键字)。</p>
-<p>这行后一部分是关于该异常类型的详细说明，这意味着它的内容依赖于异常类型。</p>
-<p>错误信息的前半部分以堆栈的形式列出异常发生的位置。通常在堆栈中列出了源代码行，然而，来自标准输入的源码不会显示出来。</p>
-<p><a href="https://docs.python.org/3/library/exceptions.html#bltin-exceptions">内置的异常</a> 列出了内置异常和它们的含义。</p>
-<h2 id="_3">异常处理</h2>
-<p>例子：要求用户输入直到输入合法的整数为止，但允许用户中断这个程序（使用Control-C或系统支持的任何方法）。注意：用户产生的中断会引发 <a href="https://docs.python.org/3/library/exceptions.html#KeyboardInterrupt">KeyboardInterrupt</a> 异常。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">try</span><span class="p">:</span>
-<span class="o">...</span>         <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter a number: &quot;</span><span class="p">))</span>
-<span class="o">...</span>         <span class="k">break</span>
-<span class="o">...</span>     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-<span class="o">...</span>         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Oops!  That was no valid number.  Try again...&quot;</span><span class="p">)</span>
-<span class="o">...</span>
-</pre></div>
-</td></tr></table>
-
-<p><a href="https://docs.python.org/3/reference/compound_stmts.html#try">try</a> 语句按如下方式工作。</p>
-<ul>
-<li>首先，执行try和except 之间的内容</li>
-<li>如果没有异常发生，忽略except语句。</li>
-<li>如果在 try 子句执行过程中发生了异常，那么该子句其余的部分就会忽略。如果异常匹配于  * 后面指定的异常类型，就执行对应的except子句。然后继续执行try语句之后的代码。</li>
-<li>如果发生了一个异常，在except 子句中没有与之匹配的分支，它就会传递到上一级try 语句中。如果最终仍找不到对应的处理语句，它就成为未处理异常，终止程序运行，显示提示信息。</li>
-</ul>
-<p>try语句可能包含多个 except 子句，分别指定处理不同的异常。至多执行一个分支。异常处理程序只会处理对应的 try 子句中发生的异常，在同一try语句中，其他子句中发生的异常则不作处理。except 子句可以在元组中列出多个异常的名字，例如:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="k">except</span> <span class="p">(</span><span class="ne">RuntimeError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">,</span> <span class="ne">NameError</span><span class="p">):</span>
-<span class="o">...</span>     <span class="k">pass</span>
-</pre></div>
-</td></tr></table>
-
-<p>异常匹配如果except子句中的类相同的类或其基类(反之如果是其子类则不行）。 例如，以下代码将按此顺序打印B，C，D：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-    <span class="k">pass</span>
-
-<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
-    <span class="k">pass</span>
-
-<span class="k">class</span> <span class="nc">D</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
-    <span class="k">pass</span>
-
-<span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">]:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="bp">cls</span><span class="p">()</span>
-    <span class="k">except</span> <span class="n">D</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="n">C</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="n">B</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
-
-<p>如果except B在先，将打印B，B，B。</p>
-<p>最后except子句可以省略例外名称，作为通配符。 请谨慎使用此功能，因为这种方式很容易掩盖真正的编程错误！ 它也可以用来打印错误消息，然后重新引发异常(也允许调用者处理异常）：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;myfile.txt&#39;</span><span class="p">)</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-<span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;OS error: {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
-<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Could not convert data to an integer.&quot;</span><span class="p">)</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Unexpected error:&quot;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="k">raise</span>
-</pre></div>
-</td></tr></table>
-
-<p>try … except语句可以带有else子句，该子句只能出现在所有 except 子句之后。当 try 语句没有抛出异常时，需要执行一些代码，可以使用这个子句。例如:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;cannot open&#39;</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="s1">&#39;has&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()),</span> <span class="s1">&#39;lines&#39;</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</td></tr></table>
-
-<p>使用else子句比在try子句中附加代码要好，因为这样可以避免 try … except  意外的截获本来不属于它们的那些代码抛出的异常。</p>
-<p>发生异常时，可能会有相关值，作为异常的参数存在。这个参数是否存在、是什么类型，依赖于异常的类型。</p>
-<p>在异常名(元组)之后，也可以为 except 子句指定一个变量。这个变量绑定于异常实例，它存储在instance.args参数中。为了方便起见，异常实例定义了 <a href="https://docs.python.org/3/reference/datamodel.html#object.__str__"><strong>str</strong>()</a> ，这样就可以直接访问过打印参数而不必引用.args。也可以在引发异常之前初始化异常，并根据需要向其添加属性。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
-<span class="o">...</span> <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">inst</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">inst</span><span class="p">))</span>    <span class="c1"># the exception instance</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">inst</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>     <span class="c1"># arguments stored in .args</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span>          <span class="c1"># __str__ allows args to be printed directly,</span>
-<span class="o">...</span>                          <span class="c1"># but may be overridden in exception subclasses</span>
-<span class="o">...</span>     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">inst</span><span class="o">.</span><span class="n">args</span>     <span class="c1"># unpack args</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;y =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="o">...</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">Exception</span><span class="s1">&#39;&gt;</span>
-<span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
-<span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">spam</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">eggs</span>
-</pre></div>
-</td></tr></table>
-
-<p>对于那些未处理的异常，如果它们带有参数，那么就会被作为异常信息的最后部分(“详情”)打印出来。</p>
-<p>异常处理器不仅仅处理那些在 try 子句中立刻发生的异常，也会处理那些 try 子句中调用的函数内部发生的异常。例如:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
-<span class="o">...</span> <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">inst</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">inst</span><span class="p">))</span>    <span class="c1"># the exception instance</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">inst</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>     <span class="c1"># arguments stored in .args</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span>          <span class="c1"># __str__ allows args to be printed directly,</span>
-<span class="o">...</span>                          <span class="c1"># but may be overridden in exception subclasses</span>
-<span class="o">...</span>     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">inst</span><span class="o">.</span><span class="n">args</span>     <span class="c1"># unpack args</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;y =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="o">...</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">Exception</span><span class="s1">&#39;&gt;</span>
-<span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
-<span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">spam</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">eggs</span>
-</pre></div>
-</td></tr></table>
-
-<h2 id="_4">抛出异常</h2>
-<p><a href="https://docs.python.org/3/reference/simple_stmts.html#raise">raise</a> 语句可强行抛出指定的异常。例如:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s1">&#39;HiThere&#39;</span><span class="p">)</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">NameError</span><span class="p">:</span> <span class="n">HiThere</span>
-</pre></div>
-</td></tr></table>
-
-<p>要抛出的异常由raise的唯一参数标识。它必需是异常实例或异常类(继承自 <a href="https://docs.python.org/3/library/exceptions.html#Exception">Exception</a> 的类）。如果传递异常类，它将通过调用它的没有参数的构造函数而隐式实例化：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">raise</span> <span class="ne">ValueError</span>  <span class="c1"># shorthand for &#39;raise ValueError()&#39;</span>
-</pre></div>
-</td></tr></table>
-
-<p>如果你想知道异常是否抛出，但不想处理它，raise语句可简单的重新抛出该异常:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s1">&#39;HiThere&#39;</span><span class="p">)</span>
-<span class="o">...</span> <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;An exception flew by!&#39;</span><span class="p">)</span>
-<span class="o">...</span>     <span class="k">raise</span>
-<span class="o">...</span>
-<span class="n">An</span> <span class="n">exception</span> <span class="n">flew</span> <span class="n">by</span><span class="err">!</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">NameError</span><span class="p">:</span> <span class="n">HiThere</span>
-</pre></div>
-</td></tr></table>
-
-<h2 id="_5">用户自定义异常</h2>
-<p>直接或间接的继承 <a href="https://docs.python.org/3/library/exceptions.html#Exception">Exception</a> 可以自定义异常。</p>
-<p>异常类中可以定义任何其它类中可以定义的东西，但是通常为了保持简单，只在其中加入几个属性信息，以供异常处理句柄提取。如果新创建的模块中需要抛出几种不同的错误时，通常的作法是为该模块定义异常基类，然后针对不同的错误类型派生出对应的异常子类:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Error</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Base class for exceptions in this module.&quot;&quot;&quot;</span>
-    <span class="k">pass</span>
-
-<span class="k">class</span> <span class="nc">InputError</span><span class="p">(</span><span class="n">Error</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Exception raised for errors in the input.</span>
-
-<span class="sd">    Attributes:</span>
-<span class="sd">        expression -- input expression in which the error occurred</span>
-<span class="sd">        message -- explanation of the error</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">expression</span> <span class="o">=</span> <span class="n">expression</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">message</span>
-
-<span class="k">class</span> <span class="nc">TransitionError</span><span class="p">(</span><span class="n">Error</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Raised when an operation attempts a state transition that&#39;s not</span>
-<span class="sd">    allowed.</span>
-
-<span class="sd">    Attributes:</span>
-<span class="sd">        previous -- state at beginning of transition</span>
-<span class="sd">        next -- attempted new state</span>
-<span class="sd">        message -- explanation of why the specific transition is not allowed</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">previous</span><span class="p">,</span> <span class="nb">next</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">previous</span> <span class="o">=</span> <span class="n">previous</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="nb">next</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">message</span>
-</pre></div>
-</td></tr></table>
-
-<p>与标准异常相似，大多数异常的命名都以 “Error” 结尾。</p>
-<p>很多标准模块中都定义了自己的异常，以报告在他们所定义的函数中可能发生的错误。关于类的进一步信息请参见<a href="https://docs.python.org/3/tutorial/classes.html#tut-classes">Classes</a>。</p>
-<h2 id="_6">定义清理行为</h2>
-<p><a href="https://docs.python.org/3/reference/compound_stmts.html#try">try</a> 语句有可选的子句定义在任何情况下都一定要执行的清理操作。例如:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">raise</span> <span class="ne">KeyboardInterrupt</span>
-<span class="o">...</span> <span class="k">finally</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Goodbye, world!&#39;</span><span class="p">)</span>
-<span class="o">...</span>
-<span class="n">Goodbye</span><span class="p">,</span> <span class="n">world</span><span class="err">!</span>
-<span class="ne">KeyboardInterrupt</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-</pre></div>
-</td></tr></table>
-
-<p>不管有没有发生异常，finally子句在程序离开try前都会被执行。当语句中发生了未捕获的异常(或者它发生在except或else子句中），在执行完finally子句后它会被重新抛出。 try语句经由break、continue或return语句退出也会执行finally子句。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="o">...</span>     <span class="k">try</span><span class="p">:</span>
-<span class="o">...</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
-<span class="o">...</span>     <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-<span class="o">...</span>         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;division by zero!&quot;</span><span class="p">)</span>
-<span class="o">...</span>     <span class="k">else</span><span class="p">:</span>
-<span class="o">...</span>         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;result is&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
-<span class="o">...</span>     <span class="k">finally</span><span class="p">:</span>
-<span class="o">...</span>         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;executing finally clause&quot;</span><span class="p">)</span>
-<span class="o">...</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">divide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">result</span> <span class="ow">is</span> <span class="mf">2.0</span>
-<span class="n">executing</span> <span class="k">finally</span> <span class="n">clause</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">divide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">division</span> <span class="n">by</span> <span class="n">zero</span><span class="err">!</span>
-<span class="n">executing</span> <span class="k">finally</span> <span class="n">clause</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">divide</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">)</span>
-<span class="n">executing</span> <span class="k">finally</span> <span class="n">clause</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">3</span><span class="p">,</span> <span class="ow">in</span> <span class="n">divide</span>
-<span class="ne">TypeError</span><span class="p">:</span> <span class="n">unsupported</span> <span class="n">operand</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="o">/</span><span class="p">:</span> <span class="s1">&#39;str&#39;</span> <span class="ow">and</span> <span class="s1">&#39;str&#39;</span>
-</pre></div>
-</td></tr></table>
-
-<p>finally子句多用于释放外部资源(文件或网络连接之类的)。</p>
-<h2 id="_7">预定义清理行为</h2>
-<p>有些对象定义了标准的清理行为，无论对象操作是否成功，不再需要该对象的时候就会起作用。以下示例尝试打开文件并把内容输出到屏幕。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;myfile.txt&quot;</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
-
-<p>这段代码的问题在于在代码执行完后没有立即关闭打开的文件。简单的脚本里没什么，但是大型应用程序就会出问题。<a href="https://docs.python.org/3/reference/compound_stmts.html#with">with</a> 语句使得文件之类的对象能及时准确地进行清理。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;myfile.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
-
-<p>语句执行后，文件f总会被关闭，即使是在处理文件行时出错也一样。其它对象是否提供了预定义的清理行为要参考相关文档。</p>
-<h2 id="_8">异常处理实例： 正则表达式及拼音排序</h2>
-<p>有某群的某段<a href="https://github.com/china-testing/python-api-tesing/blob/master/weeks/2018_06_01/test.txt">聊天记录</a></p>
-<p>现在要求输出排序的qq名，结果类似如下：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="s1">&#39;本草隐士&#39;</span><span class="p">,</span> <span class="s1">&#39;jerryyu&#39;</span><span class="p">,</span> <span class="s1">&#39;可怜的樱桃树&#39;</span><span class="p">,</span> <span class="s1">&#39;叻风云&#39;</span><span class="p">,</span> <span class="s1">&#39;欧阳-深圳白芒&#39;</span><span class="p">,</span>  <span class="o">...</span><span class="p">]</span>
-</pre></div>
-</td></tr></table>
-
-<p>需求来源：有个想批量邀请某些qq群的活跃用户到自己的群。又不想铺天盖地去看聊天记录。</p>
-<p>参考资料：<a href="https://github.com/china-testing/python-api-tesing#%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86text-processing">python文本处理库</a></p>
-<p>参考代码：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># Author:    xurongzhong@126.com wechat:pythontesting qq:37391319</span>
-<span class="c1"># 技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) </span>
-<span class="c1"># qq群：144081101 591302926  567351477</span>
-<span class="c1"># CreateDate: 2018-6-1</span>
-
-<span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">from</span> <span class="nn">pypinyin</span> <span class="kn">import</span> <span class="n">lazy_pinyin</span>
-
-<span class="n">name</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;test.txt&#39;</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="c1">#print(text)</span>
-
-<span class="n">results</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(:\d+)\s(.*?)\(\d+&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
-
-<span class="n">names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
-    <span class="n">names</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  
-
-<span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
-<span class="n">keys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">char</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">lazy_pinyin</span><span class="p">(</span><span class="n">char</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">char</span>
-    <span class="k">return</span> <span class="n">result</span>
-
-<span class="n">keys</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">compare</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
-
-<p>执行示例：</p>
-<p>1，把qq群的聊天记录导出为txt格式，重命名为test.txt</p>
-<p>2, 执行：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">qq</span><span class="o">.</span><span class="n">py</span> 
-<span class="p">[</span><span class="s1">&#39;Sally&#39;</span><span class="p">,</span> <span class="s1">&#39;^^O^^&#39;</span><span class="p">,</span> <span class="s1">&#39;aa催乳师&#39;</span><span class="p">,</span> <span class="s1">&#39;bling&#39;</span><span class="p">,</span> <span class="s1">&#39;本草隐士&#39;</span><span class="p">,</span> <span class="s1">&#39;纯中药治疗阳痿早泄&#39;</span><span class="p">,</span> <span class="s1">&#39;长夜无荒&#39;</span><span class="p">,</span> <span class="s1">&#39;东方～慈航&#39;</span><span class="p">,</span> <span class="s1">&#39;干金草&#39;</span><span class="p">,</span> <span class="s1">&#39;广东-曾超庆&#39;</span><span class="p">,</span> <span class="s1">&#39;红梅* 渝&#39;</span><span class="p">,</span> <span class="s1">&#39;jerryyu&#39;</span><span class="p">,</span> <span class="s1">&#39;可怜的樱桃树&#39;</span><span class="p">,</span> <span class="s1">&#39;叻风云&#39;</span><span class="p">,</span> <span class="s1">&#39;欧阳-深圳白芒&#39;</span><span class="p">,</span> <span class="s1">&#39;勝昔堂～元亨&#39;</span><span class="p">,</span> <span class="s1">&#39;蜀中~眉豆。&#39;</span><span class="p">,</span> <span class="s1">&#39;陕西渭南逸清阁*无为&#39;</span><span class="p">,</span> <span class="s1">&#39;吴宁……任&#39;</span><span class="p">,</span> <span class="s1">&#39;系统消息&#39;</span><span class="p">,</span> <span class="s1">&#39;于立伟&#39;</span><span class="p">,</span> <span class="s1">&#39;倚窗望岳&#39;</span><span class="p">,</span> <span class="s1">&#39;烟霞霭霭&#39;</span><span class="p">,</span> <span class="s1">&#39;燕子&#39;</span><span class="p">,</span> <span class="s1">&#39;张强&#39;</span><span class="p">,</span> <span class="s1">&#39;滋味&#39;</span><span class="p">,</span> <span class="s1">&#39;✾买个罐头 吃西餐&#39;</span><span class="p">,</span> <span class="s1">&#39;【大侠】好好&#39;</span><span class="p">,</span> <span class="s1">&#39;【大侠】面向大海～纯中药治烫伤&#39;</span><span class="p">,</span> <span class="s1">&#39;【宗师】吴宁……任&#39;</span><span class="p">,</span> <span class="s1">&#39;【宗师】红梅* 渝&#39;</span><span class="p">,</span> <span class="s1">&#39;【少侠】焚琴煮鹤&#39;</span><span class="p">,</span> <span class="s1">&#39;【少侠】笨笨&#39;</span><span class="p">,</span> <span class="s1">&#39;【掌门】溆浦☞山野人家&#39;</span><span class="p">]</span>
-</pre></div>
-</td></tr></table>
-
-<h2 id="_9">参考资料</h2>
-<ul>
-<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/python3_crash_ch8.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">division …</span></pre></div>
+                <a class="readmore" href="/python3_crash_ch8.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -818,103 +716,6 @@
 
 <p>可能会有零到多个elif部分，else是可选的。关键字‘elif‘是‘else if’的缩写，可避免过深的缩进。 if ... elif ... elif序列用于替代其它语言中的switch或case语句 …</p>
                 <a class="readmore" href="/python3_crash4.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_crash3.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python3快速入门教程1 turtle绘图-3循环">[雪峰磁针石博客]python3快速入门教程1 turtle绘图-3循环</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-09-02T10:20:00+08:00">
-                Published: 日 02 九月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">语法基础</h2>
-<h3 id="for">for语句</h3>
-<p>Python的for语句针对序列(列表或字符串等)中的子项进行循环，按它们在序列中的顺序来进行迭代。  </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># Measure some strings:</span>
-<span class="o">...</span> <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;window&#39;</span><span class="p">,</span> <span class="s1">&#39;defenestrate&#39;</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
-<span class="o">...</span>
-<span class="n">cat</span> <span class="mi">3</span>
-<span class="n">window</span> <span class="mi">6</span>
-<span class="n">defenestrate</span> <span class="mi">12</span>
-</pre></div>
-</td></tr></table>
-
-<p>在迭代过程中修改迭代序列不安全，可能导致部分元素重复两次，建议先拷贝:  </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">[:]:</span>  <span class="c1"># Loop over …</span></pre></div></td></tr></table>
-                <a class="readmore" href="/python3_crash3.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_pep8.html" rel="bookmark"
-                           title="Permalink to python代码风格指南(PEP8中文版)">python代码风格指南(PEP8中文版)</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-21T14:50:00+08:00">
-                Published: 二 21 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p>本文给出主Python版本标准库的编码约定。CPython的C代码风格参见<a href="https://www.python.org/dev/peps/pep-0007/">PEP7</a>。</p>
-<p>本文和<a href="https://www.python.org/dev/peps/pep-0257/">PEP 257 文档字符串标准</a>改编自Guido最初的《Python Style Guide》, 并增加了Barry的<a href="http://barry.warsaw.us/software/STYLEGUIDE.txt">GNU Mailman Coding Style Guide</a>的部分内容。</p>
-<p>本文会随着语言改变等而改变。</p>
-<p>许多项目都有自己的编码风格指南，冲突时自己的指南为准。</p>
-<h2 id="_1">一致性考虑</h2>
-<p>Guido的关键点之一是：代码更多是用来读而不是写。本指南旨在改善Python代码的可读性，即<a href="https://www.python.org/dev/peps/pep-0020/">PEP 20</a>所说的“可读性计数"(Readability counts)。</p>
-<p>风格指南强调一致性。项目、模块或函数保持一致都很重要。</p>
-<p>最重要的是知道何时不一致, 有时风格指南并不适用。当有疑惑时运用你的最佳判断，参考其他例子并多问！</p>
-<p>特别注意：不要因为遵守本PEP而破坏向后兼容性！</p>
-<p>部分可以违背指南情况：</p>
-<ul>
-<li>
-<p>遵循指南会降低可读性。</p>
-</li>
-<li>
-<p>与周围其他代码不一致。</p>
-</li>
-<li>
-<p>代码在引入指南完成，暂时没有理由修改。</p>
-</li>
-<li>
-<p>旧版本兼容。</p>
-</li>
-</ul>
-<h2 id="_2">代码布局</h2>
-<h4 id="_3">缩进</h4>
-<p>每级缩进用4个空格 …</p>
-                <a class="readmore" href="/python_pep8.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
