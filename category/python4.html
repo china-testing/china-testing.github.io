@@ -28,6 +28,86 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_buildbot.html" rel="bookmark"
+                           title="Permalink to python库介绍-buildbot教程">python库介绍-buildbot教程</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-25T19:23:00+08:00">
+                Published: 日 25 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Buildbot是python实现的开源持续构建和持续交付工具，为Python, Mozilla, Chromium, WebKit等知名项目使用。</p>
+<p>与Jenkins相比，Buildbot在大陆使用者较少。原因在于Jenkins的界面相对较美观，更容易上手；Jenkins的中文文档比较丰富。但是Jenkins因为资源消耗庞大、不太方便定制而不受一些有实力的公司欢迎。这些不少把目光聚焦在Buildbot。</p>
+<p>究竟Buildbot有哪些优点让这些公司青睐呢？Buildbot基于python网络框架Twisted，分布式做得好。Buildbot可以直接使用python包，轻松拥有上万库，具备强大的扩展能力。如果你觉得Jenkins已经轻松地满足你的需求，你不需要Buildbot。如果你在Jenkins时觉得效率低下、扩展困难、一些用python等脚本可以实现的动作在Jenkins困难重重，那么可以看看Buildbot。</p>
+<p>python的buildbot站点：　http://buildbot.python.org/all/#/</p>
+<p>Buildbot是开源的自动化软件构建，测试，发布流程的框架。</p>
+<p>Buildbot支持跨平台，分布式，并行执行jobs，与版本控制系统的灵活集成，丰富的状态报告等等。 </p>
+<p>Buildbot是一个作业调度系统：它会对作业进行排队，在所需要的资源可用时执行任务，并报告结果。</p>
+<p>Buildbot有一个或多个主机和从机。主机监控源代码库的变化，调配从机，并给用户和开发者报告结果。从机可在多种操作系统上运行。</p>
+<p>可以配置Python脚本到主机。这个脚本可以简单到只配置内置组件 …</p>
+                <a class="readmore" href="/python3_lib_buildbot.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_os.path.html" rel="bookmark"
+                           title="Permalink to python库介绍-os.path: 平台独立的文件名操作">python库介绍-os.path: 平台独立的文件名操作</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-25T19:20:00+08:00">
+                Published: 日 25 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>的：文件名和路径解析，组合，测试等。</p>
+<p>使用os.path模块中包含的函数编写代码以便在多个平台上处理文件非常简单。即使不打算在平台之间移植的程序也应该使用os.path来进行可靠的文件名解析。</p>
+<h2 id="_1">解析路径</h2>
+<p>路径解析依赖于在os中定义的几个变量：</p>
+<div class="highlight"><pre><span></span>os.sep - 路径各部分之间的分隔符（例如“/”或“\”）。
+
+os.extsep - 文件名和文件扩展名之间的分隔符。
+
+os.pardir - 上级目录(e.g., “..”)。
+
+os.curdir - 当前目录 (e.g., “.”)。
+</pre></div>
+
+
+<p>split()函数将路径分成两个独立的部分，并返回包含结果的元组。元组的第二个元素是路径的最后一个元素，第一个元素是之前的所有元素。</p>
+<div class="highlight"><pre><span></span><span class="c1"># ospath_split.py</span>
+
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="n">PATHS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;/one/two/three&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;/one/two/three/&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">PATHS</span><span class="p">:</span>
+    <span class="k">print …</span></pre></div>
+                <a class="readmore" href="/python3_lib_os.path.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_python-daemon.html" rel="bookmark"
                            title="Permalink to python库介绍-python-daemon: 实现python后台程序">python库介绍-python-daemon: 实现python后台程序</a></h1>
                 </header>
@@ -421,89 +501,6 @@
 <p>要实例化路径，字符串作为参数。Path对象的字符串表示是该字符串。要创建引用相对于现有路径的值的新路径，请使用/运算符来扩展路径。运算符的参数可以是字符串或其他路径对象。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1 …</pre></div></td></tr></table>
                 <a class="readmore" href="/python3_lib_pathlib.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_enum.html" rel="bookmark"
-                           title="Permalink to python库介绍-enum: 枚举">python库介绍-enum: 枚举</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-11T19:20:00+08:00">
-                Published: 日 11 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>枚举是常量的集合，支持根据id比较和迭代等功能。</p>
-<ul>
-<li>
-<p>python官方文档：https://docs.python.org/3/library/enum.html</p>
-</li>
-<li>
-<p>pymotw文档：https://pymotw.com/3/enum/index.html</p>
-</li>
-<li>
-<p>完稿日期：2016.08.22</p>
-</li>
-</ul>
-<h2 id="_2">创建枚举</h2>
-<p>继承Enum类，添加类属性即可创建枚举。</p>
-<p>enum_create.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21 …</pre></div></td></tr></table>
-                <a class="readmore" href="/python3_lib_enum.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_telnetlib.html" rel="bookmark"
-                           title="Permalink to python库介绍-telnetlib：Telnet客户端">python库介绍-telnetlib：Telnet客户端</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-11T19:20:00+08:00">
-                Published: 日 11 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>telnetlib模块提供的Telnet类实现了Telnet协议(参见rfc854)。它为协议字符和telnet选项提供符号常量，符号常量来源于arpa/telnet.h，去掉了前缀TELOPT_。</p>
-<p>telnet命令有： IAC, DONT, DO, WONT, WILL, SE (Subnegotiation End), NOP (No Operation), DM (Data Mark), BRK (Break), IP (Interrupt process), AO (Abort output), AYT (Are You There), EC (Erase Character), EL (Erase Line), GA (Go Ahead), SB (Subnegotiation Begin)。</p>
-<p>class telnetlib.Telnet …</p>
-                <a class="readmore" href="/python3_lib_telnetlib.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

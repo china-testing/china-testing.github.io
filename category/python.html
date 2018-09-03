@@ -26,7 +26,562 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/python3_crash9.html">[雪峰磁针石博客]python3快速入门教程3文本处理1正则表达式</a></h1>
+                    <h1 class="entry-title"><a href="/python3_crash_ch8.html">[雪峰磁针石博客]python3快速入门教程8错误和异常</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T13:40:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info --><p>Python 中(至少)有两种错误：语法错误(syntax errors)和异常(exceptions)。</p>
+<h2 id="_1">语法错误</h2>
+<p>语法错误又称作解析错误:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="bp">True</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="bp">True</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
+                           <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+</pre></div>
+</td></tr></table>
+
+<p>语法分析器指出错误行，并且在检测到错误的位置前面显示^。 </p>
+<h2 id="_2">异常</h2>
+<p>即使语句或表达式在语法上是正确的，执行时也可能会引发错误。运行期检测到的错误称为异常</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">division</span> <span class="n">by</span> <span class="n">zero</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">spam</span><span class="o">*</span><span class="mi">3</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s1">&#39;spam&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;2&#39;</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">Can</span><span class="s1">&#39;t convert &#39;</span><span class="nb">int</span><span class="s1">&#39; object to str implicitly</span>
+</pre></div>
+</td></tr></table>
+
+<p>错误信息的最后一行指出发生了什么错误。异常也有不同的类型，异常类型做为错误信息的一部分显示出来：示例中的异常分别为  <a href="https://docs.python.org/3/library/exceptions.html#ZeroDivisionError" title="ZeroDivisionError"><code>ZeroDivisionError</code></a>, <a href="https://docs.python.org/3/library/exceptions.html#NameError" title="NameError"><code>NameError</code></a> 和 <a href="https://docs.python.org/3/library/exceptions.html#TypeError" title="TypeError"><code>TypeError</code></a>。打印错误信息时，异常的类型作为异常的内置名显示。对于所有的内置异常都是如此，不过用户自定义异常就不一定了（尽管这是很有用的约定）。标准异常名是内置的标识符(非保留关键字)。</p>
+<p>这行后一部分是关于该异常类型的详细说明，这意味着它的内容依赖于异常类型。</p>
+<p>错误信息的前半部分以堆栈的形式列出异常发生的位置。通常在堆栈中列出了源代码行，然而，来自标准输入的源码不会显示出来。</p>
+<p><a href="https://docs.python.org/3/library/exceptions.html#bltin-exceptions">内置的异常</a> 列出了内置异常和它们的含义。</p>
+<h2 id="_3">异常处理</h2>
+<p>例子：要求用户输入直到输入合法的整数为止，但允许用户中断这个程序（使用Control-C或系统支持的任何方法）。注意：用户产生的中断会引发 <a href="https://docs.python.org/3/library/exceptions.html#KeyboardInterrupt">KeyboardInterrupt</a> 异常。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>         <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter a number: &quot;</span><span class="p">))</span>
+<span class="o">...</span>         <span class="k">break</span>
+<span class="o">...</span>     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<span class="o">...</span>         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Oops!  That was no valid number.  Try again...&quot;</span><span class="p">)</span>
+<span class="o">...</span>
+</pre></div>
+</td></tr></table>
+
+<p><a href="https://docs.python.org/3/reference/compound_stmts.html#try">try</a> 语句按如下方式工作。</p>
+<ul>
+<li>首先，执行try和except 之间的内容</li>
+<li>如果没有异常发生，忽略except语句。</li>
+<li>如果在 try 子句执行过程中发生了异常，那么该子句其余的部分就会忽略。如果异常匹配于  * 后面指定的异常类型，就执行对应的except子句。然后继续执行try语句之后的代码。</li>
+<li>如果发生了一个异常，在except 子句中没有与之匹配的分支，它就会传递到上一级try 语句中。如果最终仍找不到对应的处理语句，它就成为未处理异常，终止程序运行，显示提示信息。</li>
+</ul>
+<p>try语句可能包含多个 except 子句，分别指定处理不同的异常。至多执行一个分支。异常处理程序只会处理对应的 try 子句中发生的异常，在同一try语句中，其他子句中发生的异常则不作处理。except 子句可以在元组中列出多个异常的名字，例如:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="k">except</span> <span class="p">(</span><span class="ne">RuntimeError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">,</span> <span class="ne">NameError</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">pass</span>
+</pre></div>
+</td></tr></table>
+
+<p>异常匹配如果except子句中的类相同的类或其基类(反之如果是其子类则不行）。 例如，以下代码将按此顺序打印B，C，D：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">D</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">]:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="bp">cls</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">D</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">C</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">B</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>如果except B在先，将打印B，B，B。</p>
+<p>最后except子句可以省略例外名称，作为通配符。 请谨慎使用此功能，因为这种方式很容易掩盖真正的编程错误！ 它也可以用来打印错误消息，然后重新引发异常(也允许调用者处理异常）：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;myfile.txt&#39;</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;OS error: {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Could not convert data to an integer.&quot;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Unexpected error:&quot;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">raise</span>
+</pre></div>
+</td></tr></table>
+
+<p>try … except语句可以带有else子句，该子句只能出现在所有 except 子句之后。当 try 语句没有抛出异常时，需要执行一些代码，可以使用这个子句。例如:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;cannot open&#39;</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="s1">&#39;has&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()),</span> <span class="s1">&#39;lines&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<p>使用else子句比在try子句中附加代码要好，因为这样可以避免 try … except  意外的截获本来不属于它们的那些代码抛出的异常。</p>
+<p>发生异常时，可能会有相关值，作为异常的参数存在。这个参数是否存在、是什么类型，依赖于异常的类型。</p>
+<p>在异常名(元组)之后，也可以为 except 子句指定一个变量。这个变量绑定于异常实例，它存储在instance.args参数中。为了方便起见，异常实例定义了 <a href="https://docs.python.org/3/reference/datamodel.html#object.__str__"><strong>str</strong>()</a> ，这样就可以直接访问过打印参数而不必引用.args。也可以在引发异常之前初始化异常，并根据需要向其添加属性。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">inst</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">inst</span><span class="p">))</span>    <span class="c1"># the exception instance</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">inst</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>     <span class="c1"># arguments stored in .args</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span>          <span class="c1"># __str__ allows args to be printed directly,</span>
+<span class="o">...</span>                          <span class="c1"># but may be overridden in exception subclasses</span>
+<span class="o">...</span>     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">inst</span><span class="o">.</span><span class="n">args</span>     <span class="c1"># unpack args</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;y =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">Exception</span><span class="s1">&#39;&gt;</span>
+<span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">spam</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">eggs</span>
+</pre></div>
+</td></tr></table>
+
+<p>对于那些未处理的异常，如果它们带有参数，那么就会被作为异常信息的最后部分(“详情”)打印出来。</p>
+<p>异常处理器不仅仅处理那些在 try 子句中立刻发生的异常，也会处理那些 try 子句中调用的函数内部发生的异常。例如:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">inst</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">inst</span><span class="p">))</span>    <span class="c1"># the exception instance</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">inst</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>     <span class="c1"># arguments stored in .args</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span>          <span class="c1"># __str__ allows args to be printed directly,</span>
+<span class="o">...</span>                          <span class="c1"># but may be overridden in exception subclasses</span>
+<span class="o">...</span>     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">inst</span><span class="o">.</span><span class="n">args</span>     <span class="c1"># unpack args</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;y =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">Exception</span><span class="s1">&#39;&gt;</span>
+<span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">spam</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">eggs</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="_4">抛出异常</h2>
+<p><a href="https://docs.python.org/3/reference/simple_stmts.html#raise">raise</a> 语句可强行抛出指定的异常。例如:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s1">&#39;HiThere&#39;</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">NameError</span><span class="p">:</span> <span class="n">HiThere</span>
+</pre></div>
+</td></tr></table>
+
+<p>要抛出的异常由raise的唯一参数标识。它必需是异常实例或异常类(继承自 <a href="https://docs.python.org/3/library/exceptions.html#Exception">Exception</a> 的类）。如果传递异常类，它将通过调用它的没有参数的构造函数而隐式实例化：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">raise</span> <span class="ne">ValueError</span>  <span class="c1"># shorthand for &#39;raise ValueError()&#39;</span>
+</pre></div>
+</td></tr></table>
+
+<p>如果你想知道异常是否抛出，但不想处理它，raise语句可简单的重新抛出该异常:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s1">&#39;HiThere&#39;</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;An exception flew by!&#39;</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">raise</span>
+<span class="o">...</span>
+<span class="n">An</span> <span class="n">exception</span> <span class="n">flew</span> <span class="n">by</span><span class="err">!</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">NameError</span><span class="p">:</span> <span class="n">HiThere</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="_5">用户自定义异常</h2>
+<p>直接或间接的继承 <a href="https://docs.python.org/3/library/exceptions.html#Exception">Exception</a> 可以自定义异常。</p>
+<p>异常类中可以定义任何其它类中可以定义的东西，但是通常为了保持简单，只在其中加入几个属性信息，以供异常处理句柄提取。如果新创建的模块中需要抛出几种不同的错误时，通常的作法是为该模块定义异常基类，然后针对不同的错误类型派生出对应的异常子类:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Error</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for exceptions in this module.&quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">InputError</span><span class="p">(</span><span class="n">Error</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Exception raised for errors in the input.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        expression -- input expression in which the error occurred</span>
+<span class="sd">        message -- explanation of the error</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">expression</span> <span class="o">=</span> <span class="n">expression</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">message</span>
+
+<span class="k">class</span> <span class="nc">TransitionError</span><span class="p">(</span><span class="n">Error</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when an operation attempts a state transition that&#39;s not</span>
+<span class="sd">    allowed.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        previous -- state at beginning of transition</span>
+<span class="sd">        next -- attempted new state</span>
+<span class="sd">        message -- explanation of why the specific transition is not allowed</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">previous</span><span class="p">,</span> <span class="nb">next</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">previous</span> <span class="o">=</span> <span class="n">previous</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="nb">next</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">message</span>
+</pre></div>
+</td></tr></table>
+
+<p>与标准异常相似，大多数异常的命名都以 “Error” 结尾。</p>
+<p>很多标准模块中都定义了自己的异常，以报告在他们所定义的函数中可能发生的错误。关于类的进一步信息请参见<a href="https://docs.python.org/3/tutorial/classes.html#tut-classes">Classes</a>。</p>
+<h2 id="_6">定义清理行为</h2>
+<p><a href="https://docs.python.org/3/reference/compound_stmts.html#try">try</a> 语句有可选的子句定义在任何情况下都一定要执行的清理操作。例如:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">raise</span> <span class="ne">KeyboardInterrupt</span>
+<span class="o">...</span> <span class="k">finally</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Goodbye, world!&#39;</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="n">Goodbye</span><span class="p">,</span> <span class="n">world</span><span class="err">!</span>
+<span class="ne">KeyboardInterrupt</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table>
+
+<p>不管有没有发生异常，finally子句在程序离开try前都会被执行。当语句中发生了未捕获的异常(或者它发生在except或else子句中），在执行完finally子句后它会被重新抛出。 try语句经由break、continue或return语句退出也会执行finally子句。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+<span class="o">...</span>     <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+<span class="o">...</span>         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;division by zero!&quot;</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">else</span><span class="p">:</span>
+<span class="o">...</span>         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;result is&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">finally</span><span class="p">:</span>
+<span class="o">...</span>         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;executing finally clause&quot;</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">divide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">result</span> <span class="ow">is</span> <span class="mf">2.0</span>
+<span class="n">executing</span> <span class="k">finally</span> <span class="n">clause</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">divide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">division</span> <span class="n">by</span> <span class="n">zero</span><span class="err">!</span>
+<span class="n">executing</span> <span class="k">finally</span> <span class="n">clause</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">divide</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">)</span>
+<span class="n">executing</span> <span class="k">finally</span> <span class="n">clause</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">3</span><span class="p">,</span> <span class="ow">in</span> <span class="n">divide</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">unsupported</span> <span class="n">operand</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="o">/</span><span class="p">:</span> <span class="s1">&#39;str&#39;</span> <span class="ow">and</span> <span class="s1">&#39;str&#39;</span>
+</pre></div>
+</td></tr></table>
+
+<p>finally子句多用于释放外部资源(文件或网络连接之类的)。</p>
+<h2 id="_7">预定义清理行为</h2>
+<p>有些对象定义了标准的清理行为，无论对象操作是否成功，不再需要该对象的时候就会起作用。以下示例尝试打开文件并把内容输出到屏幕。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;myfile.txt&quot;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>这段代码的问题在于在代码执行完后没有立即关闭打开的文件。简单的脚本里没什么，但是大型应用程序就会出问题。<a href="https://docs.python.org/3/reference/compound_stmts.html#with">with</a> 语句使得文件之类的对象能及时准确地进行清理。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;myfile.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>语句执行后，文件f总会被关闭，即使是在处理文件行时出错也一样。其它对象是否提供了预定义的清理行为要参考相关文档。</p>
+<h2 id="_8">异常处理实例： 正则表达式及拼音排序</h2>
+<p>有某群的某段<a href="https://github.com/china-testing/python-api-tesing/blob/master/weeks/2018_06_01/test.txt">聊天记录</a></p>
+<p>现在要求输出排序的qq名，结果类似如下：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="s1">&#39;本草隐士&#39;</span><span class="p">,</span> <span class="s1">&#39;jerryyu&#39;</span><span class="p">,</span> <span class="s1">&#39;可怜的樱桃树&#39;</span><span class="p">,</span> <span class="s1">&#39;叻风云&#39;</span><span class="p">,</span> <span class="s1">&#39;欧阳-深圳白芒&#39;</span><span class="p">,</span>  <span class="o">...</span><span class="p">]</span>
+</pre></div>
+</td></tr></table>
+
+<p>需求来源：有个想批量邀请某些qq群的活跃用户到自己的群。又不想铺天盖地去看聊天记录。</p>
+<p>参考资料：<a href="https://github.com/china-testing/python-api-tesing#%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86text-processing">python文本处理库</a></p>
+<p>参考代码：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    xurongzhong@126.com wechat:pythontesting qq:37391319</span>
+<span class="c1"># 技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) </span>
+<span class="c1"># qq群：144081101 591302926  567351477</span>
+<span class="c1"># CreateDate: 2018-6-1</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">pypinyin</span> <span class="kn">import</span> <span class="n">lazy_pinyin</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;test.txt&#39;</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="c1">#print(text)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(:\d+)\s(.*?)\(\d+&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="n">names</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  
+
+<span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">char</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">lazy_pinyin</span><span class="p">(</span><span class="n">char</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">char</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="n">keys</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">compare</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行示例：</p>
+<p>1，把qq群的聊天记录导出为txt格式，重命名为test.txt</p>
+<p>2, 执行：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">qq</span><span class="o">.</span><span class="n">py</span> 
+<span class="p">[</span><span class="s1">&#39;Sally&#39;</span><span class="p">,</span> <span class="s1">&#39;^^O^^&#39;</span><span class="p">,</span> <span class="s1">&#39;aa催乳师&#39;</span><span class="p">,</span> <span class="s1">&#39;bling&#39;</span><span class="p">,</span> <span class="s1">&#39;本草隐士&#39;</span><span class="p">,</span> <span class="s1">&#39;纯中药治疗阳痿早泄&#39;</span><span class="p">,</span> <span class="s1">&#39;长夜无荒&#39;</span><span class="p">,</span> <span class="s1">&#39;东方～慈航&#39;</span><span class="p">,</span> <span class="s1">&#39;干金草&#39;</span><span class="p">,</span> <span class="s1">&#39;广东-曾超庆&#39;</span><span class="p">,</span> <span class="s1">&#39;红梅* 渝&#39;</span><span class="p">,</span> <span class="s1">&#39;jerryyu&#39;</span><span class="p">,</span> <span class="s1">&#39;可怜的樱桃树&#39;</span><span class="p">,</span> <span class="s1">&#39;叻风云&#39;</span><span class="p">,</span> <span class="s1">&#39;欧阳-深圳白芒&#39;</span><span class="p">,</span> <span class="s1">&#39;勝昔堂～元亨&#39;</span><span class="p">,</span> <span class="s1">&#39;蜀中~眉豆。&#39;</span><span class="p">,</span> <span class="s1">&#39;陕西渭南逸清阁*无为&#39;</span><span class="p">,</span> <span class="s1">&#39;吴宁……任&#39;</span><span class="p">,</span> <span class="s1">&#39;系统消息&#39;</span><span class="p">,</span> <span class="s1">&#39;于立伟&#39;</span><span class="p">,</span> <span class="s1">&#39;倚窗望岳&#39;</span><span class="p">,</span> <span class="s1">&#39;烟霞霭霭&#39;</span><span class="p">,</span> <span class="s1">&#39;燕子&#39;</span><span class="p">,</span> <span class="s1">&#39;张强&#39;</span><span class="p">,</span> <span class="s1">&#39;滋味&#39;</span><span class="p">,</span> <span class="s1">&#39;✾买个罐头 吃西餐&#39;</span><span class="p">,</span> <span class="s1">&#39;【大侠】好好&#39;</span><span class="p">,</span> <span class="s1">&#39;【大侠】面向大海～纯中药治烫伤&#39;</span><span class="p">,</span> <span class="s1">&#39;【宗师】吴宁……任&#39;</span><span class="p">,</span> <span class="s1">&#39;【宗师】红梅* 渝&#39;</span><span class="p">,</span> <span class="s1">&#39;【少侠】焚琴煮鹤&#39;</span><span class="p">,</span> <span class="s1">&#39;【少侠】笨笨&#39;</span><span class="p">,</span> <span class="s1">&#39;【掌门】溆浦☞山野人家&#39;</span><span class="p">]</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="_9">参考资料</h2>
+<ul>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/python3_crash_ch8.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash9.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程3文本处理1正则表达式">[雪峰磁针石博客]python3快速入门教程3文本处理1正则表达式</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-09-02T10:45:00+08:00">
                 Published: 日 02 九月 2018
@@ -37,432 +592,15 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info --><h2 id="_1">简介</h2>
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
 <p>-- 后面有很多习题，可以先做题目再来看文章</p>
 <p>参考资料：https://docs.python.org/3/howto/index.html</p>
 <p>正则表达式(Regular expressions  REs或regexes或regex patterns）本质是小的且高度专业化的编程语言。它嵌入到 Python 中，调用使用re模块。需要指定一些规则来描述那些你希望匹配的字符串集合。这些字符串集合可能包含英语句子、e-mail地址、TeX 命令，或任何你想要的东东。然后可以提出问题，例如“字符串是否匹配该模式？”或“模式是否匹配字符串？”。 您还可以使用RE修改字符串或以各种方式拆分它。</p>
 <p>正则表达式模式被编译成字节码，然后由 C 语言写的匹配引擎执行。对于高级的使用，你可能需要关注匹配引擎是如何执行给定RE，并通过一定的方式来编写RE，以便产生运行得更快的字节码。</p>
-<p>正则表达式语言小而严格，不是所有的字符处理都可以使用正则表达式。还有一些任务，可以使用正则表达式来完成，但是表达式非常复杂。在这种情况下编写 Python 代码来处理会更好些；尽管 Python 代码比精巧的正则表达式执行起来会慢一些，但可能会更容易理解。</p>
-<h2 id="_2">简单的模式</h2>
-<h3 id="_3">字符匹配</h3>
-<p>大多数字母和字符会匹配它们自身。举个例子，正则表达式test将完全匹配字符串test(你可以启用不区分大小写模式，该正则表达式可以匹配Test或TEST)。</p>
-<p>这条规则有例外; 有些字符是特殊的元字符，不匹配自身。 相反，它们匹配一些与众不同的东西，或者通过重复它们或改变它们的含义来影响RE的其他部分。</p>
-<p>这是元字符的完整列表</p>
-<div class="highlight"><pre><span></span><span class="o">.</span> <span class="o">^</span> <span class="err">$</span> <span class="o">*</span> <span class="o">+</span> <span class="err">?</span> <span class="p">{</span> <span class="p">}</span> <span class="p">[</span> <span class="p">]</span> \ <span class="o">|</span> <span class="p">(</span> <span class="p">)</span>
-</pre></div>
-
-
-<p>方括号 [ ]指定用于存放你需要匹配的字符集合。例如 [abc] 会匹配字符 a，b 或 c；[a-c] 可以实现相同功能。后者使用范围来表示与前者相同的字符集合。如果你想只匹配小写字母，你的 RE 可能写成 [a-z]。</p>
-<p>注意方括号元字符在中不会触发特殊功能例如 [akm$] 会匹配字符 'a'，'k'，'m' 或 '$'。</p>
-<p>你还可以匹配方括号中未列出的所有其它字符，开头添加 ^即可，例如 [^5] 会匹配除了 '5' 之外的任何字符。</p>
-<p>元字符转义：前面加上一个反斜杠，以消除它们的特殊功能：[，\ 。</p>
-<p>反斜杠后边跟一些字符还可以表示特殊的意义，例如表示十进制数字，表示所有的字母或者表示非空白的字符集合。</p>
-<p>让我们来举个例子：\w 匹配任何单词字符。如果正则表达式以字节的形式表示，这相当字符类 [a-zA-Z0-9_]；如果正则表达式是一个字符串，\w 会匹配所有 Unicode 数据库（unicodedata 模块提供）中标记为字母的字符。你可以在编译正则表达式的时候，通过提供 re.ASCII 表示进一步限制 \w 的定义。</p>
-<p>批注：re.ASCII 标志使得 \w 只能匹配 ASCII 字符，不要忘了，Python3 是 Unicode 的。</p>
-<p>下边列举一些反斜杠加字符构成的特殊含义：</p>
-<p>特殊字符  | 含义
-| --- | --- |
-\number |匹配相同编号的组。组从1开始编号。例如，(.+) \1匹配'the the'或'55 55'，但不匹配'thethe'（注意组后面的空格）。此特殊序列只能用于匹配前99个组。如果数字的第一个数字是0，或者数字是3个八进制数字长，则不会将其解释为组匹配，而是解释为具有八进制值编号的字符。在方括号内，所有数字转义都被视为字符。默认支持Unicode，中文标点也会作为边界。可以启用re.ASCII。
-\d |匹配任何十进制数字，相当于类[0-9]
-\D |与 \d 相反，匹配任何非十进制数字的字符，相当于 [^0-9]
-\s | 匹配任何空白字符（包含空格、换行符、制表符等），相当于类 [\t\n\r\f\v]
-\S |与 \s 相反，匹配任何非空白字符，当相于类 [^\t\n\r\f\v]
-\w |匹配任何字符，设置了re.ASCII的情况下等同于[a-zA-Z0-9_]
-\W |与 \w 相反，设置了re.ASCII的情况下等同于[^a-zA-Z0-9_]
-\b |匹配单词的开始或结束
-\B |与 \b 相反
-\A |仅匹配字符串的开始。
-\Z |仅匹配字符串末尾。</p>
-<p>例如 [\s,.] 匹配任何空白字符（/s 的特殊含义），',' 或 ‘.’ 。</p>
-<p>转义字符：</p>
-<div class="highlight"><pre><span></span>\<span class="n">a</span>      \<span class="n">b</span>      \<span class="n">f</span>      \<span class="n">n</span>
-\<span class="n">r</span>      \<span class="n">t</span>      \<span class="n">u</span>      \<span class="n">U</span>
-\<span class="n">v</span>      \<span class="n">x</span>      \\
-</pre></div>
-
-
-<p>'.'匹配除了换行符以外的任何字符。如果设置re.DOTALL,它将匹配包括换行在内的任何字符。</p>
-<h3 id="_4">重复</h3>
-<p>'*' : 指定前一个字符匹配零次或者多次。</p>
-<p>例如ca*t将匹配 ct(0 个 a)，cat（1 个字符 a），caaat（3 个字符 a），等等。需要注意的是，由于受到 C 语言的 int 类型大小的内部限制，正则表达式引擎会限制字符 'a' 的重复个数不超过 20 亿个；不过，通常我们工作也用不到那么大的数据，你未必有这么大的内存。</p>
-<p>默认的是贪婪的，当你重复匹配一个 RE 时，匹配引擎会尝试尽可能多的去匹配。直到RE不匹配或者到了结尾，匹配引擎就会回退一个字符，然后再继续尝试。</p>
-<p>表达式 a[bcd]*b，首先需要匹配字符 'a'，然后零个到多个 [bcd]，最后以 'b' 结尾。那现在想象一下，这个 RE 匹配字符串 abcbd 会怎样？</p>
-<p>步骤  |匹配 |说明
-| --- | --- | --- |
-1| a| 匹配 RE 的第一个字符 'a'
-2| abcbd| 引擎在符合规则的情况下尽可能地匹配 [bcd]<em>，直到该字符串的结尾
-3| 失败   引擎尝试匹配 RE 最后一个字符 ‘b’，但当前位置已经是字符串的结尾，所以失败告终
-4| abcb| 回退，所以 [bcd]</em> 匹配少一个字符
-5| 失败| 再一次尝试匹配 RE 最后一个字符 'b'，但字符串最后一个字符是 'd'，所以失败告终
-6| abc| 再次回退，所以 [bcd]* 这次只匹配 'bc'
-7| abcb| 再一次尝试匹配这符 'b'，这一次字符串当前位置指向的字符正好是 'b'，匹配成功。最终，RE 匹配的结果是 abcb 。</p>
-<p>另一个实现重复的元字符是 +，用于指定前一个字符匹配一次或者多次。</p>
-<p>要特别注意 * 和 + 的区别：* 匹配的是零次或者多次，所以被重复的内容可能压根儿不会出现；+ 至少需要出现一次。例如 ca+t 会匹配 cat 和 caaat，但不会匹配 ct 。</p>
-<p>还有两个表示重复的元字符，一个是问号?: 字符匹配零次或者一次。</p>
-<p>元字符 {m,n}（m 和 n 都是十进制数），必须匹配 m 次到 n 次之间。例如 a/{1,3}b 会匹配 a/b，a//b 和 a///b 。但不会匹配 ab(没有斜杠)；也不会匹配 a////b(斜杠超过三个)。</p>
-<p>你可以省略 m 或者 n，这样的话，引擎会用合理的值代替。 m默认为0；n 默认为 20 亿。</p>
-<p>{0,}跟’*‘ 是一样的；{1,}跟‘+’是一样的；{0,1} 跟？是一样的。不过还是鼓励大家记住并使用 * 、+ 和 ?，因为这些字符更短并且更容易阅读。</p>
-<h3 id="_5">习题</h3>
-<p>1, 下面那些不是python3正则表达式的元字符：</p>
-<p>A $ B - C * D ？ E /</p>
-<p>参考答案：B E</p>
-<p>2,python3正则表达式r'\bfoo\b'匹配下面哪些字符串</p>
-<p>A 'foo' B 'foo.' C '(foo)' D 'bar foo baz' E 'foobar' F  'foo3'</p>
-<p>参考答案：A B C D</p>
-<p>3,python3正则表达式r'\bfoo\b'匹配下面哪些字符串</p>
-<p>A 'foo，' B 'foo。' C '(foo！' D 'bar foo baz' E 'foobar' F  'foo3'</p>
-<p>参考答案：A B C D</p>
-<p>4，下面python3正则表达式元字符的描述哪些是错误的。
-A. 默认\w不能匹配汉字
-B. 默认\w能匹配汉字
-C. 默认.能匹配换行符
-D. 默认.不能匹配换行符</p>
-<p>参考答案：A C </p>
-<h2 id="_6">使用正则表达式</h2>
-<p>Python通过re模块提供正则表达式支持，并可将正则表达式编译成对象，用它们来进行匹配。</p>
-<h3 id="_7">编译正则表达式</h3>
-<p>正则表达式编译为模式对象，该对象拥有各种方法，如查找模式匹配或者执行字符串替换。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">re</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;ab*&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">p</span>
-<span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;ab*&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>re.compile()也接受可选的flags 参数，用于开启各种特殊功能和语法变化。</p>
-<p>简单的例子：</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;ab*&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
-</pre></div>
-
-
-<p>正则表达式作为字符串参数传给 re.compile() 。由于正则表达式并不是 Python语言的核心部分，因此没有为它提供特殊的语法支持，所以正则表达式只能以字符串的形式表示。</p>
-<h3 id="_8">原始字符串</h3>
-<p>'\section' 要用'\\section'表示。不巧，Python 字符串也使用 '\' 表示字符 '\'。原始字符串则方便得多：r"\section"即可。</p>
-<h3 id="_9">匹配</h3>
-<p>模式对象的常用方法：</p>
-<p>方法  |功能
-| --- | --- |
-match()  |判断正则表达式是否从开始处匹配一个字符串
-search()  |遍历字符串，找到正则表达式匹配的第一个位置
-findall()  |遍历字符串，找到正则表达式匹配的所有位置，并以列表的形式返回
-finditer()  |遍历字符串，找到正则表达式匹配的所有位置，并以迭代器的形式返回</p>
-<p>如果没有找到任何匹配的话，match() 和 search() 会返回 None；如果匹配成功，则会返回匹配对象（match object），包含所有匹配的信息：例如从哪儿开始，到哪儿结束，匹配的子字符串等等。</p>
-<p>python自带了正则表达式调试工具redemo.py：</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/10819934-725670e086543b42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>实例：</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">re</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[a-z]+&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">p</span>
-<span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[a-z]+&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
-<span class="bp">None</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;tempo&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span>
-<span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;tempo&#39;</span><span class="o">&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
-<span class="s1">&#39;tempo&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">(),</span> <span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
-<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">span</span><span class="p">()</span>
-<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-</pre></div>
-
-
-<p>匹配对象包含了很多方法和属性，以下几个是最重要的：</p>
-<p>方法  |功能
-| --- | --- |
-group()  |返回匹配的字符串
-start()  |返回匹配的开始位置
-end()  |返回匹配的结束位置
-span()  |返回元组表示匹配位置(start, end) </p>
-<p>match的start总是0，search() 方法则不一定了：</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;::: message&#39;</span><span class="p">))</span>
-<span class="bp">None</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;::: message&#39;</span><span class="p">);</span> <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;message&#39;</span><span class="o">&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
-<span class="s1">&#39;message&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">span</span><span class="p">()</span>
-<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
-</pre></div>
-
-
-<p>在实际应用中，最常用的方法是将匹配对象存放在局部变量中，并检查其返回值是否为 None 。</p>
-<div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
-<span class="n">m</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">match</span><span class="p">(</span> <span class="s1">&#39;string goes here&#39;</span> <span class="p">)</span>
-<span class="k">if</span> <span class="n">m</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Match found: &#39;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;No match&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>有两个方法可以返回所有的匹配结果，一个是 findall()，一个是 finditer() 。</p>
-<p>findall() 返回的是一个列表：</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;12 drummers drumming, 11 pipers piping, 10 lords a-leaping&#39;</span><span class="p">)</span>
-<span class="p">[</span><span class="s1">&#39;12&#39;</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">]</span>
-</pre></div>
-
-
-<p>而 finditer() 则是将匹配对象作为迭代器返回：</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="s1">&#39;12 drummers drumming, 11 ... 10 ...&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">iterator</span>  
-<span class="o">&lt;</span><span class="n">callable_iterator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mi">0</span><span class="n">x</span><span class="o">...&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>
-<span class="o">...</span>
-<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
-<span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
-</pre></div>
-
-
-<h3 id="_10">模块级函数</h3>
-<p>re 模块同时还提供了一些全局函数，例如 match()，search()，findall()，sub() 等。这些函数跟模式对象同名方法一样，只是增加了为正则表达式字符串的第一个参数。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;From\s+&#39;</span><span class="p">,</span> <span class="s1">&#39;Fromage amk&#39;</span><span class="p">))</span>
-<span class="bp">None</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;From\s+&#39;</span><span class="p">,</span> <span class="s1">&#39;From amk Thu May 14 19:12:10 1998&#39;</span><span class="p">)</span>  
-<span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;From &#39;</span><span class="o">&gt;</span>
-</pre></div>
-
-
-<p>这些函数帮你自动创建模式对象，并调用相关的函数。它们还将编译好的模式对象存放在缓存中，以便将来可以快速地直接调用。</p>
-<p>在循环中大量的使用正则表达式，预编译的话可以节省一些函数调用，用模式的方法更好。但如果是循环外部，因为有内部缓存机制，两者效率相差无几。</p>
-<h3 id="_11">编译标识</h3>
-<p>编译标识可修改正则表达式的工作方式。在 re 模块下，编译标识均有完整名和简写，例如 IGNORECASE 简写是 I。</p>
-<p>标志  |含义
-| --- | --- |
-ASCII，A  |使得转义符号 \w，\b，\s 和 \d 只能匹配 ASCII 字符
-DOTALL，S  |使得 . 匹配任何符号，包括换行符
-IGNORECASE，I  |不区分大小写
-LOCALE，L  |支持当前语言（区域）设置
-MULTILNE，M  |多行匹配，影响 ^ 和 $
-VERBOSE，X（for'extended'）  |启用详细的正则表达式, 更简洁且更容易理解。 </p>
-<p>下面我们来详细讲解一下它们的含义：</p>
-<ul>
-<li>I</li>
-</ul>
-<p>IGNORECASE</p>
-<p>不区分大小写。举个例子，正则表达式[a-z] 或[A-Z]会匹配对应的小写字母会匹配52个ASCII字母。还有4个非ASCII字母：'İ'(U + 0130，拉丁大写字母I上面带点)，'ı'(U + 0131，拉丁文小写字母无点i)，'s'(U + 017F，拉丁文小 字母长s)和'K'(U + 212A，开尔文标志)。  Spam 将匹配'Spam'，'spam'，'spAM'或'ſpam'（后者仅在Unicode模式下匹配）。 此小写不考虑当前区域设置; 如果您还设置了LOCALE标志，它也会。</p>
-<ul>
-<li>L</li>
-</ul>
-<p>LOCALE</p>
-<p>使得 \w，\W，\b 和 \B和大小写依赖当前的语言(区域)环境，而不是 Unicode 数据库。</p>
-<p>区域设置是 C 语言的功能，主要作用是消除不同语言之间的差异。例如你正在处理的是法文文本，你想使用 \w+ 来匹配单词，但是 \w 只是匹配 [A-Za-z] 中的单词，并不会匹配那些法文特殊符号。python3已经推荐使用Unicode，不建议使用LOCALE。</p>
-<ul>
-<li>M</li>
-</ul>
-<p>MULTILNE</p>
-<p>通常 ^ 只匹配字符串的开头，而 \$ 匹配字符串的结尾。该标识设置时，^ 不仅匹配字符串的开头，还匹配行首；$ 不仅匹配字符的结尾，还匹配行尾。</p>
-<ul>
-<li>S</li>
-</ul>
-<p>DOTALL</p>
-<p>. 可以匹配任何字符，包括换行符。如果不使用这个标志，. 将匹配除换行的所有字符。</p>
-<ul>
-<li>A</li>
-</ul>
-<p>ASCII
-使得 \w，\W，\b，\B，\s 和 \S 只匹配 ASCII 字符，而不是全Unicode匹配。这个标识仅对Unicode模式有意义，并忽略字节模式。</p>
-<ul>
-<li>X</li>
-</ul>
-<p>VERBOSE</p>
-<p>这个标识使你的正则表达式可以写得更可读灵活，空格会被忽略(除了出现在字符类中和使用反斜杠转义的空格)；同时允许你在正则表达式字符串使用注释，# 符号后边的内容是注释(除了出现在字符类中和使用反斜杠转义的 #)。</p>
-<p>下边是使用 re.VERBOSE 的例子，：</p>
-<div class="highlight"><pre><span></span><span class="n">charref</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2"> &amp;[#]                # Start of a numeric entity reference</span>
-<span class="s2"> (</span>
-<span class="s2">     0[0-7]+         # Octal form</span>
-<span class="s2">   | [0-9]+          # Decimal form</span>
-<span class="s2">   | x[0-9a-fA-F]+   # Hexadecimal form</span>
-<span class="s2"> )</span>
-<span class="s2"> ;                   # Trailing semicolon</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
-
-<span class="c1"># 没有注释</span>
-
-<span class="n">charref</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;&amp;#(0[0-7]+&quot;</span>
-                     <span class="s2">&quot;|[0-9]+&quot;</span>
-                     <span class="s2">&quot;|x[0-9a-fA-F]+);&quot;</span><span class="p">)</span>
-</pre></div>
-
-
-<h3 id="_12">习题</h3>
-<p>1，下面关于python3 正则模式的说哪些是错误的？</p>
-<p>A. match() 可以返回多个匹配
-B. search() 必须从开头开始匹配
-C. findall() 以迭代器的形式返回
-D. finditer() 以列表的形式返回</p>
-<p>答案：ABCD</p>
-<p>2，python3 正则表达式re.compile('spam', re.IGNORECASE)匹配哪些字符串？
-A.'Spam' B. 'spam' C. 'spAM' D. 'ſpam' E.'pam'</p>
-<p>答案：ABCD</p>
-<h2 id="_13">更多关于模式</h2>
-<h3 id="_14">更多元字符</h3>
-<ul>
-<li>I</li>
-</ul>
-<p>或操作符，对两个正则表达式进行操作。如果 A 和 B 是正则表达式，A | B 会匹配 A 或 B 中出现的任何字符。为了能够更加合理的工作，| 的优先级非常低。例如 Crow|Servo匹配'Crow'或'Servo',，而不是匹配'Cro'、 'w' 、'S'、'ervo'.。</p>
-<p>同样，我们使用 | 来匹配 '|' 字符本身；或者包含在一个字符类中，像这样 [|] 。</p>
-<ul>
-<li>^</li>
-</ul>
-<p>匹配字符串开始。在 MULTILNE 中，每当遇到换行符就会立刻进行匹配。如果你只希望匹配位于字符串开头的单词 From，那么你的正则表达式可以写为 ^From</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;^From&#39;</span><span class="p">,</span> <span class="s1">&#39;From Here to Eternity&#39;</span><span class="p">))</span>  
-<span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;From&#39;</span><span class="o">&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;^From&#39;</span><span class="p">,</span> <span class="s1">&#39;Reciting From Memory&#39;</span><span class="p">))</span>
-<span class="bp">None</span>
-</pre></div>
-
-
-<ul>
-<li>$</li>
-</ul>
-<p>匹配字符串的结束和行尾。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;}$&#39;</span><span class="p">,</span> <span class="s1">&#39;{block}&#39;</span><span class="p">))</span>  
-<span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;}&#39;</span><span class="o">&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;}$&#39;</span><span class="p">,</span> <span class="s1">&#39;{block} &#39;</span><span class="p">))</span>
-<span class="bp">None</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;}$&#39;</span><span class="p">,</span> <span class="s1">&#39;{block}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>  
-<span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;}&#39;</span><span class="o">&gt;</span>
-</pre></div>
-
-
-<ul>
-<li>A</li>
-</ul>
-<p>匹配字符串开始，如果没有设置 MULTILINE 标志的时候，\A 和 ^ 的功能是一样的；但如果设置了 MULTILNE 标志， ^ 会对字符串的每一行都进行匹配。</p>
-<ul>
-<li>Z</li>
-</ul>
-<p>匹配字符串的结束。</p>
-<ul>
-<li>b</li>
-</ul>
-<p>单词边界，这是只匹配单词的开始和结尾的零宽断言。单词定义为字母数字的序列，所以单词的结束指的是空格或者非字母数字的字符。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\bclass\b&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;no class at all&#39;</span><span class="p">))</span>
-<span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="o">&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;the declassified algorithm&#39;</span><span class="p">))</span>
-<span class="bp">None</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;one subclass is&#39;</span><span class="p">))</span>
-<span class="bp">None</span>
-</pre></div>
-
-
-<p>在使用这些特殊的序列的时候，有两点是需要注意的：第一是Python 的字符串跟正则表达式在有些字符上是有冲突的。比如说在 Python 中，\b 表示的是退格符，ASCII 码值是 8。</p>
-<p>下边例子中，我们故意不写表示原始字符串的 'r'，结果确实大相庭径：</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\b</span><span class="s1">class</span><span class="se">\b</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;no class at all&#39;</span><span class="p">))</span>
-<span class="bp">None</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\b</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;class&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\b</span><span class="s1">&#39;</span><span class="p">))</span>
-<span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\x08</span><span class="s1">class</span><span class="se">\x08</span><span class="s1">&#39;</span><span class="o">&gt;</span>
-</pre></div>
-
-
-<p>第二点是在字符类中不能使用这个断言。在字符类中，\b 只是用来表示退格符。</p>
-<ul>
-<li>\B</li>
-</ul>
-<p>与 \b 的含义相反，\B 表示非单词边界的位置。</p>
-<h3 id="_15">分组</h3>
-<p>仅仅知道正则表达式是否匹配是不够的，正则表达式通常使用分组的方式分别对不同内容进行匹配。</p>
-<p>下例子将 RFC-822 头用 “:” 号分成名字和值：</p>
-<div class="highlight"><pre><span></span><span class="n">From</span><span class="p">:</span> <span class="n">author</span><span class="nd">@example.com</span>
-<span class="n">User</span><span class="o">-</span><span class="n">Agent</span><span class="p">:</span> <span class="n">Thunderbird</span> <span class="mf">1.5</span><span class="o">.</span><span class="mf">0.9</span> <span class="p">(</span><span class="n">X11</span><span class="o">/</span><span class="mi">20061227</span><span class="p">)</span>
-<span class="n">MIME</span><span class="o">-</span><span class="n">Version</span><span class="p">:</span> <span class="mf">1.0</span>
-<span class="n">To</span><span class="p">:</span> <span class="n">editor</span><span class="nd">@example.com</span>
-</pre></div>
-
-
-<p>先用正则表达式匹配整个RFC-822头，使用一个组来匹配头的名字，另一个组匹配名字对应的值。</p>
-<p>正则表达式使用元字符'(', ')' 来划分组。'(', ')' 元字符跟数学表达式中的小括号含义差不多；它们将包含在内部的表达式组合在一起，所以你可以对组的内容使用重复操作的元字符，例如 *，+，? 或者 {m,n} 。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;(ab)*&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;ababababab&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>
-<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-</pre></div>
-
-
-<p>用'（'，'）'表示的组也捕获它们匹配的文本的起始和结束索引; 这可以通过将参数传递给ggroup()，start()，end() 和 span() 来检索。 组从0开始编号。组0始终存在; 它是整个RE，因此匹配对象方法都将组0作为其默认参数。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;(a)b&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;ab&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
-<span class="s1">&#39;ab&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="s1">&#39;ab&#39;</span>
-</pre></div>
-
-
-<p>子组从左到右进行编号，子组也允许嵌套，我们可以通过从左往右来统计左括号 ( 来确定子组的序号。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;(a(b)c)d&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;abcd&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="s1">&#39;abcd&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="s1">&#39;abc&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="s1">&#39;b&#39;</span>
-</pre></div>
-
-
-<p>group() 方法可传入多个子组的序号：</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>groups() 方法一次性返回所有的子组匹配的字符串：</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
-<span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>反引用可以在后面的位置使用先前匹配过的内容，用法是反斜杠加上数字。例如 \1 表示引用前边成功匹配的序号为 1 的子组。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b(\w+)\s+\1\b&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;Paris in the the spring&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
-<span class="s1">&#39;the the&#39;</span>
-</pre></div>
-
-
-<h3 id="_16">习题</h3>
-<p>1, python3正则表达式compile('Crow|Servo')匹配哪些内容：</p>
-<p>A 'Crow' B 'foo。' C Servw' D 'Cro' E 'Serv' F  'Servo'</p>
-<h3 id="_17">重复</h3>
-<p>参考答案：A F</p>
-<p>2, python3正则表达式要匹配'|'，可以采用如下哪些方法：</p>
-<p>A '||' B '|' C '[|]' D '$|' </p>
-<p>参考答案：B C </p>
-<p>3,关于python3正则表达式，下面哪些说法是正确的</p>
-<p>A re.findall(r'^From', 'From Here to Eternity\nFrom', re.MULTILINE) 返回长度为2的列表
-B re.findall(r'^From', 'From Here to Eternity\nFrom') 返回长度为2的列表
-C re.findall(r'^From', ' From Here to Eternity\nFrom', re.MULTILINE) 返回长度为2的列表
-D re.findall(r'\bFrom', ' From Here to Eternity\nFrom', re.MULTILINE) 返回长度为2的列表</p>
-<p>参考答案：A D</p>
-<p>4,关于python3正则表达式，下面哪些说法是正确的</p>
-<p>A re.search(r'\bclass\b', 'no class at all')能成功匹配
-B re.search('\bclass\b', 'no class at all')能成功匹配
-C re.search(r'\bclass\b', 'no class at all')不能能成功匹配
-D re.search('\bclass\b', 'no class at all')不能成功匹配</p>
-<p>参考答案：A D</p>
-<p>待整理： notepad++ 正则 http://docs.notepad-plus-plus.org/index.php/Regular_Expressions</p>
-<h2 id="_18">参考资料</h2>
-<ul>
-<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/python3_crash8.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>正则表达式语言小而严格，不是所有的字符处理都可以使用正则表达式。还有一些任务，可以使用正则表达式来完成，但是表达式非常复杂。在这种情况下编写 Python 代码来处理会更好些 …</p>
+                <a class="readmore" href="/python3_crash9.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -494,6 +632,34 @@ D re.search('\bclass\b', 'no class at all')不能成功匹配</p>
 
 <p>map(function, sequence) 为每个元素调用 …</p>
                 <a class="readmore" href="/python3_crash8.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash_ch7.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程7输入和输出">[雪峰磁针石博客]python3快速入门教程7输入和输出</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:40:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>python有多种输出方式：屏幕打印数据，或者写入文件。</p>
+<h2 id="_1">格式化输出</h2>
+<p>我们有两种大相径庭地输出值方法：表达式语句* 和 <a href="https://docs.python.org/3/library/functions.html#print">print()</a> 函数(第三种方法使用文件对象的write()方法，标准文件输出可以参考sys.stdout)。</p>
+<p>通常需要对输出做更多的格式控制，而不是简单的打印空格分隔值。有两种方法可以格式化你的输出：第一种方法是由你自己处理整个字符串，通过使用字符串切片和连接操作可以创建任何你想要的输出形式。string 类型包含一些将字符串填充到指定列宽度的有用操作。第二种方法是使用 <a href="https://docs.python.org/3/library/stdtypes.html#str.format">str.format()</a> 方法。</p>
+<p>标准模块 <a href="https://docs.python.org/3/library/string.html#module-string">string</a> 的<a href="https://docs.python.org/3/library/string.html#string.Template">Template</a> 类可以替换字符串的值。(<a href="https://china-testing.github.io/python3_lib_string.html">python标准模块介绍-string:文本常量和模板</a>)</p>
+<p>Python 有办法将任意值转为字符串： <a href="https://docs.python.org/3/library/functions.html#repr">repr()</a> 或 <a href="https://docs.python.org/3/library/stdtypes.html#str">str()</a> 函数。</p>
+<p>函数 <a href="https://docs.python.org/3/library/stdtypes.html#str">str()</a> 用于将值转化为适于人阅读的形式，而 <a href="https://docs.python.org/3/library/functions.html#repr">repr()</a> 转化为供解释器读取的形式（如果没有相关语法，则会发生 <a href="https://docs.python.org/3/library/exceptions.html#SyntaxError">SyntaxError</a> 异常，没有<a href="https://docs.python.org/3/library/stdtypes.html#str">str()</a> 会返回与 …</p>
+                <a class="readmore" href="/python3_crash_ch7.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
@@ -749,93 +915,6 @@ D re.search('\bclass\b', 'no class at all')不能成功匹配</p>
 <h4 id="_3">缩进</h4>
 <p>每级缩进用4个空格 …</p>
                 <a class="readmore" href="/python_pep8.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_ftplib.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python模块介绍-ftplib：FTP协议客户端">[雪峰磁针石博客]python模块介绍-ftplib：FTP协议客户端</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:20:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">概述</h2>
-<p>该模块定义了FTP类和一些相关项。FTP类实现了FTP协议的客户端。你可以用它来编写使用FTP的URL。有关FTP（文件传输协议）的详细信息，请参阅Internet RFC959 [tools.ietf.org/html/rfc959.html]。</p>
-<h2 id="_2">快速入门</h2>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">ftplib</span> <span class="kn">import</span> <span class="n">FTP</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">ftp</span> <span class="o">=</span> <span class="n">FTP</span><span class="p">(</span><span class="s1">&#39;ftp.fi.muni.cz&#39;</span><span class="p">)</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>          
-<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span>  <span class="s1">&#39;230-Hello...&#39;</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span>  <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s1">&#39;andrew&#39;</span><span class="p">,</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="s1">&#39;230 Login successful.&#39;</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">6 …</span></pre></div>
-                <a class="readmore" href="/python3_lib_ftplib.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_binascii.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python标准模块介绍- binascii 二进制和ASCII转换">[雪峰磁针石博客]python标准模块介绍- binascii 二进制和ASCII转换</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:17:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>binascii模块包含很多用来方法来转换二进制和各种ASCII编码的二进制表示法。通常不直接使用这些功能，而是使用封装模块，如uu, base64或binhex。binascii模块包含用C语言编写更快的低级功能，通常为高级模块所使用。</p>
-<ul>
-<li>
-<p>功能：二进制和ASCII转换。</p>
-</li>
-<li>
-<p>类型：标准模块</p>
-</li>
-<li>
-<p>相关模块：</p>
-<ol>
-<li>
-<p>base64 标准模块。</p>
-</li>
-<li>
-<p>binhex 标准模块。</p>
-</li>
-<li>
-<p>uu        标准模块。</p>
-</li>
-<li>
-<p>quopri  标准模块。</p>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="uu">Uu编码</h2>
-<p>uu编码格式现在已经比较少使用（<a href="http://zh.wikipedia.org/wiki/Uuencode">http://zh.wikipedia.org/wiki/Uuencode</a>），相关函数binascii.a2b_uu(string)和binascii.b2a_uu(data)这里不做介绍。 更多资料参见：<a href="http://docs.python.org/2/library/uu.html">http://docs.python.org/2/library/uu.html</a></p>
-<h2 id="binhex">Binhex编码</h2>
-<p>Binhex用于Macintosh平台。这里暂不做介绍。相关函数有：binascii …</p>
-                <a class="readmore" href="/python3_lib_binascii.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
