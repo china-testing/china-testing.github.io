@@ -79,127 +79,83 @@
 \A |仅匹配字符串的开始。
 \Z |仅匹配字符串末尾。</p>
 <p>例如 [\s,.] 匹配任何空白字符（/s 的特殊含义），',' 或 ‘.’ 。</p>
-<p>转义字符：
-```#!python
-\a      \b      \f      \n
-\r      \t      \u      \U
-\v      \x      \</p>
-<div class="highlight"><pre><span></span>&#39;.&#39;匹配除了换行符以外的任何字符。如果设置re.DOTALL,它将匹配包括换行在内的任何字符。
+<p>转义字符：</p>
+<div class="highlight"><pre><span></span>\<span class="n">a</span>      \<span class="n">b</span>      \<span class="n">f</span>      \<span class="n">n</span>
+\<span class="n">r</span>      \<span class="n">t</span>      \<span class="n">u</span>      \<span class="n">U</span>
+\<span class="n">v</span>      \<span class="n">x</span>      \\
+</pre></div>
 
-### 重复
 
-&#39;*&#39; : 指定前一个字符匹配零次或者多次。
-
-例如ca*t将匹配 ct(0 个 a)，cat（1 个字符 a），caaat（3 个字符 a），等等。需要注意的是，由于受到 C 语言的 int 类型大小的内部限制，正则表达式引擎会限制字符 &#39;a&#39; 的重复个数不超过 20 亿个；不过，通常我们工作也用不到那么大的数据，你未必有这么大的内存。
-
-默认的是贪婪的，当你重复匹配一个 RE 时，匹配引擎会尝试尽可能多的去匹配。直到RE不匹配或者到了结尾，匹配引擎就会回退一个字符，然后再继续尝试。
-
-表达式 a[bcd]*b，首先需要匹配字符 &#39;a&#39;，然后零个到多个 [bcd]，最后以 &#39;b&#39; 结尾。那现在想象一下，这个 RE 匹配字符串 abcbd 会怎样？
-
-步骤  |匹配 |说明
+<p>'.'匹配除了换行符以外的任何字符。如果设置re.DOTALL,它将匹配包括换行在内的任何字符。</p>
+<h3 id="_4">重复</h3>
+<p>'*' : 指定前一个字符匹配零次或者多次。</p>
+<p>例如ca*t将匹配 ct(0 个 a)，cat（1 个字符 a），caaat（3 个字符 a），等等。需要注意的是，由于受到 C 语言的 int 类型大小的内部限制，正则表达式引擎会限制字符 'a' 的重复个数不超过 20 亿个；不过，通常我们工作也用不到那么大的数据，你未必有这么大的内存。</p>
+<p>默认的是贪婪的，当你重复匹配一个 RE 时，匹配引擎会尝试尽可能多的去匹配。直到RE不匹配或者到了结尾，匹配引擎就会回退一个字符，然后再继续尝试。</p>
+<p>表达式 a[bcd]*b，首先需要匹配字符 'a'，然后零个到多个 [bcd]，最后以 'b' 结尾。那现在想象一下，这个 RE 匹配字符串 abcbd 会怎样？</p>
+<p>步骤  |匹配 |说明
 | --- | --- | --- |
-1| a| 匹配 RE 的第一个字符 &#39;a&#39;
-2| abcbd| 引擎在符合规则的情况下尽可能地匹配 [bcd]*，直到该字符串的结尾
+1| a| 匹配 RE 的第一个字符 'a'
+2| abcbd| 引擎在符合规则的情况下尽可能地匹配 [bcd]<em>，直到该字符串的结尾
 3| 失败   引擎尝试匹配 RE 最后一个字符 ‘b’，但当前位置已经是字符串的结尾，所以失败告终
-4| abcb| 回退，所以 [bcd]* 匹配少一个字符
-5| 失败| 再一次尝试匹配 RE 最后一个字符 &#39;b&#39;，但字符串最后一个字符是 &#39;d&#39;，所以失败告终
-6| abc| 再次回退，所以 [bcd]* 这次只匹配 &#39;bc&#39;
-7| abcb| 再一次尝试匹配这符 &#39;b&#39;，这一次字符串当前位置指向的字符正好是 &#39;b&#39;，匹配成功。最终，RE 匹配的结果是 abcb 。
-
-另一个实现重复的元字符是 +，用于指定前一个字符匹配一次或者多次。
-
-要特别注意 * 和 + 的区别：* 匹配的是零次或者多次，所以被重复的内容可能压根儿不会出现；+ 至少需要出现一次。例如 ca+t 会匹配 cat 和 caaat，但不会匹配 ct 。
-
-还有两个表示重复的元字符，一个是问号?: 字符匹配零次或者一次。
-
-元字符 {m,n}（m 和 n 都是十进制数），必须匹配 m 次到 n 次之间。例如 a/{1,3}b 会匹配 a/b，a//b 和 a///b 。但不会匹配 ab(没有斜杠)；也不会匹配 a////b(斜杠超过三个)。
-
-你可以省略 m 或者 n，这样的话，引擎会用合理的值代替。 m默认为0；n 默认为 20 亿。
-
-{0,}跟’*‘ 是一样的；{1,}跟‘+’是一样的；{0,1} 跟？是一样的。不过还是鼓励大家记住并使用 * 、+ 和 ?，因为这些字符更短并且更容易阅读。
-
-### 习题
-
-1, 下面那些不是python3正则表达式的元字符：
-
-A $ B - C * D ？ E /
-
-参考答案：B E
-
-2,python3正则表达式r&#39;\bfoo\b&#39;匹配下面哪些字符串
-
-A &#39;foo&#39; B &#39;foo.&#39; C &#39;(foo)&#39; D &#39;bar foo baz&#39; E &#39;foobar&#39; F  &#39;foo3&#39;
-
-参考答案：A B C D
-
-3,python3正则表达式r&#39;\bfoo\b&#39;匹配下面哪些字符串
-
-A &#39;foo，&#39; B &#39;foo。&#39; C &#39;(foo！&#39; D &#39;bar foo baz&#39; E &#39;foobar&#39; F  &#39;foo3&#39;
-
-参考答案：A B C D
-
-4，下面python3正则表达式元字符的描述哪些是错误的。
+4| abcb| 回退，所以 [bcd]</em> 匹配少一个字符
+5| 失败| 再一次尝试匹配 RE 最后一个字符 'b'，但字符串最后一个字符是 'd'，所以失败告终
+6| abc| 再次回退，所以 [bcd]* 这次只匹配 'bc'
+7| abcb| 再一次尝试匹配这符 'b'，这一次字符串当前位置指向的字符正好是 'b'，匹配成功。最终，RE 匹配的结果是 abcb 。</p>
+<p>另一个实现重复的元字符是 +，用于指定前一个字符匹配一次或者多次。</p>
+<p>要特别注意 * 和 + 的区别：* 匹配的是零次或者多次，所以被重复的内容可能压根儿不会出现；+ 至少需要出现一次。例如 ca+t 会匹配 cat 和 caaat，但不会匹配 ct 。</p>
+<p>还有两个表示重复的元字符，一个是问号?: 字符匹配零次或者一次。</p>
+<p>元字符 {m,n}（m 和 n 都是十进制数），必须匹配 m 次到 n 次之间。例如 a/{1,3}b 会匹配 a/b，a//b 和 a///b 。但不会匹配 ab(没有斜杠)；也不会匹配 a////b(斜杠超过三个)。</p>
+<p>你可以省略 m 或者 n，这样的话，引擎会用合理的值代替。 m默认为0；n 默认为 20 亿。</p>
+<p>{0,}跟’*‘ 是一样的；{1,}跟‘+’是一样的；{0,1} 跟？是一样的。不过还是鼓励大家记住并使用 * 、+ 和 ?，因为这些字符更短并且更容易阅读。</p>
+<h3 id="_5">习题</h3>
+<p>1, 下面那些不是python3正则表达式的元字符：</p>
+<p>A $ B - C * D ？ E /</p>
+<p>参考答案：B E</p>
+<p>2,python3正则表达式r'\bfoo\b'匹配下面哪些字符串</p>
+<p>A 'foo' B 'foo.' C '(foo)' D 'bar foo baz' E 'foobar' F  'foo3'</p>
+<p>参考答案：A B C D</p>
+<p>3,python3正则表达式r'\bfoo\b'匹配下面哪些字符串</p>
+<p>A 'foo，' B 'foo。' C '(foo！' D 'bar foo baz' E 'foobar' F  'foo3'</p>
+<p>参考答案：A B C D</p>
+<p>4，下面python3正则表达式元字符的描述哪些是错误的。
 A. 默认\w不能匹配汉字
 B. 默认\w能匹配汉字
 C. 默认.能匹配换行符
-D. 默认.不能匹配换行符
-
-参考答案：A C 
-
-## 使用正则表达式
-
-Python通过re模块提供正则表达式支持，并可将正则表达式编译成对象，用它们来进行匹配。
-
-
-### 编译正则表达式
-
-正则表达式编译为模式对象，该对象拥有各种方法，如查找模式匹配或者执行字符串替换。
-
-```#!python
-&gt;&gt;&gt; import re
-&gt;&gt;&gt; p = re.compile(&#39;ab*&#39;)
-&gt;&gt;&gt; p
-re.compile(&#39;ab*&#39;)
+D. 默认.不能匹配换行符</p>
+<p>参考答案：A C </p>
+<h2 id="_6">使用正则表达式</h2>
+<p>Python通过re模块提供正则表达式支持，并可将正则表达式编译成对象，用它们来进行匹配。</p>
+<h3 id="_7">编译正则表达式</h3>
+<p>正则表达式编译为模式对象，该对象拥有各种方法，如查找模式匹配或者执行字符串替换。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">re</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;ab*&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">p</span>
+<span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;ab*&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>re.compile()也接受可选的flags 参数，用于开启各种特殊功能和语法变化。</p>
-<p>简单的例子：
-```#!python</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>p = re.compile('ab*', re.IGNORECASE)</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<div class="highlight"><pre><span></span><span class="err">正则表达式作为字符串参数传给</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span> <span class="err">。由于正则表达式并不是</span> <span class="n">Python语言的核心部分</span><span class="err">，因此没有为它提供特殊的语法支持，所以正则表达式只能以字符串的形式表示。</span>
+<p>简单的例子：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;ab*&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+</pre></div>
 
-<span class="c1">### 原始字符串</span>
 
- <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">section&#39;</span> <span class="err">要用</span><span class="s1">&#39;</span><span class="se">\\\\</span><span class="s1">section&#39;</span><span class="err">表示。不巧，</span><span class="n">Python</span> <span class="err">字符串也使用</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span> <span class="err">表示字符</span> <span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">。原始字符串则方便得多：r&quot;</span><span class="se">\\</span><span class="s1">section&quot;即可。</span>
-
-<span class="c1">### 匹配</span>
-
-<span class="err">模式对象的常用方法：</span>
-
-<span class="err">方法</span>  <span class="o">|</span><span class="err">功能</span>
-<span class="o">|</span> <span class="o">---</span> <span class="o">|</span> <span class="o">---</span> <span class="o">|</span>
-<span class="n">match</span><span class="p">()</span>  <span class="o">|</span><span class="err">判断正则表达式是否从开始处匹配一个字符串</span>
-<span class="n">search</span><span class="p">()</span>  <span class="o">|</span><span class="err">遍历字符串，找到正则表达式匹配的第一个位置</span>
-<span class="n">findall</span><span class="p">()</span>  <span class="o">|</span><span class="err">遍历字符串，找到正则表达式匹配的所有位置，并以列表的形式返回</span>
-<span class="n">finditer</span><span class="p">()</span>  <span class="o">|</span><span class="err">遍历字符串，找到正则表达式匹配的所有位置，并以迭代器的形式返回</span>
-
-<span class="err">如果没有找到任何匹配的话，</span><span class="n">match</span><span class="p">()</span> <span class="err">和</span> <span class="n">search</span><span class="p">()</span> <span class="err">会返回</span> <span class="bp">None</span><span class="err">；如果匹配成功，则会返回匹配对象（</span><span class="n">match</span> <span class="nb">object</span><span class="err">），包含所有匹配的信息：例如从哪儿开始，到哪儿结束，匹配的子字符串等等。</span>
-
-<span class="n">python自带了正则表达式调试工具redemo</span><span class="o">.</span><span class="n">py</span><span class="err">：</span>
-
-<span class="err">!</span><span class="p">[</span><span class="err">图片</span><span class="o">.</span><span class="n">png</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">upload</span><span class="o">-</span><span class="n">images</span><span class="o">.</span><span class="n">jianshu</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">upload_images</span><span class="o">/</span><span class="mi">10819934</span><span class="o">-</span><span class="mf">725670e086543</span><span class="n">b42</span><span class="o">.</span><span class="n">png</span><span class="err">?</span><span class="n">imageMogr2</span><span class="o">/</span><span class="n">auto</span><span class="o">-</span><span class="n">orient</span><span class="o">/</span><span class="n">strip</span><span class="o">%</span><span class="mi">7</span><span class="n">CimageView2</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">w</span><span class="o">/</span><span class="mi">1240</span><span class="p">)</span>
-
-<span class="err">实例：</span>
-
-<span class="sb">``</span><span class="err">`</span><span class="c1">#!python</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">re</span>
+<p>正则表达式作为字符串参数传给 re.compile() 。由于正则表达式并不是 Python语言的核心部分，因此没有为它提供特殊的语法支持，所以正则表达式只能以字符串的形式表示。</p>
+<h3 id="_8">原始字符串</h3>
+<p>'\section' 要用'\\section'表示。不巧，Python 字符串也使用 '\' 表示字符 '\'。原始字符串则方便得多：r"\section"即可。</p>
+<h3 id="_9">匹配</h3>
+<p>模式对象的常用方法：</p>
+<p>方法  |功能
+| --- | --- |
+match()  |判断正则表达式是否从开始处匹配一个字符串
+search()  |遍历字符串，找到正则表达式匹配的第一个位置
+findall()  |遍历字符串，找到正则表达式匹配的所有位置，并以列表的形式返回
+finditer()  |遍历字符串，找到正则表达式匹配的所有位置，并以迭代器的形式返回</p>
+<p>如果没有找到任何匹配的话，match() 和 search() 会返回 None；如果匹配成功，则会返回匹配对象（match object），包含所有匹配的信息：例如从哪儿开始，到哪儿结束，匹配的子字符串等等。</p>
+<p>python自带了正则表达式调试工具redemo.py：</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/10819934-725670e086543b42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>实例：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">re</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[a-z]+&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span>
 <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[a-z]+&#39;</span><span class="p">)</span>
@@ -226,150 +182,121 @@ start()  |返回匹配的开始位置
 end()  |返回匹配的结束位置
 span()  |返回元组表示匹配位置(start, end) </p>
 <p>match的start总是0，search() 方法则不一定了：</p>
-<p>```#!python</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>print(p.match('::: message'))
-None
-m = p.search('::: message'); print(m)
-<re.Match object; span=(4, 11), match='message'>
-m.group()
-'message'
-m.span()
-(4, 11)</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<div class="highlight"><pre><span></span>在实际应用中，最常用的方法是将匹配对象存放在局部变量中，并检查其返回值是否为 None 。
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;::: message&#39;</span><span class="p">))</span>
+<span class="bp">None</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;::: message&#39;</span><span class="p">);</span> <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;message&#39;</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<span class="s1">&#39;message&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">span</span><span class="p">()</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+</pre></div>
 
-```#!python
-p = re.compile( ... )
-m = p.match( &#39;string goes here&#39; )
-if m:
-    print(&#39;Match found: &#39;, m.group())
-else:
-    print(&#39;No match&#39;)
+
+<p>在实际应用中，最常用的方法是将匹配对象存放在局部变量中，并检查其返回值是否为 None 。</p>
+<div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">match</span><span class="p">(</span> <span class="s1">&#39;string goes here&#39;</span> <span class="p">)</span>
+<span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Match found: &#39;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;No match&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>有两个方法可以返回所有的匹配结果，一个是 findall()，一个是 finditer() 。</p>
-<p>findall() 返回的是一个列表：
-```#!python</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>p = re.compile(r'\d+')
-p.findall('12 drummers drumming, 11 pipers piping, 10 lords a-leaping')
-['12', '11', '10']</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<div class="highlight"><pre><span></span>而 finditer() 则是将匹配对象作为迭代器返回：
-
-```#!python
-&gt;&gt;&gt; iterator = p.finditer(&#39;12 drummers drumming, 11 ... 10 ...&#39;)
-&gt;&gt;&gt; iterator  
-&lt;callable_iterator object at 0x...&gt;
-&gt;&gt;&gt; for match in iterator:
-...     print(match.span())
-...
-(0, 2)
-(22, 24)
-(29, 31)
+<p>findall() 返回的是一个列表：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;12 drummers drumming, 11 pipers piping, 10 lords a-leaping&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;12&#39;</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">]</span>
 </pre></div>
 
 
-<h3 id="_4">模块级函数</h3>
+<p>而 finditer() 则是将匹配对象作为迭代器返回：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="s1">&#39;12 drummers drumming, 11 ... 10 ...&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">iterator</span>  
+<span class="o">&lt;</span><span class="n">callable_iterator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mi">0</span><span class="n">x</span><span class="o">...&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>
+<span class="o">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="_10">模块级函数</h3>
 <p>re 模块同时还提供了一些全局函数，例如 match()，search()，findall()，sub() 等。这些函数跟模式对象同名方法一样，只是增加了为正则表达式字符串的第一个参数。</p>
-<p>```#!python</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>print(re.match(r'From\s+', 'Fromage amk'))
-None
-re.match(r'From\s+', 'From amk Thu May 14 19:12:10 1998')<br>
-<re.Match object; span=(0, 5), match='From '></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<div class="highlight"><pre><span></span>这些函数帮你自动创建模式对象，并调用相关的函数。它们还将编译好的模式对象存放在缓存中，以便将来可以快速地直接调用。
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;From\s+&#39;</span><span class="p">,</span> <span class="s1">&#39;Fromage amk&#39;</span><span class="p">))</span>
+<span class="bp">None</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;From\s+&#39;</span><span class="p">,</span> <span class="s1">&#39;From amk Thu May 14 19:12:10 1998&#39;</span><span class="p">)</span>  
+<span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;From &#39;</span><span class="o">&gt;</span>
+</pre></div>
 
-在循环中大量的使用正则表达式，预编译的话可以节省一些函数调用，用模式的方法更好。但如果是循环外部，因为有内部缓存机制，两者效率相差无几。
 
-### 编译标识
-
-编译标识可修改正则表达式的工作方式。在 re 模块下，编译标识均有完整名和简写，例如 IGNORECASE 简写是 I。
-
-标志  |含义
+<p>这些函数帮你自动创建模式对象，并调用相关的函数。它们还将编译好的模式对象存放在缓存中，以便将来可以快速地直接调用。</p>
+<p>在循环中大量的使用正则表达式，预编译的话可以节省一些函数调用，用模式的方法更好。但如果是循环外部，因为有内部缓存机制，两者效率相差无几。</p>
+<h3 id="_11">编译标识</h3>
+<p>编译标识可修改正则表达式的工作方式。在 re 模块下，编译标识均有完整名和简写，例如 IGNORECASE 简写是 I。</p>
+<p>标志  |含义
 | --- | --- |
 ASCII，A  |使得转义符号 \w，\b，\s 和 \d 只能匹配 ASCII 字符
 DOTALL，S  |使得 . 匹配任何符号，包括换行符
 IGNORECASE，I  |不区分大小写
 LOCALE，L  |支持当前语言（区域）设置
 MULTILNE，M  |多行匹配，影响 ^ 和 $
-VERBOSE，X（for&#39;extended&#39;）  |启用详细的正则表达式, 更简洁且更容易理解。 
+VERBOSE，X（for'extended'）  |启用详细的正则表达式, 更简洁且更容易理解。 </p>
+<p>下面我们来详细讲解一下它们的含义：</p>
+<ul>
+<li>I</li>
+</ul>
+<p>IGNORECASE</p>
+<p>不区分大小写。举个例子，正则表达式[a-z] 或[A-Z]会匹配对应的小写字母会匹配52个ASCII字母。还有4个非ASCII字母：'İ'(U + 0130，拉丁大写字母I上面带点)，'ı'(U + 0131，拉丁文小写字母无点i)，'s'(U + 017F，拉丁文小 字母长s)和'K'(U + 212A，开尔文标志)。  Spam 将匹配'Spam'，'spam'，'spAM'或'ſpam'（后者仅在Unicode模式下匹配）。 此小写不考虑当前区域设置; 如果您还设置了LOCALE标志，它也会。</p>
+<ul>
+<li>L</li>
+</ul>
+<p>LOCALE</p>
+<p>使得 \w，\W，\b 和 \B和大小写依赖当前的语言(区域)环境，而不是 Unicode 数据库。</p>
+<p>区域设置是 C 语言的功能，主要作用是消除不同语言之间的差异。例如你正在处理的是法文文本，你想使用 \w+ 来匹配单词，但是 \w 只是匹配 [A-Za-z] 中的单词，并不会匹配那些法文特殊符号。python3已经推荐使用Unicode，不建议使用LOCALE。</p>
+<ul>
+<li>M</li>
+</ul>
+<p>MULTILNE</p>
+<p>通常 ^ 只匹配字符串的开头，而 \$ 匹配字符串的结尾。该标识设置时，^ 不仅匹配字符串的开头，还匹配行首；$ 不仅匹配字符的结尾，还匹配行尾。</p>
+<ul>
+<li>S</li>
+</ul>
+<p>DOTALL</p>
+<p>. 可以匹配任何字符，包括换行符。如果不使用这个标志，. 将匹配除换行的所有字符。</p>
+<ul>
+<li>A</li>
+</ul>
+<p>ASCII
+使得 \w，\W，\b，\B，\s 和 \S 只匹配 ASCII 字符，而不是全Unicode匹配。这个标识仅对Unicode模式有意义，并忽略字节模式。</p>
+<ul>
+<li>X</li>
+</ul>
+<p>VERBOSE</p>
+<p>这个标识使你的正则表达式可以写得更可读灵活，空格会被忽略(除了出现在字符类中和使用反斜杠转义的空格)；同时允许你在正则表达式字符串使用注释，# 符号后边的内容是注释(除了出现在字符类中和使用反斜杠转义的 #)。</p>
+<p>下边是使用 re.VERBOSE 的例子，：</p>
+<div class="highlight"><pre><span></span><span class="n">charref</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2"> &amp;[#]                # Start of a numeric entity reference</span>
+<span class="s2"> (</span>
+<span class="s2">     0[0-7]+         # Octal form</span>
+<span class="s2">   | [0-9]+          # Decimal form</span>
+<span class="s2">   | x[0-9a-fA-F]+   # Hexadecimal form</span>
+<span class="s2"> )</span>
+<span class="s2"> ;                   # Trailing semicolon</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
 
-下面我们来详细讲解一下它们的含义：
+<span class="c1"># 没有注释</span>
 
- * I
-
-IGNORECASE
-
-不区分大小写。举个例子，正则表达式[a-z] 或[A-Z]会匹配对应的小写字母会匹配52个ASCII字母。还有4个非ASCII字母：&#39;İ&#39;(U + 0130，拉丁大写字母I上面带点)，&#39;ı&#39;(U + 0131，拉丁文小写字母无点i)，&#39;s&#39;(U + 017F，拉丁文小 字母长s)和&#39;K&#39;(U + 212A，开尔文标志)。  Spam 将匹配&#39;Spam&#39;，&#39;spam&#39;，&#39;spAM&#39;或&#39;ſpam&#39;（后者仅在Unicode模式下匹配）。 此小写不考虑当前区域设置; 如果您还设置了LOCALE标志，它也会。
-
- * L
-
-LOCALE
-
-使得 \w，\W，\b 和 \B和大小写依赖当前的语言(区域)环境，而不是 Unicode 数据库。
-
-区域设置是 C 语言的功能，主要作用是消除不同语言之间的差异。例如你正在处理的是法文文本，你想使用 \w+ 来匹配单词，但是 \w 只是匹配 [A-Za-z] 中的单词，并不会匹配那些法文特殊符号。python3已经推荐使用Unicode，不建议使用LOCALE。
-
- * M
-
-MULTILNE
-
-通常 ^ 只匹配字符串的开头，而 \$ 匹配字符串的结尾。该标识设置时，^ 不仅匹配字符串的开头，还匹配行首；$ 不仅匹配字符的结尾，还匹配行尾。
-
- * S
-
-DOTALL
-
- . 可以匹配任何字符，包括换行符。如果不使用这个标志，. 将匹配除换行的所有字符。
-
- * A
-
-ASCII
-使得 \w，\W，\b，\B，\s 和 \S 只匹配 ASCII 字符，而不是全Unicode匹配。这个标识仅对Unicode模式有意义，并忽略字节模式。
-
- * X
-
-VERBOSE
-
-这个标识使你的正则表达式可以写得更可读灵活，空格会被忽略(除了出现在字符类中和使用反斜杠转义的空格)；同时允许你在正则表达式字符串使用注释，# 符号后边的内容是注释(除了出现在字符类中和使用反斜杠转义的 #)。
-
-下边是使用 re.VERBOSE 的例子，：
-```#!python
-charref = re.compile(r&quot;&quot;&quot;
- &amp;[#]                # Start of a numeric entity reference
- (
-     0[0-7]+         # Octal form
-   | [0-9]+          # Decimal form
-   | x[0-9a-fA-F]+   # Hexadecimal form
- )
- ;                   # Trailing semicolon
-&quot;&quot;&quot;, re.VERBOSE)
-
-# 没有注释
-
-charref = re.compile(&quot;&amp;#(0[0-7]+&quot;
-                     &quot;|[0-9]+&quot;
-                     &quot;|x[0-9a-fA-F]+);&quot;)
+<span class="n">charref</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;&amp;#(0[0-7]+&quot;</span>
+                     <span class="s2">&quot;|[0-9]+&quot;</span>
+                     <span class="s2">&quot;|x[0-9a-fA-F]+);&quot;</span><span class="p">)</span>
 </pre></div>
 
 
-<h3 id="_5">习题</h3>
+<h3 id="_12">习题</h3>
 <p>1，下面关于python3 正则模式的说哪些是错误的？</p>
 <p>A. match() 可以返回多个匹配
 B. search() 必须从开头开始匹配
@@ -379,8 +306,8 @@ D. finditer() 以列表的形式返回</p>
 <p>2，python3 正则表达式re.compile('spam', re.IGNORECASE)匹配哪些字符串？
 A.'Spam' B. 'spam' C. 'spAM' D. 'ſpam' E.'pam'</p>
 <p>答案：ABCD</p>
-<h2 id="_6">更多关于模式</h2>
-<h3 id="_7">更多元字符</h3>
+<h2 id="_13">更多关于模式</h2>
+<h3 id="_14">更多元字符</h3>
 <ul>
 <li>I</li>
 </ul>
@@ -390,28 +317,23 @@ A.'Spam' B. 'spam' C. 'spAM' D. 'ſpam' E.'pam'</p>
 <li>^</li>
 </ul>
 <p>匹配字符串开始。在 MULTILNE 中，每当遇到换行符就会立刻进行匹配。如果你只希望匹配位于字符串开头的单词 From，那么你的正则表达式可以写为 ^From</p>
-<p>```#!python</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>print(re.search('^From', 'From Here to Eternity'))<br>
-<re.Match object; span=(0, 4), match='From'>
-print(re.search('^From', 'Reciting From Memory'))
-None</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<div class="highlight"><pre><span></span> * $
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;^From&#39;</span><span class="p">,</span> <span class="s1">&#39;From Here to Eternity&#39;</span><span class="p">))</span>  
+<span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;From&#39;</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;^From&#39;</span><span class="p">,</span> <span class="s1">&#39;Reciting From Memory&#39;</span><span class="p">))</span>
+<span class="bp">None</span>
+</pre></div>
 
-匹配字符串的结束和行尾。
 
-```#!python
-&gt;&gt;&gt; print(re.search(&#39;}$&#39;, &#39;{block}&#39;))  
-&lt;re.Match object; span=(6, 7), match=&#39;}&#39;&gt;
-&gt;&gt;&gt; print(re.search(&#39;}$&#39;, &#39;{block} &#39;))
-None
-&gt;&gt;&gt; print(re.search(&#39;}$&#39;, &#39;{block}\n&#39;))  
-&lt;re.Match object; span=(6, 7), match=&#39;}&#39;&gt;
+<ul>
+<li>$</li>
+</ul>
+<p>匹配字符串的结束和行尾。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;}$&#39;</span><span class="p">,</span> <span class="s1">&#39;{block}&#39;</span><span class="p">))</span>  
+<span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;}&#39;</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;}$&#39;</span><span class="p">,</span> <span class="s1">&#39;{block} &#39;</span><span class="p">))</span>
+<span class="bp">None</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;}$&#39;</span><span class="p">,</span> <span class="s1">&#39;{block}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>  
+<span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;}&#39;</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -427,30 +349,23 @@ None
 <li>b</li>
 </ul>
 <p>单词边界，这是只匹配单词的开始和结尾的零宽断言。单词定义为字母数字的序列，所以单词的结束指的是空格或者非字母数字的字符。</p>
-<p>```#!python</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>p = re.compile(r'\bclass\b')
-print(p.search('no class at all'))
-<re.Match object; span=(3, 8), match='class'>
-print(p.search('the declassified algorithm'))
-None
-print(p.search('one subclass is'))
-None</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<div class="highlight"><pre><span></span>在使用这些特殊的序列的时候，有两点是需要注意的：第一是Python 的字符串跟正则表达式在有些字符上是有冲突的。比如说在 Python 中，\b 表示的是退格符，ASCII 码值是 8。
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\bclass\b&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;no class at all&#39;</span><span class="p">))</span>
+<span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;the declassified algorithm&#39;</span><span class="p">))</span>
+<span class="bp">None</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;one subclass is&#39;</span><span class="p">))</span>
+<span class="bp">None</span>
+</pre></div>
 
-下边例子中，我们故意不写表示原始字符串的 &#39;r&#39;，结果确实大相庭径：
 
-```#!python
-&gt;&gt;&gt; p = re.compile(&#39;\bclass\b&#39;)
-&gt;&gt;&gt; print(p.search(&#39;no class at all&#39;))
-None
-&gt;&gt;&gt; print(p.search(&#39;\b&#39; + &#39;class&#39; + &#39;\b&#39;))
-&lt;re.Match object; span=(0, 7), match=&#39;\x08class\x08&#39;&gt;
+<p>在使用这些特殊的序列的时候，有两点是需要注意的：第一是Python 的字符串跟正则表达式在有些字符上是有冲突的。比如说在 Python 中，\b 表示的是退格符，ASCII 码值是 8。</p>
+<p>下边例子中，我们故意不写表示原始字符串的 'r'，结果确实大相庭径：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\b</span><span class="s1">class</span><span class="se">\b</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;no class at all&#39;</span><span class="p">))</span>
+<span class="bp">None</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\b</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;class&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\b</span><span class="s1">&#39;</span><span class="p">))</span>
+<span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\x08</span><span class="s1">class</span><span class="se">\x08</span><span class="s1">&#39;</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -459,85 +374,69 @@ None
 <li>\B</li>
 </ul>
 <p>与 \b 的含义相反，\B 表示非单词边界的位置。</p>
-<h3 id="_8">分组</h3>
+<h3 id="_15">分组</h3>
 <p>仅仅知道正则表达式是否匹配是不够的，正则表达式通常使用分组的方式分别对不同内容进行匹配。</p>
 <p>下例子将 RFC-822 头用 “:” 号分成名字和值：</p>
-<p>```#!python
-From: author@example.com
-User-Agent: Thunderbird 1.5.0.9 (X11/20061227)
-MIME-Version: 1.0
-To: editor@example.com</p>
-<div class="highlight"><pre><span></span>先用正则表达式匹配整个RFC-822头，使用一个组来匹配头的名字，另一个组匹配名字对应的值。
+<div class="highlight"><pre><span></span><span class="n">From</span><span class="p">:</span> <span class="n">author</span><span class="nd">@example.com</span>
+<span class="n">User</span><span class="o">-</span><span class="n">Agent</span><span class="p">:</span> <span class="n">Thunderbird</span> <span class="mf">1.5</span><span class="o">.</span><span class="mf">0.9</span> <span class="p">(</span><span class="n">X11</span><span class="o">/</span><span class="mi">20061227</span><span class="p">)</span>
+<span class="n">MIME</span><span class="o">-</span><span class="n">Version</span><span class="p">:</span> <span class="mf">1.0</span>
+<span class="n">To</span><span class="p">:</span> <span class="n">editor</span><span class="nd">@example.com</span>
+</pre></div>
 
-正则表达式使用元字符&#39;(&#39;, &#39;)&#39; 来划分组。&#39;(&#39;, &#39;)&#39; 元字符跟数学表达式中的小括号含义差不多；它们将包含在内部的表达式组合在一起，所以你可以对组的内容使用重复操作的元字符，例如 *，+，? 或者 {m,n} 。
 
-```#!python
-&gt;&gt;&gt; p = re.compile(&#39;(ab)*&#39;)
-&gt;&gt;&gt; print(p.match(&#39;ababababab&#39;).span())
-(0, 10)
+<p>先用正则表达式匹配整个RFC-822头，使用一个组来匹配头的名字，另一个组匹配名字对应的值。</p>
+<p>正则表达式使用元字符'(', ')' 来划分组。'(', ')' 元字符跟数学表达式中的小括号含义差不多；它们将包含在内部的表达式组合在一起，所以你可以对组的内容使用重复操作的元字符，例如 *，+，? 或者 {m,n} 。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;(ab)*&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;ababababab&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
 
 <p>用'（'，'）'表示的组也捕获它们匹配的文本的起始和结束索引; 这可以通过将参数传递给ggroup()，start()，end() 和 span() 来检索。 组从0开始编号。组0始终存在; 它是整个RE，因此匹配对象方法都将组0作为其默认参数。</p>
-<p>```#!python</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>p = re.compile('(a)b')
-m = p.match('ab')
-m.group()
-'ab'
-m.group(0)
-'ab'</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<div class="highlight"><pre><span></span>子组从左到右进行编号，子组也允许嵌套，我们可以通过从左往右来统计左括号 ( 来确定子组的序号。
-```#!python
-&gt;&gt;&gt; p = re.compile(&#39;(a(b)c)d&#39;)
-&gt;&gt;&gt; m = p.match(&#39;abcd&#39;)
-&gt;&gt;&gt; m.group(0)
-&#39;abcd&#39;
-&gt;&gt;&gt; m.group(1)
-&#39;abc&#39;
-&gt;&gt;&gt; m.group(2)
-&#39;b&#39;
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;(a)b&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;ab&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<span class="s1">&#39;ab&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="s1">&#39;ab&#39;</span>
+</pre></div>
+
+
+<p>子组从左到右进行编号，子组也允许嵌套，我们可以通过从左往右来统计左括号 ( 来确定子组的序号。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;(a(b)c)d&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;abcd&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="s1">&#39;abcd&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="s1">&#39;abc&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="s1">&#39;b&#39;</span>
 </pre></div>
 
 
 <p>group() 方法可传入多个子组的序号：</p>
-<p>```#!python</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>m.group(2,1,2)
-('b', 'abc', 'b')</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<div class="highlight"><pre><span></span>groups() 方法一次性返回所有的子组匹配的字符串：
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+</pre></div>
 
-```#!python
-&gt;&gt;&gt; m.groups()
-(&#39;abc&#39;, &#39;b&#39;)
+
+<p>groups() 方法一次性返回所有的子组匹配的字符串：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+<span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>反引用可以在后面的位置使用先前匹配过的内容，用法是反斜杠加上数字。例如 \1 表示引用前边成功匹配的序号为 1 的子组。</p>
-<p>```#!python</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>p = re.compile(r'\b(\w+)\s+\1\b')
-p.search('Paris in the the spring').group()
-'the the'
-```</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<h3 id="_9">习题</h3>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b(\w+)\s+\1\b&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;Paris in the the spring&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<span class="s1">&#39;the the&#39;</span>
+</pre></div>
+
+
+<h3 id="_16">习题</h3>
 <p>1, python3正则表达式compile('Crow|Servo')匹配哪些内容：</p>
 <p>A 'Crow' B 'foo。' C Servw' D 'Cro' E 'Serv' F  'Servo'</p>
+<h3 id="_17">重复</h3>
 <p>参考答案：A F</p>
 <p>2, python3正则表达式要匹配'|'，可以采用如下哪些方法：</p>
 <p>A '||' B '|' C '[|]' D '$|' </p>
@@ -555,7 +454,7 @@ C re.search(r'\bclass\b', 'no class at all')不能能成功匹配
 D re.search('\bclass\b', 'no class at all')不能成功匹配</p>
 <p>参考答案：A D</p>
 <p>待整理： notepad++ 正则 http://docs.notepad-plus-plus.org/index.php/Regular_Expressions</p>
-<h2 id="_10">参考资料</h2>
+<h2 id="_18">参考资料</h2>
 <ul>
 <li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
 <li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
