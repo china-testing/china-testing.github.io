@@ -28,6 +28,203 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_crash2.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程1 turtle绘图-2函数">[雪峰磁针石博客]python3快速入门教程1 turtle绘图-2函数</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-20T12:20:00+08:00">
+                Published: 一 20 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">菲波那契序列:</h2>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># Fibonacci series:</span>
+<span class="o">...</span> <span class="c1"># the sum of two elements defines the next</span>
+<span class="o">...</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="o">...</span>     <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="o">...</span>
+<span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">5</span>
+<span class="mi">8</span>
+</pre></div>
+
+
+<p>本例的新特性。</p>
+<ul>
+<li>
+<p>第一行和最后一行有多赋值：第一行变量a和b同时获得了新的值0和1。最后一行右边首先完成计算，右边的表达式从左到右计算。</p>
+</li>
+<li>
+<p>条件(b &lt; 10)为true时while循环执行。这里Python类似C ，任何非零整数都为true；0为 false。判断条件也可以是字符串或列表等序列；所有长度不为零的为true ，空序列为false。示例中的测试是一个简单的比较。标准比较操作符与C相同： &lt;(小于 …</p></li></ul>
+                <a class="readmore" href="/python3_crash2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_string.html" rel="bookmark"
+                           title="Permalink to python标准模块介绍-string:文本常量和模板">python标准模块介绍-string:文本常量和模板</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-16T09:20:00+08:00">
+                Published: 四 16 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>string—文本常量和模板</p>
+<p>作用：包含处理文本的常量和类。</p>
+<p>Python版本：1.4及以后版本</p>
+<p>最早的Python版本就有string模块。 之前在这个模块中实现的许多函数已经移至str对象的方法。 string模块保留了几个有用的常量和类，用于处理str对象。</p>
+<p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/string">代码地址</a></p>
+<h4 id="_1">函数</h4>
+<p>capwords()的将字符串中所有单词的首字母大写。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="s2">&quot;hello world!&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">capwords</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="s1">&#39;Hello World!&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
+<span class="s1">&#39;hello world!&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+<span class="s1">&#39;Hello world!&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
+<span class="s1">&#39;hello world!&#39;</span>
+</pre></div>
+
+
+<p>结果等同于先调用split()，把结果列表中各个单词的首字母大写，然后调用join()合并结果。</p>
+<p>因为str对象已经有capitalize()方法，该函数的实际意义并不大。</p>
+<h4 id="_2">模板</h4>
+<p>字符串模板已经作为PEP 292的一部分增加到Python 2.4中，并得到扩展，以替代内置拼接(interpolation …</p>
+                <a class="readmore" href="/python3_lib_string.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash1.html" rel="bookmark"
+                           title="Permalink to python3快速入门教程1 turtle绘图-1开始">python3快速入门教程1 turtle绘图-1开始</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-15T12:20:00+08:00">
+                Published: 三 15 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">概述</h2>
+<p>本章内容比较多，除了代码部分，其他内容可以后面回头再看。</p>
+<h3 id="_2">简介</h3>
+<p>Python是一门简单易学，功能强大的编程语言。它具有高效的高层次数据结构，简单但有效的方式支持面向对象编程，语法优雅，动态类型，解释执行。使之成为多数平台上很多领域的脚本和快速应用开发的理想语言。它的设计理念强调代码的可读性, 跟C ++或Java等语言比可以用更少的代码实现同样的概念。Python能清晰地实现小型和大型程序。</p>
+<p>Python解释器及其丰富的标准库的源码或者二进制版本可以从<a href="http://www.python.org/">http://www.python.org/</a>免费获取和转发。该还包含很多免费的第三方Python模块、程序、工具的发布链接及附加文档。</p>
+<p>Python的解释器很容易用C或C++(或其他c可以调用的语言)扩展新功能和数据类型。 Python也适用于作为定制应用的扩展语言。</p>
+<p>Python支持多种编程范式，包括面向对象的，命令式和函数式或过程式编程风格。它具有动态类型系统和自动内存管理和拥有庞大而全面的标准库</p>
+<p>Python虚拟机本身几乎可以在所有的作业系统中运行。使用一些诸如py2exe、PyPy、PyInstaller之类的工具可以将Python源代码转换成可以脱离Python解释器运行的程序。</p>
+<p>Python的官方解释器是CPython，该解释器用C语言编写，是一个由社区驱动的自由软件，目前由Python软件基金会管理。</p>
+<p>本教程向读者通俗地介绍Python语言和系统的基本概念和特点。配合Python解释器边学边练最佳，所有例子已经自包含在教程中，也可离线阅读。</p>
+<p>标准对象和模块参见<a href="https://docs.python.org/2/library/index.html#library-index">The Python Standard …</a></p>
+                <a class="readmore" href="/python3_crash1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_weeks.html" rel="bookmark"
+                           title="Permalink to python测试开发自学每周一练">python测试开发自学每周一练</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-25T11:26:00+08:00">
+                Published: 五 25 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h1 id="table-of-contents">Table of Contents</h1>
+<ul>
+<li><a href="#python每周一练">python每周一练</a></li>
+<li><a href="#2018-06-06 json格式转换">2018-06-06 json格式转换</a></li>
+<li><a href="#2018-06-01 正则表达式及拼音排序">2018-06-01 正则表达式及拼音排序</a></li>
+<li><a href="#2018-05-25-旋转图片">2018-05-25 旋转图片</a></li>
+</ul>
+<h1 id="python">python每周一练</h1>
+<p>每周五发布python需求，所有需求都来自实际企业。下周五发布参考答案。</p>
+<ul>
+<li>
+<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
+</li>
+<li>
+<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
+</li>
+</ul>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
+<p><a href="https://china-testing.github.io/python_weeks.html">本文最新版本</a> </p>
+<h3 id="2018-06-06-json">2018-06-06 json格式转换</h3>
+<p>现有 人脸标注的海量数据，部分参见：<a href="https://github.com/china-testing/python-api-tesing/tree/master/weeks/2018_06_06/data">data</a></p>
+<p>要求输出：
+1，files.txt </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4 …</pre></div></td></tr></table>
+                <a class="readmore" href="/python_weeks.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_pytesseract.html" rel="bookmark"
+                           title="Permalink to python库介绍-pytesseract: OCR光学字符识别">python库介绍-pytesseract: OCR光学字符识别</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-25T19:20:00+08:00">
+                Published: 三 25 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>可以使用pytesseract库从图像中提取文本。<a href="https://github.com/tesseract-ocr/tesseract">Tesseract</a>是一款由Google赞助的开源OCR。 pytesseract是python包装器，它为可执行文件提供了pythonic API。</p>
+<p>Tesseract(/'tesərækt/) 这个词的意思是"超立方体"，指的是几何学里的四维标准方体，又称"正八胞体"。下图是一个正八胞体绕着两个四维空间中互相正交的平面进行双旋转时的透视投影。不过这里要讲的，是一款以其命名的开源 OCR(Optical Character Recognition, 光学字符识别) 软件。</p>
+<p>所谓 OCR 是图像识别领域中的一个子领域，该领域专注于对图片中的文字信息进行识别并转换成能被常规文本编辑器编辑的文本。</p>
+<p>Tesseract 已经有 30 年历史，开始它是惠普实验室的一款专利软件，然后在 2005 年开源，自 2006 年后由 Google 赞助进行后续的开发和维护。</p>
+<p>在 1995 年 Tesseract 曾是世界前三的 OCR 引擎，而且在现在的免费 OCR 引擎中 …</p>
+                <a class="readmore" href="/python3_lib_pytesseract.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_opencv3_exmaples0.html" rel="bookmark"
                            title="Permalink to 使用opencv转换3d图片">使用opencv转换3d图片</a></h1>
                 </header>
@@ -273,210 +470,10 @@
                 <a class="readmore" href="/python_numpy_beginner_guide3rd1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_matplotlib_by_example2.html" rel="bookmark"
-                           title="Permalink to matplotlib实例2-美图">matplotlib实例2-美图</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-04-02T09:50:00+08:00">
-                Published: 一 02 四月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">术语</h2>
-<p><img alt="Alt Text" src="/images/matplotlib_anatomy.png">   </p>
-<p>颜色列表：</p>
-<p>缩写 | 颜色
-:--------:|:--------:|
-b | Blue
-g | Green
-r | Red
-c | Cyan
-m | Magenta
-y | Yellow
-k | Black
-w | White</p>
-<p><a href="https://matplotlib.org/examples/color/named_colors.html">HTML颜色参考</a></p>
-<p>RGB或RGBA，A表示透明度。16进制的表示：'#ff0000'。灰度图的深度比如0.1,0.32, 0.5或0.75.</p>
-<p>设置不同的颜色：colors.py</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-
-<span class="n">years</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2009</span><span class="p">,</span><span class="mi">2017</span><span class="p">))</span>
-<span class="n">android</span> <span class="o">=</span> <span class="p">[</span><span class="mf">6.8</span><span class="p">,</span><span class="mf">67.22 …</span></pre></div>
-                <a class="readmore" href="/python_matplotlib_by_example2.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_matplotlib_by_example1.html" rel="bookmark"
-                           title="Permalink to matplotlib实例1-快速入门">matplotlib实例1-快速入门</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-04-02T09:20:00+08:00">
-                Published: 一 02 四月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">快速入门</h2>
-<p>什么是Matplotlib？
-Matplotlib是一个多功能的Python库，可生成数据可视化图。支持多种类型和精炼的样式选项，它非常适合创建专业演示文稿和科学出版物。Matplotlib能简单的生成图片，从幻灯片演示，高质量的海报打印和动画到基于网络的交互式。 除了典型的2D图，还支持基本的3D绘图。另外还可以支持python以外的语言。</p>
-<ul>
-<li>你的赞助是我们前进的动力：</li>
-</ul>
-<p>一流企业专家自动化性能接口测试 数据分析 python一对一教，非骗人的培训机构(多数大陆培训机构的老师实际未入门）承接excel合并，电脑自动化操作等工程 并欢迎讨论中医草药风水相学等道家国学</p>
-<p>qq群python 测试开发自动化测试 144081101 教你做免费的线上博客(放在简历中增加亮点)，自动化测试平台，性能测试工具等，让你有实际项目经验  联系qq：37391319 </p>
-<p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 184175668 中医草药湿热湿疹胃病 291184506 python高级人工智能视觉 6089740</p>
-<p>安装</p>
-<div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">matplotlib …</span></pre></div>
-                <a class="readmore" href="/python_matplotlib_by_example1.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_opencv3_exmaple1.html" rel="bookmark"
-                           title="Permalink to python opencv3实例(对象识别和增强现实)1-图像几何转换">python opencv3实例(对象识别和增强现实)1-图像几何转换</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-28T19:20:00+08:00">
-                Published: 三 28 三月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://github.com/PacktPublishing/OpenCV-3-x-with-Python-By-Example">原书代码地址</a></p>
-<p>在本章中，我们将学习如何应用酷的几何效果到图像。 知识点</p>
-<ul>
-<li>如何安装OpenCV-Python</li>
-<li>如何读取，显示和保存图像</li>
-<li>如何转换到多个颜色空间</li>
-<li>如何应用几何变换，例如平移，旋转，和缩放</li>
-<li>如何使用仿射和投影变换来应用几何效果</li>
-</ul>
-<h2 id="opencv-python">安装OpenCV-Python</h2>
-<ul>
-<li>安装</li>
-</ul>
-<p>本教程基于python3，ubuntu 16，在windows环境可能可以运行。</p>
-<p>Linux</p>
-<div class="highlight"><pre><span></span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">opencv</span><span class="o">-</span><span class="n">python</span>
-</pre></div>
-
-
-<p>Windows</p>
-<div class="highlight"><pre><span></span> <span class="n">pip</span> <span class="n">install</span> <span class="n">opencv</span><span class="o">-</span><span class="n">python</span>
-</pre></div>
-
-
-<ul>
-<li>
-<p>文档：</p>
-<p><a href="http://docs.opencv.org/">官网</a>
-<a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html">opencv-python官方文档</a></p>
-</li>
-<li>
-<p>你的赞助是我们前进的动力：</p>
-</li>
-</ul>
-<p>一流企业专家自动化性能接口测试 数据分析 python一对一教，非骗人的培训机构(多数大陆培训机构的老师实际未入门）承接excel合并，电脑自动化操作等工程 并欢迎讨论中医草药风水相学等道家国学</p>
-<p>qq群python 测试开发自动化测试 144081101 教你做免费的线上博客(放在简历中增加亮点)，自动化测试平台，性能测试工具等，让你有实际项目经验  联系qq …</p>
-                <a class="readmore" href="/python_opencv3_exmaple1.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_argparse.html" rel="bookmark"
-                           title="Permalink to python库介绍-argparse: 命令行选项及参数解析">python库介绍-argparse: 命令行选项及参数解析</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-27T19:20:00+08:00">
-                Published: 二 27 三月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">快速入门</h2>
-<p>argparse是一个完整的参数处理库。参数可以根据add_argument()的action选项触发不同action。支持的action有存储参数（单个，或作为列表的一部分）;存储常量的值（对布尔开关true/false有特殊处理）。默认动作是存储参数值。支持type(指定存储类型)和dest(指定存储变量)等参数。 </p>
-<p>然后使用函数parse_args()进行参数解析，这个函数的输入默认是sys.argv[1:]，也可以使用其他字符串列表。选项使用GNU/POSIX语法处理，可以混合选项和参数值。parse_args的返回值是一个包含命令参数的Namespace。所有参数以属性的形式存在，比如args.myoption。</p>
-<p>下面是一个简单的示例：argparse_short.py</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
-
-<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Short sample app&#39;</span><span class="p">)</span>
-
-<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="n">parser</span><span class="o">.</span><span class="n">add_argument …</span></pre></div>
-                <a class="readmore" href="/python3_lib_argparse.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_dubbo.html" rel="bookmark"
-                           title="Permalink to python库介绍-dubbo：通过telnet接口访问dubbo服务">python库介绍-dubbo：通过telnet接口访问dubbo服务</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-26T19:20:00+08:00">
-                Published: 一 26 三月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>dubbo服务发布之后，我们可以利用telnet命令进行调试、管理。更多资料参见 <a href="http://alibaba.github.io/dubbo-doc-static/Telnet+Command+Reference-zh-showComments=true&amp;showCommentArea=true.htm">Telnet命令参考手册</a></p>
-<p>项目地址：https://bitbucket.org/china-testing/python-chinese-library/src/46204fd809a04f4d9c7450860d48f2951dec3bc1/libraries/_dubbo/?at=default</p>
-<p>telnet 调用示例：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">telnet</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span> <span class="mi">9097</span>
-<span class="n">Trying</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span><span class="o">...</span>
-<span class="n">Connected</span> <span class="n">to</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span><span class="o">.</span>
-<span class="n">Escape</span> <span class="n">character …</span></pre></div></td></tr></table>
-                <a class="readmore" href="/python3_lib_dubbo.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/category/python.html">&laquo;</a>
-    Page 2 / 4
+    Page 2 / 5
         <a href="/category/python3.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
