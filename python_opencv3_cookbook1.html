@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python opencv3 cookbook1: I/O和GUI</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li class="active"><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python_opencv3_cookbook1.html" rel="bookmark"
+           title="Permalink to python opencv3 cookbook1: I/O和GUI">python opencv3 cookbook1: I/O和GUI</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-03T09:20:00+08:00">
+                Published: 四 03 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->      <ul>
+<li>I/O和GUI 图像的基本操作以及视频：加载、保存和显示。</li>
+<li>矩阵，颜色和过滤器，访问图像，通道和图像的区域、像素。各种颜色空间之间的转换和过滤器的使用</li>
+<li>轮廓​​和分段。显示如何创建图像掩码，查找轮廓和细分图像。</li>
+<li>对象检测和机器学习，描述检测和跟踪不同类型的物体，特别是（QR代码和ArUCo标记）</li>
+<li>深度学习概述了OpenCV中的新功能与深层神经网络连接。加载深度学习模型并将其应用于计算机视觉任务。</li>
+<li>线性代数。解决线性代数问题型并将其应用于计算机视觉。</li>
+<li>测器和描述符 包含有关如何使用图像特征描述符：如何用它们进行计算、显示、匹配</li>
+<li>图像和视频处理 图像序列并根据相关性得到结果序列。</li>
+<li>多视图几何 如何使用摄像机检索关于场景的3D几何的信息</li>
+</ul>
+<p>第一章：I/O和GUI</p>
+<h2 id="_1">介绍</h2>
+<p>很少没有任何缺失值的数据集。 有许多缺失数据的表示。 在数据库中是NULL值，一些编程语言使用NA。缺失值可以是空字符串：''或者甚至是数值88或99等。Pandas显示缺失值为NaN。</p>
+<p>本章将涵盖：</p>
+<ul>
+<li>从文件中读取图像</li>
+<li>简单的图像转换 - 调整大小和翻转</li>
+<li>使用有损和无损压缩保存图像</li>
+<li>在OpenCV窗口中显示图像</li>
+<li>使用UI元素（如按钮和轨迹栏）</li>
+<li>绘制2D基元 - 标记，线条，椭圆，矩形，和文本</li>
+<li>处理来自键盘的用户输入</li>
+<li>处理鼠标输入</li>
+<li>从相机捕获和显示帧</li>
+<li>从视频播放帧流</li>
+<li>获取帧流属性</li>
+<li>将视频流写入视频</li>
+<li>在视频文件中的帧之间跳转</li>
+</ul>
+<h3 id="_2">从文件中读取图像</h3>
+<p>01 Reading image from file.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--path&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;../data/Lena.png&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Image path.&#39;</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+<span class="c1"># Check if image was successfully read.</span>
+<span class="k">assert</span> <span class="n">img</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;read {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">path</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;shape:&#39;</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;dtype:&#39;</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">img</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;read {} as grayscale&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">path</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;shape:&#39;</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;dtype:&#39;</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="mo">01</span>\ <span class="n">Reading</span>\ <span class="n">image</span>\ <span class="kn">from</span>\ <span class="nn">file.py</span> 
+<span class="n">read</span> <span class="o">../</span><span class="n">data</span><span class="o">/</span><span class="n">Lena</span><span class="o">.</span><span class="n">png</span>
+<span class="n">shape</span><span class="p">:</span> <span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">uint8</span>
+<span class="n">read</span> <span class="o">../</span><span class="n">data</span><span class="o">/</span><span class="n">Lena</span><span class="o">.</span><span class="n">png</span> <span class="k">as</span> <span class="n">grayscale</span>
+<span class="n">shape</span><span class="p">:</span> <span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">uint8</span>
+</pre></div>
+</td></tr></table>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

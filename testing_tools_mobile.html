@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>[雪峰磁针石博客]软件测试专家工具包3移动端</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/testing_tools_mobile.html" rel="bookmark"
+           title="Permalink to [雪峰磁针石博客]软件测试专家工具包3移动端">[雪峰磁针石博客]软件测试专家工具包3移动端</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-21T11:30:00+08:00">
+                Published: 二 21 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info -->      <h3 id="ui-automator">UI Automator</h3>
+<p>UI Automator提供了一组API来构建基于交互UI的测试。API允许你执行操作，如打开设置菜单，非常适合黑盒自动化测试，在测试代码不依赖于应用的内部实现</p>
+<p>uiautomatorviewer提供了一个方便的图形用户界面进行扫描和分析在Android设备上当前显示的UI组件。您可以使用此工具来检查的布局层次和查看UI组件。 </p>
+<p>UiDevice类可以访问设备并进行操作。你可以调用它的方法来访问设备属性，如当前的方向或显示尺寸。该UiDevice类也让您执行操作，例如：旋转设备；按下D-pad按钮；按Back、Home、Menu等；打开通知树栏；当前窗口截图等。</p>
+<p>应用相关的API： UiCollection枚举容器的UI元素以计数，或通过文字(或属性等)针定位子元素; UIObject表示是在设备上可见的UI元素; UiScrollable?：为可滚动UI容器提供查找支持； UiSelector?：查询一个或者多个UI元素; Configurator: 设置参数。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1edb5256ab4105cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>示例：更改语言</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">uiautomator</span> <span class="kn">import</span> <span class="n">device</span> <span class="k">as</span> <span class="n">d</span>
+
+<span class="n">d</span><span class="o">.</span><span class="n">screen</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+<span class="n">d</span><span class="o">.</span><span class="n">press</span><span class="o">.</span><span class="n">home</span><span class="p">()</span>
+<span class="n">d</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;设置&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">d</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;其他高级设置&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">d</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;语言和输入法&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">d</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;中文 (简体)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">d</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;English&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</pre></div>
+
+
+<p>https://github.com/xiaocong/uiautomator</p>
+<h3 id="appium">Appium</h3>
+<p>Appium是一个移动端的自动化框架，可用于测试原生应用，移动网页应用和混合型应用，且是跨平台的。可用于IOS和Android以及firefox的操作系统。原生应用是指用android或ios的sdk编写的应用，移动网页应用是指网页应用，类似于ios中safari应用或者Chrome应用或者类浏览器的应用。混合应用是指一种包裹webview的应用,原生应用网页内容交互性的应用。跨平台，是当今比较流行的开源测试工具。</p>
+<p>配置比uiautomator复杂，需要指定被测应用。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b7b67353e267e668.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a7ec0551ff07d91c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>示例：python代码操作计算器</p>
+<div class="highlight"><pre><span></span><span class="c1">#-*-coding: utf-8 -*-</span>
+<span class="c1">#coding=utf-8</span>
+<span class="kn">from</span> <span class="nn">appium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="n">desired_caps</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">desired_caps</span><span class="p">[</span><span class="s1">&#39;platformName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Android&#39;</span>
+<span class="n">desired_caps</span><span class="p">[</span><span class="s1">&#39;platformVersion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;4.4.4&#39;</span>
+<span class="n">desired_caps</span><span class="p">[</span><span class="s1">&#39;deviceName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;baf59937&#39;</span>
+<span class="n">desired_caps</span><span class="p">[</span><span class="s2">&quot;unicodeKeyboard&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;True&quot;</span>  
+<span class="n">desired_caps</span><span class="p">[</span><span class="s2">&quot;resetKeyboard&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;True&quot;</span>  
+<span class="n">desired_caps</span><span class="p">[</span><span class="s1">&#39;appPackage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;com.miui.calculator&#39;</span>  
+<span class="n">desired_caps</span><span class="p">[</span><span class="s1">&#39;appActivity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;.cal.CalculatorActivity&#39;</span>  
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Remote</span><span class="p">(</span><span class="s1">&#39;http://localhost:4723/wd/hub&#39;</span><span class="p">,</span><span class="n">desired_caps</span><span class="p">)</span>  
+
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_name</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_name</span><span class="p">(</span><span class="s2">&quot;5&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s2">&quot;btn_plus&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_name</span><span class="p">(</span><span class="s2">&quot;6&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s2">&quot;btn_equal&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-672d3a5220030a8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="eggplant">Eggplant</h3>
+<p>使用VNC server之类的网关。 支持iOS, Android,Windows Phone, BlackBerry，是基于图像识别的测试工具。脚本：SenseTalk。不受坐标限制。</p>
+<p>脚本跨OS、不会修改应用，能完全控制设备。</p>
+<p>商业软件 http://www.testplant.com/eggplant/testing-tools/</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-6bb323aee287989e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-1b677266bbb37ca4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="adb">adb</h3>
+<p>adb用于获取Android日志，android设备的日志存储在设备的循环内存缓冲区中。adb在android SDK的platform-tools目录。首先在系统设置 - &gt;开发人员设置中打开USB调试。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-8788f9e06ade591a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>然后使用USB连接线将手机连接到计算机。运行adb devices获取连接的设备列表。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a0216bc253598cbd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>如果要将整个日志保存到文件而不进行过滤，请使用命令“adb logcat&gt; logs.txt“。
+<img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-3ac2151bc33ed5f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>运行命令“adb logcat | findstr Exception“仅显示例外情况。Linux使用“adb logcat | grep Exception“。
+<img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-edba8a3635af78e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>或者，您可以从Google Play安装logcat查看器（如Catlog）查看logcat条目。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-6ed6a821f3007303.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="cpu-monitor-advanced-lite">CPU Monitor Advanced Lite</h3>
+<p>来自Google Play，用于监控CPU，可以保存历史记录，并以图形直观展示，但是大陆的应用市场貌似搜索不到。</p>
+<p>通常使用替代：CPU Monitor(豌豆荚)、CPU-Z等。</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-92cb9b7ecb628457.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-6190aaa3d4514fca.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-8a8def233cc0a99e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-f1a203b00638c053.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="testobject">TestObject</h3>
+<p>TestObject是拥有成百上千真实设备的测试平台，可以直接通过浏览器访问。上载APP然后可以查看执行情况，支持Robotium, Espresso和Appium。</p>
+<p>通常用于安卓机型的测试。</p>
+<p>商业软件：https://testobject.com/</p>
+<p>有几个类似的提供云测试服务的公司：</p>
+<p>云测汇：https://www.yuncehui.cn/ 专注于性能测试</p>
+<p>Testin: 即云测，http://testin.cn/ 支持Robotium、淘宝Athrun框架</p>
+<p>易测云：支持Robotium、Athrun、Guerrilla等开源测试框架，并使用基于控件识别的、东软自主研发的测试工具Radar。http://www.yiceyun.com/</p>
+<p>以上几家没有TestObject强大，但是有中国特色的选择之一。</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-75322631b23ba37f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-1dfc8abe419137da.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="scan">Scan</h3>
+<p>IOS命令行工具：</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-2c884d808ec5d6ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="zaptest">ZAPTEST</h3>
+<p>用于测试跨平台应用程序的软件测试自动化解决方案。ZAPTEST允许在任何现代操作系统，移动设备或移动设备上测试任何基于GUI的软件。包括iOS，Android，WinMo，Blackberry，Windows，Mac和Linux，并支持Agile和CI（DevOps）开发的测试。 社区版本是免费的，允许您测试网络，新的Windows应用程序或移动应用程序。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-77ecd373a1a045c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-9db58187a5c5760f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-576d1bd9f3869e7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="traceview">Traceview</h3>
+<p>很好的性能分析的工具。它可以通过图形化的方式让我们了解我们要跟踪的程序的性能，并且能具体到method。</p>
+<p>记录过程中每个API的耗时及调用次数，出现卡顿时，可通过top排序等手段分析是哪些API引起的。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-33d50acdc92952e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>https://developer.android.com/studio/profile/traceview</p>
+<h3 id="memory-profiler">Memory Profiler</h3>
+<p>Android Profiler 中的一个组件，可帮助您识别导致应用卡顿、冻结甚至崩溃的内存泄漏和流失。 它显示一个应用内存使用量的实时图表，让您可以捕获堆转储、强制执行垃圾回收以及跟踪内存分配。</p>
+<p>要打开 Memory Profiler，请按以下步骤操作：</p>
+<div class="highlight"><pre><span></span>点击 View &gt; Tool Windows &gt; Android Profiler（也可以点击工具栏中的 Android Profiler ）。
+从 Android Profiler 工具栏中选择您想要分析的设备和应用进程。 如果您通过 USB 连接了某个设备但该设备未在设备列表中列出，请确保您已启用 USB 调试。
+点击 **MEMORY **时间线中的任意位置可打开 Memory Profiler。
+</pre></div>
+
+
+<p>或者，您可以在命令行中使用 dumpsys 检查您的应用内存，同时查看 logcat 中的 GC Event。</p>
+<p>https://developer.android.com/studio/profile/memory-profiler</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-af268a5d808efc11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="systrace">Systrace</h3>
+<p>Systrace的功能包括跟踪系统的I/O操作、内核工作队列、CPU负载以及Android各个子系统的运行状况等。</p>
+<p>它能展示API的执行时序、耗时及各线程状态，出现卡顿时可分析API调用逻辑是否合理及是否出现主线程阻塞。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-60c1855bb41450c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>https://github.com/catapult-project/catapult/tree/master/systrace</p>
+<h3 id="androidjunitrunner">AndroidJUnitRunner</h3>
+<p>AndroidJUnitRunner类是JUnit测试运行器，可以让你在Android设备上执行JUnit3或JUnit4中风格的测试类，兼容Espresso和UI Automator测试框架。测试运行器加载测试包和应用，运行测试并报告测试结果。该类取代 InstrumentationTestRunner类(仅支持JUnit 3)。</p>
+<p>这个运行器的主要特点：</p>
+<ul>
+<li>
+<p>JUnit支持</p>
+</li>
+<li>
+<p>获得Instrumentation信息</p>
+</li>
+<li>
+<p>测试筛选</p>
+</li>
+<li>
+<p>测试分片</p>
+</li>
+</ul>
+<p>要求的Android2.2（API 8）或更高。</p>
+<p>AndroidJunitRunner通过InstrumentationRegistry提供了访问instrumentation的API。</p>
+<ul>
+<li>
+<p>InstrumentationRegistry.getInstrumentation()返回当前正在运行的Instrumentation</p>
+</li>
+<li>
+<p>InstrumentationRegistry.getContext()返回此Instrumentation软件包的上下文。  </p>
+</li>
+<li>
+<p>InstrumentationRegistry.getTargetContext()返回目标应用的应用上下文。  </p>
+</li>
+<li>
+<p>InstrumentationRegistry.getArguments()返回传递给此Instrumentation的参数Bundle。当你要访问命令行参数时非常有用。  </p>
+</li>
+</ul>
+<p>测试运行器兼容JUnit3和JUnit4的(最高JUnit4.10)测试。在同一个包混淆JUnit 3和和JUnit4测试代码可能会导致不可预测的结果。instrumented JUnit 4测试类在设备或仿真器上运行，必须在前面加上<code>@RunWith(AndroidJUnit4.class)</code>注释。</p>
+<p>比如测试CalculatorActivity类中的加操作：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">android.support.test.runner.AndroidJUnit4</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">android.support.test.runner.AndroidJUnitRunner</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">android.test.ActivityInstrumentationTestCase2</span><span class="p">;</span>
+
+<span class="nd">@RunWith</span><span class="p">(</span><span class="n">AndroidJUnit4</span><span class="o">.</span><span class="n">class</span><span class="p">)</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">CalculatorInstrumentationTest</span>
+        <span class="n">extends</span> <span class="n">ActivityInstrumentationTestCase2</span><span class="o">&lt;</span><span class="n">CalculatorActivity</span><span class="o">&gt;</span> <span class="p">{</span>
+
+    <span class="nd">@Before</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">setUp</span><span class="p">()</span> <span class="n">throws</span> <span class="ne">Exception</span> <span class="p">{</span>
+        <span class="nb">super</span><span class="o">.</span><span class="n">setUp</span><span class="p">();</span>
+
+        <span class="o">//</span> <span class="n">Injecting</span> <span class="n">the</span> <span class="n">Instrumentation</span> <span class="n">instance</span> <span class="ow">is</span> <span class="n">required</span>
+        <span class="o">//</span> <span class="k">for</span> <span class="n">your</span> <span class="n">test</span> <span class="n">to</span> <span class="n">run</span> <span class="k">with</span> <span class="n">AndroidJUnitRunner</span><span class="o">.</span>
+        <span class="n">injectInstrumentation</span><span class="p">(</span><span class="n">InstrumentationRegistry</span><span class="o">.</span><span class="n">getInstrumentation</span><span class="p">());</span>
+        <span class="n">mActivity</span> <span class="o">=</span> <span class="n">getActivity</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">typeOperandsAndPerformAddOperation</span><span class="p">()</span> <span class="p">{</span>
+        <span class="o">//</span> <span class="n">Call</span> <span class="n">the</span> <span class="n">CalculatorActivity</span> <span class="n">add</span><span class="p">()</span> <span class="n">method</span> <span class="ow">and</span> <span class="k">pass</span> <span class="ow">in</span> <span class="n">some</span> <span class="n">operand</span> <span class="n">values</span><span class="p">,</span> <span class="n">then</span>
+        <span class="o">//</span> <span class="n">check</span> <span class="n">that</span> <span class="n">the</span> <span class="n">expected</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">returned</span><span class="o">.</span>
+    <span class="p">}</span>
+
+    <span class="nd">@After</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">tearDown</span><span class="p">()</span> <span class="n">throws</span> <span class="ne">Exception</span> <span class="p">{</span>
+        <span class="nb">super</span><span class="o">.</span><span class="n">tearDown</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>InstrumentationRegistry类可以访问测试运行的信息。该类包括Instrumentation对象，目标应用上下文对象，测试应用上下文对象及传递到测试的命令行参数。</p>
+<p>JUnit 4.x的测试可以使用annotation来配置测试运行，并支持Androidannotation：  </p>
+<p>@RequiresDevice：物理设备上运行。</p>
+<p>@SdkSupress：限定最低SDK版本。例如<code>@SDKSupress(minSdkVersion=18)</code>。<br>
+@SmallTest，@MediumTest和@LargeTest：测试分级。</p>
+<p>单个test suite可以分片，同一Instrumentation的同一分片可以作为一个组。每个片都有索引号。当运行测试，使用-e numShards选项指定片数和-e shardIndex选项来指定要运行的片。  </p>
+<p>例如分成10个碎片，仅执行第二片测试，请使用以下命令：</p>
+<div class="highlight"><pre><span></span>adb shell am instrument -w -e numShards 10 -e shardIndex 2
+</pre></div>
+
+
+<h3 id="espresso">Espresso</h3>
+<p>Espresso提供了一组API来构建UI测试来测试用户流程。这些API让你写简洁和可靠运行的自动化UI测试。Espresso非常适合白盒自动测试，测试代码利用了被测应用的代码细节。</p>
+<p>Espresso的主要特性：</p>
+<ul>
+<li>
+<p>视图匹配(View matching): 灵活的API用于查看和适配目标应用。</p>
+</li>
+<li>
+<p>Action API：一套扩展的action API自动化UI交互。</p>
+</li>
+<li>
+<p>UI线程同步(UI thread synchronization)以提高测试的可靠性。</p>
+</li>
+</ul>
+<p>要求Android2.2（API 8）或更高。</p>
+<p>Espresso.onView()方法可以访问目标应用程序的UI组件并与之交互。该方法接受一个Matcher参数，搜索视图层来定位视图实例。定位方法可以基于类名、内容描述、R.id、显示的文本。比如</p>
+<div class="highlight"><pre><span></span>onView(withId(R.id.my_button));
+</pre></div>
+
+
+<p>如果搜索成功，onView()方法返回对应view的引用，可执行用户操作和断言。  </p>
+<p>AdapterView由子view动态生成。如果目标视图在AdapterView(ListView或GridView)中，onView()方法可能不起作用，因为可能只加载了一部分，Espresso.onData()则可以。  </p>
+<p>ViewActions可以执行视图点击(View clicks)，滑动(Swipes)，按键或者按钮(Key and button press)、文本输入(Typing text)、打开链接(Opening a link)。</p>
+<div class="highlight"><pre><span></span>// Type text into an EditText view, then close the soft keyboard
+onView(withId(R.id.editTextUserInput))
+    .perform(typeText(STRING_TO_BE_TYPED), closeSoftKeyboard());
+// Press the button to submit the text change
+onView(withId(R.id.changeTextBt)).perform(click());
+</pre></div>
+
+
+<p>由于时间问题，在Android设备上测试随机失败。之前一般通过sleep和超时处理解决。Espresso测试框架处理Instrumentation和UI线程之间的同步，很好地解决了这些问题。  </p>
+<p>API参考：developer.android.com/reference/android/support/test/package-summary.html<br>
+测试参考：http://developer.android.com/training/testing/ui-testing/espresso-testing.html  </p>
+<h3 id="robotium">robotium</h3>
+<p>Android用户场景测试，在Espresso出来直接比较流行，现在有弱化的趋势。</p>
+<p>https://github.com/RobotiumTech/robotium</p>
+<h3 id="genymotion">Genymotion</h3>
+<p>高效的安卓模拟器 http://www.genymotion.net/</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-2e1938d4bfebf9e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="robolectric">Robolectric</h3>
+<p>开源。使用shadow objects运行测试于普通的工作站/服务器JVM，它并不依赖于Android提供的测试功能，无须模拟器、设备，效率高。无须dexing（编译成Dalvik VM使用的格式），打包，部署和运行的过程。</p>
+<p>是安卓单元测试的首选工具。</p>
+<p>网址：pivotal.github.com/robolectric</p>
+<h3 id="monkey">Monkey</h3>
+<p>Monkey是Android中的命令行工具，可以运行在模拟器里或实际设备中。它向系统发送伪随机的用户事件流(如按键输入、触摸屏输入、手势输入等)，实现对正在开发的应用程序进行压力测试。Monkey测试是一种为了测试软件的稳定性、健壮性的快速有效的方法。</p>
+<p>https://developer.android.com/studio/test/monkey</p>
+<h3 id="android-lint">Android Lint</h3>
+<p>Android Studio 提供一个名为 Lint 的代码扫描工具，可帮助您发现并纠正代码结构质量的问题，而无需实际执行该应用，也不必编写测试用例。该工具会报告其检测到的每个问题并提供该问题的描述消息和严重级别，以便您可以快速确定需要优先进行哪些关键改进。此外，您可以调低问题的严重级别，忽略与项目无关的问题，也可以调高严重级别，以突出特定问题。</p>
+<p>Lint 工具可检查您的 Android 项目源文件是否包含潜在错误，以及在正确性、安全性、性能、易用性、便利性和国际化方面是否需要优化改进。在使用 Android Studio 时，配置的 Lint 和 IDE 检查会在您每次构建应用时运行。不过，您可以手动运行检查或从命令行运行 Lint。 </p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-59c09d823794905b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>https://developer.android.com/studio/write/lint?hl=zh-cn#commandline</p>
+<h3 id="cts">兼容性测试套件 (CTS)</h3>
+<p>兼容性测试套件 (CTS) 是一个免费的商业级测试套件CTS 代表兼容性的“机制”。</p>
+<p>CTS 在桌面设备上运行，并直接在连接的设备或模拟器上执行测试用例。CTS 是一套单元测试，旨在集成到工程师构建设备的日常工作流程（例如通过连续构建系统）中。其目的是尽早发现不兼容性，并确保软件在整个开发过程中保持兼容性。</p>
+<p>CTS 是一个自动化测试工具，其中包括两个主要软件组件：</p>
+<p>CTS tradefed 自动化测试框架会在桌面设备上运行，并管理测试执行情况。</p>
+<p>单独的测试用例会在被测设备 (DUT) 上执行。测试用例采用 Java 语言编写为 JUnit 测试，并打包为 Android .apk 文件，以在实际目标设备上运行。</p>
+<p>兼容性测试套件验证程序（CTS 验证程序）是对 CTS（可在此处下载）的补充。CTS 验证程序为无法在没有手动输入（例如音频质量、加速度计等）的固定设备上进行测试的 API 和功能提供测试。</p>
+<p>CTS 验证程序是一款手动测试工具，包含以下软件组件：</p>
+<p>在 DUT 上执行并收集结果的 CTS 验证程序应用。</p>
+<p>在桌面设备上执行，以便为 CTS 验证程序应用中的某些测试用例提供数据或额外控制的可执行文件或脚本。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-330c97518571286f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="monkey-runner">monkey runner</h3>
+<p>monkeyrunner工具提供了API，使用此API写出的程序可以在Android代码之外控制Android设备和模拟器。通过monkeyrunner，您可以写出一个Python程序去安装一个Android应用程序或测试包，运行它，向它发送模拟击键，截取它的用户界面图片，并将截图存储于工作站上。monkeyrunner工具的主要设计目的是用于测试功能/框架水平上的应用程序和设备，或用于运行单元测试套件，但您当然也可以将其用于其它目的。</p>
+<p>下面是简单的monkeyrunner程序，它连接到设备，创建MonkeyDevice对象。 程序使用MonkeyDevice对象安装Android应用程序包，运行activity，并将关键事件发送到activity。 然后程序截取结果的屏幕截图，创建MonkeyImage对象。 从该对象，程序输出包含屏幕截图的.png文件。</p>
+<div class="highlight"><pre><span></span><span class="c1"># Imports the monkeyrunner modules used by this program</span>
+<span class="kn">from</span> <span class="nn">com.android.monkeyrunner</span> <span class="kn">import</span> <span class="n">MonkeyRunner</span><span class="p">,</span> <span class="n">MonkeyDevice</span>
+
+<span class="c1"># Connects to the current device, returning a MonkeyDevice object</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">MonkeyRunner</span><span class="o">.</span><span class="n">waitForConnection</span><span class="p">()</span>
+
+<span class="c1"># Installs the Android package. Notice that this method returns a boolean, so you can test</span>
+<span class="c1"># to see if the installation worked.</span>
+<span class="n">device</span><span class="o">.</span><span class="n">installPackage</span><span class="p">(</span><span class="s1">&#39;myproject/bin/MyApplication.apk&#39;</span><span class="p">)</span>
+
+<span class="c1"># sets a variable with the package&#39;s internal name</span>
+<span class="n">package</span> <span class="o">=</span> <span class="s1">&#39;com.example.android.myapplication&#39;</span>
+
+<span class="c1"># sets a variable with the name of an Activity in the package</span>
+<span class="n">activity</span> <span class="o">=</span> <span class="s1">&#39;com.example.android.myapplication.MainActivity&#39;</span>
+
+<span class="c1"># sets the name of the component to start</span>
+<span class="n">runComponent</span> <span class="o">=</span> <span class="n">package</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">activity</span>
+
+<span class="c1"># Runs the component</span>
+<span class="n">device</span><span class="o">.</span><span class="n">startActivity</span><span class="p">(</span><span class="n">component</span><span class="o">=</span><span class="n">runComponent</span><span class="p">)</span>
+
+<span class="c1"># Presses the Menu button</span>
+<span class="n">device</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s1">&#39;KEYCODE_MENU&#39;</span><span class="p">,</span> <span class="n">MonkeyDevice</span><span class="o">.</span><span class="n">DOWN_AND_UP</span><span class="p">)</span>
+
+<span class="c1"># Takes a screenshot</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">takeSnapshot</span><span class="p">()</span>
+
+<span class="c1"># Writes the screenshot to a file</span>
+<span class="n">result</span><span class="o">.</span><span class="n">writeToFile</span><span class="p">(</span><span class="s1">&#39;myproject/shot1.png&#39;</span><span class="p">,</span><span class="s1">&#39;png&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="ddms">DDMS</h3>
+<p>DDMS 的全称是DalvikDebug Monitor Service，是 Android 开发环境中的Dalvik虚拟机调试监控服务。提供测试设备截屏、查看特定进程正在运行的线程以及堆信息、Logcat、广播状态信息、模拟电话呼叫、模拟接收及发送SMS、虚拟地理坐标等服务。</p>
+<p>https://developer.android.com/studio/profile/monitor</p>
+<h2 id="_1">参考资料</h2>
+<ul>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关书籍下载</a></li>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_tools_mobile.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

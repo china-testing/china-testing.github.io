@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>flask构建自动化测试平台4-用户输入</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li class="active"><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python_flask_autotest4.html" rel="bookmark"
+           title="Permalink to flask构建自动化测试平台4-用户输入">flask构建自动化测试平台4-用户输入</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-18T10:26:00+08:00">
+                Published: 五 18 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->      <p>本章将介绍以下主题：</p>
+<ul>
+<li>使用HTTP GET获取用户输入</li>
+<li>使用HTTP POST获取用户输入</li>
+<li>添加天气和货币数据</li>
+</ul>
+<p><a href="https://www.jianshu.com/p/f9866ba83791">本文最新版本</a> </p>
+<h3 id="get">GET</h3>
+<p>HTTP GET从用户获取有限的非敏感信息，以便服务器根据GET参数的要求返回页面。GET请求不应该修改服务器状态，用户应该多次请求返回相同的结果。</p>
+<p>全局变量request已经帮你处理好了请求顺序和线程。<a href="http://flask-cn.readthedocs.io/en/latest/reqcontext/">参考资料</a></p>
+<h3 id="post">POST</h3>
+<p>HTTP POST用于提交更大的数据块或更敏感的数据到服务器。 通过POST请求发送的数据在网址中不可见。</p>
+<h3 id="_1">实例</h3>
+<p>代码： headlines.py</p>
+<p>```#!python
+import feedparser
+from flask import Flask
+from flask import render_template
+from flask import request
+import json
+import urllib</p>
+<p>app = Flask(<strong>name</strong>)</p>
+<p>RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
+             'cnn': 'http://rss.cnn.com/rss/edition.rss',
+             'fox': 'http://feeds.foxnews.com/foxnews/latest',
+             'iol': 'http://www.iol.co.za/cmlink/1.640'}</p>
+<p>WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q={}&amp;units=metric&amp;APPID=cb932829eacb6a0e9ee4f38bfbf112ed"
+CURRENCY_URL = "https://openexchangerates.org//api/latest.json?app_id=b23c94daab584f4580e4e2bf75cbcf7e"</p>
+<p>DEFAULTS = {'publication': 'bbc',
+            'city': 'London,UK',
+            'currency_from': 'GBP',
+            'currency_to': 'USD'
+            }</p>
+<p>@app.route("/")
+def home():
+    # get customised headlines, based on user input or default
+    publication = request.args.get('publication')
+    if not publication:
+        publication = DEFAULTS['publication']
+    articles = get_news(publication)
+    # get customised weather based on user input or default
+    city = request.args.get('city')
+    if not city:
+        city = DEFAULTS['city']
+    weather = get_weather(city)
+    # get customised currency based on user input or default
+    currency_from = request.args.get("currency_from")
+    if not currency_from:
+        currency_from = DEFAULTS['currency_from']
+    currency_to = request.args.get("currency_to")
+    if not currency_to:
+        currency_to = DEFAULTS['currency_to']
+    rate, currencies = get_rate(currency_from, currency_to)
+    return render_template("home.html", articles=articles, weather=weather,
+                           currency_from=currency_from, currency_to=currency_to, rate=rate,
+                           currencies=sorted(currencies))</p>
+<p>def get_rate(frm, to):
+    all_currency = urllib.request.urlopen(CURRENCY_URL).read().decode('utf-8') 
+    parsed = json.loads(all_currency).get('rates')
+    frm_rate = parsed.get(frm.upper())
+    to_rate = parsed.get(to.upper())
+    return (to_rate / frm_rate, parsed.keys())</p>
+<p>def get_news(publication):
+    feed = feedparser.parse(RSS_FEEDS[publication])
+    return feed['entries']</p>
+<p>def get_weather(query):
+    query = urllib.parse.quote(query)
+    url = WEATHER_URL.format(query)
+    data = urllib.request.urlopen(url).read().decode('utf-8')
+    parsed = json.loads(data)
+    weather = None
+    if parsed.get('weather'):
+        weather = {'description': parsed['weather'][0]['description'],
+                   'temperature': parsed['main']['temp'],
+                   'city': parsed['name'],
+                   'country': parsed['sys']['country']
+                   }
+    return weather</p>
+<p>if <strong>name</strong> == "<strong>main</strong>":
+    app.run(host='0.0.0.0',port=8000, debug=True)</p>
+<div class="highlight"><pre><span></span>home.html
+
+```#!html
+
+
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Headlines<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>Headlines<span class="nt">&lt;/h1&gt;</span>
+
+        <span class="nt">&lt;h2&gt;</span>Current weather<span class="nt">&lt;/h2&gt;</span>
+
+        <span class="nt">&lt;form&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;city&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;weather search&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Submit&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/form&gt;</span>
+
+        <span class="nt">&lt;p&gt;</span>City: <span class="nt">&lt;b&gt;</span><span class="cp">{{</span><span class="nv">weather.city</span><span class="cp">}}</span>, <span class="cp">{{</span><span class="nv">weather.country</span><span class="cp">}}</span><span class="nt">&lt;/b&gt;&lt;/p&gt;</span>
+        <span class="nt">&lt;p&gt;</span><span class="cp">{{</span><span class="nv">weather.description</span><span class="cp">}}</span> |<span class="cp">{{</span><span class="nv">weather.temperature</span><span class="cp">}}</span><span class="err">&amp;</span>#8451<span class="nt">&lt;/p&gt;</span>
+
+        <span class="nt">&lt;h2&gt;</span>Currency<span class="nt">&lt;/h2&gt;</span>
+
+        <span class="nt">&lt;form&gt;</span>
+            from: <span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">&quot;currency_from&quot;</span><span class="nt">&gt;</span>
+                    <span class="cp">{%</span> <span class="k">for</span> <span class="nv">currency</span> <span class="k">in</span> <span class="nv">currencies</span> <span class="cp">%}</span>
+                        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;</span><span class="cp">{{</span><span class="nv">currency</span><span class="cp">}}</span><span class="s">&quot;</span> <span class="cp">{{</span><span class="s1">&#39;selected=&quot;selected&quot;&#39;</span> <span class="k">if</span> <span class="nv">currency_from</span><span class="o">==</span><span class="nv">currency</span><span class="cp">}}</span><span class="nt">&gt;</span><span class="cp">{{</span><span class="nv">currency</span><span class="cp">}}</span><span class="nt">&lt;/option&gt;</span>
+                    <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+                  <span class="nt">&lt;/select&gt;</span>
+
+             to: <span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">&quot;currency_to&quot;</span><span class="nt">&gt;</span>
+                    <span class="cp">{%</span> <span class="k">for</span> <span class="nv">currency</span> <span class="k">in</span> <span class="nv">currencies</span> <span class="cp">%}</span>
+                        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;</span><span class="cp">{{</span><span class="nv">currency</span><span class="cp">}}</span><span class="s">&quot;</span> <span class="cp">{{</span><span class="s1">&#39;selected=&quot;selected&quot;&#39;</span> <span class="k">if</span> <span class="nv">currency_to</span><span class="o">==</span><span class="nv">currency</span><span class="cp">}}</span><span class="nt">&gt;</span><span class="cp">{{</span><span class="nv">currency</span><span class="cp">}}</span><span class="nt">&lt;/option&gt;</span>
+                    <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+                  <span class="nt">&lt;/select&gt;</span>
+                 <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Submit&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/form&gt;</span>
+
+        1 <span class="cp">{{</span><span class="nv">currency_from</span><span class="cp">}}</span> = <span class="cp">{{</span><span class="nv">currency_to</span><span class="cp">}}</span> <span class="cp">{{</span><span class="nv">rate</span><span class="cp">}}</span>
+
+        <span class="nt">&lt;h2&gt;</span>Headlines<span class="nt">&lt;/h2&gt;</span>
+        <span class="nt">&lt;form&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;query&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;search&quot;</span> <span class="nt">/&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Submit&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/form&gt;</span>
+
+        <span class="cp">{%</span> <span class="k">for</span> <span class="nv">article</span> <span class="k">in</span> <span class="nv">articles</span> <span class="cp">%}</span>
+            <span class="nt">&lt;b&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span><span class="nv">article.link</span><span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span><span class="nv">article.title</span><span class="cp">}}</span><span class="nt">&lt;/a&gt;&lt;/b&gt;&lt;br</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;i&gt;</span><span class="cp">{{</span><span class="nv">article.published</span><span class="cp">}}</span><span class="nt">&lt;/i&gt;&lt;br</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;p&gt;</span><span class="cp">{{</span><span class="nv">article.summary</span><span class="cp">}}</span><span class="nt">&lt;/p&gt;</span> 
+            <span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+        <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-389eb3249b110d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_2">参考资料</h3>
+<h2 id="_3">参考资料</h2>
+<ul>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关书籍下载</a></li>
+<li>python测试等IT技术支持qq群144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/python_flask_autotest4.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing/tree/master/flask/flask_web_service">本文代码地址</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
