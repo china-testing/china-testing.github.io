@@ -75,7 +75,7 @@
             <li><article class="hentry">
                 <header>
                     <h1><a href="/python_pytest_testing2.html" rel="bookmark"
-                           title="Permalink to 自动化测试框架pytest教程2-测试函数">自动化测试框架pytest教程2-测试函数</a></h1>
+                           title="Permalink to 自动化测试框架工具pytest教程2-测试函数">自动化测试框架工具pytest教程2-测试函数</a></h1>
                 </header>
 
                 <div class="entry-content">
@@ -92,31 +92,7 @@
 </footer><!-- /.post-info -->                <p>第2章 测试函数</p>
 <h3 id="tasks">测试Tasks程序</h3>
 <p>被测程序Tasks的结构如下</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25</pre></div></td><td class="code"><div class="highlight"><pre><span></span>tasks_proj/
+<div class="highlight"><pre><span></span>tasks_proj/
 ├── CHANGELOG.rst
 ├── LICENSE
 ├── MANIFEST.in
@@ -128,7 +104,25 @@
 │ ├── api.py
 │ ├── cli.py
 │ ├── config.py
-│ ├── tasksdb_pymongo …</pre></div></td></tr></table>
+│ ├── tasksdb_pymongo.py
+│ └── tasksdb_tinydb.py
+└── tests
+├── conftest.py
+├── pytest.ini
+├── func
+│ ├── __init__.py
+│ ├── test_add.py
+│ └── ...
+└── unit
+├── __init__.py
+├── test_task.py
+└── ...
+</pre></div>
+
+
+<p>安装:</p>
+<div class="highlight"><pre><span></span><span class="c1"># python3 setup.py install </span>
+running install …</pre></div>
                 <a class="readmore" href="/python_pytest_testing2.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
