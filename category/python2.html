@@ -21,90 +21,12 @@
                     <li><a href="/category/linux.html">linux</a></li>
                     <li class="active"><a href="/category/python.html">python</a></li>
                     <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_crash7.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构3列表">[雪峰磁针石博客]python3快速入门教程2数据结构3列表</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-09-02T10:35:00+08:00">
-                Published: 日 02 九月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">快速入门</h2>
-<p>Python有一些复合数据类型，用于组合值。最常用的是 list(列表))，为中括号之间的逗号分隔的值。列表的元素可以是多种类型，但是通常是同一类型。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span>
-<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
-</pre></div>
-
-
-<p>像字符串和其他序列类型，列表可支持切片和索引:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># indexing returns the item</span>
-<span class="mi">1</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="mi">25</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>  <span class="c1"># slicing returns a new list</span>
-<span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
-</pre></div>
-
-
-<p>切片返回新的列表，下面操作返回列表a的浅拷贝:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[:]</span>
-<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16 …</span></pre></div>
-                <a class="readmore" href="/python3_crash7.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_crash5.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构1变量与赋值">[雪峰磁针石博客]python3快速入门教程2数据结构1变量与赋值</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-09-02T10:30:00+08:00">
-                Published: 日 02 九月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">语法基础</h2>
-<p>解释器像简单的计算器：可以输入表达式，它会返回值。表达式语法很简单：运算符 + ， - ， * 和 / 与其它语言一样(例如Pascal或C)；括号用于分组。例如:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
-<span class="mi">4</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="mi">50</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="mi">6</span>
-<span class="mi">20</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="mi">50</span> <span class="o">-</span> <span class="mf">5.0</span><span class="o">*</span><span class="mi">6</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>
-<span class="mf">5.0</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="mi">8</span> <span class="o">/</span> <span class="mf">5.0</span>
-<span class="mf">1.6</span>
-</pre></div>
-
-
-<p>整数(例如2、4、20 )的类型是 int，带有小数部分的数字(例如5.0、1.6)的类型是 float。</p>
-<p>除法(/)永远返回浮点数。地板除使用 // 运算符；要计算余数你可以使用 %。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">17</span> <span class="o">/</span> <span class="mi">3 …</span></pre></div>
-                <a class="readmore" href="/python3_crash5.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
             <li><article class="hentry">
                 <header>
                     <h1><a href="/python3_crash4.html" rel="bookmark"
@@ -448,6 +370,83 @@
 <li>
 <p>条件(b &lt; 10)为true时while循环执行。这里Python类似C ，任何非零整数都为true；0为 false。判断条件也可以是字符串或列表等序列；所有长度不为零的为true ，空序列为false。示例中的测试是一个简单的比较。标准比较操作符与C相同： &lt;(小于 …</p></li></ul>
                 <a class="readmore" href="/python3_crash2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_string.html" rel="bookmark"
+                           title="Permalink to python标准模块介绍-string:文本常量和模板">python标准模块介绍-string:文本常量和模板</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-16T09:20:00+08:00">
+                Published: 四 16 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>string—文本常量和模板</p>
+<p>作用：包含处理文本的常量和类。</p>
+<p>Python版本：1.4及以后版本</p>
+<p>最早的Python版本就有string模块。 之前在这个模块中实现的许多函数已经移至str对象的方法。 string模块保留了几个有用的常量和类，用于处理str对象。</p>
+<p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/string">代码地址</a></p>
+<h4 id="_1">函数</h4>
+<p>capwords()的将字符串中所有单词的首字母大写。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="s2">&quot;hello world!&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">capwords</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="s1">&#39;Hello World!&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
+<span class="s1">&#39;hello world!&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+<span class="s1">&#39;Hello world!&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
+<span class="s1">&#39;hello world!&#39;</span>
+</pre></div>
+
+
+<p>结果等同于先调用split()，把结果列表中各个单词的首字母大写，然后调用join()合并结果。</p>
+<p>因为str对象已经有capitalize()方法，该函数的实际意义并不大。</p>
+<h4 id="_2">模板</h4>
+<p>字符串模板已经作为PEP 292的一部分增加到Python 2.4中，并得到扩展，以替代内置拼接(interpolation …</p>
+                <a class="readmore" href="/python3_lib_string.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash1.html" rel="bookmark"
+                           title="Permalink to python3快速入门教程1 turtle绘图-1开始">python3快速入门教程1 turtle绘图-1开始</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-15T12:20:00+08:00">
+                Published: 三 15 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">概述</h2>
+<p>本章内容比较多，除了代码部分，其他内容可以后面回头再看。</p>
+<h3 id="_2">简介</h3>
+<p>Python是一门简单易学，功能强大的编程语言。它具有高效的高层次数据结构，简单但有效的方式支持面向对象编程，语法优雅，动态类型，解释执行。使之成为多数平台上很多领域的脚本和快速应用开发的理想语言。它的设计理念强调代码的可读性, 跟C ++或Java等语言比可以用更少的代码实现同样的概念。Python能清晰地实现小型和大型程序。</p>
+<p>Python解释器及其丰富的标准库的源码或者二进制版本可以从<a href="http://www.python.org/">http://www.python.org/</a>免费获取和转发。该还包含很多免费的第三方Python模块、程序、工具的发布链接及附加文档。</p>
+<p>Python的解释器很容易用C或C++(或其他c可以调用的语言)扩展新功能和数据类型。 Python也适用于作为定制应用的扩展语言。</p>
+<p>Python支持多种编程范式，包括面向对象的，命令式和函数式或过程式编程风格。它具有动态类型系统和自动内存管理和拥有庞大而全面的标准库</p>
+<p>Python虚拟机本身几乎可以在所有的作业系统中运行。使用一些诸如py2exe、PyPy、PyInstaller之类的工具可以将Python源代码转换成可以脱离Python解释器运行的程序。</p>
+<p>Python的官方解释器是CPython，该解释器用C语言编写，是一个由社区驱动的自由软件，目前由Python软件基金会管理。</p>
+<p>本教程向读者通俗地介绍Python语言和系统的基本概念和特点。配合Python解释器边学边练最佳，所有例子已经自包含在教程中，也可离线阅读。</p>
+<p>标准对象和模块参见<a href="https://docs.python.org/2/library/index.html#library-index">The Python Standard …</a></p>
+                <a class="readmore" href="/python3_crash1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
