@@ -28,6 +28,48 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_crash7.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构3列表">[雪峰磁针石博客]python3快速入门教程2数据结构3列表</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:35:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">快速入门</h2>
+<p>Python有一些复合数据类型，用于组合值。最常用的是 list(列表))，为中括号之间的逗号分隔的值。列表的元素可以是多种类型，但是通常是同一类型。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+</pre></div>
+
+
+<p>像字符串和其他序列类型，列表可支持切片和索引:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># indexing returns the item</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="mi">25</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>  <span class="c1"># slicing returns a new list</span>
+<span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+</pre></div>
+
+
+<p>切片返回新的列表，下面操作返回列表a的浅拷贝:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[:]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16 …</span></pre></div>
+                <a class="readmore" href="/python3_crash7.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_crash5.html" rel="bookmark"
                            title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构1变量与赋值">[雪峰磁针石博客]python3快速入门教程2数据结构1变量与赋值</a></h1>
                 </header>
@@ -406,51 +448,6 @@
 <li>
 <p>条件(b &lt; 10)为true时while循环执行。这里Python类似C ，任何非零整数都为true；0为 false。判断条件也可以是字符串或列表等序列；所有长度不为零的为true ，空序列为false。示例中的测试是一个简单的比较。标准比较操作符与C相同： &lt;(小于 …</p></li></ul>
                 <a class="readmore" href="/python3_crash2.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_string.html" rel="bookmark"
-                           title="Permalink to python标准模块介绍-string:文本常量和模板">python标准模块介绍-string:文本常量和模板</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-16T09:20:00+08:00">
-                Published: 四 16 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p>string—文本常量和模板</p>
-<p>作用：包含处理文本的常量和类。</p>
-<p>Python版本：1.4及以后版本</p>
-<p>最早的Python版本就有string模块。 之前在这个模块中实现的许多函数已经移至str对象的方法。 string模块保留了几个有用的常量和类，用于处理str对象。</p>
-<p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/string">代码地址</a></p>
-<h4 id="_1">函数</h4>
-<p>capwords()的将字符串中所有单词的首字母大写。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="s2">&quot;hello world!&quot;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">capwords</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="s1">&#39;Hello World!&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
-<span class="s1">&#39;hello world!&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
-<span class="s1">&#39;Hello world!&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
-<span class="s1">&#39;hello world!&#39;</span>
-</pre></div>
-
-
-<p>结果等同于先调用split()，把结果列表中各个单词的首字母大写，然后调用join()合并结果。</p>
-<p>因为str对象已经有capitalize()方法，该函数的实际意义并不大。</p>
-<h4 id="_2">模板</h4>
-<p>字符串模板已经作为PEP 292的一部分增加到Python 2.4中，并得到扩展，以替代内置拼接(interpolation …</p>
-                <a class="readmore" href="/python3_lib_string.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

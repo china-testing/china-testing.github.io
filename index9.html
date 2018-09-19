@@ -28,6 +28,56 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_os.path.html" rel="bookmark"
+                           title="Permalink to python库介绍-os.path: 平台独立的文件名操作">python库介绍-os.path: 平台独立的文件名操作</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-25T19:20:00+08:00">
+                Published: 日 25 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>的：文件名和路径解析，组合，测试等。</p>
+<p>使用os.path模块中包含的函数编写代码以便在多个平台上处理文件非常简单。即使不打算在平台之间移植的程序也应该使用os.path来进行可靠的文件名解析。</p>
+<h2 id="_1">解析路径</h2>
+<p>路径解析依赖于在os中定义的几个变量：</p>
+<div class="highlight"><pre><span></span>os.sep - 路径各部分之间的分隔符（例如“/”或“\”）。
+
+os.extsep - 文件名和文件扩展名之间的分隔符。
+
+os.pardir - 上级目录(e.g., “..”)。
+
+os.curdir - 当前目录 (e.g., “.”)。
+</pre></div>
+
+
+<p>split()函数将路径分成两个独立的部分，并返回包含结果的元组。元组的第二个元素是路径的最后一个元素，第一个元素是之前的所有元素。</p>
+<div class="highlight"><pre><span></span><span class="c1"># ospath_split.py</span>
+
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="n">PATHS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;/one/two/three&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;/one/two/three/&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">PATHS</span><span class="p">:</span>
+    <span class="k">print …</span></pre></div>
+                <a class="readmore" href="/python3_lib_os.path.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_lib_time.html" rel="bookmark"
                            title="Permalink to python模块介绍-time 时间访问和转换">python模块介绍-time 时间访问和转换</a></h1>
                 </header>
@@ -461,64 +511,6 @@ calendar 标准模块。</p>
 <p>要实例化路径，字符串作为参数。Path对象的字符串表示是该字符串。要创建引用相对于现有路径的值的新路径，请使用/运算符来扩展路径。运算符的参数可以是字符串或其他路径对象。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1 …</pre></div></td></tr></table>
                 <a class="readmore" href="/python3_lib_pathlib.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_enum.html" rel="bookmark"
-                           title="Permalink to python库介绍-enum: 枚举">python库介绍-enum: 枚举</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-11T19:20:00+08:00">
-                Published: 日 11 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>枚举是常量的集合，支持根据id比较和迭代等功能。</p>
-<ul>
-<li>
-<p>python官方文档：https://docs.python.org/3/library/enum.html</p>
-</li>
-<li>
-<p>pymotw文档：https://pymotw.com/3/enum/index.html</p>
-</li>
-<li>
-<p>完稿日期：2016.08.22</p>
-</li>
-</ul>
-<h2 id="_2">创建枚举</h2>
-<p>继承Enum类，添加类属性即可创建枚举。</p>
-<p>enum_create.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21 …</pre></div></td></tr></table>
-                <a class="readmore" href="/python3_lib_enum.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

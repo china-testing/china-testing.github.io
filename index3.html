@@ -28,6 +28,56 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_platform.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python模块介绍-platform：底层平台信息">[雪峰磁针石博客]python模块介绍-platform：底层平台信息</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-20T16:10:00+08:00">
+                Published: 一 20 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">解释器信息</h2>
+<ul>
+<li>
+<p>platform.python_version():  返回的Python版本字符串'major.minor.patchlevel'。sys.version有类似功能，但是返回的信息更多。</p>
+</li>
+<li>
+<p>platform.python_version_tuple(): 返回Python版本 (major, minor, patchlevel)。</p>
+</li>
+<li>
+<p>platform.python_build(): 返回元组(buildno, builddate)，即Python版本号和日期。</p>
+</li>
+<li>
+<p>platform.python_compiler()：返回说明编译Python的编译器的字符串。</p>
+</li>
+<li>
+<p>platform.python_branch()：返回说明编译Python分支。</p>
+</li>
+<li>
+<p>platform.python_implementation()：返回Python实现，比如‘CPython’, ‘IronPython’, ‘Jython’, ‘PyPy’。</p>
+</li>
+<li>
+<p>platform.python_revision()：返回Python补丁版本号。  </p>
+</li>
+</ul>
+<p>下面是ubuntu 16.04执行的结果：</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">platform</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">platform</span><span class="o">.</span><span class="n">python_version</span><span class="p">()</span>
+<span class="n">Out …</span></pre></div>
+                <a class="readmore" href="/python3_lib_platform.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_crash2.html" rel="bookmark"
                            title="Permalink to [雪峰磁针石博客]python3快速入门教程1 turtle绘图-2函数">[雪峰磁针石博客]python3快速入门教程1 turtle绘图-2函数</a></h1>
                 </header>
@@ -400,29 +450,6 @@ $ sudo apt-get install python-dev
 15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self …</span></pre></div></td></tr></table>
                 <a class="readmore" href="/python_flask_autotest10.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_flask_autotest8.html" rel="bookmark"
-                           title="Permalink to flask构建自动化测试平台8-验证用户输入">flask构建自动化测试平台8-验证用户输入</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-05-22T16:26:00+08:00">
-                Published: 二 22 五月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="8-">8-验证用户输入</h2>
-<p>正在紧张整理中</p>
-                <a class="readmore" href="/python_flask_autotest8.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
