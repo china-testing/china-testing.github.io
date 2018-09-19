@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python自动化测试人工智能 - 数据分析</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li class="active"><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/python_scrapy_cookbook2.html">python爬虫cookbook-爬虫入门</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-05-08T11:20:00+08:00">
+                Published: 二 08 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info --><p>技术支持qq群：437355848 630011153 144081101</p>
+<p><a href="https://china-testing.github.io/python_scrapy_cookbook2.html">本文最新版本</a></p>
+<p>python爬虫cookbook第二章 数据采集和提取</p>
+<p>在本章中，我们将介绍：</p>
+<ul>
+<li>如何使用BeautifulSoup解析网站并浏览DOM</li>
+<li>用BeautifulSoup查找方法搜索DOM</li>
+<li>用XPath和lxml查询DOM</li>
+<li>使用XPath和CSS选择器查询数据</li>
+<li>使用Scrapy选择器</li>
+<li>以Unicode / UTF-8格式加载数据</li>
+</ul>
+<h3 id="beautifulsoupdom">用BeautifulSoup解析网站并浏览DOM</h3>
+<p>01_bs_browser.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    china-testing#126.com wechat:pythontesting qq群:144081101</span>
+<span class="c1"># CreateDate: 2018-05-08</span>
+<span class="c1"># 02_blog_01_html.py</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">html</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://china-testing.github.io/address.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="s2">&quot;lxml&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;######### 第一行 #########&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">div</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">tr</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;######### 子节点 #########&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)[:</span><span class="mi">45</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">div</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">children</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;######### 父节点 #########&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">div</span><span class="o">.</span><span class="n">table</span><span class="p">)[:</span><span class="mi">50</span><span class="p">])</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="mo">01</span><span class="n">_bs_browser</span><span class="o">.</span><span class="n">py</span> 
+<span class="c1">######### 第一行 #########</span>
+<span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">th</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span><span class="err">类别</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">th</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span><span class="err">名称</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">th</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span><span class="err">名称</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">th</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span><span class="err">名称</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">th</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span><span class="err">名称</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">th</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span><span class="err">名称</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">th</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span><span class="err">名称</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">th</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span><span class="err">名称</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+<span class="c1">######### 子节点 #########</span>
+<span class="p">[</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;thead&gt;</span><span class="se">\n</span><span class="s1">&lt;tr&gt;</span><span class="se">\n</span><span class="s1">&lt;th align=&quot;center&quot;&gt;类别&lt;/th&gt;</span><span class="se">\n</span><span class="s1">&lt;th a&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;tbody&gt;</span><span class="se">\n</span><span class="s1">&lt;tr&gt;</span><span class="se">\n</span><span class="s1">&lt;td align=&quot;center&quot;&gt;本人博客&lt;/td&gt;</span><span class="se">\n</span><span class="s1">&lt;td&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">]</span>
+<span class="c1">######### 父节点 #########</span>
+<span class="o">&lt;</span><span class="n">table</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">thead</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">th</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span><span class="err">类别</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">t</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="beautifulsoupdom_1">BeautifulSoup查找方法搜索DOM</h3>
+<p>代码：02_events_with_urlib3.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib3</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="k">def</span> <span class="nf">get_upcoming_events</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">req</span> <span class="o">=</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">PoolManager</span><span class="p">()</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+
+    <span class="n">events</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;list-recent-events&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">events</span><span class="p">:</span>
+        <span class="n">event_details</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h3&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;event-location&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">event_details</span><span class="p">)</span>
+
+<span class="n">get_upcoming_events</span><span class="p">(</span><span class="s1">&#39;https://www.python.org/events/python-events/&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>requests对urllib3进行了封装，一般是直接使用requests。</p>
+<h3 id="scrapy-pythonorg">Scrapy 爬取python.org</h3>
+<p>Scrapy是用于提取数据的非常流行的开源Python抓取框架。 Scrapy提供所有这些功能以及许多其他内置模块和扩展。当涉及到使用Python进行挖掘时，它也是我们的首选工具。
+Scrapy提供了许多值得一提的强大功能：
+ * 内置的扩展来生成HTTP请求并处理压缩，身份验证，缓存，操作用户代理和HTTP标头
+ * 内置的支持选择和提取选择器语言如数据CSS和XPath，以及支持使用正则表达式选择内容和链接。
+ * 编码支持来处理语言和非标准编码声明
+ * 灵活的API来重用和编写自定义中间件和管道，提供干净而简单的方法来实现自动化等任务。比如下载资产（例如图像或媒体）并将数据存储在存储器中，如文件系统，S3，数据库等</p>
+<p>有几种使用Scrapy的方法。一个是程序模式我们在代码中创建抓取工具和蜘蛛。也可以配置Scrapy模板或生成器项目，然后从命令行使用运行。本书将遵循程序模式，因为它的代码在单个文件中。</p>
+<p>代码：03_events_with_scrapy.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+<span class="kn">from</span> <span class="nn">scrapy.crawler</span> <span class="kn">import</span> <span class="n">CrawlerProcess</span>
+
+<span class="k">class</span> <span class="nc">PythonEventsSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;pythoneventsspider&#39;</span>
+
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://www.python.org/events/python-events/&#39;</span><span class="p">,]</span>
+    <span class="n">found_events</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//ul[contains(@class, &quot;list-recent-events&quot;)]/li&#39;</span><span class="p">):</span>
+            <span class="n">event_details</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+            <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;h3[@class=&quot;event-title&quot;]/a/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;p/span[@class=&quot;event-location&quot;]/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;p/time/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">found_events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_details</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">process</span> <span class="o">=</span> <span class="n">CrawlerProcess</span><span class="p">({</span> <span class="s1">&#39;LOG_LEVEL&#39;</span><span class="p">:</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">})</span>
+    <span class="n">process</span><span class="o">.</span><span class="n">crawl</span><span class="p">(</span><span class="n">PythonEventsSpider</span><span class="p">)</span>
+    <span class="n">spider</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">process</span><span class="o">.</span><span class="n">crawlers</span><span class="p">))</span><span class="o">.</span><span class="n">spider</span>
+    <span class="n">process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">spider</span><span class="o">.</span><span class="n">found_events</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>课后习题： 用scrapy爬取https://china-testing.github.io/首页的博客标题，共10条。</p>
+<p>参考答案：</p>
+<p>03_blog_with_scrapy.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scrapy.crawler</span> <span class="kn">import</span> <span class="n">CrawlerProcess</span>
+
+<span class="k">class</span> <span class="nc">PythonEventsSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;pythoneventsspider&#39;</span>
+
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://china-testing.github.io/&#39;</span><span class="p">,]</span>
+    <span class="n">found_events</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//article//h1&#39;</span><span class="p">):</span>
+            <span class="n">event_details</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+            <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;a/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">found_events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_details</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">process</span> <span class="o">=</span> <span class="n">CrawlerProcess</span><span class="p">({</span> <span class="s1">&#39;LOG_LEVEL&#39;</span><span class="p">:</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">})</span>
+    <span class="n">process</span><span class="o">.</span><span class="n">crawl</span><span class="p">(</span><span class="n">PythonEventsSpider</span><span class="p">)</span>
+    <span class="n">spider</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">process</span><span class="o">.</span><span class="n">crawlers</span><span class="p">))</span><span class="o">.</span><span class="n">spider</span>
+    <span class="n">process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">spider</span><span class="o">.</span><span class="n">found_events</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="seleniumphantomjspythonorg">Selenium和PhantomJs爬取Python.org</h3>
+<p>04_events_with_selenium.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+
+<span class="k">def</span> <span class="nf">get_upcoming_events</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="n">events</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_xpath</span><span class="p">(</span><span class="s1">&#39;//ul[contains(@class, &quot;list-recent-events&quot;)]/li&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">events</span><span class="p">:</span>
+        <span class="n">event_details</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s1">&#39;h3[@class=&quot;event-title&quot;]/a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s1">&#39;p/span[@class=&quot;event-location&quot;]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s1">&#39;p/time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">event_details</span><span class="p">)</span>
+
+    <span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">get_upcoming_events</span><span class="p">(</span><span class="s1">&#39;https://www.python.org/events/python-events/&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>改用driver = webdriver.PhantomJS('phantomjs')可以使用无界面的方式，代码如下：</p>
+<p>05_events_with_phantomjs.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+
+<span class="k">def</span> <span class="nf">get_upcoming_events</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="n">events</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_xpath</span><span class="p">(</span><span class="s1">&#39;//ul[contains(@class, &quot;list-recent-events&quot;)]/li&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">events</span><span class="p">:</span>
+        <span class="n">event_details</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s1">&#39;h3[@class=&quot;event-title&quot;]/a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s1">&#39;p/span[@class=&quot;event-location&quot;]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s1">&#39;p/time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">event_details</span><span class="p">)</span>
+
+    <span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">get_upcoming_events</span><span class="p">(</span><span class="s1">&#39;https://www.python.org/events/python-events/&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>不过selenium的headless模式已经可以更好的代替phantomjs了。</p>
+<p>04_events_with_selenium_headless.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+
+<span class="k">def</span> <span class="nf">get_upcoming_events</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+
+    <span class="n">options</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">ChromeOptions</span><span class="p">()</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;headless&#39;</span><span class="p">)</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">chrome_options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="n">events</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_xpath</span><span class="p">(</span><span class="s1">&#39;//ul[contains(@class, &quot;list-recent-events&quot;)]/li&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">events</span><span class="p">:</span>
+        <span class="n">event_details</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s1">&#39;h3[@class=&quot;event-title&quot;]/a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s1">&#39;p/span[@class=&quot;event-location&quot;]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">event_details</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s1">&#39;p/time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">event_details</span><span class="p">)</span>
+
+    <span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">get_upcoming_events</span><span class="p">(</span><span class="s1">&#39;https://www.python.org/events/python-events/&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_scrapy_cookbook1.html" rel="bookmark"
+                           title="Permalink to python爬虫cookbook-爬虫入门">python爬虫cookbook-爬虫入门</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-07T11:20:00+08:00">
+                Published: 一 07 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <p>技术支持qq群：437355848 630011153 144081101</p>
+<p><a href="https://china-testing.github.io/python_scrapy_cookbook1.html">本文最新版本</a></p>
+<p>第一章 爬虫入门</p>
+<ul>
+<li>Requests和Beautiful Soup 爬取python.org</li>
+<li>urllib3和Beautiful Soup 爬取python.org</li>
+<li>Scrapy 爬取python.org</li>
+<li>Selenium和PhantomJs爬取Python.org</li>
+</ul>
+<p>请确认可以打开：https://www.python.org/events/pythonevents
+安装好requests、bs4，然后我们开始实例1：Requests和Beautiful Soup 爬取python.org, 安装如果有问题尽量自己google，如果实在搞不定可以群里提问，或私聊咨询qq37391319, 咨询是需要收费，qq红包10元起</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pip3 install requests bs4</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="requestsbeautiful-soup-pythonorg">Requests和Beautiful Soup 爬取python.org</h3>
+<ul>
+<li>目标： 爬取https …</li></ul>
+                <a class="readmore" href="/python_scrapy_cookbook1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pandas_crash_tutorial4.html" rel="bookmark"
+                           title="Permalink to python数据分析快速入门教程4-数据汇聚">python数据分析快速入门教程4-数据汇聚</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-03T11:20:00+08:00">
+                Published: 四 03 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <p>我们需要的所有信息可能记录在单独的文件和数据帧中。例如，可能有一个公司信息单独表和股票价格表，数据被分成独立的表格以减少冗余信息。</p>
+<h3 id="_1">连接</h3>
+<ul>
+<li>添加行</li>
+</ul>
+<p>4-1.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/concat_1.csv&#39;</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/concat_2.csv&#39;</span><span class="p">)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/concat_3.csv&#39;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df3</span><span class="p">)</span>
+
+<span class="n">row_concat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">df3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">row_concat</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">row_concat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">])</span>
+
+<span class="n">new_row_series</span> <span class="o">=</span> <span class="n">pd …</span></pre></div>
+                <a class="readmore" href="/python_pandas_crash_tutorial4.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pandas_crash_tutorial6.html" rel="bookmark"
+                           title="Permalink to python数据分析快速入门教程6-重整">python数据分析快速入门教程6-重整</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-03T10:20:00+08:00">
+                Published: 四 03 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">介绍</h2>
+<p>紧张整理中，多谢关注！</p>
+<p>技术支持qq群：pandas数据分析scrapy爬虫 521070358  Python数据分析pandasopencv 6089740 python自动化测试Flask 144081101</p>
+<p><a href="https://github.com/china-testing/python-api-tesing/tree/master/pandas/python_data_analyse_crash_course">源码下载</a></p>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a> </p>
+                <a class="readmore" href="/python_pandas_crash_tutorial6.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_opencv3_cookbook1.html" rel="bookmark"
+                           title="Permalink to python opencv3 cookbook1: I/O和GUI">python opencv3 cookbook1: I/O和GUI</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-03T09:20:00+08:00">
+                Published: 四 03 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li>I/O和GUI 图像的基本操作以及视频：加载、保存和显示。</li>
+<li>矩阵，颜色和过滤器，访问图像，通道和图像的区域、像素。各种颜色空间之间的转换和过滤器的使用</li>
+<li>轮廓​​和分段。显示如何创建图像掩码，查找轮廓和细分图像。</li>
+<li>对象检测和机器学习，描述检测和跟踪不同类型的物体，特别是（QR代码和ArUCo标记）</li>
+<li>深度学习概述了OpenCV中的新功能与深层神经网络连接。加载深度学习模型并将其应用于计算机视觉任务。</li>
+<li>线性代数。解决线性代数问题型并将其应用于计算机视觉。</li>
+<li>测器和描述符 包含有关如何使用图像特征描述符：如何用它们进行计算、显示、匹配</li>
+<li>图像和视频处理 图像序列并根据相关性得到结果序列。</li>
+<li>多视图几何 如何使用摄像机检索关于场景的3D几何的信息</li>
+</ul>
+<p>第一章：I/O和GUI</p>
+<h2 id="_1">介绍</h2>
+<p>很少没有任何缺失值的数据集。 有许多缺失数据的表示。 在数据库中是NULL值，一些编程语言使用NA。缺失值可以是空字符串：''或者甚至是数值88或99等。Pandas显示缺失值为NaN。</p>
+<p>本章将涵盖：</p>
+<ul>
+<li>从文件中读取图像</li>
+<li>简单的图像转换 - 调整大小和翻转</li>
+<li>使用有损和无损压缩保存图像</li>
+<li>在OpenCV窗口中显示图像</li>
+<li>使用UI元素 …</li></ul>
+                <a class="readmore" href="/python_opencv3_cookbook1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pandas_crash_tutorial5.html" rel="bookmark"
+                           title="Permalink to python数据分析快速入门教程5-处理缺失数据">python数据分析快速入门教程5-处理缺失数据</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-03T09:20:00+08:00">
+                Published: 四 03 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <p>第5章 缺失数据</p>
+<h2 id="_1">介绍</h2>
+<p>很少没有任何缺失值的数据集。 有许多缺失数据的表示。 在数据库中是NULL值，一些编程语言使用NA。缺失值可以是空字符串：''或者甚至是数值88或99等。Pandas显示缺失值为NaN。</p>
+<p>本章将涵盖：</p>
+<ul>
+<li>什么是缺失值</li>
+<li>如何创建缺失值</li>
+<li>如何重新编码并使用缺失值进行计算</li>
+</ul>
+<h3 id="_2">什么是缺失值</h3>
+<p>可以从numpy中获得NaN值，在Python中看到缺失值使用几种方式显示：NaN，NAN或nan，他们都是相等的。</p>
+<p>NaN不等于0或空字符串''。</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">NaN</span><span class="p">,</span> <span class="n">NAN</span><span class="p">,</span> <span class="n">nan</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">NaN</span> <span class="o">==</span> <span class="bp">True</span><span class="p">,</span> <span class="n">NaN</span> <span class="o">==</span> <span class="bp">False</span><span class="p">,</span> <span class="n">NaN</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NaN</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
+<span class="bp">False</span><span class="o">|</span><span class="bp">False</span><span class="o">|</span><span class="bp">False</span><span class="o">|</span><span class="bp">False</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">NaN</span> <span class="o">==</span> <span class="n">NaN</span><span class="p">,</span> <span class="n">NaN …</span></pre></div>
+                <a class="readmore" href="/python_pandas_crash_tutorial5.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pandas_example1.html" rel="bookmark"
+                           title="Permalink to pandas大数据分析性能优化实例-read_csv引擎和分组等">pandas大数据分析性能优化实例-read_csv引擎和分组等</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-11T17:20:00+08:00">
+                Published: 三 11 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">需求</h3>
+<p>人脸识别的人名如下，共452人</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">head</span> <span class="n">i_enroll</span><span class="o">.</span><span class="n">txt</span> 
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">D23</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">I54</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">G23</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">G43</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">F38</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">I20</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">J19</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">E42</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">F31</span>
+<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">F22</span>
+</pre></div>
+</td></tr></table>
+
+<p>人脸识别的图片列表如下，共269796张</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1 …</pre></div></td></tr></table>
+                <a class="readmore" href="/python_pandas_example1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pandas_tutorial1.html" rel="bookmark"
+                           title="Permalink to pandas入门">pandas入门</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-31T17:20:00+08:00">
+                Published: 六 31 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="pandas">pandas入门</h2>
+<h3 id="_1">简介</h3>
+<p>pandas包含的数据结构和操作工具能快速简单地清洗和分析数据。</p>
+<p>pandas经常与NumPy和SciPy这样的数据计算工具，statsmodels和scikit-learn之类的分析库及数据可视化库（如matplotlib）等一起用使用。pandas基于NumPy的数组，经常可以不使用循环就能处理好大量数据。</p>
+<p>pandas适合处理表格数据或巨量数据。NumPy则适合处理巨量的数值数组数据。</p>
+<p>这里约定导入方式：</p>
+<p>技术支持qq群：630011153</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="pandas_1">pandas数据结构介绍</h3>
+<ul>
+<li>
+<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
+</li>
+<li>
+<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
+</li>
+</ul>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
+<p>主要数据结构:Series和DataFrame。</p>
+<h4 id="series">Series</h4>
+<p>Series类似于一维数组的对象,它由一组数据(NumPy类似数据类型)以及相关的数据标签(即索引)组成 …</p>
+                <a class="readmore" href="/python_pandas_tutorial1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pandas_crash_tutorial.html" rel="bookmark"
+                           title="Permalink to python数据分析快速入门教程-目录">python数据分析快速入门教程-目录</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-31T09:20:00+08:00">
+                Published: 六 31 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/python_pandas_crash_tutorial1.html">python数据分析快速入门教程1-开胃菜</a></li>
+<li><a href="https://china-testing.github.io/python_pandas_crash_tutorial2.html">python数据分析快速入门教程2-pandas数据结构</a></li>
+<li><a href="https://china-testing.github.io/python_pandas_crash_tutorial3.html">python数据分析快速入门教程3-绘图</a></li>
+<li><a href="https://china-testing.github.io/python_pandas_crash_tutorial4.html">python数据分析快速入门教程4-pandas数据结构</a></li>
+<li><a href="https://china-testing.github.io/python_pandas_crash_tutorial5.html">python数据分析快速入门教程5-处理缺失数据</a></li>
+<li><a href="https://china-testing.github.io/python_pandas_crash_tutorial6.html">python数据分析快速入门教程6-重整</a></li>
+<li><a href="https://china-testing.github.io/python_pandas_excel.html">python数据分析快速入门教程7-处理excel</a></li>
+<li><a href="https://china-testing.github.io/python_pandas_excel.html">python数据分析快速入门教程8-性能优化实例</a></li>
+</ul>
+<p>一些代码参考:</p>
+<p>https://github.com/chendaniely/pandas_for_everyone</p>
+<p>https://github.com/kennethjhim/Pandas-for-Everyone</p>
+                <a class="readmore" href="/python_pandas_crash_tutorial.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pandas_crash_tutorial1.html" rel="bookmark"
+                           title="Permalink to python数据分析快速入门教程1-开胃菜.">python数据分析快速入门教程1-开胃菜.</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-31T09:20:00+08:00">
+                Published: 六 31 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
+<p>Pandas是用于数据分析的开源Python库,也是目前数据分析最重要的开源库。它能够处理类似电子表格的数据，用于快速数据加载，操作，对齐，合并等。为Python提供这些增强功能，Pandas的数据类型为：Series和DataFrame。DataFrame为整个电子表格或矩形数据，而Series是DataFrame的列。DataFrame也可以被认为是字典或Series的集合。</p>
+<h3 id="_2">加载数据</h3>
+<p>load.py</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># load.py</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;../data/gapminder.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> 
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">查看前五行&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">查看类型&quot;</span><span class="p">)</span>
+<span class="k">print …</span></pre></div>
+                <a class="readmore" href="/python_pandas_crash_tutorial1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 2
+        <a href="/category/shu-ju-fen-xi2.html">&raquo;</a>
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

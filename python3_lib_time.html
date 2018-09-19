@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python模块介绍-time 时间访问和转换</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_lib_time.html" rel="bookmark"
+           title="Permalink to python模块介绍-time 时间访问和转换">python模块介绍-time 时间访问和转换</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-22T19:20:00+08:00">
+                Published: 四 22 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <h2 id="_1">快速入门</h2>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># 获取当前时间</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">_%H-%M-%S&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">())</span> 
+<span class="n">Out</span><span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="s1">&#39;2018-06-17_20-05-36&#39;</span>
+<span class="c1"># 停顿0.5秒</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+
+
+<h2 id="_2">简介</h2>
+<p>功能：时间访问和转换。</p>
+<p>相关模块：</p>
+<p>datetime    标准模块。
+calendar 标准模块。</p>
+<p>下面介绍一些术语和约定：</p>
+<p><em>epoch</em>是时间开始点。对于Unix ，时代是1970年1月1日0点。通过time.gmtime(0)可以查看时间的起点：</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">struct_time</span><span class="p">(</span><span class="n">tm_year</span><span class="o">=</span><span class="mi">1970</span><span class="p">,</span> <span class="n">tm_mon</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tm_mday</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tm_hour</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tm_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tm_sec</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tm_wday</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">tm_yday</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tm_isdst</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span>  <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">786041553</span><span class="p">)</span> <span class="c1"># 32位会报错</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">struct_time</span><span class="p">(</span><span class="n">tm_year</span><span class="o">=</span><span class="mi">2043</span><span class="p">,</span> <span class="n">tm_mon</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">tm_mday</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">tm_hour</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">tm_min</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="n">tm_sec</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">tm_wday</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">tm_yday</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">tm_isdst</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+
+<p>对于32位的linux系统，时间只能处理到2038年。现在新发布的主流已经全部是64位版本。</p>
+<p>UTC是协调世界时（前身为格林威治标准时间或GMT）。</p>
+<p>DST为夏令时，通常是根据当地法律在一年内的部分时间进行一小时的调整。 C库包含有当地规则的表。</p>
+<p>实时函数的精度可能比建议的要低。例如在大多数Unix系统中，时钟“滴答”只有50或100次每秒。</p>
+<p>不过time()和sleep()比Unix的更好：时间为浮点数，time()的返回确保最精确(尽量使用Unix的函数gettimeofday()) ，sleep()接受的时间为非零分数（尽量用select()实现） 。</p>
+<p>gmtime(), localtime()和strptime()的返回是包含9个整数的序列，可以作为asctime(), mktime() and strftime()的输入，每个域都有自己的属性，实际上是一个结构体struct_time，参见上面的例子。</p>
+<p>时间转换：gmtime()把浮点时间转为UTC的struct_time，反之calendar.timegm()；localtime()把浮点时间转为local的struct_time，反之mktime()。实际上calendar.timegm()和mktime()是等效的，不过前者返回整数，后者返回浮点数。</p>
+<h2 id="_3">时间生成与转换</h2>
+<p>生成epoch的浮点数，注意不同的系统精度不同，linux一般是小数点后面7为，windows一般是小数点后3位。Time函数是没有参数的。可以直接对返回的浮点数进行计算。
+gmtime([secs])把浮点时间转为UTC的struct_time，如果无输入参数为空会调用time()读取当前时间。
+gmtime显示的是世界协调时间， localtime([secs])可以显示本地时间。
+注意夏时制要设置dst。asctime([t])显示时间为可读性好的格式，它把gmtime(), localtime()和strptime()的返回的struct_time类型转换为可读性较好的格式。如果输入参数为空则调用localtime()的返回结果。它和c函数不同的地方是末尾不会添加换行。asctime不会使用Locale信息。</p>
+<p>ctime([secs])在asctime上更进一步，转换浮点数为可读性较好的格式，相当于asctime(localtime(secs)), 这个功能很常用。ctime不会使用Locale信息。</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">struct_time</span><span class="p">(</span><span class="n">tm_year</span><span class="o">=</span><span class="mi">1970</span><span class="p">,</span> <span class="n">tm_mon</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tm_mday</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tm_hour</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tm_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tm_sec</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tm_wday</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">tm_yday</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tm_isdst</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span>  <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">786041553</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">struct_time</span><span class="p">(</span><span class="n">tm_year</span><span class="o">=</span><span class="mi">2043</span><span class="p">,</span> <span class="n">tm_mon</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">tm_mday</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">tm_hour</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">tm_min</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="n">tm_sec</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">tm_wday</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">tm_yday</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">tm_isdst</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="mf">1528637996.277831</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">struct_time</span><span class="p">(</span><span class="n">tm_year</span><span class="o">=</span><span class="mi">2018</span><span class="p">,</span> <span class="n">tm_mon</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">tm_mday</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">tm_hour</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">tm_min</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">tm_sec</span><span class="o">=</span><span class="mi">47</span><span class="p">,</span> <span class="n">tm_wday</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">tm_yday</span><span class="o">=</span><span class="mi">161</span><span class="p">,</span> <span class="n">tm_isdst</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">struct_time</span><span class="p">(</span><span class="n">tm_year</span><span class="o">=</span><span class="mi">2018</span><span class="p">,</span> <span class="n">tm_mon</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">tm_mday</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">tm_hour</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">tm_min</span><span class="o">=</span><span class="mi">43</span><span class="p">,</span> <span class="n">tm_sec</span><span class="o">=</span><span class="mi">54</span><span class="p">,</span> <span class="n">tm_wday</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">tm_yday</span><span class="o">=</span><span class="mi">161</span><span class="p">,</span> <span class="n">tm_isdst</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="s1">&#39;Sun Jun 10 22:10:14 2018&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="s1">&#39;Sun Jun 10 22:12:25 2018&#39;</span>
+</pre></div>
+
+
+<h2 id="sleep">Sleep</h2>
+<p>sleep(secs)暂停执行指定秒数。参数可以是整数或浮点数。实际的中止时间可能小于请求时间，因为例行的信号捕捉可能终止sleep。此外中止时间可能长于请求时间，因为因为系统调度也是需要时间的。</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">36</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+
+<h2 id="_4">处理器时间</h2>
+<p>clock()在Unix上，返回当前的处理器时间，为以秒表示的浮点数。精度决于同名的C函数，通常用于基准Python或定时的算法。我们书写一个不耗cpu和耗cpu的脚本对比：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">template</span> <span class="o">=</span> <span class="s1">&#39;{} - {:0.2f} - {:0.2f}&#39;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(),</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">())</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Sleeping&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(),</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">())</span>
+    <span class="p">)</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">time_clock_sleep</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">Mon</span> <span class="n">Jun</span> <span class="mi">18</span> <span class="mo">01</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mi">52</span> <span class="mi">2018</span> <span class="o">-</span> <span class="mf">1529256472.83</span> <span class="o">-</span> <span class="mf">0.05</span>
+<span class="n">Sleeping</span> <span class="mi">3</span>
+<span class="n">Mon</span> <span class="n">Jun</span> <span class="mi">18</span> <span class="mo">01</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mi">55</span> <span class="mi">2018</span> <span class="o">-</span> <span class="mf">1529256475.83</span> <span class="o">-</span> <span class="mf">0.05</span>
+<span class="n">Sleeping</span> <span class="mi">2</span>
+<span class="n">Mon</span> <span class="n">Jun</span> <span class="mi">18</span> <span class="mo">01</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mi">57</span> <span class="mi">2018</span> <span class="o">-</span> <span class="mf">1529256477.83</span> <span class="o">-</span> <span class="mf">0.05</span>
+<span class="n">Sleeping</span> <span class="mi">1</span>
+<span class="n">Mon</span> <span class="n">Jun</span> <span class="mi">18</span> <span class="mo">01</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mi">58</span> <span class="mi">2018</span> <span class="o">-</span> <span class="mf">1529256478.83</span> <span class="o">-</span> <span class="mf">0.05</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># Data to use to calculate md5 checksums</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha1</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(),</span> <span class="s1">&#39;: {:0.3f} {:0.3f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300000</span><span class="p">):</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">cksum</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">time_clock</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">Mon</span> <span class="n">Jun</span> <span class="mi">18</span> <span class="mo">01</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">35</span> <span class="mi">2018</span> <span class="p">:</span> <span class="mf">1529256695.695</span> <span class="mf">0.048</span>
+<span class="n">Mon</span> <span class="n">Jun</span> <span class="mi">18</span> <span class="mo">01</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">36</span> <span class="mi">2018</span> <span class="p">:</span> <span class="mf">1529256696.166</span> <span class="mf">0.519</span>
+<span class="n">Mon</span> <span class="n">Jun</span> <span class="mi">18</span> <span class="mo">01</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">36</span> <span class="mi">2018</span> <span class="p">:</span> <span class="mf">1529256696.635</span> <span class="mf">0.987</span>
+<span class="n">Mon</span> <span class="n">Jun</span> <span class="mi">18</span> <span class="mo">01</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">37</span> <span class="mi">2018</span> <span class="p">:</span> <span class="mf">1529256697.110</span> <span class="mf">1.461</span>
+<span class="n">Mon</span> <span class="n">Jun</span> <span class="mi">18</span> <span class="mo">01</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">37</span> <span class="mi">2018</span> <span class="p">:</span> <span class="mf">1529256697.587</span> <span class="mf">1.936</span>
+</pre></div>
+
+
+<h2 id="struct_time">struct_time类</h2>
+<p>struct_time是的命名元组，结构如下：</p>
+<p>| 索引（Index） | 属性（Attribute） | 值（Values） |
+| 0 | tm_year（年 | 比如2013 |
+| 1 | tm_mon（月） |  1 - 12 |
+| 2 | tm_mday（日） | 1 - 31 |
+| 3 | tm_hour（时） |  0 - 23 |
+| 4 | tm_min（分） | 0 - 59 |
+| 5 | tm_sec（秒） | 0 - 61 |
+| 6 | tm_wday（weekday | 0 - 6（0表示周日 |
+| 7 | tm_yday（一年中的第几天） | 1 - 366 |
+| 8 | tm_isdst（是否是夏令时） | 默认为-1 |</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timedef</span> <span class="nn">show_struct</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s1">&#39;  tm_year :&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">tm_year</span>    <span class="k">print</span> <span class="s1">&#39;  tm_mon  :&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">tm_mon</span>    <span class="k">print</span> <span class="s1">&#39;  tm_mday :&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">tm_mday</span>    <span class="k">print</span> <span class="s1">&#39;  tm_hour :&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">tm_hour</span>    <span class="k">print</span> <span class="s1">&#39;  tm_min  :&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">tm_min</span>    <span class="k">print</span> <span class="s1">&#39;  tm_sec  :&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">tm_sec</span>    <span class="k">print</span> <span class="s1">&#39;  tm_wday :&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">tm_wday</span>    <span class="k">print</span> <span class="s1">&#39;  tm_yday :&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">tm_yday</span>    <span class="k">print</span> <span class="s1">&#39;  tm_isdst:&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">tm_isdstprint</span> <span class="s1">&#39;gmtime:&#39;</span><span class="n">show_struct</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">())</span><span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">localtime:&#39;</span><span class="n">show_struct</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">())</span><span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">mktime:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">())</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">time_struct</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">gmtime</span><span class="p">:</span>
+  <span class="n">tm_year</span> <span class="p">:</span> <span class="mi">2018</span>
+  <span class="n">tm_mon</span>  <span class="p">:</span> <span class="mi">6</span>
+  <span class="n">tm_mday</span> <span class="p">:</span> <span class="mi">17</span>
+  <span class="n">tm_hour</span> <span class="p">:</span> <span class="mi">17</span>
+  <span class="n">tm_min</span>  <span class="p">:</span> <span class="mi">32</span>
+  <span class="n">tm_sec</span>  <span class="p">:</span> <span class="mi">54</span>
+  <span class="n">tm_wday</span> <span class="p">:</span> <span class="mi">6</span>
+  <span class="n">tm_yday</span> <span class="p">:</span> <span class="mi">168</span>
+  <span class="n">tm_isdst</span><span class="p">:</span> <span class="mi">0</span>
+
+<span class="n">localtime</span><span class="p">:</span>
+  <span class="n">tm_year</span> <span class="p">:</span> <span class="mi">2018</span>
+  <span class="n">tm_mon</span>  <span class="p">:</span> <span class="mi">6</span>
+  <span class="n">tm_mday</span> <span class="p">:</span> <span class="mi">18</span>
+  <span class="n">tm_hour</span> <span class="p">:</span> <span class="mi">1</span>
+  <span class="n">tm_min</span>  <span class="p">:</span> <span class="mi">32</span>
+  <span class="n">tm_sec</span>  <span class="p">:</span> <span class="mi">54</span>
+  <span class="n">tm_wday</span> <span class="p">:</span> <span class="mi">0</span>
+  <span class="n">tm_yday</span> <span class="p">:</span> <span class="mi">169</span>
+  <span class="n">tm_isdst</span><span class="p">:</span> <span class="mi">0</span>
+
+<span class="n">mktime</span><span class="p">:</span> <span class="mf">1529256774.0</span>
+</pre></div>
+
+
+<h2 id="_5">时区</h2>
+<p>重置库函数的时间转换规则。实际上是修改环境变量TZ，python 2.3以后类linux支持该功能，这个功能相对不是那么常用。TZ环境变量的格式如下：</p>
+<div class="highlight"><pre><span></span><span class="n">std</span> <span class="n">offset</span> <span class="p">[</span><span class="n">dst</span> <span class="p">[</span><span class="n">offset</span> <span class="p">[,</span><span class="n">start</span><span class="p">[</span><span class="o">/</span><span class="n">time</span><span class="p">],</span> <span class="n">end</span><span class="p">[</span><span class="o">/</span><span class="n">time</span><span class="p">]]]]</span>
+</pre></div>
+
+
+<p>STD和DST为时区缩写。hh[:mm[:ss]]，表示加上这个时间可以得到UTC时间。偏移量的形式为： HH [ ： MM [ ： SS] ]，夏时制增加1小时。</p>
+<p>start<a href="http://automationtesting.sinaapp.com/time">time</a>, end<a href="http://automationtesting.sinaapp.com/time">time</a>表示使用夏时制的区间。time和偏移类似，默认时间是02:00:00。比如：</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TZ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;EST+05EDT,M4.1.0,M10.5.0&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">tzset</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%X</span><span class="s1"> </span><span class="si">%x</span><span class="s1"> %Z&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="s1">&#39;13:38:26 06/17/18 EDT&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TZ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;AEST-10AEDT-11,M10.5.0,M3.5.0&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">tzset</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%X</span><span class="s1"> </span><span class="si">%x</span><span class="s1"> %Z&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="s1">&#39;03:38:46 06/18/18 AEST&#39;</span>
+</pre></div>
+
+
+<p>在许多Unix系统（包括* BSD，Linux和Solaris，和Darwin），使用系统时区数据库更方便。</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TZ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;US/Eastern&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span>  <span class="n">time</span><span class="o">.</span><span class="n">tzset</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">tzname</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="p">(</span><span class="s1">&#39;EST&#39;</span><span class="p">,</span> <span class="s1">&#39;EDT&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span>  <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TZ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Egypt&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span>  <span class="n">time</span><span class="o">.</span><span class="n">tzset</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="p">(</span><span class="s1">&#39;EET&#39;</span><span class="p">,</span> <span class="s1">&#39;EEST&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="p">(</span><span class="s1">&#39;EET&#39;</span><span class="p">,</span> <span class="s1">&#39;EEST&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>另一实例：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">def</span> <span class="nf">show_zone_info</span><span class="p">():</span>
+    <span class="k">print</span> <span class="s1">&#39;  TZ    :&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;TZ&#39;</span><span class="p">,</span> <span class="s1">&#39;(not set)&#39;</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s1">&#39;  tzname:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">tzname</span>    <span class="k">print</span> <span class="s1">&#39;  Zone  : </span><span class="si">%d</span><span class="s1"> (</span><span class="si">%d</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">timezone</span><span class="p">,</span>
+                                 <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">timezone</span> <span class="o">/</span> <span class="mi">3600</span><span class="p">))</span>
+    <span class="k">print</span> <span class="s1">&#39;  DST   :&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">daylight</span>    <span class="k">print</span> <span class="s1">&#39;  Time  :&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span>
+    <span class="n">printprint</span> <span class="s1">&#39;Default :&#39;</span><span class="n">show_zone_info</span><span class="p">()</span><span class="n">ZONES</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;GMT&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;Europe/Amsterdam&#39;</span><span class="p">,</span>
+          <span class="p">]</span><span class="k">for</span> <span class="n">zone</span> <span class="ow">in</span> <span class="n">ZONES</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TZ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">zone</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">tzset</span><span class="p">()</span>
+    <span class="k">print</span> <span class="n">zone</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span>
+    <span class="n">show_zone_info</span><span class="p">()</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">time_timezone</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">Default</span> <span class="p">:</span>
+  <span class="n">TZ</span>    <span class="p">:</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">set</span><span class="p">)</span>
+  <span class="n">tzname</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;CST&#39;</span><span class="p">,</span> <span class="s1">&#39;CST&#39;</span><span class="p">)</span>
+  <span class="n">Zone</span>  <span class="p">:</span> <span class="o">-</span><span class="mi">28800</span> <span class="p">(</span><span class="o">-</span><span class="mf">8.0</span><span class="p">)</span>
+  <span class="n">DST</span>   <span class="p">:</span> <span class="mi">0</span>
+  <span class="n">Time</span>  <span class="p">:</span> <span class="n">Mon</span> <span class="n">Jun</span> <span class="mi">18</span> <span class="mo">01</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">39</span> <span class="mi">2018</span>
+
+<span class="n">GMT</span> <span class="p">:</span>
+  <span class="n">TZ</span>    <span class="p">:</span> <span class="n">GMT</span>
+  <span class="n">tzname</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;GMT&#39;</span><span class="p">,</span> <span class="s1">&#39;GMT&#39;</span><span class="p">)</span>
+  <span class="n">Zone</span>  <span class="p">:</span> <span class="mi">0</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+  <span class="n">DST</span>   <span class="p">:</span> <span class="mi">0</span>
+  <span class="n">Time</span>  <span class="p">:</span> <span class="n">Sun</span> <span class="n">Jun</span> <span class="mi">17</span> <span class="mi">17</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">39</span> <span class="mi">2018</span>
+
+<span class="n">Europe</span><span class="o">/</span><span class="n">Amsterdam</span> <span class="p">:</span>
+  <span class="n">TZ</span>    <span class="p">:</span> <span class="n">Europe</span><span class="o">/</span><span class="n">Amsterdam</span>
+  <span class="n">tzname</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;CET&#39;</span><span class="p">,</span> <span class="s1">&#39;CEST&#39;</span><span class="p">)</span>
+  <span class="n">Zone</span>  <span class="p">:</span> <span class="o">-</span><span class="mi">3600</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+  <span class="n">DST</span>   <span class="p">:</span> <span class="mi">1</span>
+  <span class="n">Time</span>  <span class="p">:</span> <span class="n">Sun</span> <span class="n">Jun</span> <span class="mi">17</span> <span class="mi">19</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">39</span> <span class="mi">2018</span>
+</pre></div>
+
+
+<h2 id="_6">格式化</h2>
+<p>time.strftime(format[, t])：把一个代表时间的元组或者struct_tim转为格式化的时间字符串。如果t未指定，将调用time.localtime()的返回作为输入。如果输入中任何一个元素越界将报ValueError异常。格式化参数如下:</p>
+<p>| 格式 | 含义 | 备注 |
+| %a | 本地简化星期名 |   |
+| %A | 本地完整星期名 |   |
+| %b | 本地简化月份名 |   |
+| %B | 本地完整月份名称 |   |
+| %c | 本地相应的日期和时间表示 |   |
+| %d | 日期（01 - 31） |   |
+| %H | 小时（24小时制，00 - 23） |   |
+| %I | 小时（12小时制，01 - 12） |   |
+| %j | 天数（基于年）（001 - 366） |   |
+| %m | 月份（01 - 12） |   |
+| %M | 分钟（00 - 59） |   |
+| %p | 显示am或pm的标识 |   |
+| %S | 秒（01 - 61） |   |
+| %U | 周数（基于年）（00 – 53周日是星期的开始。）第一个周日之前的所有天数都放在第0周。 |   |
+| %w | 星期中的天数（0 - 6，0是星期天） |   |
+| %W | 和%U基本相同，以星期一为星期的开始。 |   |
+| %x | 本地相应日期表示 |   |
+| %X | 本地相应时间表示 |   |
+| %y | 去掉世纪的年份（00 - 99） |   |
+| %Y | 完整的年份 |   |
+| %Z | 时区的名字（如果不存在为空字符） |   |
+| %% | '%’字符 |   |</p>
+<p>备注：</p>
+<ul>
+<li>
+<p>“%p”只有与“%I”配合使用才有效果。</p>
+</li>
+<li>
+<p>秒是0 - 61，而不是59，以处理闰秒和双闰秒。</p>
+</li>
+<li>
+<p>当使用strptime()函数时，只有当在这年中的周数和天数被确定的时候%U和%W才会被计算。</p>
+</li>
+</ul>
+<p>比如：</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%a, </span><span class="si">%d</span><span class="s2"> %b %Y %H:%M:%S +0000&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">())</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="s1">&#39;Sun, 17 Jun 2018 17:44:12 +0000&#39;</span>
+</pre></div>
+
+
+<p>下面方式在给文件名等添加时间戳比较有用：</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">_%H:%M:%S&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">())</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="s1">&#39;2018-06-17_17:46:18&#39;</span>
+</pre></div>
+
+
+<p>显示格式可能因系统而又不同的差异。</p>
+<p>time.strptime(string[, format])：把一个格式化时间字符串转化为struct_time。实际上它和strftime()是逆操作，参数参见strftime。Format默认为"%a %b %d %H:%M:%S %Y"，和ctime的返回格式一致，没有提供的值会采用默认值(1900, 1, 1, 0, 0, 0, 0, 1, -1)。</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;30 Nov 18&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %b %y&quot;</span><span class="p">)</span>
+    <span class="o">...</span><span class="p">:</span> 
+<span class="n">Out</span><span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">struct_time</span><span class="p">(</span><span class="n">tm_year</span><span class="o">=</span><span class="mi">2018</span><span class="p">,</span> <span class="n">tm_mon</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">tm_mday</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">tm_hour</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tm_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tm_sec</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tm_wday</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">tm_yday</span><span class="o">=</span><span class="mi">334</span><span class="p">,</span> <span class="n">tm_isdst</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+
+<h2 id="_7">其他</h2>
+<p>altzone属性查看当前夏时制时间的偏移。daylight属性查看是否使用了夏时制。timezone查看当前时区的偏移。Tzname返回本地时区和夏时制对应的时区。</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">altzone</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="o">-</span><span class="mi">28800</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">daylight</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="mi">0</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">timezone</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="o">-</span><span class="mi">28800</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">tzname</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="p">(</span><span class="s1">&#39;CST&#39;</span><span class="p">,</span> <span class="s1">&#39;CST&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h2 id="_8">参考资料</h2>
+<ul>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li>https://docs.python.org/3/library/time.html</li>
+<li>https://pymotw.com/3/time/index.html</li>
+<li>http://effbot.org/librarybook/time.htm</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/time">代码地址</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

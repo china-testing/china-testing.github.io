@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python标准模块介绍-string:文本常量和模板</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_lib_string.html" rel="bookmark"
+           title="Permalink to python标准模块介绍-string:文本常量和模板">python标准模块介绍-string:文本常量和模板</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-16T09:20:00+08:00">
+                Published: 四 16 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <p>string—文本常量和模板</p>
+<p>作用：包含处理文本的常量和类。</p>
+<p>Python版本：1.4及以后版本</p>
+<p>最早的Python版本就有string模块。 之前在这个模块中实现的许多函数已经移至str对象的方法。 string模块保留了几个有用的常量和类，用于处理str对象。</p>
+<p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/string">代码地址</a></p>
+<h4 id="_1">函数</h4>
+<p>capwords()的将字符串中所有单词的首字母大写。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="s2">&quot;hello world!&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">capwords</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="s1">&#39;Hello World!&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
+<span class="s1">&#39;hello world!&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+<span class="s1">&#39;Hello world!&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
+<span class="s1">&#39;hello world!&#39;</span>
+</pre></div>
+
+
+<p>结果等同于先调用split()，把结果列表中各个单词的首字母大写，然后调用join()合并结果。</p>
+<p>因为str对象已经有capitalize()方法，该函数的实际意义并不大。</p>
+<h4 id="_2">模板</h4>
+<p>字符串模板已经作为PEP 292的一部分增加到Python 2.4中，并得到扩展，以替代内置拼接(interpolation)语法类似。使用string.Template拼接时，可以在变量名前面加上前缀$（如$var）来标识变量，如果需要与两侧的文本相区分，还可以用大括号将变量括起（如${var}）。</p>
+<p>下面的例子对简单的模板和使用%操作符及str.format()进行了比较。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;var&#39;</span><span class="p">:</span> <span class="s1">&#39;foo&#39;</span><span class="p">}</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Variable        : $var</span>
+<span class="s2">Escape          : $$</span>
+<span class="s2">Variable in text: ${var}iable</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;TEMPLATE:&#39;</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Variable        : </span><span class="si">%(var)s</span><span class="s2"></span>
+<span class="s2">Escape          : </span><span class="si">%%</span><span class="s2"></span>
+<span class="s2">Variable in text: </span><span class="si">%(var)s</span><span class="s2">iable</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;INTERPOLATION:&#39;</span><span class="p">,</span> <span class="n">s</span> <span class="o">%</span> <span class="n">values</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Variable        : {var}</span>
+<span class="s2">Escape          : {{}}</span>
+<span class="s2">Variable in text: {var}iable</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;FORMAT:&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">values</span><span class="p">))</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">print &#39;INTERPOLATION:&#39;, s % values</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span> <span class="n">python3</span> <span class="n">string_template</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">TEMPLATE</span><span class="p">:</span> 
+<span class="n">Variable</span>        <span class="p">:</span> <span class="n">foo</span>
+<span class="n">Escape</span>          <span class="p">:</span> <span class="err">$</span>
+<span class="n">Variable</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span> <span class="n">fooiable</span>
+
+<span class="n">INTERPOLATION</span><span class="p">:</span> 
+<span class="n">Variable</span>        <span class="p">:</span> <span class="n">foo</span>
+<span class="n">Escape</span>          <span class="p">:</span> <span class="o">%</span>
+<span class="n">Variable</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span> <span class="n">fooiable</span>
+
+<span class="n">FORMAT</span><span class="p">:</span> 
+<span class="n">Variable</span>        <span class="p">:</span> <span class="n">foo</span>
+<span class="n">Escape</span>          <span class="p">:</span> <span class="p">{}</span>
+<span class="n">Variable</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span> <span class="n">fooiable</span>
+</pre></div>
+
+
+<p>模板与标准字符串拼接的重要区别是模板不考虑参数类型。模板中值会转换为字符串且没有提供格式化选项。例如没有办法控制使用几位有效数字来表示浮点数值。</p>
+<p>通过使用safe_substitute()方法，可以避免未能提供模板所需全部参数值时可能产生的异常。</p>
+<p>tring_template_missing.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;var&#39;</span><span class="p">:</span> <span class="s1">&#39;foo&#39;</span><span class="p">}</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="s2">&quot;$var is here but $missing is not provided&quot;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;substitute()     :&#39;</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;ERROR:&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;safe_substitute():&#39;</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">safe_substitute</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>
+</pre></div>
+
+
+<p>由于values字典中没有对应missing的值，因此substitute()会产生KeyError。不过，safe_substitute()不会抛出这个错误，它将捕获这个异常，并在文本中保留变量表达式。</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">string_template_missing</span><span class="o">.</span><span class="n">py</span>
+<span class="n">ERROR</span><span class="p">:</span> <span class="s1">&#39;missing&#39;</span>
+<span class="n">safe_substitute</span><span class="p">():</span> <span class="n">foo</span> <span class="ow">is</span> <span class="n">here</span> <span class="n">but</span> <span class="err">$</span><span class="n">missing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">provided</span>
+</pre></div>
+
+
+<h4 id="_3">高级模板(非常用)</h4>
+<p>可以修改string.Template的默认语法，为此要调整它在模板体中查找变量名所使用的正则表达式模式。简单的做法是修改delimiter和idpattern类属性。</p>
+<p>string_template_advanced.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
+
+
+<span class="k">class</span> <span class="nc">MyTemplate</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">):</span>
+    <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;%&#39;</span>
+    <span class="n">idpattern</span> <span class="o">=</span> <span class="s1">&#39;[a-z]+_[a-z]+&#39;</span>
+
+
+<span class="n">template_text</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">  Delimiter : </span><span class="si">%%</span><span class="s1"></span>
+<span class="s1">  Replaced  : %with_underscore</span>
+<span class="s1">  Ignored   : %notunderscored</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;with_underscore&#39;</span><span class="p">:</span> <span class="s1">&#39;replaced&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;notunderscored&#39;</span><span class="p">:</span> <span class="s1">&#39;not replaced&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">MyTemplate</span><span class="p">(</span><span class="n">template_text</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Modified ID pattern:&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">safe_substitute</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">string_template_advanced</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Modified</span> <span class="n">ID</span> <span class="n">pattern</span><span class="p">:</span>
+
+  <span class="n">Delimiter</span> <span class="p">:</span> <span class="o">%</span>
+  <span class="n">Replaced</span>  <span class="p">:</span> <span class="n">replaced</span>
+  <span class="n">Ignored</span>   <span class="p">:</span> <span class="o">%</span><span class="n">notunderscored</span>
+</pre></div>
+
+
+<p>默认模式</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="s1">&#39;$var&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">pattern</span><span class="o">.</span><span class="n">pattern</span><span class="p">)</span>
+
+    \<span class="err">$</span><span class="p">(</span><span class="err">?</span><span class="p">:</span>
+      <span class="p">(</span><span class="err">?</span><span class="n">P</span><span class="o">&lt;</span><span class="n">escaped</span><span class="o">&gt;</span>\<span class="err">$</span><span class="p">)</span> <span class="o">|</span>   <span class="c1"># Escape sequence of two delimiters</span>
+      <span class="p">(</span><span class="err">?</span><span class="n">P</span><span class="o">&lt;</span><span class="n">named</span><span class="o">&gt;</span><span class="p">(</span><span class="err">?</span><span class="o">-</span><span class="n">i</span><span class="p">:[</span><span class="n">_a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z</span><span class="p">][</span><span class="n">_a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">*</span><span class="p">))</span>      <span class="o">|</span>   <span class="c1"># delimiter and a Python identifier</span>
+      <span class="p">{(</span><span class="err">?</span><span class="n">P</span><span class="o">&lt;</span><span class="n">braced</span><span class="o">&gt;</span><span class="p">(</span><span class="err">?</span><span class="o">-</span><span class="n">i</span><span class="p">:[</span><span class="n">_a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z</span><span class="p">][</span><span class="n">_a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">*</span><span class="p">))}</span>   <span class="o">|</span>   <span class="c1"># delimiter and a braced identifier</span>
+      <span class="p">(</span><span class="err">?</span><span class="n">P</span><span class="o">&lt;</span><span class="n">invalid</span><span class="o">&gt;</span><span class="p">)</span>              <span class="c1"># Other ill-formed delimiter exprs</span>
+    <span class="p">)</span>
+</pre></div>
+
+
+<p>string_template_newsyntax.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">string</span>
+
+
+<span class="k">class</span> <span class="nc">MyTemplate</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">):</span>
+    <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;{{&#39;</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    \{\{(?:</span>
+<span class="s1">    (?P&lt;escaped&gt;\{\{)|</span>
+<span class="s1">    (?P&lt;named&gt;[_a-z][_a-z0-9]*)\}\}|</span>
+<span class="s1">    (?P&lt;braced&gt;[_a-z][_a-z0-9]*)\}\}|</span>
+<span class="s1">    (?P&lt;invalid&gt;)</span>
+<span class="s1">    )</span>
+<span class="s1">    &#39;&#39;&#39;</span>
+
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">MyTemplate</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">{{{{</span>
+<span class="s1">{{var}}</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;MATCHES:&#39;</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">template</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;SUBSTITUTED:&#39;</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">safe_substitute</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="s1">&#39;replacement&#39;</span><span class="p">))</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">string_template_newsyntax</span><span class="o">.</span><span class="n">py</span>
+<span class="n">MATCHES</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;{{&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)]</span>
+<span class="n">SUBSTITUTED</span><span class="p">:</span> 
+<span class="p">{{</span>
+<span class="n">replacement</span>
+</pre></div>
+
+
+<h4 id="_4">格式化</h4>
+<p>Formatter类实现与str.format()类似。 其功能包括类型转换，对齐，属性和字段引用，命名和位置模板参数以及特定类型的格式选项。 大多数情况下，fformat()方法是这些功能的更方便的接口，但是Formatter是作为父类，用于需要变化的情况。</p>
+<h4 id="_5">常量</h4>
+<p>string模块包含许多与ASCII和数字字符集有关的常量。</p>
+<p>string_constants.py</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    xurongzhong#126.com wechat:pythontesting qq:37391319</span>
+<span class="c1"># 技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) </span>
+<span class="c1"># qq群：144081101 591302926  567351477</span>
+<span class="c1"># CreateDate: 2018-6-12</span>
+
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">string</span>
+
+
+<span class="k">def</span> <span class="nf">is_str</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">is_str</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%r</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+</pre></div>
+
+
+<p>执行结果</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">string_constants</span><span class="o">.</span><span class="n">py</span>
+<span class="n">ascii_letters</span><span class="o">=</span><span class="s1">&#39;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span>
+
+<span class="n">ascii_lowercase</span><span class="o">=</span><span class="s1">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span>
+
+<span class="n">ascii_uppercase</span><span class="o">=</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span>
+
+<span class="n">digits</span><span class="o">=</span><span class="s1">&#39;0123456789&#39;</span>
+
+<span class="n">hexdigits</span><span class="o">=</span><span class="s1">&#39;0123456789abcdefABCDEF&#39;</span>
+
+<span class="n">octdigits</span><span class="o">=</span><span class="s1">&#39;01234567&#39;</span>
+
+<span class="n">printable</span><span class="o">=</span><span class="s1">&#39;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!&quot;#$%&amp;</span><span class="se">\&#39;</span><span class="s1">()*+,-./:;&lt;=&gt;?@[</span><span class="se">\\</span><span class="s1">]^_`{|}~ </span><span class="se">\t\n\r\x0b\x0c</span><span class="s1">&#39;</span>
+
+<span class="n">punctuation</span><span class="o">=</span><span class="s1">&#39;!&quot;#$%&amp;</span><span class="se">\&#39;</span><span class="s1">()*+,-./:;&lt;=&gt;?@[</span><span class="se">\\</span><span class="s1">]^_`{|}~&#39;</span>
+
+<span class="n">whitespace</span><span class="o">=</span><span class="s1">&#39; </span><span class="se">\t\n\r\x0b\x0c</span><span class="s1">&#39;</span>
+</pre></div>
+
+
+<h2 id="_6">参考资料</h2>
+<ul>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/python3_lib_string.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://docs.python.org/3.6/library/string.html">Standard library documentation for string</a></li>
+<li><a href="https://docs.python.org/3/library/stdtypes.html#string-methods">String Methods</a> – Methods of <code>str</code> objects that replace the deprecated functions in <code>string</code>.</li>
+<li><a href="https://www.python.org/dev/peps/pep-0292"><strong>PEP 292</strong></a> – Simpler String Substitutions</li>
+<li><a href="https://docs.python.org/3.5/library/string.html#format-string-syntax">Format String Syntax</a> – The formal definition of the layout specification language used by <code>Formatter</code> and <code>str.format()</code>.</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
