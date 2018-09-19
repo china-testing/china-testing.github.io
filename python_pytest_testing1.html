@@ -2,7 +2,7 @@
 <html lang="cn">
 <head>
         <meta charset="utf-8" />
-        <title>自动化测试框架工具pytest教程1-快速入门</title>
+        <title>自动化测试框架pytest教程1-快速入门</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 
         <!--[if IE]>
@@ -28,7 +28,7 @@
     <header>
       <h1 class="entry-title">
         <a href="/python_pytest_testing1.html" rel="bookmark"
-           title="Permalink to 自动化测试框架工具pytest教程1-快速入门">自动化测试框架工具pytest教程1-快速入门</a></h1>
+           title="Permalink to 自动化测试框架pytest教程1-快速入门">自动化测试框架pytest教程1-快速入门</a></h1>
     </header>
 
     <div class="entry-content">
@@ -44,7 +44,7 @@
 
 </footer><!-- /.post-info -->      <p>第1章 快速入门</p>
 <h3 id="pytest">什么是pytest？</h3>
-<p>pytest是强大的Python测试工具，它可以用于所有类型和级别的软件测试。 Pytest可以被开发团队，QA团队，独立测试小组，实践TDD的个人和开放源代码项目。实际上，整个互联网上的项目都是从unittest或者nose转向pytest，包括Mozilla和Dropbox。为什么？因为pytest提供
+<p>pytest是一个强大的Python测试工具，它可以用于所有类型和级别的软件测试。 Pytest可以被开发团队，QA团队，独立测试小组，实践TDD的个人和开放源代码项目。实际上，整个互联网上的项目都是从unittest或者nose转向pytest，包括Mozilla和Dropbox。为什么？因为pytest提供
 强大的功能，如'断言'重写，第三方插件模型，强大但简单的fixture模型。</p>
 <p>pytest是软件测试框架，这意味着pytest是命令行工具。它会自动找到你写的测试，运行测试并报告结果。可编写插件或安装第三方来扩展插件。它可以用来测试Python发行版。它很容易与其他工具对接，如持续集成和网页自动化。</p>
 <p>Pytest脱颖而出的原因：</p>
@@ -55,12 +55,238 @@
 <li>可运行unittest或nose测试。</li>
 </ul>
 <p>事实上很多自动化测试平台，底层就是用驱动的。它们用flask或django等提供友好的页面展示，但是核心层还是在pytest和一些测试库的开发。</p>
-<p>本文基于ubuntu 16，python3书写，但是在其他平台通常也应该可以执行。</p>
+<p>本文基于　ubuntu 16，　python3书写，但是在其他平台通常也应该可以执行。</p>
+<ul>
+<li>技术支持钉钉群：21745728(可以加钉钉pythontesting邀请加入) QQ群：　144081101 591302926 567351477</li>
+</ul>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
+<p><a href="https://china-testing.github.io/python_pytest_testing1.html">本文最新版本</a></p>
 <ul>
 <li><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/pytest_testing">代码地址</a></li>
 </ul>
 <p>安装</p>
-<div class="highlight"><pre><span></span><span class="c1"># pip3 install pytest</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pip3 install pytest</span>
 <span class="n">Collecting</span> <span class="n">pytest</span>
   <span class="n">Downloading</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">files</span><span class="o">.</span><span class="n">pythonhosted</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="mi">76</span><span class="o">/</span><span class="mi">52</span><span class="o">/</span><span class="n">fc48d02492d9e6070cb672d9133382e83084f567f88eff1c27bd2c6c27a8</span><span class="o">/</span><span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">py2</span><span class="o">.</span><span class="n">py3</span><span class="o">-</span><span class="n">none</span><span class="o">-</span><span class="nb">any</span><span class="o">.</span><span class="n">whl</span> <span class="p">(</span><span class="mi">192</span><span class="n">kB</span><span class="p">)</span>
     <span class="mi">100</span><span class="o">%</span> <span class="o">|</span><span class="err">████████████████████████████████</span><span class="o">|</span> <span class="mi">194</span><span class="n">kB</span> <span class="mi">992</span><span class="n">kB</span><span class="o">/</span><span class="n">s</span> 
@@ -283,99 +509,179 @@
 <span class="n">to</span> <span class="n">see</span> <span class="n">available</span> <span class="n">fixtures</span> <span class="nb">type</span><span class="p">:</span> <span class="n">pytest</span> <span class="o">--</span><span class="n">fixtures</span>
 <span class="p">(</span><span class="n">shown</span> <span class="n">according</span> <span class="n">to</span> <span class="n">specified</span> <span class="n">file_or_dir</span> <span class="ow">or</span> <span class="n">current</span> <span class="nb">dir</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">;</span> <span class="n">fixtures</span> <span class="k">with</span> <span class="n">leading</span> <span class="s1">&#39;_&#39;</span> <span class="n">are</span> <span class="n">only</span> <span class="n">shown</span> <span class="k">with</span> <span class="n">the</span> <span class="s1">&#39;-v&#39;</span> <span class="n">option</span>
 </pre></div>
-
+</td></tr></table>
 
 <h3 id="_1">快速入门</h3>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_passing</span><span class="p">():</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_passing</span><span class="p">():</span>
     <span class="k">assert</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>执行：</p>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pytest</span> <span class="n">pass_test</span><span class="o">.</span><span class="n">py</span> 
-<span class="o">===========================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">===========================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">1</span> <span class="n">item</span>                                                                                          
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ pytest pass_test.py 
+<span class="o">===========================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">===========================================</span>
+platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0
+rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:
+collected <span class="m">1</span> item                                                                                          
 
-<span class="n">pass_test</span><span class="o">.</span><span class="n">py</span> <span class="o">.</span>                                                                                     <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
+pass_test.py .                                                                                     <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
-<span class="o">========================================</span> <span class="mi">1</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.01</span> <span class="n">seconds</span> <span class="o">=========================================</span>
+<span class="o">========================================</span> <span class="m">1</span> passed in <span class="m">0</span>.01 <span class="nv">seconds</span> <span class="o">=========================================</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>pass_test.py后的点表示一个测试运行并通过。 如果你需要更多信息，您可以使用-v或--verbose</p>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pytest</span> <span class="n">pass_test</span><span class="o">.</span><span class="n">py</span>  <span class="o">-</span><span class="n">v</span>
-<span class="o">===========================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">===========================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span> <span class="o">--</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span>
-<span class="n">cachedir</span><span class="p">:</span> <span class="o">.</span><span class="n">pytest_cache</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">1</span> <span class="n">item</span>                                                                                          
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ pytest pass_test.py  -v
+<span class="o">===========================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">===========================================</span>
+platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:
+collected <span class="m">1</span> item                                                                                          
 
-<span class="n">pass_test</span><span class="o">.</span><span class="n">py</span> <span class="p">::</span><span class="n">test_passing</span> <span class="n">PASSED</span>                                                                        <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
+pass_test.py ::test_passing PASSED                                                                        <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
-<span class="o">========================================</span> <span class="mi">1</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.01</span> <span class="n">seconds</span> <span class="o">=========================================</span>
+<span class="o">========================================</span> <span class="m">1</span> passed in <span class="m">0</span>.01 <span class="nv">seconds</span> <span class="o">=========================================</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>在彩色终端，PASSED和底线是绿色的。</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_failing</span><span class="p">():</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_failing</span><span class="p">():</span>
     <span class="k">assert</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>执行：</p>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pytest</span> <span class="n">fail_test</span><span class="o">.</span><span class="n">py</span> 
-<span class="o">===========================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">===========================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">1</span> <span class="n">item</span>                                                                                          
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ pytest fail_test.py 
+<span class="o">===========================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">===========================================</span>
+platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0
+rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:
+collected <span class="m">1</span> item                                                                                          
 
-<span class="n">fail_test</span><span class="o">.</span><span class="n">py</span> <span class="n">F</span>                                                                                       <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
+fail_test.py F                                                                                       <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
-<span class="o">================================================</span> <span class="n">FAILURES</span> <span class="o">=================================================</span>
-<span class="n">______________________________________________</span> <span class="n">test_failing</span> <span class="n">_______________________________________________</span>
+<span class="o">================================================</span> <span class="nv">FAILURES</span> <span class="o">=================================================</span>
+______________________________________________ test_failing _______________________________________________
 
-    <span class="k">def</span> <span class="nf">test_failing</span><span class="p">():</span>
-<span class="o">&gt;</span>       <span class="k">assert</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">E</span>       <span class="k">assert</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">E</span>         <span class="n">At</span> <span class="n">index</span> <span class="mi">0</span> <span class="n">diff</span><span class="p">:</span> <span class="mi">1</span> <span class="o">!=</span> <span class="mi">3</span>
-<span class="n">E</span>         <span class="n">Use</span> <span class="o">-</span><span class="n">v</span> <span class="n">to</span> <span class="n">get</span> <span class="n">the</span> <span class="n">full</span> <span class="n">diff</span>
+    def test_failing<span class="o">()</span>:
+&gt;       assert <span class="o">(</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">)</span> <span class="o">==</span> <span class="o">(</span><span class="m">3</span>, <span class="m">2</span>, <span class="m">1</span><span class="o">)</span>
+E       assert <span class="o">(</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">)</span> <span class="o">==</span> <span class="o">(</span><span class="m">3</span>, <span class="m">2</span>, <span class="m">1</span><span class="o">)</span>
+E         At index <span class="m">0</span> diff: <span class="m">1</span> !<span class="o">=</span> <span class="m">3</span>
+E         Use -v to get the full diff
 
-<span class="n">fail_test</span><span class="o">.</span><span class="n">py</span> <span class="p">:</span><span class="mi">2</span><span class="p">:</span> <span class="ne">AssertionError</span>
-<span class="o">========================================</span> <span class="mi">1</span> <span class="n">failed</span> <span class="ow">in</span> <span class="mf">0.03</span> <span class="n">seconds</span> <span class="o">=========================================</span>
+fail_test.py :2: <span class="nv">AssertionError</span>
+<span class="o">========================================</span> <span class="m">1</span> failed in <span class="m">0</span>.03 <span class="nv">seconds</span> <span class="o">=========================================</span>
 
-<span class="err">$</span> <span class="n">pytest</span> <span class="n">fail_test</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">v</span>
-<span class="o">===========================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">===========================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span> <span class="o">--</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span>
-<span class="n">cachedir</span><span class="p">:</span> <span class="o">.</span><span class="n">pytest_cache</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">1</span> <span class="n">item</span>                                                                                          
+$ pytest fail_test.py -v
+<span class="o">===========================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">===========================================</span>
+platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:
+collected <span class="m">1</span> item                                                                                          
 
-<span class="n">fail_test</span><span class="o">.</span><span class="n">py</span> <span class="p">::</span><span class="n">test_failing</span> <span class="n">FAILED</span>                                                                        <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
+fail_test.py ::test_failing FAILED                                                                        <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
-<span class="o">================================================</span> <span class="n">FAILURES</span> <span class="o">=================================================</span>
-<span class="n">______________________________________________</span> <span class="n">test_failing</span> <span class="n">_______________________________________________</span>
+<span class="o">================================================</span> <span class="nv">FAILURES</span> <span class="o">=================================================</span>
+______________________________________________ test_failing _______________________________________________
 
-    <span class="k">def</span> <span class="nf">test_failing</span><span class="p">():</span>
-<span class="o">&gt;</span>       <span class="k">assert</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">E</span>       <span class="k">assert</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">E</span>         <span class="n">At</span> <span class="n">index</span> <span class="mi">0</span> <span class="n">diff</span><span class="p">:</span> <span class="mi">1</span> <span class="o">!=</span> <span class="mi">3</span>
-<span class="n">E</span>         <span class="n">Full</span> <span class="n">diff</span><span class="p">:</span>
-<span class="n">E</span>         <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">E</span>         <span class="err">?</span>  <span class="o">^</span>     <span class="o">^</span>
-<span class="n">E</span>         <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">E</span>         <span class="err">?</span>  <span class="o">^</span>     <span class="o">^</span>
+    def test_failing<span class="o">()</span>:
+&gt;       assert <span class="o">(</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">)</span> <span class="o">==</span> <span class="o">(</span><span class="m">3</span>, <span class="m">2</span>, <span class="m">1</span><span class="o">)</span>
+E       assert <span class="o">(</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">)</span> <span class="o">==</span> <span class="o">(</span><span class="m">3</span>, <span class="m">2</span>, <span class="m">1</span><span class="o">)</span>
+E         At index <span class="m">0</span> diff: <span class="m">1</span> !<span class="o">=</span> <span class="m">3</span>
+E         Full diff:
+E         - <span class="o">(</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">)</span>
+E         ?  ^     ^
+E         + <span class="o">(</span><span class="m">3</span>, <span class="m">2</span>, <span class="m">1</span><span class="o">)</span>
+E         ?  ^     ^
 
-<span class="n">fail_test</span><span class="o">.</span><span class="n">py</span> <span class="p">:</span><span class="mi">2</span><span class="p">:</span> <span class="ne">AssertionError</span>
-<span class="o">========================================</span> <span class="mi">1</span> <span class="n">failed</span> <span class="ow">in</span> <span class="mf">0.02</span> <span class="n">seconds</span> <span class="o">=========================================</span>
+fail_test.py :2: <span class="nv">AssertionError</span>
+<span class="o">========================================</span> <span class="m">1</span> failed in <span class="m">0</span>.02 <span class="nv">seconds</span> <span class="o">=========================================</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>如果没有参数，pytest会查看当前目录和所有子目录的测试文件(test_开头或者_test结尾)并运行。 也可以指定文件名，目录名称或这些名称的列表。</p>
 <p>我们创建tasks的子目录，增加几个测试</p>
 <p>task1_test.py</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 
 <span class="n">Task</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Task&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">,</span> <span class="s1">&#39;owner&#39;</span><span class="p">,</span> <span class="s1">&#39;done&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">])</span>
 <span class="n">Task</span><span class="o">.</span><span class="fm">__new__</span><span class="o">.</span><span class="vm">__defaults__</span> <span class="o">=</span> <span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
@@ -395,10 +701,33 @@
     <span class="k">assert</span> <span class="n">t</span><span class="o">.</span><span class="n">owner</span> <span class="o">==</span> <span class="s1">&#39;brian&#39;</span>
     <span class="k">assert</span> <span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">done</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>task2_test.py</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 
 
 <span class="n">Task</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Task&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">,</span> <span class="s1">&#39;owner&#39;</span><span class="p">,</span> <span class="s1">&#39;done&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">])</span>
@@ -423,10 +752,90 @@
     <span class="n">t_expected</span> <span class="o">=</span> <span class="n">Task</span><span class="p">(</span><span class="s1">&#39;finish book&#39;</span><span class="p">,</span> <span class="s1">&#39;brian&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">t_after</span> <span class="o">==</span> <span class="n">t_expected</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>执行示例：</p>
-<div class="highlight"><pre><span></span><span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> <span class="n">pytest</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> <span class="n">pytest</span>
 <span class="o">===========================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">===========================================</span>
 <span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span>
 <span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
@@ -508,7 +917,7 @@
 <span class="o">=================================</span> <span class="mi">2</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">4</span> <span class="n">deselected</span> <span class="ow">in</span> <span class="mf">0.02</span> <span class="n">seconds</span> <span class="o">==================================</span>
 <span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> 
 </pre></div>
-
+</td></tr></table>
 
 <p>发现规则小结</p>
 <ul>
@@ -531,16 +940,28 @@
 <li>marker 标签</li>
 </ul>
 <p>比如只执行test_replace()和test_member_access()</p>
-<div class="highlight"><pre><span></span><span class="n">import</span><span class="err">​</span> <span class="n">pytest</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">import</span><span class="err">​</span> <span class="n">pytest</span>
 <span class="o">...</span>
 <span class="nd">@pytest.mark.run_these_please</span>
 <span class="n">def</span><span class="err">​</span> <span class="n">test_member_access</span><span class="p">():</span>
 <span class="o">...</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>test_replace()也进行同样的修改</p>
-<div class="highlight"><pre><span></span>$ ​ cd​​ ​ /path/to/code/ch1/tasks
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ ​ cd​​ ​ /path/to/code/ch1/tasks
 ​ pytest​​ ​ -v​​ ​ -m​​ ​ run_these_please
 $
 <span class="o">==================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">===================</span>
@@ -550,9 +971,9 @@ task1.py::test_member_access <span class="nv">PASSED</span>
 <span class="o">===================</span> <span class="m">2</span> tests <span class="nv">deselected</span> <span class="o">===================</span>
 <span class="o">=========</span> <span class="m">2</span> passed, <span class="m">2</span> deselected in <span class="m">0</span>.02 <span class="nv">seconds</span> <span class="o">=========</span>
 </pre></div>
+</td></tr></table>
 
-
-<p>更多执行方法：-m "mark1 and mark2"、     -m "mark1 and not mark2"、-m "mark1 or mark2"</p>
+<p>更多执行方法：　-m "mark1 and mark2"、    -m "mark1 and not mark2"、-m "mark1 or mark2"</p>
 <ul>
 <li>
 <p>-x,  –exitfirst 失败后停止执行</p>
@@ -560,229 +981,410 @@ task1.py::test_member_access <span class="nv">PASSED</span>
 <p>py.test --maxfail=2 两次失败之后停止执行</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pytest</span> <span class="o">-</span><span class="n">x</span>
-<span class="o">=================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=================================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">6</span> <span class="n">items</span>                                                                                                     
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ pytest -x
+<span class="o">=================================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">=================================================</span>
+platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0
+rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:
+collected <span class="m">6</span> items                                                                                                     
 
-<span class="n">fail_test</span><span class="o">.</span><span class="n">py</span> <span class="n">F</span>
+fail_test.py <span class="nv">F</span>
 
-<span class="o">======================================================</span> <span class="n">FAILURES</span> <span class="o">=======================================================</span>
-<span class="n">____________________________________________________</span> <span class="n">test_failing</span> <span class="n">_____________________________________________________</span>
+<span class="o">======================================================</span> <span class="nv">FAILURES</span> <span class="o">=======================================================</span>
+____________________________________________________ test_failing _____________________________________________________
 
-    <span class="k">def</span> <span class="nf">test_failing</span><span class="p">():</span>
-<span class="o">&gt;</span>       <span class="k">assert</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">E</span>       <span class="k">assert</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">E</span>         <span class="n">At</span> <span class="n">index</span> <span class="mi">0</span> <span class="n">diff</span><span class="p">:</span> <span class="mi">1</span> <span class="o">!=</span> <span class="mi">3</span>
-<span class="n">E</span>         <span class="n">Use</span> <span class="o">-</span><span class="n">v</span> <span class="n">to</span> <span class="n">get</span> <span class="n">the</span> <span class="n">full</span> <span class="n">diff</span>
+    def test_failing<span class="o">()</span>:
+&gt;       assert <span class="o">(</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">)</span> <span class="o">==</span> <span class="o">(</span><span class="m">3</span>, <span class="m">2</span>, <span class="m">1</span><span class="o">)</span>
+E       assert <span class="o">(</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">)</span> <span class="o">==</span> <span class="o">(</span><span class="m">3</span>, <span class="m">2</span>, <span class="m">1</span><span class="o">)</span>
+E         At index <span class="m">0</span> diff: <span class="m">1</span> !<span class="o">=</span> <span class="m">3</span>
+E         Use -v to get the full diff
 
-<span class="n">fail_test</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span> <span class="ne">AssertionError</span>
-<span class="o">==============================================</span> <span class="mi">1</span> <span class="n">failed</span> <span class="ow">in</span> <span class="mf">0.04</span> <span class="n">seconds</span> <span class="o">===============================================</span>
-<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> 
+fail_test.py:2: <span class="nv">AssertionError</span>
+<span class="o">==============================================</span> <span class="m">1</span> failed in <span class="m">0</span>.04 <span class="nv">seconds</span> <span class="o">===============================================</span>
+andrew@andrew-PowerEdge-T630:~/code/backup/pytest_testing/ch1$ 
 
-<span class="mi">1</span><span class="err">$</span> <span class="n">pytest</span> <span class="o">--</span><span class="n">tb</span><span class="o">=</span><span class="n">no</span>
-<span class="o">=================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=================================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">6</span> <span class="n">items</span>                                                                                                     
+<span class="m">1</span>$ pytest --tb<span class="o">=</span><span class="nv">no</span>
+<span class="o">=================================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">=================================================</span>
+platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0
+rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:
+collected <span class="m">6</span> items                                                                                                     
 
-<span class="n">fail_test</span><span class="o">.</span><span class="n">py</span> <span class="n">F</span>                                                                                                  <span class="p">[</span> <span class="mi">16</span><span class="o">%</span><span class="p">]</span>
-<span class="n">pass_test</span><span class="o">.</span><span class="n">py</span> <span class="o">.</span>                                                                                                  <span class="p">[</span> <span class="mi">33</span><span class="o">%</span><span class="p">]</span>
-<span class="n">tasks</span><span class="o">/</span><span class="n">task1_test</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>                                                                                          <span class="p">[</span> <span class="mi">66</span><span class="o">%</span><span class="p">]</span>
-<span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>                                                                                          <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
+fail_test.py F                                                                                                  <span class="o">[</span> <span class="m">16</span>%<span class="o">]</span>
+pass_test.py .                                                                                                  <span class="o">[</span> <span class="m">33</span>%<span class="o">]</span>
+tasks/task1_test.py ..                                                                                          <span class="o">[</span> <span class="m">66</span>%<span class="o">]</span>
+tasks/task2_test.py ..                                                                                          <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
-<span class="o">=========================================</span> <span class="mi">1</span> <span class="n">failed</span><span class="p">,</span> <span class="mi">5</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.05</span> <span class="n">seconds</span> <span class="o">==========================================</span>
-<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> 
+<span class="o">=========================================</span> <span class="m">1</span> failed, <span class="m">5</span> passed in <span class="m">0</span>.05 <span class="nv">seconds</span> <span class="o">==========================================</span>
+andrew@andrew-PowerEdge-T630:~/code/backup/pytest_testing/ch1$ 
 
-<span class="err">$</span> <span class="n">pytest</span> <span class="o">--</span><span class="n">maxfail</span><span class="o">=</span><span class="mi">1</span> <span class="o">--</span><span class="n">tb</span><span class="o">=</span><span class="n">no</span>
-<span class="o">=================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=================================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">6</span> <span class="n">items</span>                                                                                                     
+$ pytest --maxfail<span class="o">=</span><span class="m">1</span> --tb<span class="o">=</span><span class="nv">no</span>
+<span class="o">=================================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">=================================================</span>
+platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0
+rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:
+collected <span class="m">6</span> items                                                                                                     
 
-<span class="n">fail_test</span><span class="o">.</span><span class="n">py</span> <span class="n">F</span>
+fail_test.py <span class="nv">F</span>
 
-<span class="o">==============================================</span> <span class="mi">1</span> <span class="n">failed</span> <span class="ow">in</span> <span class="mf">0.04</span> <span class="n">seconds</span> <span class="o">===============================================</span>
-<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> <span class="n">pytest</span> <span class="o">--</span><span class="n">maxfail</span><span class="o">=</span><span class="mi">2</span>  <span class="o">--</span><span class="n">tb</span><span class="o">=</span><span class="n">no</span>
-<span class="o">=================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=================================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">6</span> <span class="n">items</span>                                                                                                     
+<span class="o">==============================================</span> <span class="m">1</span> failed in <span class="m">0</span>.04 <span class="nv">seconds</span> <span class="o">===============================================</span>
+andrew@andrew-PowerEdge-T630:~/code/backup/pytest_testing/ch1$ pytest --maxfail<span class="o">=</span><span class="m">2</span>  --tb<span class="o">=</span><span class="nv">no</span>
+<span class="o">=================================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">=================================================</span>
+platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0
+rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:
+collected <span class="m">6</span> items                                                                                                     
 
-<span class="n">fail_test</span><span class="o">.</span><span class="n">py</span> <span class="n">F</span>                                                                                                  <span class="p">[</span> <span class="mi">16</span><span class="o">%</span><span class="p">]</span>
-<span class="n">pass_test</span><span class="o">.</span><span class="n">py</span> <span class="o">.</span>                                                                                                  <span class="p">[</span> <span class="mi">33</span><span class="o">%</span><span class="p">]</span>
-<span class="n">tasks</span><span class="o">/</span><span class="n">task1_test</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>                                                                                          <span class="p">[</span> <span class="mi">66</span><span class="o">%</span><span class="p">]</span>
-<span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>                                                                                          <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
+fail_test.py F                                                                                                  <span class="o">[</span> <span class="m">16</span>%<span class="o">]</span>
+pass_test.py .                                                                                                  <span class="o">[</span> <span class="m">33</span>%<span class="o">]</span>
+tasks/task1_test.py ..                                                                                          <span class="o">[</span> <span class="m">66</span>%<span class="o">]</span>
+tasks/task2_test.py ..                                                                                          <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
-<span class="o">=========================================</span> <span class="mi">1</span> <span class="n">failed</span><span class="p">,</span> <span class="mi">5</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.04</span> <span class="n">seconds</span> <span class="o">==========================================</span>
-<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> 
+<span class="o">=========================================</span> <span class="m">1</span> failed, <span class="m">5</span> passed in <span class="m">0</span>.04 <span class="nv">seconds</span> <span class="o">==========================================</span>
+andrew@andrew-PowerEdge-T630:~/code/backup/pytest_testing/ch1$ 
 </pre></div>
-
+</td></tr></table>
 
 <ul>
 <li>设置捕捉</li>
 </ul>
 <p>默认捕捉方式为file descriptor (FD)级捕捉。捕捉所有到操作系统的1,2输出。</p>
 <p>syslevel级捕捉只捕捉python的sys.stdout和sys.stderr。</p>
-<div class="highlight"><pre><span></span><span class="n">py</span><span class="o">.</span><span class="n">test</span> <span class="o">-</span><span class="n">s</span>            <span class="c1"># disable all capturing 实际为--capture=no这样print就可以在屏幕输出。</span>
-<span class="n">py</span><span class="o">.</span><span class="n">test</span> <span class="o">--</span><span class="n">capture</span><span class="o">=</span><span class="n">sys</span> <span class="c1"># replace sys.stdout/stderr with in-mem files</span>
-<span class="n">py</span><span class="o">.</span><span class="n">test</span> <span class="o">--</span><span class="n">capture</span><span class="o">=</span><span class="n">fd</span>  <span class="c1"># also point filedescriptors 1 and 2 to temp file</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>py.test -s            <span class="c1"># disable all capturing 实际为--capture=no　这样print就可以在屏幕输出。</span>
+py.test --capture<span class="o">=</span>sys <span class="c1"># replace sys.stdout/stderr with in-mem files</span>
+py.test --capture<span class="o">=</span>fd  <span class="c1"># also point filedescriptors 1 and 2 to temp file</span>
 </pre></div>
+</td></tr></table>
 
-
-<ul>
-<li>--lf,    --last-failed 执行上次失败的测试</li>
-</ul>
-<p>多在--tb 之后使用</p>
+<p>* --lf,    --last-failed 执行上次失败的测试</p>
+<p>多在--tb 　之后使用</p>
 <p>--ff / --failed-first则会先执行失败的，然后执行成功的。</p>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pytest</span> <span class="o">--</span><span class="n">lf</span>
-<span class="o">=================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=================================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">6</span> <span class="n">items</span> <span class="o">/</span> <span class="mi">5</span> <span class="n">deselected</span>                                                                                      
-<span class="n">run</span><span class="o">-</span><span class="n">last</span><span class="o">-</span><span class="n">failure</span><span class="p">:</span> <span class="n">rerun</span> <span class="n">previous</span> <span class="mi">1</span> <span class="n">failure</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ pytest --lf
+<span class="o">=================================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">=================================================</span>
+platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0
+rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:
+collected <span class="m">6</span> items / <span class="m">5</span> deselected                                                                                      
+run-last-failure: rerun previous <span class="m">1</span> failure
 
-<span class="n">fail_test</span><span class="o">.</span><span class="n">py</span> <span class="n">F</span>                                                                                                  <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
+fail_test.py F                                                                                                  <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
-<span class="o">======================================================</span> <span class="n">FAILURES</span> <span class="o">=======================================================</span>
-<span class="n">____________________________________________________</span> <span class="n">test_failing</span> <span class="n">_____________________________________________________</span>
+<span class="o">======================================================</span> <span class="nv">FAILURES</span> <span class="o">=======================================================</span>
+____________________________________________________ test_failing _____________________________________________________
 
-    <span class="k">def</span> <span class="nf">test_failing</span><span class="p">():</span>
-<span class="o">&gt;</span>       <span class="k">assert</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">E</span>       <span class="k">assert</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">E</span>         <span class="n">At</span> <span class="n">index</span> <span class="mi">0</span> <span class="n">diff</span><span class="p">:</span> <span class="mi">1</span> <span class="o">!=</span> <span class="mi">3</span>
-<span class="n">E</span>         <span class="n">Use</span> <span class="o">-</span><span class="n">v</span> <span class="n">to</span> <span class="n">get</span> <span class="n">the</span> <span class="n">full</span> <span class="n">diff</span>
+    def test_failing<span class="o">()</span>:
+&gt;       assert <span class="o">(</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">)</span> <span class="o">==</span> <span class="o">(</span><span class="m">3</span>, <span class="m">2</span>, <span class="m">1</span><span class="o">)</span>
+E       assert <span class="o">(</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">)</span> <span class="o">==</span> <span class="o">(</span><span class="m">3</span>, <span class="m">2</span>, <span class="m">1</span><span class="o">)</span>
+E         At index <span class="m">0</span> diff: <span class="m">1</span> !<span class="o">=</span> <span class="m">3</span>
+E         Use -v to get the full diff
 
-<span class="n">fail_test</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span> <span class="ne">AssertionError</span>
-<span class="o">=======================================</span> <span class="mi">1</span> <span class="n">failed</span><span class="p">,</span> <span class="mi">5</span> <span class="n">deselected</span> <span class="ow">in</span> <span class="mf">0.04</span> <span class="n">seconds</span> <span class="o">========================================</span>
-<span class="err">$</span> <span class="n">pytest</span> <span class="o">--</span><span class="n">ff</span> <span class="o">--</span><span class="n">tb</span><span class="o">=</span><span class="n">no</span>
-<span class="o">=================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=================================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">6</span> <span class="n">items</span>                                                                                                     
-<span class="n">run</span><span class="o">-</span><span class="n">last</span><span class="o">-</span><span class="n">failure</span><span class="p">:</span> <span class="n">rerun</span> <span class="n">previous</span> <span class="mi">1</span> <span class="n">failure</span> <span class="n">first</span>
+fail_test.py:2: <span class="nv">AssertionError</span>
+<span class="o">=======================================</span> <span class="m">1</span> failed, <span class="m">5</span> deselected in <span class="m">0</span>.04 <span class="nv">seconds</span> <span class="o">========================================</span>
+$ pytest --ff --tb<span class="o">=</span><span class="nv">no</span>
+<span class="o">=================================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">=================================================</span>
+platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0
+rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:
+collected <span class="m">6</span> items                                                                                                     
+run-last-failure: rerun previous <span class="m">1</span> failure first
 
-<span class="n">fail_test</span><span class="o">.</span><span class="n">py</span> <span class="n">F</span>                                                                                                  <span class="p">[</span> <span class="mi">16</span><span class="o">%</span><span class="p">]</span>
-<span class="n">pass_test</span><span class="o">.</span><span class="n">py</span> <span class="o">.</span>                                                                                                  <span class="p">[</span> <span class="mi">33</span><span class="o">%</span><span class="p">]</span>
-<span class="n">tasks</span><span class="o">/</span><span class="n">task1_test</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>                                                                                          <span class="p">[</span> <span class="mi">66</span><span class="o">%</span><span class="p">]</span>
-<span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>                                                                                          <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
+fail_test.py F                                                                                                  <span class="o">[</span> <span class="m">16</span>%<span class="o">]</span>
+pass_test.py .                                                                                                  <span class="o">[</span> <span class="m">33</span>%<span class="o">]</span>
+tasks/task1_test.py ..                                                                                          <span class="o">[</span> <span class="m">66</span>%<span class="o">]</span>
+tasks/task2_test.py ..                                                                                          <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
-<span class="o">=========================================</span> <span class="mi">1</span> <span class="n">failed</span><span class="p">,</span> <span class="mi">5</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.04</span> <span class="n">seconds</span> <span class="o">==========================================</span>
-<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> 
+<span class="o">=========================================</span> <span class="m">1</span> failed, <span class="m">5</span> passed in <span class="m">0</span>.04 <span class="nv">seconds</span> <span class="o">==========================================</span>
+andrew@andrew-PowerEdge-T630:~/code/backup/pytest_testing/ch1$ 
 </pre></div>
-
+</td></tr></table>
 
 <ul>
 <li>-q 静默模式</li>
 </ul>
 <p>-q, --quiet decrease verbosity.</p>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pytest</span> <span class="o">-</span><span class="n">q</span>
-<span class="n">F</span><span class="o">.....</span>                                                                                                          <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
-<span class="o">======================================================</span> <span class="n">FAILURES</span> <span class="o">=======================================================</span>
-<span class="n">____________________________________________________</span> <span class="n">test_failing</span> <span class="n">_____________________________________________________</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ pytest -q
+F.....                                                                                                          <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
+<span class="o">======================================================</span> <span class="nv">FAILURES</span> <span class="o">=======================================================</span>
+____________________________________________________ test_failing _____________________________________________________
 
-    <span class="k">def</span> <span class="nf">test_failing</span><span class="p">():</span>
-<span class="o">&gt;</span>       <span class="k">assert</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">E</span>       <span class="k">assert</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">E</span>         <span class="n">At</span> <span class="n">index</span> <span class="mi">0</span> <span class="n">diff</span><span class="p">:</span> <span class="mi">1</span> <span class="o">!=</span> <span class="mi">3</span>
-<span class="n">E</span>         <span class="n">Full</span> <span class="n">diff</span><span class="p">:</span>
-<span class="n">E</span>         <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">E</span>         <span class="err">?</span>  <span class="o">^</span>     <span class="o">^</span>
-<span class="n">E</span>         <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">E</span>         <span class="err">?</span>  <span class="o">^</span>     <span class="o">^</span>
+    def test_failing<span class="o">()</span>:
+&gt;       assert <span class="o">(</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">)</span> <span class="o">==</span> <span class="o">(</span><span class="m">3</span>, <span class="m">2</span>, <span class="m">1</span><span class="o">)</span>
+E       assert <span class="o">(</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">)</span> <span class="o">==</span> <span class="o">(</span><span class="m">3</span>, <span class="m">2</span>, <span class="m">1</span><span class="o">)</span>
+E         At index <span class="m">0</span> diff: <span class="m">1</span> !<span class="o">=</span> <span class="m">3</span>
+E         Full diff:
+E         - <span class="o">(</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">)</span>
+E         ?  ^     ^
+E         + <span class="o">(</span><span class="m">3</span>, <span class="m">2</span>, <span class="m">1</span><span class="o">)</span>
+E         ?  ^     ^
 
-<span class="n">fail_test</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span> <span class="ne">AssertionError</span>
-<span class="mi">1</span> <span class="n">failed</span><span class="p">,</span> <span class="mi">5</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.04</span> <span class="n">seconds</span>
-<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> <span class="n">pytest</span> <span class="o">-</span><span class="n">qq</span>
-<span class="n">F</span><span class="o">.....</span>                                                                                                          <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
-<span class="o">======================================================</span> <span class="n">FAILURES</span> <span class="o">=======================================================</span>
-<span class="n">____________________________________________________</span> <span class="n">test_failing</span> <span class="n">_____________________________________________________</span>
+fail_test.py:2: AssertionError
+<span class="m">1</span> failed, <span class="m">5</span> passed in <span class="m">0</span>.04 seconds
+andrew@andrew-PowerEdge-T630:~/code/backup/pytest_testing/ch1$ pytest -qq
+F.....                                                                                                          <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
+<span class="o">======================================================</span> <span class="nv">FAILURES</span> <span class="o">=======================================================</span>
+____________________________________________________ test_failing _____________________________________________________
 
-    <span class="k">def</span> <span class="nf">test_failing</span><span class="p">():</span>
-<span class="o">&gt;</span>       <span class="k">assert</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">E</span>       <span class="k">assert</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">E</span>         <span class="n">At</span> <span class="n">index</span> <span class="mi">0</span> <span class="n">diff</span><span class="p">:</span> <span class="mi">1</span> <span class="o">!=</span> <span class="mi">3</span>
-<span class="n">E</span>         <span class="n">Full</span> <span class="n">diff</span><span class="p">:</span>
-<span class="n">E</span>         <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">E</span>         <span class="err">?</span>  <span class="o">^</span>     <span class="o">^</span>
-<span class="n">E</span>         <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">E</span>         <span class="err">?</span>  <span class="o">^</span>     <span class="o">^</span>
+    def test_failing<span class="o">()</span>:
+&gt;       assert <span class="o">(</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">)</span> <span class="o">==</span> <span class="o">(</span><span class="m">3</span>, <span class="m">2</span>, <span class="m">1</span><span class="o">)</span>
+E       assert <span class="o">(</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">)</span> <span class="o">==</span> <span class="o">(</span><span class="m">3</span>, <span class="m">2</span>, <span class="m">1</span><span class="o">)</span>
+E         At index <span class="m">0</span> diff: <span class="m">1</span> !<span class="o">=</span> <span class="m">3</span>
+E         Full diff:
+E         - <span class="o">(</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">)</span>
+E         ?  ^     ^
+E         + <span class="o">(</span><span class="m">3</span>, <span class="m">2</span>, <span class="m">1</span><span class="o">)</span>
+E         ?  ^     ^
 
-<span class="n">fail_test</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span> <span class="ne">AssertionError</span>
+fail_test.py:2: AssertionError
 </pre></div>
-
+</td></tr></table>
 
 <ul>
 <li>-l 在traceback中显示本地变量</li>
 </ul>
 <p>--showlocals 在traceback中显示本地变量</p>
 <p>修改test_replace()中的t_expected = Task(​ 'finish book'​ , ​ 'brian'​ , True, 10)为t_expected = Task(​ 'finish book'​ , ​ 'brian'​ , True, 11)</p>
-<div class="highlight"><pre><span></span>py.test --showlocals 在traceback中显示本地变量
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>py.test --showlocals 在traceback中显示本地变量
 py.test -l 在traceback中显示本地变量（快捷方式）
 </pre></div>
+</td></tr></table>
 
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ pytest <span class="nv">tasks</span>
+<span class="o">=================================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">=================================================</span>
+platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0
+rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:
+collected <span class="m">4</span> items                                                                                                     
 
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pytest</span> <span class="n">tasks</span>
-<span class="o">=================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=================================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">4</span> <span class="n">items</span>                                                                                                     
+tasks/task1_test.py ..                                                                                          <span class="o">[</span> <span class="m">50</span>%<span class="o">]</span>
+tasks/task2_test.py .F                                                                                          <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
-<span class="n">tasks</span><span class="o">/</span><span class="n">task1_test</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>                                                                                          <span class="p">[</span> <span class="mi">50</span><span class="o">%</span><span class="p">]</span>
-<span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span> <span class="o">.</span><span class="n">F</span>                                                                                          <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
+<span class="o">======================================================</span> <span class="nv">FAILURES</span> <span class="o">=======================================================</span>
+____________________________________________________ test_replace _____________________________________________________
 
-<span class="o">======================================================</span> <span class="n">FAILURES</span> <span class="o">=======================================================</span>
-<span class="n">____________________________________________________</span> <span class="n">test_replace</span> <span class="n">_____________________________________________________</span>
+    def test_replace<span class="o">()</span>:
+        <span class="s2">&quot;&quot;&quot;replace() should change passed in fields.&quot;&quot;&quot;</span>
+        <span class="nv">t_before</span> <span class="o">=</span> Task<span class="o">(</span><span class="s1">&#39;finish book&#39;</span>, <span class="s1">&#39;brian&#39;</span>, False<span class="o">)</span>
+        <span class="nv">t_after</span> <span class="o">=</span> t_before._replace<span class="o">(</span><span class="nv">id</span><span class="o">=</span><span class="m">10</span>, <span class="k">done</span><span class="o">=</span>True<span class="o">)</span>
+        <span class="nv">t_expected</span> <span class="o">=</span> Task<span class="o">(</span><span class="s1">&#39;finish book&#39;</span>, <span class="s1">&#39;brian&#39;</span>, True, <span class="m">11</span><span class="o">)</span>
+&gt;       assert <span class="nv">t_after</span> <span class="o">==</span> t_expected
+E       AssertionError: assert Task<span class="o">(</span><span class="nv">summary</span><span class="o">=</span>...e<span class="o">=</span>True, <span class="nv">id</span><span class="o">=</span><span class="m">10</span><span class="o">)</span> <span class="o">==</span> Task<span class="o">(</span><span class="nv">summary</span><span class="o">=</span><span class="s1">&#39;...e=True, id=11)</span>
+<span class="s1">E         At index 3 diff: 10 != 11</span>
+<span class="s1">E         Use -v to get the full diff</span>
 
-    <span class="k">def</span> <span class="nf">test_replace</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;replace() should change passed in fields.&quot;&quot;&quot;</span>
-        <span class="n">t_before</span> <span class="o">=</span> <span class="n">Task</span><span class="p">(</span><span class="s1">&#39;finish book&#39;</span><span class="p">,</span> <span class="s1">&#39;brian&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
-        <span class="n">t_after</span> <span class="o">=</span> <span class="n">t_before</span><span class="o">.</span><span class="n">_replace</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">done</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-        <span class="n">t_expected</span> <span class="o">=</span> <span class="n">Task</span><span class="p">(</span><span class="s1">&#39;finish book&#39;</span><span class="p">,</span> <span class="s1">&#39;brian&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
-<span class="o">&gt;</span>       <span class="k">assert</span> <span class="n">t_after</span> <span class="o">==</span> <span class="n">t_expected</span>
-<span class="n">E</span>       <span class="ne">AssertionError</span><span class="p">:</span> <span class="k">assert</span> <span class="n">Task</span><span class="p">(</span><span class="n">summary</span><span class="o">=...</span><span class="n">e</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">Task</span><span class="p">(</span><span class="n">summary</span><span class="o">=</span><span class="s1">&#39;...e=True, id=11)</span>
-<span class="n">E</span>         <span class="n">At</span> <span class="n">index</span> <span class="mi">3</span> <span class="n">diff</span><span class="p">:</span> <span class="mi">10</span> <span class="o">!=</span> <span class="mi">11</span>
-<span class="n">E</span>         <span class="n">Use</span> <span class="o">-</span><span class="n">v</span> <span class="n">to</span> <span class="n">get</span> <span class="n">the</span> <span class="n">full</span> <span class="n">diff</span>
+<span class="s1">tasks/task2_test.py:26: AssertionError</span>
+<span class="s1">========================================= 1 failed, 3 passed in 0.04 seconds ==========================================</span>
+<span class="s1">andrew@andrew-PowerEdge-T630:~/code/backup/pytest_testing/ch1$ pytest tasks -l</span>
+<span class="s1">================================================= test session starts =================================================</span>
+<span class="s1">platform linux -- Python 3.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0</span>
+<span class="s1">rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:</span>
+<span class="s1">collected 4 items                                                                                                     </span>
 
-<span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span> <span class="ne">AssertionError</span>
-<span class="o">=========================================</span> <span class="mi">1</span> <span class="n">failed</span><span class="p">,</span> <span class="mi">3</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.04</span> <span class="n">seconds</span> <span class="o">==========================================</span>
-<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> <span class="n">pytest</span> <span class="n">tasks</span> <span class="o">-</span><span class="n">l</span>
-<span class="o">=================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=================================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">4</span> <span class="n">items</span>                                                                                                     
+<span class="s1">tasks/task1_test.py ..                                                                                          [ 50%]</span>
+<span class="s1">tasks/task2_test.py .F                                                                                          [100%]</span>
 
-<span class="n">tasks</span><span class="o">/</span><span class="n">task1_test</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>                                                                                          <span class="p">[</span> <span class="mi">50</span><span class="o">%</span><span class="p">]</span>
-<span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span> <span class="o">.</span><span class="n">F</span>                                                                                          <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
+<span class="s1">====================================================== FAILURES =======================================================</span>
+<span class="s1">____________________________________________________ test_replace _____________________________________________________</span>
 
-<span class="o">======================================================</span> <span class="n">FAILURES</span> <span class="o">=======================================================</span>
-<span class="n">____________________________________________________</span> <span class="n">test_replace</span> <span class="n">_____________________________________________________</span>
+<span class="s1">    def test_replace():</span>
+<span class="s1">        &quot;&quot;&quot;replace() should change passed in fields.&quot;&quot;&quot;</span>
+<span class="s1">        t_before = Task(&#39;</span>finish book<span class="s1">&#39;, &#39;</span>brian<span class="s1">&#39;, False)</span>
+<span class="s1">        t_after = t_before._replace(id=10, done=True)</span>
+<span class="s1">        t_expected = Task(&#39;</span>finish book<span class="s1">&#39;, &#39;</span>brian<span class="s1">&#39;, True, 11)</span>
+<span class="s1">&gt;       assert t_after == t_expected</span>
+<span class="s1">E       AssertionError: assert Task(summary=...e=True, id=10) == Task(summary=&#39;</span>...e<span class="o">=</span>True, <span class="nv">id</span><span class="o">=</span><span class="m">11</span><span class="o">)</span>
+E         At index <span class="m">3</span> diff: <span class="m">10</span> !<span class="o">=</span> <span class="m">11</span>
+E         Use -v to get the full diff
 
-    <span class="k">def</span> <span class="nf">test_replace</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;replace() should change passed in fields.&quot;&quot;&quot;</span>
-        <span class="n">t_before</span> <span class="o">=</span> <span class="n">Task</span><span class="p">(</span><span class="s1">&#39;finish book&#39;</span><span class="p">,</span> <span class="s1">&#39;brian&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
-        <span class="n">t_after</span> <span class="o">=</span> <span class="n">t_before</span><span class="o">.</span><span class="n">_replace</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">done</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-        <span class="n">t_expected</span> <span class="o">=</span> <span class="n">Task</span><span class="p">(</span><span class="s1">&#39;finish book&#39;</span><span class="p">,</span> <span class="s1">&#39;brian&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
-<span class="o">&gt;</span>       <span class="k">assert</span> <span class="n">t_after</span> <span class="o">==</span> <span class="n">t_expected</span>
-<span class="n">E</span>       <span class="ne">AssertionError</span><span class="p">:</span> <span class="k">assert</span> <span class="n">Task</span><span class="p">(</span><span class="n">summary</span><span class="o">=...</span><span class="n">e</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">Task</span><span class="p">(</span><span class="n">summary</span><span class="o">=</span><span class="s1">&#39;...e=True, id=11)</span>
-<span class="n">E</span>         <span class="n">At</span> <span class="n">index</span> <span class="mi">3</span> <span class="n">diff</span><span class="p">:</span> <span class="mi">10</span> <span class="o">!=</span> <span class="mi">11</span>
-<span class="n">E</span>         <span class="n">Use</span> <span class="o">-</span><span class="n">v</span> <span class="n">to</span> <span class="n">get</span> <span class="n">the</span> <span class="n">full</span> <span class="n">diff</span>
+<span class="nv">t_after</span>    <span class="o">=</span> Task<span class="o">(</span><span class="nv">summary</span><span class="o">=</span><span class="s1">&#39;finish book&#39;</span>, <span class="nv">owner</span><span class="o">=</span><span class="s1">&#39;brian&#39;</span>, <span class="k">done</span><span class="o">=</span>True, <span class="nv">id</span><span class="o">=</span><span class="m">10</span><span class="o">)</span>
+<span class="nv">t_before</span>   <span class="o">=</span> Task<span class="o">(</span><span class="nv">summary</span><span class="o">=</span><span class="s1">&#39;finish book&#39;</span>, <span class="nv">owner</span><span class="o">=</span><span class="s1">&#39;brian&#39;</span>, <span class="k">done</span><span class="o">=</span>False, <span class="nv">id</span><span class="o">=</span>None<span class="o">)</span>
+<span class="nv">t_expected</span> <span class="o">=</span> Task<span class="o">(</span><span class="nv">summary</span><span class="o">=</span><span class="s1">&#39;finish book&#39;</span>, <span class="nv">owner</span><span class="o">=</span><span class="s1">&#39;brian&#39;</span>, <span class="k">done</span><span class="o">=</span>True, <span class="nv">id</span><span class="o">=</span><span class="m">11</span><span class="o">)</span>
 
-<span class="n">t_after</span>    <span class="o">=</span> <span class="n">Task</span><span class="p">(</span><span class="n">summary</span><span class="o">=</span><span class="s1">&#39;finish book&#39;</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="s1">&#39;brian&#39;</span><span class="p">,</span> <span class="n">done</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">t_before</span>   <span class="o">=</span> <span class="n">Task</span><span class="p">(</span><span class="n">summary</span><span class="o">=</span><span class="s1">&#39;finish book&#39;</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="s1">&#39;brian&#39;</span><span class="p">,</span> <span class="n">done</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
-<span class="n">t_expected</span> <span class="o">=</span> <span class="n">Task</span><span class="p">(</span><span class="n">summary</span><span class="o">=</span><span class="s1">&#39;finish book&#39;</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="s1">&#39;brian&#39;</span><span class="p">,</span> <span class="n">done</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
-
-<span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span> <span class="ne">AssertionError</span>
-<span class="o">=========================================</span> <span class="mi">1</span> <span class="n">failed</span><span class="p">,</span> <span class="mi">3</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.04</span> <span class="n">seconds</span> <span class="o">==========================================</span>
-<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> 
+tasks/task2_test.py:26: <span class="nv">AssertionError</span>
+<span class="o">=========================================</span> <span class="m">1</span> failed, <span class="m">3</span> passed in <span class="m">0</span>.04 <span class="nv">seconds</span> <span class="o">==========================================</span>
+andrew@andrew-PowerEdge-T630:~/code/backup/pytest_testing/ch1$ 
 </pre></div>
-
+</td></tr></table>
 
 <ul>
 <li>–tb=style</li>
 </ul>
-<div class="highlight"><pre><span></span>py.test -l 在traceback中显示本地变量（快捷方式）
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>py.test -l 在traceback中显示本地变量（快捷方式）
 py.test --tb<span class="o">=</span>auto 默认格式，首尾为long，其他为short
 py.test --tb<span class="o">=</span>long 详细的traceback信息格式化形式
 py.test --tb<span class="o">=</span>native 标准库格式化形式, 没有额外信息
@@ -791,98 +1393,154 @@ py.test --tb<span class="o">=</span>line 每个错误一行
 py.test --tb<span class="o">=</span>no 无traceback
 py.test --full-trace 最详细的格式
 </pre></div>
-
+</td></tr></table>
 
 <p>实例：</p>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pytest</span> <span class="n">tasks</span> <span class="o">--</span><span class="n">tb</span> <span class="n">no</span>
-<span class="o">=================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=================================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">4</span> <span class="n">items</span>                                                                                                     
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ pytest tasks --tb <span class="nv">no</span>
+<span class="o">=================================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">=================================================</span>
+platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0
+rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:
+collected <span class="m">4</span> items                                                                                                     
 
-<span class="n">tasks</span><span class="o">/</span><span class="n">task1_test</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>                                                                                          <span class="p">[</span> <span class="mi">50</span><span class="o">%</span><span class="p">]</span>
-<span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span> <span class="o">.</span><span class="n">F</span>                                                                                          <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
+tasks/task1_test.py ..                                                                                          <span class="o">[</span> <span class="m">50</span>%<span class="o">]</span>
+tasks/task2_test.py .F                                                                                          <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
-<span class="o">=========================================</span> <span class="mi">1</span> <span class="n">failed</span><span class="p">,</span> <span class="mi">3</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.04</span> <span class="n">seconds</span> <span class="o">==========================================</span>
-<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> <span class="n">pytest</span> <span class="n">tasks</span> <span class="o">--</span><span class="n">tb</span> <span class="n">line</span>
-<span class="o">=================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=================================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">4</span> <span class="n">items</span>                                                                                                     
+<span class="o">=========================================</span> <span class="m">1</span> failed, <span class="m">3</span> passed in <span class="m">0</span>.04 <span class="nv">seconds</span> <span class="o">==========================================</span>
+andrew@andrew-PowerEdge-T630:~/code/backup/pytest_testing/ch1$ pytest tasks --tb <span class="nv">line</span>
+<span class="o">=================================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">=================================================</span>
+platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0
+rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:
+collected <span class="m">4</span> items                                                                                                     
 
-<span class="n">tasks</span><span class="o">/</span><span class="n">task1_test</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>                                                                                          <span class="p">[</span> <span class="mi">50</span><span class="o">%</span><span class="p">]</span>
-<span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span> <span class="o">.</span><span class="n">F</span>                                                                                          <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
+tasks/task1_test.py ..                                                                                          <span class="o">[</span> <span class="m">50</span>%<span class="o">]</span>
+tasks/task2_test.py .F                                                                                          <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
-<span class="o">======================================================</span> <span class="n">FAILURES</span> <span class="o">=======================================================</span>
-<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="o">/</span><span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span> <span class="ne">AssertionError</span><span class="p">:</span> <span class="k">assert</span> <span class="n">Task</span><span class="p">(</span><span class="n">summary</span><span class="o">=...</span><span class="n">e</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">Task</span><span class="p">(</span><span class="n">summary</span><span class="o">=</span><span class="s1">&#39;...e=True, id=11)</span>
-<span class="o">=========================================</span> <span class="mi">1</span> <span class="n">failed</span><span class="p">,</span> <span class="mi">3</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.03</span> <span class="n">seconds</span> <span class="o">==========================================</span>
-<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> <span class="n">pytest</span> <span class="n">tasks</span> <span class="o">--</span><span class="n">tb</span> <span class="n">short</span>
-<span class="o">=================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=================================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">4</span> <span class="n">items</span>                                                                                                     
+<span class="o">======================================================</span> <span class="nv">FAILURES</span> <span class="o">=======================================================</span>
+/home/andrew/code/backup/pytest_testing/ch1/tasks/task2_test.py:26: AssertionError: assert Task<span class="o">(</span><span class="nv">summary</span><span class="o">=</span>...e<span class="o">=</span>True, <span class="nv">id</span><span class="o">=</span><span class="m">10</span><span class="o">)</span> <span class="o">==</span> Task<span class="o">(</span><span class="nv">summary</span><span class="o">=</span><span class="s1">&#39;...e=True, id=11)</span>
+<span class="s1">========================================= 1 failed, 3 passed in 0.03 seconds ==========================================</span>
+<span class="s1">andrew@andrew-PowerEdge-T630:~/code/backup/pytest_testing/ch1$ pytest tasks --tb short</span>
+<span class="s1">================================================= test session starts =================================================</span>
+<span class="s1">platform linux -- Python 3.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0</span>
+<span class="s1">rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:</span>
+<span class="s1">collected 4 items                                                                                                     </span>
 
-<span class="n">tasks</span><span class="o">/</span><span class="n">task1_test</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>                                                                                          <span class="p">[</span> <span class="mi">50</span><span class="o">%</span><span class="p">]</span>
-<span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span> <span class="o">.</span><span class="n">F</span>                                                                                          <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
+<span class="s1">tasks/task1_test.py ..                                                                                          [ 50%]</span>
+<span class="s1">tasks/task2_test.py .F                                                                                          [100%]</span>
 
-<span class="o">======================================================</span> <span class="n">FAILURES</span> <span class="o">=======================================================</span>
-<span class="n">____________________________________________________</span> <span class="n">test_replace</span> <span class="n">_____________________________________________________</span>
-<span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span> <span class="ow">in</span> <span class="n">test_replace</span>
-    <span class="k">assert</span> <span class="n">t_after</span> <span class="o">==</span> <span class="n">t_expected</span>
-<span class="n">E</span>   <span class="ne">AssertionError</span><span class="p">:</span> <span class="k">assert</span> <span class="n">Task</span><span class="p">(</span><span class="n">summary</span><span class="o">=...</span><span class="n">e</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">Task</span><span class="p">(</span><span class="n">summary</span><span class="o">=</span><span class="s1">&#39;...e=True, id=11)</span>
-<span class="n">E</span>     <span class="n">At</span> <span class="n">index</span> <span class="mi">3</span> <span class="n">diff</span><span class="p">:</span> <span class="mi">10</span> <span class="o">!=</span> <span class="mi">11</span>
-<span class="n">E</span>     <span class="n">Use</span> <span class="o">-</span><span class="n">v</span> <span class="n">to</span> <span class="n">get</span> <span class="n">the</span> <span class="n">full</span> <span class="n">diff</span>
-<span class="o">=========================================</span> <span class="mi">1</span> <span class="n">failed</span><span class="p">,</span> <span class="mi">3</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.04</span> <span class="n">seconds</span> <span class="o">==========================================</span>
-<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> <span class="n">vi</span> <span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span> 
-<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> <span class="n">pytest</span> <span class="n">tasks</span>  <span class="o">--</span><span class="n">duration</span><span class="o">=</span><span class="mi">3</span>
-<span class="o">=================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=================================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">4</span> <span class="n">items</span>                                                                                                     
+<span class="s1">====================================================== FAILURES =======================================================</span>
+<span class="s1">____________________________________________________ test_replace _____________________________________________________</span>
+<span class="s1">tasks/task2_test.py:26: in test_replace</span>
+<span class="s1">    assert t_after == t_expected</span>
+<span class="s1">E   AssertionError: assert Task(summary=...e=True, id=10) == Task(summary=&#39;</span>...e<span class="o">=</span>True, <span class="nv">id</span><span class="o">=</span><span class="m">11</span><span class="o">)</span>
+E     At index <span class="m">3</span> diff: <span class="m">10</span> !<span class="o">=</span> <span class="m">11</span>
+E     Use -v to get the full <span class="nv">diff</span>
+<span class="o">=========================================</span> <span class="m">1</span> failed, <span class="m">3</span> passed in <span class="m">0</span>.04 <span class="nv">seconds</span> <span class="o">==========================================</span>
+andrew@andrew-PowerEdge-T630:~/code/backup/pytest_testing/ch1$ vi tasks/task2_test.py 
+andrew@andrew-PowerEdge-T630:~/code/backup/pytest_testing/ch1$ pytest tasks  --duration<span class="o">=</span><span class="nv">3</span>
+<span class="o">=================================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">=================================================</span>
+platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0
+rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:
+collected <span class="m">4</span> items                                                                                                     
 
-<span class="n">tasks</span><span class="o">/</span><span class="n">task1_test</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>                                                                                          <span class="p">[</span> <span class="mi">50</span><span class="o">%</span><span class="p">]</span>
-<span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>                                                                                          <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
+tasks/task1_test.py ..                                                                                          <span class="o">[</span> <span class="m">50</span>%<span class="o">]</span>
+tasks/task2_test.py ..                                                                                          <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
-<span class="o">==============================================</span> <span class="n">slowest</span> <span class="mi">3</span> <span class="n">test</span> <span class="n">durations</span> <span class="o">===============================================</span>
-<span class="mf">0.00</span><span class="n">s</span> <span class="n">setup</span>    <span class="n">tasks</span><span class="o">/</span><span class="n">task1_test</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_defaults</span>
-<span class="mf">0.00</span><span class="n">s</span> <span class="n">setup</span>    <span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_asdict</span>
-<span class="mf">0.00</span><span class="n">s</span> <span class="n">setup</span>    <span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_replace</span>
-<span class="o">==============================================</span> <span class="mi">4</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.02</span> <span class="n">seconds</span> <span class="o">===============================================</span>
-<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span>
+<span class="o">==============================================</span> slowest <span class="m">3</span> <span class="nb">test</span> <span class="nv">durations</span> <span class="o">===============================================</span>
+<span class="m">0</span>.00s setup    tasks/task1_test.py::test_defaults
+<span class="m">0</span>.00s setup    tasks/task2_test.py::test_asdict
+<span class="m">0</span>.00s setup    tasks/task2_test.py::test_replace
+<span class="o">==============================================</span> <span class="m">4</span> passed in <span class="m">0</span>.02 <span class="nv">seconds</span> <span class="o">===============================================</span>
+andrew@andrew-PowerEdge-T630:~/code/backup/pytest_testing/ch1$
 </pre></div>
+</td></tr></table>
 
-
-<ul>
-<li>–durations=N</li>
-</ul>
+<p>* –durations=N</p>
 <p>统计最慢执行时间</p>
-<div class="highlight"><pre><span></span><span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> <span class="n">pytest</span> <span class="n">tasks</span>  <span class="o">--</span><span class="n">duration</span><span class="o">=</span><span class="mi">3</span>
-<span class="o">=================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=================================================</span>
-<span class="n">platform</span> <span class="n">linux</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">rootdir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="p">,</span> <span class="n">inifile</span><span class="p">:</span>
-<span class="n">collected</span> <span class="mi">4</span> <span class="n">items</span>                                                                                                     
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span>andrew@andrew-PowerEdge-T630:~/code/backup/pytest_testing/ch1$ pytest tasks  --duration<span class="o">=</span><span class="nv">3</span>
+<span class="o">=================================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">=================================================</span>
+platform linux -- Python <span class="m">3</span>.5.2, pytest-3.5.1, py-1.5.3, pluggy-0.6.0
+rootdir: /home/andrew/code/backup/pytest_testing/ch1, inifile:
+collected <span class="m">4</span> items                                                                                                     
 
-<span class="n">tasks</span><span class="o">/</span><span class="n">task1_test</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>                                                                                          <span class="p">[</span> <span class="mi">50</span><span class="o">%</span><span class="p">]</span>
-<span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>                                                                                          <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
+tasks/task1_test.py ..                                                                                          <span class="o">[</span> <span class="m">50</span>%<span class="o">]</span>
+tasks/task2_test.py ..                                                                                          <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
 
-<span class="o">==============================================</span> <span class="n">slowest</span> <span class="mi">3</span> <span class="n">test</span> <span class="n">durations</span> <span class="o">===============================================</span>
-<span class="mf">0.00</span><span class="n">s</span> <span class="n">setup</span>    <span class="n">tasks</span><span class="o">/</span><span class="n">task1_test</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_defaults</span>
-<span class="mf">0.00</span><span class="n">s</span> <span class="n">setup</span>    <span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_asdict</span>
-<span class="mf">0.00</span><span class="n">s</span> <span class="n">setup</span>    <span class="n">tasks</span><span class="o">/</span><span class="n">task2_test</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_replace</span>
-<span class="o">==============================================</span> <span class="mi">4</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.02</span> <span class="n">seconds</span> <span class="o">===============================================</span>
-<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pytest_testing</span><span class="o">/</span><span class="n">ch1</span><span class="err">$</span> 
+<span class="o">==============================================</span> slowest <span class="m">3</span> <span class="nb">test</span> <span class="nv">durations</span> <span class="o">===============================================</span>
+<span class="m">0</span>.00s setup    tasks/task1_test.py::test_defaults
+<span class="m">0</span>.00s setup    tasks/task2_test.py::test_asdict
+<span class="m">0</span>.00s setup    tasks/task2_test.py::test_replace
+<span class="o">==============================================</span> <span class="m">4</span> passed in <span class="m">0</span>.02 <span class="nv">seconds</span> <span class="o">===============================================</span>
+andrew@andrew-PowerEdge-T630:~/code/backup/pytest_testing/ch1$ 
 </pre></div>
-
-
-<h2 id="_3">参考资料</h2>
-<ul>
-<li><a href="https://china-testing.github.io/python_pytest_testing1.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
-<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-</ul>
+</td></tr></table>
     </div><!-- /.entry-content -->
 
   </article>
