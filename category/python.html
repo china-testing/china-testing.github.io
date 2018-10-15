@@ -27,7 +27,547 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/python3_crash_ch9_2.html">[雪峰磁针石博客]python3快速入门教程9重要的标准库-高级篇</a></h1>
+                    <h1 class="entry-title"><a href="/python3_lib_requests.html">python工具库介绍-requests：人性化的HTTP</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-10-15T09:20:00+08:00">
+                Published: 一 15 十月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info --><p>Requests是Python基于<a href="http://docs.python-requests.org/en/latest/user/intro/#apache2">Apache2 Licensed</a>许可证的人性化HTTP库。</p>
+<p>Python标准库中urllib2提供了不少HTTP 功能，但API不系统。它有点过时，完成最简单的任务也需要大量工作。</p>
+<p>下面我们用实例演示访问github。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://api.github.com/user&#39;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;ouyangchongwu@test.com&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span>
+<span class="mi">200</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;content-type&#39;</span><span class="p">]</span>
+<span class="s1">&#39;application/json; charset=utf-8&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">encoding</span>
+<span class="s1">&#39;utf-8&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+<span class="sa">u</span><span class="s1">&#39;{&quot;login&quot;:&quot;oychw&quot;,...}&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="p">{</span><span class="sa">u</span><span class="s1">&#39;disk_usage&#39;</span><span class="p">:</span> <span class="mi">176</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;private_gists&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
+</pre></div>
+
+
+<p>Requests为Python处理了所有HTTP/1.1操作， 与Web服务的无缝集成。不需要为URL手动添加查询字符串或POST数据进行表单处理。基于<a href="https://github.com/shazow/urllib3">urllib3</a>, 能自动处理Keep-alive和HTTP连接池。</p>
+<p>特点：</p>
+<ul>
+<li>
+<p>国际化域名和 URLs</p>
+</li>
+<li>
+<p>Keep-Alive &amp; 连接池</p>
+</li>
+<li>
+<p>持久的 Cookie 会话</p>
+</li>
+<li>
+<p>类浏览器的SSL认证</p>
+</li>
+<li>
+<p>基本/摘要式的身份认证</p>
+</li>
+<li>
+<p>优雅的键/值 Cookie</p>
+</li>
+<li>
+<p>自动解压</p>
+</li>
+<li>
+<p>Unicode响应体</p>
+</li>
+<li>
+<p>多段文件上传</p>
+</li>
+<li>
+<p>连接超时</p>
+</li>
+<li>
+<p>支持 .netrc</p>
+</li>
+<li>
+<p>适用于 Python 2.6—3.4</p>
+</li>
+<li>
+<p>线程安全</p>
+</li>
+</ul>
+<h2 id="_1">用户手册</h2>
+<h4 id="_2">简介</h4>
+<p>Requests关注PEP 20的部分：</p>
+<ul>
+<li>
+<p>Beautiful is better than ugly.(美丽优于丑陋)</p>
+</li>
+<li>
+<p>Explicit is better than implicit.(明确优于含糊)</p>
+</li>
+<li>
+<p>Simple is better than complex.(简单优于复杂)</p>
+</li>
+<li>
+<p>Complex is better than complicated.(复杂优于繁琐)</p>
+</li>
+<li>
+<p>Readability counts.(可读性)</p>
+</li>
+</ul>
+<h4 id="_3">安装</h4>
+<ul>
+<li>
+<p>安装： 推荐：pip install requests，其次：easy_install requests</p>
+</li>
+<li>
+<p>最新代码：</p>
+</li>
+<li>
+<p>git clone git://github.com/kennethreitz/requests.git</p>
+</li>
+<li>
+<p>下载tar.gz包：curl -OL <a href="https://github.com/kennethreitz/requests/tarball/master">https://github.com/kennethreitz/requests/tarball/master</a></p>
+</li>
+<li>
+<p>下载zip包：curl -OL <a href="https://github.com/kennethreitz/requests/zipball/master">https://github.com/kennethreitz/requests/zipball/master</a></p>
+</li>
+<li>
+<p>源码安装：python setup.py install</p>
+</li>
+</ul>
+<h4 id="_4">快速入门</h4>
+<ul>
+<li>发送请求：</li>
+</ul>
+<p>下面获取Github的公共时间线，并在httpbin演示其他HTTP操作：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://github.com/timeline.json&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;http://httpbin.org/post&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;http://httpbin.org/put&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;http://httpbin.org/delete&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="s2">&quot;http://httpbin.org/get&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="s2">&quot;http://httpbin.org/get&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>在URL中传递参数</li>
+</ul>
+<p>URL的查询字符串(query string)例如， httpbin.org/get?key=val，在Requests可以用字典的形式构建。比如传递key1=value1和key2=value2到 httpbin.org/get:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="s1">&#39;value1&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="s1">&#39;value2&#39;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://httpbin.org/get&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">httpbin</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">get</span><span class="err">?</span><span class="n">key2</span><span class="o">=</span><span class="n">value2</span><span class="o">&amp;</span><span class="n">key1</span><span class="o">=</span><span class="n">value1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="s1">&#39;value1&#39;</span><span class="p">,</span> <span class="s1">&#39;key2[]&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;value2&#39;</span><span class="p">,</span> <span class="s1">&#39;value3&#39;</span><span class="p">]}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://httpbin.org/get&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">httpbin</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">get</span><span class="err">?</span><span class="n">key1</span><span class="o">=</span><span class="n">value1</span><span class="o">&amp;</span><span class="n">key2</span><span class="o">%</span><span class="mi">5</span><span class="n">B</span><span class="o">%</span><span class="mi">5</span><span class="n">D</span><span class="o">=</span><span class="n">value2</span><span class="o">&amp;</span><span class="n">key2</span><span class="o">%</span><span class="mi">5</span><span class="n">B</span><span class="o">%</span><span class="mi">5</span><span class="n">D</span><span class="o">=</span><span class="n">value3</span>
+</pre></div>
+
+
+<p>注意字典里值为None的键会忽略。上面第２个例子访问的是<a href="http://httpbin.org/get?key1=value1&amp;key2[]=value2&amp;key2[]=value3">http://httpbin.org/get?key1=value1&amp;key2[]=value2&amp;key2[]=value3</a>  。注意key后面需要添加中括号对。</p>
+<ul>
+<li>响应</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://api.github.com/events&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">u</span><span class="s1">&#39;[{&quot;id&quot;:&quot;2636319727&quot;,&quot;type&quot;:&quot;PullRequestReviewCommentEvent&quot;,&quot;actor&quot;:{&quot;id&quot;:1148601,&quot;login&quot;:&quot;i ...}]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">encoding</span>
+<span class="s1">&#39;utf-8&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;ISO-8859-1&#39;</span>
+</pre></div>
+
+
+<p>Requests会自动解码服务器的返回。大多数unicode字符集都能无缝解码。请求发出时Requests会基于响应的HTTP头部推测响应的编码。同时还可以设置和查询编码。改变编码后，访问 r.text 将会使用 r.encoding 。</p>
+<ul>
+<li>二进制响应</li>
+</ul>
+<p>r.content可以以字节的方式显示响应。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">content</span>
+<span class="sa">b</span><span class="s1">&#39;[{&quot;repository&quot;:{&quot;open_issues&quot;:0,&quot;url&quot;:&quot;https://github.com/...</span>
+</pre></div>
+
+
+<p>传输格式gzip和deflate会自动转码。处理图片实例：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">StringIO</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+</pre></div>
+
+
+<ul>
+<li>Json响应</li>
+</ul>
+<p>Requests内置了JSON解码器:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://github.com/timeline.json&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="p">{</span><span class="sa">u</span><span class="s1">&#39;documentation_url&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;https://developer.github.com/v3/activity/events/#list-public-events&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s2">&quot;Hello there, wayfaring stranger. If you&#39;re reading this then you probably didn&#39;t see our blog post a couple of years back announcing that this API would go away: http://git.io/17AROg Fear not, you should be able to get what you need from the shiny new Events API instead.&quot;</span><span class="p">}</span>
+</pre></div>
+
+
+<p>JSON解码失败时r.json 就会抛出异常。例如， 401 (Unauthorized) ， ValueError: No JSON object could be decoded等。</p>
+<ul>
+<li>原始响应</li>
+</ul>
+<p>极端的情况下需要查看服务器的原始套接字响应，请求时设置 stream=True：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://api.github.com/events&#39;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">raw</span>
+<span class="o">&lt;</span><span class="n">urllib3</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">HTTPResponse</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f807dd6f4d0</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="s1">&#39;</span><span class="se">\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\x03</span><span class="s1">&#39;</span>
+</pre></div>
+
+
+<p>通常需要存为文件:</p>
+<div class="highlight"><pre><span></span>with open(filename, &#39;wb&#39;) as fd:
+    for chunk in r.iter_content(chunk_size):
+        fd.write(chunk)
+</pre></div>
+
+
+<p>Response.iter_content 能减少直接使用Response.raw的大量处理，下载流时尤其推荐。</p>
+<ul>
+<li>自定义头</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://api.github.com/some/endpoint&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;some&#39;</span><span class="p">:</span> <span class="s1">&#39;data&#39;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;content-type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>更加复杂的POST请求</li>
+</ul>
+<p>表单直接以字典形式发送：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="s1">&#39;value1&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="s1">&#39;value2&#39;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;http://httpbin.org/post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">{},</span> 
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+  <span class="s2">&quot;files&quot;</span><span class="p">:</span> <span class="p">{},</span> 
+  <span class="s2">&quot;form&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;key1&quot;</span><span class="p">:</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;key2&quot;</span><span class="p">:</span> <span class="s2">&quot;value2&quot;</span>
+  <span class="p">},</span> 
+  <span class="s2">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;*/*&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;Accept-Encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;gzip, deflate, compress&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;Content-Length&quot;</span><span class="p">:</span> <span class="s2">&quot;23&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/x-www-form-urlencoded&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;Host&quot;</span><span class="p">:</span> <span class="s2">&quot;httpbin.org&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;python-requests/2.2.1 CPython/2.7.6 Linux/3.13.0-53-generic&quot;</span>
+  <span class="p">},</span> 
+  <span class="s2">&quot;json&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> 
+  <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;119.122.150.177&quot;</span><span class="p">,</span> 
+  <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://httpbin.org/post&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>string则会被直接发布出去。Github API v3中接受编码为JSON的POST/PATCH数据</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://api.github.com/some/endpoint&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;some&#39;</span><span class="p">:</span> <span class="s1">&#39;data&#39;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
+</pre></div>
+
+
+<ul>
+<li>POST复杂编码的文件</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://httpbin.org/post&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/home/andrew/test.xls&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)}</span>
+<span class="o">&gt;&gt;&gt;</span>  <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://httpbin.org/post&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+<span class="sa">u</span><span class="s1">&#39;{</span><span class="se">\n</span><span class="s1">  &quot;args&quot;: {}, </span><span class="se">\n</span><span class="s1">  &quot;data&quot;: &quot;&quot;, </span><span class="se">\n</span><span class="s1">  &quot;files&quot;: {</span><span class="se">\n</span><span class="s1"> ...  &quot;url&quot;: &quot;http://httpbin.org/post&quot;</span><span class="se">\n</span><span class="s1">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+</pre></div>
+
+
+<p>可以显式地设置文件名，文件类型和请求头:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;report.xls&#39;</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/home/andrew/test.xls&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">),</span> <span class="s1">&#39;application/vnd.ms-excel&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Expires&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">})}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://httpbin.org/post&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+<span class="sa">u</span><span class="s1">&#39;{</span><span class="se">\n</span><span class="s1">  &quot;args&quot;: {}, </span><span class="se">\n</span><span class="s1">  &quot;data&quot;: &quot;&quot;...&quot;url&quot;: &quot;http://httpbin.org/post&quot;</span><span class="se">\n</span><span class="s1">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+</pre></div>
+
+
+<p>还可以直接用文字代替文件：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://httpbin.org/post&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;report.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;some,data,to,send</span><span class="se">\n</span><span class="s1">another,row,to,send</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+<span class="sa">u</span><span class="s1">&#39;{</span><span class="se">\n</span><span class="s1">  &quot;args&quot;: {}, </span><span class="se">\n</span><span class="s1">  &quot;data&quot;: &quot;&quot;, </span><span class="se">\n</span><span class="s1">  &quot;files&quot;: {</span><span class="se">\n</span><span class="s1">  ...  &quot;json&quot;: null, </span><span class="se">\n</span><span class="s1">  &quot;origin&quot;: &quot;14.153.22.104&quot;, </span><span class="se">\n</span><span class="s1">  &quot;url&quot;: &quot;http://httpbin.org/post&quot;</span><span class="se">\n</span><span class="s1">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+</pre></div>
+
+
+<p>multipart/form-data不支持特别大的文件，建议使用requests-toolbelt，参考：<a href="https://toolbelt.readthedocs.org/en/latest/">toolbelt</a></p>
+<ul>
+<li>响应状态码</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org/get&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span>
+<span class="mi">200</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="n">requests</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">ok</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">bad_r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org/status/404&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">bad_r</span><span class="o">.</span><span class="n">status_code</span>
+<span class="mi">404</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">bad_r</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+</pre></div>
+
+
+<p>上面的requests.codes.ok是内置的状态码查询对象。可以使用 Response.raise_for_status()跑出失败请求(4XX客户端错误或5XX服务器异常)，我们可以通过 Response.raise_for_status() 来抛出异常。r的返回为200，所以返回None，不产生异常。</p>
+<ul>
+<li>响应头</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span>
+<span class="p">{</span><span class="s1">&#39;content-length&#39;</span><span class="p">:</span> <span class="s1">&#39;275&#39;</span><span class="p">,</span> <span class="s1">&#39;server&#39;</span><span class="p">:</span> <span class="s1">&#39;nginx&#39;</span><span class="p">,</span> <span class="s1">&#39;connection&#39;</span><span class="p">:</span> <span class="s1">&#39;keep-alive&#39;</span><span class="p">,</span> <span class="s1">&#39;access-control-allow-credentials&#39;</span><span class="p">:</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;Tue, 10 Mar 2015 08:21:36 GMT&#39;</span><span class="p">,</span> <span class="s1">&#39;access-control-allow-origin&#39;</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;content-type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">]</span>
+<span class="s1">&#39;application/json&#39;</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;content-type&#39;</span><span class="p">)</span>
+ <span class="s1">&#39;application/json&#39;</span>
+</pre></div>
+
+
+<p>根据 RFC 2616，HTTP头部不区分大小写。根据RFC 7230，接收方会对服务端对同一key的不同value进行组合。</p>
+<ul>
+<li>Cookies</li>
+</ul>
+<p>可以访问响应中包含的Cookie:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://automationtesting.sinaapp.com/login&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="p">[</span><span class="s1">&#39;saeut&#39;</span><span class="p">,</span> <span class="s1">&#39;trac_form_token&#39;</span><span class="p">,</span> <span class="s1">&#39;trac_session&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">cookies</span><span class="p">[</span><span class="s1">&#39;saeut&#39;</span><span class="p">]</span>
+ <span class="s1">&#39;CkMPGlT+tfQiXS9uGYviAg==&#39;</span>
+</pre></div>
+
+
+<p>使用cookies参数可以发送你的cookies到服务器:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://httpbin.org/cookies&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cookies</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cookies_are</span><span class="o">=</span><span class="s1">&#39;working&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="n">cookies</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+<span class="sa">u</span><span class="s1">&#39;{</span><span class="se">\n</span><span class="s1">  &quot;cookies&quot;: {</span><span class="se">\n</span><span class="s1">    &quot;cookies_are&quot;: &quot;working&quot;</span><span class="se">\n</span><span class="s1">  }</span><span class="se">\n</span><span class="s1">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+</pre></div>
+
+
+<ul>
+<li>重定向与请求历史</li>
+</ul>
+<p>默认对HEAD以外其他所有动作进行位置重定向。Response.history可以看到重定向的记录。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://github.com&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">url</span>
+<span class="sa">u</span><span class="s1">&#39;https://github.com/&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span>
+<span class="mi">200</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">history</span>
+<span class="p">[</span><span class="o">&lt;</span><span class="n">Response</span> <span class="p">[</span><span class="mi">301</span><span class="p">]</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>GET, OPTIONS, POST, PUT, PATCH 或者 DELETE可以通过allow_redirects参数禁用重定向，这个设置对HEAD也生效:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://github.com&#39;</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span>
+<span class="mi">301</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">history</span>
+<span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="s1">&#39;http://github.com&#39;</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">url</span>
+<span class="sa">u</span><span class="s1">&#39;https://github.com/&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">history</span>
+<span class="p">[</span><span class="o">&lt;</span><span class="n">Response</span> <span class="p">[</span><span class="mi">301</span><span class="p">]</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+
+
+<ul>
+<li>超时</li>
+</ul>
+<p>超时告诉requests在经过timeout参数的秒之后停止等待响应:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://github.com&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>    
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib/python2.7/dist-packages/requests/api.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">55</span><span class="p">,</span> <span class="ow">in</span> <span class="n">get</span>
+    <span class="k">return</span> <span class="n">request</span><span class="p">(</span><span class="s1">&#39;get&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib/python2.7/dist-packages/requests/api.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">44</span><span class="p">,</span> <span class="ow">in</span> <span class="n">request</span>
+    <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib/python2.7/dist-packages/requests/sessions.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">455</span><span class="p">,</span> <span class="ow">in</span> <span class="n">request</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prep</span><span class="p">,</span> <span class="o">**</span><span class="n">send_kwargs</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib/python2.7/dist-packages/requests/sessions.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">558</span><span class="p">,</span> <span class="ow">in</span> <span class="n">send</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib/python2.7/dist-packages/requests/adapters.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">387</span><span class="p">,</span> <span class="ow">in</span> <span class="n">send</span>
+    <span class="k">raise</span> <span class="n">Timeout</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">Timeout</span><span class="p">:</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">urllib3</span><span class="o">.</span><span class="n">connectionpool</span><span class="o">.</span><span class="n">HTTPConnectionPool</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f807dd6f050</span><span class="o">&gt;</span><span class="p">,</span> <span class="s1">&#39;Connection to github.com timed out. (connect timeout=0.1)&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p>注: 超时不是对整个响应下载的时间限制, 而且指定时间没有收到服务器返回就抛出异常。</p>
+<ul>
+<li>错误与异常</li>
+</ul>
+<p>ConnectionError：网络问题(如DNS失败、拒绝连接等)。</p>
+<p>HTTPError: 比较罕见的无效HTTP响应时。</p>
+<p>Timeout：请求超时。</p>
+<p>TooManyRedirects：超过了设定的最大重定向次数。</p>
+<p>requests.exceptions.RequestException是所有具体异常的基类。</p>
+<h2 id="_5">高级用法</h2>
+<ul>
+<li>Session对象</li>
+</ul>
+<p>Session对象能够跨请求保持参数，Session实例发出的所有请求共享cookies。</p>
+<p>Session对象具有主Requests API的所有方法。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org/cookies/set/sessioncookie/123456789&#39;</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">Response</span> <span class="p">[</span><span class="mi">200</span><span class="p">]</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://httpbin.org/cookies&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="s2">&quot;cookies&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;sessioncookie&quot;</span><span class="p">:</span> <span class="s2">&quot;123456789&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Session也可为request方法提供缺省数据，添加属性即可:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">auth</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;pass&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;x-test&#39;</span><span class="p">:</span> <span class="s1">&#39;true&#39;</span><span class="p">})</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org/headers&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;x-test2&#39;</span><span class="p">:</span> <span class="s1">&#39;true&#39;</span><span class="p">})</span>
+<span class="o">&lt;</span><span class="n">Response</span> <span class="p">[</span><span class="mi">200</span><span class="p">]</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>传递给request方法的字典都会与已有session层的值合并。方法层的参数会覆盖会话的参数。在方法层参数中将键值设置为None，会被自动忽略key。参考： <a href="http://docs.python-requests.org/en/latest/api/#sessionapi">session api</a></p>
+<ul>
+<li>请求(Request)和响应(Response)对象</li>
+</ul>
+<p>requests.get()等请求主要做两件的事情。一为构建Request 对象。二为收到服务器响应时产生Response 对象。Response对象包含服务器返回和原来的 Request 对象。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://en.wikipedia.org/wiki/Monty_Python&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span>
+<span class="p">{</span><span class="s1">&#39;content-length&#39;</span><span class="p">:</span> <span class="s1">&#39;67559&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span>
+<span class="p">{</span><span class="s1">&#39;Connection&#39;</span><span class="p">:</span> <span class="s1">&#39;keep-alive&#39;</span><span class="p">,</span> <span class="s1">&#39;Accept-Encoding&#39;</span><span class="p">:</span> <span class="o">...</span><span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>预请求  </li>
+</ul>
+<p>当从API或会话调用接收Response对象时，request属性实际上是PreparedRequest。如果你需要修改body或header，可以如下方式进行处理：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">requests</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">Session</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+<span class="n">req</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+    <span class="n">headers</span><span class="o">=</span><span class="n">header</span>
+<span class="p">)</span>
+<span class="n">prepped</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>
+
+<span class="c1"># do something with prepped.body</span>
+<span class="c1"># do something with prepped.headers</span>
+
+<span class="n">resp</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prepped</span><span class="p">,</span>
+    <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span>
+    <span class="n">verify</span><span class="o">=</span><span class="n">verify</span><span class="p">,</span>
+    <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">,</span>
+    <span class="n">cert</span><span class="o">=</span><span class="n">cert</span><span class="p">,</span>
+    <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span>
+<span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</pre></div>
+
+
+<p>这里没有对Request对象进行特殊处理，而是修改PreparedRequest对象。然后用<code>requests.*</code> 或<code>Session.*</code>.发送。  </p>
+<p>上述代码没有Request Session。Session层状态，如cookie不会使用。用Session.prepare_request()替换<a href="http://docs.python-requests.org/en/latest/api/#requests.Request.prepare"><code>Request.prepare()</code></a>即可增加状态支持：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">requests</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">Session</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+<span class="n">req</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span>  <span class="n">url</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">data</span>
+    <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+<span class="p">)</span>
+
+<span class="n">prepped</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">prepare_request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+
+<span class="c1"># do something with prepped.body</span>
+<span class="c1"># do something with prepped.headers</span>
+
+<span class="n">resp</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prepped</span><span class="p">,</span>
+    <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span>
+    <span class="n">verify</span><span class="o">=</span><span class="n">verify</span><span class="p">,</span>
+    <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">,</span>
+    <span class="n">cert</span><span class="o">=</span><span class="n">cert</span><span class="p">,</span>
+    <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span>
+<span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>SSL证书验证</li>
+</ul>
+<p>使用 verify 参数可以像web浏览器一样为HTTPS请求验证SSL证书:</p>
+<h2 id="_6">参考资料</h2>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 钉钉群21745728</li>
+<li><a href="http://docs.python-requests.org/en/latest/">requests英文文档</a>    </li>
+<li>requests-docs-cn.readthedocs.org  </li>
+<li>docs.python-requests.org/en/latest/</li>
+<li><a href="https://github.com/china-testing/python-api-tesing#http">HTTP相关python库</a></li>
+<li><a href="https://china-testing.github.io/python3_lib_requests.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>    </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash_ch9_2.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程9重要的标准库-高级篇">[雪峰磁针石博客]python3快速入门教程9重要的标准库-高级篇</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-09-04T08:50:00+08:00">
                 Published: 二 04 九月 2018
@@ -38,7 +578,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info --><h3 id="_1">日志</h3>
+</footer><!-- /.post-info -->                <h3 id="_1">日志</h3>
 <p>logging模块提供了完整和灵活的日志系统。</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Debugging information&#39;</span><span class="p">)</span>
@@ -52,139 +592,10 @@
 <p>输出如下:</p>
 <div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="ne">Warning</span><span class="p">:</span><span class="n">config</span> <span class="nb">file</span> <span class="n">server</span><span class="o">.</span><span class="n">conf</span> <span class="ow">not</span> <span class="n">found</span>
 <span class="n">ERROR</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">Error</span> <span class="n">occurred</span>
-<span class="n">CRITICAL</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">Critical</span> <span class="n">error</span> <span class="o">--</span> <span class="n">shutting</span> <span class="n">down</span>
-</pre></div>
-
-
-<p>默认捕获信息和调试消息不会输出，输出为准错误流。可输出信息到email，数据报文，socket或者HTTP服务器。过滤器可以基于DEBUG、INFO、WARNING、ERROR和CRITICAL选择不同的路由,  。</p>
-<p>日志系统可以直接在 Python 代码中定制，也可以不经过应用程序直接在一个用户可编辑的配置文件中加载。</p>
-<h3 id="_2">弱引用</h3>
-<p>Python自动进行内存管理(对大多数的对象进行引用计数和垃圾回收), 在最后一个引用消失后，内存会很快释放。</p>
-<p>这个工作方式对大多数应用程序工作良好，但是偶尔对象被别的地方使用时会需要跟踪对象。仅仅为跟踪它们创建引用也会使其长期存在。 weakref 模块提供了不用创建引用的跟踪对象工具，一旦对象不需要时，它自动从弱引用表上删除并触发回调。典型的应用包括捕获难以构造的对象:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">weakref</span><span class="o">,</span> <span class="nn">gc</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="o">...</span>         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
-<span class="o">...</span>     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="o">...</span>         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-<span class="o">...</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>                   <span class="c1"># create a reference</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">weakref</span><span class="o">.</span><span class="n">WeakValueDictionary</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;primary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>            <span class="c1"># does not create a reference</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;primary&#39;</span><span class="p">]</span>                <span class="c1"># fetch the object if it is still alive</span>
-<span class="mi">10</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">del</span> <span class="n">a</span>                       <span class="c1"># remove the one reference</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>                <span class="c1"># run garbage collection right away</span>
-<span class="mi">0</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;primary&#39;</span><span class="p">]</span>                <span class="c1"># entry was automatically removed</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-    <span class="n">d</span><span class="p">[</span><span class="s1">&#39;primary&#39;</span><span class="p">]</span>                <span class="c1"># entry was automatically removed</span>
-  <span class="n">File</span> <span class="s2">&quot;C:/python36/lib/weakref.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">46</span><span class="p">,</span> <span class="ow">in</span> <span class="fm">__getitem__</span>
-    <span class="n">o</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]()</span>
-<span class="ne">KeyError</span><span class="p">:</span> <span class="s1">&#39;primary&#39;</span>
-</pre></div>
-
-
-<h3 id="_3">列表工具</h3>
-<p>很多数据结构会用到内置列表类型。然而有时可能需要不同性能的实现。</p>
-<p>array 块提供了类似列表的array()对象，它仅仅是存储数据更紧凑。以下的示例演存储双字节无符号整数的数组(类型编码)"H"）而非存储16字节Python 整数对象的常规列表:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">array</span> <span class="kn">import</span> <span class="n">array</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">4000</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">22222</span><span class="p">])</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="mi">26932</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
-<span class="n">array</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">700</span><span class="p">])</span>
-</pre></div>
-
-
-<p>collections模块提供了类似列表的deque()对象，它从左边append和pop更快，但是中间查询更慢。这些对象更适用于队列实现和广度优先的树搜索:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="s2">&quot;task1&quot;</span><span class="p">,</span> <span class="s2">&quot;task2&quot;</span><span class="p">,</span> <span class="s2">&quot;task3&quot;</span><span class="p">])</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;task4&quot;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Handling&quot;</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">popleft</span><span class="p">())</span>
-<span class="n">Handling</span> <span class="n">task1</span>
-
-<span class="n">unsearched</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="n">starting_node</span><span class="p">])</span>
-<span class="k">def</span> <span class="nf">breadth_first_search</span><span class="p">(</span><span class="n">unsearched</span><span class="p">):</span>
-    <span class="n">node</span> <span class="o">=</span> <span class="n">unsearched</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">gen_moves</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">is_goal</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">m</span>
-        <span class="n">unsearched</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-</pre></div>
-
-
-<p>除了链表的替代实现，该库还提供了bisect这样的模块以操作有序链表:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">bisect</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">scores</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;perl&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;tcl&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="s1">&#39;lua&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">)]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">bisect</span><span class="o">.</span><span class="n">insort</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="s1">&#39;ruby&#39;</span><span class="p">))</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">scores</span>
-<span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;perl&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;tcl&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="s1">&#39;ruby&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="s1">&#39;lua&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">)]</span>
-</pre></div>
-
-
-<p>heapq模块提供了基于常规链表的堆实现。最小的值总是保持在0。这在希望循环访问最小元素但是不想执行完整列表排序的时候非常有用:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">heapq</span> <span class="kn">import</span> <span class="n">heapify</span><span class="p">,</span> <span class="n">heappop</span><span class="p">,</span> <span class="n">heappush</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">heapify</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>                      <span class="c1"># rearrange the list into heap order</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">heappush</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">)</span>                 <span class="c1"># add a new entry</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">heappop</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>  <span class="c1"># fetch the three smallest entries</span>
-<span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-</pre></div>
-
-
-<h3 id="_4">十进制浮点数算法</h3>
-<p>decimal模块提供了Decimal数据类型用于浮点数计算。相比内置的二进制浮点数实现float，这个类型更适用于：
- * 金融应用和其它需要精确十进制表达的场合，
- * 控制精度，
- * 控制四舍五入
- * 重要数据，
- * 其他希望计算结果与手算相符的场合。</p>
-<p>例如对70分电话费的5%税计算，十进制浮点数和二进制浮点数计算结果的差别如下。如果在分值上舍入，这个差别就很大:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.70&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;1.05&#39;</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.74&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">70</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="mf">0.73</span>
-</pre></div>
-
-
-<p>Decimal的结果总是保有结尾的0，自动从两位精度延伸到4位。Decimal重现了手工的数学运算，这就确保了二进制浮点数无法精确保有的数据精度。</p>
-<p>Decimal可以执行二进制浮点数无法进行的模运算和等值测试:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;1.00&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;.10&#39;</span><span class="p">)</span>
-<span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.00&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="mf">1.00</span> <span class="o">%</span> <span class="mf">0.10</span>
-<span class="mf">0.09999999999999995</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">sum</span><span class="p">([</span><span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.1&#39;</span><span class="p">)]</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
-<span class="bp">True</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">sum</span><span class="p">([</span><span class="mf">0.1</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.0</span>
-<span class="bp">False</span>
-</pre></div>
-
-
-<p>decimal提供了高精度算法:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">getcontext</span><span class="p">()</span><span class="o">.</span><span class="n">prec</span> <span class="o">=</span> <span class="mi">36</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">Decimal</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">Decimal</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.142857142857142857142857142857142857&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<h2 id="_5">参考资料</h2>
-<ul>
-<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/python3_crash_ch9_2.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<span class="n">CRITICAL</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">Critical</span> <span class="n">error …</span></pre></div>
+                <a class="readmore" href="/python3_crash_ch9_2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -459,43 +870,6 @@
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[:]</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16 …</span></pre></div>
                 <a class="readmore" href="/python3_crash7.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_crash5.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构1变量与赋值">[雪峰磁针石博客]python3快速入门教程2数据结构1变量与赋值</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-09-02T10:30:00+08:00">
-                Published: 日 02 九月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">语法基础</h2>
-<p>解释器像简单的计算器：可以输入表达式，它会返回值。表达式语法很简单：运算符 + ， - ， * 和 / 与其它语言一样(例如Pascal或C)；括号用于分组。例如:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
-<span class="mi">4</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="mi">50</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="mi">6</span>
-<span class="mi">20</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="mi">50</span> <span class="o">-</span> <span class="mf">5.0</span><span class="o">*</span><span class="mi">6</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>
-<span class="mf">5.0</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="mi">8</span> <span class="o">/</span> <span class="mf">5.0</span>
-<span class="mf">1.6</span>
-</pre></div>
-
-
-<p>整数(例如2、4、20 )的类型是 int，带有小数部分的数字(例如5.0、1.6)的类型是 float。</p>
-<p>除法(/)永远返回浮点数。地板除使用 // 运算符；要计算余数你可以使用 %。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">17</span> <span class="o">/</span> <span class="mi">3 …</span></pre></div>
-                <a class="readmore" href="/python3_crash5.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

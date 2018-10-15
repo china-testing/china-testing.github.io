@@ -29,6 +29,34 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_crash_ch7.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程7输入和输出">[雪峰磁针石博客]python3快速入门教程7输入和输出</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:40:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>python有多种输出方式：屏幕打印数据，或者写入文件。</p>
+<h2 id="_1">格式化输出</h2>
+<p>我们有两种大相径庭地输出值方法：表达式语句* 和 <a href="https://docs.python.org/3/library/functions.html#print">print()</a> 函数(第三种方法使用文件对象的write()方法，标准文件输出可以参考sys.stdout)。</p>
+<p>通常需要对输出做更多的格式控制，而不是简单的打印空格分隔值。有两种方法可以格式化你的输出：第一种方法是由你自己处理整个字符串，通过使用字符串切片和连接操作可以创建任何你想要的输出形式。string 类型包含一些将字符串填充到指定列宽度的有用操作。第二种方法是使用 <a href="https://docs.python.org/3/library/stdtypes.html#str.format">str.format()</a> 方法。</p>
+<p>标准模块 <a href="https://docs.python.org/3/library/string.html#module-string">string</a> 的<a href="https://docs.python.org/3/library/string.html#string.Template">Template</a> 类可以替换字符串的值。(<a href="https://china-testing.github.io/python3_lib_string.html">python标准模块介绍-string:文本常量和模板</a>)</p>
+<p>Python 有办法将任意值转为字符串： <a href="https://docs.python.org/3/library/functions.html#repr">repr()</a> 或 <a href="https://docs.python.org/3/library/stdtypes.html#str">str()</a> 函数。</p>
+<p>函数 <a href="https://docs.python.org/3/library/stdtypes.html#str">str()</a> 用于将值转化为适于人阅读的形式，而 <a href="https://docs.python.org/3/library/functions.html#repr">repr()</a> 转化为供解释器读取的形式（如果没有相关语法，则会发生 <a href="https://docs.python.org/3/library/exceptions.html#SyntaxError">SyntaxError</a> 异常，没有<a href="https://docs.python.org/3/library/stdtypes.html#str">str()</a> 会返回与 …</p>
+                <a class="readmore" href="/python3_crash_ch7.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_crash6.html" rel="bookmark"
                            title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构2字符串">[雪峰磁针石博客]python3快速入门教程2数据结构2字符串</a></h1>
                 </header>
@@ -383,58 +411,6 @@
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">6 …</span></pre></div>
                 <a class="readmore" href="/python3_lib_ftplib.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_binascii.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python标准模块介绍- binascii 二进制和ASCII转换">[雪峰磁针石博客]python标准模块介绍- binascii 二进制和ASCII转换</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:17:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>binascii模块包含很多用来方法来转换二进制和各种ASCII编码的二进制表示法。通常不直接使用这些功能，而是使用封装模块，如uu, base64或binhex。binascii模块包含用C语言编写更快的低级功能，通常为高级模块所使用。</p>
-<ul>
-<li>
-<p>功能：二进制和ASCII转换。</p>
-</li>
-<li>
-<p>类型：标准模块</p>
-</li>
-<li>
-<p>相关模块：</p>
-<ol>
-<li>
-<p>base64 标准模块。</p>
-</li>
-<li>
-<p>binhex 标准模块。</p>
-</li>
-<li>
-<p>uu        标准模块。</p>
-</li>
-<li>
-<p>quopri  标准模块。</p>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="uu">Uu编码</h2>
-<p>uu编码格式现在已经比较少使用（<a href="http://zh.wikipedia.org/wiki/Uuencode">http://zh.wikipedia.org/wiki/Uuencode</a>），相关函数binascii.a2b_uu(string)和binascii.b2a_uu(data)这里不做介绍。 更多资料参见：<a href="http://docs.python.org/2/library/uu.html">http://docs.python.org/2/library/uu.html</a></p>
-<h2 id="binhex">Binhex编码</h2>
-<p>Binhex用于Macintosh平台。这里暂不做介绍。相关函数有：binascii …</p>
-                <a class="readmore" href="/python3_lib_binascii.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
