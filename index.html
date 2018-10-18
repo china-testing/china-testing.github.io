@@ -275,6 +275,86 @@
 <li>面试问答</li>
 </ul>
 <p>1.drag_and_drop()有什么用途?</p>
+<h3 id="selenium">selenium 上机实操: 下拉刷新框中所有内容(实现)</h3>
+<ul>
+<li>打开：http://www.webscrapingfordatascience.com/complexjavascript/</li>
+<li>抓取框中所有内容。该框按住鼠标中键下滚，会有刷新内容，直至完全加载</li>
+</ul>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-35f60fa8c7327488.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>参考答案</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># 讨论钉钉免费群21745728 qq群144081101 567351477</span>
+<span class="c1"># CreateDate: 2018-10-18</span>
+
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support</span> <span class="kn">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">EC</span>
+<span class="kn">from</span> <span class="nn">selenium.common.exceptions</span> <span class="kn">import</span> <span class="n">TimeoutException</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.action_chains</span> <span class="kn">import</span> <span class="n">ActionChains</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
+
+<span class="k">class</span> <span class="nc">at_least_n_elements_found</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">locator</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locator</span> <span class="o">=</span> <span class="n">locator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">driver</span><span class="p">):</span>
+        <span class="n">elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">locator</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">elements</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://www.webscrapingfordatascience.com/complexjavascript/&#39;</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="c1"># Use an implicit wait for cases where we don&#39;t use an explicit one</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">implicitly_wait</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">div_element</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_class_name</span><span class="p">(</span><span class="s1">&#39;infinite-scroll&#39;</span><span class="p">)</span>
+<span class="n">quotes_locator</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.quote:not(.decode)&quot;</span><span class="p">)</span>
+
+<span class="n">nr_quotes</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+
+    <span class="c1"># Scroll down to the bottom, now using action (chains)</span>
+    <span class="n">action_chain</span> <span class="o">=</span> <span class="n">ActionChains</span><span class="p">(</span><span class="n">driver</span><span class="p">)</span>
+    <span class="c1"># Move to our quotes block</span>
+    <span class="n">action_chain</span><span class="o">.</span><span class="n">move_to_element</span><span class="p">(</span><span class="n">div_element</span><span class="p">)</span>
+    <span class="c1"># Click it to give it focus</span>
+    <span class="n">action_chain</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+    <span class="c1"># Press the page down key about 10 ten times</span>
+    <span class="n">action_chain</span><span class="o">.</span><span class="n">send_keys</span><span class="p">([</span><span class="n">Keys</span><span class="o">.</span><span class="n">PAGE_DOWN</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)])</span>
+    <span class="c1"># Do these actions</span>
+    <span class="n">action_chain</span><span class="o">.</span><span class="n">perform</span><span class="p">()</span>
+
+    <span class="c1"># Try to fetch at least nr_quotes+1 quotes</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">all_quotes</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+            <span class="n">at_least_n_elements_found</span><span class="p">(</span><span class="n">quotes_locator</span><span class="p">,</span> <span class="n">nr_quotes</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">except</span> <span class="n">TimeoutException</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+        <span class="c1"># No new quotes found within 3 seconds, assume this is all there is</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;... done!&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+
+    <span class="c1"># Otherwise, update the quote counter</span>
+    <span class="n">nr_quotes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_quotes</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;... now seeing&quot;</span><span class="p">,</span> <span class="n">nr_quotes</span><span class="p">,</span> <span class="s2">&quot;quotes&quot;</span><span class="p">)</span>
+
+<span class="c1"># all_quotes will contain all the quote elements</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_quotes</span><span class="p">),</span> <span class="s1">&#39;quotes found</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">quote</span> <span class="ow">in</span> <span class="n">all_quotes</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">quote</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Press ENTER to close the automated browser&#39;</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+
+
+<ul>
+<li>面试问答</li>
+</ul>
+<p>1.如何模拟鼠标中键下滚?</p>
 <h2 id="_4">参考资料</h2>
 <ul>
 <li>讨论 钉钉群21745728 qq群144081101 567351477</li>
@@ -520,14 +600,14 @@ OpenCV and Python 使用OpenCV和Python对机器学习和图像处理世界的�
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/python3_crash_ch9_2.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python3快速入门教程9重要的标准库-高级篇">[雪峰磁针石博客]python3快速入门教程9重要的标准库-高级篇</a></h1>
+                    <h1><a href="/python_pep8.html" rel="bookmark"
+                           title="Permalink to python代码风格指南(PEP8中文版)">python代码风格指南(PEP8中文版)</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2018-09-04T08:50:00+08:00">
-                Published: 二 04 九月 2018
+        <abbr class="published" title="2018-08-21T14:50:00+08:00">
+                Published: 二 21 八月 2018
         </abbr>
 
         <address class="vcard author">
@@ -535,58 +615,72 @@ OpenCV and Python 使用OpenCV和Python对机器学习和图像处理世界的�
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info -->                <h3 id="_1">日志</h3>
-<p>logging模块提供了完整和灵活的日志系统。</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Debugging information&#39;</span><span class="p">)</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Informational message&#39;</span><span class="p">)</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Warning:config file </span><span class="si">%s</span><span class="s1"> not found&#39;</span><span class="p">,</span> <span class="s1">&#39;server.conf&#39;</span><span class="p">)</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Error occurred&#39;</span><span class="p">)</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s1">&#39;Critical error -- shutting down&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>输出如下:</p>
-<div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="ne">Warning</span><span class="p">:</span><span class="n">config</span> <span class="nb">file</span> <span class="n">server</span><span class="o">.</span><span class="n">conf</span> <span class="ow">not</span> <span class="n">found</span>
-<span class="n">ERROR</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">Error</span> <span class="n">occurred</span>
-<span class="n">CRITICAL</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">Critical</span> <span class="n">error …</span></pre></div>
-                <a class="readmore" href="/python3_crash_ch9_2.html">read more</a>
+</footer><!-- /.post-info -->                <p>本文给出主Python版本标准库的编码约定。CPython的C代码风格参见<a href="https://www.python.org/dev/peps/pep-0007/">PEP7</a>。</p>
+<p>本文和<a href="https://www.python.org/dev/peps/pep-0257/">PEP 257 文档字符串标准</a>改编自Guido最初的《Python Style Guide》, 并增加了Barry的<a href="http://barry.warsaw.us/software/STYLEGUIDE.txt">GNU Mailman Coding Style Guide</a>的部分内容。</p>
+<p>本文会随着语言改变等而改变。</p>
+<p>许多项目都有自己的编码风格指南，冲突时自己的指南为准。</p>
+<h2 id="_1">一致性考虑</h2>
+<p>Guido的关键点之一是：代码更多是用来读而不是写。本指南旨在改善Python代码的可读性，即<a href="https://www.python.org/dev/peps/pep-0020/">PEP 20</a>所说的“可读性计数"(Readability counts)。</p>
+<p>风格指南强调一致性。项目、模块或函数保持一致都很重要。</p>
+<p>最重要的是知道何时不一致, 有时风格指南并不适用。当有疑惑时运用你的最佳判断，参考其他例子并多问！</p>
+<p>特别注意：不要因为遵守本PEP而破坏向后兼容性！</p>
+<p>部分可以违背指南情况：</p>
+<ul>
+<li>
+<p>遵循指南会降低可读性。</p>
+</li>
+<li>
+<p>与周围其他代码不一致。</p>
+</li>
+<li>
+<p>代码在引入指南完成，暂时没有理由修改。</p>
+</li>
+<li>
+<p>旧版本兼容。</p>
+</li>
+</ul>
+<h2 id="_2">代码布局</h2>
+<h4 id="_3">缩进</h4>
+<p>每级缩进用4个空格 …</p>
+                <a class="readmore" href="/python_pep8.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/python3_crash_ch11.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python3快速入门教程11命令行自动化工具与pexpect">[雪峰磁针石博客]python3快速入门教程11命令行自动化工具与pexpect</a></h1>
+                    <h1><a href="/testing_tools_mobile.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]软件测试专家工具包3移动端">[雪峰磁针石博客]软件测试专家工具包3移动端</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2018-09-02T13:50:00+08:00">
-                Published: 日 02 九月 2018
+        <abbr class="published" title="2018-08-21T11:30:00+08:00">
+                Published: 二 21 八月 2018
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="/author/andrew.html">andrew</a>
         </address>
-<p>In <a href="/category/python.html">python</a>.</p>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
 
-</footer><!-- /.post-info -->                <h2 id="pexpect">命令行自动化与pexpect</h2>
-<h3 id="_1">简介</h3>
-<p>Pexpect 是一个用来启动交互式命令行子程序并对其进行自动控制的 Python 工具模块。 Pexpect 可以用来和像 ssh、ftp、passwd、telnet 等命令行程序进行自动交互。可广泛用于自动化运维和测试，实现同时控制多台设备和自动化。Linux中的知名装包软件就使用了Pexpect。 Pexpect在IBM，alibaba，google等公司有广泛使用，在https://pypi.python.org/pypi/pexpect 的日下载量一万左右。</p>
-<p>纯python实现，依赖pty模块(不支持Windows)。</p>
-<p>最新英文版文档参见：<a href="http://pexpect.readthedocs.org/en/latest/">http://pexpect.readthedocs.org/en/latest/</a></p>
-<p>安装：</p>
-<p>版本要求：Python 2.6、3.2 或以上</p>
-<h3 id="_2">快速入门</h3>
-<p>ssh登录是常用的操作，过程如下：</p>
-<div class="highlight"><pre><span></span><span class="c1"># ssh test@172 …</span></pre></div>
-                <a class="readmore" href="/python3_crash_ch11.html">read more</a>
+</footer><!-- /.post-info -->                <h3 id="ui-automator">UI Automator</h3>
+<p>UI Automator提供了一组API来构建基于交互UI的测试。API允许你执行操作，如打开设置菜单，非常适合黑盒自动化测试，在测试代码不依赖于应用的内部实现</p>
+<p>uiautomatorviewer提供了一个方便的图形用户界面进行扫描和分析在Android设备上当前显示的UI组件。您可以使用此工具来检查的布局层次和查看UI组件。 </p>
+<p>UiDevice类可以访问设备并进行操作。你可以调用它的方法来访问设备属性，如当前的方向或显示尺寸。该UiDevice类也让您执行操作，例如：旋转设备；按下D-pad按钮；按Back、Home、Menu等；打开通知树栏；当前窗口截图等。</p>
+<p>应用相关的API： UiCollection枚举容器的UI元素以计数，或通过文字(或属性等)针定位子元素; UIObject表示是在设备上可见的UI元素; UiScrollable?：为可滚动UI容器提供查找支持； UiSelector?：查询一个或者多个UI元素; Configurator: 设置参数。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1edb5256ab4105cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>示例：更改语言</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">uiautomator</span> <span class="kn">import</span> <span class="n">device</span> <span class="k">as</span> <span class="n">d</span>
+
+<span class="n">d</span><span class="o">.</span><span class="n">screen …</span></pre></div>
+                <a class="readmore" href="/testing_tools_mobile.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 11
+    Page 1 / 10
         <a href="/index2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
