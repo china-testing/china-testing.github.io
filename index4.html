@@ -29,6 +29,53 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_boost.html" rel="bookmark"
+                           title="Permalink to python3外部库boost介绍 用c++为python编写扩展">python3外部库boost介绍 用c++为python编写扩展</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-15T16:20:00+08:00">
+                Published: 三 15 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">概述</h2>
+<p>有不同的方法来用C++扩展Python：</p>
+<ul>
+<li>Swig</li>
+<li>使用Boost.Python，可选择使用Py++预处理</li>
+<li>使用Cython。</li>
+</ul>
+<p>Cython出现之前，Boost.Python是编写C ++扩展模块最爽的方式。</p>
+<p>Boost.Python集成在Boost C++ Libraries中。 要在Ubuntu系统上安装；</p>
+<div class="highlight"><pre><span></span>$ sudo apt-get install libboost-python-dev 
+$ sudo apt-get install python-dev
+</pre></div>
+
+
+<h3 id="_2">快速入门</h3>
+<p>hellomodule.cpp</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">say_hello</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Hello &quot;</span> <span class="o">&lt;&lt;</span>  <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;boost/python/module.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;boost …</span></pre></div>
+                <a class="readmore" href="/python3_lib_boost.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_crash1.html" rel="bookmark"
                            title="Permalink to python3快速入门教程1 turtle绘图-1开始">python3快速入门教程1 turtle绘图-1开始</a></h1>
                 </header>
@@ -416,47 +463,6 @@ connection = pymysql.connect(host='localhost',
 
     <span class="k">def</span> <span class="nf">add_crime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude …</span></pre></div></td></tr></table>
                 <a class="readmore" href="/python_flask_autotest7.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_flask_autotest5.html" rel="bookmark"
-                           title="Permalink to flask构建自动化测试平台5-提高用户体验">flask构建自动化测试平台5-提高用户体验</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-05-22T10:26:00+08:00">
-                Published: 二 22 五月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="5-">5-提高用户体验</h2>
-<p>本章将介绍以下主题：</p>
-<ul>
-<li>cookies</li>
-<li>CSS</li>
-</ul>
-<p><a href="https://www.jianshu.com/p/5a4eb6947e41">本文最新版本</a> </p>
-<p>代码： headlines.py</p>
-<p>```#!python
-import feedparser
-from flask import Flask
-from flask import render_template
-from flask import request
-from flask import make_response</p>
-<p>import datetime
-import json
-import urllib</p>
-<p>app = Flask(<strong>name</strong>)</p>
-<p>RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
-             'cnn': 'http://rss.cnn …</p>
-                <a class="readmore" href="/python_flask_autotest5.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

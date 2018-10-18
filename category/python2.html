@@ -29,6 +29,45 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_crash6.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构2字符串">[雪峰磁针石博客]python3快速入门教程2数据结构2字符串</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:35:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">快速入门</h2>
+<p>字符串可以包含在单引号或双引号中。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;spam eggs&#39;</span>  <span class="c1"># single quotes</span>
+<span class="s1">&#39;spam eggs&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;doesn</span><span class="se">\&#39;</span><span class="s1">t&#39;</span>  <span class="c1"># use \&#39; to escape the single quote...</span>
+<span class="s2">&quot;doesn&#39;t&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;doesn&#39;t&quot;</span>  <span class="c1"># ...or use double quotes instead</span>
+<span class="s2">&quot;doesn&#39;t&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;&quot;Yes,&quot; he said.&#39;</span>
+<span class="s1">&#39;&quot;Yes,&quot; he said.&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">Yes,</span><span class="se">\&quot;</span><span class="s2"> he said.&quot;</span>
+<span class="s1">&#39;&quot;Yes,&quot; he said.&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;&quot;Isn</span><span class="se">\&#39;</span><span class="s1">t,&quot; she said.&#39;</span>
+<span class="s1">&#39;&quot;Isn</span><span class="se">\&#39;</span><span class="s1">t,&quot; she said.&#39;</span>
+</pre></div>
+
+
+<p>解释器按照字符串被输入的方式显示字符串，通常包含在单引号中，如果内容包含包含单引号 …</p>
+                <a class="readmore" href="/python3_crash6.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_crash7.html" rel="bookmark"
                            title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构3列表">[雪峰磁针石博客]python3快速入门教程2数据结构3列表</a></h1>
                 </header>
@@ -404,51 +443,6 @@
 <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">platform</span><span class="o">.</span><span class="n">python_version</span><span class="p">()</span>
 <span class="n">Out …</span></pre></div>
                 <a class="readmore" href="/python3_lib_platform.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_crash2.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python3快速入门教程1 turtle绘图-2函数">[雪峰磁针石博客]python3快速入门教程1 turtle绘图-2函数</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T12:20:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">菲波那契序列:</h2>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># Fibonacci series:</span>
-<span class="o">...</span> <span class="c1"># the sum of two elements defines the next</span>
-<span class="o">...</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-<span class="o">...</span>     <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
-<span class="o">...</span>
-<span class="mi">1</span>
-<span class="mi">1</span>
-<span class="mi">2</span>
-<span class="mi">3</span>
-<span class="mi">5</span>
-<span class="mi">8</span>
-</pre></div>
-
-
-<p>本例的新特性。</p>
-<ul>
-<li>
-<p>第一行和最后一行有多赋值：第一行变量a和b同时获得了新的值0和1。最后一行右边首先完成计算，右边的表达式从左到右计算。</p>
-</li>
-<li>
-<p>条件(b &lt; 10)为true时while循环执行。这里Python类似C ，任何非零整数都为true；0为 false。判断条件也可以是字符串或列表等序列；所有长度不为零的为true ，空序列为false。示例中的测试是一个简单的比较。标准比较操作符与C相同： &lt;(小于 …</p></li></ul>
-                <a class="readmore" href="/python3_crash2.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
