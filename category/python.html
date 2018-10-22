@@ -27,7 +27,142 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/selenium_example5.html">selenium自动化测试工具python笔试面试项目实战5键盘操作</a></h1>
+                    <h1 class="entry-title"><a href="/python_monitor.html">python应用性能监控工具简介</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-10-22T09:20:00+08:00">
+                Published: 一 22 十月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info --><h2 id="_1">监控简介</h2>
+<p>监视工具捕获，分析和显示Web应用程序执行信息。每个应用程序在Web堆栈的所有层都可能出现问题。监控工具通过展示帮助开发人员和运营团队响应并修复问题。</p>
+<p>捕获和分析有关生产环境的数据对于主动处理Web应用程序的稳定性，性能和错误至关重要。</p>
+<p>监视和日志记录的目的非常相似，它们有助于诊断应用程序的问题并帮助调试。主要差异为日志基于事件触发，而监视是被动的背景数据集合。</p>
+<p>例如发生错误时，通过异常处理程序中的代码显式记录该事件。同时，监视代理程序对代码进行检测，并且不仅收集有关已记录异常的数据，还收集有关函数和方法性能的数据。</p>
+<p>操作系统和网络的监控关注: CPU、内存和磁盘利用率，网络带宽和延迟</p>
+<p>应用程序级别监视包含几个方面。 基于应用程序是重读，重写还是受到快速波动的影响而有所不同。涉及应用程序警告和错误(500级HTTP错误)、应用代码性能、模板渲染时间、浏览器渲染应用程序的时间、数据库查询性能等。</p>
+<h2 id="_2">开源监控项目</h2>
+<h3 id="_3">错误跟踪</h3>
+<ul>
+<li><a href="https://github.com/getsentry/sentry">Sentry</a></li>
+</ul>
+<p>最初只是一个Python监控项目，但现在可以用于任何编程语言。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-77698199050e060c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_4">度量</h3>
+<ul>
+<li><a href="https://github.com/etsy/statsd/">statsd</a></li>
+</ul>
+<p>是一个node.js网络守护程序，它监听指标并聚合它们以便转移到另一服务(如Graphite)。</p>
+<ul>
+<li><a href="https://graphite.readthedocs.org/en/latest/overview.html">Graphite</a></li>
+</ul>
+<p>存储时间序列数据，并通过Django Web应用程序在图形中显示它们。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a17b4bbfc3b73d29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li><a href="http://sensuapp.org/">Sensu</a></li>
+</ul>
+<p>是一个用Ruby编写的开源监控框架，但适用于任何编程语言Web应用程序。</p>
+<ul>
+<li><a href="http://vimeo.github.io/graph-explorer/">Graph Explorer</a></li>
+</ul>
+<p>Vimeo的Graph Explorer是一个基于Graphite的仪表板，具有附加功能和平滑的设计。</p>
+<ul>
+<li><a href="http://munin-monitoring.org/">Munin</a></li>
+</ul>
+<p>基于客户端插件的监控系统，可以将监控流量发送到Munin节点，在那里可以分析和可视化数据。请注意，此项目是用Perl编写的，因此必须在收集数据的节点上安装Perl 5。</p>
+<h3 id="_5">用户监控</h3>
+<ul>
+<li><a href="http://github.hubspot.com/bucky/">Bucky</a></li>
+</ul>
+<p>测量来自最终用户浏览器的Web应用程序的性能，并将该数据发送回服务器以进行收集。</p>
+<p><a href="https://china-testing.github.io/python_monitor.html">本文最新版本地址</a> https://china-testing.github.io/python_monitor.html</p>
+<h2 id="_6">第三方监控服务</h2>
+<p>第三方监控软件没有部署和操作软件的负担。但是，托管监控成本不低，应用程序数据有危险，因此这些服务并不适合每个项目。</p>
+<p>错误跟踪</p>
+<ul>
+<li><a href="https://rollbar.com/">Rollbar</a></li>
+</ul>
+<p>用于服务器端和客户端，用于捕获和报告异常。 pyrollbar代码库为Python Web应用程序提供了快速集成。还有一些常见Web框架的具体说明，例如Django和Pyramid。</p>
+<ul>
+<li><a href="https://sentry.io/welcome/">Sentry</a></li>
+</ul>
+<p>是开源工具的托管版本，用于货币化并支持二次开发。</p>
+<h3 id="apm">应用程序性能监控（APM）</h3>
+<ul>
+<li><a href="http://newrelic.com/">New Relic</a></li>
+</ul>
+<p>提供应用程序和数据库监控以及用于捕获和分析堆栈中其他devleoper工具（如Twilio）的数据的插件。</p>
+<ul>
+<li><a href="https://opbeat.com/">Opbeat</a></li>
+</ul>
+<p>专为django而建。 Opbeat将性能指标，发布跟踪和错误记录结合到一个简单的服务中。</p>
+<ul>
+<li><a href="https://scoutapp.com/python-monitoring">Scout</a></li>
+</ul>
+<p>监控Django和Flask应用程序的性能，自动检测视图，SQL查询，模板等。</p>
+<h3 id="_7">状态页面</h3>
+<ul>
+<li><a href="http://status.io/">Status.io</a></li>
+</ul>
+<p>Web应用程序的正常运行时间和响应指标可视化。</p>
+<ul>
+<li><a href="https://www.statuspage.io/">StatusPage.io</a></li>
+</ul>
+<p>简单的设置状态页面，用于监控应用程序的运行时间。</p>
+<h3 id="_8">事件管理</h3>
+<ul>
+<li><a href="http://www.pagerduty.com/">PagerDuty</a></li>
+</ul>
+<p>如果应用程序存在稳定性，性能或正常运行时间问题，PagerDuty会向指定人员或组发出警报。</p>
+<h2 id="_9">监控资源</h2>
+<p><a href="https://www.fullstackpython.com/blog/hosted-monitoring-flask-web-apps.html">How to Add Hosted Monitoring to Flask Web Applications</a>及[How to Monitor Bottle Web Applications]
+(https://www.fullstackpython.com/blog/monitor-python-web-applications.html)系列文章，介绍如何将托管监控添加到主要的Python Web框架应用程序。</p>
+<p><a href="http://www.paperplanes.de/2011/1/5/the_virtues_of_monitoring.html">The Virtues of Monitoring</a></p>
+<p><a href="http://blog.docker.io/2013/07/effortless-monitoring-with-collectd-graphite-and-docker/">Effortless Monitoring with collectd, Graphite, and Docker</a></p>
+<p><a href="http://matt.aimonetti.net/posts/2013/06/26/practical-guide-to-graphite-monitoring/">Practical Guide to StatsD/Graphite Monitoring</a>是一个详细的指南，其中包含用于监控基础架构的代码示例。</p>
+<p>"<a href="http://word.bitly.com/post/74839060954/ten-things-to-monitor">10 Things They Forgot to Monitor</a>
+描述了超出磁盘和内存使用等标准。</p>
+<p>四个Linux服务器监控工具 <a href="http://aarvik.dk/four-linux-server-monitoring-and-management-tools/">Four Linux server monitoring tools</a></p>
+<p>如何设计有用的监控和图形可视化 <a href="https://blog.serverdensity.com/how-to-design-useful-monitoring-graphs-and-visualizations/">How to design useful monitoring and graphing visualizations</a></p>
+<p><a href="https://speakerdeck.com/auxesis/5-years-of-metrics-and-monitoring">5 years of metrics and monitoring</a>
+是一个很好的演示，突出了可视化。线图通常不是最佳解决方案，而且它们被过度使用。</p>
+<p>Collector Highlight Series有一篇关于<a href="http://blog.librato.com/posts/statsd">StatsD</a>
+的文章，解释了如何安装它以及它是如何工作的。</p>
+<p><a href="http://kartar.net/2014/11/monitoring-survey---tools/">survey on monitoring tools</a>有一些关于开发人员和运营人员在其环境中使用的数据和图表。</p>
+<p>Ryan Frantz写了一篇关于<a href="http://ryanfrantz.com/posts/solving-monitoring/">Solving Monitoring</a>
+的好文章，其中新的定义是基于当今复杂系统的监控手段，以及该实践应如何发展。</p>
+<h2 id="_10">监控学习清单</h2>
+<p>查看下面的软件即服务和开源监控工具。第三方服务往往更容易设置和托管数据。开源项目为您提供了更多控制权，但您需要为监控准备其他服务器。</p>
+<p>我的建议是在试用期内安装New Relic的免费选项，以了解它如何与您的应用配合使用。它将使您对应用程序级监视工具的功能有所了解。</p>
+<p>作为您的应用程序比例，请查看如何使用Graphite设置其中一个开源监视项目，例如StatsD。这两个项目的组合将为您提供对您正在收集和可视化的系统指标的细粒度控制。</p>
+<p><a href="https://github.com/china-testing/python-api-tesing#%E7%9B%91%E6%8E%A7">python监控库参考</a>：https://github.com/china-testing/python-api-tesing#%E7%9B%91%E6%8E%A7</p>
+<h3 id="_11">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/python_monitor.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/selenium_example5.html" rel="bookmark"
+                           title="Permalink to selenium自动化测试工具python笔试面试项目实战5键盘操作">selenium自动化测试工具python笔试面试项目实战5键盘操作</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-10-18T09:20:00+08:00">
                 Published: 四 18 十月 2018
@@ -38,7 +173,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info --><h3 id="_1">说明</h3>
+</footer><!-- /.post-info -->                <h3 id="_1">说明</h3>
 <p>本文参考答案基于Chrome，分辨率1920*1080，在其他环境表现可能会不同。
 <a href="https://github.com/china-testing/python-api-tesing/tree/master/selenium_examples/ch5">本文代码地址</a></p>
 <ul>
@@ -58,317 +193,10 @@
 <p>参考答案</p>
 <div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># 讨论钉钉免费群21745728 qq群144081101 567351477</span>
-<span class="c1"># CreateDate: 2018-10-17</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.common.action_chains</span> <span class="kn">import</span> <span class="n">ActionChains</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
-
-
-<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://china-testing.github.io/&quot;</span><span class="p">)</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">implicitly_wait</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">maximize_window</span><span class="p">()</span>
-<span class="n">element</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_link_text</span><span class="p">(</span><span class="s1">&#39;数据分析&#39;</span><span class="p">)</span>
-<span class="n">element</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">element</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_link_text</span><span class="p">(</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
-<span class="n">ActionChains</span><span class="p">(</span><span class="n">driver</span><span class="p">)</span><span class="o">.</span><span class="n">key_down</span><span class="p">(</span><span class="n">Keys</span><span class="o">.</span><span class="n">CONTROL</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">element</span><span class="p">)</span><span class="o">.</span><span class="n">key_up</span><span class="p">(</span>
-    <span class="n">Keys</span><span class="o">.</span><span class="n">CONTROL</span><span class="p">)</span><span class="o">.</span><span class="n">perform</span><span class="p">()</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">window</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">window_handles</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># 关闭当前TAB</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>                                                                                            
-</pre></div>
-
-
-<ul>
-<li>
-<p>面试问答</p>
-</li>
-<li>
-<p>driver.quit() 和 driver.close()有什么区别？</p>
-</li>
-</ul>
-<p>2.selenium中按下和松开键如何表示？</p>
-<p>3.简述ActionChains类的作用？</p>
-<h3 id="_2">上机实操: 验证悬浮提示内容</h3>
-<ul>
-<li>打开：http://jqueryui.com/tooltip/</li>
-</ul>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e2c8b665145e97c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<ul>
-<li>鼠标移动到上图的"Your age:"</li>
-<li>确认悬浮提示内容为'We ask for your age only for statistical purposes.'</li>
-<li>
-<p>关闭浏览器</p>
-</li>
-<li>
-<p>参考答案</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># 讨论钉钉免费群21745728 qq群144081101 567351477</span>
-<span class="c1"># CreateDate: 2018-10-17</span>
-<span class="kn">import</span> <span class="nn">unittest</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.support</span> <span class="kn">import</span> <span class="n">expected_conditions</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.common.action_chains</span> <span class="kn">import</span> <span class="n">ActionChains</span>
-
-
-<span class="k">class</span> <span class="nc">ToolTipTest</span> <span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://jqueryui.com/tooltip/&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">implicitly_wait</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">maximize_window</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">test_tool_tip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">driver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span>
-
-        <span class="n">frame_elm</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_class_name</span><span class="p">(</span><span class="s1">&#39;demo-frame&#39;</span><span class="p">)</span>
-        <span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">frame_elm</span><span class="p">)</span>
-
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-        <span class="n">age_field</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">)</span>
-        <span class="n">ActionChains</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">)</span><span class="o">.</span><span class="n">move_to_element</span><span class="p">(</span><span class="n">age_field</span><span class="p">)</span><span class="o">.</span><span class="n">perform</span><span class="p">()</span>
-
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-        <span class="n">tool_tip_elm</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-            <span class="n">expected_conditions</span><span class="o">.</span><span class="n">visibility_of_element_located</span><span class="p">((</span>
-                <span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s1">&#39;ui-tooltip-content&#39;</span><span class="p">)))</span>
-
-        <span class="c1"># verify tooltip message</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s1">&#39;We ask for your age only for statistical purposes.&#39;</span><span class="p">,</span> 
-                         <span class="n">tool_tip_elm</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">verbosity</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>                                                                                      
-</pre></div>
-
-
-<ul>
-<li>面试问答</li>
-</ul>
-<p>1.move_to_element()有什么用途?</p>
-<h3 id="_3">上机实操: 双击改变颜色</h3>
-<ul>
-<li>打开：http://api.jquery.com/dblclick/</li>
-</ul>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-5e4a98cf41ee1d23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<ul>
-<li>
-<p>双击上图蓝色的框，把颜色该变成黄色</p>
-</li>
-<li>
-<p>参考答案</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># 讨论钉钉免费群21745728 qq群144081101 567351477</span>
-<span class="c1"># CreateDate: 2018-10-18</span>
-
-<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.common.action_chains</span> <span class="kn">import</span> <span class="n">ActionChains</span>
-<span class="kn">import</span> <span class="nn">unittest</span>
-
-
-<span class="k">class</span> <span class="nc">DoubleClickTest</span> <span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
-
-    <span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;http://api.jquery.com/dblclick/&#39;</span>
-
-    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URL</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">maximize_window</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">test_double_click</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">driver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span>
-        <span class="n">frame</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_tag_name</span><span class="p">(</span><span class="s1">&#39;iframe&#39;</span><span class="p">)</span>
-        <span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
-        <span class="n">box</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_tag_name</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
-
-        <span class="c1"># verify color is Blue</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s1">&#39;rgba(0, 0, 255, 1)&#39;</span><span class="p">,</span>
-                         <span class="n">box</span><span class="o">.</span><span class="n">value_of_css_property</span><span class="p">(</span><span class="s1">&#39;background-color&#39;</span><span class="p">))</span>
-
-        <span class="n">ActionChains</span><span class="p">(</span><span class="n">driver</span><span class="p">)</span><span class="o">.</span><span class="n">move_to_element</span><span class="p">(</span>
-            <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_tag_name</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">perform</span><span class="p">()</span>
-        <span class="n">ActionChains</span><span class="p">(</span><span class="n">driver</span><span class="p">)</span><span class="o">.</span><span class="n">double_click</span><span class="p">(</span><span class="n">box</span><span class="p">)</span><span class="o">.</span><span class="n">perform</span><span class="p">()</span>
-
-        <span class="c1"># verify Color is Yellow</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s1">&#39;rgba(255, 255, 0, 1)&#39;</span><span class="p">,</span>
-                         <span class="n">box</span><span class="o">.</span><span class="n">value_of_css_property</span><span class="p">(</span><span class="s1">&#39;background-color&#39;</span><span class="p">))</span>
-
-    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">verbosity</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-
-<ul>
-<li>面试问答</li>
-</ul>
-<p>1.double_click()有什么用途?</p>
-<p>2.rgba的含义？</p>
-<h3 id="tab_1">上机实操: 在新的TAB打开连接</h3>
-<ul>
-<li>打开：http://jqueryui.com/resources/demos/droppable/default.html</li>
-</ul>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-d201ab88cc9d1db8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<ul>
-<li>拖动左边的框到右边</li>
-</ul>
-<p>参考答案</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># 讨论钉钉免费群21745728 qq群144081101 567351477</span>
-<span class="c1"># CreateDate: 2018-10-18</span>
-<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.common.action_chains</span> <span class="kn">import</span> <span class="n">ActionChains</span>
-<span class="kn">import</span> <span class="nn">unittest</span>
-
-
-<span class="k">class</span> <span class="nc">DragAndDropTest</span> <span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
-
-    <span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;http://jqueryui.com/resources/demos/droppable/default.html&#39;</span>
-
-    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URL</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">maximize_window</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">test_drag_and_drop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">driver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span>
-
-        <span class="n">source</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s1">&#39;draggable&#39;</span><span class="p">)</span>
-        <span class="n">target</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s1">&#39;droppable&#39;</span><span class="p">)</span>
-
-        <span class="n">ActionChains</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">)</span><span class="o">.</span><span class="n">drag_and_drop</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span><span class="o">.</span><span class="n">perform</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s1">&#39;Dropped!&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">verbosity</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-
-<ul>
-<li>面试问答</li>
-</ul>
-<p>1.drag_and_drop()有什么用途?</p>
-<h3 id="selenium">selenium 上机实操: 下拉刷新框中所有内容(实现)</h3>
-<ul>
-<li>打开：http://www.webscrapingfordatascience.com/complexjavascript/</li>
-<li>抓取框中所有内容。该框按住鼠标中键下滚，会有刷新内容，直至完全加载</li>
-</ul>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-35f60fa8c7327488.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>参考答案</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># 讨论钉钉免费群21745728 qq群144081101 567351477</span>
-<span class="c1"># CreateDate: 2018-10-18</span>
-
-<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.support</span> <span class="kn">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">EC</span>
-<span class="kn">from</span> <span class="nn">selenium.common.exceptions</span> <span class="kn">import</span> <span class="n">TimeoutException</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.common.action_chains</span> <span class="kn">import</span> <span class="n">ActionChains</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
-
-<span class="k">class</span> <span class="nc">at_least_n_elements_found</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">locator</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">locator</span> <span class="o">=</span> <span class="n">locator</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
-
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">driver</span><span class="p">):</span>
-        <span class="n">elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">locator</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">elements</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">False</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://www.webscrapingfordatascience.com/complexjavascript/&#39;</span>
-<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="c1"># Use an implicit wait for cases where we don&#39;t use an explicit one</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">implicitly_wait</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">div_element</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_class_name</span><span class="p">(</span><span class="s1">&#39;infinite-scroll&#39;</span><span class="p">)</span>
-<span class="n">quotes_locator</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.quote:not(.decode)&quot;</span><span class="p">)</span>
-
-<span class="n">nr_quotes</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-
-    <span class="c1"># Scroll down to the bottom, now using action (chains)</span>
-    <span class="n">action_chain</span> <span class="o">=</span> <span class="n">ActionChains</span><span class="p">(</span><span class="n">driver</span><span class="p">)</span>
-    <span class="c1"># Move to our quotes block</span>
-    <span class="n">action_chain</span><span class="o">.</span><span class="n">move_to_element</span><span class="p">(</span><span class="n">div_element</span><span class="p">)</span>
-    <span class="c1"># Click it to give it focus</span>
-    <span class="n">action_chain</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-    <span class="c1"># Press the page down key about 10 ten times</span>
-    <span class="n">action_chain</span><span class="o">.</span><span class="n">send_keys</span><span class="p">([</span><span class="n">Keys</span><span class="o">.</span><span class="n">PAGE_DOWN</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)])</span>
-    <span class="c1"># Do these actions</span>
-    <span class="n">action_chain</span><span class="o">.</span><span class="n">perform</span><span class="p">()</span>
-
-    <span class="c1"># Try to fetch at least nr_quotes+1 quotes</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">all_quotes</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-            <span class="n">at_least_n_elements_found</span><span class="p">(</span><span class="n">quotes_locator</span><span class="p">,</span> <span class="n">nr_quotes</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="k">except</span> <span class="n">TimeoutException</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
-        <span class="c1"># No new quotes found within 3 seconds, assume this is all there is</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;... done!&quot;</span><span class="p">)</span>
-        <span class="k">break</span>
-
-    <span class="c1"># Otherwise, update the quote counter</span>
-    <span class="n">nr_quotes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_quotes</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;... now seeing&quot;</span><span class="p">,</span> <span class="n">nr_quotes</span><span class="p">,</span> <span class="s2">&quot;quotes&quot;</span><span class="p">)</span>
-
-<span class="c1"># all_quotes will contain all the quote elements</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_quotes</span><span class="p">),</span> <span class="s1">&#39;quotes found</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">quote</span> <span class="ow">in</span> <span class="n">all_quotes</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">quote</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-<span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Press ENTER to close the automated browser&#39;</span><span class="p">)</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
-</pre></div>
-
-
-<ul>
-<li>面试问答</li>
-</ul>
-<p>1.如何模拟鼠标中键下滚?</p>
-<h2 id="_4">参考资料</h2>
-<ul>
-<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
-<li><a href="https://china-testing.github.io/selenium_example5.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<span class="c1"># 讨论钉钉免费群21745728 qq群144081101 567351477 …</span></pre></div>
+                <a class="readmore" href="/selenium_example5.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -695,57 +523,9 @@
                 <a class="readmore" href="/python3_lib_string.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_weeks.html" rel="bookmark"
-                           title="Permalink to python测试开发自学每周一练">python测试开发自学每周一练</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-05-25T11:26:00+08:00">
-                Published: 五 25 五月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h1 id="table-of-contents">Table of Contents</h1>
-<ul>
-<li><a href="#python每周一练">python每周一练</a></li>
-<li><a href="#2018-06-06 json格式转换">2018-06-06 json格式转换</a></li>
-<li><a href="#2018-06-01 正则表达式及拼音排序">2018-06-01 正则表达式及拼音排序</a></li>
-<li><a href="#2018-05-25-旋转图片">2018-05-25 旋转图片</a></li>
-</ul>
-<h1 id="python">python每周一练</h1>
-<p>每周五发布python需求，所有需求都来自实际企业。下周五发布参考答案。</p>
-<ul>
-<li>
-<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
-</li>
-<li>
-<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
-</li>
-</ul>
-<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
-<p><a href="https://china-testing.github.io/python_weeks.html">本文最新版本</a> </p>
-<h3 id="2018-06-06-json">2018-06-06 json格式转换</h3>
-<p>现有 人脸标注的海量数据，部分参见：<a href="https://github.com/china-testing/python-api-tesing/tree/master/weeks/2018_06_06/data">data</a></p>
-<p>要求输出：
-1，files.txt </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4 …</pre></div></td></tr></table>
-                <a class="readmore" href="/python_weeks.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 4
+    Page 1 / 5
         <a href="/category/python2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
