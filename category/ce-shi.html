@@ -27,7 +27,142 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/testing_standard.html">2018软件测试标准汇总下载</a></h1>
+                    <h1 class="entry-title"><a href="/python_monitor.html">2018软件测试标准汇总下载</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-10-22T09:20:00+08:00">
+                Published: 一 22 十月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info --><h2 id="_1">监控简介</h2>
+<p>监视工具捕获，分析和显示Web应用程序执行信息。每个应用程序在Web堆栈的所有层都可能出现问题。监控工具通过展示帮助开发人员和运营团队响应并修复问题。</p>
+<p>捕获和分析有关生产环境的数据对于主动处理Web应用程序的稳定性，性能和错误至关重要。</p>
+<p>监视和日志记录的目的非常相似，它们有助于诊断应用程序的问题并帮助调试。主要差异为日志基于事件触发，而监视是被动的背景数据集合。</p>
+<p>例如发生错误时，通过异常处理程序中的代码显式记录该事件。同时，监视代理程序对代码进行检测，并且不仅收集有关已记录异常的数据，还收集有关函数和方法性能的数据。</p>
+<p>操作系统和网络的监控关注: CPU、内存和磁盘利用率，网络带宽和延迟</p>
+<p>应用程序级别监视包含几个方面。 基于应用程序是重读，重写还是受到快速波动的影响而有所不同。涉及应用程序警告和错误(500级HTTP错误)、应用代码性能、模板渲染时间、浏览器渲染应用程序的时间、数据库查询性能等。</p>
+<h2 id="_2">开源监控项目</h2>
+<h3 id="_3">错误跟踪</h3>
+<ul>
+<li><a href="https://github.com/getsentry/sentry">Sentry</a></li>
+</ul>
+<p>最初只是一个Python监控项目，但现在可以用于任何编程语言。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-77698199050e060c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_4">度量</h3>
+<ul>
+<li><a href="https://github.com/etsy/statsd/">statsd</a></li>
+</ul>
+<p>是一个node.js网络守护程序，它监听指标并聚合它们以便转移到另一服务(如Graphite)。</p>
+<ul>
+<li><a href="https://graphite.readthedocs.org/en/latest/overview.html">Graphite</a></li>
+</ul>
+<p>存储时间序列数据，并通过Django Web应用程序在图形中显示它们。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a17b4bbfc3b73d29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li><a href="http://sensuapp.org/">Sensu</a></li>
+</ul>
+<p>是一个用Ruby编写的开源监控框架，但适用于任何编程语言Web应用程序。</p>
+<ul>
+<li><a href="http://vimeo.github.io/graph-explorer/">Graph Explorer</a></li>
+</ul>
+<p>Vimeo的Graph Explorer是一个基于Graphite的仪表板，具有附加功能和平滑的设计。</p>
+<ul>
+<li><a href="http://munin-monitoring.org/">Munin</a></li>
+</ul>
+<p>基于客户端插件的监控系统，可以将监控流量发送到Munin节点，在那里可以分析和可视化数据。请注意，此项目是用Perl编写的，因此必须在收集数据的节点上安装Perl 5。</p>
+<h3 id="_5">用户监控</h3>
+<ul>
+<li><a href="http://github.hubspot.com/bucky/">Bucky</a></li>
+</ul>
+<p>测量来自最终用户浏览器的Web应用程序的性能，并将该数据发送回服务器以进行收集。</p>
+<p><a href="https://china-testing.github.io/python_monitor.html">本文最新版本地址</a> https://china-testing.github.io/python_monitor.html</p>
+<h2 id="_6">第三方监控服务</h2>
+<p>第三方监控软件没有部署和操作软件的负担。但是，托管监控成本不低，应用程序数据有危险，因此这些服务并不适合每个项目。</p>
+<p>错误跟踪</p>
+<ul>
+<li><a href="https://rollbar.com/">Rollbar</a></li>
+</ul>
+<p>用于服务器端和客户端，用于捕获和报告异常。 pyrollbar代码库为Python Web应用程序提供了快速集成。还有一些常见Web框架的具体说明，例如Django和Pyramid。</p>
+<ul>
+<li><a href="https://sentry.io/welcome/">Sentry</a></li>
+</ul>
+<p>是开源工具的托管版本，用于货币化并支持二次开发。</p>
+<h3 id="apm">应用程序性能监控（APM）</h3>
+<ul>
+<li><a href="http://newrelic.com/">New Relic</a></li>
+</ul>
+<p>提供应用程序和数据库监控以及用于捕获和分析堆栈中其他devleoper工具（如Twilio）的数据的插件。</p>
+<ul>
+<li><a href="https://opbeat.com/">Opbeat</a></li>
+</ul>
+<p>专为django而建。 Opbeat将性能指标，发布跟踪和错误记录结合到一个简单的服务中。</p>
+<ul>
+<li><a href="https://scoutapp.com/python-monitoring">Scout</a></li>
+</ul>
+<p>监控Django和Flask应用程序的性能，自动检测视图，SQL查询，模板等。</p>
+<h3 id="_7">状态页面</h3>
+<ul>
+<li><a href="http://status.io/">Status.io</a></li>
+</ul>
+<p>Web应用程序的正常运行时间和响应指标可视化。</p>
+<ul>
+<li><a href="https://www.statuspage.io/">StatusPage.io</a></li>
+</ul>
+<p>简单的设置状态页面，用于监控应用程序的运行时间。</p>
+<h3 id="_8">事件管理</h3>
+<ul>
+<li><a href="http://www.pagerduty.com/">PagerDuty</a></li>
+</ul>
+<p>如果应用程序存在稳定性，性能或正常运行时间问题，PagerDuty会向指定人员或组发出警报。</p>
+<h2 id="_9">监控资源</h2>
+<p><a href="https://www.fullstackpython.com/blog/hosted-monitoring-flask-web-apps.html">How to Add Hosted Monitoring to Flask Web Applications</a>及[How to Monitor Bottle Web Applications]
+(https://www.fullstackpython.com/blog/monitor-python-web-applications.html)系列文章，介绍如何将托管监控添加到主要的Python Web框架应用程序。</p>
+<p><a href="http://www.paperplanes.de/2011/1/5/the_virtues_of_monitoring.html">The Virtues of Monitoring</a></p>
+<p><a href="http://blog.docker.io/2013/07/effortless-monitoring-with-collectd-graphite-and-docker/">Effortless Monitoring with collectd, Graphite, and Docker</a></p>
+<p><a href="http://matt.aimonetti.net/posts/2013/06/26/practical-guide-to-graphite-monitoring/">Practical Guide to StatsD/Graphite Monitoring</a>是一个详细的指南，其中包含用于监控基础架构的代码示例。</p>
+<p>"<a href="http://word.bitly.com/post/74839060954/ten-things-to-monitor">10 Things They Forgot to Monitor</a>
+描述了超出磁盘和内存使用等标准。</p>
+<p>四个Linux服务器监控工具 <a href="http://aarvik.dk/four-linux-server-monitoring-and-management-tools/">Four Linux server monitoring tools</a></p>
+<p>如何设计有用的监控和图形可视化 <a href="https://blog.serverdensity.com/how-to-design-useful-monitoring-graphs-and-visualizations/">How to design useful monitoring and graphing visualizations</a></p>
+<p><a href="https://speakerdeck.com/auxesis/5-years-of-metrics-and-monitoring">5 years of metrics and monitoring</a>
+是一个很好的演示，突出了可视化。线图通常不是最佳解决方案，而且它们被过度使用。</p>
+<p>Collector Highlight Series有一篇关于<a href="http://blog.librato.com/posts/statsd">StatsD</a>
+的文章，解释了如何安装它以及它是如何工作的。</p>
+<p><a href="http://kartar.net/2014/11/monitoring-survey---tools/">survey on monitoring tools</a>有一些关于开发人员和运营人员在其环境中使用的数据和图表。</p>
+<p>Ryan Frantz写了一篇关于<a href="http://ryanfrantz.com/posts/solving-monitoring/">Solving Monitoring</a>
+的好文章，其中新的定义是基于当今复杂系统的监控手段，以及该实践应如何发展。</p>
+<h2 id="_10">监控学习清单</h2>
+<p>查看下面的软件即服务和开源监控工具。第三方服务往往更容易设置和托管数据。开源项目为您提供了更多控制权，但您需要为监控准备其他服务器。</p>
+<p>我的建议是在试用期内安装New Relic的免费选项，以了解它如何与您的应用配合使用。它将使您对应用程序级监视工具的功能有所了解。</p>
+<p>作为您的应用程序比例，请查看如何使用Graphite设置其中一个开源监视项目，例如StatsD。这两个项目的组合将为您提供对您正在收集和可视化的系统指标的细粒度控制。</p>
+<p><a href="https://github.com/china-testing/python-api-tesing#%E7%9B%91%E6%8E%A7">python监控库参考</a>：https://github.com/china-testing/python-api-tesing#%E7%9B%91%E6%8E%A7</p>
+<h3 id="_11">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/python_monitor.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/testing_standard.html" rel="bookmark"
+                           title="Permalink to 2018软件测试标准汇总下载">2018软件测试标准汇总下载</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-10-16T14:20:00+08:00">
                 Published: 二 16 十月 2018
@@ -38,7 +173,7 @@
         </address>
 <p>In <a href="/category/ce-shi.html">测试</a>.</p>
 
-</footer><!-- /.post-info --><p>标题有链接的，点击标题即可下载</p>
+</footer><!-- /.post-info -->                <p>标题有链接的，点击标题即可下载</p>
 <h2 id="isoiec-25010"><a href="https://itbooks.pipipan.com/fs/18113597-314939352">国际标准 ISO/IEC 25010 系统和软件质量模型</a></h2>
 <p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-dec626a3759bb13d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <p>英文原版： <a href="https://itbooks.ctfile.com/fs/18113597-314939974">BS ISO IEC 25010-2011 Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — System and software quality models.pdf</a></p>
@@ -58,128 +193,10 @@
 <p>将要测试什么</p>
 </li>
 <li>
-<p>测试将持续多久（虽然根据可以使用的资源的限制而有变化）.</p>
-</li>
-<li>
-<p>测试覆盖度的需求，例如所要求的质量等级</p>
-</li>
-</ul>
-</li>
-<li>
-<p>测试设计规格：详细描述测试环境和期望的结果以及测试通过的标准。</p>
-</li>
-<li>
-<p>测试用例规格：定义用于运行于测试设计规格中所述条件的测试数据。</p>
-</li>
-<li>
-<p>测试过程规格：详细描述如何进行每项测试，包括每项预置条件和接下去的步骤。</p>
-</li>
-<li>
-<p>测试项传递报告：报告何时被测的软件组件从一个测试阶段到下一个测试阶段。</p>
-</li>
-<li>
-<p>测试记录：记录运行了哪个测试用例，谁运行的，以什么顺序，以及每个测试项是通过了还是失败了。</p>
-</li>
-<li>
-<p>测试附加报告：详细描述任何失败的测试项，以及实际的与之相对应的期望结果和其他旨在揭示测试为何失败的信息。这份文档之所以被命名为附加报告而不是错误报告，其原因是期望值和实际结果之间由于一些原因可能存在差异，而这并不能认为是系统存在错误。这包括期望值有误、测试被错误地执行，或者对需求的理解存在差异。这个报告由以下所有附加的细节组成，例如实际结果和期望值、何时失败，以及其他有助于解决问题的证据。这个报告还可能包括此附加项对测试所造成的影响的评估。</p>
-</li>
-<li>
-<p>测试摘要报告：一份提供所有直到测试完成都没有被提及的重要信息的管理报告，包括测试效果的评估、被测试软件系统的质量、来自测试附加报告的统计信息。这个报告还包括执行了哪些测试项、花费多少时间，用于改进以后的测试计划。这份最终的报告用于指出被测的软件系统是否与项目管理者所提出的可接受标准所符合。</p>
-</li>
-</ul>
-<p>IEEE 829中可能引用到的其他标准 参见：<a href="http://zh.wikipedia.org/wiki/IEEE_829">http://zh.wikipedia.org/wiki/IEEE_829</a></p>
-<p>这个标准的內容，有部分是来自于ISEB基金会的培训课程，和British Computer Society（英国计算机协会）推动的软件测试执业证书考试。 ISTQB（国际软件测试资质认证委员会）遵循基于ISEB（英国信息系统考试委员会）的课程提纲和德国的ASQF教学大纲，同时被IEEE 829采纳为软件测试文档的参考标准。</p>
-<p><a href="https://itbooks.pipipan.com/fs/18113597-314969548">IEEE Std 829-2008 测试计划模板.pdf</a></p>
-<h2 id="ieee-1008">IEEE 1008 单元测试国际标准</h2>
-<p>Software unit testing is a process that includes the performance of test planning, the development of a test set, and the measurement of a test unit against its requirement. measuring entails the use of sample data to exercise the unit and the comparison of the unit’s actual behaviour with its required behaviour as specified in the unit’s requirement documentation. This standard defines an integrated approach to systematic and documented unit testing. The approach uses unit design and unit implementation information, in addition to unit requirements, to determine the completeness of the testing. The standard describes a testing process composed of a hierarchy of phases, activities, and tasks. Further, it defines a minium set of tasks for each activity, although additional tasks may be added to any activity.</p>
-<p><a href="https://itbooks.pipipan.com/fs/18113597-314969695">std1008-1987 IEEE 1008 单元测试国际标准.pdf</a></p>
-<h2 id="ieee-std-1012-2004">IEEE Std 1012 – 2004 软件检验和验证国际标准</h2>
-<ul>
-<li>
-<p><a href="http://profs.etsmtl.ca/claporte/English/Enseignement/CMU_SQA/Notes/Verification/IEEE%20_Std_1012%20_SW%20_V%20&amp;%20_V.pdf">IEEE Standard for Software Verification and Validation</a></p>
-</li>
-<li>
-<p><a href="http://profs.etsmtl.ca/claporte/English/Enseignement/CMU_SQA/Notes/">其他相关文档</a></p>
-</li>
-</ul>
-<h2 id="ieee-std-1028tm-2008">IEEE Std 1028™-2008 软件评审和审计国际标准</h2>
-<ul>
-<li>
-<p><a href="http://dis.unal.edu.co/%7Eicasta/GGP/_Ver_2012_1/Documentos/Normas/1028-2008.pdf">IEEE Std 1028™-2008</a></p>
-</li>
-<li>
-<p><a href="http://dis.unal.edu.co/%7Eicasta/GGP/_Ver_2012_1/Documentos/">其他相关文档</a></p>
-</li>
-<li>
-<p><a href="http://dis.unal.edu.co/%7Eicasta/GGP/_Ver_2012_1/Documentos/Normas/">其他</a><a href="http://dis.unal.edu.co/%7Eicasta/GGP/_Ver_2012_1/Documentos/Normas/">PDF相关文档</a></p>
-</li>
-<li>
-<p><a href="http://staff.um.edu.mt/ecac1/files/">http://staff.um.edu.mt/ecac1/files/</a></p>
-</li>
-</ul>
-<h2 id="ieee-std-1044tm-2009">IEEE Std 1044™-2009 软件异常分类国际标准</h2>
-<ul>
-<li>
-<p><a href="http://dis.unal.edu.co/%7Eicasta/GGP/_Ver_2012_1/Documentos/Normas/1044-2009.pdf">IEEE Std 1044™-2009</a></p>
-</li>
-<li>
-<p><a href="https://cours.etsmtl.ca/mgl800/private/Normes/ieee/1044guide.pdf">IEEE 1044.1 1995 异常分类指南</a></p>
-</li>
-<li>
-<p><a href="https://cours.etsmtl.ca/mgl800/private/Normes/ieee/">更多参考</a></p>
-</li>
-</ul>
-<h2 id="ieee-1233-1998">IEEE 1233-1998开发软件需求规格的指南</h2>
-<ul>
-<li><a href="https://cours.etsmtl.ca/mgl800/private/Normes/ieee/123398.pdf">IEEE Std 1044™-2009</a></li>
-</ul>
-<h2 id="ieee-730-1998">IEEE 730-1998，用于软件质量保证计划的标准</h2>
-<ul>
-<li>
-<p><a href="https://cours.etsmtl.ca/mgl800/private/Normes/ieee/730standard.pdf">IEEE 730-1998，用于软件质量保证计划的标准</a></p>
-</li>
-<li>
-<p><a href="https://cours.etsmtl.ca/mgl800/private/Normes/ieee/730.1guide.pdf%EF%BC%8C%E7%94%A8%E4%BA%8E%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%BF%9D%E8%AF%81%E8%AE%A1%E5%88%92%E7%9A%84%E6%8C%87%E5%8D%97">https://cours.etsmtl.ca/mgl800/private/Normes/ieee/730.1guide.pdf，用于软件质量保证计划的指南</a></p>
-</li>
-</ul>
-<h2 id="ieee-1061-1998">IEEE 1061-1998 用于软件质量度量和方法学的标准</h2>
-<ul>
-<li>IEEE 1061-1998</li>
-</ul>
-<h2 id="ieee-12207-200846">IEEE 12207-2008. 用于软件生命周期过程和软件生命周期数据的标准</h2>
-<ul>
-<li>IEEE 1061-1998</li>
-</ul>
-<h2 id="_1">英国组件测试标准</h2>
-<ul>
-<li><a href="http://www.testingstandards.co.uk/Component%20Testing.pdf">Component Testing</a></li>
-</ul>
-<h2 id="_2">软件工程术语</h2>
-<ul>
-<li><a href="http://www.mit.jyu.fi/ope/kurssit/TIES462/Materiaalit/IEEE_SoftwareEngGlossary.pdf">软件工程术语</a></li>
-</ul>
-<h2 id="_3">参考资料</h2>
-<ul>
-<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
-<li><a href="https://china-testing.github.io/testing_standard.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
-<li><a href="http://www.tutorialspoint.com/software_testing/pdf/testing_iso_standards.pdf">测试</a><a href="http://www.tutorialspoint.com/software_testing/pdf/testing_iso_standards.pdf">ISO标准汇总</a></li>
-<li><a href="http://ranger.uta.edu/%7Eodell/Senior_Design_Common_Materials/">Senior_Design_Common_Materials</a></li>
-<li><a href="http://www.testingstandards.co.uk/BS7925_3_4.zip">BS 7925-2: the Software Component Testing Standard.</a></li>
-<li><a href="http://www.testingstandards.co.uk/Gloss6_3.zip">BS 7925-1: a Glossary of Software Testing Terms.</a></li>
-<li><a href="http://www.testingstandards.co.uk/">Testing Standards Working Party</a></li>
-<li><a href="http://www.testingstandards.co.uk/">英国标准主页</a></li>
-<li>讨论qq群144081101 591302926 567351477 钉钉群21745728</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>    </li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>测试将持续多久（虽然根据可以使用的资源的限制而有变化 …</p></li></ul></li></ul>
+                <a class="readmore" href="/testing_standard.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -484,38 +501,11 @@ $ sudo apt-get install python-dev
                 <a class="readmore" href="/testing_api_10min.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/testing_basic_how_google.html" rel="bookmark"
-                           title="Permalink to 谷歌如何测试软件">谷歌如何测试软件</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-10T19:20:00+08:00">
-                Published: 六 10 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi.html">测试</a>.</p>
-
-</footer><!-- /.post-info -->                <p>James Whittaker　整理：徐荣中</p>
-<h2 id="_1">组织架构</h2>
-<p>经常有人问“谷歌如何测试？” 本博之前有零零碎碎的介绍，现在我们来做一个系统的介绍。 在谷歌测试策略从来没有改变，但在战术方面随着公司也不断发展而发展。我们现在有搜索，应用服务，广告，手机，操作系统等业务。 这些特定领域有我们必须解决相关的问题。当我们添加新的业务或壮大现有的业务时，我们的测试也得到了扩大和提高。 这个系列文章记录是我们今天所做的和在可预见的未来前进的方向。</p>
-<p>我们从组织结构开始讲起，它可能会让你大吃一惊。 在谷歌没有实际的测试部门。测试存在于关注区域，称为工程效率。工程效率拥有很多纵向和横向的工程部门，测试是其中最大的。概括地说，工程效率的组成如下：</p>
-<ul>
-<li>
-<p>产品团队：开发内部和开源工具，供公司所有工程师使用。我们建立和维护的代码分析器，集成开发环境，测试用例管理系统，自动化测试工具，编译系统，源代码控制系统，代码审查系统，bug数据库。旨在通过工具使工程更加有效率，工具是防止错误战略目标非常大的一部分。</p>
-</li>
-<li>
-<p>服务团队，为产品团队提供专业知识，包括工具，文档，测试，发布管理，培训等等。 我们的专长包括可靠性 …</p></li></ul>
-                <a class="readmore" href="/testing_basic_how_google.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 2
+        <a href="/category/ce-shi2.html">&raquo;</a>
+</p>
                 </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
