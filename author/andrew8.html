@@ -29,6 +29,51 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python_pandas_tutorial1.html" rel="bookmark"
+                           title="Permalink to pandas入门">pandas入门</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-31T17:20:00+08:00">
+                Published: 六 31 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="pandas">pandas入门</h2>
+<h3 id="_1">简介</h3>
+<p>pandas包含的数据结构和操作工具能快速简单地清洗和分析数据。</p>
+<p>pandas经常与NumPy和SciPy这样的数据计算工具，statsmodels和scikit-learn之类的分析库及数据可视化库（如matplotlib）等一起用使用。pandas基于NumPy的数组，经常可以不使用循环就能处理好大量数据。</p>
+<p>pandas适合处理表格数据或巨量数据。NumPy则适合处理巨量的数值数组数据。</p>
+<p>这里约定导入方式：</p>
+<p>技术支持qq群：630011153</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="pandas_1">pandas数据结构介绍</h3>
+<ul>
+<li>
+<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
+</li>
+<li>
+<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
+</li>
+</ul>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
+<p>主要数据结构:Series和DataFrame。</p>
+<h4 id="series">Series</h4>
+<p>Series类似于一维数组的对象,它由一组数据(NumPy类似数据类型)以及相关的数据标签(即索引)组成 …</p>
+                <a class="readmore" href="/python_pandas_tutorial1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_pandas_crash_tutorial.html" rel="bookmark"
                            title="Permalink to python数据分析快速入门教程-目录">python数据分析快速入门教程-目录</a></h1>
                 </header>
@@ -363,56 +408,6 @@
 <p>Buildbot有一个或多个主机和从机。主机监控源代码库的变化，调配从机，并给用户和开发者报告结果。从机可在多种操作系统上运行。</p>
 <p>可以配置Python脚本到主机。这个脚本可以简单到只配置内置组件 …</p>
                 <a class="readmore" href="/python3_lib_buildbot.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_os.path.html" rel="bookmark"
-                           title="Permalink to python库介绍-os.path: 平台独立的文件名操作">python库介绍-os.path: 平台独立的文件名操作</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-25T19:20:00+08:00">
-                Published: 日 25 三月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p>的：文件名和路径解析，组合，测试等。</p>
-<p>使用os.path模块中包含的函数编写代码以便在多个平台上处理文件非常简单。即使不打算在平台之间移植的程序也应该使用os.path来进行可靠的文件名解析。</p>
-<h2 id="_1">解析路径</h2>
-<p>路径解析依赖于在os中定义的几个变量：</p>
-<div class="highlight"><pre><span></span>os.sep - 路径各部分之间的分隔符（例如“/”或“\”）。
-
-os.extsep - 文件名和文件扩展名之间的分隔符。
-
-os.pardir - 上级目录(e.g., “..”)。
-
-os.curdir - 当前目录 (e.g., “.”)。
-</pre></div>
-
-
-<p>split()函数将路径分成两个独立的部分，并返回包含结果的元组。元组的第二个元素是路径的最后一个元素，第一个元素是之前的所有元素。</p>
-<div class="highlight"><pre><span></span><span class="c1"># ospath_split.py</span>
-
-<span class="kn">import</span> <span class="nn">os.path</span>
-
-<span class="n">PATHS</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;/one/two/three&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;/one/two/three/&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;/&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;.&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;&#39;</span><span class="p">,</span>
-<span class="p">]</span>
-
-<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">PATHS</span><span class="p">:</span>
-    <span class="k">print …</span></pre></div>
-                <a class="readmore" href="/python3_lib_os.path.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
