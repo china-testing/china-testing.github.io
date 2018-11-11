@@ -29,6 +29,41 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/yao_wuzhuyu.html" rel="bookmark"
+                           title="Permalink to 中草药的故事-吴茱萸(标准中药)">中草药的故事-吴茱萸(标准中药)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-19T10:20:00+08:00">
+                Published: 三 19 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/zhong-cao-yao.html">中草药</a>.</p>
+
+</footer><!-- /.post-info -->                <p>中草药的故事-吴茱萸(标准中药)</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713117-26c984520d1e2b2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>据说，“吴茱萸”在春秋时候原名“吴萸”。它产在吴国，是一味止痛良药。</p>
+<p>当时，吴国和邻近的楚国相比，还算小国，小国就得向大国进贡。这一年，吴国的贡品之中就有吴萸。谁想楚王一见，竟大发雷霆：</p>
+<p>“小小的吴国，胆敢把以国命名的东西当贡品，这不是看不起堂堂的楚国吗？拿回去，不收！”</p>
+<p>吴国的使者愣住了。</p>
+<p>这时，有位姓朱的楚国大夫，急忙对楚王说：</p>
+<p>“吴萸能治胃寒腹疼，还能止吐止泄。吴王听说大王有腹痛的老病，才选来进贡的。如果拒绝接受，那不就伤了两国的和气吗？”</p>
+<p>“胡说，”楚王喝道，“我用不着什么‘吴萸’！我们的国家也不需要！”</p>
+<p>吴国的使臣又羞又气，退出王宫。朱大夫追出来说：</p>
+<p>“请你不要生气。就把吴萸留给我吧。楚王早晚会用上它的。”</p>
+<p>吴使就把吴萸给了朱大夫。朱大夫拿到家中，栽在院内，还命人精心管理。</p>
+<p>吴使回国后，吴王一听楚王这么无礼，就同楚国断了交。</p>
+<p>几年过后 …</p>
+                <a class="readmore" href="/yao_wuzhuyu.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_pep8.html" rel="bookmark"
                            title="Permalink to python代码风格指南(PEP8中文版)">python代码风格指南(PEP8中文版)</a></h1>
                 </header>
@@ -387,53 +422,6 @@
 <h4 id="_2">模板</h4>
 <p>字符串模板已经作为PEP 292的一部分增加到Python 2.4中，并得到扩展，以替代内置拼接(interpolation …</p>
                 <a class="readmore" href="/python3_lib_string.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_boost.html" rel="bookmark"
-                           title="Permalink to python3外部库boost介绍 用c++为python编写扩展">python3外部库boost介绍 用c++为python编写扩展</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-15T16:20:00+08:00">
-                Published: 三 15 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi.html">测试</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">概述</h2>
-<p>有不同的方法来用C++扩展Python：</p>
-<ul>
-<li>Swig</li>
-<li>使用Boost.Python，可选择使用Py++预处理</li>
-<li>使用Cython。</li>
-</ul>
-<p>Cython出现之前，Boost.Python是编写C ++扩展模块最爽的方式。</p>
-<p>Boost.Python集成在Boost C++ Libraries中。 要在Ubuntu系统上安装；</p>
-<div class="highlight"><pre><span></span>$ sudo apt-get install libboost-python-dev 
-$ sudo apt-get install python-dev
-</pre></div>
-
-
-<h3 id="_2">快速入门</h3>
-<p>hellomodule.cpp</p>
-<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
-
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="kt">void</span> <span class="nf">say_hello</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Hello &quot;</span> <span class="o">&lt;&lt;</span>  <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="cp">#include</span> <span class="cpf">&lt;boost/python/module.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;boost …</span></pre></div>
-                <a class="readmore" href="/python3_lib_boost.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
