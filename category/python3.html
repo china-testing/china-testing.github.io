@@ -30,6 +30,43 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_quick1.html" rel="bookmark"
+                           title="Permalink to python 3.7极速入门教程1安装：Linux(Ubuntu 18.04)及Windows上安装Anaconda">python 3.7极速入门教程1安装：Linux(Ubuntu 18.04)及Windows上安装Anaconda</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-05T09:20:00+08:00">
+                Published: 一 05 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h1 id="_1">安装</h1>
+<h2 id="linux">Linux安装</h2>
+<p>Anaconda是最受欢迎的python数据科学和机器学习平台，用于大规模数据处理，预测分析和科学计算。Anaconda发行版附带了1,000多个数据包，conda命令行工具和Anaconda Navigator的桌面图形用户界面。一般而言，使用Anaconda比直接使用官方的python更好用。</p>
+<p>本教程将指导您完成在Ubuntu 18.04上下载和安装Anaconda Python Distribution。通常也适合多数其他Linux。</p>
+<h3 id="anaconda">下载Anaconda</h3>
+<p>https://www.anaconda.com/download/#linux</p>
+<p>在撰写本文时，Anaconda的最新稳定版本是5.3版本。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-128824bdee784130.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>请选择<a href="https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh">64-Bit (x86) Installer </a>进行下载，尽量不要用python2.7，很多库已经不提供python2.7支持。</p>
+<p>点击链接就会进行下载，同时会弹出信息收集框，直接关闭就好。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-dfb07445ebf47c3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="anaconda_1">安装Anaconda</h3>
+<div class="highlight"><pre><span></span>$ sudo sh Anaconda3-5.3.0-Linux-x86_64.sh 
+<span class="o">[</span>sudo<span class="o">]</span> andrew 的密码： 
+
+Welcome …</pre></div>
+                <a class="readmore" href="/python3_quick1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_monitor.html" rel="bookmark"
                            title="Permalink to python应用性能监控工具简介">python应用性能监控工具简介</a></h1>
                 </header>
@@ -399,51 +436,6 @@
 <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">platform</span><span class="o">.</span><span class="n">python_version</span><span class="p">()</span>
 <span class="n">Out …</span></pre></div>
                 <a class="readmore" href="/python3_lib_platform.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_string.html" rel="bookmark"
-                           title="Permalink to python标准模块介绍-string:文本常量和模板">python标准模块介绍-string:文本常量和模板</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-16T09:20:00+08:00">
-                Published: 四 16 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p>string—文本常量和模板</p>
-<p>作用：包含处理文本的常量和类。</p>
-<p>Python版本：1.4及以后版本</p>
-<p>最早的Python版本就有string模块。 之前在这个模块中实现的许多函数已经移至str对象的方法。 string模块保留了几个有用的常量和类，用于处理str对象。</p>
-<p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/string">代码地址</a></p>
-<h4 id="_1">函数</h4>
-<p>capwords()的将字符串中所有单词的首字母大写。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="s2">&quot;hello world!&quot;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">capwords</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="s1">&#39;Hello World!&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
-<span class="s1">&#39;hello world!&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
-<span class="s1">&#39;Hello world!&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
-<span class="s1">&#39;hello world!&#39;</span>
-</pre></div>
-
-
-<p>结果等同于先调用split()，把结果列表中各个单词的首字母大写，然后调用join()合并结果。</p>
-<p>因为str对象已经有capitalize()方法，该函数的实际意义并不大。</p>
-<h4 id="_2">模板</h4>
-<p>字符串模板已经作为PEP 292的一部分增加到Python 2.4中，并得到扩展，以替代内置拼接(interpolation …</p>
-                <a class="readmore" href="/python3_lib_string.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
