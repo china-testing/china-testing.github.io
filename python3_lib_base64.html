@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>[雪峰磁针石博客]python标准模块介绍 -Base64： Base64, Base85等数据编码</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_lib_base64.html" rel="bookmark"
+           title="Permalink to [雪峰磁针石博客]python标准模块介绍 -Base64： Base64, Base85等数据编码">[雪峰磁针石博客]python标准模块介绍 -Base64： Base64, Base85等数据编码</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-20T16:15:00+08:00">
+                Published: 一 20 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <h3 id="_1">简介</h3>
+<p>功能:RFC 3548: Base16, Base32, Base64 数据编码。转换二进制数据为适合明文协议传输的 ASCII 序列。转换<br>
+8bits 为每个字节包含 6,5 或 4bits 的有效数据,比如 SMTP, URL 的一部分或者 HTTP POST 的一部分。参考: RFC 3548。编码算法不同于 uuencode。  </p>
+<p>类型:标准库<br>
+相关模块:uu, binhex, uu, quopri</p>
+<p>Base64 是一种基于 64 个可打印字符来表示二进制数据的表示方法。由于 2 的 6 次方等于 64,所以每 6  个位元为一个单元,对应某个可打印字符。三个字节有 24 个位元,对应于 4 个 Base64 单元,即 3 个字节  需要用 4 个可打印字符来表示。它可用来作为电子邮件的传输编码。在 Base64 中的可打印字符包括字母 A-  Z、a-z、数字 0-9,这样共有 62 个字符,此外两个可打印符号在不同的系统中而不同。之后在 6 位的前面补  两个 0,形成 8 位一个字节的形式。一些如 uuencode 的其他编码方法,和之后 binhex 的版本使用不同的  64 字符集来代表 6 个二进制数字,但是它们不叫 Base64。</p>
+<p>Base64 常用于在通常处理文本数据的场合,表示、传输、存储一些二进制数据。包括 MIME 的email,email via MIME,在 XML 中存储复杂数据。</p>
+<p>Python Base64 模块提供了 RFC3548 中的数据编码和解码(转换二进制数据为适合明文协议传输的ASCII 序列,如 RFC3548 中指定。该标准定义了 Base16,Base32 和 Base64 算法,编码和解码的任意二进制字符串转换为文本字符串,这样就可以通过电子邮件安全发送,作为网址的一部分,或包含在 HTTP POST 请求中。</p>
+<p>Base64 模块提供两个接口。新式接口支持使用三个字母的编码和解码的字符串对象。传统接口提供了编码和解码文件对象和字符串,但只使用了标准的 Base64 字母。传统接口这里不做介绍。</p>
+<p>base64、 base32、 base16 可以分别编码转化 8 位字节为 6 位、 5 位、 4 位。 16,32,64 分别表示用多少个字<br>
+符来编码。</p>
+<p>更多 base64 的资料,参见<br>
+http://zh.wikipedia.org/wiki/Base64,http://tools.ietf.org/html/rfc822
+http://tools.ietf.org/html/rfc1421
+http://tools.ietf.org/html/rfc2045</p>
+<h3 id="_2">快速入门</h3>
+<p>请看 python 模块介绍中的实例:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">base64</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">encoded</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="s1">&#39;data to be encoded&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">encoded</span>
+<span class="s1">&#39;ZGF0YSB0byBiZSBlbmNvZGVk&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span>
+<span class="s1">&#39;data to be encoded&#39;</span>
+</pre></div>
+
+
+<p>base64.b64encode(s[, altchars]):使用 Base64 编码字符串。s 是要编码的字符串。altchars 是用来替换+和/的字符串,它们在 url 和文件系统中它们有特殊含义,通常需要替换。  </p>
+<p>base64.b64decode(s[, altchars]): 解码 Base64 编码的字符串。s 为要解码的字符串。altchars 和b64encode 相同。<br>
+• base64.standard_b64encode ( s ) : 参考 b64encode。<br>
+• base64.standard_b64decode ( s ) :参考 b64decode。</p>
+<h3 id="base64">Base64 编码解码</h3>
+<p>Base64 编码解码</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># encoding: utf-8</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright (c) 2008 Doug Hellmann All rights reserved.</span>
+<span class="c1">#</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;$Id$&quot;</span>
+<span class="c1">#end_pymotw_header</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">textwrap</span>
+<span class="c1"># Load this source file and strip the header.</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nb">input</span><span class="p">:</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">initial_data</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;#end_pymotw_header&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">encoded_data</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">initial_data</span><span class="p">)</span>
+<span class="n">num_initial</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">initial_data</span><span class="p">)</span>
+<span class="c1"># There will never be more than 2 padding bytes.</span>
+<span class="n">padding</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">-</span> <span class="p">(</span><span class="n">num_initial</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span> <span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> bytes before encoding&#39;</span> <span class="o">%</span> <span class="n">num_initial</span>
+<span class="k">print</span> <span class="s1">&#39;Expect </span><span class="si">%d</span><span class="s1"> padding bytes&#39;</span> <span class="o">%</span> <span class="n">padding</span>
+<span class="k">print</span> <span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> bytes after encoding&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoded_data</span><span class="p">)</span>
+<span class="k">print</span>
+<span class="k">print</span> <span class="n">encoded_data</span>
+</pre></div>
+
+
+<p>➢执行结果</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python</span> <span class="n">base64_b64encode</span><span class="o">.</span><span class="n">py</span>
+<span class="mi">168</span> <span class="nb">bytes</span> <span class="n">before</span> <span class="n">encoding</span>
+<span class="n">Expect</span> <span class="mi">3</span> <span class="n">padding</span> <span class="nb">bytes</span>
+<span class="mi">224</span> <span class="nb">bytes</span> <span class="n">after</span> <span class="n">encoding</span>
+<span class="n">CgppbXBvcnQgYmFzZTY0CmltcG9ydCB0ZXh0d3JhcAoKIyBMb2FkIHRoaXMgc291cmNlIGZpbGUgYW5kIHN0cmlwIHRoZSBoZWFk</span>
+<span class="n">ZXIuCndpdGggb3BlbihfX2ZpbGVfXywgJ3J0JykgYXMgaW5wdXQ6CiAgICByYXcgPSBpbnB1dC5yZWFkKCkKICAgIGluaXRpYWxfZGF0</span>
+<span class="n">YSA9IHJhdy5zcGxpdCgn</span>
+</pre></div>
+
+
+<p>Base64 编码的 4 个字节对应实际的 3 个字节,不足四个字节时,后面部分通常用等号填充。极端的情况下,  一个字节需要用 4 个 Base64 编码来表示。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">base64</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">encoded</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">encoded</span>
+<span class="s1">&#39;YQ==&#39;</span>
+</pre></div>
+
+
+<p>Base64 解码参见快速入门部分介绍。</p>
+<h3 id="url-safe">URL-Safe</h3>
+<p>•base64.urlsafe_b64encode(s):<br>
+•base64.urlsafe_b64decode(s):<br>
+Base64 默认会使用+和/, 但是这 2 个字符在 url 中也有特殊含义。使用 urlsafe 可以解决这个问题。 +替换为-,  /替换为_。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">base64</span>
+<span class="n">encodes_with_pluses</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">251</span><span class="p">)</span> <span class="o">+</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">239</span><span class="p">)</span>
+<span class="n">encodes_with_slashes</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="k">for</span> <span class="n">original</span> <span class="ow">in</span> <span class="p">[</span> <span class="n">encodes_with_pluses</span><span class="p">,</span> <span class="n">encodes_with_slashes</span> <span class="p">]:</span>
+<span class="k">print</span> <span class="s1">&#39;Original</span>
+<span class="p">:</span><span class="s1">&#39;, repr(original)</span>
+<span class="k">print</span> <span class="s1">&#39;Standard encoding:&#39;</span><span class="p">,</span> <span class="n">base64</span><span class="o">.</span><span class="n">standard_b64encode</span><span class="p">(</span><span class="n">original</span><span class="p">)</span>
+<span class="k">print</span> <span class="s1">&#39;URL-safe encoding:&#39;</span><span class="p">,</span> <span class="n">base64</span><span class="o">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">original</span><span class="p">)</span>
+<span class="k">print</span>
+</pre></div>
+
+
+<p>➢执行结果</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python</span> <span class="n">base64_urlsafe</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Original</span>
+<span class="p">:</span> <span class="s1">&#39;</span><span class="se">\xfb\xef</span><span class="s1">&#39;</span>
+<span class="n">Standard</span> <span class="n">encoding</span><span class="p">:</span> <span class="o">++</span><span class="mi">8</span><span class="o">=</span>
+<span class="n">URL</span><span class="o">-</span><span class="n">safe</span> <span class="n">encoding</span><span class="p">:</span> <span class="o">--</span><span class="mi">8</span><span class="o">=</span>
+<span class="n">Original</span>
+<span class="p">:</span> <span class="s1">&#39;</span><span class="se">\xff\xff</span><span class="s1">&#39;</span>
+<span class="n">Standard</span> <span class="n">encoding</span><span class="p">:</span> <span class="o">//</span><span class="mi">8</span><span class="o">=</span>
+<span class="n">URL</span><span class="o">-</span><span class="n">safe</span> <span class="n">encoding</span><span class="p">:</span> <span class="n">__8</span><span class="o">=</span>
+</pre></div>
+
+
+<h3 id="_3">其他编码</h3>
+<p>Base32 包含 26 个大写字母和 2-7 的数字。<br>
+• base64.b32encode(s):使用 Base32 编码字符串。s 是要编码的字符串。<br>
+• base64.b32decode(s[, casefold[, map01]]):解码 Base32 编码的字符串。s 为要解码的字符串 。<br>
+casefold 表示是否允许小写字母。 map01 表示允许 0 表示 0,1 表示 L 。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">base64</span>
+<span class="n">original_string</span> <span class="o">=</span> <span class="s1">&#39;This is the data, in the clear.&#39;</span>
+<span class="k">print</span> <span class="s1">&#39;Original:&#39;</span><span class="p">,</span> <span class="n">original_string</span>
+<span class="n">encoded_string</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b32encode</span><span class="p">(</span><span class="n">original_string</span><span class="p">)</span>
+<span class="k">print</span> <span class="s1">&#39;Encoded :&#39;</span><span class="p">,</span> <span class="n">encoded_string</span>
+<span class="n">decoded_string</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b32decode</span><span class="p">(</span><span class="n">encoded_string</span><span class="p">)</span>
+<span class="k">print</span> <span class="s1">&#39;Decoded :&#39;</span><span class="p">,</span> <span class="n">decoded_string</span>
+</pre></div>
+
+
+<p>➢执行结果</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python</span> <span class="n">base64_base32</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Original</span><span class="p">:</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">data</span><span class="p">,</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">clear</span><span class="o">.</span>
+<span class="n">Encoded</span> <span class="p">:</span> <span class="n">KRUGS4ZANFZSA5DIMUQGIYLUMEWCA2LOEB2GQZJAMNWGKYLSFY</span><span class="o">======</span>
+<span class="n">Decoded</span> <span class="p">:</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">data</span><span class="p">,</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">clear</span><span class="o">.</span>
+</pre></div>
+
+
+<p>Base16 包含 16 个 16 进制大写数字。类似的有 base64.b16encode(s) ,base64.b16decode(s[,<br>
+casefold]) 。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">base64</span>
+<span class="n">original_string</span> <span class="o">=</span> <span class="s1">&#39;This is the data, in the clear.&#39;</span>
+<span class="k">print</span> <span class="s1">&#39;Original:&#39;</span><span class="p">,</span> <span class="n">original_string</span>
+<span class="n">encoded_string</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b16encode</span><span class="p">(</span><span class="n">original_string</span><span class="p">)</span>
+<span class="k">print</span> <span class="s1">&#39;Encoded :&#39;</span><span class="p">,</span> <span class="n">encoded_string</span>
+<span class="n">decoded_string</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b16decode</span><span class="p">(</span><span class="n">encoded_string</span><span class="p">)</span>
+<span class="k">print</span> <span class="s1">&#39;Decoded :&#39;</span><span class="p">,</span> <span class="n">decoded_string</span>
+</pre></div>
+
+
+<p>➢<br>
+执行结果</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python</span> <span class="n">base64_base16</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Original</span><span class="p">:</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">data</span><span class="p">,</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">clear</span><span class="o">.</span>
+<span class="n">Encoded</span> <span class="p">:</span> <span class="mi">546869732069732074686520646174612</span><span class="n">C20696E2074686520636C6561722E</span>
+<span class="n">Decoded</span> <span class="p">:</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">data</span><span class="p">,</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">clear</span><span class="o">.</span>
+<span class="n">Python3</span><span class="o">.</span><span class="mi">4</span> <span class="err">中增加了</span> <span class="n">Ascii85</span> <span class="err">和</span> <span class="n">base85</span> <span class="err">支持</span> <span class="err">。这里暂不做详细介绍。函数如下</span><span class="p">:</span>
+<span class="err">•</span> <span class="n">base64</span><span class="o">.</span><span class="n">a85encode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">foldspaces</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">wrapcol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">adobe</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="err">•</span> <span class="n">base64</span><span class="o">.</span><span class="n">a85decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">foldspaces</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">adobe</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">ignorechars</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39; tnrv&#39;</span><span class="p">)</span>
+<span class="err">•</span> <span class="n">base64</span><span class="o">.</span><span class="n">b85encode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="err">•</span> <span class="n">base64</span><span class="o">.</span><span class="n">b85decode</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+
+<h2 id="_4">参考资料</h2>
+<ul>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/python3_lib_base64.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li>python官方文档：https://docs.python.org/3/library/base64.html</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

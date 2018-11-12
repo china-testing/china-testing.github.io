@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python 3.7极速入门教程2 Hello与变量</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_quick2.html" rel="bookmark"
+           title="Permalink to python 3.7极速入门教程2 Hello与变量">python 3.7极速入门教程2 Hello与变量</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-05T10:20:00+08:00">
+                Published: 一 05 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <h1 id="hello">Hello</h1>
+<h2 id="_1">命令行方式</h2>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python</span>
+<span class="n">Python</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">0</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Jun</span> <span class="mi">28</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">42</span><span class="p">)</span>
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">7.2</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span> <span class="p">::</span> <span class="n">Anaconda</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span> <span class="n">on</span> <span class="n">linux</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello, https://china-testing.github.io/&quot;</span><span class="p">)</span>
+<span class="n">Hello</span><span class="p">,</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">china</span><span class="o">-</span><span class="n">testing</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span>
+</pre></div>
+
+
+<h2 id="ipython">ipython方式</h2>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">ipython</span>
+<span class="n">Python</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">0</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Jun</span> <span class="mi">28</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">Type</span> <span class="s1">&#39;copyright&#39;</span><span class="p">,</span> <span class="s1">&#39;credits&#39;</span> <span class="ow">or</span> <span class="s1">&#39;license&#39;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span>
+<span class="n">IPython</span> <span class="mf">6.5</span><span class="o">.</span><span class="mi">0</span> <span class="o">--</span> <span class="n">An</span> <span class="n">enhanced</span> <span class="n">Interactive</span> <span class="n">Python</span><span class="o">.</span> <span class="n">Type</span> <span class="s1">&#39;?&#39;</span> <span class="k">for</span> <span class="n">help</span><span class="o">.</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello, https://china-testing.github.io/&quot;</span><span class="p">)</span>
+<span class="n">Hello</span><span class="p">,</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">china</span><span class="o">-</span><span class="n">testing</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span>
+</pre></div>
+
+
+<h2 id="ide">IDE方式</h2>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e1abe664c0353cea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="_2">文件方式</h2>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-30748554db71125d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-8fd481414ba410df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-7c1f04a983c91ae7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>上面代码地址：https://github.com/china-testing/python-api-tesing/blob/master/python3.7quick/2hello.py</p>
+<h2 id="9595main9595">__main__</h2>
+<p>当Python解释器读取源文件时，它将执行其中的所有代码。</p>
+<p>当Python运行“源文件”作为主程序时，它将特殊变量（ __name __）设置为具（“ __main __”）。</p>
+<p>“if  __name __ ==” __main __“允许您将Python文件作为可重用模块或独立程序运行。</p>
+<p>与C一样，Python使用==进行比较，而使用=进行赋值。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-fbf33c6e345809fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>上面代码地址：https://github.com/china-testing/python-api-tesing/blob/master/python3.7quick/2main.py</p>
+<h3 id="_3">参考资料</h3>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 钉钉免费群21745728</li>
+<li><a href="https://china-testing.github.io/python3_quick2.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li>https://linuxize.com/post/how-to-install-anaconda-on-ubuntu-18-04/</li>
+</ul>
+<h2 id="_4">变量</h2>
+<p>Python变量是用于存储值的保留内存位置。 换句话说，python程序中的变量将数据提供给计算机进行处理。</p>
+<p>Python中的每个值都有数据类型。 Python中不同的数据类型是数值，列表，元组，字符串，字典等。变量可以用任何名称声明，甚至可以用a，aa，abc等字母表来声明，命名规则和C语言的类似。字母或下划线开头，除第一位外可以包含数字。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-60af33f4bf7cfb23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>上面代码地址：https://github.com/china-testing/python-api-tesing/blob/master/python3.7quick/2var.py</p>
+<h2 id="_5">作用域</h2>
+<p>如果要在程序或模块的其余部分使用相同的变量，可声明为全局变量；如果只在特定函数或方法中使用该变量，则使用局部变量。</p>
+<p>让我们通过以下程序理解本地变量和全局变量之间的差异。</p>
+<p>全局变量f被赋予值101</p>
+<p>函数中声明局部变量，赋值"I am learning Python."</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-2d83ea2a01227da5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>上面代码地址：https://github.com/china-testing/python-api-tesing/blob/master/python3.7quick/2local.py</p>
+<p>关键字global，可以在函数内引用全局变量。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-be6881e9d7c21dda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>实际上局部找不到变量也会到全局去找。上面代码地址：https://github.com/china-testing/python-api-tesing/blob/master/python3.7quick/2global.py</p>
+<p>使用命令del“variable name”可以删除变量。</p>
+<p>在下面的例子中，我们删除了变量f，当我们继续打印它时，得到错误“变量名未定义”，这意味着你已经删除了变量。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1ba59e7798497c5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_6">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/python3_quick2.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
