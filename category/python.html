@@ -28,7 +28,117 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/pentesting.html">渗透测试简介 - 目录</a></h1>
+                    <h1 class="entry-title"><a href="/pentesting11.html">渗透测试工具简介11 SQL 注入</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-11-12T08:25:00+08:00">
+                Published: 一 12 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info --><ul>
+<li><a href="https://china-testing.github.io/pentesting.html">本书目录</a></li>
+</ul>
+<h1 id="11-sql">渗透测试工具简介11 SQL注入</h1>
+<p>SQL是结构化查询语言的首字母缩写。它用于检索和操作数据库中的数据。</p>
+<h3 id="sql">什么是SQL注入？</h3>
+<p>SQL注入使动态SQL语句注释掉语句的某些部分或附加始终为真的条件来执行恶意SQL代码。</p>
+<p>可以使用SQL注入执行的攻击类型和数据库引擎相关。攻击适用于动态SQL语句。动态语句是在运行时使用来自Web表单或URI查询字符串的参数password生成的语句。</p>
+<p>某HTML表单的代码如下。</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">‘index.php’</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">required</span><span class="o">=</span><span class="s">&quot;required&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;password&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;password&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;remember_me&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Remember me&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Submit&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>上面的表单接受电子邮件地址和密码，将它们提交给名为index.php的PHP文件。
+它可以选择将登录会话存储在cookie中。 我们从remember_me复选框中推断出这一点。 它使用post方法提交数据。 这意味着值不会显示在URL中。</p>
+<p>后台用于检查用户ID的语句如下所示</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">users</span> <span class="k">WHERE</span> <span class="n">email</span> <span class="o">=</span> <span class="err">$</span><span class="n">_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span> <span class="k">AND</span> <span class="n">password</span> <span class="o">=</span> <span class="n">md5</span><span class="p">(</span><span class="err">$</span><span class="n">_POST</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]);</span>
+<span class="o">#</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">users</span> <span class="k">WHERE</span> <span class="n">email</span> <span class="o">=</span> <span class="s1">&#39;[xxx@xxx.xxx](mailto:xxx@xxx.xxx)&#39;</span> <span class="k">OR</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">LIMIT</span> <span class="mi">1</span> <span class="c1">-- &#39; ] AND password = md5(&#39;1234&#39;); # SQL注入</span>
+</pre></div>
+
+
+<p>上面的语句直接使用$_POST[] 数组的值而不检验。密码使用MD5算法加密。为此用第2句可以直接进行SQL注入。</p>
+<h3 id="sql_1">SQL登陆注入实战</h3>
+<p>演示网址不能承受太大压力，需要的请加钉钉pytesting索取。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-3dbedb5bcadc182c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-48c6f496a157b040.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>步骤：</p>
+<ul>
+<li>email: 输入 <a href="mailto:xxx@xxx.xxx">xxx@xxx.xxx</a></li>
+<li>密码输入： Enter xxx') OR 1 = 1 -- ]</li>
+<li>提交</li>
+</ul>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-94a95e157892b57c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="sql_2">其他SQL注入</h3>
+<ul>
+<li>删除数据</li>
+<li>更新数据</li>
+<li>插入数据</li>
+<li>在服务器上执行可以下载和安装特洛伊木马等恶意程序的命令</li>
+<li>将有价值的数据（如信用卡详细信息，电子邮件和密码）导出到攻击者的远程服务器</li>
+<li>获取用户登录详细信息等</li>
+</ul>
+<h3 id="_1">参考资料</h3>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 钉钉免费群21745728</li>
+<li><a href="https://china-testing.github.io/pentesting11.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://china-testing.github.io/testing_books.html">安全测试书籍下载</a> </li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+</ul>
+<h3 id="sql_3">SQL注入的自动化工具</h3>
+<ul>
+<li>SQLMap - http://sqlmap.org/ https://github.com/sqlmapproject/sqlmap</li>
+<li>SQLSmack - http://www.securiteam.com/tools/5GP081P75C.html 针对MSSQL，且很久没有更新，用处不大。</li>
+<li>SQLPing 2 - http://www.sqlsecurity.com/downloads/</li>
+<li>Havij https://www.darknet.org.uk/2010/09/havij-advanced-automated-sql-injection-tool/</li>
+</ul>
+<h3 id="sql_4">如何防止SQL注入攻击</h3>
+<p>组织可以采用以下策略来保护自己免受SQL注入攻击。</p>
+<ul>
+<li>在动态SQL语句中使用之前必须始终对其进行清理。</li>
+<li>存储过程 - 这些可以封装SQL语句并将所有输入视为参数。</li>
+<li>参数化</li>
+<li>正则表达式 - 检测潜在的有害代码并在执行SQL语句之前将其删除。</li>
+<li>数据库连接用户访问权限</li>
+<li>错误消息不要显示SQL。</li>
+</ul>
+<h3 id="_2">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/pentesting11.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/pentesting.html" rel="bookmark"
+                           title="Permalink to 渗透测试简介 - 目录">渗透测试简介 - 目录</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-11-12T08:20:00+08:00">
                 Published: 一 12 十一月 2018
@@ -39,7 +149,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info --><ul>
+</footer><!-- /.post-info -->                <ul>
 <li>
 <p><a href="https://china-testing.github.io/pentesting.html">本书目录</a></p>
 </li>
@@ -57,12 +167,10 @@
 <li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
 <li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
 <li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</ul>
+                <a class="readmore" href="/pentesting.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -350,37 +458,6 @@
 <p>中文版(文字版)可以在qq群144081101等找到。</p>
 <h3 id="scikit-learntensorflow-hands-on-machine-learning-with-scikit-learn-and-tensorflow-2017pdf">机器学习实战:基于Scikit-Learn和TensorFlow  <a href="https://u18113597.pipipan.com/fs/18113597-307930887">Hands-On …</a></h3>
                 <a class="readmore" href="/ai_books.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/selnium_books.html" rel="bookmark"
-                           title="Permalink to 2018最佳selenium工具书籍汇总下载(持续更新)">2018最佳selenium工具书籍汇总下载(持续更新)</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-05T13:20:00+08:00">
-                Published: 一 05 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
-<p>本文是https://github.com/china-testing/python-api-tesing/blob/master/books.md的节选。</p>
-<p>欢迎转载，转载请附带此简介，谢谢！</p>
-<h3 id="practical-web-scraping-for-data-science-best-practices-and-examples-with-python-2018pdf"><a href="https://itbooks.pipipan.com/fs/18113597-308349318">Practical Web Scraping for Data Science -Best Practices and Examples with Python - 2018.pdf</a></h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-56aa85e2dcab446c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>https://github.com/Apress/practical-web-scraping-for-data-science 星级 低于100</p>
-<p>本书提供了完整的现代Web抓取指南，使用Python作为编程语言。 作者建议网络抓取作为任何数据科学家的强大工具，因为许多数据科学项目都是从获得适当的数据集开始的。</p>
-<p>作者探讨了HTTP，HTML和CSS的核心概念，以提供坚实的基础。 除了快速的Python入门，它们还包括Selenium用于JavaScript重型站点和网络爬行的详细信息。 本书最后概述了最佳实践和一系列示例，这些示例汇集了您学到的所有内容，并说明了各种数据科学用例。</p>
-<p>-- 本书的selenium教程写得简明扼要，后面还配有丰富的实例。</p>
-<h3 id="selenium-python-2018pdf"><a href="https://itbooks.ctfile.com/fs/18113597-315206043">Selenium自动化测试 基于 …</a></h3>
-                <a class="readmore" href="/selnium_books.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
