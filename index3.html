@@ -30,6 +30,99 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python_monitor.html" rel="bookmark"
+                           title="Permalink to python应用性能监控工具简介">python应用性能监控工具简介</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-10-22T09:20:00+08:00">
+                Published: 一 22 十月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">监控简介</h2>
+<p>监视工具捕获，分析和显示Web应用程序执行信息。每个应用程序在Web堆栈的所有层都可能出现问题。监控工具通过展示帮助开发人员和运营团队响应并修复问题。</p>
+<p>捕获和分析有关生产环境的数据对于主动处理Web应用程序的稳定性，性能和错误至关重要。</p>
+<p>监视和日志记录的目的非常相似，它们有助于诊断应用程序的问题并帮助调试。主要差异为日志基于事件触发，而监视是被动的背景数据集合。</p>
+<p>例如发生错误时，通过异常处理程序中的代码显式记录该事件。同时，监视代理程序对代码进行检测，并且不仅收集有关已记录异常的数据，还收集有关函数和方法性能的数据。</p>
+<p>操作系统和网络的监控关注: CPU、内存和磁盘利用率，网络带宽和延迟</p>
+<p>应用程序级别监视包含几个方面。 基于应用程序是重读，重写还是受到快速波动的影响而有所不同。涉及应用程序警告和错误(500级HTTP错误)、应用代码性能、模板渲染时间、浏览器渲染应用程序的时间、数据库查询性能等。</p>
+<h2 id="_2">开源监控项目</h2>
+<h3 id="_3">错误跟踪</h3>
+<ul>
+<li><a href="https://github.com/getsentry/sentry">Sentry</a></li>
+</ul>
+<p>最初只是一个Python监控项目，但现在可以用于任何编程语言。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-77698199050e060c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_4">度量</h3>
+<ul>
+<li><a href="https://github.com/etsy/statsd/">statsd</a></li>
+</ul>
+<p>是一个node.js网络守护程序，它监听指标并聚合它们以便转移到另一服务(如Graphite)。</p>
+<ul>
+<li><a href="https://graphite.readthedocs.org/en/latest/overview.html">Graphite</a></li>
+</ul>
+<p>存储时间序列数据，并通过Django Web应用程序在图形中显示它们。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a17b4bbfc3b73d29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li><a href="http://sensuapp.org/">Sensu</a></li>
+</ul>
+<p>是一个用Ruby编写的开源监控框架，但适用于任何编程语言Web应用程序。</p>
+<ul>
+<li><a href="http://vimeo.github.io/graph-explorer/">Graph Explorer …</a></li></ul>
+                <a class="readmore" href="/python_monitor.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/selenium_example5.html" rel="bookmark"
+                           title="Permalink to selenium自动化测试工具python笔试面试项目实战5键盘操作">selenium自动化测试工具python笔试面试项目实战5键盘操作</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-10-18T09:20:00+08:00">
+                Published: 四 18 十月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">说明</h3>
+<p>本文参考答案基于Chrome，分辨率1920*1080，在其他环境表现可能会不同。
+<a href="https://github.com/china-testing/python-api-tesing/tree/master/selenium_examples/ch5">本文代码地址</a></p>
+<ul>
+<li>参考书籍下载：</li>
+</ul>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-304183281">Learning Selenium Testing Tools with Python-2014.pdf</a></p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-315206043">Selenium自动化测试 基于 Python 语言 - 2018.pdf</a></p>
+<h3 id="tab">上机实操: 在新的TAB打开连接</h3>
+<ul>
+<li>打开：https://china-testing.github.io/</li>
+<li>选择"数据分析"栏目的文章</li>
+<li>按住"Ctrl+TAB"选择"python"栏目的文章</li>
+<li>切换到新的标签"python"</li>
+<li>关闭新的标签"python"</li>
+<li>关闭浏览器</li>
+</ul>
+<p>参考答案</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># 讨论钉钉免费群21745728 qq群144081101 567351477 …</span></pre></div>
+                <a class="readmore" href="/selenium_example5.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/testing_standard.html" rel="bookmark"
                            title="Permalink to 2018软件测试标准汇总下载">2018软件测试标准汇总下载</a></h1>
                 </header>
@@ -301,75 +394,6 @@ OpenCV and Python 使用OpenCV和Python对机器学习和图像处理世界的�
 <h4 id="_3">缩进</h4>
 <p>每级缩进用4个空格 …</p>
                 <a class="readmore" href="/python_pep8.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/testing_tools_mobile.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]软件测试专家工具包3移动端">[雪峰磁针石博客]软件测试专家工具包3移动端</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-21T11:30:00+08:00">
-                Published: 二 21 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi.html">测试</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="ui-automator">UI Automator</h3>
-<p>UI Automator提供了一组API来构建基于交互UI的测试。API允许你执行操作，如打开设置菜单，非常适合黑盒自动化测试，在测试代码不依赖于应用的内部实现</p>
-<p>uiautomatorviewer提供了一个方便的图形用户界面进行扫描和分析在Android设备上当前显示的UI组件。您可以使用此工具来检查的布局层次和查看UI组件。 </p>
-<p>UiDevice类可以访问设备并进行操作。你可以调用它的方法来访问设备属性，如当前的方向或显示尺寸。该UiDevice类也让您执行操作，例如：旋转设备；按下D-pad按钮；按Back、Home、Menu等；打开通知树栏；当前窗口截图等。</p>
-<p>应用相关的API： UiCollection枚举容器的UI元素以计数，或通过文字(或属性等)针定位子元素; UIObject表示是在设备上可见的UI元素; UiScrollable?：为可滚动UI容器提供查找支持； UiSelector?：查询一个或者多个UI元素; Configurator: 设置参数。</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1edb5256ab4105cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>示例：更改语言</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="kn">from</span> <span class="nn">uiautomator</span> <span class="kn">import</span> <span class="n">device</span> <span class="k">as</span> <span class="n">d</span>
-
-<span class="n">d</span><span class="o">.</span><span class="n">screen …</span></pre></div>
-                <a class="readmore" href="/testing_tools_mobile.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/testing_tools_perf.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]软件测试专家工具包2性能测试">[雪峰磁针石博客]软件测试专家工具包2性能测试</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:35:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi.html">测试</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="locust">Locust(推荐)</h3>
-<p>了解服务器端性能的好工具。 语言python3。<a href="https://github.com/locustio/locust">源码</a> python3+ python2.7+ github上star和fork最多的性能测试工具。</p>
-<p>Locust是易于使用、分布式的用户负载测试工具。用于网站(或其他系统)的负载测试，计算出系统可以处理并发用户数。</p>
-<p>测试时大量蝗虫会攻击你的网站。每只蝗虫(或叫测试用户)可以自定义、测试过程由web界面实时监控。这能帮助测试并确定瓶颈。</p>
-<p>Locust 完全基于的事件，单机可以支持数千用户。它不使用回调，而是基于轻量进程gevent, 能简单地实线各种场景。</p>
-<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-acaee51940c65dca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h3 id="multi-mechanize">Multi-Mechanize(推荐)</h3>
-<p>Multi-Mechanize 是一个开源的性能和负载测试框架，它并发运行多个 Python 脚本对网站或者服务生成负载（组合事务)。测试输出报告保存为HTML或JMeter的兼容的XML。Multi-Mechanize最常用于web性能 和可扩展性（scalability）测试，也适用于任何python可以访问的API。尤其适合后台性能测试。稍微懂点编程的话，这个工具会远强过商业 的性能测试工具。</p>
-<p>主要特性：</p>
-<ul>
-<li>
-<p>支持各种 HTTP methods</p>
-</li>
-<li>
-<p>高级超链接和HTML表单支持 …</p></li></ul>
-                <a class="readmore" href="/testing_tools_perf.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

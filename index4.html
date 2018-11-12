@@ -30,6 +30,75 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/testing_tools_mobile.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]软件测试专家工具包3移动端">[雪峰磁针石博客]软件测试专家工具包3移动端</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-21T11:30:00+08:00">
+                Published: 二 21 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="ui-automator">UI Automator</h3>
+<p>UI Automator提供了一组API来构建基于交互UI的测试。API允许你执行操作，如打开设置菜单，非常适合黑盒自动化测试，在测试代码不依赖于应用的内部实现</p>
+<p>uiautomatorviewer提供了一个方便的图形用户界面进行扫描和分析在Android设备上当前显示的UI组件。您可以使用此工具来检查的布局层次和查看UI组件。 </p>
+<p>UiDevice类可以访问设备并进行操作。你可以调用它的方法来访问设备属性，如当前的方向或显示尺寸。该UiDevice类也让您执行操作，例如：旋转设备；按下D-pad按钮；按Back、Home、Menu等；打开通知树栏；当前窗口截图等。</p>
+<p>应用相关的API： UiCollection枚举容器的UI元素以计数，或通过文字(或属性等)针定位子元素; UIObject表示是在设备上可见的UI元素; UiScrollable?：为可滚动UI容器提供查找支持； UiSelector?：查询一个或者多个UI元素; Configurator: 设置参数。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1edb5256ab4105cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>示例：更改语言</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">uiautomator</span> <span class="kn">import</span> <span class="n">device</span> <span class="k">as</span> <span class="n">d</span>
+
+<span class="n">d</span><span class="o">.</span><span class="n">screen …</span></pre></div>
+                <a class="readmore" href="/testing_tools_mobile.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/testing_tools_perf.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]软件测试专家工具包2性能测试">[雪峰磁针石博客]软件测试专家工具包2性能测试</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-20T16:35:00+08:00">
+                Published: 一 20 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="locust">Locust(推荐)</h3>
+<p>了解服务器端性能的好工具。 语言python3。<a href="https://github.com/locustio/locust">源码</a> python3+ python2.7+ github上star和fork最多的性能测试工具。</p>
+<p>Locust是易于使用、分布式的用户负载测试工具。用于网站(或其他系统)的负载测试，计算出系统可以处理并发用户数。</p>
+<p>测试时大量蝗虫会攻击你的网站。每只蝗虫(或叫测试用户)可以自定义、测试过程由web界面实时监控。这能帮助测试并确定瓶颈。</p>
+<p>Locust 完全基于的事件，单机可以支持数千用户。它不使用回调，而是基于轻量进程gevent, 能简单地实线各种场景。</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-acaee51940c65dca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="multi-mechanize">Multi-Mechanize(推荐)</h3>
+<p>Multi-Mechanize 是一个开源的性能和负载测试框架，它并发运行多个 Python 脚本对网站或者服务生成负载（组合事务)。测试输出报告保存为HTML或JMeter的兼容的XML。Multi-Mechanize最常用于web性能 和可扩展性（scalability）测试，也适用于任何python可以访问的API。尤其适合后台性能测试。稍微懂点编程的话，这个工具会远强过商业 的性能测试工具。</p>
+<p>主要特性：</p>
+<ul>
+<li>
+<p>支持各种 HTTP methods</p>
+</li>
+<li>
+<p>高级超链接和HTML表单支持 …</p></li></ul>
+                <a class="readmore" href="/testing_tools_perf.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_lib_ftplib.html" rel="bookmark"
                            title="Permalink to [雪峰磁针石博客]python模块介绍-ftplib：FTP协议客户端">[雪峰磁针石博客]python模块介绍-ftplib：FTP协议客户端</a></h1>
                 </header>
@@ -354,85 +423,6 @@ $ sudo apt-get install python-dev
 <h2 id="_3">智慧线</h2>
 <p>智慧线 …</p>
                 <a class="readmore" href="/health_shouxiang_jichu.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/testing_automation_tips.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]软件自动化测试初学者忠告">[雪峰磁针石博客]软件自动化测试初学者忠告</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-06-20T11:20:00+08:00">
-                Published: 三 20 六月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi.html">测试</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">题外话</h2>
-<h3 id="_2">测试入门</h3>
-<p>很多受过高等教育的大学生经常问要不要去报测试培训班来入门测试。</p>
-<p>答案是否。</p>
-<p>高等教育的合格毕业生要具备自学能力，如果你不具备自学能力，要好好地反省一下，为什么自己受了高等教育迷恋于各种入门级别的培训？是没有毅力还是不知道学习方法？</p>
-<p>没有毅力的话，要自己多看些励志的书，多想想社会的残酷，亲人的失望等来勉励自己，毕竟企业多半也不会喜欢懒散的人的。</p>
-<p>不知道学习方法的话，可以去知乎上看看，有些地方是回答得挺好的。简而言之，读《软件评测师教程》(国内软件评测师教材),《Software Testing Foundations 4th》(强烈推荐 国外测试认证ISTQB教材)，《谷歌测试之道》是通常比培训机构更好地入门测试。这些测试入门书籍可以在 qq群144081101 567351477的共享找到。</p>
-<p>附录：<a href="https://itbooks.ctfile.com/u/18113597/29374724">经典的软件测试基础书籍免费下载</a></p>
-<p>我身边碰到比较有水平的软件测试，没有一个是什么_石、_testing、_林、_鸟、*内等入门测试的。而且这些机构经常打着包就业的名义骗人去培训，培训的老师通常口才很好，善于包装，但是关键的一点，这些老师多数自己都不是合格的测试。培训完之后有些学生重学几次又无法就业，甚至出现学生和培训机构对簿公堂的情况(这种情况通常是培训机构败诉，如果你身边有这样的被骗朋友可以建议他们先交涉不行再找律师保护自己)。</p>
-<p>实体培训业尤其成为打着就业的幌子进行行骗的重灾区 …</p>
-                <a class="readmore" href="/testing_automation_tips.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_weeks.html" rel="bookmark"
-                           title="Permalink to python测试开发自学每周一练">python测试开发自学每周一练</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-05-25T11:26:00+08:00">
-                Published: 五 25 五月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h1 id="table-of-contents">Table of Contents</h1>
-<ul>
-<li><a href="#python每周一练">python每周一练</a></li>
-<li><a href="#2018-06-06 json格式转换">2018-06-06 json格式转换</a></li>
-<li><a href="#2018-06-01 正则表达式及拼音排序">2018-06-01 正则表达式及拼音排序</a></li>
-<li><a href="#2018-05-25-旋转图片">2018-05-25 旋转图片</a></li>
-</ul>
-<h1 id="python">python每周一练</h1>
-<p>每周五发布python需求，所有需求都来自实际企业。下周五发布参考答案。</p>
-<ul>
-<li>
-<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
-</li>
-<li>
-<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
-</li>
-</ul>
-<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
-<p><a href="https://china-testing.github.io/python_weeks.html">本文最新版本</a> </p>
-<h3 id="2018-06-06-json">2018-06-06 json格式转换</h3>
-<p>现有 人脸标注的海量数据，部分参见：<a href="https://github.com/china-testing/python-api-tesing/tree/master/weeks/2018_06_06/data">data</a></p>
-<p>要求输出：
-1，files.txt </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4 …</pre></div></td></tr></table>
-                <a class="readmore" href="/python_weeks.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
