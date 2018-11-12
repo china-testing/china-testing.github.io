@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python 3.7极速入门教程7互联网</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_quick7.html" rel="bookmark"
+           title="Permalink to python 3.7极速入门教程7互联网">python 3.7极速入门教程7互联网</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-12T07:20:00+08:00">
+                Published: 一 12 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <p><a href="https://china-testing.github.io/python3_quick.html">本文教程目录</a></p>
+<h1 id="7">7互联网</h1>
+<h2 id="_1">互联网访问</h2>
+<h3 id="urllib">urllib</h3>
+<p>urllib是用于打开URL的Python模块。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="c1"># open a connection to a URL using urllib</span>
+<span class="n">webUrl</span>  <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;https://china-testing.github.io/address.html&#39;</span><span class="p">)</span>
+
+<span class="c1">#get the result code and print it</span>
+<span class="k">print</span> <span class="p">(</span><span class="s2">&quot;result code: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">webUrl</span><span class="o">.</span><span class="n">getcode</span><span class="p">()))</span>
+
+<span class="c1"># read the data from the URL and print it</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">webUrl</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1f860be5ebeb2c7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="json">json</h2>
+<p>json是一种受JavaScript对象文字语法启发的轻量级数据交换格式。是目前互联网最流行的数据交换格式。</p>
+<p>json公开了标准库marshal和pickle模块的用户所熟悉的API。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">([</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;bar&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;baz&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)}])</span>
+<span class="s1">&#39;[&quot;foo&quot;, {&quot;bar&quot;: [&quot;baz&quot;, null, 1.0, 2]}]&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">foo</span><span class="se">\b</span><span class="s2">ar&quot;</span><span class="p">))</span>
+<span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">foo</span><span class="se">\b</span><span class="s2">ar&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\u1234</span><span class="s1">&#39;</span><span class="p">))</span>
+<span class="s2">&quot;</span><span class="se">\u1234</span><span class="s2">&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">))</span>
+<span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span> <span class="n">sort_keys</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+<span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">io</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">([</span><span class="s1">&#39;streaming API&#39;</span><span class="p">],</span> <span class="n">io</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">io</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+<span class="s1">&#39;[&quot;streaming API&quot;]&#39;</span>
+</pre></div>
+
+
+<h3 id="_2">参考资料</h3>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 钉钉免费群21745728</li>
+<li><a href="https://china-testing.github.io/python3_quick7.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+</ul>
+<h3 id="xml">XML</h3>
+<p>XML即可扩展标记语言(eXtensible Markup Language)。它旨在存储和传输中小数据量，并广泛用于共享结构化信息。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xml.dom.minidom</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">dom</span><span class="o">.</span><span class="n">minidom</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;test.xml&quot;</span><span class="p">);</span>
+
+<span class="c1"># print out the document node and the name of the first child tag</span>
+<span class="k">print</span> <span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">nodeName</span><span class="p">)</span>
+<span class="k">print</span> <span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">firstChild</span><span class="o">.</span><span class="n">tagName</span><span class="p">)</span>
+<span class="c1"># get a list of XML tags from the document and print each one</span>
+<span class="n">expertise</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;expertise&quot;</span><span class="p">)</span>
+<span class="k">print</span> <span class="p">(</span><span class="s2">&quot;{} expertise:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">expertise</span><span class="o">.</span><span class="n">length</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">expertise</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">skill</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">))</span>
+
+<span class="c1"># create a new XML tag and add it into the document</span>
+<span class="n">newexpertise</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s2">&quot;expertise&quot;</span><span class="p">)</span>
+<span class="n">newexpertise</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;BigData&quot;</span><span class="p">)</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">firstChild</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">newexpertise</span><span class="p">)</span>
+<span class="k">print</span> <span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+<span class="n">expertise</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;expertise&quot;</span><span class="p">)</span>
+<span class="k">print</span> <span class="p">(</span><span class="s2">&quot;{} expertise:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">expertise</span><span class="o">.</span><span class="n">length</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">expertise</span><span class="p">:</span>
+    <span class="k">print</span> <span class="p">(</span><span class="n">skill</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">))</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-614827c3e1314e6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>ElementTree是处理XML文件的简便方法。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xml.dom.minidom</span>
+<span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="kn">as</span> <span class="nn">ET</span>
+
+<span class="n">tree</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;items.xml&#39;</span><span class="p">)</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">getroot</span><span class="p">()</span>
+
+<span class="c1"># all items data</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Expertise Data:&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">root</span><span class="p">:</span>
+   <span class="k">for</span> <span class="n">subelem</span> <span class="ow">in</span> <span class="n">elem</span><span class="p">:</span>
+      <span class="k">print</span><span class="p">(</span><span class="n">subelem</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-d284ae6f7439e388.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_3">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/python3_quick7.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

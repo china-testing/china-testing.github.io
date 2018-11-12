@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python库介绍-dubbo：通过telnet接口访问dubbo服务</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_lib_dubbo.html" rel="bookmark"
+           title="Permalink to python库介绍-dubbo：通过telnet接口访问dubbo服务">python库介绍-dubbo：通过telnet接口访问dubbo服务</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-26T19:20:00+08:00">
+                Published: 一 26 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <h2 id="_1">简介</h2>
+<p>dubbo服务发布之后，我们可以利用telnet命令进行调试、管理。更多资料参见 <a href="http://alibaba.github.io/dubbo-doc-static/Telnet+Command+Reference-zh-showComments=true&amp;showCommentArea=true.htm">Telnet命令参考手册</a></p>
+<p>项目地址：https://bitbucket.org/china-testing/python-chinese-library/src/46204fd809a04f4d9c7450860d48f2951dec3bc1/libraries/_dubbo/?at=default</p>
+<p>telnet 调用示例：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">telnet</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span> <span class="mi">9097</span>
+<span class="n">Trying</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span><span class="o">...</span>
+<span class="n">Connected</span> <span class="n">to</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span><span class="o">.</span>
+<span class="n">Escape</span> <span class="n">character</span> <span class="ow">is</span> <span class="s1">&#39;^]&#39;</span><span class="o">.</span>
+
+<span class="n">dubbo</span><span class="o">&gt;</span><span class="n">ls</span> <span class="n">com</span><span class="o">.</span><span class="n">oppo</span><span class="o">.</span><span class="n">sso</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">onekey</span><span class="o">.</span><span class="n">IOnekeyRegister</span>
+<span class="n">register</span>
+<span class="n">dubbo</span><span class="o">&gt;</span><span class="n">invoke</span> <span class="n">com</span><span class="o">.</span><span class="n">oppo</span><span class="o">.</span><span class="n">sso</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">onekey</span><span class="o">.</span><span class="n">IOnekeyRegister</span><span class="o">.</span><span class="n">register</span><span class="p">({</span><span class="s2">&quot;applicationKey&quot;</span><span class="p">:</span><span class="s2">&quot;mac&quot;</span><span class="p">,</span><span class="s2">&quot;imei&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;mobile&quot;</span><span class="p">:</span><span class="s2">&quot;13244448888&quot;</span><span class="p">,</span><span class="s2">&quot;createIP&quot;</span><span class="p">:</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="s2">&quot;createBy&quot;</span><span class="p">:</span><span class="s2">&quot;172.17.0.1&quot;</span><span class="p">})</span>
+<span class="p">{</span><span class="s2">&quot;configCountry&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;userIdLong&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;appPackage&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;appVersion&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;accountName&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;romVersion&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;resultCode&quot;</span><span class="p">:</span><span class="mi">3001</span><span class="p">,</span><span class="s2">&quot;thirdStatus&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;registerType&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;sendChannel&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;operator&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;manufacturer&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;password&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;osVersion&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;lock&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;model&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;visitorLocked&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;OK&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;brand&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;email&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;createIP&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;deny&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;encryptEmail&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;sessionKey&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;thirdId&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;passwordOriginal&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;mobile&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;applicationKey&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;thirdpartyOk&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;userAgent&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;userName&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;resultDesc&quot;</span><span class="p">:</span><span class="s2">&quot;应用不存在&quot;</span><span class="p">,</span><span class="s2">&quot;userId&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;encryptMobile&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;emailStatus&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;createBy&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;freePwd&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;changeTimes&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;createTime&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;mobileStatus&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;oldLock&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;codeTimeout&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;lastUpdate&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;imei&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;sessionTimeout&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;sdkVersion&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;networkID&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">}</span>
+<span class="n">elapsed</span><span class="p">:</span> <span class="mi">98</span> <span class="n">ms</span><span class="o">.</span>
+<span class="n">dubbo</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="_2">参考资料：</h3>
+<hr>
+<ul>
+<li>
+<p>python中文库参考项目：  https://bitbucket.org/china-testing/python-chinese-library</p>
+</li>
+<li>
+<p>python中文库参考项目文档：https://bitbucket.org/china-testing/python-chinese-library/wiki/browse/</p>
+</li>
+<li>
+<p>联系方式： </p>
+</li>
+</ul>
+<p>商务合作微信：pythontesting</p>
+<ul>
+<li>相关文档下载地址：https://bitbucket.org/china-testing/python-chinese-library/downloads</li>
+</ul>
+<p>中文手册：　http://dubbo.io/User+Guide-zh.htm</p>
+<ul>
+<li>
+<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
+</li>
+<li>
+<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
+</li>
+</ul>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
+<h2 id="python">Python实现</h2>
+<p>源码：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Name: dubbo.py</span>
+
+<span class="sd">Tesed in python3.5</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">telnetlib</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+
+
+<span class="k">class</span> <span class="nc">Dubbo</span><span class="p">(</span><span class="n">telnetlib</span><span class="o">.</span><span class="n">Telnet</span><span class="p">):</span>
+
+    <span class="n">prompt</span> <span class="o">=</span> <span class="s1">&#39;dubbo&gt;&#39;</span>
+    <span class="n">coding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">timeout</span><span class="o">=</span><span class="n">socket</span><span class="o">.</span><span class="n">_GLOBAL_DEFAULT_TIMEOUT</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flag</span><span class="p">,</span> <span class="n">str_</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_until</span><span class="p">(</span><span class="n">flag</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">str_</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">invoke</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">service_name</span><span class="p">,</span> <span class="n">method_name</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+        <span class="n">command_str</span> <span class="o">=</span> <span class="s2">&quot;invoke {0}.{1}({2})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">service_name</span><span class="p">,</span> <span class="n">method_name</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">arg</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">Dubbo</span><span class="o">.</span><span class="n">prompt</span><span class="p">,</span> <span class="n">command_str</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">Dubbo</span><span class="o">.</span><span class="n">prompt</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">Dubbo</span><span class="o">.</span><span class="n">coding</span><span class="p">,</span>
+                                      <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">data</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">Dubbo</span><span class="p">(</span><span class="s1">&#39;172.17.103.110&#39;</span><span class="p">,</span> <span class="mi">9097</span><span class="p">)</span>
+
+    <span class="n">json_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;applicationKey&quot;</span><span class="p">:</span><span class="s2">&quot;mac&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;imei&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mobile&quot;</span><span class="p">:</span><span class="s2">&quot;13244448888&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;createIP&quot;</span><span class="p">:</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;createBy&quot;</span><span class="p">:</span><span class="s2">&quot;172.17.0.1&quot;</span>
+    <span class="p">}</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span>
+        <span class="s2">&quot;com.oppo.sso.service.onekey.IOnekeyRegister&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;register&quot;</span><span class="p">,</span>
+        <span class="n">json_data</span>
+    <span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># python3 dubbo.py </span>
+<span class="p">{</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;applicationKey&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;OK&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;codeTimeout&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;encryptEmail&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;passwordOriginal&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;thirdId&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;emailStatus&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;freePwd&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;sessionTimeout&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;createTime&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;osVersion&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;lastUpdate&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;sdkVersion&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;registerType&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;sendChannel&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;visitorLocked&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;createIP&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;thirdStatus&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;encryptMobile&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;networkID&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;resultCode&#39;</span><span class="p">:</span> <span class="mi">3001</span><span class="p">,</span> <span class="s1">&#39;brand&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;changeTimes&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;userAgent&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;imei&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;operator&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;romVersion&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;lock&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;sessionKey&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;configCountry&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;deny&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;userIdLong&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;resultDesc&#39;</span><span class="p">:</span> <span class="s1">&#39;应用不存在&#39;</span><span class="p">,</span> <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;createBy&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;thirdpartyOk&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;appPackage&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;appVersion&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;accountName&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;userId&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;oldLock&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;userName&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;mobile&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;mobileStatus&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>更复杂的例子。</p>
+<p>源码：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">telnetlib</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+
+
+<span class="k">class</span> <span class="nc">Dubbo</span><span class="p">(</span><span class="n">telnetlib</span><span class="o">.</span><span class="n">Telnet</span><span class="p">):</span>
+
+    <span class="n">prompt</span> <span class="o">=</span> <span class="s1">&#39;dubbo&gt;&#39;</span>
+    <span class="n">coding</span> <span class="o">=</span> <span class="s1">&#39;gbk&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">timeout</span><span class="o">=</span><span class="n">socket</span><span class="o">.</span><span class="n">_GLOBAL_DEFAULT_TIMEOUT</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flag</span><span class="p">,</span> <span class="n">str_</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_until</span><span class="p">(</span><span class="n">flag</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">str_</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">invoke</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">service_name</span><span class="p">,</span> <span class="n">method_name</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+        <span class="n">command_str</span> <span class="o">=</span> <span class="s2">&quot;invoke {0}.{1}({2})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">service_name</span><span class="p">,</span> <span class="n">method_name</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">arg</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">Dubbo</span><span class="o">.</span><span class="n">prompt</span><span class="p">,</span> <span class="n">command_str</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">Dubbo</span><span class="o">.</span><span class="n">prompt</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">Dubbo</span><span class="o">.</span><span class="n">coding</span><span class="p">,</span>
+                                      <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">data</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">Dubbo</span><span class="p">(</span><span class="s1">&#39;183.131.22.99&#39;</span><span class="p">,</span> <span class="mi">21881</span><span class="p">)</span>
+
+    <span class="n">content</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;sign&quot;</span><span class="p">:</span> <span class="s2">&quot;FKeKnMEPybHujjBTzz11BrulB5av7pLhJpk=&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;partnerOrder&quot;</span><span class="p">:</span> <span class="s2">&quot;0511e0d38f334319a96920fa02be02a7&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;productDesc&quot;</span><span class="p">:</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paySuccessTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-08-25 18:33:04&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;attach&quot;</span><span class="p">:</span> <span class="s2">&quot;from_pay_demo&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;20160825&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">content_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">content</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+
+    <span class="n">json_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;requestId&quot;</span><span class="p">:</span> <span class="s2">&quot;0511e0d38f334319a96920fa02be02a7&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;reqUrl&quot;</span><span class="p">:</span> <span class="s1">&#39;http://www.oppo.com&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;httpReqType&quot;</span><span class="p">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;headerMap&quot;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+        <span class="s2">&quot;reqContent&quot;</span><span class="p">:</span> <span class="n">content_json</span><span class="p">,</span>
+        <span class="s2">&quot;appId&quot;</span><span class="p">:</span> <span class="s2">&quot;10001&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;productName&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;timeStamp&quot;</span><span class="p">:</span> <span class="s2">&quot;1472121184957&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;partnerId&quot;</span><span class="p">:</span> <span class="s2">&quot;2031&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;signType&quot;</span><span class="p">:</span> <span class="s2">&quot;MD5&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sign&quot;</span><span class="p">:</span> <span class="s2">&quot;23B621FBBF887373C65E553C2222258F&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;successResult&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span>
+        <span class="s2">&quot;com.oppo.pay.notify.api.facade.NotifyApplyService&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;httpNotify&quot;</span><span class="p">,</span>
+        <span class="n">json_data</span>
+    <span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">dubbo</span><span class="o">.</span><span class="n">py</span> 
+<span class="p">{</span><span class="s1">&#39;resMsg&#39;</span><span class="p">:</span> <span class="s1">&#39;ǩ&#39;</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;errorDetail&#39;</span><span class="p">:</span> <span class="s1">&#39;sign check fail!&#39;</span><span class="p">,</span> <span class="s1">&#39;resCode&#39;</span><span class="p">:</span> <span class="s1">&#39;100003&#39;</span><span class="p">,</span> <span class="s1">&#39;success&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="_3">待改进</h2>
+<ul>
+<li>进行多个项目的实验，增加异常处理</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

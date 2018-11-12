@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python自动化测试人工智能 - python</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/tensorflow2.html">TensorFlow工具快速入门教程2机器学习简介</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-11-12T08:35:00+08:00">
+                Published: 一 12 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info --><ul>
+<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
+</ul>
+<h3 id="_1">机器学习介绍</h3>
+<p>机器学习是一个系统，可以通过自我改进从实例中学习，而不需要程序员明确编码。机器学习将数据与统计工具相结合以预测输出。机器学习与数据挖掘和贝叶斯预测建模密切相关。机器接收数据作为输入，使用算法来制定答案。</p>
+<p>典型的机器学习任务是提供推荐。对于拥有Netflix帐户的用户，所有电影或系列推荐都基于用户的历史数据。科技公司正在使用无监督学习来改善个性化推荐的用户体验。</p>
+<p>机器学习还用于各种任务，如欺诈检测，预测维护，投资组合优化，自动化任务等。</p>
+<h3 id="_2">机器学习与传统编程</h3>
+<p>在传统的编程中，程序员在与正在开发软件的行业专家协商时编写所有规则。每条规则都基于逻辑，机器将按逻辑语句执行输出。当系统变得复杂时，需要编写更多规则，很难维护。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b5577123099534ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>机器学习输入和输出提炼规则。每当有新数据时，算法根据新数据和经验进行调整，以提高效率。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a8651424c03bebf5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_3">机器学习如何运作？</h3>
+<p>机器学习的方式与人类相似，从经验中学习。机器学习的核心目标是学习和推理。首先，机器通过发现模式来学习。这一发现归功于数据。数据科学家的一个关键部分是仔细选择要为机器提供哪些数据。用于解决问题的属性列表称为特征向量。您可以将特征向量视为用于解决问题的数据子集。</p>
+<p>机器使用一些奇特的算法来简化现实并将此发现转换为模型。因此，学习阶段用于描述数据并将其概括为模型。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-f4f20a64bf5a0f83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>例如，机器试图了解个人工资与去高档餐馆的可能性之间的关系。事实证明，工资与去高端餐厅之间为正比：这就是模型。</p>
+<ul>
+<li>推理</li>
+</ul>
+<p>构建模型时，可以测试它在以前从未见过的数据上的能力。将新数据转换为特征向量，遍历模型并进行预测。无需更新规则或再次训练模型。您可以使用先前训练过的模型来推断新数据。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-11dd88fdccde0434.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>机器学习程序的生命周期：</p>
+<p>定义问题；收集数据；可视化数据；训练算法；测试算法；收集反馈；优化算法；循环4-7次直到结果令人满意；使用模型进行预测</p>
+<h3 id="_4">机器学习算法</h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1981e1f112710dc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>机器学习分类：监督和非监督及半监督。</p>
+<h4 id="_5">监督学习</h4>
+<p>有两种监督学习：</p>
+<ul>
+<li>分类任务</li>
+</ul>
+<p>要预测客户性别。您将开始从数据库收集有关身高，体重，工作，工资，采购篮等的数据。您知道每个客户的性别，它只能是男性或女性。分类器的目的是根据信息（即您收集的特征）分配男性或女性（即标签）的概率。当模型学习如何识别男性或女性时，您可以使用新数据进行预测。例如，您刚收到来自未知客户的新信息，并且您想知道它是男性还是女性。如果分类器预测男性= 70％，则意味着算法确定该客户是男性的70％，而30％是女性。</p>
+<p>标签可以是两个或更多个类。上面的例子只有两个类，但是如果分类器需要预测对象，它有几十个类（例如，玻璃，桌子，鞋等，每个对象代表一个类）</p>
+<ul>
+<li>回归任务</li>
+</ul>
+<p>当输出是连续值可以用回归。例如，金融分析师可能需要根据股票，先前股票表现，宏观经济指数等特征来预测股票价值。系统将接受训练，以估算出可能出现最低误差的股票价格。</p>
+<table>
+<thead>
+<tr>
+<th align="center">算法</th>
+<th align="center">描述</th>
+<th align="center">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">线性回归</td>
+<td align="center">找到将每个特征与输出相关联的方法</td>
+<td align="center">回归</td>
+</tr>
+<tr>
+<td align="center">逻辑回归</td>
+<td align="center">线性回归的扩展。输出变量只有两个（例如，仅黑色或白色）</td>
+<td align="center">分类</td>
+</tr>
+<tr>
+<td align="center">决策树</td>
+<td align="center">高度可解释的分类或回归模型，将数据特征值拆分为决策节点处的分支（例如颜色，每种可能的颜色成为新分支），直到做出最终决策输出</td>
+<td align="center">回归分类</td>
+</tr>
+<tr>
+<td align="center">朴素贝叶斯</td>
+<td align="center">用可影响事件的每个特征的独立概率更新事件的先验知识。</td>
+<td align="center">回归分类</td>
+</tr>
+<tr>
+<td align="center">支持向量机</td>
+<td align="center">SVM(Support Vector Machine)算法找到最佳划分类的超平面。它最适合与非线性求解器一起使用。</td>
+<td align="center">回归(非常见)分类</td>
+</tr>
+<tr>
+<td align="center">随机森林</td>
+<td align="center">基于决策树之上，可以大大提高准确性。随机森林生成很多次简单的决策树，并使用“多数投票”方法来决定返回哪个标签。对于分类任务，最终预测将是投票最多的;而对于回归任务，所有树的平均预测是最终预测。</td>
+<td align="center">回归分类</td>
+</tr>
+<tr>
+<td align="center">AdaBoost</td>
+<td align="center">分类或回归技术，使用多种模型做出决策，但根据其预测结果的准确性对其进行权衡。</td>
+<td align="center">回归分类</td>
+</tr>
+<tr>
+<td align="center">梯度增强树</td>
+<td align="center">先进的分类/回归技术。它专注于先前树所犯的错误并尝试纠正它。</td>
+<td align="center">回归分类</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_6">非监督学习</h4>
+<p>算法探索输入数据而不给出明确的输出（例如，探索客户人口统计数据以识别模式）</p>
+<p>当您不知道如何对数据进行分类时，您可以使用它，并且您希望算法找到模式并为您分类数据</p>
+<table>
+<thead>
+<tr>
+<th align="center">算法</th>
+<th align="center">描述</th>
+<th align="center">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>K均值聚类 |将数据放入某些组 (k)，每组包含具有相似特征的数据（由模型确定，而不是由人类预先确定） |聚类
+高斯混合模型 |k-means聚类的泛化，为组（簇）的大小和形状提供了更大的灵活性 |聚类
+分层聚类 |沿分层树拆分群集以形成分类系统。可用于群集会员卡客户 |聚类
+推荐系统 |帮助定义相关数据 |聚类
+PCA / T-SNE |主要用于降低数据的维度。算法将特征数量减少到3或4个具有最高方差的向量。 |尺寸减小</p>
+<h3 id="_7">如何选择机器学习算法</h3>
+<p>有很多机器学习算法。算法的选择基于目标</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-4a0d732f0a536fc6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>在下面的例子中，任务是预测三个品种中的花的类型。预测基于花瓣的长度和宽度。图片描绘了十种不同算法的结果。左上角的图片是数据集。数据分为三类：红色，浅蓝色和深蓝色。有一些分组。例如，从第二张图像开始，左上角的所有内容都属于红色类别，中间部分则是不确定性和淡蓝色的混合，而底部则对应于深色类别。其他图像显示了不同的算法以及它们如何尝试对数据进行分类。</p>
+<h3 id="_8">机器学习的挑战与局限</h3>
+<p>机器学习的主要挑战是缺乏数据或数据集的密度。建议每组至少观察20次，以帮助机器学习。这种约束导致评估和预测不良。</p>
+<h3 id="_9">机器学习的应用</h3>
+<ul>
+<li>增强：</li>
+</ul>
+<p>帮助人们完成日常任务，无论是个人还是商业，都无需完全控制输出。机器学习以不同的方式使用，例如虚拟助手，数据分析，软件解决方案。主要用户是减少由于人为偏见造成的错误。</p>
+<ul>
+<li>自动化：</li>
+</ul>
+<p>机器学习可在任何领域完全自主工作，无需任何人为干预。例如，机器人在制造工厂中执行基本工艺步骤。</p>
+<ul>
+<li>金融业</li>
+</ul>
+<p>机器学习在金融业中越来越受欢迎。银行主要使用ML来查找数据中的模式，同时也防止欺诈。</p>
+<ul>
+<li>政府组织</li>
+</ul>
+<p>政府利用ML来管理公共安全和公用事业。以中国为例，面对大规模的人脸。政府使用人工智能来防止中国式过马路。</p>
+<ul>
+<li>医疗行业</li>
+</ul>
+<p>医疗保健是第一个使用机器学习和图像检测的行业之一。</p>
+<ul>
+<li>营销</li>
+</ul>
+<p>在海量数据时代之前，研究人员开发了贝叶斯分析等高级数学工具来估算客户的价值。随着数据的蓬勃发展，营销部门依靠AI来优化客户关系和营销活动。</p>
+<p>机器学习在供应链中的应用实例</p>
+<p>机器学习为视觉模式识别提供了极好的结果，为整个供应链网络中的物理检查和维护开辟了许多潜在的应用。</p>
+<p>无监督学习可以快速搜索不同数据集中的可比模式。反过来，机器可以在整个物流中心进行质​​量检查，运输时有损坏和磨损。</p>
+<p>例如，IBM的Watson平台可以确定运输容器损坏。 Watson将基于视觉和系统的数据结合起来，实时跟踪，报告和提出建议。</p>
+<p>在过去一年中，仓库经理广泛依赖于评估和预测库存的主要方法。在结合大数据和机器学习时，已经实施了更好的预测技术（比传统预测工具提高了20％到30％）。就销售而言，这意味着由于库存成本可能降低而增加2％至3％。</p>
+<p>机器学习谷歌汽车的例子</p>
+<p>Google汽车车顶上装满了激光，告诉它周围区域的位置。它前面有雷达，可以通知汽车周围所有车辆的速度和运动。它利用所有这些数据不仅弄清楚如何驾驶汽车，而且还要弄清楚并预测汽车周围的潜在驾驶员将会做些什么。令人印象深刻的是，该车每秒处理几乎1千兆字节的数据。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e8541aaa632b3356.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="_10">参考资料</h2>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 钉钉群21745728</li>
+<li><a href="https://china-testing.github.io/tensorflow2.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>   </li>
+<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
+</ul>
+<h3 id="_11">为什么机器学习很重要？</h3>
+<p>到目前为止，机器学习是分析，理解和识别数据模式的最佳工具。机器学习背后的主要思想之一是计算机可以被训练以自动执行对于人类来说是穷举或不可能的任务。机器学习可以在人为干预最少的情况下做出决策。</p>
+<p>以下面的例子为例;零售代理商可以根据自己的经验和他对市场的了解来估算房屋的价格。</p>
+<p>可以训练机器将专家的知识转化为特征。特征是房屋，社区，经济环境等的所有特征，使价格差异化。对于专家来说，他花了几年时间才掌握估算房屋价格的艺术。每次销售后，他的专业知识越来越好。</p>
+<p>对于机器，需要数百万个数据（即示例）来掌握该技术。在学习的最初阶段，机器出错了，不知何故，就像初级推销员一样。一旦机器看到了所有的例子，它就有了足够的知识来进行估算。同时，具有令人难以置信的准确性。机器也可以相应地调整其错误。</p>
+<p>大多数大公司都了解机器学习和保存数据的价值。麦肯锡估计，分析的价值在9.5万亿美元到15.4万亿美元之间，而5到7万亿美元的价值可以归功于最先进的人工智能技术。</p>
+<h3 id="_12">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/tensorflow2.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/tensorflow.html" rel="bookmark"
+                           title="Permalink to TensorFlow工具快速入门教程1人工智能简介">TensorFlow工具快速入门教程1人工智能简介</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-12T08:30:00+08:00">
+                Published: 一 12 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li>
+<p><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/tensorflow2.html">TensorFlow工具快速入门教程2机器学习简介</a></p>
+</li>
+<li><a href="https://china-testing.github.io/tensorflow1.html">TensorFlow工具快速入门教程1人工智能简介</a></li>
+</ul>
+<h3 id="_1">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/tensorflow.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
+</ul>
+                <a class="readmore" href="/tensorflow.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/tensorflow1.html" rel="bookmark"
+                           title="Permalink to TensorFlow工具快速入门教程1人工智能简介">TensorFlow工具快速入门教程1人工智能简介</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-12T08:30:00+08:00">
+                Published: 一 12 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
+</ul>
+<h3 id="ai">什么是AI？</h3>
+<p>具有执行认知功能（例如感知，学习，推理和解决问题）的能力的机器被认为具有人工智能。</p>
+<p>当机器具有认知能力时，存在人工智能。人工智能的基准是关于推理，说话和视觉的人类水平。</p>
+<p>AI有三个不同的级别：</p>
+<ul>
+<li>狭义的AI：当机器能够比人类更好地执行特定任务时，这是人工智能的当前水平。</li>
+<li>通用的人工智能：能够以与人类相同的准确度执行任何智力任务。</li>
+<li>强大的人工智能：人工智能在很多任务中可以击败人类。</li>
+</ul>
+<p>人工智能几乎用于所有行业，据麦肯锡称，人工智能有可能在零售业中创造价值600亿美元的价值，与其他分析技术相比，银行业的增值价值增加了​​50％。在运输和物流方面，潜在的收入增长了89％。</p>
+<p>如果一个组织将AI用于其营销团队，它可以自动执行重复的任务，使销售代表能够专注于建立关系，领导培育等任务。某公司每次销售代表打电话时，机器都会记录转录和分析聊天。 VP可以使用AI分析和推荐来制定获胜策略。</p>
+<p>简而言之，AI提供了一种尖端技术来处理人类无法处理的复杂数据。 AI可自动执行冗余作业，使工作人员能够专注于高级增值任务。当人工智能大规模实施时，可以降低成本并增加收入。</p>
+<h3 id="_1">人工智能简史</h3>
+<p>1956年，一群来自不同背景的前卫专家决定组织一个关于人工智能的夏季研究项目。四个聪明的头脑领导了这个项目; John McCarthy（达特茅斯学院），Marvin Minsky（哈佛大学 …</p>
+                <a class="readmore" href="/tensorflow1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/pentesting11.html" rel="bookmark"
+                           title="Permalink to 渗透测试工具简介11 SQL 注入">渗透测试工具简介11 SQL 注入</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-12T08:25:00+08:00">
+                Published: 一 12 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/pentesting.html">本书目录</a></li>
+</ul>
+<h1 id="11-sql">渗透测试工具简介11 SQL注入</h1>
+<p>SQL是结构化查询语言的首字母缩写。它用于检索和操作数据库中的数据。</p>
+<h3 id="sql">什么是SQL注入？</h3>
+<p>SQL注入使动态SQL语句注释掉语句的某些部分或附加始终为真的条件来执行恶意SQL代码。</p>
+<p>可以使用SQL注入执行的攻击类型和数据库引擎相关。攻击适用于动态SQL语句。动态语句是在运行时使用来自Web表单或URI查询字符串的参数password生成的语句。</p>
+<p>某HTML表单的代码如下。</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">‘index.php’</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">required</span><span class="o">=</span><span class="s">&quot;required&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;password&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;password&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;remember_me&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Remember me&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Submit&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>上面的表单接受电子邮件地址和密码，将它们提交给名为index.php的PHP文件。
+它可以选择将登录会话存储在cookie中。 我们从remember_me复选框中推断出这一点。 它使用post方法提交数据。 这意味着值不会显示在URL中 …</p>
+                <a class="readmore" href="/pentesting11.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/pentesting.html" rel="bookmark"
+                           title="Permalink to 渗透测试简介 - 目录">渗透测试简介 - 目录</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-12T08:20:00+08:00">
+                Published: 一 12 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li>
+<p><a href="https://china-testing.github.io/pentesting.html">本书目录</a></p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/pentesting1.html">渗透测试简介1渗透测试简介</a></p>
+</li>
+<li><a href="https://china-testing.github.io/pentesting2.html">渗透测试工具简介2入侵工具</a></li>
+<li><a href="https://china-testing.github.io/pentesting11.html">渗透测试工具简介11 SQL 注入</a></li>
+</ul>
+<h3 id="_1">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/python3_quick9.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
+</ul>
+                <a class="readmore" href="/pentesting.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/pentesting1.html" rel="bookmark"
+                           title="Permalink to 渗透测试简介1渗透测试简介">渗透测试简介1渗透测试简介</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-12T08:20:00+08:00">
+                Published: 一 12 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/pentesting.html">本书目录</a></li>
+</ul>
+<h1 id="_1">渗透测试简介</h1>
+<h2 id="_2">什么是渗透测试</h2>
+<p>黑客利用计算机或网络等的弱点获取访问，比如使用密码破解算法获取对系统的访问权限。黑客可使用计算机进行欺诈行为，例如欺诈，侵犯隐私，窃取公司/个人数据等。网络犯罪每年使许多组织损失数百万美元。企业需要保护自己免受此类攻击。</p>
+<p>黑客是发现并利用计算机系统和/或网络中的弱点来获取访问权的人。黑客通常是具有计算机安全知识的熟练计算机程序员。</p>
+<p>黑客根据其行为的意图进行分类。以下列表根据黑客的意图对黑客进行了分类。</p>
+<h3 id="_3">黑客类型</h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-ea900bc628df810a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>道德黑客（白帽子White Hat）：访问系统以修复已发现的弱点。他们还可以执行渗透测试和漏洞评估。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-ba5a862d9bd79d5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>Cracker（黑帽子 Black hat）：未经授权访问计算机系统。目的通常是窃取公司数据，侵犯隐私权，从银行账户转移资金等。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-4782680696ca2bca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>灰帽子（Grey hat）：介于道德黑客和黑帽黑客之间。在没有权限的情况下闯入计算机系统，以识别弱点并将其显示给系统所有者。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-91460cabed193455.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>脚本小子：使用已经制作的工具访问计算机系统的非技术人员。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-655bc860fcfe718d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>黑客活动家：利用黑客发送社交，宗教和政治等信息。通常是通过劫持网站并将消息留在被劫持的网站上。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b8941ee9cd9e27e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>Phreaker：识别和利用电话而不是计算机的弱点的黑客。</p>
+<h3 id="_4">什么是网络犯罪？</h3>
+<p>网络犯罪是利用计算机和网络进行非法活动，如传播计算机病毒，在线欺凌，进行未经授权的电子资金转移等 …</p>
+                <a class="readmore" href="/pentesting1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/pentesting2.html" rel="bookmark"
+                           title="Permalink to 渗透测试工具简介2入侵工具">渗透测试工具简介2入侵工具</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-12T08:20:00+08:00">
+                Published: 一 12 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/pentesting.html">本书目录</a></li>
+</ul>
+<h1 id="_1">入侵工具</h1>
+<p>黑客工具是计算机程序和脚本，可帮助您查找和利用计算机系统，Web应用程序，服务器和网络中的弱点。</p>
+<p>在此列表中，我们重点介绍了Web应用程序，服务器和网络的道德黑客攻击的前20个工具</p>
+<h3 id="netsparker">Netsparker</h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-d07be1ed6aa2d1e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><a href="http://bit.ly/2Mvakgc">Netsparker</a>是一款易于使用的Web应用程序安全扫描程序，可以自动查找Web应用程序和Web服务中的SQL注入，XSS和其他漏洞。它可作为内部部署和SAAS解决方案提供。</p>
+<ul>
+<li>使用独特的基于证据的扫描技术进行精确的漏洞检测。</li>
+<li>需要最少的配置。扫描程序自动检测URL重写规则，自定义404错误页面。</li>
+<li>REST API，可与SDLC，错误跟踪系统等无缝集成。</li>
+<li>可扩展, 能在24小时内扫描1,000个Web应用程序。</li>
+</ul>
+<h3 id="acunetix">Acunetix</h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-bc21f52603dd89db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><a href="http://bit.ly/2Msq7AB">Acunetix</a>是完全自动化的道德黑客攻击解决方案，模仿黑客一步领先于恶意入侵者。 Web应用程序安全扫描程序可准确扫描HTML5，JavaScript和单页应用程序。它可以审核复杂的，经过身份验证的Web应用程序，并针对各种Web和网络漏洞发布合规性和管理报告。</p>
+<p>特征：</p>
+<ul>
+<li>扫描SQL Injection，XSS和4500+其他漏洞</li>
+<li>检测超过1200个WordPress核心，主题和插件漏洞</li>
+<li>快速和可扩展 - 无中断地抓取数十万个页面</li>
+<li>与流行的WAF和问题跟踪器集成，以帮助SDLC</li>
+<li>内部部署和云解决方案。</li>
+</ul>
+<h3 id="probely">Probe.ly</h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-16f120b79299dfab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><a href="https://share.probely.com/2kd">Probe …</a></p>
+                <a class="readmore" href="/pentesting2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_quick.html" rel="bookmark"
+                           title="Permalink to python 3.7极速入门教程7互联网">python 3.7极速入门教程7互联网</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-12T07:20:00+08:00">
+                Published: 一 12 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/python3_quick.html">本文教程目录</a></p>
+<ul>
+<li><a href="https://china-testing.github.io/python3_quick1.html">python 3.7极速入门教程1安装：Linux(Ubuntu 18.04)及Windows上安装Anaconda</a></li>
+<li><a href="https://china-testing.github.io/python3_quick2.html">python 3.7极速入门教程2 Hello与变量</a></li>
+<li><a href="https://china-testing.github.io/python3_quick7.html">python 3.7极速入门教程7互联网</a></li>
+<li><a href="https://china-testing.github.io/python3_quick8.html">python 3.7极速入门教程8语言比较与面试考试试题</a></li>
+<li><a href="https://china-testing.github.io/python3_quick9.html">python 3.7极速入门教程9最佳python中文工具书籍下载</a></li>
+</ul>
+                <a class="readmore" href="/python3_quick.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_quick7.html" rel="bookmark"
+                           title="Permalink to python 3.7极速入门教程7互联网">python 3.7极速入门教程7互联网</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-12T07:20:00+08:00">
+                Published: 一 12 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/python3_quick.html">本文教程目录</a></p>
+<h1 id="7">7互联网</h1>
+<h2 id="_1">互联网访问</h2>
+<h3 id="urllib">urllib</h3>
+<p>urllib是用于打开URL的Python模块。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="c1"># open a connection to a URL using urllib</span>
+<span class="n">webUrl</span>  <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;https://china-testing.github.io/address.html&#39;</span><span class="p">)</span>
+
+<span class="c1">#get the result code and print it</span>
+<span class="k">print</span> <span class="p">(</span><span class="s2">&quot;result code: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">webUrl</span><span class="o">.</span><span class="n">getcode</span><span class="p">()))</span>
+
+<span class="c1"># read the data from the URL and print it</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">webUrl …</span></pre></div>
+                <a class="readmore" href="/python3_quick7.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/flask_books.html" rel="bookmark"
+                           title="Permalink to web开发工具flask中文英文书籍下载-持续更新">web开发工具flask中文英文书籍下载-持续更新</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-09T15:20:00+08:00">
+                Published: 五 09 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="flask-web-development-2nd-2018pdf"><a href="https://itbooks.ctfile.com/fs/18113597-319371546">Flask Web Development 2nd - 2018.pdf</a></h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-fa78d96d79f7ebdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>中文版： <a href="https://www.amazon.cn/dp/B07GRV89VL/ref=sr_1_2?ie=UTF8&amp;qid=1541806695&amp;sr=8-2&amp;keywords=Flask+Web+Development">Flask Web开发 基于Python的Web应用开发实战 第2版</a></p>
+<p>强烈推荐： https://github.com/miguelgrinberg/flasky 星级 5000多</p>
+<p>这本书比较基础，入门是可以的，但是难以成大器，配合下面这本书就完美了。另外<a href="https://itbooks.ctfile.com/fs/18113597-319371544">Flask Building Python Web Services - 2017.pdf</a>也是不错的参考。</p>
+<h3 id="the-new-and-improved-flask-2018pdf"><a href="https://itbooks.ctfile.com/fs/18113597-319371576">The New And Improved Flask - 2018.pdf</a></h3>
+<p>推荐 https://github.com/miguelgrinberg/microblog 星级 2000 左右</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b0bf1bc39ccfdc79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><a href="https://itbooks.ctfile.com/fs/18113597-319371589">深入理解Flask - 2016 …</a></p>
+                <a class="readmore" href="/flask_books.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 7
+        <a href="/category/python2.html">&raquo;</a>
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

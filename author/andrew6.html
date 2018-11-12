@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python自动化测试人工智能 - andrew</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_flask_autotest4.html" rel="bookmark"
+                           title="Permalink to flask构建自动化测试平台4-用户输入">flask构建自动化测试平台4-用户输入</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-18T10:26:00+08:00">
+                Published: 五 18 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <p>本章将介绍以下主题：</p>
+<ul>
+<li>使用HTTP GET获取用户输入</li>
+<li>使用HTTP POST获取用户输入</li>
+<li>添加天气和货币数据</li>
+</ul>
+<p><a href="https://www.jianshu.com/p/f9866ba83791">本文最新版本</a> </p>
+<h3 id="get">GET</h3>
+<p>HTTP GET从用户获取有限的非敏感信息，以便服务器根据GET参数的要求返回页面。GET请求不应该修改服务器状态，用户应该多次请求返回相同的结果。</p>
+<p>全局变量request已经帮你处理好了请求顺序和线程。<a href="http://flask-cn.readthedocs.io/en/latest/reqcontext/">参考资料</a></p>
+<h3 id="post">POST</h3>
+<p>HTTP POST用于提交更大的数据块或更敏感的数据到服务器。 通过POST请求发送的数据在网址中不可见。</p>
+<h3 id="_1">实例</h3>
+<p>代码： headlines.py</p>
+<p>```#!python
+import feedparser
+from flask import Flask
+from flask import render_template
+from flask import request
+import json
+import urllib</p>
+<p>app = Flask(<strong>name</strong>)</p>
+<p>RSS_FEEDS = {'bbc': 'http://feeds.bbci …</p>
+                <a class="readmore" href="/python_flask_autotest4.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_flask_autotest2.html" rel="bookmark"
+                           title="Permalink to flask构建自动化测试平台2-开始头条项目">flask构建自动化测试平台2-开始头条项目</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-18T10:22:00+08:00">
+                Published: 五 18 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="2-">2-开始头条项目</h2>
+<p><a href="https://github.com/china-testing/python-api-tesing/tree/master/flask/flask_web_service/Chapter02">代码地址</a></p>
+<p>我们将创建一个头条应用程序，显示最新的新闻标题，天气信息，和货币汇率。</p>
+<p>在本章中，我们将介绍RSS源并展示如何自动使用它们从特定出版物中检索最近的新闻报道。在下一章中，我们会讨论如何使用模板来显示检索到的标题和摘要文章给我们的用户。第4章，我们头条页面项目的用户输入，将显示你如何从用户那里获得输入，以便他们可以定制他们的体验，也看看如何将天气和货币数据添加到我们的应用程序。我们会完成在第5章“改善我们头条项目的用户体验”一文中关注项目添加一些CSS样式并查看如何记住用户的偏好。</p>
+<p>到本章结束时，您将学会如何创建更复杂的Flask应用。我们将从真实世界的新闻故事中提取原始数据并构建HTML格式化将其显示给我们的用户。您还将学习更多关于路由的知识 - 也就是说不同的URL会触发我们应用程序代码的不同部分。</p>
+<p>在本章中，我们将介绍以下主题：</p>
+<ul>
+<li>RSS和RSS源简介</li>
+</ul>
+<p>技术支持QQ群：　144081101 591302926 567351477
+<a href="https://china-testing.github.io/python_flask_autotest2.html">本文最新版本</a> </p>
+<h3 id="rssrss">RSS和RSS源简介</h3>
+<p>我们需要安装feedparser：feedparser。</p>
+<ul>
+<li>问题，如何寻找python库?</li>
+</ul>
+<p><a href="https://github.com/china-testing/python-api-tesing">python测试开发库</a>， <a href="https://pypi.python.org/pypi">PYPI</a></p>
+<div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">feedparser</span>
+</pre></div>
+
+
+<p>主要的RSS有WordPress和Blogger,通常会有如下图标。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-94b58c97d3f33e0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>BBC news的rss为： http://feeds.bbci.co …</p>
+                <a class="readmore" href="/python_flask_autotest2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/machine_concepts.html" rel="bookmark"
+                           title="Permalink to 机器学习术语">机器学习术语</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-18T10:20:00+08:00">
+                Published: 五 18 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1"></h3>
+                <a class="readmore" href="/machine_concepts.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_flask_autotest1.html" rel="bookmark"
+                           title="Permalink to flask构建自动化测试平台1-hello">flask构建自动化测试平台1-hello</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-18T10:20:00+08:00">
+                Published: 五 18 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
+<ul>
+<li>第一部分</li>
+</ul>
+<p>Flask实例。学习使用Flask开发，构建功能完备的Web应用程序。我们开发了动态的头条新闻应用程序，可显示最新的新闻标题以及最新的货币和天气信息。在项目二中，我们构建了由MySQL数据库支持的犯罪地图应用程序，允许用户提交犯罪信息和犯罪地点，以便绘制区域内的危险区域和其他犯罪趋势。在最后的项目中，我们将Flask与更多现代技术结合在一起，例如Twitter的Bootstrap和NoSQL数据库MongoDB，以创建Waiter Caller应用程序，允许餐厅顾客轻松地将服务员叫到他们的桌子。</p>
+<ul>
+<li>第二部分</li>
+</ul>
+<p>Flask框架菜谱。涉及Flask的不同配置方式，如何使用模板并学习ORM和视图层。您将看到如何编写管理界面，随后进行错误调试和记录。最后，你会了解平台上的不同部署。</p>
+<ul>
+<li>第三部分</li>
+</ul>
+<p>掌握Flask，从简单的Flask应用程序展示模型 - 视图 - 控制器（MVC）体系结构。然后扩展用户登录和注册，NoSQL查询，REST API，管理界面、单元测试等。最后讨论不同平台部署Flask应用程序，每个应用程序的优缺点以及如何部署每个应用程序</p>
+<ul>
+<li>第四部分</li>
+</ul>
+<p>开发一个实用的自动化测试平台。</p>
+<p><img alt="功能图.jpg" src="https://bitbucket.org/repo/gaRxAK/images/1655032984-%E5%8A%9F%E8%83%BD%E5%9B%BE.jpg"></p>
+<p><img alt="架构图.jpg" src="https://bitbucket.org/repo/gaRxAK/images/1790717574-%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg"></p>
+<p>当然上面的图比较复杂，我们教学会使用简化版本</p>
+<h2 id="1-hello-world">1-Hello, World!</h2>
+<ul>
+<li>
+<p>Flask简介</p>
+</li>
+<li>
+<p>开发环境</p>
+</li>
+<li>
+<p>Hello，World …</p></li></ul>
+                <a class="readmore" href="/python_flask_autotest1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pytest_testing.html" rel="bookmark"
+                           title="Permalink to 自动化测试框架pytest教程 - 目录">自动化测试框架pytest教程 - 目录</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-16T10:20:00+08:00">
+                Published: 三 16 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <p>目录</p>
+<ul>
+<li>
+<p><a href="https://china-testing.github.io/python_pytest_testing1.html">第1章 快速入门</a></p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/python_pytest_testing2.html">第2章 测试函数</a></p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/python_pytest_testing3.html">第3章 pytest Fixtures</a></p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/python_pytest_testing4.html">第4章 内置Fixtures</a></p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/python_pytest_testing5.html">第5章 插件</a></p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/python_pytest_testing6.html">第6章 配置</a></p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/python_pytest_testing7.html">第7章 与其他工具集成</a></p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/python_pytest_testing8.html">第8章 更多插件</a></p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/python_pytest_testing9.html">第9章 应用实例</a></p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/python_pytest_testing10.html">第10章 附录1：python打包</a></p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/python_pytest_testing11.html">第11章 附录2：单元测试和xunit介绍</a></p>
+</li>
+<li>
+<p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/pytest_testing">代码地址</a></p>
+</li>
+<li>
+<p>技术支持钉钉群：21745728(可以加钉钉pythontesting邀请加入) QQ群：　144081101 591302926 567351477</p>
+</li>
+</ul>
+                <a class="readmore" href="/python_pytest_testing.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pytest_testing1.html" rel="bookmark"
+                           title="Permalink to 自动化测试框架pytest教程1-快速入门">自动化测试框架pytest教程1-快速入门</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-16T10:20:00+08:00">
+                Published: 三 16 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <p>第1章 快速入门</p>
+<h3 id="pytest">什么是pytest？</h3>
+<p>pytest是一个强大的Python测试工具，它可以用于所有类型和级别的软件测试。 Pytest可以被开发团队，QA团队，独立测试小组，实践TDD的个人和开放源代码项目。实际上，整个互联网上的项目都是从unittest或者nose转向pytest，包括Mozilla和Dropbox。为什么？因为pytest提供
+强大的功能，如'断言'重写，第三方插件模型，强大但简单的fixture模型。</p>
+<p>pytest是软件测试框架，这意味着pytest是命令行工具。它会自动找到你写的测试，运行测试并报告结果。可编写插件或安装第三方来扩展插件。它可以用来测试Python发行版。它很容易与其他工具对接，如持续集成和网页自动化。</p>
+<p>Pytest脱颖而出的原因：</p>
+<ul>
+<li>简单</li>
+<li>易读</li>
+<li>用assert来测试失败，而不是self.assertEqual() 或者self.assertLessThan() </li>
+<li>可运行unittest或nose测试。</li>
+</ul>
+<p>事实上很多自动化测试平台，底层就是用驱动的。它们用flask或django等提供友好的页面展示，但是核心层还是在pytest和一些测试库的开发。</p>
+<p>本文基于　ubuntu 16，　python3书写，但是在其他平台通常也应该可以执行。</p>
+<ul>
+<li>技术支持钉钉群：21745728(可以加钉钉pythontesting邀请加入) QQ群：　144081101 591302926 …</li></ul>
+                <a class="readmore" href="/python_pytest_testing1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pytest_testing10.html" rel="bookmark"
+                           title="Permalink to 自动化测试框架pytest教程10-附录1：python打包">自动化测试框架pytest教程10-附录1：python打包</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-16T10:20:00+08:00">
+                Published: 三 16 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <p>第10章 附录1：python打包</p>
+<p>正在紧张整理中</p>
+                <a class="readmore" href="/python_pytest_testing10.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pytest_testing11.html" rel="bookmark"
+                           title="Permalink to 自动化测试框架pytest教程11-附录2：单元测试和xunit介绍">自动化测试框架pytest教程11-附录2：单元测试和xunit介绍</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-16T10:20:00+08:00">
+                Published: 三 16 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <p>第11章 附录2：单元测试和xunit介绍</p>
+<p>正在紧张整理中</p>
+                <a class="readmore" href="/python_pytest_testing11.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pytest_testing2.html" rel="bookmark"
+                           title="Permalink to 自动化测试框架pytest教程2-测试函数">自动化测试框架pytest教程2-测试函数</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-16T10:20:00+08:00">
+                Published: 三 16 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <p>第2章 测试函数</p>
+<h3 id="tasks">测试Tasks程序</h3>
+<p>被测程序Tasks的结构如下</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="highlight"><pre><span></span>tasks_proj/
+├── CHANGELOG.rst
+├── LICENSE
+├── MANIFEST.in
+├── README.rst
+├── setup.py
+├── src
+│ └── tasks
+│ ├── __init__.py
+│ ├── api.py
+│ ├── cli.py
+│ ├── config.py
+│ ├── tasksdb_pymongo …</pre></div></td></tr></table>
+                <a class="readmore" href="/python_pytest_testing2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pytest_testing3.html" rel="bookmark"
+                           title="Permalink to 自动化测试框架pytest教程3-pytest Fixtures">自动化测试框架pytest教程3-pytest Fixtures</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-16T10:20:00+08:00">
+                Published: 三 16 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <p>第3章 pytest Fixtures</p>
+<p>正在紧张整理中</p>
+                <a class="readmore" href="/python_pytest_testing3.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="/author/andrew5.html">&laquo;</a>
+    Page 6 / 12
+        <a href="/author/andrew7.html">&raquo;</a>
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

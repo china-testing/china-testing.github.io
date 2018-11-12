@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python数据分析快速入门教程5-处理缺失数据</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li class="active"><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python_pandas_crash_tutorial5.html" rel="bookmark"
+           title="Permalink to python数据分析快速入门教程5-处理缺失数据">python数据分析快速入门教程5-处理缺失数据</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-03T09:20:00+08:00">
+                Published: 四 03 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->      <p>第5章 缺失数据</p>
+<h2 id="_1">介绍</h2>
+<p>很少没有任何缺失值的数据集。 有许多缺失数据的表示。 在数据库中是NULL值，一些编程语言使用NA。缺失值可以是空字符串：''或者甚至是数值88或99等。Pandas显示缺失值为NaN。</p>
+<p>本章将涵盖：</p>
+<ul>
+<li>什么是缺失值</li>
+<li>如何创建缺失值</li>
+<li>如何重新编码并使用缺失值进行计算</li>
+</ul>
+<h3 id="_2">什么是缺失值</h3>
+<p>可以从numpy中获得NaN值，在Python中看到缺失值使用几种方式显示：NaN，NAN或nan，他们都是相等的。</p>
+<p>NaN不等于0或空字符串''。</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">NaN</span><span class="p">,</span> <span class="n">NAN</span><span class="p">,</span> <span class="n">nan</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">NaN</span> <span class="o">==</span> <span class="bp">True</span><span class="p">,</span> <span class="n">NaN</span> <span class="o">==</span> <span class="bp">False</span><span class="p">,</span> <span class="n">NaN</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NaN</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
+<span class="bp">False</span><span class="o">|</span><span class="bp">False</span><span class="o">|</span><span class="bp">False</span><span class="o">|</span><span class="bp">False</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">NaN</span> <span class="o">==</span> <span class="n">NaN</span><span class="p">,</span> <span class="n">NaN</span> <span class="o">==</span> <span class="n">nan</span><span class="p">,</span> <span class="n">NaN</span> <span class="o">==</span> <span class="n">NAN</span><span class="p">,</span> <span class="n">nan</span> <span class="o">==</span> <span class="n">NAN</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
+<span class="bp">False</span><span class="o">|</span><span class="bp">False</span><span class="o">|</span><span class="bp">False</span><span class="o">|</span><span class="bp">False</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">NaN</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">nan</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">NAN</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
+<span class="bp">True</span><span class="o">|</span><span class="bp">True</span><span class="o">|</span><span class="bp">True</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">notnull</span><span class="p">(</span><span class="n">NaN</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">notnull</span><span class="p">(</span><span class="mi">99</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">notnull</span><span class="p">(</span><span class="s2">&quot;https://china-testing.github.io&quot;</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
+<span class="bp">False</span><span class="o">|</span><span class="bp">True</span><span class="o">|</span><span class="bp">True</span>
+</pre></div>
+
+
+<h3 id="_3">缺失值的来源</h3>
+<p>来自加载数据或数据处理</p>
+<ul>
+<li>加载数据</li>
+</ul>
+<p>当我们加载数据时，pandas会自动找到该缺少数据的单元格，并填充NaN值。在read_csv函数中，参数na_values, keep_default_na, na_filter用于处理缺失值。比如：na_values=[99]。na_filter设置为False，在读大文件时会提升性能。</p>
+<p>5-1.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">visited_file</span> <span class="o">=</span> <span class="s1">&#39;data/survey_visited.csv&#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">visited_file</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">visited_file</span><span class="p">,</span> <span class="n">keep_default_na</span><span class="o">=</span><span class="bp">False</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">visited_file</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">],</span> <span class="n">keep_default_na</span><span class="o">=</span><span class="bp">False</span><span class="p">))</span>
+</pre></div>
+
+
+<p>执行结果</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="mi">5</span><span class="o">-</span><span class="mf">1.</span><span class="n">py</span> 
+   <span class="n">ident</span>   <span class="n">site</span>       <span class="n">dated</span>
+<span class="mi">0</span>    <span class="mi">619</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1927</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">08</span>
+<span class="mi">1</span>    <span class="mi">622</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1927</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">10</span>
+<span class="mi">2</span>    <span class="mi">734</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1939</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">07</span>
+<span class="mi">3</span>    <span class="mi">735</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1930</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">12</span>
+<span class="mi">4</span>    <span class="mi">751</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1930</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">26</span>
+<span class="mi">5</span>    <span class="mi">752</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>         <span class="n">NaN</span>
+<span class="mi">6</span>    <span class="mi">837</span>  <span class="n">MSK</span><span class="o">-</span><span class="mi">4</span>  <span class="mi">1932</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">14</span>
+<span class="mi">7</span>    <span class="mi">844</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1932</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">22</span>
+   <span class="n">ident</span>   <span class="n">site</span>       <span class="n">dated</span>
+<span class="mi">0</span>    <span class="mi">619</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1927</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">08</span>
+<span class="mi">1</span>    <span class="mi">622</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1927</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">10</span>
+<span class="mi">2</span>    <span class="mi">734</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1939</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">07</span>
+<span class="mi">3</span>    <span class="mi">735</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1930</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">12</span>
+<span class="mi">4</span>    <span class="mi">751</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1930</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">26</span>
+<span class="mi">5</span>    <span class="mi">752</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>            
+<span class="mi">6</span>    <span class="mi">837</span>  <span class="n">MSK</span><span class="o">-</span><span class="mi">4</span>  <span class="mi">1932</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">14</span>
+<span class="mi">7</span>    <span class="mi">844</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1932</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">22</span>
+   <span class="n">ident</span>   <span class="n">site</span>       <span class="n">dated</span>
+<span class="mi">0</span>    <span class="mi">619</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1927</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">08</span>
+<span class="mi">1</span>    <span class="mi">622</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1927</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">10</span>
+<span class="mi">2</span>    <span class="mi">734</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1939</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">07</span>
+<span class="mi">3</span>    <span class="mi">735</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1930</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">12</span>
+<span class="mi">4</span>    <span class="mi">751</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1930</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">26</span>
+<span class="mi">5</span>    <span class="mi">752</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>         <span class="n">NaN</span>
+<span class="mi">6</span>    <span class="mi">837</span>  <span class="n">MSK</span><span class="o">-</span><span class="mi">4</span>  <span class="mi">1932</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">14</span>
+<span class="mi">7</span>    <span class="mi">844</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1932</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">22</span>
+</pre></div>
+
+
+<ul>
+<li>合并数据</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">visited</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/survey_visited.csv&#39;</span><span class="p">)</span>
+<span class="n">survey</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/survey_survey.csv&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">visited</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">survey</span><span class="p">)</span>
+<span class="n">vs</span> <span class="o">=</span> <span class="n">visited</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">survey</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;ident&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;taken&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">vs</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行结果</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="mi">5</span><span class="o">-</span><span class="mf">2.</span><span class="n">py</span> 
+   <span class="n">ident</span>   <span class="n">site</span>       <span class="n">dated</span>
+<span class="mi">0</span>    <span class="mi">619</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1927</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">08</span>
+<span class="mi">1</span>    <span class="mi">622</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1927</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">10</span>
+<span class="mi">2</span>    <span class="mi">734</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1939</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">07</span>
+<span class="mi">3</span>    <span class="mi">735</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1930</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">12</span>
+<span class="mi">4</span>    <span class="mi">751</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1930</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">26</span>
+<span class="mi">5</span>    <span class="mi">752</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>         <span class="n">NaN</span>
+<span class="mi">6</span>    <span class="mi">837</span>  <span class="n">MSK</span><span class="o">-</span><span class="mi">4</span>  <span class="mi">1932</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">14</span>
+<span class="mi">7</span>    <span class="mi">844</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1932</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">22</span>
+    <span class="n">taken</span> <span class="n">person</span> <span class="n">quant</span>  <span class="n">reading</span>
+<span class="mi">0</span>     <span class="mi">619</span>   <span class="n">dyer</span>   <span class="n">rad</span>     <span class="mf">9.82</span>
+<span class="mi">1</span>     <span class="mi">619</span>   <span class="n">dyer</span>   <span class="n">sal</span>     <span class="mf">0.13</span>
+<span class="mi">2</span>     <span class="mi">622</span>   <span class="n">dyer</span>   <span class="n">rad</span>     <span class="mf">7.80</span>
+<span class="mi">3</span>     <span class="mi">622</span>   <span class="n">dyer</span>   <span class="n">sal</span>     <span class="mf">0.09</span>
+<span class="mi">4</span>     <span class="mi">734</span>     <span class="n">pb</span>   <span class="n">rad</span>     <span class="mf">8.41</span>
+<span class="mi">5</span>     <span class="mi">734</span>   <span class="n">lake</span>   <span class="n">sal</span>     <span class="mf">0.05</span>
+<span class="mi">6</span>     <span class="mi">734</span>     <span class="n">pb</span>  <span class="n">temp</span>   <span class="o">-</span><span class="mf">21.50</span>
+<span class="mi">7</span>     <span class="mi">735</span>     <span class="n">pb</span>   <span class="n">rad</span>     <span class="mf">7.22</span>
+<span class="mi">8</span>     <span class="mi">735</span>    <span class="n">NaN</span>   <span class="n">sal</span>     <span class="mf">0.06</span>
+<span class="mi">9</span>     <span class="mi">735</span>    <span class="n">NaN</span>  <span class="n">temp</span>   <span class="o">-</span><span class="mf">26.00</span>
+<span class="mi">10</span>    <span class="mi">751</span>     <span class="n">pb</span>   <span class="n">rad</span>     <span class="mf">4.35</span>
+<span class="mi">11</span>    <span class="mi">751</span>     <span class="n">pb</span>  <span class="n">temp</span>   <span class="o">-</span><span class="mf">18.50</span>
+<span class="mi">12</span>    <span class="mi">751</span>   <span class="n">lake</span>   <span class="n">sal</span>     <span class="mf">0.10</span>
+<span class="mi">13</span>    <span class="mi">752</span>   <span class="n">lake</span>   <span class="n">rad</span>     <span class="mf">2.19</span>
+<span class="mi">14</span>    <span class="mi">752</span>   <span class="n">lake</span>   <span class="n">sal</span>     <span class="mf">0.09</span>
+<span class="mi">15</span>    <span class="mi">752</span>   <span class="n">lake</span>  <span class="n">temp</span>   <span class="o">-</span><span class="mf">16.00</span>
+<span class="mi">16</span>    <span class="mi">752</span>    <span class="n">roe</span>   <span class="n">sal</span>    <span class="mf">41.60</span>
+<span class="mi">17</span>    <span class="mi">837</span>   <span class="n">lake</span>   <span class="n">rad</span>     <span class="mf">1.46</span>
+<span class="mi">18</span>    <span class="mi">837</span>   <span class="n">lake</span>   <span class="n">sal</span>     <span class="mf">0.21</span>
+<span class="mi">19</span>    <span class="mi">837</span>    <span class="n">roe</span>   <span class="n">sal</span>    <span class="mf">22.50</span>
+<span class="mi">20</span>    <span class="mi">844</span>    <span class="n">roe</span>   <span class="n">rad</span>    <span class="mf">11.25</span>
+    <span class="n">ident</span>   <span class="n">site</span>       <span class="n">dated</span>  <span class="n">taken</span> <span class="n">person</span> <span class="n">quant</span>  <span class="n">reading</span>
+<span class="mi">0</span>     <span class="mi">619</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1927</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">08</span>    <span class="mi">619</span>   <span class="n">dyer</span>   <span class="n">rad</span>     <span class="mf">9.82</span>
+<span class="mi">1</span>     <span class="mi">619</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1927</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">08</span>    <span class="mi">619</span>   <span class="n">dyer</span>   <span class="n">sal</span>     <span class="mf">0.13</span>
+<span class="mi">2</span>     <span class="mi">622</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1927</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">10</span>    <span class="mi">622</span>   <span class="n">dyer</span>   <span class="n">rad</span>     <span class="mf">7.80</span>
+<span class="mi">3</span>     <span class="mi">622</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1927</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">10</span>    <span class="mi">622</span>   <span class="n">dyer</span>   <span class="n">sal</span>     <span class="mf">0.09</span>
+<span class="mi">4</span>     <span class="mi">734</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1939</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">07</span>    <span class="mi">734</span>     <span class="n">pb</span>   <span class="n">rad</span>     <span class="mf">8.41</span>
+<span class="mi">5</span>     <span class="mi">734</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1939</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">07</span>    <span class="mi">734</span>   <span class="n">lake</span>   <span class="n">sal</span>     <span class="mf">0.05</span>
+<span class="mi">6</span>     <span class="mi">734</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1939</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">07</span>    <span class="mi">734</span>     <span class="n">pb</span>  <span class="n">temp</span>   <span class="o">-</span><span class="mf">21.50</span>
+<span class="mi">7</span>     <span class="mi">735</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1930</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">12</span>    <span class="mi">735</span>     <span class="n">pb</span>   <span class="n">rad</span>     <span class="mf">7.22</span>
+<span class="mi">8</span>     <span class="mi">735</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1930</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">12</span>    <span class="mi">735</span>    <span class="n">NaN</span>   <span class="n">sal</span>     <span class="mf">0.06</span>
+<span class="mi">9</span>     <span class="mi">735</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1930</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">12</span>    <span class="mi">735</span>    <span class="n">NaN</span>  <span class="n">temp</span>   <span class="o">-</span><span class="mf">26.00</span>
+<span class="mi">10</span>    <span class="mi">751</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1930</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">26</span>    <span class="mi">751</span>     <span class="n">pb</span>   <span class="n">rad</span>     <span class="mf">4.35</span>
+<span class="mi">11</span>    <span class="mi">751</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1930</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">26</span>    <span class="mi">751</span>     <span class="n">pb</span>  <span class="n">temp</span>   <span class="o">-</span><span class="mf">18.50</span>
+<span class="mi">12</span>    <span class="mi">751</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>  <span class="mi">1930</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">26</span>    <span class="mi">751</span>   <span class="n">lake</span>   <span class="n">sal</span>     <span class="mf">0.10</span>
+<span class="mi">13</span>    <span class="mi">752</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>         <span class="n">NaN</span>    <span class="mi">752</span>   <span class="n">lake</span>   <span class="n">rad</span>     <span class="mf">2.19</span>
+<span class="mi">14</span>    <span class="mi">752</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>         <span class="n">NaN</span>    <span class="mi">752</span>   <span class="n">lake</span>   <span class="n">sal</span>     <span class="mf">0.09</span>
+<span class="mi">15</span>    <span class="mi">752</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>         <span class="n">NaN</span>    <span class="mi">752</span>   <span class="n">lake</span>  <span class="n">temp</span>   <span class="o">-</span><span class="mf">16.00</span>
+<span class="mi">16</span>    <span class="mi">752</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">3</span>         <span class="n">NaN</span>    <span class="mi">752</span>    <span class="n">roe</span>   <span class="n">sal</span>    <span class="mf">41.60</span>
+<span class="mi">17</span>    <span class="mi">837</span>  <span class="n">MSK</span><span class="o">-</span><span class="mi">4</span>  <span class="mi">1932</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">14</span>    <span class="mi">837</span>   <span class="n">lake</span>   <span class="n">rad</span>     <span class="mf">1.46</span>
+<span class="mi">18</span>    <span class="mi">837</span>  <span class="n">MSK</span><span class="o">-</span><span class="mi">4</span>  <span class="mi">1932</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">14</span>    <span class="mi">837</span>   <span class="n">lake</span>   <span class="n">sal</span>     <span class="mf">0.21</span>
+<span class="mi">19</span>    <span class="mi">837</span>  <span class="n">MSK</span><span class="o">-</span><span class="mi">4</span>  <span class="mi">1932</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">14</span>    <span class="mi">837</span>    <span class="n">roe</span>   <span class="n">sal</span>    <span class="mf">22.50</span>
+<span class="mi">20</span>    <span class="mi">844</span>   <span class="n">DR</span><span class="o">-</span><span class="mi">1</span>  <span class="mi">1932</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">22</span>    <span class="mi">844</span>    <span class="n">roe</span>   <span class="n">rad</span>    <span class="mf">11.25</span>
+</pre></div>
+
+
+<ul>
+<li>用户输入</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">NaN</span><span class="p">,</span> <span class="n">NAN</span><span class="p">,</span> <span class="n">nan</span>
+
+<span class="n">num_legs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;goat&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;amoeba&#39;</span><span class="p">:</span> <span class="n">nan</span><span class="p">})</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num_legs</span><span class="p">)</span>
+<span class="n">scientists</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Rosaline Franklin&#39;</span><span class="p">,</span> <span class="s1">&#39;William Gosset&#39;</span><span class="p">],</span>
+                           <span class="s1">&#39;Occupation&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Chemist&#39;</span><span class="p">,</span> <span class="s1">&#39;Statistician&#39;</span><span class="p">],</span>
+                           <span class="s1">&#39;Born&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1920-07-25&#39;</span><span class="p">,</span> <span class="s1">&#39;1876-06-13&#39;</span><span class="p">],</span>
+                           <span class="s1">&#39;Died&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1958-04-16&#39;</span><span class="p">,</span> <span class="s1">&#39;1937-10-16&#39;</span><span class="p">],</span>
+                           <span class="s1">&#39;missing&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">NaN</span><span class="p">,</span> <span class="n">nan</span><span class="p">]})</span>
+<span class="k">print</span><span class="p">(</span><span class="n">scientists</span><span class="p">)</span>
+<span class="n">scientists</span><span class="p">[</span><span class="s1">&#39;missing&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nan</span>
+<span class="k">print</span><span class="p">(</span><span class="n">scientists</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行结果</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="mi">5</span><span class="o">-</span><span class="mf">3.</span><span class="n">py</span> 
+<span class="n">amoeba</span>    <span class="n">NaN</span>
+<span class="n">goat</span>      <span class="mf">4.0</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+         <span class="n">Born</span>        <span class="n">Died</span>               <span class="n">Name</span>    <span class="n">Occupation</span>  <span class="n">missing</span>
+<span class="mi">0</span>  <span class="mi">1920</span><span class="o">-</span><span class="mo">07</span><span class="o">-</span><span class="mi">25</span>  <span class="mi">1958</span><span class="o">-</span><span class="mo">04</span><span class="o">-</span><span class="mi">16</span>  <span class="n">Rosaline</span> <span class="n">Franklin</span>       <span class="n">Chemist</span>      <span class="n">NaN</span>
+<span class="mi">1</span>  <span class="mi">1876</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mi">13</span>  <span class="mi">1937</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">16</span>     <span class="n">William</span> <span class="n">Gosset</span>  <span class="n">Statistician</span>      <span class="n">NaN</span>
+         <span class="n">Born</span>        <span class="n">Died</span>               <span class="n">Name</span>    <span class="n">Occupation</span>  <span class="n">missing</span>
+<span class="mi">0</span>  <span class="mi">1920</span><span class="o">-</span><span class="mo">07</span><span class="o">-</span><span class="mi">25</span>  <span class="mi">1958</span><span class="o">-</span><span class="mo">04</span><span class="o">-</span><span class="mi">16</span>  <span class="n">Rosaline</span> <span class="n">Franklin</span>       <span class="n">Chemist</span>      <span class="n">NaN</span>
+<span class="mi">1</span>  <span class="mi">1876</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mi">13</span>  <span class="mi">1937</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">16</span>     <span class="n">William</span> <span class="n">Gosset</span>  <span class="n">Statistician</span>      <span class="n">NaN</span>
+</pre></div>
+
+
+<ul>
+<li>重新索引</li>
+</ul>
+<p>5-4.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">NaN</span><span class="p">,</span> <span class="n">NAN</span><span class="p">,</span> <span class="n">nan</span>
+
+<span class="n">gapminder</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/gapminder.tsv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">life_exp</span> <span class="o">=</span> <span class="n">gapminder</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;year&#39;</span><span class="p">])[</span><span class="s1">&#39;lifeExp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">life_exp</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">life_exp</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2010</span><span class="p">)))</span>
+</pre></div>
+
+
+<p>执行结果</p>
+<div class="highlight"><pre><span></span><span class="n">year</span>
+<span class="mi">1952</span>    <span class="mf">49.057620</span>
+<span class="mi">1957</span>    <span class="mf">51.507401</span>
+<span class="mi">1962</span>    <span class="mf">53.609249</span>
+<span class="mi">1967</span>    <span class="mf">55.678290</span>
+<span class="mi">1972</span>    <span class="mf">57.647386</span>
+<span class="mi">1977</span>    <span class="mf">59.570157</span>
+<span class="mi">1982</span>    <span class="mf">61.533197</span>
+<span class="mi">1987</span>    <span class="mf">63.212613</span>
+<span class="mi">1992</span>    <span class="mf">64.160338</span>
+<span class="mi">1997</span>    <span class="mf">65.014676</span>
+<span class="mi">2002</span>    <span class="mf">65.694923</span>
+<span class="mi">2007</span>    <span class="mf">67.007423</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">lifeExp</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+<span class="n">year</span>
+<span class="mi">2000</span>          <span class="n">NaN</span>
+<span class="mi">2001</span>          <span class="n">NaN</span>
+<span class="mi">2002</span>    <span class="mf">65.694923</span>
+<span class="mi">2003</span>          <span class="n">NaN</span>
+<span class="mi">2004</span>          <span class="n">NaN</span>
+<span class="mi">2005</span>          <span class="n">NaN</span>
+<span class="mi">2006</span>          <span class="n">NaN</span>
+<span class="mi">2007</span>    <span class="mf">67.007423</span>
+<span class="mi">2008</span>          <span class="n">NaN</span>
+<span class="mi">2009</span>          <span class="n">NaN</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">lifeExp</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+
+
+<h3 id="_4">处理缺失数据</h3>
+<ul>
+<li>统计缺失数据</li>
+</ul>
+<p>5-5.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">NaN</span><span class="p">,</span> <span class="n">NAN</span><span class="p">,</span> <span class="n">nan</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">ebola</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/country_timeseries.csv&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ebola</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ebola</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+<span class="n">num_rows</span> <span class="o">=</span> <span class="n">ebola</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;num_rows&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num_rows</span><span class="p">)</span>
+<span class="n">num_missing</span> <span class="o">=</span> <span class="n">num_rows</span> <span class="o">-</span> <span class="n">ebola</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;num_missing:&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num_missing</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">ebola</span><span class="o">.</span><span class="n">isnull</span><span class="p">()))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">ebola</span><span class="p">[</span><span class="s1">&#39;Cases_Guinea&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ebola</span><span class="o">.</span><span class="n">Cases_Guinea</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+
+
+<p>执行结果</p>
+<div class="highlight"><pre><span></span> <span class="n">Date</span>  <span class="n">Day</span>  <span class="n">Cases_Guinea</span>  <span class="n">Cases_Liberia</span>  <span class="n">Cases_SierraLeone</span>  \
+<span class="mi">0</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">289</span>        <span class="mf">2776.0</span>            <span class="n">NaN</span>            <span class="mf">10030.0</span>   
+<span class="mi">1</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">288</span>        <span class="mf">2775.0</span>            <span class="n">NaN</span>             <span class="mf">9780.0</span>   
+<span class="mi">2</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">287</span>        <span class="mf">2769.0</span>         <span class="mf">8166.0</span>             <span class="mf">9722.0</span>   
+<span class="mi">3</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">286</span>           <span class="n">NaN</span>         <span class="mf">8157.0</span>                <span class="n">NaN</span>   
+<span class="mi">4</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">284</span>        <span class="mf">2730.0</span>         <span class="mf">8115.0</span>             <span class="mf">9633.0</span>   
+
+   <span class="n">Cases_Nigeria</span>  <span class="n">Cases_Senegal</span>  <span class="n">Cases_UnitedStates</span>  <span class="n">Cases_Spain</span>  <span class="n">Cases_Mali</span>  \
+<span class="mi">0</span>            <span class="n">NaN</span>            <span class="n">NaN</span>                 <span class="n">NaN</span>          <span class="n">NaN</span>         <span class="n">NaN</span>   
+<span class="mi">1</span>            <span class="n">NaN</span>            <span class="n">NaN</span>                 <span class="n">NaN</span>          <span class="n">NaN</span>         <span class="n">NaN</span>   
+<span class="mi">2</span>            <span class="n">NaN</span>            <span class="n">NaN</span>                 <span class="n">NaN</span>          <span class="n">NaN</span>         <span class="n">NaN</span>   
+<span class="mi">3</span>            <span class="n">NaN</span>            <span class="n">NaN</span>                 <span class="n">NaN</span>          <span class="n">NaN</span>         <span class="n">NaN</span>   
+<span class="mi">4</span>            <span class="n">NaN</span>            <span class="n">NaN</span>                 <span class="n">NaN</span>          <span class="n">NaN</span>         <span class="n">NaN</span>   
+
+   <span class="n">Deaths_Guinea</span>  <span class="n">Deaths_Liberia</span>  <span class="n">Deaths_SierraLeone</span>  <span class="n">Deaths_Nigeria</span>  \
+<span class="mi">0</span>         <span class="mf">1786.0</span>             <span class="n">NaN</span>              <span class="mf">2977.0</span>             <span class="n">NaN</span>   
+<span class="mi">1</span>         <span class="mf">1781.0</span>             <span class="n">NaN</span>              <span class="mf">2943.0</span>             <span class="n">NaN</span>   
+<span class="mi">2</span>         <span class="mf">1767.0</span>          <span class="mf">3496.0</span>              <span class="mf">2915.0</span>             <span class="n">NaN</span>   
+<span class="mi">3</span>            <span class="n">NaN</span>          <span class="mf">3496.0</span>                 <span class="n">NaN</span>             <span class="n">NaN</span>   
+<span class="mi">4</span>         <span class="mf">1739.0</span>          <span class="mf">3471.0</span>              <span class="mf">2827.0</span>             <span class="n">NaN</span>   
+
+   <span class="n">Deaths_Senegal</span>  <span class="n">Deaths_UnitedStates</span>  <span class="n">Deaths_Spain</span>  <span class="n">Deaths_Mali</span>  
+<span class="mi">0</span>             <span class="n">NaN</span>                  <span class="n">NaN</span>           <span class="n">NaN</span>          <span class="n">NaN</span>  
+<span class="mi">1</span>             <span class="n">NaN</span>                  <span class="n">NaN</span>           <span class="n">NaN</span>          <span class="n">NaN</span>  
+<span class="mi">2</span>             <span class="n">NaN</span>                  <span class="n">NaN</span>           <span class="n">NaN</span>          <span class="n">NaN</span>  
+<span class="mi">3</span>             <span class="n">NaN</span>                  <span class="n">NaN</span>           <span class="n">NaN</span>          <span class="n">NaN</span>  
+<span class="mi">4</span>             <span class="n">NaN</span>                  <span class="n">NaN</span>           <span class="n">NaN</span>          <span class="n">NaN</span>  
+<span class="n">Date</span>                   <span class="mi">122</span>
+<span class="n">Day</span>                    <span class="mi">122</span>
+<span class="n">Cases_Guinea</span>            <span class="mi">93</span>
+<span class="n">Cases_Liberia</span>           <span class="mi">83</span>
+<span class="n">Cases_SierraLeone</span>       <span class="mi">87</span>
+<span class="n">Cases_Nigeria</span>           <span class="mi">38</span>
+<span class="n">Cases_Senegal</span>           <span class="mi">25</span>
+<span class="n">Cases_UnitedStates</span>      <span class="mi">18</span>
+<span class="n">Cases_Spain</span>             <span class="mi">16</span>
+<span class="n">Cases_Mali</span>              <span class="mi">12</span>
+<span class="n">Deaths_Guinea</span>           <span class="mi">92</span>
+<span class="n">Deaths_Liberia</span>          <span class="mi">81</span>
+<span class="n">Deaths_SierraLeone</span>      <span class="mi">87</span>
+<span class="n">Deaths_Nigeria</span>          <span class="mi">38</span>
+<span class="n">Deaths_Senegal</span>          <span class="mi">22</span>
+<span class="n">Deaths_UnitedStates</span>     <span class="mi">18</span>
+<span class="n">Deaths_Spain</span>            <span class="mi">16</span>
+<span class="n">Deaths_Mali</span>             <span class="mi">12</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+<span class="n">num_rows</span>
+<span class="mi">122</span>
+<span class="n">num_missing</span><span class="p">:</span>
+<span class="n">Date</span>                     <span class="mi">0</span>
+<span class="n">Day</span>                      <span class="mi">0</span>
+<span class="n">Cases_Guinea</span>            <span class="mi">29</span>
+<span class="n">Cases_Liberia</span>           <span class="mi">39</span>
+<span class="n">Cases_SierraLeone</span>       <span class="mi">35</span>
+<span class="n">Cases_Nigeria</span>           <span class="mi">84</span>
+<span class="n">Cases_Senegal</span>           <span class="mi">97</span>
+<span class="n">Cases_UnitedStates</span>     <span class="mi">104</span>
+<span class="n">Cases_Spain</span>            <span class="mi">106</span>
+<span class="n">Cases_Mali</span>             <span class="mi">110</span>
+<span class="n">Deaths_Guinea</span>           <span class="mi">30</span>
+<span class="n">Deaths_Liberia</span>          <span class="mi">41</span>
+<span class="n">Deaths_SierraLeone</span>      <span class="mi">35</span>
+<span class="n">Deaths_Nigeria</span>          <span class="mi">84</span>
+<span class="n">Deaths_Senegal</span>         <span class="mi">100</span>
+<span class="n">Deaths_UnitedStates</span>    <span class="mi">104</span>
+<span class="n">Deaths_Spain</span>           <span class="mi">106</span>
+<span class="n">Deaths_Mali</span>            <span class="mi">110</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+<span class="mi">1214</span>
+<span class="mi">29</span>
+<span class="n">NaN</span>       <span class="mi">29</span>
+ <span class="mf">86.0</span>      <span class="mi">3</span>
+ <span class="mf">495.0</span>     <span class="mi">2</span>
+ <span class="mf">112.0</span>     <span class="mi">2</span>
+ <span class="mf">390.0</span>     <span class="mi">2</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Cases_Guinea</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+
+
+<ul>
+<li>处理缺失数据</li>
+</ul>
+<p>5-6.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">NaN</span><span class="p">,</span> <span class="n">NAN</span><span class="p">,</span> <span class="n">nan</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">ebola</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/country_timeseries.csv&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ebola</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ebola</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+<span class="c1"># 前向填充</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ebola</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ffill&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+<span class="c1"># 后向填充</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ebola</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;bfill&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">ebola</span><span class="o">.</span><span class="n">interpolate</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">ebola</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">ebola_dropna</span> <span class="o">=</span> <span class="n">ebola</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ebola_dropna</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ebola_dropna</span><span class="p">)</span>
+
+<span class="n">ebola</span><span class="p">[</span><span class="s1">&#39;Cases_multiple&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ebola</span><span class="p">[</span><span class="s1">&#39;Cases_Guinea&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">ebola</span><span class="p">[</span><span class="s1">&#39;Cases_Liberia&#39;</span><span class="p">]</span> <span class="o">+</span> \
+<span class="n">ebola</span><span class="p">[</span><span class="s1">&#39;Cases_SierraLeone&#39;</span><span class="p">]</span>
+
+<span class="n">ebola_subset</span> <span class="o">=</span> <span class="n">ebola</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;Cases_Guinea&#39;</span><span class="p">,</span> <span class="s1">&#39;Cases_Liberia&#39;</span><span class="p">,</span>
+                             <span class="s1">&#39;Cases_SierraLeone&#39;</span><span class="p">,</span> <span class="s1">&#39;Cases_multiple&#39;</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ebola_subset</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ebola</span><span class="o">.</span><span class="n">Cases_Guinea</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">skipna</span> <span class="o">=</span> <span class="bp">True</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ebola</span><span class="o">.</span><span class="n">Cases_Guinea</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">skipna</span> <span class="o">=</span> <span class="bp">False</span><span class="p">))</span>
+</pre></div>
+
+
+<p>执行结果</p>
+<div class="highlight"><pre><span></span>         <span class="n">Date</span>  <span class="n">Day</span>  <span class="n">Cases_Guinea</span>  <span class="n">Cases_Liberia</span>  <span class="n">Cases_SierraLeone</span>
+<span class="mi">0</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">289</span>        <span class="mf">2776.0</span>            <span class="n">NaN</span>            <span class="mf">10030.0</span>
+<span class="mi">1</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">288</span>        <span class="mf">2775.0</span>            <span class="n">NaN</span>             <span class="mf">9780.0</span>
+<span class="mi">2</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">287</span>        <span class="mf">2769.0</span>         <span class="mf">8166.0</span>             <span class="mf">9722.0</span>
+<span class="mi">3</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">286</span>           <span class="n">NaN</span>         <span class="mf">8157.0</span>                <span class="n">NaN</span>
+<span class="mi">4</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">284</span>        <span class="mf">2730.0</span>         <span class="mf">8115.0</span>             <span class="mf">9633.0</span>
+<span class="mi">5</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">28</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">281</span>        <span class="mf">2706.0</span>         <span class="mf">8018.0</span>             <span class="mf">9446.0</span>
+<span class="mi">6</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">280</span>        <span class="mf">2695.0</span>            <span class="n">NaN</span>             <span class="mf">9409.0</span>
+<span class="mi">7</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">277</span>        <span class="mf">2630.0</span>         <span class="mf">7977.0</span>             <span class="mf">9203.0</span>
+<span class="mi">8</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">21</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">273</span>        <span class="mf">2597.0</span>            <span class="n">NaN</span>             <span class="mf">9004.0</span>
+<span class="mi">9</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">20</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">272</span>        <span class="mf">2571.0</span>         <span class="mf">7862.0</span>             <span class="mf">8939.0</span>
+         <span class="n">Date</span>  <span class="n">Day</span>  <span class="n">Cases_Guinea</span>  <span class="n">Cases_Liberia</span>  <span class="n">Cases_SierraLeone</span>
+<span class="mi">0</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">289</span>        <span class="mf">2776.0</span>            <span class="mf">0.0</span>            <span class="mf">10030.0</span>
+<span class="mi">1</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">288</span>        <span class="mf">2775.0</span>            <span class="mf">0.0</span>             <span class="mf">9780.0</span>
+<span class="mi">2</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">287</span>        <span class="mf">2769.0</span>         <span class="mf">8166.0</span>             <span class="mf">9722.0</span>
+<span class="mi">3</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">286</span>           <span class="mf">0.0</span>         <span class="mf">8157.0</span>                <span class="mf">0.0</span>
+<span class="mi">4</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">284</span>        <span class="mf">2730.0</span>         <span class="mf">8115.0</span>             <span class="mf">9633.0</span>
+<span class="mi">5</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">28</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">281</span>        <span class="mf">2706.0</span>         <span class="mf">8018.0</span>             <span class="mf">9446.0</span>
+<span class="mi">6</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">280</span>        <span class="mf">2695.0</span>            <span class="mf">0.0</span>             <span class="mf">9409.0</span>
+<span class="mi">7</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">277</span>        <span class="mf">2630.0</span>         <span class="mf">7977.0</span>             <span class="mf">9203.0</span>
+<span class="mi">8</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">21</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">273</span>        <span class="mf">2597.0</span>            <span class="mf">0.0</span>             <span class="mf">9004.0</span>
+<span class="mi">9</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">20</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">272</span>        <span class="mf">2571.0</span>         <span class="mf">7862.0</span>             <span class="mf">8939.0</span>
+         <span class="n">Date</span>  <span class="n">Day</span>  <span class="n">Cases_Guinea</span>  <span class="n">Cases_Liberia</span>  <span class="n">Cases_SierraLeone</span>
+<span class="mi">0</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">289</span>        <span class="mf">2776.0</span>            <span class="n">NaN</span>            <span class="mf">10030.0</span>
+<span class="mi">1</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">288</span>        <span class="mf">2775.0</span>            <span class="n">NaN</span>             <span class="mf">9780.0</span>
+<span class="mi">2</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">287</span>        <span class="mf">2769.0</span>         <span class="mf">8166.0</span>             <span class="mf">9722.0</span>
+<span class="mi">3</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">286</span>        <span class="mf">2769.0</span>         <span class="mf">8157.0</span>             <span class="mf">9722.0</span>
+<span class="mi">4</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">284</span>        <span class="mf">2730.0</span>         <span class="mf">8115.0</span>             <span class="mf">9633.0</span>
+<span class="mi">5</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">28</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">281</span>        <span class="mf">2706.0</span>         <span class="mf">8018.0</span>             <span class="mf">9446.0</span>
+<span class="mi">6</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">280</span>        <span class="mf">2695.0</span>         <span class="mf">8018.0</span>             <span class="mf">9409.0</span>
+<span class="mi">7</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">277</span>        <span class="mf">2630.0</span>         <span class="mf">7977.0</span>             <span class="mf">9203.0</span>
+<span class="mi">8</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">21</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">273</span>        <span class="mf">2597.0</span>         <span class="mf">7977.0</span>             <span class="mf">9004.0</span>
+<span class="mi">9</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">20</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">272</span>        <span class="mf">2571.0</span>         <span class="mf">7862.0</span>             <span class="mf">8939.0</span>
+         <span class="n">Date</span>  <span class="n">Day</span>  <span class="n">Cases_Guinea</span>  <span class="n">Cases_Liberia</span>  <span class="n">Cases_SierraLeone</span>
+<span class="mi">0</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">289</span>        <span class="mf">2776.0</span>         <span class="mf">8166.0</span>            <span class="mf">10030.0</span>
+<span class="mi">1</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">288</span>        <span class="mf">2775.0</span>         <span class="mf">8166.0</span>             <span class="mf">9780.0</span>
+<span class="mi">2</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">287</span>        <span class="mf">2769.0</span>         <span class="mf">8166.0</span>             <span class="mf">9722.0</span>
+<span class="mi">3</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">286</span>        <span class="mf">2730.0</span>         <span class="mf">8157.0</span>             <span class="mf">9633.0</span>
+<span class="mi">4</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">284</span>        <span class="mf">2730.0</span>         <span class="mf">8115.0</span>             <span class="mf">9633.0</span>
+<span class="mi">5</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">28</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">281</span>        <span class="mf">2706.0</span>         <span class="mf">8018.0</span>             <span class="mf">9446.0</span>
+<span class="mi">6</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">280</span>        <span class="mf">2695.0</span>         <span class="mf">7977.0</span>             <span class="mf">9409.0</span>
+<span class="mi">7</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">277</span>        <span class="mf">2630.0</span>         <span class="mf">7977.0</span>             <span class="mf">9203.0</span>
+<span class="mi">8</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">21</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">273</span>        <span class="mf">2597.0</span>         <span class="mf">7862.0</span>             <span class="mf">9004.0</span>
+<span class="mi">9</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">20</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">272</span>        <span class="mf">2571.0</span>         <span class="mf">7862.0</span>             <span class="mf">8939.0</span>
+         <span class="n">Date</span>  <span class="n">Day</span>  <span class="n">Cases_Guinea</span>  <span class="n">Cases_Liberia</span>  <span class="n">Cases_SierraLeone</span>
+<span class="mi">0</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">289</span>        <span class="mf">2776.0</span>            <span class="n">NaN</span>            <span class="mf">10030.0</span>
+<span class="mi">1</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">288</span>        <span class="mf">2775.0</span>            <span class="n">NaN</span>             <span class="mf">9780.0</span>
+<span class="mi">2</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">287</span>        <span class="mf">2769.0</span>         <span class="mf">8166.0</span>             <span class="mf">9722.0</span>
+<span class="mi">3</span>    <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">2015</span>  <span class="mi">286</span>        <span class="mf">2749.5</span>         <span class="mf">8157.0</span>             <span class="mf">9677.5</span>
+<span class="mi">4</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">284</span>        <span class="mf">2730.0</span>         <span class="mf">8115.0</span>             <span class="mf">9633.0</span>
+<span class="mi">5</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">28</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">281</span>        <span class="mf">2706.0</span>         <span class="mf">8018.0</span>             <span class="mf">9446.0</span>
+<span class="mi">6</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">280</span>        <span class="mf">2695.0</span>         <span class="mf">7997.5</span>             <span class="mf">9409.0</span>
+<span class="mi">7</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">277</span>        <span class="mf">2630.0</span>         <span class="mf">7977.0</span>             <span class="mf">9203.0</span>
+<span class="mi">8</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">21</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">273</span>        <span class="mf">2597.0</span>         <span class="mf">7919.5</span>             <span class="mf">9004.0</span>
+<span class="mi">9</span>  <span class="mi">12</span><span class="o">/</span><span class="mi">20</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">272</span>        <span class="mf">2571.0</span>         <span class="mf">7862.0</span>             <span class="mf">8939.0</span>
+<span class="p">(</span><span class="mi">122</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+          <span class="n">Date</span>  <span class="n">Day</span>  <span class="n">Cases_Guinea</span>  <span class="n">Cases_Liberia</span>  <span class="n">Cases_SierraLeone</span>  \
+<span class="mi">19</span>  <span class="mi">11</span><span class="o">/</span><span class="mi">18</span><span class="o">/</span><span class="mi">2014</span>  <span class="mi">241</span>        <span class="mf">2047.0</span>         <span class="mf">7082.0</span>             <span class="mf">6190.0</span>   
+
+    <span class="n">Cases_Nigeria</span>  <span class="n">Cases_Senegal</span>  <span class="n">Cases_UnitedStates</span>  <span class="n">Cases_Spain</span>  <span class="n">Cases_Mali</span>  \
+<span class="mi">19</span>           <span class="mf">20.0</span>            <span class="mf">1.0</span>                 <span class="mf">4.0</span>          <span class="mf">1.0</span>         <span class="mf">6.0</span>   
+
+    <span class="n">Deaths_Guinea</span>  <span class="n">Deaths_Liberia</span>  <span class="n">Deaths_SierraLeone</span>  <span class="n">Deaths_Nigeria</span>  \
+<span class="mi">19</span>         <span class="mf">1214.0</span>          <span class="mf">2963.0</span>              <span class="mf">1267.0</span>             <span class="mf">8.0</span>   
+
+    <span class="n">Deaths_Senegal</span>  <span class="n">Deaths_UnitedStates</span>  <span class="n">Deaths_Spain</span>  <span class="n">Deaths_Mali</span>  
+<span class="mi">19</span>             <span class="mf">0.0</span>                  <span class="mf">1.0</span>           <span class="mf">0.0</span>          <span class="mf">6.0</span>  
+   <span class="n">Cases_Guinea</span>  <span class="n">Cases_Liberia</span>  <span class="n">Cases_SierraLeone</span>  <span class="n">Cases_multiple</span>
+<span class="mi">0</span>        <span class="mf">2776.0</span>            <span class="n">NaN</span>            <span class="mf">10030.0</span>             <span class="n">NaN</span>
+<span class="mi">1</span>        <span class="mf">2775.0</span>            <span class="n">NaN</span>             <span class="mf">9780.0</span>             <span class="n">NaN</span>
+<span class="mi">2</span>        <span class="mf">2769.0</span>         <span class="mf">8166.0</span>             <span class="mf">9722.0</span>         <span class="mf">20657.0</span>
+<span class="mi">3</span>           <span class="n">NaN</span>         <span class="mf">8157.0</span>                <span class="n">NaN</span>             <span class="n">NaN</span>
+<span class="mi">4</span>        <span class="mf">2730.0</span>         <span class="mf">8115.0</span>             <span class="mf">9633.0</span>         <span class="mf">20478.0</span>
+<span class="mi">5</span>        <span class="mf">2706.0</span>         <span class="mf">8018.0</span>             <span class="mf">9446.0</span>         <span class="mf">20170.0</span>
+<span class="mi">6</span>        <span class="mf">2695.0</span>            <span class="n">NaN</span>             <span class="mf">9409.0</span>             <span class="n">NaN</span>
+<span class="mi">7</span>        <span class="mf">2630.0</span>         <span class="mf">7977.0</span>             <span class="mf">9203.0</span>         <span class="mf">19810.0</span>
+<span class="mi">8</span>        <span class="mf">2597.0</span>            <span class="n">NaN</span>             <span class="mf">9004.0</span>             <span class="n">NaN</span>
+<span class="mi">9</span>        <span class="mf">2571.0</span>         <span class="mf">7862.0</span>             <span class="mf">8939.0</span>         <span class="mf">19372.0</span>
+<span class="mf">84729.0</span>
+<span class="n">nan</span>
+</pre></div>
+
+
+<h2 id="_5">参考资料</h2>
+<ul>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/python_pandas_crash_tutorial5.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing/tree/master/pandas/python_data_analyse_crash_course">源码下载</a></li>
+<li><a href="https://u18113597.pipipan.com/fs/18113597-304126960">本文英文版书籍下载</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
