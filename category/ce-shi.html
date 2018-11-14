@@ -28,7 +28,309 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/testing_standard.html">2018软件测试标准汇总下载</a></h1>
+                    <h1 class="entry-title"><a href="/testing_api_interview.html">10分钟学会API测试</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-11-14T23:20:00+08:00">
+                Published: 三 14 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info --><p>本文最新更新体现在pdf文档：<a href="https://itbooks.pipipan.com/fs/18113597-319922713">接口测试面试题.pdf</a></p>
+<h3 id="api">什么是API？</h3>
+<p>API是(Application Programming Interface)首字母缩略词，即应用程序编程接口。 API是一组用于构建软件应用程序的规程，协议和工具。API充当软件应用程序之间的接口，并允许两个软件应用程序相互通信。 API是一组软件功能，可以由其他软件执行。</p>
+<h3 id="api_1">什么是API测试？</h3>
+<p>API测试是一种软件测试，涉及直接测试API，也是集成测试的一部分，用于检查API是否满足应用程序的功能，可靠性，性能和安全性方面的期望。在API测试中，我们主要关注软件架构的业务逻辑层。可以在包含多个API的任何软件系统上执行API测试。</p>
+<h3 id="api_2">常见的API测试类型有哪些？</h3>
+<p>API测试通常涉及以下实践：</p>
+<ul>
+<li>单元测试</li>
+<li>功能测试</li>
+<li>负载测试</li>
+<li>运行时/错误检测</li>
+<li>安全测试</li>
+<li>UI测试</li>
+<li>互操作性和WS一致性测试</li>
+<li>渗透测试</li>
+<li>模糊测试</li>
+</ul>
+<h3 id="api3">列举API测试中使用的一些常用协议？3个即可。</h3>
+<ul>
+<li>thrift</li>
+<li>HTTP</li>
+<li>REST</li>
+<li>SOAP</li>
+<li>JMS</li>
+<li>UDDI</li>
+<li>dubbo</li>
+</ul>
+<h3 id="apiweb">API和Web服务之间的区别？</h3>
+<p>Web服务：</p>
+<ul>
+<li>所有Web服务都是API</li>
+<li>所有Web服务都需要通过Web(HTTP)公开</li>
+<li>Web服务只有三种使用方式：SOAP，REST和XML-RPC进行通信</li>
+</ul>
+<p>接口：</p>
+<ul>
+<li>API有很多并不基于HTTP</li>
+<li>API使用多种方式进行通信，例如C / C ++中的DLL文件，java中的Jar文件/ RMI，Linux内核API中的中断等。</li>
+</ul>
+<h3 id="soap">什么是Soap？</h3>
+<p>SOAP代表简单对象访问协议(Simple Object Access Protocol)。它是一种基于XML的消息传递协议。虽说名字带了简单，但是协议比较罗嗦，已经远没有后来居上的JSON使用广泛。</p>
+<h3 id="rest-api">什么是Rest API？</h3>
+<p>REST即Representational State Transfer。它是一组帮助开发人员执行请求和接收响应的函数。通过REST API中的HTTP协议进行交互。</p>
+<h3 id="soaprest">SOAP和REST的区别？</h3>
+<p>SOAP：</p>
+<ul>
+<li>通过共享XML文档进行通信</li>
+<li>仅支持XML格式</li>
+<li>不支持缓存</li>
+<li>SOAP比REST慢</li>
+<li>SOAP就像自定义桌面应用程序，紧密连接到服务器</li>
+<li>SOAP基于HTTP进行封装</li>
+</ul>
+<p>REST：
+- 基于网络的软件架构的服务架构和设计
+- 支持不同的数据格式
+- 支持缓存
+- 比SOAP更快
+- REST客户端就像浏览器并使用应用程序必须适合的标准方法
+-  REST使用HTTP标头来保存元信息</p>
+<h3 id="api_3">API常见测试有哪些？</h3>
+<p>我们在API上执行的一些常见测试如下。</p>
+<ul>
+<li>验证不同输入条件的返回。</li>
+<li>验证不同数据结构</li>
+<li>验证API是否触发其他事件或请求其他API</li>
+<li>在没有返回值时验证API的行为</li>
+</ul>
+<h3 id="api_4">API测试有哪些优势？</h3>
+<ul>
+<li>更快及更高的测试覆盖率。</li>
+<li>API测试有助于我们降低测试成本。通过API测试，我们可以在GUI测试之前找到小错误。在GUI测试期间，这些小错误将变得更大。因此，在API测试中发现这些错误将对公司具有成本效益。</li>
+<li>API测试与语言无关。</li>
+<li>API测试在测试核心功能方面非常有用。我们可以在没有用户界面的情况下测试API。在GUI测试中，我们需要等到应用程序可用于测试核心功能。</li>
+<li>API测试有助于我们降低风险。</li>
+</ul>
+<h3 id="api_5">API测试中究竟需要验证哪些内容？</h3>
+<ul>
+<li>数据准确性</li>
+<li>HTTP或其他协议状态代码</li>
+<li>响应时间</li>
+<li>API返回任何错误时的错误代码</li>
+<li>授权检查</li>
+<li>非功能测试，如性能测试，安全测试</li>
+</ul>
+<h3 id="api_6">列举一些用于API测试的工具？</h3>
+<p>用于API测试的一些工具如下：</p>
+<ul>
+<li><a href="https://github.com/curl/curl">Curl</a></li>
+<li><a href="https://github.com/jakubroztocil/httpie">httpie</a></li>
+<li><a href="http://docs.python-requests.org/en/master/">Requests: HTTP for Humans</a></li>
+<li>https://pypi.org/project/thrift/</li>
+<li><a href="https://www.getpostman.com/">Postman</a></li>
+<li><a href="https://www.katalon.com/">Katalon Studio</a></li>
+<li><a href="https://www.soapui.org/">SoapUI</a></li>
+<li><a href="https://assertible.com/">Assertible</a></li>
+<li><a href="https://www.tricentis.com/software-testing-tools/">Tricentis Tosca</a></li>
+<li><a href="https://apigee.com/">Apigee</a></li>
+<li><a href="https://jmeter.apache.org/">JMeter</a></li>
+<li><a href="http://rest-assured.io/">Rest-Assured</a></li>
+<li><a href="https://github.com/intuit/karate">Karate DSL</a></li>
+<li><a href="http://apifortress.com/">API Fortress</a></li>
+<li><a href="https://www.parasoft.com/">Parasoft</a></li>
+<li><a href="https://software.microfocus.com/">HP QTP(UFT)</a></li>
+<li><a href="https://vrest.io/">vREST</a></li>
+<li><a href="https://github.com/brooklynDev/airborne">Airborne</a></li>
+<li><a href="https://www.apiscience.com/">API Science</a></li>
+<li><a href="https://help.apiary.io/tools/api-inspector/">APIary Inspector</a></li>
+<li><a href="https://citrusframework.org/">Citrus Framework</a></li>
+<li><a href="https://github.com/CacheControl/hippie-swagger">Hippie-Swagger</a></li>
+<li><a href="https://www.httpmaster.net/">HttpMaster Express</a></li>
+<li><a href="http://mockbin.org/">Mockbin</a></li>
+<li><a href="https://ping-api.com/">Ping API</a></li>
+<li><a href="https://github.com/svanoort/pyresttest">Pyresttest</a></li>
+<li><a href="https://github.com/ahmadnassri/restconsole">Rest Console</a></li>
+<li><a href="http://robohydra.org/">RoboHydra Server</a></li>
+<li><a href="http://www.crosschecknet.com/products/soapsonar.php">SOAP Sonar</a></li>
+<li><a href="http://unirest.io/">Unirest</a></li>
+<li><a href="http://www.webinject.org/">WebInject</a></li>
+</ul>
+<h3 id="api_7">列出一些最常用的API文档模板？</h3>
+<p>一些API文档模板如下。</p>
+<ul>
+<li>Swagger</li>
+<li>FlatDoc</li>
+<li>RestDoc</li>
+<li>API blueprint</li>
+<li>Slate</li>
+<li>Miredot</li>
+<li>Web服务API规范。</li>
+</ul>
+<h3 id="api_8">列举一些非常受欢迎的API。</h3>
+<ul>
+<li>Google Maps API</li>
+<li>YouTube的</li>
+<li>推特Twitter</li>
+<li>亚马逊广告API</li>
+<li>微博认证API</li>
+<li>钉钉开放接口</li>
+</ul>
+<h3 id="api_9">API测试和单元测试之间的区别？</h3>
+<p>单元测试：
+- 多由开发团队进行
+- 白盒测试
+- 构建中的过程之前
+- 涉及源代码
+- 测试范围有限，只考虑基本功能</p>
+<p>API测试</p>
+<ul>
+<li>多由QA团队进行</li>
+<li>多为黑盒测试</li>
+<li>在构建部署后进行</li>
+<li>大多不涉及源代码API测试</li>
+<li>测试范围很广</li>
+</ul>
+<h3 id="api_10">API测试面临的主要挑战是什么？</h3>
+<ul>
+<li>适当的参数及其组合</li>
+<li>正确分类参数</li>
+<li>顺序</li>
+<li>验证输出</li>
+<li>由于缺少GUI，提供输入值较困难</li>
+</ul>
+<h3 id="apibug">执行API测试时我们面临的BUG类型是什么？</h3>
+<ul>
+<li>压力，性能和安全问题</li>
+<li>功能重复或缺失</li>
+<li>可靠性问题</li>
+<li>消息不当</li>
+<li>不兼容的错误处理机制</li>
+<li>多线程问题</li>
+<li>不合适的错误</li>
+</ul>
+<h3 id="uiapi">UI测试与API测试有何不同？</h3>
+<p>UI（用户界面）测试是测试应用程序的图形界面部分。它的主要重点是测试应用程序的外观和感觉。API测试支持两个不同软件系统之间的通信。它的主要重点是应用程序的业务层。</p>
+<h3 id="http">列举一些最常用的HTTP方法？</h3>
+<ul>
+<li>GET：从服务器检索数据</li>
+<li>POST：将数据添加到服务器中的现有文件或资源</li>
+<li>PUT：它允许您替换服务器中的现有文件或资源</li>
+<li>DELETE：它允许您从服务器中删除数据</li>
+<li>PATCH：用于对资源进行部分修改
+选项：用于描述目标资源的通信选项</li>
+<li>HEAD：它要求响应与GET请求相同，但没有响应正文</li>
+</ul>
+<h3 id="getput">可以使用GET请求而不是PUT来创建资源吗？</h3>
+<p>不，GET请求仅允许只读权限。它使您可以从服务器检索数据，但不能创建资源。应使用PUT或POST方法来创建资源。</p>
+<h3 id="putpost">PUT和POST方法有什么区别？</h3>
+<p>POST用于在服务器上创建新对象，PUT请求用于在替换对象。</p>
+<p>当客户端将页面发送到服务器，然后服务器让客户端知道它放在何处时，应该使用POST。当客户端指定页面的位置时，应使用PUT</p>
+<h3 id="_1">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/testing_api_interview.html">本文最新版本地址</a></li>
+<li><a href="https://china-testing.github.io/testing_api_10min.html">10分钟学会API测试</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://china-testing.github.io/testing_books.html">软件测试工具书籍与面试题汇总下载(持续更新)</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/mobile1.html" rel="bookmark"
+                           title="Permalink to 移动应用测试1测试用例和测试场景">移动应用测试1测试用例和测试场景</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-14T09:55:00+08:00">
+                Published: 三 14 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/mobile.html">本系列文章目录</a></p>
+<h3 id="_1">功能测试测试用例</h3>
+<p>移动设备的功能测试通常包括测试用户交互以及测试场景。与功能测试相关的各种因素是</p>
+<ul>
+<li>应用业务类型（银行，游戏，社交或商业等）</li>
+<li>用户类型（消费者，企业，教育等）</li>
+<li>渠道（例如Apple App Store，Google play，直接发布）</li>
+</ul>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-c6aadd7fc0b75a4a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>最基本的测试场景：</p>
+<ul>
+<li>所有必需的必填字段是否按要求运行。</li>
+<li>必填字段是否与非必填字段不同的方式显示在屏幕中。</li>
+<li>启动/停止时验证应用程序是否按要求运行。</li>
+<li>来电时验证是否进入最小化模式。</li>
+<li>是否能够在应用程序运行时存储，处理和接收SMS。</li>
+<li>是否能在必要时执行所需的多任务处理要求。</li>
+<li>是否允许必要的社交网络选项，如共享，发布和导航等。与微博、微信等进行交互</li>
+<li>验证应用程序是否支持任何支付网关交易，如支付宝、Visa，Mastercard，Paypal等。微信支付也在考虑中，不过微信支付安全系数不高，尽量不要用。</li>
+<li>是否在应用程序中根据需要启用了页面滚动方案。</li>
+<li>相关模块之间的导航是否符合要求。</li>
+<li>截断</li>
+<li>是否收到类似“网络错误”的相应错误消息。一旦出现任何网络错误，请在一段时间后尝试。</li>
+<li>是否能与其他应用程序共存 …</li></ul>
+                <a class="readmore" href="/mobile1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/mobile.html" rel="bookmark"
+                           title="Permalink to 移动应用测试 - 目录">移动应用测试 - 目录</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-14T08:55:00+08:00">
+                Published: 三 14 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/mobile.html">本系列文章目录</a></p>
+<p><a href="https://china-testing.github.io/mobile1.html">移动应用测试1测试用例和测试场景</a></p>
+<h3 id="_1">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/mobile.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>
+                <a class="readmore" href="/mobile.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/testing_standard.html" rel="bookmark"
+                           title="Permalink to 2018软件测试标准汇总下载">2018软件测试标准汇总下载</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-10-16T14:20:00+08:00">
                 Published: 二 16 十月 2018
@@ -39,7 +341,7 @@
         </address>
 <p>In <a href="/category/ce-shi.html">测试</a>.</p>
 
-</footer><!-- /.post-info --><p>标题有链接的，点击标题即可下载</p>
+</footer><!-- /.post-info -->                <p>标题有链接的，点击标题即可下载</p>
 <h2 id="isoiec-25010"><a href="https://itbooks.pipipan.com/fs/18113597-314939352">国际标准 ISO/IEC 25010 系统和软件质量模型</a></h2>
 <p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-dec626a3759bb13d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <p>英文原版： <a href="https://itbooks.ctfile.com/fs/18113597-314939974">BS ISO IEC 25010-2011 Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — System and software quality models.pdf</a></p>
@@ -59,128 +361,10 @@
 <p>将要测试什么</p>
 </li>
 <li>
-<p>测试将持续多久（虽然根据可以使用的资源的限制而有变化）.</p>
-</li>
-<li>
-<p>测试覆盖度的需求，例如所要求的质量等级</p>
-</li>
-</ul>
-</li>
-<li>
-<p>测试设计规格：详细描述测试环境和期望的结果以及测试通过的标准。</p>
-</li>
-<li>
-<p>测试用例规格：定义用于运行于测试设计规格中所述条件的测试数据。</p>
-</li>
-<li>
-<p>测试过程规格：详细描述如何进行每项测试，包括每项预置条件和接下去的步骤。</p>
-</li>
-<li>
-<p>测试项传递报告：报告何时被测的软件组件从一个测试阶段到下一个测试阶段。</p>
-</li>
-<li>
-<p>测试记录：记录运行了哪个测试用例，谁运行的，以什么顺序，以及每个测试项是通过了还是失败了。</p>
-</li>
-<li>
-<p>测试附加报告：详细描述任何失败的测试项，以及实际的与之相对应的期望结果和其他旨在揭示测试为何失败的信息。这份文档之所以被命名为附加报告而不是错误报告，其原因是期望值和实际结果之间由于一些原因可能存在差异，而这并不能认为是系统存在错误。这包括期望值有误、测试被错误地执行，或者对需求的理解存在差异。这个报告由以下所有附加的细节组成，例如实际结果和期望值、何时失败，以及其他有助于解决问题的证据。这个报告还可能包括此附加项对测试所造成的影响的评估。</p>
-</li>
-<li>
-<p>测试摘要报告：一份提供所有直到测试完成都没有被提及的重要信息的管理报告，包括测试效果的评估、被测试软件系统的质量、来自测试附加报告的统计信息。这个报告还包括执行了哪些测试项、花费多少时间，用于改进以后的测试计划。这份最终的报告用于指出被测的软件系统是否与项目管理者所提出的可接受标准所符合。</p>
-</li>
-</ul>
-<p>IEEE 829中可能引用到的其他标准 参见：<a href="http://zh.wikipedia.org/wiki/IEEE_829">http://zh.wikipedia.org/wiki/IEEE_829</a></p>
-<p>这个标准的內容，有部分是来自于ISEB基金会的培训课程，和British Computer Society（英国计算机协会）推动的软件测试执业证书考试。 ISTQB（国际软件测试资质认证委员会）遵循基于ISEB（英国信息系统考试委员会）的课程提纲和德国的ASQF教学大纲，同时被IEEE 829采纳为软件测试文档的参考标准。</p>
-<p><a href="https://itbooks.pipipan.com/fs/18113597-314969548">IEEE Std 829-2008 测试计划模板.pdf</a></p>
-<h2 id="ieee-1008">IEEE 1008 单元测试国际标准</h2>
-<p>Software unit testing is a process that includes the performance of test planning, the development of a test set, and the measurement of a test unit against its requirement. measuring entails the use of sample data to exercise the unit and the comparison of the unit’s actual behaviour with its required behaviour as specified in the unit’s requirement documentation. This standard defines an integrated approach to systematic and documented unit testing. The approach uses unit design and unit implementation information, in addition to unit requirements, to determine the completeness of the testing. The standard describes a testing process composed of a hierarchy of phases, activities, and tasks. Further, it defines a minium set of tasks for each activity, although additional tasks may be added to any activity.</p>
-<p><a href="https://itbooks.pipipan.com/fs/18113597-314969695">std1008-1987 IEEE 1008 单元测试国际标准.pdf</a></p>
-<h2 id="ieee-std-1012-2004">IEEE Std 1012 – 2004 软件检验和验证国际标准</h2>
-<ul>
-<li>
-<p><a href="http://profs.etsmtl.ca/claporte/English/Enseignement/CMU_SQA/Notes/Verification/IEEE%20_Std_1012%20_SW%20_V%20&amp;%20_V.pdf">IEEE Standard for Software Verification and Validation</a></p>
-</li>
-<li>
-<p><a href="http://profs.etsmtl.ca/claporte/English/Enseignement/CMU_SQA/Notes/">其他相关文档</a></p>
-</li>
-</ul>
-<h2 id="ieee-std-1028tm-2008">IEEE Std 1028™-2008 软件评审和审计国际标准</h2>
-<ul>
-<li>
-<p><a href="http://dis.unal.edu.co/%7Eicasta/GGP/_Ver_2012_1/Documentos/Normas/1028-2008.pdf">IEEE Std 1028™-2008</a></p>
-</li>
-<li>
-<p><a href="http://dis.unal.edu.co/%7Eicasta/GGP/_Ver_2012_1/Documentos/">其他相关文档</a></p>
-</li>
-<li>
-<p><a href="http://dis.unal.edu.co/%7Eicasta/GGP/_Ver_2012_1/Documentos/Normas/">其他</a><a href="http://dis.unal.edu.co/%7Eicasta/GGP/_Ver_2012_1/Documentos/Normas/">PDF相关文档</a></p>
-</li>
-<li>
-<p><a href="http://staff.um.edu.mt/ecac1/files/">http://staff.um.edu.mt/ecac1/files/</a></p>
-</li>
-</ul>
-<h2 id="ieee-std-1044tm-2009">IEEE Std 1044™-2009 软件异常分类国际标准</h2>
-<ul>
-<li>
-<p><a href="http://dis.unal.edu.co/%7Eicasta/GGP/_Ver_2012_1/Documentos/Normas/1044-2009.pdf">IEEE Std 1044™-2009</a></p>
-</li>
-<li>
-<p><a href="https://cours.etsmtl.ca/mgl800/private/Normes/ieee/1044guide.pdf">IEEE 1044.1 1995 异常分类指南</a></p>
-</li>
-<li>
-<p><a href="https://cours.etsmtl.ca/mgl800/private/Normes/ieee/">更多参考</a></p>
-</li>
-</ul>
-<h2 id="ieee-1233-1998">IEEE 1233-1998开发软件需求规格的指南</h2>
-<ul>
-<li><a href="https://cours.etsmtl.ca/mgl800/private/Normes/ieee/123398.pdf">IEEE Std 1044™-2009</a></li>
-</ul>
-<h2 id="ieee-730-1998">IEEE 730-1998，用于软件质量保证计划的标准</h2>
-<ul>
-<li>
-<p><a href="https://cours.etsmtl.ca/mgl800/private/Normes/ieee/730standard.pdf">IEEE 730-1998，用于软件质量保证计划的标准</a></p>
-</li>
-<li>
-<p><a href="https://cours.etsmtl.ca/mgl800/private/Normes/ieee/730.1guide.pdf%EF%BC%8C%E7%94%A8%E4%BA%8E%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%BF%9D%E8%AF%81%E8%AE%A1%E5%88%92%E7%9A%84%E6%8C%87%E5%8D%97">https://cours.etsmtl.ca/mgl800/private/Normes/ieee/730.1guide.pdf，用于软件质量保证计划的指南</a></p>
-</li>
-</ul>
-<h2 id="ieee-1061-1998">IEEE 1061-1998 用于软件质量度量和方法学的标准</h2>
-<ul>
-<li>IEEE 1061-1998</li>
-</ul>
-<h2 id="ieee-12207-200846">IEEE 12207-2008. 用于软件生命周期过程和软件生命周期数据的标准</h2>
-<ul>
-<li>IEEE 1061-1998</li>
-</ul>
-<h2 id="_1">英国组件测试标准</h2>
-<ul>
-<li><a href="http://www.testingstandards.co.uk/Component%20Testing.pdf">Component Testing</a></li>
-</ul>
-<h2 id="_2">软件工程术语</h2>
-<ul>
-<li><a href="http://www.mit.jyu.fi/ope/kurssit/TIES462/Materiaalit/IEEE_SoftwareEngGlossary.pdf">软件工程术语</a></li>
-</ul>
-<h2 id="_3">参考资料</h2>
-<ul>
-<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
-<li><a href="https://china-testing.github.io/testing_standard.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
-<li><a href="http://www.tutorialspoint.com/software_testing/pdf/testing_iso_standards.pdf">测试</a><a href="http://www.tutorialspoint.com/software_testing/pdf/testing_iso_standards.pdf">ISO标准汇总</a></li>
-<li><a href="http://ranger.uta.edu/%7Eodell/Senior_Design_Common_Materials/">Senior_Design_Common_Materials</a></li>
-<li><a href="http://www.testingstandards.co.uk/BS7925_3_4.zip">BS 7925-2: the Software Component Testing Standard.</a></li>
-<li><a href="http://www.testingstandards.co.uk/Gloss6_3.zip">BS 7925-1: a Glossary of Software Testing Terms.</a></li>
-<li><a href="http://www.testingstandards.co.uk/">Testing Standards Working Party</a></li>
-<li><a href="http://www.testingstandards.co.uk/">英国标准主页</a></li>
-<li>讨论qq群144081101 591302926 567351477 钉钉群21745728</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>    </li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>测试将持续多久（虽然根据可以使用的资源的限制而有变化 …</p></li></ul></li></ul>
+                <a class="readmore" href="/testing_standard.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -401,122 +585,11 @@ $ sudo apt-get install python-dev
                 <a class="readmore" href="/testing_automation_tips.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/testing_training.html" rel="bookmark"
-                           title="Permalink to 接口自动化性能测试线上培训大纲">接口自动化性能测试线上培训大纲</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-05-10T06:20:00+08:00">
-                Published: 四 10 五月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi.html">测试</a>.</p>
-
-</footer><!-- /.post-info -->                <p>-- 注意，因为是一对一，帮你解决实际问题的模式，每月只能带3人左右，请提前2个月预约，谢谢！</p>
-<h3 id="_1">专家介绍</h3>
-<p>徐老师: 曾任职于腾讯、华为等公司，独立带队完成大型项目的全系统测试，担任过技术总监、测试经理以及测试专家职位。现任某主流公司自动化测试架构师。</p>
-<p>曾在某公司组建测试部，带至美国纳斯达克上市。在公司项目中曾手把手教刚毕业的毫无编程基础的技校生接口、性能、自动化等测试，结果3个月之后他们都跳槽，薪水从4k涨到10k以上(2015年)。</p>
-<p>实践出真绩，所有的培训都会像实际公司项目一样要求实操。</p>
-<ul>
-<li>实操支持钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  </li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177  qq群：391441566 184175668  338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li>提供软件测试、python、数据分析等模拟面试电话与咨询，收费80元(10分钟)一次起， 每小时500元起。</li>
-</ul>
-<h3 id="_2">专项目列表 …</h3>
-                <a class="readmore" href="/testing_training.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/testing_api_10min.html" rel="bookmark"
-                           title="Permalink to 10分钟学会API测试">10分钟学会API测试</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-05-04T09:20:00+08:00">
-                Published: 五 04 五月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi.html">测试</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="api">什么是API</h2>
-<p>在进行Api测试之前，让我们先了解一下什么是API？</p>
-<p>API是应用程序编程接口(Application Programming Interface)的首字母缩写。</p>
-<p>它支持两个独立软件系统之间的通信和数据交换。实现API的软件系统包含可以由其他软件系统执行的功能/子程序。</p>
-<h2 id="api_1">什么是API测试？</h2>
-<p>API测试与GUI测试完全不同，主要集中在软件架构的业务逻辑层。这种测试不太关注应用程序的外观和感觉。</p>
-<p>在API测试中，您不必使用标准用户输入（键盘）和输出，而是使用软件将调用发送到API，获取输出并记下系统的响应。</p>
-<p>在API测试中测试需要应用程序与API进行交互。为了测试API，你需要</p>
-<ul>
-<li>使用测试工具来驱动API</li>
-<li>编写你自己的代码来测试API</li>
-</ul>
-<p><img alt="Alt Text" src="/images/testing_api_10min_level.png"> </p>
-<h2 id="api_2">设置API测试环境</h2>
-<ul>
-<li>API测试与其他测试类型不同，因为GUI不可用，但您需要设置初始环境，以调用具有所需参数集的API，然后最终检查测试结果。</li>
-<li>因此，为API测试设置测试环境似乎有点复杂。</li>
-<li>数据库和服务器应按照应用程序要求进行配置。</li>
-<li>安装完成后，应调用API函数来检查该API是否正常工作。</li>
-</ul>
-<h2 id="api_3">API的输出类型</h2>
-<p>API的输出可能是</p>
-<ul>
-<li>任何类型的数据</li>
-</ul>
-<p>例如：有一个API函数应该为两个整数求和：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Long</span> <span class="n">add</span><span class="err">（</span><span class="kt">int</span> <span class="n">a</span><span class="err">，</span><span class="kt">int</span> <span class="n">b</span><span class="err">）</span>
-</pre></div>
-</td></tr></table>
-
-<p>数字必须作为输入参数给出 …</p>
-                <a class="readmore" href="/testing_api_10min.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/testing_basic_how_google.html" rel="bookmark"
-                           title="Permalink to 谷歌如何测试软件">谷歌如何测试软件</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-10T19:20:00+08:00">
-                Published: 六 10 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi.html">测试</a>.</p>
-
-</footer><!-- /.post-info -->                <p>James Whittaker　整理：徐荣中</p>
-<h2 id="_1">组织架构</h2>
-<p>经常有人问“谷歌如何测试？” 本博之前有零零碎碎的介绍，现在我们来做一个系统的介绍。 在谷歌测试策略从来没有改变，但在战术方面随着公司也不断发展而发展。我们现在有搜索，应用服务，广告，手机，操作系统等业务。 这些特定领域有我们必须解决相关的问题。当我们添加新的业务或壮大现有的业务时，我们的测试也得到了扩大和提高。 这个系列文章记录是我们今天所做的和在可预见的未来前进的方向。</p>
-<p>我们从组织结构开始讲起，它可能会让你大吃一惊。 在谷歌没有实际的测试部门。测试存在于关注区域，称为工程效率。工程效率拥有很多纵向和横向的工程部门，测试是其中最大的。概括地说，工程效率的组成如下：</p>
-<ul>
-<li>
-<p>产品团队：开发内部和开源工具，供公司所有工程师使用。我们建立和维护的代码分析器，集成开发环境，测试用例管理系统，自动化测试工具，编译系统，源代码控制系统，代码审查系统，bug数据库。旨在通过工具使工程更加有效率，工具是防止错误战略目标非常大的一部分。</p>
-</li>
-<li>
-<p>服务团队，为产品团队提供专业知识，包括工具，文档，测试，发布管理，培训等等。 我们的专长包括可靠性 …</p></li></ul>
-                <a class="readmore" href="/testing_basic_how_google.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 2
+        <a href="/category/ce-shi2.html">&raquo;</a>
+</p>
                 </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
