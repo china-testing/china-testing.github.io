@@ -30,6 +30,46 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_time.html" rel="bookmark"
+                           title="Permalink to python模块介绍-time 时间访问和转换">python模块介绍-time 时间访问和转换</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-22T19:20:00+08:00">
+                Published: 四 22 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">快速入门</h2>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># 获取当前时间</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">_%H-%M-%S&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">())</span> 
+<span class="n">Out</span><span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="s1">&#39;2018-06-17_20-05-36&#39;</span>
+<span class="c1"># 停顿0.5秒</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+
+
+<h2 id="_2">简介</h2>
+<p>功能：时间访问和转换。</p>
+<p>相关模块：</p>
+<p>datetime    标准模块。
+calendar 标准模块。</p>
+<p>下面介绍一些术语和约定：</p>
+<p><em>epoch</em>是时间开始点。对于Unix ，时代是1970年1月1日0点。通过time.gmtime(0)可以查看时间的起点：</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import …</span></pre></div>
+                <a class="readmore" href="/python3_lib_time.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_python-daemon.html" rel="bookmark"
                            title="Permalink to python库介绍-python-daemon: 实现python后台程序">python库介绍-python-daemon: 实现python后台程序</a></h1>
                 </header>
@@ -170,32 +210,35 @@
 <p>In <a href="/category/python.html">python</a>.</p>
 
 </footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
-<p>face_recognition使用世界上最简单的人脸识别库，在Python或命令行中识别和操作人脸。</p>
+<p>face_recognition使用世界上最简单的人脸识别工具，在Python或命令行中识别和操作人脸。</p>
 <p>使用dlib最先进的人脸识别技术构建而成，并具有深度学习功能。 该模型在<a href="http://vis-www.cs.umass.edu/lfw/">Labeled Faces in the Wild</a>基准中的准确率为99.38％。</p>
 <p>另外还提供了face_recognition命令行工具！</p>
-<ul>
-<li>
-<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
-</li>
-<li>
-<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
-</li>
-</ul>
-<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
 <h3 id="_2">快速入门</h3>
 <p>本节我们基于ubuntu16.04,python3，使用如下图片：</p>
-<p><img alt="test0.jpg" src="https://bitbucket.org/repo/nxXxkM/images/1640839139-test0.jpg"></p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-625527be2687bd65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <ul>
 <li>快速入门</li>
 </ul>
 <p>face_recognition</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">face_recognition</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">face_recognition</span>
 
-<span class="n">image …</span></pre></div></td></tr></table>
+<span class="n">image</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">load_image_file</span><span class="p">(</span><span class="s2">&quot;test0.jpg&quot;</span><span class="p">)</span>
+<span class="n">face_locations</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">face_locations</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;cnn&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">face_locations</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">quick</span><span class="o">.</span><span class="n">py</span> 
+<span class="p">[(</span><span class="mi">203</span><span class="p">,</span> <span class="mi">391</span><span class="p">,</span> <span class="mi">447</span><span class="p">,</span> <span class="mi">147</span><span class="p">)]</span>
+</pre></div>
+
+
+<p>model选择模型，默认为hog，该模式很多图片是无法识别的，为此一般用采用更精确但是速度更慢的cnn模型。</p>
+<ul>
+<li>显示图片：</li>
+</ul>
+<p>quick2 …</p>
                 <a class="readmore" href="/python3_lib_face_recognition.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -481,31 +524,6 @@
 20
 21 …</pre></div></td></tr></table>
                 <a class="readmore" href="/python3_lib_enum.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_telnetlib.html" rel="bookmark"
-                           title="Permalink to python库介绍-telnetlib：Telnet客户端">python库介绍-telnetlib：Telnet客户端</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-11T19:20:00+08:00">
-                Published: 日 11 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>telnetlib模块提供的Telnet类实现了Telnet协议(参见rfc854)。它为协议字符和telnet选项提供符号常量，符号常量来源于arpa/telnet.h，去掉了前缀TELOPT_。</p>
-<p>telnet命令有： IAC, DONT, DO, WONT, WILL, SE (Subnegotiation End), NOP (No Operation), DM (Data Mark), BRK (Break), IP (Interrupt process), AO (Abort output), AYT (Are You There), EC (Erase Character), EL (Erase Line), GA (Go Ahead), SB (Subnegotiation Begin)。</p>
-<p>class telnetlib.Telnet …</p>
-                <a class="readmore" href="/python3_lib_telnetlib.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
