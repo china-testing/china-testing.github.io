@@ -53,17 +53,7 @@
 <p>先下载dubbo的demo，编译运行demo。</p>
 </li>
 </ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># git clone https://github.com/alibaba/dubbo.git dubbo</span>
+<div class="highlight"><pre><span></span><span class="c1"># git clone https://github.com/alibaba/dubbo.git dubbo</span>
 <span class="c1"># cd dubbo/</span>
 <span class="c1"># mvn clean install -Dmaven.test.skip</span>
 <span class="c1"># cd dubbo-demo/dubbo-demo-provider/target/</span>
@@ -75,7 +65,7 @@
 <span class="c1"># cd dubbo-demo-consumer-2.5.4-SNAPSHOT/bin</span>
 <span class="c1"># ./start.sh </span>
 </pre></div>
-</td></tr></table>
+
 
 <p>注意：阿里的demo启动脚本有bug,如果启动时报进程已经存在，请修改start.sh中的grep部分，增加" | grep -v grep"。</p>
 <p>确认在consumer的的日志可以看到"hello"输出，恭喜你，dubbo的demo已经成功。现在关闭上面程序，用eclipse或其他IDE打开工程进行修改。</p>
@@ -87,19 +77,7 @@
 <li>修改工程</li>
 </ul>
 <p>修改工程dubbo-demo-provider和dubbo-demo-consumer的dubbo.properties：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">dubbo</span><span class="o">.</span><span class="n">container</span><span class="o">=</span><span class="n">log4j</span><span class="p">,</span><span class="n">spring</span>
+<div class="highlight"><pre><span></span><span class="n">dubbo</span><span class="o">.</span><span class="n">container</span><span class="o">=</span><span class="n">log4j</span><span class="p">,</span><span class="n">spring</span>
 <span class="n">dubbo</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="n">demo</span><span class="o">-</span><span class="n">provider</span>
 <span class="n">dubbo</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">owner</span><span class="o">=</span><span class="n">william</span>
 <span class="c1">#dubbo.registry.address=multicast://224.5.6.7:1234</span>
@@ -113,95 +91,10 @@
 <span class="c1">#dubbo.log4j.file=logs/dubbo-demo-consumer.log</span>
 <span class="c1">#dubbo.log4j.level=WARN</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>dubbo-demo-consumer的pom.xml加载的内容太多，需要进行精简，如下：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
     <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
     <span class="nt">&lt;parent&gt;</span>
@@ -288,22 +181,10 @@
     <span class="nt">&lt;/build&gt;</span>
 <span class="nt">&lt;/project&gt;</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>dubbo-demo-consumer工程新增demo.xml, 为jython访问dubbo的定义。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.springframework.org/schema/beans&quot;</span>
     <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
     <span class="na">xmlns:dubbo=</span><span class="s">&quot;http://code.alibabatech.com/schema/dubbo&quot;</span>
@@ -317,63 +198,35 @@
 
 <span class="nt">&lt;/beans&gt;</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>新增jython脚本：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">org.springframework.context.support</span> <span class="kn">import</span> <span class="n">ClassPathXmlApplicationContext</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">org.springframework.context.support</span> <span class="kn">import</span> <span class="n">ClassPathXmlApplicationContext</span>
 
 <span class="n">context</span> <span class="o">=</span> <span class="n">ClassPathXmlApplicationContext</span><span class="p">(</span><span class="s2">&quot;demo.xml&quot;</span><span class="p">)</span>
 <span class="n">service</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">getBean</span><span class="p">(</span><span class="s2">&quot;demoService&quot;</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">service</span><span class="o">.</span><span class="n">sayHello</span><span class="p">(</span><span class="s2">&quot;How are you!&quot;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>重新执行第２步的编译，并在CLASSPATH添加对应的目录，比如：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">CLASSPATH</span><span class="o">=</span><span class="err">$</span><span class="n">CLASSPATH</span><span class="p">:</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">lib</span><span class="o">/*</span>
+<div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">CLASSPATH</span><span class="o">=</span><span class="err">$</span><span class="n">CLASSPATH</span><span class="p">:</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">lib</span><span class="o">/*</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>在IDE中运行：DemoProvider</p>
 <p>执行：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">jython</span> <span class="n">dubbo_test</span><span class="o">.</span><span class="n">py</span> 
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">jython</span> <span class="n">dubbo_test</span><span class="o">.</span><span class="n">py</span> 
 <span class="s2">&quot;my&quot;</span> <span class="n">variable</span> <span class="err">$</span><span class="n">jythonHome</span> <span class="n">masks</span> <span class="n">earlier</span> <span class="n">declaration</span> <span class="ow">in</span> <span class="n">same</span> <span class="n">scope</span> <span class="n">at</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">jython</span> <span class="n">line</span> <span class="mf">15.</span>
 <span class="n">log4j</span><span class="p">:</span><span class="n">WARN</span> <span class="n">No</span> <span class="n">appenders</span> <span class="n">could</span> <span class="n">be</span> <span class="n">found</span> <span class="k">for</span> <span class="n">logger</span> <span class="p">(</span><span class="n">org</span><span class="o">.</span><span class="n">springframework</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">StandardEnvironment</span><span class="p">)</span><span class="o">.</span>
 <span class="n">log4j</span><span class="p">:</span><span class="n">WARN</span> <span class="n">Please</span> <span class="n">initialize</span> <span class="n">the</span> <span class="n">log4j</span> <span class="n">system</span> <span class="n">properly</span><span class="o">.</span>
 <span class="n">log4j</span><span class="p">:</span><span class="n">WARN</span> <span class="n">See</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">logging</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">log4j</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">faq</span><span class="o">.</span><span class="n">html</span><span class="c1">#noconfig for more info.</span>
 <span class="n">Hello</span> <span class="n">How</span> <span class="n">are</span> <span class="n">you</span><span class="err">!</span><span class="p">,</span> <span class="n">response</span> <span class="n">form</span> <span class="n">provider</span><span class="p">:</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">153.6</span><span class="p">:</span><span class="mi">20880</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>java里面也可以采用这种方法。下面修改DemoConsumer类：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.alibaba.dubbo.demo.consumer</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.alibaba.dubbo.demo.consumer</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">org.springframework.context.ApplicationContext</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.springframework.context.support.ClassPathXmlApplicationContext</span><span class="o">;</span>
@@ -394,41 +247,13 @@
 
 <span class="o">}</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>可见java的操作和jython是极其类似的，只是在实际测试中，java改动需要频繁，带来不少不便。实际应用通常把多个包含dubbo服务定义的文件放在一个jar包中，这样一个jython就可以灵活地测试多个dubbo接口。当然不同接口要加载的jar是不同的，好在jython可以动态修改CLASSPATH, 参见：http://www.jython.org/jythonbook/en/1.0/appendixB.html#working-with-classpath。</p>
 <p>Jmeter做dubbo性能测试就可以用上面这种方法，继承AbstractJavaSamplerClient类就可以。参考资料如下：</p>
 <p>http://jmeter.apache.org/api/</p>
 <p>下面是一个实际使用的jython接口测试脚本：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/local/jython/bin/jython</span>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/local/jython/bin/jython</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1"># Author Rongzhong Xu 2016-09-06 wechat: pythontesting</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -458,63 +283,14 @@
 <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">getResultCode</span><span class="p">())</span>
 <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">getResultDesc</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+
 
 <h2 id="_2">性能测试支持</h2>
 <p>这里对nGrinder不做入门介绍，相关资料请参考：<a href="https://bitbucket.org/china-testing/testing/wiki/%5B%E9%9B%AA%E5%B3%B0%E7%A3%81%E9%92%88%E7%9F%B3%E5%8D%9A%E5%AE%A2%5D%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7nGrinder%E4%BB%8B%E7%BB%8D">测试工具nGrinder介绍</a></p>
 <p>nGrinder管理库的方式和grinder并不一样。可以通过web操作，但是如果文件较多的话，还是建议使用svn。</p>
 <p>在nGrinder的web页面点击"脚本",选中测试目标之后，里面有个"TestRunner.py"之类的脚本，在当前目前新建lib目录，jar包和python库文件都可以扔到这里，这样nGrinder就可以访问了。</p>
 <p>上面demo的测试脚本如下：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># -*- coding:utf-8 -*-</span>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding:utf-8 -*-</span>
 
 <span class="c1"># A simple example using the HTTP plugin that shows the retrieval of a</span>
 <span class="c1"># single page via HTTP. </span>
@@ -565,46 +341,22 @@
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">sayHello</span><span class="p">(</span><span class="s2">&quot;How are you!&quot;</span><span class="p">)</span>
         <span class="k">print</span> <span class="n">result</span>
 </pre></div>
-</td></tr></table>
 
-<h3 id="_3">参考资料：</h3>
-<hr>
-<ul>
-<li>
-<p>python中文库参考项目：  https://bitbucket.org/china-testing/python-chinese-library</p>
-</li>
-<li>
-<p>python中文库参考项目文档：https://bitbucket.org/china-testing/python-chinese-library/wiki/browse/</p>
-</li>
-<li>
-<p>联系方式： </p>
-</li>
-<li>
-<p>你的赞助是我们前进的动力：</p>
-</li>
-</ul>
-<p>一流企业专家自动化性能接口测试 数据分析 python一对一教，非骗人的培训机构(多数大陆培训机构的老师实际未入门）承接excel合并，电脑自动化操作等工程 并欢迎讨论中医草药风水相学等道家国学</p>
-<p>qq群python 测试开发自动化测试 144081101 教你做免费的线上博客(放在简历中增加亮点)，自动化测试平台，性能测试工具等，让你有实际项目经验  联系qq：37391319 </p>
-<p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 184175668 中医草药湿热湿疹胃病 291184506 python高级人工智能视觉 6089740</p>
-<p>商务合作微信：pythontesting
-* 相关文档下载地址：https://bitbucket.org/china-testing/python-chinese-library/downloads</p>
+
 <p>jython英文教程：　http://www.jython.org/jythonbook/en/1.0/</p>
+<h3 id="_3">参考资料</h3>
 <ul>
-<li>完稿日期：2016.09.06</li>
+<li>技术支持qq群144081101(代码和模型存放）</li>
+<li><a href="https://china-testing.github.io/testing_performance_tool_ngrinder_dubb.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>   </li>
+<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
+<li><a href="https://itbooks.pipipan.com/fs/18113597-319924422">接口测试面试题.pdf</a></li>
+<li><a href="https://china-testing.github.io/testing_books.html">软件测试精品书籍下载</a></li>
 </ul>
 <h2 id="pythondubbo">python通过协议支持dubbo接口</h2>
 <p>以下方式支持dubbo的部分协议，序列化是个难点。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># git clone https://github.com/alibaba/dubbo.git dubbo</span>
+<div class="highlight"><pre><span></span><span class="c1"># git clone https://github.com/alibaba/dubbo.git dubbo</span>
 <span class="c1"># cd dubbo/</span>
 <span class="c1"># mvn clean install -Dmaven.test.skip</span>
 <span class="c1"># cd dubbo-demo/dubbo-demo-provider/target/</span>
@@ -616,34 +368,18 @@
 <span class="c1"># cd dubbo-demo-consumer-2.5.4-SNAPSHOT/bin</span>
 <span class="c1"># ./start.sh </span>
 </pre></div>
-</td></tr></table>
+
 
 <p>python环境安装</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># git clone https://github.com/dmall/dudubbo</span>
+<div class="highlight"><pre><span></span><span class="c1"># git clone https://github.com/dmall/dudubbo</span>
 <span class="c1"># cd dudubbo/</span>
 <span class="c1"># git checkout remotes/origin/feature/block-socket</span>
 <span class="c1"># python3 setup.py install</span>
 </pre></div>
-</td></tr></table>
 
-<p>python　测试</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># /opt/python3.5/bin/python3</span>
+
+<p>python测试</p>
+<div class="highlight"><pre><span></span><span class="c1"># /opt/python3.5/bin/python3</span>
 <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">May</span> <span class="mi">19</span> <span class="mi">2016</span><span class="p">,</span> <span class="mi">11</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">26</span><span class="p">)</span>
 <span class="p">[</span><span class="n">GCC</span> <span class="mf">4.4</span><span class="o">.</span><span class="mi">7</span> <span class="mi">20120313</span> <span class="p">(</span><span class="n">Red</span> <span class="n">Hat</span> <span class="mf">4.4</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="mi">16</span><span class="p">)]</span> <span class="n">on</span> <span class="n">linux</span>
 <span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
@@ -658,7 +394,6 @@
 <span class="n">Connected</span> <span class="n">to</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">20880</span> <span class="n">successfully</span>
 <span class="s1">&#39;Hello Test, response form provider: 10.51.51.152:20880&#39;</span>
 </pre></div>
-</td></tr></table>
     </div><!-- /.entry-content -->
 
   </article>
