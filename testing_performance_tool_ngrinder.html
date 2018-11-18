@@ -50,9 +50,9 @@
 <p>https://github.com/naver/ngrinder/releases/</p>
 <p>选择最后面的war包。</p>
 <p>服务器端启动：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># java -XX:MaxPermSize=200m -jar ngrinder-controller-3.4.war --port 8058</span>
+<div class="highlight"><pre><span></span><span class="c1"># java -XX:MaxPermSize=200m -jar ngrinder-controller-3.4.war --port 8058</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>这样nGrinder的管理页面就部署好，你可以简单的把ngrinder-controller的功能理解为性能测试展示和控制，后面会进行详细介绍。</p>
 <p>打开网址： </p>
@@ -64,9 +64,9 @@
 <p><img alt="捕获.JPG" src="https://bitbucket.org/repo/AqzM76/images/1175392996-%E6%8D%95%E8%8E%B7.JPG"></p>
 <p>拷贝下载的文件到agent，现在可以简单理解为agent的功能为执行性能测试，通常不建议与ngrinder-controller部署在同一台，同一台机器也不建议部署多个agent。</p>
 <p>客户端启动：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># nohup ./run_agent.sh  &amp;</span>
+<div class="highlight"><pre><span></span><span class="c1"># nohup ./run_agent.sh  &amp;</span>
 </pre></div>
-</td></tr></table>
+
 
 <h2 id="_2">快速入门</h2>
 <ul>
@@ -111,37 +111,7 @@ http://172.30.249.160</li>
 <p>脚本使用Grinder脚本API，参见：http://grinder.sourceforge.net/g3/script-javadoc/index.html</p>
 <p>脚本中的grinder对象是ScriptContext实例，这样就可以获取上下文信息。</p>
 <p>Hello World</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># Hello World</span>
+<div class="highlight"><pre><span></span><span class="c1"># Hello World</span>
 <span class="c1">#</span>
 <span class="c1"># A minimal script that tests The Grinder logging facility.</span>
 <span class="c1">#</span>
@@ -173,37 +143,10 @@ http://172.30.249.160</li>
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">log</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>Simple HTTP example</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># A simple example using the HTTP plugin that shows the retrieval of a</span>
+<div class="highlight"><pre><span></span><span class="c1"># A simple example using the HTTP plugin that shows the retrieval of a</span>
 <span class="c1"># single page via HTTP. The resulting page is written to a file.</span>
 <span class="c1">#</span>
 <span class="c1"># More complex HTTP scripts are best created with the TCPProxy.</span>
@@ -232,7 +175,7 @@ http://172.30.249.160</li>
     <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="nb">file</span><span class="p">,</span> <span class="n">text</span>
     <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>更多脚本，参见： http://grinder.sourceforge.net/g3/script-gallery.html</p>
 <h3 id="_6">参考资料</h3>

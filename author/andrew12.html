@@ -416,9 +416,9 @@ package之外的类(在<default>中)不能被导入。
 <p>https://github.com/naver/ngrinder/releases/</p>
 <p>选择最后面的war包。</p>
 <p>服务器端启动：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># java -XX:MaxPermSize=200m -jar ngrinder-controller-3.4.war --port 8058</span>
+<div class="highlight"><pre><span></span><span class="c1"># java -XX:MaxPermSize=200m -jar ngrinder-controller-3.4.war --port 8058</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>这样nGrinder的管理页面就部署好，你可以简单的把ngrinder-controller的功能理解为性能测试展示和控制，后面会进行详细介绍。</p>
 <p>打开网址： </p>
@@ -428,7 +428,8 @@ package之外的类(在<default>中)不能被导入。
 <p>注意：这里的"Remember me"是短暂停留，页面关闭之后还是需要重新登陆的。</p>
 <p>登录后点击右上角的admin，选择"下载代理"</p>
 <p><img alt="捕获.JPG" src="https://bitbucket.org/repo/AqzM76/images/1175392996-%E6%8D%95%E8%8E%B7.JPG"></p>
-<p>拷贝下载的文件到agent，现在可以简单理解为agent的功能为执行性能测试，通常不建议与ngrinder-controller部署在同一台，同一台机器也不建议部署多个agent …</p>
+<p>拷贝下载的文件到agent，现在可以简单理解为agent的功能为执行性能测试，通常不建议与ngrinder-controller部署在同一台，同一台机器也不建议部署多个agent。</p>
+<p>客户端启动 …</p>
                 <a class="readmore" href="/testing_performance_tool_ngrinder.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
