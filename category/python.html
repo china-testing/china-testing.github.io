@@ -28,10 +28,10 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/opencv_crash_deep_learning2.html">计算机视觉opcencv工具深度学习快速实战2 opencv快速入门</a></h1>
+                    <h1 class="entry-title"><a href="/tensorflow3.html">TensorFlow工具快速入门教程3深度学习简介</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2018-11-19T12:20:00+08:00">
-                Published: 一 19 十一月 2018
+        <abbr class="published" title="2018-11-20T12:20:00+08:00">
+                Published: 二 20 十一月 2018
         </abbr>
 
         <address class="vcard author">
@@ -39,304 +39,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info --><h3 id="opencv">opencv基本操作</h3>
-<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># Author:    xurongzhong#126.com wechat:pythontesting qq:37391319</span>
-<span class="c1"># 技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) </span>
-<span class="c1"># qq群：144081101 591302926  567351477</span>
-<span class="c1"># CreateDate: 2018-11-17</span>
-
-<span class="kn">import</span> <span class="nn">imutils</span>
-<span class="kn">import</span> <span class="nn">cv2</span>
-
-<span class="c1"># 读取图片信息</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;jp.png&quot;</span><span class="p">)</span>
-<span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;width={}, height={}, depth={}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
-
-<span class="c1"># 显示图片</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># 访问像素</span>
-<span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;R={}, G={}, B={}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">B</span><span class="p">))</span>
-
-<span class="c1"># 选取图片区间 ROI (Region of Interest)</span>
-<span class="n">roi</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">60</span><span class="p">:</span><span class="mi">160</span><span class="p">,</span> <span class="mi">320</span><span class="p">:</span><span class="mi">420</span><span class="p">]</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;ROI&quot;</span><span class="p">,</span> <span class="n">roi</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># 缩放</span>
-<span class="n">resized</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Fixed Resizing&quot;</span><span class="p">,</span> <span class="n">resized</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># 按比例缩放</span>
-<span class="n">r</span> <span class="o">=</span> <span class="mf">300.0</span> <span class="o">/</span> <span class="n">w</span>
-<span class="n">dim</span> <span class="o">=</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="n">r</span><span class="p">))</span>
-<span class="n">resized</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Aspect Ratio Resize&quot;</span><span class="p">,</span> <span class="n">resized</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># 使用imutils缩放</span>
-<span class="n">resized</span> <span class="o">=</span> <span class="n">imutils</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Imutils Resize&quot;</span><span class="p">,</span> <span class="n">resized</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># 顺时针旋转45度</span>
-<span class="n">center</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">h</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">M</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">getRotationMatrix2D</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-<span class="n">rotated</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">warpAffine</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;OpenCV Rotation&quot;</span><span class="p">,</span> <span class="n">rotated</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># 使用imutils旋转</span>
-<span class="n">rotated</span> <span class="o">=</span> <span class="n">imutils</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Imutils Rotation&quot;</span><span class="p">,</span> <span class="n">rotated</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-
-<span class="c1"># 使用imutils无损旋转</span>
-<span class="n">rotated</span> <span class="o">=</span> <span class="n">imutils</span><span class="o">.</span><span class="n">rotate_bound</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Imutils Bound Rotation&quot;</span><span class="p">,</span> <span class="n">rotated</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># apply a Gaussian blur with a 11x11 kernel to the image to smooth it,</span>
-<span class="c1"># useful when reducing high frequency noise 高斯模糊</span>
-<span class="c1"># https://www.pyimagesearch.com/2016/07/25/convolutions-with-opencv-and-python/</span>
-<span class="n">blurred</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Blurred&quot;</span><span class="p">,</span> <span class="n">blurred</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># 画框</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="p">(</span><span class="mi">420</span><span class="p">,</span> <span class="mi">160</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Rectangle&quot;</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># 画圆</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="mi">20</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Circle&quot;</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># 划线</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Line&quot;</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># 输出文字</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="s2">&quot;https://china-testing.github.io&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> 
-    <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Text&quot;</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-
-
-<p>原图：</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-739e8c1a4a6c1349.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>选取图片区间 ROI (Region of Interest)</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e284d39f542302a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>缩放</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-d26035a133103798.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>按比例缩放</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-29fbd0a129fa1d08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>旋转</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-183e89ab6aba2a76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>使用imutils无损旋转</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-be14a7c60597e283.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>高斯模糊</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-c9e928fcbc08dbd4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>画框</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-346fb3db3d523cd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>画圆</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-859bb289ca755ad2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>划线</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a0412e9a7c440761.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>输出文字</p>
-<p><img alt="Text_screenshot_17.11.2018.png" src="https://upload-images.jianshu.io/upload_images/12713060-525ecb254a778711.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>执行时的输出</p>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python</span> <span class="n">opencv_tutorial_01</span><span class="o">.</span><span class="n">py</span> 
-<span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">322</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">3</span>
-<span class="n">R</span><span class="o">=</span><span class="mi">41</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="mi">49</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mi">37</span>
-</pre></div>
-
-
-<p><a href="https://itbooks.pipipan.com/fs/18113597-320636142">本节英文原版代码下载</a></p>
-<p>关于旋转这块，实际上pillow做的更好。比如同样逆时针旋转90度。</p>
-<p>opencv的实现：</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imutils</span>
-<span class="kn">import</span> <span class="nn">cv2</span>
-
-<span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;jp.png&quot;</span><span class="p">)</span>
-<span class="n">rotated</span> <span class="o">=</span> <span class="n">imutils</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Imutils Rotation&quot;</span><span class="p">,</span> <span class="n">rotated</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-
-
-<p><img alt="Text_screenshot_17.11.2018.png" src="https://upload-images.jianshu.io/upload_images/12713060-b7ef4184568e285e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>pillow的实现：</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-
-<span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;jp.png&quot;</span><span class="p">)</span>
-<span class="n">im2</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">im2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-
-<p><img alt="test.jpg" src="https://upload-images.jianshu.io/upload_images/12713060-8cf9a5e7ee544811.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>更多参考： <a href="https://www.jianshu.com/p/f03f7f52d465">python库介绍-图像处理工具pillow中文文档-手册(2018 5.*)</a></p>
-<p><img alt="deep_learning_face_detection_opencv.gif" src="https://upload-images.jianshu.io/upload_images/12713060-1342046ba68d9898.gif?imageMogr2/auto-orient/strip"></p>
-<h3 id="_1">参考资料</h3>
-<ul>
-<li>技术支持qq群144081101(代码和模型存放）</li>
-<li><a href="https://china-testing.github.io/opencv_crash_deep_learning2.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>   </li>
-<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
-<li>代码下载：https://itbooks.pipipan.com/fs/18113597-320636142</li>
-<li>代码github地址：https://github.com/china-testing/python-api-tesing/tree/master/opencv_crash_deep_learning</li>
-</ul>
-<h3 id="_2">识别俄罗斯方块</h3>
-<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># Author:    xurongzhong#126.com wechat:pythontesting qq:37391319</span>
-<span class="c1"># 技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) </span>
-<span class="c1"># qq群：144081101 591302926  567351477</span>
-<span class="c1"># CreateDate: 2018-11-19</span>
-<span class="c1"># python opencv_tutorial_02.py --image tetris_blocks.png</span>
-
-<span class="kn">import</span> <span class="nn">argparse</span>
-<span class="kn">import</span> <span class="nn">imutils</span>
-<span class="kn">import</span> <span class="nn">cv2</span>
-
-<span class="n">ap</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
-<span class="n">ap</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">,</span> <span class="s2">&quot;--image&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;path to input image&quot;</span><span class="p">)</span>
-<span class="n">args</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">(</span><span class="n">ap</span><span class="o">.</span><span class="n">parse_args</span><span class="p">())</span>
-
-<span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">])</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># 转为灰度图</span>
-<span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Gray&quot;</span><span class="p">,</span> <span class="n">gray</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># 边缘检测</span>
-<span class="n">edged</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Edged&quot;</span><span class="p">,</span> <span class="n">edged</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># 门限</span>
-<span class="n">thresh</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">THRESH_BINARY_INV</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Thresh&quot;</span><span class="p">,</span> <span class="n">thresh</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># 发现边缘</span>
-<span class="n">cnts</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">findContours</span><span class="p">(</span><span class="n">thresh</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">RETR_EXTERNAL</span><span class="p">,</span>
-    <span class="n">cv2</span><span class="o">.</span><span class="n">CHAIN_APPROX_SIMPLE</span><span class="p">)</span>
-<span class="n">cnts</span> <span class="o">=</span> <span class="n">cnts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">imutils</span><span class="o">.</span><span class="n">is_cv2</span><span class="p">()</span> <span class="k">else</span> <span class="n">cnts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
-<span class="c1"># loop over the contours</span>
-<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cnts</span><span class="p">:</span>
-    <span class="c1"># draw each contour on the output image with a 3px thick purple</span>
-    <span class="c1"># outline, then display the output contours one at a time</span>
-    <span class="n">cv2</span><span class="o">.</span><span class="n">drawContours</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">159</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Contours&quot;</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
-    <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># draw the total number of contours found in purple</span>
-<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;I found {} objects!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cnts</span><span class="p">))</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>  <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span>
-    <span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">159</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Contours&quot;</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># we apply erosions to reduce the size of foreground objects</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">thresh</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">erode</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Eroded&quot;</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># 扩大</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">thresh</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">dilate</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Dilated&quot;</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># a typical operation we may want to apply is to take our mask and</span>
-<span class="c1"># apply a bitwise AND to our input image, keeping only the masked</span>
-<span class="c1"># regions</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">thresh</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_and</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Output&quot;</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-
-
-<p>原图和灰度图：</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-94bf719d8b474e10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>边缘检测</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-50ede7b8170e68b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>门限</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-87aa6ca756b90ad3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>轮廓</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-7b80766c18d6807f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>查找结果</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-f31c3c17a9e3082f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>腐蚀和扩张</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-eed2fb35d9671430.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-0500aad75de363d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>屏蔽和位操作</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-2ea31f08cdaf7c22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>串在一起执行</p>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python</span> <span class="n">opencv_tutorial_02</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">image</span> <span class="n">tetris_blocks</span><span class="o">.</span><span class="n">png</span>
-</pre></div>
-
-
-<p><img alt="test.gif" src="https://upload-images.jianshu.io/upload_images/12713060-51c23248c697d612.gif?imageMogr2/auto-orient/strip"></p>
-<h2 id="_3">参考资料</h2>
-<ul>
-<li>讨论qq群144081101 591302926 567351477 钉钉免费群21745728</li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 请在github上点赞，谢谢！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
-<li><a href="https://github.com/ageitgey/face_recognition">face_recognition</a></li>
-<li><a href="https://china-testing.github.io/opencv_books.html">2018最佳人工智能图像处理工具OpenCV书籍下载</a> </li>
-<li><a href="https://china-testing.github.io/ai_books.html">2018最佳人工智能机器学习工具书籍及下载(持续更新)</a> </li>
-<li><a href="https://china-testing.github.io/opencv_crash_deep_learning1.html">本文最新版本地址</a></li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/opencv_crash_deep_learning3.html" rel="bookmark"
-                           title="Permalink to TensorFlow工具快速入门教程3深度学习简介">TensorFlow工具快速入门教程3深度学习简介</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-19T12:20:00+08:00">
-                Published: 一 19 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
+</footer><!-- /.post-info --><ul>
 <li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
 </ul>
 <h3 id="_1">深度学习介绍</h3>
@@ -356,8 +59,133 @@
 <p><img alt="test.gif" src="https://upload-images.jianshu.io/upload_images/12713060-af0f71ae53bb7f97.gif?imageMogr2/auto-orient/strip"></p>
 <p>经过48小时的学习，电脑掌握了舞蹈艺术。</p>
 <p><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-38d7673e6fbed623.gif?imageMogr2/auto-orient/strip"></p>
-<h3 id="_3">神经网络的分类 …</h3>
-                <a class="readmore" href="/opencv_crash_deep_learning3.html">read more</a>
+<h3 id="_3">神经网络的分类</h3>
+<p>浅层神经网络：浅层神经网络在输入和输出之间只有一个隐藏层。</p>
+<p>深度神经网络：深度神经网络有不止一层。例如，用于图像识别的Google LeNet模型计为22层。</p>
+<p>如今，深度学习被用于许多方面，如无人驾驶汽车，移动电话，谷歌搜索引擎，欺诈检测，电视等。</p>
+<h3 id="_4">深度学习网络的类型</h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-be11da6bb85e01b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li>前馈神经网络(Feed-forward neural networks)</li>
+</ul>
+<p>最简单的人工神经网络。使用这种类型的体系结构，信息只向一个方向流动。信息流从输入层开始，进入“隐藏”层，并在输出层结束。</p>
+<ul>
+<li>递归神经网络（RNN Recurrent neural networks）</li>
+</ul>
+<p>RNN是一种多层神经网络，可以在上下文节点中存储信息，允许它学习数据序列并输出一个或多个序列。简单来说，它是一个人工神经网络，其神经元之间的连接包括环。 RNN非常适合处理输入序列。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e904d69dc7b854b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>比如预测"Do you want a…………?"的下一个单词。</p>
+<p>RNN神经元向句子开头的信号。</p>
+<p>接收单词“Do”作为输入并产生向量。该向量被反馈给神经元以向网络提供存储器。这个阶段有助于网络记住它收到的“Do”，它在第一个位置收到它。</p>
+<p>网络将类似地进行下一个单词。它需要“you”和“want”这个词。在接收到每个单词时更新神经元的状态。</p>
+<p>最后阶段在收到“a”后发生。神经网络将为每个可用于完成句子的英语单词提供概率。训练有素的RNN可能会给“café”，“drink”，“burger”等高概率词。</p>
+<p>RNN的常见用途</p>
+<p>帮助证券交易者生成分析报告；检测财务报表合同中的异常情况；检测欺诈性信用卡交易；为图像提供标题；聊天机器人；时间序列数据或序列（例如，音频记录或文本）的标准使用。</p>
+<ul>
+<li>卷积神经网络（CNN Convolutional neural networks）</li>
+</ul>
+<p>CNN是一个多层神经网络，具有独特的架构，旨在提取每层数据的日益复杂的特征，以确定输出。 CNN非常适合感知任务。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-860bf5d9c9dcabf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>当存在非结构化数据集（例如，图像。</p>
+<p>例如预测图像标题：</p>
+<p>CNN接收一张猫咪的图像，这个图像在计算机术语中是像素的集合。通常，灰度图片为一层，彩色图片为三层。</p>
+<p>在特征学习期间（即隐藏层），网络将识别独特的特征，例如猫的尾巴，耳朵等。</p>
+<p>当网络彻底学会如何识别图片时，它可以为其知道的每个图像提供概率。具有最高概率的标签将成为网络的预测。</p>
+<p>这是目前人脸识别最常用的技术之一。</p>
+<ul>
+<li>强化学习(Reinforcement Learning)</li>
+</ul>
+<p>强化学习是机器学习的子领域，通过接收虚拟“奖励”或“惩罚”来训练，主要是通过反复试验来学习。谷歌的DeepMind已经使用强化学习来击败围棋冠军。强化学习也用于视频游戏，通过提供更智能的机器人来改善游戏体验。</p>
+<p>著名的算法有：Q-learning，Deep Q network，State-Action-Reward-State-Action (SARSA)、Deep Deterministic Policy Gradient (DDPG)。</p>
+<h3 id="_5">深度学习应用</h3>
+<ul>
+<li>财务人工智能：金融技术部门已经开始使用人工智能来节省时间，降低成本并增加价值。深度学习正在通过使用更强大的信用评分来改变贷款行业。信用决策者可以将人工智能用于强大的信贷出租应用程序，以实现更快，更准确的风险评估，使用机器智能来考虑申请人的性格和能力。</li>
+</ul>
+<p>Underwrite是一家为信贷公司提供AI解决方案的Fintech公司。 underwrite.ai使用AI来检测哪个申请人更有可能偿还贷款。他们的方法完全优于传统方法。</p>
+<ul>
+<li>人力资源AI：Under Armour，一家运动服装公司在人工智能的帮助下彻底改变了招聘和现代化的候选人体验。事实上，Under Armour减少了零售店的招聘时间35％。 Under Armour在2012年面临着越来越受欢迎的兴趣。他们平均每个月有30000份简历。阅读所有这些申请并开始筛选和面试过程花了太长时间。让人们受雇和入职的漫长过程影响了Under Armour能够让他们的零售店充分配备，增加并准备运营的能力。</li>
+</ul>
+<p>当时，Under Armour拥有所有“必备”人力资源技术，例如采购，应用，跟踪和入职的交易解决方案，但这些工具不够用。 Under Armour选择HireVue，一个人工智能解决方案提供商，用于按需和现场采访。</p>
+<h3 id="_6">参考资料</h3>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 钉钉群21745728</li>
+<li><a href="https://china-testing.github.io/tensorflow3.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>   </li>
+<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
+</ul>
+<h3 id="_7">为什么深度学习很重要？</h3>
+<p>深度学习是使预测成为可行结果的有力工具。深度学习在模式发现（无监督学习）和基于知识的预测方面表现优异。大数据是深度学习的动力。当两者结合在一起时，组织可以在生产力，销售，管理和创新方面获得前所未有的成果。</p>
+<p>深度学习可以胜过传统方法。例如，深度学习算法比图像分类中的机器学习算法精确41％，面部识别精度高27％，语音识别精度高25％。</p>
+<h3 id="_8">深度学习的局限性</h3>
+<ul>
+<li>数据标签</li>
+</ul>
+<p>大多数当前的AI模型都是通过“监督学习”进行培训的。这意味着人类必须对基础数据进行标记和分类，这可能是一个相当大且容易出错的工作。例如，开发自驾车技术的公司正在雇佣数百人手动注释原型车的数小时视频输入，以帮助培训这些系统。</p>
+<ul>
+<li>获得庞大的训练数据集</li>
+</ul>
+<p>已经表明，像CNN这样的简单深度学习技术在某些情况下可以模仿医学和其他领域专家的知识。然而，当前的机器学习浪潮需要训练数据集，这些数据集不仅标记，而且足够广泛和通用。</p>
+<p>深度学习方法需要对模型进行数千次观察才能在分类任务中变得相对较好，并且在某些情况下，需要数百万才能在人类层面上执行。毫不奇怪，深度学习在大型科技公司中很有名;他们正在使用大数据来累积数PB的数据。它允许他们创建令人印象深刻且高度准确的深度学习模型。</p>
+<ul>
+<li>解释问题</li>
+</ul>
+<p>从人的角度来看，大而复杂的模型很难解释。</p>
+<p>此外，随着AI应用的扩展，监管要求也可能需要更多可解释的AI模型。</p>
+<h2 id="_9">参考资料</h2>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 钉钉免费群21745728</li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 请在github上点赞，谢谢！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li><a href="https://github.com/ageitgey/face_recognition">face_recognition</a></li>
+<li><a href="https://china-testing.github.io/opencv_books.html">2018最佳人工智能图像处理工具OpenCV书籍下载</a> </li>
+<li><a href="https://china-testing.github.io/ai_books.html">2018最佳人工智能机器学习工具书籍及下载(持续更新)</a> </li>
+<li><a href="https://china-testing.github.io/opencv_crash_deep_learning3.html">本文最新版本地址</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/opencv_crash_deep_learning2.html" rel="bookmark"
+                           title="Permalink to 计算机视觉opcencv工具深度学习快速实战2 opencv快速入门">计算机视觉opcencv工具深度学习快速实战2 opencv快速入门</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-19T12:20:00+08:00">
+                Published: 一 19 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="opencv">opencv基本操作</h3>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    xurongzhong#126.com wechat:pythontesting qq:37391319</span>
+<span class="c1"># 技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) </span>
+<span class="c1"># qq群：144081101 591302926  567351477</span>
+<span class="c1"># CreateDate: 2018-11-17</span>
+
+<span class="kn">import</span> <span class="nn">imutils</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="c1"># 读取图片信息</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;jp.png&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;width={}, height={}, depth={}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
+
+<span class="c1"># 显示图片</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+<span class="n">cv2 …</span></pre></div>
+                <a class="readmore" href="/opencv_crash_deep_learning2.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
