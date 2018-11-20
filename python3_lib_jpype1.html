@@ -52,28 +52,13 @@ package之外的类(在<default>中)不能被导入。
 不能重启JVM。
 不能处理依赖当前类的方法。</p>
 <ul>
-<li>
-<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
-</li>
-<li>
-<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
-</li>
+<li>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</li>
 </ul>
-<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
 <h2 id="_2">快速入门</h2>
 <ul>
 <li>安装</li>
 </ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pip3 install jpype1</span>
+<div class="highlight"><pre><span></span><span class="c1"># pip3 install jpype1</span>
 <span class="n">Collecting</span> <span class="n">jpype1</span>
   <span class="n">Downloading</span> <span class="n">JPype1</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mf">2.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="p">(</span><span class="mi">147</span><span class="n">kB</span><span class="p">)</span>
     <span class="mi">100</span><span class="o">%</span> <span class="o">|</span><span class="err">████████████████████████████████</span><span class="o">|</span> <span class="mi">153</span><span class="n">kB</span> <span class="mi">519</span><span class="n">kB</span><span class="o">/</span><span class="n">s</span> 
@@ -84,7 +69,7 @@ package之外的类(在<default>中)不能被导入。
 <span class="n">Installing</span> <span class="n">collected</span> <span class="n">packages</span><span class="p">:</span> <span class="n">jpype1</span>
 <span class="n">Successfully</span> <span class="n">installed</span> <span class="n">jpype1</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">2</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>线程的启动需要增加： jpype.attachThreadToJVM()，可以使用isThreadAttachedToJVM() 检查。使用java线程要注意这里不支持回调。基于OS的线程通常问题不大，但是仿真线程，比如microthread，在java中实际为一个线程。</p>
 <p>java的synchronized同步，jpype用synchronized(O)实现，返回monitor对象。monitor为GCd时会破坏锁。</p>
@@ -93,22 +78,7 @@ package之外的类(在<default>中)不能被导入。
 由于上述名字变异，你不能使用标准的包访问方式来获取它们。使用JPackage的方法_getclass_来载入。
 非静态内部类不能从python代码中实例化。但是可以完全没有问题地使用从java代码中接受到的实例。</p>
 <p>演示：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">ipython3</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">ipython3</span>
 <span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Nov</span> <span class="mi">23</span> <span class="mi">2017</span><span class="p">,</span> <span class="mi">16</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mo">01</span><span class="p">)</span> 
 <span class="n">Type</span> <span class="s1">&#39;copyright&#39;</span><span class="p">,</span> <span class="s1">&#39;credits&#39;</span> <span class="ow">or</span> <span class="s1">&#39;license&#39;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span>
 <span class="n">IPython</span> <span class="mf">6.2</span><span class="o">.</span><span class="mi">1</span> <span class="o">--</span> <span class="n">An</span> <span class="n">enhanced</span> <span class="n">Interactive</span> <span class="n">Python</span><span class="o">.</span> <span class="n">Type</span> <span class="s1">&#39;?&#39;</span> <span class="k">for</span> <span class="n">help</span><span class="o">.</span>
@@ -125,16 +95,22 @@ package之外的类(在<default>中)不能被导入。
     <span class="n">classes</span> <span class="n">loaded</span>       <span class="p">:</span> <span class="mi">31</span>
 <span class="n">JVM</span> <span class="n">has</span> <span class="n">been</span> <span class="n">shutdown</span>
 </pre></div>
-</td></tr></table>
 
-<h2 id="_3">参考资料</h2>
+
+<h3 id="_3">参考资料</h3>
 <ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/python3_lib_jpype1.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
 <li>https://pypi.python.org/pypi/JPype1</li>
 <li>https://github.com/originell/jpype</li>
 <li>旧网址：http://jpype.sourceforge.net/</li>
+<li>https://github.com/jlizier/jidt/wiki/Downloads</li>
+<li>https://github.com/jlizier/jidt/wiki/PythonExamples</li>
 </ul>
-<p>https://github.com/jlizier/jidt/wiki/Downloads</p>
-<p>https://github.com/jlizier/jidt/wiki/PythonExamples</p>
     </div><!-- /.entry-content -->
 
   </article>

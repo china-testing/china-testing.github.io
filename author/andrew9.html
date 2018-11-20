@@ -30,6 +30,49 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python_pandas_crash_tutorial4.html" rel="bookmark"
+                           title="Permalink to python数据分析快速入门教程4-数据汇聚">python数据分析快速入门教程4-数据汇聚</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-03T11:20:00+08:00">
+                Published: 四 03 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/python_pandas_crash_tutorial.html">本书目录</a></p>
+<p>我们需要的所有信息可能记录在单独的文件和数据帧中。例如，可能有一个公司信息单独表和股票价格表，数据被分成独立的表格以减少冗余信息。</p>
+<h3 id="_1">连接</h3>
+<ul>
+<li>添加行</li>
+</ul>
+<p>4-1.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/concat_1.csv&#39;</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/concat_2.csv&#39;</span><span class="p">)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/concat_3.csv&#39;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df3</span><span class="p">)</span>
+
+<span class="n">row_concat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">df3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">row_concat</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">row_concat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">])</span>
+
+<span class="n">new_row_series …</span></pre></div>
+                <a class="readmore" href="/python_pandas_crash_tutorial4.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_pandas_crash_tutorial6.html" rel="bookmark"
                            title="Permalink to python数据分析快速入门教程6-重整">python数据分析快速入门教程6-重整</a></h1>
                 </header>
@@ -414,49 +457,6 @@
 <p>人脸识别的图片列表如下，共269796张</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1 …</pre></div></td></tr></table>
                 <a class="readmore" href="/python_pandas_example1.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_numpy_beginner_guide3rd1.html" rel="bookmark"
-                           title="Permalink to numpy学习指南3rd1:NumPy快速入门">numpy学习指南3rd1:NumPy快速入门</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-04-10T19:20:00+08:00">
-                Published: 二 10 四月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/numpy">代码地址</a></p>
-<ul>
-<li>你的赞助是我们前进的动力：</li>
-</ul>
-<p>一流企业专家自动化性能接口测试 数据分析 python一对一教，非骗人的培训机构(多数大陆培训机构的老师实际未入门）承接excel合并，电脑自动化操作等工程 并欢迎讨论中医草药风水相学等道家国学</p>
-<p>qq群python 测试开发自动化测试 144081101 教你做免费的线上博客(放在简历中增加亮点)，自动化测试平台，性能测试工具等，让你有实际项目经验  联系qq：37391319 </p>
-<p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 184175668 中医草药湿热湿疹胃病 291184506 python高级人工智能视觉 6089740</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15 …</pre></div></td></tr></table>
-                <a class="readmore" href="/python_numpy_beginner_guide3rd1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

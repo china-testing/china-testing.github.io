@@ -30,6 +30,43 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_quick1.html" rel="bookmark"
+                           title="Permalink to python 3.7极速入门教程1安装：Linux(Ubuntu 18.04)及Windows上安装Anaconda">python 3.7极速入门教程1安装：Linux(Ubuntu 18.04)及Windows上安装Anaconda</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-05T09:20:00+08:00">
+                Published: 一 05 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h1 id="_1">安装</h1>
+<h2 id="linux">Linux安装</h2>
+<p>Anaconda是最受欢迎的python数据科学和机器学习平台，用于大规模数据处理，预测分析和科学计算。Anaconda发行版附带了1,000多个数据包，conda命令行工具和Anaconda Navigator的桌面图形用户界面。一般而言，使用Anaconda比直接使用官方的python更好用。</p>
+<p>本教程将指导您完成在Ubuntu 18.04上下载和安装Anaconda Python Distribution。通常也适合多数其他Linux。</p>
+<h3 id="anaconda">下载Anaconda</h3>
+<p>https://www.anaconda.com/download/#linux</p>
+<p>在撰写本文时，Anaconda的最新稳定版本是5.3版本。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-128824bdee784130.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>请选择<a href="https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh">64-Bit (x86) Installer </a>进行下载，尽量不要用python2.7，很多库已经不提供python2.7支持。</p>
+<p>点击链接就会进行下载，同时会弹出信息收集框，直接关闭就好。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-dfb07445ebf47c3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="anaconda_1">安装Anaconda</h3>
+<div class="highlight"><pre><span></span>$ sudo sh Anaconda3-5.3.0-Linux-x86_64.sh 
+<span class="o">[</span>sudo<span class="o">]</span> andrew 的密码： 
+
+Welcome …</pre></div>
+                <a class="readmore" href="/python3_quick1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_monitor.html" rel="bookmark"
                            title="Permalink to python应用性能监控工具简介">python应用性能监控工具简介</a></h1>
                 </header>
@@ -346,54 +383,6 @@ OpenCV and Python 使用OpenCV和Python对机器学习和图像处理世界的�
 <p>吴使回国后，吴王一听楚王这么无礼，就同楚国断了交。</p>
 <p>几年过后 …</p>
                 <a class="readmore" href="/yao_wuzhuyu.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_pep8.html" rel="bookmark"
-                           title="Permalink to python代码风格指南(PEP8中文版)">python代码风格指南(PEP8中文版)</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-21T14:50:00+08:00">
-                Published: 二 21 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p>本文给出主Python版本标准库的编码约定。CPython的C代码风格参见<a href="https://www.python.org/dev/peps/pep-0007/">PEP7</a>。</p>
-<p>本文和<a href="https://www.python.org/dev/peps/pep-0257/">PEP 257 文档字符串标准</a>改编自Guido最初的《Python Style Guide》, 并增加了Barry的<a href="http://barry.warsaw.us/software/STYLEGUIDE.txt">GNU Mailman Coding Style Guide</a>的部分内容。</p>
-<p>本文会随着语言改变等而改变。</p>
-<p>许多项目都有自己的编码风格指南，冲突时自己的指南为准。</p>
-<h2 id="_1">一致性考虑</h2>
-<p>Guido的关键点之一是：代码更多是用来读而不是写。本指南旨在改善Python代码的可读性，即<a href="https://www.python.org/dev/peps/pep-0020/">PEP 20</a>所说的“可读性计数"(Readability counts)。</p>
-<p>风格指南强调一致性。项目、模块或函数保持一致都很重要。</p>
-<p>最重要的是知道何时不一致, 有时风格指南并不适用。当有疑惑时运用你的最佳判断，参考其他例子并多问！</p>
-<p>特别注意：不要因为遵守本PEP而破坏向后兼容性！</p>
-<p>部分可以违背指南情况：</p>
-<ul>
-<li>
-<p>遵循指南会降低可读性。</p>
-</li>
-<li>
-<p>与周围其他代码不一致。</p>
-</li>
-<li>
-<p>代码在引入指南完成，暂时没有理由修改。</p>
-</li>
-<li>
-<p>旧版本兼容。</p>
-</li>
-</ul>
-<h2 id="_2">代码布局</h2>
-<h4 id="_3">缩进</h4>
-<p>每级缩进用4个空格 …</p>
-                <a class="readmore" href="/python_pep8.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
