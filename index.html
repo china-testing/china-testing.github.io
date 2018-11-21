@@ -42,139 +42,92 @@
 </footer><!-- /.post-info --><ul>
 <li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
 </ul>
-<h3 id="tensorflow">什么是TensorFlow？</h3>
-<p>目前，世界上最出名的深度学习库是Google的TensorFlow。 Google在其所有产品中使用机器学习来改进搜索引擎，翻译，图片字幕或推荐。</p>
-<p>Google用户可以通过AI体验更快，更精准的搜索。如果用户在搜索栏中键入关键字，则Google会提供有关下个字词的建议。</p>
-<p><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-e710539761b73b15.gif?imageMogr2/auto-orient/strip"></p>
-<p>谷歌希望利用机器学习来利用其庞大的数据集，为用户提供最佳体验。角色分工有：研究人员、数据科学家、程序员。</p>
-<p>谷歌不止拥有世界最大的海量数据，还拥有世界上最庞大的计算机集群，所以TensorFlow是按比例建造的。 TensorFlow是由Google Brain Team开发的库，用于加速机器学习和深度神经网络研究。</p>
-<p>它在多个CPU或GPU甚至移动操作系统上运行，支持多种语言的包装器，如Python(为主)，C++或Java。</p>
-<h3 id="tensorflow_1">TensorFlow的历史</h3>
-<p>几年前深度学习在提供大量数据时开始超越所有其他机器学习算法。谷歌看使用这些深度神经网络来改善其服务：Gmail、照片、谷歌搜索引擎</p>
-<p>他们构建了Tensorflow的框架，让研究人员和开发人员在AI模型上协同工作。</p>
-<p>Tensorflow于2015年底首次公开，第一个稳定版本于2017年出现。它基于Apache开源许可。您可以使用它，修改它并重新发布修改后的版本，而无需向Google支付任何费用。</p>
-<h3 id="tensorflow_2">TensorFlow架构</h3>
-<p>Tensorflow架构分为三个部分：</p>
+<h3 id="tensorflow">什么是TensorFlow简介</h3>
+<p>自2016年以来，人工智能越来越受欢迎，20％的大公司在其业务中使用人工智能（麦肯锡报告，2018年 <a href="https://www.mckinsey.com/business-functions/mckinsey-analytics/our-insights/crossing-the-frontier-how-to-apply-ai-for-impact">report</a>
+）。根据同一报告，AI可以为各行业创造巨大价值。例如，在银行业，人工智能的潜力估计为3000亿美元，零售业的数量猛增至6000亿美元。</p>
+<p>为了释放人工智能的潜在价值，公司必须选择正确的深度学习框架。</p>
+<h3 id="8">8个最佳深度学习库/框架</h3>
+<p>在此列表中，我们将比较顶级的深度学习框架。所有这些都是开源的，并且在数据科学家社区中很受欢迎。</p>
 <ul>
-<li>预处理数据</li>
-<li>建立模型</li>
-<li>训练和评估模型</li>
+<li>Torch</li>
 </ul>
-<p>之所以叫Tensorflow，因为它将输入作为多维数组，也称为张量(tensors)。您可以构造对输入的操作(Graph)流程图。</p>
-<h3 id="tensorflow_3">TensorFlow能做什么？</h3>
-<p>TensorFlow可基于硬件和软件要求分类</p>
-<p>开发阶段：训练模型。可在台式机或笔记本电脑上完成。</p>
-<p>运行或推理阶段：Windows，macOS或Linux；云服务；iOS和Android等移动设备</p>
-<p>您可以在多台机器上训练，在其他机器上运行。</p>
-<p>该模型可以在GPU和CPU上进行训练和使用。 GPU最初是为视频游戏而设计的。在2010年底，斯坦福大学的研究人员发现GPU在矩阵运算和代数方面也非常擅长，因此它可以非常快速地进行这些计算。深度学习依赖于大量的矩阵乘法。 TensorFlow在计算矩阵乘法时非常快，因为它是用 ++编写的。虽然它是用C ++实现的，但TensorFlow可以被其他语言(主要是Python)访问和控制。</p>
-<p>最后，TensorFlow的一个重要特征是TensorBoard。 TensorBoard可以图形化和直观地监控TensorFlow正在做什么。</p>
-<h3 id="tensorflow_4">TensorFlow组件简介</h3>
+<p>Torch是一个古老的开源机器学习库。它首次发布于15年前。它是主要的编程语言是LUA，但在C中有实现。Torch支持庞大的机器学习算法库，包括深度学习。它支持并行计算的CUDA实现。</p>
+<p>大多数领先的实验室都使用Torch，如Facebook，Google，Twitter，Nvidia等。 Torch的Python库名为Pytorch。</p>
 <ul>
-<li>Tensor</li>
+<li>Infer.net</li>
 </ul>
-<p>所有计算都涉及张量。张量是n维的向量或矩阵，表示所有类型的数据。张量中的所有值都保持具有已知（或部分已知）形状的相同数据类型。数据的形状是矩阵或数组的维数。</p>
-<p>张量可以源自输入数据或计算结果。在TensorFlow中，所有操作都在图形内部进行。图一组连续发生的计算。每个操作都称为操作节点，并相互连接。</p>
-<p>该图概述了节点之间的操作和连接。但是，它不显示值。节点的边缘是张量，即计算数据操作的方法。</p>
+<p>Infer.net由Microsoft开发和维护。 Infer.net是主要关注贝叶斯统计。 Infer.net旨在为从业者提供最先进的概率建模算法。该库包含分析工具，如贝叶斯分析，隐马尔可夫链，聚类。</p>
 <ul>
-<li>Graph：图</li>
+<li>Keras</li>
 </ul>
-<p>图收集并描述了训练期间完成的所有系列计算。</p>
-<p>它可以在多个CPU或GPU甚至移动操作系统上运行。图的可移植性允许保留计算以立即或稍后使用。图中的所有计算都是通过将张量连接在一起来完成的</p>
-<p>张量具有节点和边缘。节点承载数学运算并产生端点输出。边缘到边缘解释了节点之间的输入/输出关系。</p>
-<h3 id="tensorflow_5">为什么TensorFlow很受欢迎？</h3>
-<p>Tensorflow库结合了不同的API来构建大规模的深度学习架构，如CNN或RNN。 TensorFlow基于图形计算;它允许开发人员用Tensorboad可视化神经网络的构造。Tensorflow易于调试。最后，Tensorflow可以大规模部署。它运行在CPU和GPU上。</p>
-<p>与其他深度学习框架相比，Tensorflow在GitHub上吸引了最大的人气。</p>
-<h3 id="tensorflow_6">TensorFlow支持的算法</h3>
-<p>目前，TensorFlow 1.10内置API支持：</p>
+<p>Keras是深度学习的Python框架。构建任何深度学习算法都很方便。 Keras的优势在于它使用相同的Python代码在CPU或GPU上运行。此外，编码环境纯粹的，并且允许训练用于计算机视觉，文本识别等的最先进的算法。</p>
+<p>Keras由Google的研究员FrançoisChollet开发。 Keras用于CERN，Yelp，Square、Google，Netflix和优步等知名​​组织。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-168835c49956eedd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <ul>
-<li>线性回归：tf.estimator.LinearRegressor</li>
-<li>分类：tf.estimator.LinearClassifier</li>
-<li>深度学习分类：tf.estimator.DNNClassifier</li>
-<li>深度学习擦除和深度：tf.estimator.DNNLinearCombinedClassifier</li>
-<li>Booster 树回归：tf.estimator.BoostedTreesRegressor</li>
-<li>Boosted树分类：tf.estimator.BoostedTreesClassifier</li>
+<li>Theano</li>
 </ul>
-<h3 id="tensorflow_7">简单的TensorFlow示例</h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-c27780b86f0e4a48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>在示例中，我们将X_1和X_2相乘。 Tensorflow将创建节点来连接操作。在我们的例子中，它被称为multiply。确定图形后，Tensorflow计算引擎将X_1和X_2相乘。</p>
-<p>最后，我们将运行TensorFlow会话，该会话将运行具有X_1和X_2值的计算图并打印乘法的结果。</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># Author:    xurongzhong#126.com wechat:pythontesting qq:37391319</span>
-<span class="c1"># 技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) </span>
-<span class="c1"># qq群：144081101 591302926  567351477</span>
-<span class="c1"># CreateDate: 2018-11-21</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
-
-<span class="n">X_1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;X_1&quot;</span><span class="p">)</span>
-<span class="n">X_2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;X_2&quot;</span><span class="p">)</span>
-<span class="n">multiply</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">X_1</span><span class="p">,</span> <span class="n">X_2</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;multiply&quot;</span><span class="p">)</span>
-
-<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">multiply</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X_1</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">X_2</span><span class="p">:[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]})</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-</pre></div>
-
-
-<p>执行结果</p>
-<div class="highlight"><pre><span></span><span class="p">[</span> <span class="mf">4.</span> <span class="mf">10.</span> <span class="mf">18.</span><span class="p">]</span>
-</pre></div>
-
-
+<p>蒙特利尔大学于2007年开发的深度学习库。它提供快速计算，可以在CPU和GPU上运行。 Theano已被开发用于训练深度神经网络算法。</p>
+<ul>
+<li>MICROSOFT认知工具包（CNTK）</li>
+</ul>
+<p>Microsoft工具包，以前称为CNTK，是Microsoft开发的深度学习库。根据微软的说法，它是市场上最快的哭之一。 Microsoft工具包是开源库，在微软产品广泛使用，如Skype，Cortana，Bing和Xbox。支持Python和C ++。</p>
+<ul>
+<li>MXNet</li>
+</ul>
+<p>MXnet是最近的深度学习库。它可以使用多种编程语言访问，包括C ++，Julia，Python和R. MXNet可以配置为在CPU和GPU上运行。 MXNet包括最先进的深度学习架构，如卷积神经网络和长短期记忆。 MXNet旨在与动态云基础架构协调工作。 MXNet的主要用户是亚马逊。</p>
+<ul>
+<li>Caffe</li>
+</ul>
+<p>Caffe是杨庆佳在伯克利大学攻读博士学位时创建。 Caffe是用C ++编写的，可以在CPU和GPU上执行计算。 Caffe的主要用途是卷积神经网络。虽然，2017年，Facebook扩展了Caffe，包Recurrent Neural Network。学术界和初创公司以及雅虎等一些大公司都在使用caffe。</p>
+<ul>
+<li>TensorFlow</li>
+</ul>
+<p>TensorFlow是Google的开源项目。 TensorFlow是目前最着名的深度学习库。它于2015年底向公众发布</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-81e44961c0145c60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-6da6b00f8268815d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>参考：<a href="https://github.com/china-testing/python-api-tesing/#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0deep-learning">深度学习(Deep Learning)</a></p>
 <h3 id="_1">参考资料</h3>
 <ul>
 <li>讨论qq群144081101 591302926 567351477 钉钉群21745728</li>
-<li><a href="https://china-testing.github.io/tensorflow5.html">本文最新版本地址</a></li>
+<li><a href="https://china-testing.github.io/tensorflow6.html">本文最新版本地址</a></li>
 <li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
 <li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>   </li>
 <li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
 </ul>
-<h3 id="tensorflow_8">将数据加载到TensorFlow</h3>
-<p>两种公共方式可以加载数据：</p>
-<p>1.将数据加载到内存中：这是最简单的方法。您将所有数据作为单个数组加载到内存中。您可以编写Python代码。代码与Tensorflow无关。</p>
-<ol>
-<li>Tensorflow数据管道。 Tensorflow具有内置API，可帮助您轻松加载数据，执行操作并提供机器学习算法。此方法非常有效，尤其是当您拥有大型数据集时。</li>
-</ol>
-<p>如果您的数据集不是太大，即小于10G，则可以使用第一种方法。用Pandas导入CSV文件。</p>
-<p>如果您有一个大型数据集，第二种方法效果最好。例如，如果您有50G的数据集，并且您的计算机只有16G的内存，那么计算机将crash。</p>
-<p>在这种情况下，您需要构建Tensorflow管道。管道将以批量或小块的形式加载数据。每批都将被推送到管道并准备好进行培训。构建管道是一个很好的解决方案，因为它允许您使用并行计算。这意味着Tensorflow将在多个CPU上训练模型。它加快计算并允许训练强大的神经网络。</p>
-<p>简而言之，小数据集可以使用Pandas库将数据加载到内存中。大型数据集并且想要使用多个CPU，那么使用Tensorflow管道会更加舒适。</p>
-<h3 id="tensorflow_9">创建Tensorflow管道</h3>
-<p>在之前的示例中，我们手动为X_1和X_2添加三个值。现在我们将看到如何将数据加载到Tensorflow。</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># Author:    xurongzhong#126.com wechat:pythontesting qq:37391319</span>
-<span class="c1"># 技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) </span>
-<span class="c1"># qq群：144081101 591302926  567351477</span>
-<span class="c1"># CreateDate: 2018-11-21</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
-
-<span class="n">x_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">x_input</span><span class="p">)</span>
-
-<span class="c1"># using a placeholder</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span><span class="p">)</span>
-
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">iterator</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">make_initializable_iterator</span><span class="p">()</span> 
-<span class="n">get_next</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">.</span><span class="n">get_next</span><span class="p">()</span>
-
-<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
-    <span class="c1"># feed the placeholder with data</span>
-    <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">iterator</span><span class="o">.</span><span class="n">initializer</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span> <span class="n">x</span><span class="p">:</span> <span class="n">x_input</span> <span class="p">})</span> 
-    <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">get_next</span><span class="p">))</span> <span class="c1"># output [ 0.52374458  0.71968478]</span>
-</pre></div>
-
-
-<p>执行结果</p>
-<div class="highlight"><pre><span></span><span class="p">[[</span><span class="mf">0.05395269</span> <span class="mf">0.716471</span>  <span class="p">]]</span>
-<span class="p">[</span><span class="mf">0.05395269</span> <span class="mf">0.716471</span>  <span class="p">]</span>
-</pre></div>
-
-
-<h2 id="_2">参考资料</h2>
+<h3 id="_2">机器学习云服务</h3>
+<ul>
+<li>Google Cloud ML</li>
+</ul>
+<p>Google为Cloud AutoML提供了开发人员预先培训的模型。该解决方案适用于没有强大机器学习背景的开发人员。开发人员可以在其数据上使用最先进的Google预训练模型。它允许任何开发人员在几分钟内训练和评估任何模型。</p>
+<p>Google目前提供用于计算机视觉，语音识别，翻译和NLP的REST API。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-ba551512199e90ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>使用Google Cloud，您可以在TensorFlow，Scikit-learn，XGBoost或Keras上构建机器学习框架。 Google Cloud机器学习将在其云端训练模型。</p>
+<p>使用Google云计算的优势在于将机器学习部署到生产中的简单性。无需设置Docker容器。此外，云负责基础设施，它知道如何使用CPU，GPU和TPU分配资源，通过并行计算使训练更快。</p>
+<ul>
+<li>AWS SageMaker</li>
+</ul>
+<p>Google Cloud的主要竞争对手是亚马逊云，AWS。亚马逊开发了Amazon SageMaker，允许数据科学家和开发人员构建，训练和投入生产任何机器学习模型。</p>
+<p>SageMaker可用于Jupyter笔记本，包括最常用的机器学习库，TensorFlow，MXNet，Scikit-learn等。用SageMaker编写的程序会自动在Docker容器中运行。亚马逊处理资源分配以优化培训和部署。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-0bf0d700f91d37be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>亚马逊为开发人员提供API，以便为其应用程序添加智能。在某些情况下，没有必要通过从头开始构建新模型来重新发明轮子，而云中有强大的预训练模型。亚马逊为计算机视觉，会话聊天机器人和语言服务提供API服务：</p>
+<p>三个主要的可用API是：Amazon Rekognition：为应用程序提供图像和视频识别；亚马逊理解：执行文本挖掘和神经语言处理，例如，自动化检查财务文件合法性的过程；亚马逊Lex：将聊天机器人添加到应用程序；</p>
+<ul>
+<li>Azure机器学习工作室</li>
+</ul>
+<p>可能是最友好的机器学习方法。该解决方案的显着优点是不需要编程基础。</p>
+<p>Microsoft Azure Machine Learning Studio是一个用于创建，培训，评估和部署机器学习解决方案的拖放式协作工具。该模型可以有效地部署为Web服务，并在Excel等多个应用程序中使用。</p>
+<p>Azure机器学习界面是交互式的，允许用户通过快速拖放元素来构建模型。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-d6210778363cef03.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>模型准备就绪后，开发人员可以将其保存并推送到Azure Gallery或Azure Marketplace。</p>
+<p>Azure Machine学习可以集成到自定义内置包中的R或Python中。</p>
+<ul>
+<li>IBM Watson ML</li>
+</ul>
+<p>Watson通过简化的流程简化数据项目，从而从数据中提取价值和见解，帮助业务变得更加智能和快捷。 Watson工作室提供易于使用的协作数据科学和机器学习环境，用于构建和训练模型，准备和分析数据，以及共享见解。 Watson Studio易于使用，具有拖放代码。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-0afe3190d3608952.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>Watson工作室支持一些最流行的框架，如Tensorflow，Keras，Pytorch，Caffe，可以将深度学习算法部署到Nvidia的最新GPU上，以帮助加速建模。</p>
+<p>在我们看来，谷歌云解决方案是最推荐的解决方案。对于数据存储和机器学习解决方案，Google云解决方案为AWS提供的价格至少降低了30％。谷歌正在努力实现人工智能的大众化。它开发了一种开源语言TensorFlow，优化了数据仓库连接，提供了从数据可视化，数据分析到机器学习的巨大工具。此外，Google控制台符合人体工程学，比AWS或Windows更全面。</p>
+<h2 id="_3">参考资料</h2>
 <ul>
 <li>讨论qq群144081101 591302926 567351477 钉钉免费群21745728</li>
 <li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 请在github上点赞，谢谢！</li>
