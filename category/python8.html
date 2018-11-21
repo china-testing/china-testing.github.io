@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python自动化测试人工智能 - python</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/testing_performance_tool_ngrinder.html" rel="bookmark"
+                           title="Permalink to 性能测试工具nGrinder介绍">性能测试工具nGrinder介绍</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-01T19:20:00+08:00">
+                Published: 四 01 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">安装</h2>
+<p>以linux，这里采用的版本是centos 6 64bit，性能测试工具不建议在Windows上部署。</p>
+<p>下载： </p>
+<p>https://github.com/naver/ngrinder/releases/</p>
+<p>选择最后面的war包。</p>
+<p>服务器端启动：</p>
+<div class="highlight"><pre><span></span><span class="c1"># java -XX:MaxPermSize=200m -jar ngrinder-controller-3.4.war --port 8058</span>
+</pre></div>
+
+
+<p>这样nGrinder的管理页面就部署好，你可以简单的把ngrinder-controller的功能理解为性能测试展示和控制，后面会进行详细介绍。</p>
+<p>打开网址： </p>
+<p>http://183.131.22.113:8058</p>
+<p>默认用户名和密码都为admin</p>
+<p><img alt="捕获.JPG" src="https://bitbucket.org/repo/AqzM76/images/1423288448-%E6%8D%95%E8%8E%B7.JPG"></p>
+<p>注意：这里的"Remember me"是短暂停留，页面关闭之后还是需要重新登陆的。</p>
+<p>登录后点击右上角的admin，选择"下载代理"</p>
+<p><img alt="捕获.JPG" src="https://bitbucket.org/repo/AqzM76/images/1175392996-%E6%8D%95%E8%8E%B7.JPG"></p>
+<p>拷贝下载的文件到agent，现在可以简单理解为agent的功能为执行性能测试，通常不建议与ngrinder-controller部署在同一台，同一台机器也不建议部署多个agent。</p>
+<p>客户端启动 …</p>
+                <a class="readmore" href="/testing_performance_tool_ngrinder.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/testing_performance_tool_ngrinder_dubb.html" rel="bookmark"
+                           title="Permalink to 使用jython进行dubbo接口及ngrinder性能测试">使用jython进行dubbo接口及ngrinder性能测试</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-01T19:20:00+08:00">
+                Published: 四 01 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">快速入门(接口测试)</h2>
+<ul>
+<li>
+<p>确认mvn和jdk、jython安装ok。</p>
+</li>
+<li>
+<p>先下载dubbo的demo，编译运行demo。</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># git clone https://github.com/alibaba/dubbo.git dubbo</span>
+<span class="c1"># cd dubbo/</span>
+<span class="c1"># mvn clean install -Dmaven.test.skip</span>
+<span class="c1"># cd dubbo-demo/dubbo-demo-provider/target/</span>
+<span class="c1"># tar xzvf dubbo-demo-provider-2.5.4-SNAPSHOT-assembly.tar.gz</span>
+<span class="c1"># cd dubbo-demo-provider-2.5.4-SNAPSHOT/bin</span>
+<span class="c1"># ./start.sh </span>
+<span class="c1"># cd /opt/code/dubbo-demo/dubbo-demo-consumer/target/</span>
+<span class="c1"># tar xzvf dubbo-demo-provider-2 …</span></pre></div>
+                <a class="readmore" href="/testing_performance_tool_ngrinder_dubb.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="/category/python7.html">&laquo;</a>
+    Page 8 / 8
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

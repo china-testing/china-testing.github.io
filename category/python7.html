@@ -30,6 +30,246 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_face_recognition.html" rel="bookmark"
+                           title="Permalink to python库介绍-face_recognition 人脸识别">python库介绍-face_recognition 人脸识别</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-12T19:20:00+08:00">
+                Published: 一 12 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
+<p>face_recognition使用世界上最简单的人脸识别工具，在Python或命令行中识别和操作人脸。</p>
+<p>使用dlib最先进的人脸识别技术构建而成，并具有深度学习功能。 该模型在<a href="http://vis-www.cs.umass.edu/lfw/">Labeled Faces in the Wild</a>基准中的准确率为99.38％。</p>
+<p>另外还提供了face_recognition命令行工具！</p>
+<h3 id="_2">快速入门</h3>
+<p>本节我们基于ubuntu16.04,python3，使用如下图片：</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-625527be2687bd65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li>快速入门</li>
+</ul>
+<p>face_recognition</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">face_recognition</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">load_image_file</span><span class="p">(</span><span class="s2">&quot;test0.jpg&quot;</span><span class="p">)</span>
+<span class="n">face_locations</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">face_locations</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;cnn&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">face_locations</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">quick</span><span class="o">.</span><span class="n">py</span> 
+<span class="p">[(</span><span class="mi">203</span><span class="p">,</span> <span class="mi">391</span><span class="p">,</span> <span class="mi">447</span><span class="p">,</span> <span class="mi">147</span><span class="p">)]</span>
+</pre></div>
+
+
+<p>model选择模型，默认为hog，该模式很多图片是无法识别的，为此一般用采用更精确但是速度更慢的cnn模型。</p>
+<ul>
+<li>显示图片：</li>
+</ul>
+<p>quick2 …</p>
+                <a class="readmore" href="/python3_lib_face_recognition.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_grp.html" rel="bookmark"
+                           title="Permalink to python库介绍-grp：group数据库">python库介绍-grp：group数据库</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-28T19:20:00+08:00">
+                Published: 三 28 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>grp可以访问Unix组数据库。 </p>
+<p>组数据库项由结构体group(类似元组)表示，参见pwd.h：</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">属性</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">gr_name</td>
+<td align="center">the name of the group</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">gr_passwd</td>
+<td align="center">the (encrypted) group password; often empty</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">gr_gid</td>
+<td align="center">the numerical group ID</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">gr_mem</td>
+<td align="center">all the group member’s user names</td>
+</tr>
+</tbody>
+</table>
+<p>gid整型，name和password为字符串，gr_mem为字符串列表。</p>
+<h2 id="_2">方法</h2>
+<ul>
+<li>
+<p>grp.getgrgid(gid)</p>
+<p>Return the group …</p></li></ul>
+                <a class="readmore" href="/python3_lib_grp.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_pwd.html" rel="bookmark"
+                           title="Permalink to python库介绍-pwd：密码数据库">python库介绍-pwd：密码数据库</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-22T19:20:00+08:00">
+                Published: 四 22 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>pwd可以访问Unix用户帐户和密码数据库。 </p>
+<p>密码数据库项由结构体passwd(类似元组)表示，参见pwd.h：</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">pw_name</td>
+<td align="center">Login name</td>
+</tr>
+<tr>
+<td align="center">pw_passwd</td>
+<td align="center">Optional encrypted password</td>
+</tr>
+<tr>
+<td align="center">pw_uid</td>
+<td align="center">Numerical user ID</td>
+</tr>
+<tr>
+<td align="center">pw_gid</td>
+<td align="center">Numerical group ID</td>
+</tr>
+<tr>
+<td align="center">pw_gecos</td>
+<td align="center">User name or comment field</td>
+</tr>
+<tr>
+<td align="center">pw_dir</td>
+<td align="center">User home directory</td>
+</tr>
+<tr>
+<td align="center">pw_shell</td>
+<td align="center">User command interpreter</td>
+</tr>
+</tbody>
+</table>
+<p>除了pw_uid和pw_gid是整数外，其他都是字符串。</p>
+<h2 id="pwd">pwd方法</h2>
+<ul>
+<li>pwd.getpwuid(uid): Return the password database entry for …</li></ul>
+                <a class="readmore" href="/python3_lib_pwd.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_spwd.html" rel="bookmark"
+                           title="Permalink to python库介绍-spwd：shadow密码数据库">python库介绍-spwd：shadow密码数据库</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-12T19:20:00+08:00">
+                Published: 一 12 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>pwd可以访问Unix shadow密码数据库。  2.5新增。通常需要为root用户。</p>
+<p>密码数据库项由结构体spwd(类似元组)表示，参见shadow.h：</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">属性</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">sp_nam</td>
+<td align="center">Login name</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">sp_pwd</td>
+<td align="center">Encrypted password</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">sp_lstchg</td>
+<td align="center">Date of last change</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">sp_min</td>
+<td align="center">Minimal number of days between changes</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">sp_max</td>
+<td align="center">Maximum number of days between changes</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">sp_warn</td>
+<td align="center">Number of days before …</td></tr></tbody></table>
+                <a class="readmore" href="/python3_lib_spwd.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_lib_pathlib.html" rel="bookmark"
                            title="Permalink to python库介绍-pathlib: 文件系统对象">python库介绍-pathlib: 文件系统对象</a></h1>
                 </header>
@@ -255,90 +495,11 @@ package之外的类(在<default>中)不能被导入。
                 <a class="readmore" href="/python3_lib_jpype1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/testing_performance_tool_ngrinder.html" rel="bookmark"
-                           title="Permalink to 性能测试工具nGrinder介绍">性能测试工具nGrinder介绍</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-01T19:20:00+08:00">
-                Published: 四 01 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">安装</h2>
-<p>以linux，这里采用的版本是centos 6 64bit，性能测试工具不建议在Windows上部署。</p>
-<p>下载： </p>
-<p>https://github.com/naver/ngrinder/releases/</p>
-<p>选择最后面的war包。</p>
-<p>服务器端启动：</p>
-<div class="highlight"><pre><span></span><span class="c1"># java -XX:MaxPermSize=200m -jar ngrinder-controller-3.4.war --port 8058</span>
-</pre></div>
-
-
-<p>这样nGrinder的管理页面就部署好，你可以简单的把ngrinder-controller的功能理解为性能测试展示和控制，后面会进行详细介绍。</p>
-<p>打开网址： </p>
-<p>http://183.131.22.113:8058</p>
-<p>默认用户名和密码都为admin</p>
-<p><img alt="捕获.JPG" src="https://bitbucket.org/repo/AqzM76/images/1423288448-%E6%8D%95%E8%8E%B7.JPG"></p>
-<p>注意：这里的"Remember me"是短暂停留，页面关闭之后还是需要重新登陆的。</p>
-<p>登录后点击右上角的admin，选择"下载代理"</p>
-<p><img alt="捕获.JPG" src="https://bitbucket.org/repo/AqzM76/images/1175392996-%E6%8D%95%E8%8E%B7.JPG"></p>
-<p>拷贝下载的文件到agent，现在可以简单理解为agent的功能为执行性能测试，通常不建议与ngrinder-controller部署在同一台，同一台机器也不建议部署多个agent。</p>
-<p>客户端启动 …</p>
-                <a class="readmore" href="/testing_performance_tool_ngrinder.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/testing_performance_tool_ngrinder_dubb.html" rel="bookmark"
-                           title="Permalink to 使用jython进行dubbo接口及ngrinder性能测试">使用jython进行dubbo接口及ngrinder性能测试</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-01T19:20:00+08:00">
-                Published: 四 01 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">快速入门(接口测试)</h2>
-<ul>
-<li>
-<p>确认mvn和jdk、jython安装ok。</p>
-</li>
-<li>
-<p>先下载dubbo的demo，编译运行demo。</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="c1"># git clone https://github.com/alibaba/dubbo.git dubbo</span>
-<span class="c1"># cd dubbo/</span>
-<span class="c1"># mvn clean install -Dmaven.test.skip</span>
-<span class="c1"># cd dubbo-demo/dubbo-demo-provider/target/</span>
-<span class="c1"># tar xzvf dubbo-demo-provider-2.5.4-SNAPSHOT-assembly.tar.gz</span>
-<span class="c1"># cd dubbo-demo-provider-2.5.4-SNAPSHOT/bin</span>
-<span class="c1"># ./start.sh </span>
-<span class="c1"># cd /opt/code/dubbo-demo/dubbo-demo-consumer/target/</span>
-<span class="c1"># tar xzvf dubbo-demo-provider-2 …</span></pre></div>
-                <a class="readmore" href="/testing_performance_tool_ngrinder_dubb.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/category/python6.html">&laquo;</a>
-    Page 7 / 7
+    Page 7 / 8
+        <a href="/category/python8.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
         <section id="extras" class="body">
