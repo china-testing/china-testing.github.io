@@ -1,0 +1,3009 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>numpy学习指南3rd2:NumPy基础</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python_numpy_beginner_guide3rd2.html" rel="bookmark"
+           title="Permalink to numpy学习指南3rd2:NumPy基础">numpy学习指南3rd2:NumPy基础</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-12T19:20:00+08:00">
+                Published: 四 12 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/numpy">代码地址</a></p>
+<h3 id="numpy">NumPy 数组对象</h3>
+<p>arrayattributes.py </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c1"># Chapter 2 Beginning with NumPy fundamentals</span>
+<span class="c1">#</span>
+<span class="c1"># Demonstrates the dtype and shape attributes</span>
+<span class="c1"># of ndarray.</span>
+<span class="c1">#</span>
+<span class="c1"># Run from the commandline with </span>
+<span class="c1">#</span>
+<span class="c1">#  python3 arrayattributes.py</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a = arange(5)&quot;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a.dtype&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="c1">#Out: dtype(&#39;int64&#39;)</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a.shape&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c1">#Out: (5,)</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="c1">#Out[4]: array([0, 1, 2, 3, 4])</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">)])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: m&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[0, 1],</span>
+<span class="c1">#       [0, 1]])</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: m.shape&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c1">#Out: (2, 2)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: m.dtype&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="c1">#Out: dtype(&#39;int64&#39;)</span>
+<span class="k">print</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">arrayattributes</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">dtype</span>
+<span class="n">int64</span>
+
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,)</span>
+
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span>
+<span class="p">[</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="n">In</span><span class="p">:</span> <span class="n">m</span>
+<span class="p">[[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">]]</span>
+
+<span class="n">In</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">shape</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">dtype</span>
+<span class="n">int64</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>数据类型</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">bool</td>
+<td align="center">用一位存储的布尔类型(值为 TRUE 或 FALSE )</td>
+</tr>
+<tr>
+<td align="center">inti</td>
+<td align="center">由所在平台决定其精度的整数(一般为 int32 或 int64 )</td>
+</tr>
+<tr>
+<td align="center">int8</td>
+<td align="center">整数,范围为-128至127</td>
+</tr>
+<tr>
+<td align="center">int16</td>
+<td align="center">整数,范围为-32 768至32 767</td>
+</tr>
+<tr>
+<td align="center">int32</td>
+<td align="center">整数,范围为-2^31 至2^31 -1</td>
+</tr>
+<tr>
+<td align="center">int64</td>
+<td align="center">整数,范围为-2^63 至2^63 -1</td>
+</tr>
+<tr>
+<td align="center">uint8</td>
+<td align="center">无符号整数,范围为0至255</td>
+</tr>
+<tr>
+<td align="center">uint16</td>
+<td align="center">无符号整数,范围为0至65 535</td>
+</tr>
+<tr>
+<td align="center">uint32</td>
+<td align="center">无符号整数,范围为0至2^32 -1</td>
+</tr>
+<tr>
+<td align="center">uint64</td>
+<td align="center">无符号整数,范围为0至2^64 -1</td>
+</tr>
+<tr>
+<td align="center">float16</td>
+<td align="center">半精度浮点数(16位):其中用1位表示正负号,5位表示指数,10位表示尾数</td>
+</tr>
+<tr>
+<td align="center">float32</td>
+<td align="center">单精度浮点数(32位):其中用1位表示正负号,8位表示指数,23位表示尾数</td>
+</tr>
+<tr>
+<td align="center">float64 或 float</td>
+<td align="center">双精度浮点数(64位):其中用1位表示正负号,11位表示指数,52位表示尾数</td>
+</tr>
+<tr>
+<td align="center">complex64</td>
+<td align="center">复数,分别用两个32位浮点数表示实部和虚部</td>
+</tr>
+<tr>
+<td align="center">complex128 或 complex</td>
+<td align="center">复数,分别用两个64位浮点数表示实部和虚部</td>
+</tr>
+</tbody>
+</table>
+<p>numericaltypes.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># Chapter 2 Beginning with NumPy fundamentals</span>
+<span class="c1">#</span>
+<span class="c1"># Demonstrates the NumPy numerical types</span>
+<span class="c1">#  and conversion between them.</span>
+<span class="c1">#</span>
+<span class="c1"># Run from the commandline with </span>
+<span class="c1">#</span>
+<span class="c1">#  python3 numericaltypes.py</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: float64(42)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
+<span class="c1">#Out: 42.0</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: int8(42.0)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">(</span><span class="mf">42.0</span><span class="p">))</span>
+<span class="c1">#Out: 42</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: bool(42)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
+<span class="c1">#Out: True</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: bool(42.0)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">(</span><span class="mf">42.0</span><span class="p">))</span>
+<span class="c1">#Out: True</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: float(True)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">(</span><span class="bp">True</span><span class="p">))</span>
+<span class="c1">#Out: 1.0</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">(</span><span class="bp">False</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: arange(7, dtype=uint16)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">))</span>
+<span class="c1">#Out: array([0, 1, 2, 3, 4, 5, 6], dtype=uint16)</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: int(42.0 + 1.j)&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+   <span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="mf">42.0</span> <span class="o">+</span> <span class="mf">1.j</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;TypeError&quot;</span><span class="p">)</span>
+<span class="c1">#Type error</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: float(42.0 + 1.j)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="mf">42.0</span> <span class="o">+</span> <span class="mf">1.j</span><span class="p">))</span>
+<span class="c1">#Type error</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">numericaltypes</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">In</span><span class="p">:</span> <span class="n">float64</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="mf">42.0</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">int8</span><span class="p">(</span><span class="mf">42.0</span><span class="p">)</span>
+<span class="mi">42</span>
+<span class="n">In</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="bp">True</span>
+<span class="bp">False</span>
+<span class="n">In</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="mf">42.0</span><span class="p">)</span>
+<span class="bp">True</span>
+<span class="n">In</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="mf">1.0</span>
+<span class="mf">0.0</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">uint16</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="mf">42.0</span> <span class="o">+</span> <span class="mf">1.j</span><span class="p">)</span>
+<span class="ne">TypeError</span>
+<span class="n">In</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="mf">42.0</span> <span class="o">+</span> <span class="mf">1.j</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;numericaltypes.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">47</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="mf">42.0</span> <span class="o">+</span> <span class="mf">1.j</span><span class="p">))</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">can</span><span class="s1">&#39;t convert complex to float</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>你的赞助是我们前进的动力：</li>
+</ul>
+<p>一流企业专家自动化性能接口测试 数据分析 python一对一教，非骗人的培训机构(多数大陆培训机构的老师实际未入门）承接excel合并，电脑自动化操作等工程 并欢迎讨论中医草药风水相学等道家国学</p>
+<p>qq群python 测试开发自动化测试 144081101 教你做免费的线上博客(放在简历中增加亮点)，自动化测试平台，性能测试工具等，让你有实际项目经验  联系qq：37391319 </p>
+<p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 184175668 中医草药湿热湿疹胃病 291184506 python高级人工智能视觉 6089740</p>
+<ul>
+<li>获取元素</li>
+</ul>
+<p>elementselection.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c1"># Chapter 2 Beginning with NumPy fundamentals</span>
+<span class="c1">#</span>
+<span class="c1"># Demonstrates the selection</span>
+<span class="c1"># of ndarray elements.</span>
+<span class="c1">#</span>
+<span class="c1"># Run from the commandline with </span>
+<span class="c1">#</span>
+<span class="c1">#  python elementselection.py</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[1, 2],</span>
+<span class="c1">#       [3, 4]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a[0,0]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">#Out: 1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a[0,1]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#Out: 2</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a[1,0]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">#Out: 3</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a[1,1]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#Out: 4 </span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">elementselection</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span>
+<span class="p">[[</span><span class="mi">1</span> <span class="mi">2</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">3</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="mi">1</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="mi">2</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="mi">3</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="mi">4</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>字符编码</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">字符编码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">整数</td>
+<td align="center">i</td>
+</tr>
+<tr>
+<td align="center">无符号整数</td>
+<td align="center">u</td>
+</tr>
+<tr>
+<td align="center">单精度浮点数</td>
+<td align="center">f</td>
+</tr>
+<tr>
+<td align="center">双精度浮点数</td>
+<td align="center">d</td>
+</tr>
+<tr>
+<td align="center">布尔值</td>
+<td align="center">b</td>
+</tr>
+<tr>
+<td align="center">复数</td>
+<td align="center">D</td>
+</tr>
+<tr>
+<td align="center">字符串</td>
+<td align="center">S</td>
+</tr>
+<tr>
+<td align="center">unicode字符串</td>
+<td align="center">U</td>
+</tr>
+<tr>
+<td align="center">void （空）</td>
+<td align="center">V</td>
+</tr>
+</tbody>
+</table>
+<p>charcodes.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c1"># Chapter 2 Beginning with NumPy fundamentals</span>
+<span class="c1">#</span>
+<span class="c1"># Demonstrates the NumPy dtype character codes.</span>
+<span class="c1">#</span>
+<span class="c1"># Run from the commandline with </span>
+<span class="c1">#</span>
+<span class="c1">#  python3 charcodes.py</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: arange(7, dtype=&#39;f&#39;)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">))</span>
+<span class="c1">#Out: array([ 0.,  1.,  2.,  3.,  4.,  5.,  6.], dtype=float32)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: arange(7, dtype=&#39;D&#39;)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">))</span>
+<span class="c1">#Out: array([ 0.+0.j,  1.+0.j,  2.+0.j,  3.+0.j,  4.+0.j,  5.+0.j,  6.+0.j])</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">charcodes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">1.</span> <span class="mf">2.</span> <span class="mf">3.</span> <span class="mf">4.</span> <span class="mf">5.</span> <span class="mf">6.</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="mf">0.</span><span class="o">+</span><span class="mf">0.j</span> <span class="mf">1.</span><span class="o">+</span><span class="mf">0.j</span> <span class="mf">2.</span><span class="o">+</span><span class="mf">0.j</span> <span class="mf">3.</span><span class="o">+</span><span class="mf">0.j</span> <span class="mf">4.</span><span class="o">+</span><span class="mf">0.j</span> <span class="mf">5.</span><span class="o">+</span><span class="mf">0.j</span> <span class="mf">6.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>自定义数据类型</li>
+</ul>
+<p>dtypeconstructors.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    china-testing#126.com 技术支持qq群：630011153</span>
+<span class="c1"># CreateDate: 2018-1-8 </span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c1"># Chapter 2 Beginning with NumPy fundamentals</span>
+<span class="c1">#</span>
+<span class="c1"># Demonstrates the NumPy dtype constructors.</span>
+<span class="c1">#</span>
+<span class="c1"># Run from the commandline with </span>
+<span class="c1">#</span>
+<span class="c1">#  python dtypeconstructors.py</span>
+<span class="c1"># Python中的浮点数类型</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: dtype(float)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span>
+<span class="c1">#Out: dtype(&#39;float64&#39;)</span>
+
+<span class="c1"># 字符编码来指定单精度浮点数类型</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: dtype(&#39;f&#39;)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">))</span>
+<span class="c1">#Out: dtype(&#39;float32&#39;)</span>
+
+<span class="c1"># 字符编码来指定双精度浮点数类型</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: dtype(&#39;d&#39;)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">))</span>
+<span class="c1">#Out: dtype(&#39;float64&#39;)</span>
+
+<span class="c1"># 两个字符作为参数传给数据类型的构造函数, 第一个字符表示数据类型，</span>
+<span class="c1"># 第二个字符表示该类型在内存中占用的字节数（2、4、8分别代表精度为16、32、64位的浮点数）</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: dtype(&#39;f8&#39;)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;f8&#39;</span><span class="p">))</span>
+<span class="c1">#Out: dtype(&#39;float64&#39;)</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: dtype(&#39;Float64&#39;)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;Float64&#39;</span><span class="p">))</span>
+<span class="c1">#Out: dtype(&#39;float64&#39;)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sctypeDict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">dtypeconstructors</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">In</span><span class="p">:</span> <span class="n">dtype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">float64</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">)</span>
+<span class="n">float32</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+<span class="n">float64</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;f8&#39;</span><span class="p">)</span>
+<span class="n">float64</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;Float64&#39;</span><span class="p">)</span>
+<span class="n">float64</span>
+<span class="n">dict_keys</span><span class="p">([</span><span class="s1">&#39;ubyte&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;cdouble&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;longdouble&#39;</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="s1">&#39;uintp&#39;</span><span class="p">,</span> <span class="s1">&#39;int16&#39;</span><span class="p">,</span> <span class="s1">&#39;bytes0&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;singlecomplex&#39;</span><span class="p">,</span> <span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u8&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;str0&#39;</span><span class="p">,</span> <span class="s1">&#39;longcomplex&#39;</span><span class="p">,</span> <span class="s1">&#39;complex_&#39;</span><span class="p">,</span> <span class="s1">&#39;ulonglong&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;timedelta64&#39;</span><span class="p">,</span> <span class="s1">&#39;object_&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;unicode&#39;</span><span class="p">,</span> <span class="s1">&#39;byte&#39;</span><span class="p">,</span> <span class="s1">&#39;bool_&#39;</span><span class="p">,</span> <span class="s1">&#39;datetime64&#39;</span><span class="p">,</span> <span class="s1">&#39;cfloat&#39;</span><span class="p">,</span> <span class="s1">&#39;Void0&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;clongfloat&#39;</span><span class="p">,</span> <span class="s1">&#39;str&#39;</span><span class="p">,</span> <span class="s1">&#39;complex128&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;bool8&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;Timedelta64&#39;</span><span class="p">,</span> <span class="s1">&#39;float128&#39;</span><span class="p">,</span> <span class="s1">&#39;i8&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;complex&#39;</span><span class="p">,</span> <span class="s1">&#39;uint&#39;</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;int64&#39;</span><span class="p">,</span> <span class="s1">&#39;int32&#39;</span><span class="p">,</span> <span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="s1">&#39;bytes_&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;UInt64&#39;</span><span class="p">,</span> <span class="s1">&#39;bytes&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;M8&#39;</span><span class="p">,</span> <span class="s1">&#39;void0&#39;</span><span class="p">,</span> <span class="s1">&#39;uint64&#39;</span><span class="p">,</span> <span class="s1">&#39;f8&#39;</span><span class="p">,</span> <span class="s1">&#39;str_&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="s1">&#39;u4&#39;</span><span class="p">,</span> <span class="s1">&#39;longlong&#39;</span><span class="p">,</span> <span class="s1">&#39;int_&#39;</span><span class="p">,</span> <span class="s1">&#39;void&#39;</span><span class="p">,</span> <span class="s1">&#39;c32&#39;</span><span class="p">,</span> <span class="s1">&#39;Str0&#39;</span><span class="p">,</span> <span class="s1">&#39;long&#39;</span><span class="p">,</span> <span class="s1">&#39;int8&#39;</span><span class="p">,</span> <span class="s1">&#39;intp&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;clongdouble&#39;</span><span class="p">,</span> <span class="s1">&#39;object&#39;</span><span class="p">,</span> <span class="s1">&#39;string_&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;intc&#39;</span><span class="p">,</span> <span class="s1">&#39;Datetime64&#39;</span><span class="p">,</span> <span class="s1">&#39;object0&#39;</span><span class="p">,</span> <span class="s1">&#39;Int32&#39;</span><span class="p">,</span> <span class="s1">&#39;short&#39;</span><span class="p">,</span> <span class="s1">&#39;int0&#39;</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;m8&#39;</span><span class="p">,</span> <span class="s1">&#39;UInt16&#39;</span><span class="p">,</span> <span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;Complex32&#39;</span><span class="p">,</span> <span class="s1">&#39;Int16&#39;</span><span class="p">,</span> <span class="s1">&#39;c16&#39;</span><span class="p">,</span> <span class="s1">&#39;Float64&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;Int64&#39;</span><span class="p">,</span> <span class="s1">&#39;float_&#39;</span><span class="p">,</span> <span class="s1">&#39;c8&#39;</span><span class="p">,</span> <span class="s1">&#39;b1&#39;</span><span class="p">,</span> <span class="s1">&#39;Bool&#39;</span><span class="p">,</span> <span class="s1">&#39;uint32&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;longfloat&#39;</span><span class="p">,</span> <span class="s1">&#39;Float16&#39;</span><span class="p">,</span> <span class="s1">&#39;f16&#39;</span><span class="p">,</span> <span class="s1">&#39;csingle&#39;</span><span class="p">,</span> <span class="s1">&#39;float16&#39;</span><span class="p">,</span> <span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="s1">&#39;Int8&#39;</span><span class="p">,</span> <span class="s1">&#39;f2&#39;</span><span class="p">,</span> <span class="s1">&#39;half&#39;</span><span class="p">,</span> <span class="s1">&#39;unicode_&#39;</span><span class="p">,</span> <span class="s1">&#39;Float32&#39;</span><span class="p">,</span> <span class="s1">&#39;complex256&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;i2&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;Object0&#39;</span><span class="p">,</span> <span class="s1">&#39;Float128&#39;</span><span class="p">,</span> <span class="s1">&#39;float32&#39;</span><span class="p">,</span> <span class="s1">&#39;uintc&#39;</span><span class="p">,</span> <span class="s1">&#39;i4&#39;</span><span class="p">,</span> <span class="s1">&#39;Bytes0&#39;</span><span class="p">,</span> <span class="s1">&#39;UInt32&#39;</span><span class="p">,</span> <span class="s1">&#39;single&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;Complex128&#39;</span><span class="p">,</span> <span class="s1">&#39;Complex64&#39;</span><span class="p">,</span> <span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;uint0&#39;</span><span class="p">,</span> <span class="s1">&#39;f4&#39;</span><span class="p">,</span> <span class="s1">&#39;UInt8&#39;</span><span class="p">,</span> <span class="s1">&#39;bool&#39;</span><span class="p">,</span> <span class="s1">&#39;complex64&#39;</span><span class="p">,</span> <span class="s1">&#39;ushort&#39;</span><span class="p">,</span> <span class="s1">&#39;i1&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">])</span>
+</pre></div>
+</td></tr></table>
+
+<p>record.py </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># Chapter 2 Beginning with NumPy fundamentals</span>
+<span class="c1">#</span>
+<span class="c1"># Demonstrates the NumPy record data type.</span>
+<span class="c1">#</span>
+<span class="c1"># Run from the commandline with </span>
+<span class="c1">#</span>
+<span class="c1">#  python record.py</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: t = dtype([(&#39;name&#39;, numpy.str_, 40), (&#39;numitems&#39;, numpy.int32), (&#39;price&#39;, numpy.float32)])&quot;</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">str_</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;numitems&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="c1">#Out: dtype([(&#39;name&#39;, &#39;|S40&#39;), (&#39;numitems&#39;, &#39;&lt;i4&#39;), (&#39;price&#39;, &#39;&lt;f4&#39;)])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: t[&#39;name&#39;]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+<span class="c1">#Out: dtype(&#39;|S40&#39;)</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: itemz = array([(&#39;Meaning of life DVD&#39;, 42, 3.14), (&#39;Butter&#39;, 13, 2.72)], dtype=t)&quot;</span><span class="p">)</span>
+<span class="n">itemz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="s1">&#39;Meaning of life DVD&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Butter&#39;</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mf">2.72</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: itemz[1]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">itemz</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#Out: (&#39;Butter&#39;, 13, 2.7200000286102295)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">record</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">In</span><span class="p">:</span> <span class="n">t</span> <span class="o">=</span> <span class="n">dtype</span><span class="p">([(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">str_</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;numitems&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">)])</span>
+<span class="p">[(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;U40&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;numitems&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;i4&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;f4&#39;</span><span class="p">)]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="o">&lt;</span><span class="n">U40</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">itemz</span> <span class="o">=</span> <span class="n">array</span><span class="p">([(</span><span class="s1">&#39;Meaning of life DVD&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Butter&#39;</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mf">2.72</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">itemz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">(</span><span class="s1">&#39;Butter&#39;</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mf">2.72</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>在用 array 函数创建数组时，如果没有在参数中指定数据类型，将默认为浮点数类型。创建自定义数据类型的数组，就必须在参数中指定数据类型，否则将触发 TypeError错误。</p>
+<ul>
+<li>dtype 类的属性</li>
+</ul>
+<p>dtypeattributes2.py </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    china-testing#126.com 技术支持qq群：630011153</span>
+<span class="c1"># CreateDate: 2018-04-12</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c1"># Chapter2 Beginning with NumPy fundamentals</span>
+<span class="c1">#</span>
+<span class="c1"># Demonstrates the NumPy </span>
+<span class="c1"># dtype attributes</span>
+<span class="c1">#</span>
+<span class="c1"># Run from the commandline with </span>
+<span class="c1">#</span>
+<span class="c1">#  python dtypeattributes2.py</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: t = dtype(&#39;Float64&#39;)&quot;</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;Float64&#39;</span><span class="p">)</span>
+
+<span class="c1"># 获取数据类型的字符编码</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: t.char&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">char</span><span class="p">)</span>
+<span class="c1">#Out: &#39;d&#39;</span>
+
+<span class="c1"># type 属性对应于数组元素的数据类型</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: t.type&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+<span class="c1">#Out: &lt;type &#39;numpy.float64&#39;&gt;</span>
+
+<span class="c1"># 大端序（big-endian）和小端序（little-endian）。大端序是将最高位字节存储在最低的内存</span>
+<span class="c1">#地址处，用 &gt; 表示；与之相反，小端序是将最低位字节存储在最低的内存地址处，用 &lt; 表示：</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: t.str&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">str</span><span class="p">)</span>
+<span class="c1">#Out: &#39;&lt;f8&#39;</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">dtypeattributes2</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">In</span><span class="p">:</span> <span class="n">t</span> <span class="o">=</span> <span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;Float64&#39;</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">char</span>
+<span class="n">d</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">type</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">numpy</span><span class="o">.</span><span class="n">float64</span><span class="s1">&#39;&gt;</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">str</span>
+<span class="o">&lt;</span><span class="n">f8</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="_1">索引和切片</h3>
+<p>slicing1d.py </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c1"># Chapter 2 Beginning with NumPy fundamentals</span>
+<span class="c1">#</span>
+<span class="c1"># Demonstrates one dimensional arrays slicing.</span>
+<span class="c1">#</span>
+<span class="c1"># Run from the commandline with </span>
+<span class="c1">#</span>
+<span class="c1">#  python slicing1d.py</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a = arange(9)&quot;</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a[3:7]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">])</span>
+<span class="c1">#Out: array([3, 4, 5, 6])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a[:7:2]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[:</span><span class="mi">7</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+<span class="c1">#Out: array([0, 2, 4, 6])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a[::-1]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#Out: array([8, 7, 6, 5, 4, 3, 2, 1, 0])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: s = slice(3,7,2)&quot;</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a[s]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">s</span><span class="p">])</span>
+<span class="c1">#Out: array([3, 5])</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: s = slice(None, None, -1)&quot;</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a[s]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">s</span><span class="p">])</span>
+<span class="c1">#Out: array([8, 7, 6, 5, 4, 3, 2, 1, 0])</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">slicing1d</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span><span class="p">[:</span><span class="mi">7</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">8</span> <span class="mi">7</span> <span class="mi">6</span> <span class="mi">5</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">3</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">8</span> <span class="mi">7</span> <span class="mi">6</span> <span class="mi">5</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</td></tr></table>
+
+<p>slicing.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c1"># Chapter 2 Beginning with NumPy fundamentals</span>
+<span class="c1">#</span>
+<span class="c1"># Demonstrates multi dimensional arrays slicing.</span>
+<span class="c1">#</span>
+<span class="c1"># Run from the commandline with </span>
+<span class="c1">#</span>
+<span class="c1">#  python slicing.py</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b = arange(24).reshape(2,3,4)&quot;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.shape&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c1">#Out: (2, 3, 4)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[[ 0,  1,  2,  3],</span>
+<span class="c1">#        [ 4,  5,  6,  7],</span>
+<span class="c1">#        [ 8,  9, 10, 11]],</span>
+<span class="c1">#</span>
+<span class="c1">#       [[12, 13, 14, 15],</span>
+<span class="c1">#        [16, 17, 18, 19],</span>
+<span class="c1">#        [20, 21, 22, 23]]])</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b[0,0,0]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">#Out: 0</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b[:,0,0]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">#Out: array([ 0, 12])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b[0]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 0,  1,  2,  3],</span>
+<span class="c1">#       [ 4,  5,  6,  7],</span>
+<span class="c1">#       [ 8,  9, 10, 11]])</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b[0, :, :]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:])</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 0,  1,  2,  3],</span>
+<span class="c1">#       [ 4,  5,  6,  7],</span>
+<span class="c1">#       [ 8,  9, 10, 11]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b[0, ...]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 0,  1,  2,  3],</span>
+<span class="c1">#       [ 4,  5,  6,  7],</span>
+<span class="c1">#       [ 8,  9, 10, 11]])</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b[0,1]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#Out: array([4, 5, 6, 7])</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b[0,1,::2]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,::</span><span class="mi">2</span><span class="p">])</span>
+<span class="c1">#Out: array([4, 6])</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b[...,1]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 1,  5,  9],</span>
+<span class="c1">#       [13, 17, 21]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b[:,1]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 4,  5,  6,  7],</span>
+<span class="c1">#       [16, 17, 18, 19]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b[0,:,1]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#Out: array([1, 5, 9])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b[0,:,-1]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#Out: array([ 3,  7, 11])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b[0,::-1, -1]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#Out: array([11,  7,  3])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b[0,::2,-1]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,::</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#Out: array([ 3, 11])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b[::-1]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[[12, 13, 14, 15],</span>
+<span class="c1">#        [16, 17, 18, 19],</span>
+<span class="c1">#        [20, 21, 22, 23]],</span>
+<span class="c1">#</span>
+<span class="c1">#       [[ 0,  1,  2,  3],</span>
+<span class="c1">#        [ 4,  5,  6,  7],</span>
+<span class="c1">#        [ 8,  9, 10, 11]]])</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: s = slice(None, None, -1)&quot;</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b[(s, s, s)]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[(</span><span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">)])</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[[23, 22, 21, 20],</span>
+<span class="c1">#        [19, 18, 17, 16],</span>
+<span class="c1">#        [15, 14, 13, 12]],</span>
+<span class="c1">#</span>
+<span class="c1">#       [[11, 10,  9,  8],</span>
+<span class="c1">#        [ 7,  6,  5,  4],</span>
+<span class="c1">#        [ 3,  2,  1,  0]]])</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">slicing</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">shape</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span>
+<span class="p">[[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span><span class="p">]</span>
+  <span class="p">[</span> <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">7</span><span class="p">]</span>
+  <span class="p">[</span> <span class="mi">8</span>  <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span><span class="p">]]</span>
+
+ <span class="p">[[</span><span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span> <span class="mi">15</span><span class="p">]</span>
+  <span class="p">[</span><span class="mi">16</span> <span class="mi">17</span> <span class="mi">18</span> <span class="mi">19</span><span class="p">]</span>
+  <span class="p">[</span><span class="mi">20</span> <span class="mi">21</span> <span class="mi">22</span> <span class="mi">23</span><span class="p">]]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="mi">0</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">[</span> <span class="mi">0</span> <span class="mi">12</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">7</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">8</span>  <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">7</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">8</span>  <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">7</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">8</span>  <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,::</span><span class="mi">2</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">4</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">[[</span> <span class="mi">1</span>  <span class="mi">5</span>  <span class="mi">9</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">13</span> <span class="mi">17</span> <span class="mi">21</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">[[</span> <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">7</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">16</span> <span class="mi">17</span> <span class="mi">18</span> <span class="mi">19</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span> <span class="mi">5</span> <span class="mi">9</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">[</span> <span class="mi">3</span>  <span class="mi">7</span> <span class="mi">11</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">11</span>  <span class="mi">7</span>  <span class="mi">3</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,::</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">[</span> <span class="mi">3</span> <span class="mi">11</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">[[[</span><span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span> <span class="mi">15</span><span class="p">]</span>
+  <span class="p">[</span><span class="mi">16</span> <span class="mi">17</span> <span class="mi">18</span> <span class="mi">19</span><span class="p">]</span>
+  <span class="p">[</span><span class="mi">20</span> <span class="mi">21</span> <span class="mi">22</span> <span class="mi">23</span><span class="p">]]</span>
+
+ <span class="p">[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span><span class="p">]</span>
+  <span class="p">[</span> <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">7</span><span class="p">]</span>
+  <span class="p">[</span> <span class="mi">8</span>  <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span><span class="p">]]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="p">[(</span><span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">)]</span>
+<span class="p">[[[</span><span class="mi">23</span> <span class="mi">22</span> <span class="mi">21</span> <span class="mi">20</span><span class="p">]</span>
+  <span class="p">[</span><span class="mi">19</span> <span class="mi">18</span> <span class="mi">17</span> <span class="mi">16</span><span class="p">]</span>
+  <span class="p">[</span><span class="mi">15</span> <span class="mi">14</span> <span class="mi">13</span> <span class="mi">12</span><span class="p">]]</span>
+
+ <span class="p">[[</span><span class="mi">11</span> <span class="mi">10</span>  <span class="mi">9</span>  <span class="mi">8</span><span class="p">]</span>
+  <span class="p">[</span> <span class="mi">7</span>  <span class="mi">6</span>  <span class="mi">5</span>  <span class="mi">4</span><span class="p">]</span>
+  <span class="p">[</span> <span class="mi">3</span>  <span class="mi">2</span>  <span class="mi">1</span>  <span class="mi">0</span><span class="p">]]]</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="_2">修改维度</h3>
+<p>shapemanipulation.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    china-testing#126.com 技术支持qq群：630011153</span>
+<span class="c1"># CreateDate: 2018-04-12</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c1"># Chapter 2 Beginning with NumPy fundamentals</span>
+<span class="c1">#</span>
+<span class="c1"># Demonstrates multi dimensional arrays slicing.</span>
+<span class="c1">#</span>
+<span class="c1"># Run from the commandline with </span>
+<span class="c1">#</span>
+<span class="c1">#  python shapemanipulation.py</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b = arange(24).reshape(2,3,4)&quot;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[[ 0,  1,  2,  3],</span>
+<span class="c1">#        [ 4,  5,  6,  7],</span>
+<span class="c1">#        [ 8,  9, 10, 11]],</span>
+<span class="c1">#</span>
+<span class="c1">#       [[12, 13, 14, 15],</span>
+<span class="c1">#        [16, 17, 18, 19],</span>
+<span class="c1">#        [20, 21, 22, 23]]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.ravel()&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,</span>
+<span class="c1">#       17, 18, 19, 20, 21, 22, 23])</span>
+
+<span class="c1"># flatten 函数会请求分配内存来保存结果，而 ravel 函数只是返回数组的一个视图（view）</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.flatten()&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,</span>
+<span class="c1">#       17, 18, 19, 20, 21, 22, 23])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.shape = (6,4)&quot;</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 0,  1,  2,  3],</span>
+<span class="c1">#       [ 4,  5,  6,  7],</span>
+<span class="c1">#       [ 8,  9, 10, 11],</span>
+<span class="c1">#       [12, 13, 14, 15],</span>
+<span class="c1">#       [16, 17, 18, 19],</span>
+<span class="c1">#       [20, 21, 22, 23]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.transpose()&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 0,  4,  8, 12, 16, 20],</span>
+<span class="c1">#       [ 1,  5,  9, 13, 17, 21],</span>
+<span class="c1">#       [ 2,  6, 10, 14, 18, 22],</span>
+<span class="c1">#       [ 3,  7, 11, 15, 19, 23]])</span>
+
+<span class="c1"># resize resize 和 reshape 函数的功能一样</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.resize((2,12))&quot;</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11],</span>
+<span class="c1">#       [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]])</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">shapemanipulation</span><span class="o">.</span><span class="n">py</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span>
+<span class="p">[[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span><span class="p">]</span>
+  <span class="p">[</span> <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">7</span><span class="p">]</span>
+  <span class="p">[</span> <span class="mi">8</span>  <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span><span class="p">]]</span>
+
+ <span class="p">[[</span><span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span> <span class="mi">15</span><span class="p">]</span>
+  <span class="p">[</span><span class="mi">16</span> <span class="mi">17</span> <span class="mi">18</span> <span class="mi">19</span><span class="p">]</span>
+  <span class="p">[</span><span class="mi">20</span> <span class="mi">21</span> <span class="mi">22</span> <span class="mi">23</span><span class="p">]]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="p">[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">7</span>  <span class="mi">8</span>  <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span> <span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span> <span class="mi">15</span> <span class="mi">16</span> <span class="mi">17</span> <span class="mi">18</span> <span class="mi">19</span> <span class="mi">20</span> <span class="mi">21</span> <span class="mi">22</span> <span class="mi">23</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="p">[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">7</span>  <span class="mi">8</span>  <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span> <span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span> <span class="mi">15</span> <span class="mi">16</span> <span class="mi">17</span> <span class="mi">18</span> <span class="mi">19</span> <span class="mi">20</span> <span class="mi">21</span> <span class="mi">22</span> <span class="mi">23</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">7</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">8</span>  <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span> <span class="mi">15</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">16</span> <span class="mi">17</span> <span class="mi">18</span> <span class="mi">19</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">20</span> <span class="mi">21</span> <span class="mi">22</span> <span class="mi">23</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">4</span>  <span class="mi">8</span> <span class="mi">12</span> <span class="mi">16</span> <span class="mi">20</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">1</span>  <span class="mi">5</span>  <span class="mi">9</span> <span class="mi">13</span> <span class="mi">17</span> <span class="mi">21</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">2</span>  <span class="mi">6</span> <span class="mi">10</span> <span class="mi">14</span> <span class="mi">18</span> <span class="mi">22</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">3</span>  <span class="mi">7</span> <span class="mi">11</span> <span class="mi">15</span> <span class="mi">19</span> <span class="mi">23</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">7</span>  <span class="mi">8</span>  <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span> <span class="mi">15</span> <span class="mi">16</span> <span class="mi">17</span> <span class="mi">18</span> <span class="mi">19</span> <span class="mi">20</span> <span class="mi">21</span> <span class="mi">22</span> <span class="mi">23</span><span class="p">]]</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="_3">数组组合</h3>
+<p>NumPy数组有水平组合、垂直组合和深度组合等多种组合方式，我们将使用 vstack 、dstack 、 hstack 、 column_stack 、 row_stack 以及 concatenate 函数来完成数组的组合。</p>
+<p>stacking.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    china-testing#126.com 技术支持qq群：630011153</span>
+<span class="c1"># CreateDate: 2018-04-12</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c1"># Chapter 2 Beginning with NumPy fundamentals</span>
+<span class="c1">#</span>
+<span class="c1"># Demonstrates array stacking.</span>
+<span class="c1">#</span>
+<span class="c1"># Run from the commandline with </span>
+<span class="c1">#</span>
+<span class="c1">#  python stacking.py</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a = arange(9).reshape(3,3)&quot;</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[0, 1, 2],</span>
+<span class="c1">#       [3, 4, 5],</span>
+<span class="c1">#       [6, 7, 8]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b = 2 * a&quot;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 0,  2,  4],</span>
+<span class="c1">#       [ 6,  8, 10],</span>
+<span class="c1">#       [12, 14, 16]])</span>
+
+<span class="c1"># 水平组合</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: hstack((a, b))&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)))</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 0,  1,  2,  0,  2,  4],</span>
+<span class="c1">#       [ 3,  4,  5,  6,  8, 10],</span>
+<span class="c1">#       [ 6,  7,  8, 12, 14, 16]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: concatenate((a, b), axis=1)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 0,  1,  2,  0,  2,  4],</span>
+<span class="c1">#       [ 3,  4,  5,  6,  8, 10],</span>
+<span class="c1">#       [ 6,  7,  8, 12, 14, 16]])</span>
+
+<span class="c1"># 垂直组合</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: vstack((a, b))&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)))</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 0,  1,  2],</span>
+<span class="c1">#       [ 3,  4,  5],</span>
+<span class="c1">#       [ 6,  7,  8],</span>
+<span class="c1">#       [ 0,  2,  4],</span>
+<span class="c1">#       [ 6,  8, 10],</span>
+<span class="c1">#       [12, 14, 16]])</span>
+
+<span class="c1"># </span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: concatenate((a, b), axis=0)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 0,  1,  2],</span>
+<span class="c1">#       [ 3,  4,  5],</span>
+<span class="c1">#       [ 6,  7,  8],</span>
+<span class="c1">#       [ 0,  2,  4],</span>
+<span class="c1">#       [ 6,  8, 10],</span>
+<span class="c1">#       [12, 14, 16]])</span>
+
+<span class="c1"># 深度组合</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: dstack((a, b))&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)))</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[[ 0,  0],</span>
+<span class="c1">#        [ 1,  2],</span>
+<span class="c1">#        [ 2,  4]],</span>
+<span class="c1">#</span>
+<span class="c1">#       [[ 3,  6],</span>
+<span class="c1">#        [ 4,  8],</span>
+<span class="c1">#        [ 5, 10]],</span>
+<span class="c1">#</span>
+<span class="c1">#       [[ 6, 12],</span>
+<span class="c1">#        [ 7, 14],</span>
+<span class="c1">#        [ 8, 16]]])</span>
+
+<span class="c1"># 列组合</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: oned = arange(2)&quot;</span><span class="p">)</span>
+<span class="n">oned</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: oned&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">oned</span><span class="p">)</span>
+<span class="c1">#Out: array([0, 1])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: twice_oned = 2 * oned&quot;</span><span class="p">)</span>
+<span class="n">twice_oned</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">oned</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: twice_oned&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">twice_oned</span><span class="p">)</span>
+<span class="c1">#Out: array([0, 2])</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: column_stack((oned, twice_oned))&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">oned</span><span class="p">,</span> <span class="n">twice_oned</span><span class="p">)))</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[0, 0],</span>
+<span class="c1">#       [1, 2]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: column_stack((a, b))&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)))</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 0,  1,  2,  0,  2,  4],</span>
+<span class="c1">#       [ 3,  4,  5,  6,  8, 10],</span>
+<span class="c1">#       [ 6,  7,  8, 12, 14, 16]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: column_stack((a, b)) == hstack((a, b))&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)))</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ True,  True,  True,  True,  True,  True],</span>
+<span class="c1">#       [ True,  True,  True,  True,  True,  True],</span>
+<span class="c1">#       [ True,  True,  True,  True,  True,  True]], dtype=bool)</span>
+
+
+<span class="c1"># 行组合</span>
+<span class="c1"># 对于两个一维数组，将直接层叠起来组合成一个二维数组。</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: row_stack((oned, twice_oned))&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">row_stack</span><span class="p">((</span><span class="n">oned</span><span class="p">,</span> <span class="n">twice_oned</span><span class="p">)))</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[0, 1],</span>
+<span class="c1">#       [0, 2]])</span>
+
+<span class="c1"># 对于二维数组， row_stack 与 vstack 的效果是相同的：</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: row_stack((a, b))&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">row_stack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)))</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 0,  1,  2],</span>
+<span class="c1">#       [ 3,  4,  5],</span>
+<span class="c1">#       [ 6,  7,  8],</span>
+<span class="c1">#       [ 0,  2,  4],</span>
+<span class="c1">#       [ 6,  8, 10],</span>
+<span class="c1">#       [12, 14, 16]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: row_stack((a,b)) == vstack((a, b))&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">row_stack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)))</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ True,  True,  True],</span>
+<span class="c1">#       [ True,  True,  True],</span>
+<span class="c1">#       [ True,  True,  True],</span>
+<span class="c1">#       [ True,  True,  True],</span>
+<span class="c1">#       [ True,  True,  True],</span>
+<span class="c1">#       [ True,  True,  True]], dtype=bool)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">china</span><span class="o">-</span><span class="n">testing</span><span class="o">/</span><span class="n">python3_libraries</span><span class="o">/</span><span class="n">numpy</span><span class="o">/</span><span class="n">Chapter2</span><span class="err">$</span> <span class="n">python3</span> <span class="n">stacking</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span>
+<span class="p">[[</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">2</span>  <span class="mi">4</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">6</span>  <span class="mi">8</span> <span class="mi">10</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">12</span> <span class="mi">14</span> <span class="mi">16</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">hstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">0</span>  <span class="mi">2</span>  <span class="mi">4</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">8</span> <span class="mi">10</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">6</span>  <span class="mi">7</span>  <span class="mi">8</span> <span class="mi">12</span> <span class="mi">14</span> <span class="mi">16</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">concatenate</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">0</span>  <span class="mi">2</span>  <span class="mi">4</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">8</span> <span class="mi">10</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">6</span>  <span class="mi">7</span>  <span class="mi">8</span> <span class="mi">12</span> <span class="mi">14</span> <span class="mi">16</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">vstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">5</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">6</span>  <span class="mi">7</span>  <span class="mi">8</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">0</span>  <span class="mi">2</span>  <span class="mi">4</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">6</span>  <span class="mi">8</span> <span class="mi">10</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">12</span> <span class="mi">14</span> <span class="mi">16</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">concatenate</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">5</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">6</span>  <span class="mi">7</span>  <span class="mi">8</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">0</span>  <span class="mi">2</span>  <span class="mi">4</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">6</span>  <span class="mi">8</span> <span class="mi">10</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">12</span> <span class="mi">14</span> <span class="mi">16</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">dstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<span class="p">[[[</span> <span class="mi">0</span>  <span class="mi">0</span><span class="p">]</span>
+  <span class="p">[</span> <span class="mi">1</span>  <span class="mi">2</span><span class="p">]</span>
+  <span class="p">[</span> <span class="mi">2</span>  <span class="mi">4</span><span class="p">]]</span>
+
+ <span class="p">[[</span> <span class="mi">3</span>  <span class="mi">6</span><span class="p">]</span>
+  <span class="p">[</span> <span class="mi">4</span>  <span class="mi">8</span><span class="p">]</span>
+  <span class="p">[</span> <span class="mi">5</span> <span class="mi">10</span><span class="p">]]</span>
+
+ <span class="p">[[</span> <span class="mi">6</span> <span class="mi">12</span><span class="p">]</span>
+  <span class="p">[</span> <span class="mi">7</span> <span class="mi">14</span><span class="p">]</span>
+  <span class="p">[</span> <span class="mi">8</span> <span class="mi">16</span><span class="p">]]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">oned</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">oned</span>
+<span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">twice_oned</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">oned</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">twice_oned</span>
+<span class="p">[</span><span class="mi">0</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">column_stack</span><span class="p">((</span><span class="n">oned</span><span class="p">,</span> <span class="n">twice_oned</span><span class="p">))</span>
+<span class="p">[[</span><span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">column_stack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">0</span>  <span class="mi">2</span>  <span class="mi">4</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">8</span> <span class="mi">10</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">6</span>  <span class="mi">7</span>  <span class="mi">8</span> <span class="mi">12</span> <span class="mi">14</span> <span class="mi">16</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">column_stack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span> <span class="o">==</span> <span class="n">hstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<span class="p">[[</span> <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span><span class="p">]</span>
+ <span class="p">[</span> <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span><span class="p">]</span>
+ <span class="p">[</span> <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">row_stack</span><span class="p">((</span><span class="n">oned</span><span class="p">,</span> <span class="n">twice_oned</span><span class="p">))</span>
+<span class="p">[[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">row_stack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">5</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">6</span>  <span class="mi">7</span>  <span class="mi">8</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">0</span>  <span class="mi">2</span>  <span class="mi">4</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">6</span>  <span class="mi">8</span> <span class="mi">10</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">12</span> <span class="mi">14</span> <span class="mi">16</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">row_stack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span> <span class="o">==</span> <span class="n">vstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<span class="p">[[</span> <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span><span class="p">]</span>
+ <span class="p">[</span> <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span><span class="p">]</span>
+ <span class="p">[</span> <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span><span class="p">]</span>
+ <span class="p">[</span> <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span><span class="p">]</span>
+ <span class="p">[</span> <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span><span class="p">]</span>
+ <span class="p">[</span> <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span><span class="p">]]</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="_4">数组分隔</h3>
+<p>splitting.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    china-testing#126.com 技术支持qq群：630011153</span>
+<span class="c1"># CreateDate: 2018-04-12</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c1"># Chapter 2 Beginning with NumPy fundamentals</span>
+<span class="c1">#</span>
+<span class="c1"># Demonstrates array splitting.</span>
+<span class="c1">#</span>
+<span class="c1"># Run from the commandline with </span>
+<span class="c1">#</span>
+<span class="c1">#  python splitting.py</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a = arange(9).reshape(3, 3)&quot;</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: a&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[0, 1, 2],</span>
+<span class="c1">#       [3, 4, 5],</span>
+<span class="c1">#       [6, 7, 8]])</span>
+
+<span class="c1"># 水平分割</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: hsplit(a, 3)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hsplit</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="c1">#Out: </span>
+<span class="c1">#[array([[0],</span>
+<span class="c1">#       [3],</span>
+<span class="c1">#       [6]]),</span>
+<span class="c1"># array([[1],</span>
+<span class="c1">#       [4],</span>
+<span class="c1">#       [7]]),</span>
+<span class="c1"># array([[2],</span>
+<span class="c1">#       [5],</span>
+<span class="c1">#       [8]])]</span>
+
+<span class="c1"># 垂直分割 </span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: split(a, 3, axis=1)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#Out: </span>
+<span class="c1">#[array([[0],</span>
+<span class="c1">#       [3],</span>
+<span class="c1">#       [6]]),</span>
+<span class="c1"># array([[1],</span>
+<span class="c1">#       [4],</span>
+<span class="c1">#       [7]]),</span>
+<span class="c1"># array([[2],</span>
+<span class="c1">#       [5],</span>
+<span class="c1">#       [8]])]</span>
+
+<span class="c1"># </span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: vsplit(a, 3)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vsplit</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="c1">#Out: [array([[0, 1, 2]]), array([[3, 4, 5]]), array([[6, 7, 8]])]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: split(a, 3, axis=0)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="c1">#Out: [array([[0, 1, 2]]), array([[3, 4, 5]]), array([[6, 7, 8]])]</span>
+
+<span class="c1"># 深度分割 </span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: c = arange(27).reshape(3, 3, 3)&quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: c&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[[ 0,  1,  2],</span>
+<span class="c1">#        [ 3,  4,  5],</span>
+<span class="c1">#        [ 6,  7,  8]],</span>
+<span class="c1">#</span>
+<span class="c1">#       [[ 9, 10, 11],</span>
+<span class="c1">#        [12, 13, 14],</span>
+<span class="c1">#        [15, 16, 17]],</span>
+<span class="c1">#</span>
+<span class="c1">#       [[18, 19, 20],</span>
+<span class="c1">#        [21, 22, 23],</span>
+<span class="c1">#        [24, 25, 26]]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: dsplit(c, 3)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dsplit</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="c1">#Out: </span>
+<span class="c1">#[array([[[ 0],</span>
+<span class="c1">#        [ 3],</span>
+<span class="c1">#        [ 6]],</span>
+<span class="c1">#</span>
+<span class="c1">#       [[ 9],</span>
+<span class="c1">#        [12],</span>
+<span class="c1">#        [15]],</span>
+<span class="c1">#</span>
+<span class="c1">#       [[18],</span>
+<span class="c1">#        [21],</span>
+<span class="c1">#        [24]]]),</span>
+<span class="c1"># array([[[ 1],</span>
+<span class="c1">#        [ 4],</span>
+<span class="c1">#        [ 7]],</span>
+<span class="c1">#</span>
+<span class="c1">#       [[10],</span>
+<span class="c1">#        [13],</span>
+<span class="c1">#        [16]],</span>
+<span class="c1">#</span>
+<span class="c1">#       [[19],</span>
+<span class="c1">#        [22],</span>
+<span class="c1">#        [25]]]),</span>
+<span class="c1"># array([[[ 2],</span>
+<span class="c1">#        [ 5],</span>
+<span class="c1">#        [ 8]],</span>
+<span class="c1">#</span>
+<span class="c1">#       [[11],</span>
+<span class="c1">#        [14],</span>
+<span class="c1">#        [17]],</span>
+<span class="c1">#</span>
+<span class="c1">#       [[20],</span>
+<span class="c1">#        [23],</span>
+<span class="c1">#        [26]]])]</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">splitting</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">a</span>
+<span class="p">[[</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">hsplit</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">[</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">6</span><span class="p">]]),</span> <span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">4</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">7</span><span class="p">]]),</span> <span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">5</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">8</span><span class="p">]])]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">split</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">[</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">6</span><span class="p">]]),</span> <span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">4</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">7</span><span class="p">]]),</span> <span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">5</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">8</span><span class="p">]])]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">vsplit</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">[</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]),</span> <span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]),</span> <span class="n">array</span><span class="p">([[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">split</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">[</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]),</span> <span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]),</span> <span class="n">array</span><span class="p">([[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">c</span>
+<span class="p">[[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span><span class="p">]</span>
+  <span class="p">[</span> <span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">5</span><span class="p">]</span>
+  <span class="p">[</span> <span class="mi">6</span>  <span class="mi">7</span>  <span class="mi">8</span><span class="p">]]</span>
+
+ <span class="p">[[</span> <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span><span class="p">]</span>
+  <span class="p">[</span><span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span><span class="p">]</span>
+  <span class="p">[</span><span class="mi">15</span> <span class="mi">16</span> <span class="mi">17</span><span class="p">]]</span>
+
+ <span class="p">[[</span><span class="mi">18</span> <span class="mi">19</span> <span class="mi">20</span><span class="p">]</span>
+  <span class="p">[</span><span class="mi">21</span> <span class="mi">22</span> <span class="mi">23</span><span class="p">]</span>
+  <span class="p">[</span><span class="mi">24</span> <span class="mi">25</span> <span class="mi">26</span><span class="p">]]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">dsplit</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">[</span><span class="n">array</span><span class="p">([[[</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mi">3</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mi">6</span><span class="p">]],</span>
+
+       <span class="p">[[</span> <span class="mi">9</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">12</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">15</span><span class="p">]],</span>
+
+       <span class="p">[[</span><span class="mi">18</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">21</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">24</span><span class="p">]]]),</span> <span class="n">array</span><span class="p">([[[</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mi">4</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mi">7</span><span class="p">]],</span>
+
+       <span class="p">[[</span><span class="mi">10</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">13</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">16</span><span class="p">]],</span>
+
+       <span class="p">[[</span><span class="mi">19</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">22</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">25</span><span class="p">]]]),</span> <span class="n">array</span><span class="p">([[[</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mi">5</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mi">8</span><span class="p">]],</span>
+
+       <span class="p">[[</span><span class="mi">11</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">14</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">17</span><span class="p">]],</span>
+
+       <span class="p">[[</span><span class="mi">20</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">23</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">26</span><span class="p">]]])]</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="_5">数组属性</h3>
+<p>arrayattributes2.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    china-testing#126.com 技术支持qq群：630011153</span>
+<span class="c1"># CreateDate: 2018-04-12</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c1"># Chapter 2 Beginning with NumPy fundamentals</span>
+<span class="c1">#</span>
+<span class="c1"># Demonstrates ndarray attributes.</span>
+<span class="c1">#</span>
+<span class="c1"># Run from the commandline with </span>
+<span class="c1">#</span>
+<span class="c1">#  python arrayattributes2.py</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11],</span>
+<span class="c1">#       [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.ndim&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+<span class="c1">#Out: 2</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.size&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="c1">#Out: 24</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.itemsize&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span>
+<span class="c1">#Out: 8</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.nbytes&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">nbytes</span><span class="p">)</span>
+<span class="c1">#Out: 192</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.size * b.itemsize&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="n">b</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span>
+<span class="c1">#Out: 192</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.resize(6,4)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 0,  1,  2,  3],</span>
+<span class="c1">#       [ 4,  5,  6,  7],</span>
+<span class="c1">#       [ 8,  9, 10, 11],</span>
+<span class="c1">#       [12, 13, 14, 15],</span>
+<span class="c1">#       [16, 17, 18, 19],</span>
+<span class="c1">#       [20, 21, 22, 23]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.T&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[ 0,  4,  8, 12, 16, 20],</span>
+<span class="c1">#       [ 1,  5,  9, 13, 17, 21],</span>
+<span class="c1">#       [ 2,  6, 10, 14, 18, 22],</span>
+<span class="c1">#       [ 3,  7, 11, 15, 19, 23]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.ndim&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+<span class="c1">#Out: 1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.T&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="c1">#Out: array([0, 1, 2, 3, 4])</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b = array([1.j + 1, 2.j + 3])&quot;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">2.j</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">#Out: array([ 1.+1.j,  3.+2.j])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.real&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+<span class="c1">#Out: array([ 1.,  3.])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.imag&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+<span class="c1">#Out: array([ 1.,  2.])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.dtype&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="c1">#Out: dtype(&#39;complex128&#39;)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.dtype.str&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">str</span><span class="p">)</span>
+<span class="c1">#Out: &#39;&lt;c16&#39;</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b = arange(4).reshape(2,2)&quot;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[0, 1],</span>
+<span class="c1">#       [2, 3]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: f = b.flat&quot;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">flat</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: f&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="c1">#Out: &lt;numpy.flatiter object at 0x103013e00&gt;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: for it in f: print it&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span> 
+   <span class="k">print</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<span class="c1">#0</span>
+<span class="c1">#1</span>
+<span class="c1">#2</span>
+<span class="c1">#3</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.flat[2]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="c1">#Out: 2</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.flat[[1,3]]&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">flat</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
+<span class="c1">#Out: array([1, 3])</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[7, 7],</span>
+<span class="c1">#       [7, 7]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.flat[[1,3]] = 1&quot;</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">flat</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">#Out: </span>
+<span class="c1">#array([[7, 1],</span>
+<span class="c1">#       [7, 1]])</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">arrayattributes2</span><span class="o">.</span><span class="n">py</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">7</span>  <span class="mi">8</span>  <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span> <span class="mi">15</span> <span class="mi">16</span> <span class="mi">17</span> <span class="mi">18</span> <span class="mi">19</span> <span class="mi">20</span> <span class="mi">21</span> <span class="mi">22</span> <span class="mi">23</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">ndim</span>
+<span class="mi">2</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">size</span>
+<span class="mi">24</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">itemsize</span>
+<span class="mi">8</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">nbytes</span>
+<span class="mi">192</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="n">b</span><span class="o">.</span><span class="n">itemsize</span>
+<span class="mi">192</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="bp">None</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">7</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">8</span>  <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span> <span class="mi">15</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">16</span> <span class="mi">17</span> <span class="mi">18</span> <span class="mi">19</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">20</span> <span class="mi">21</span> <span class="mi">22</span> <span class="mi">23</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">T</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">4</span>  <span class="mi">8</span> <span class="mi">12</span> <span class="mi">16</span> <span class="mi">20</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">1</span>  <span class="mi">5</span>  <span class="mi">9</span> <span class="mi">13</span> <span class="mi">17</span> <span class="mi">21</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">2</span>  <span class="mi">6</span> <span class="mi">10</span> <span class="mi">14</span> <span class="mi">18</span> <span class="mi">22</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">3</span>  <span class="mi">7</span> <span class="mi">11</span> <span class="mi">15</span> <span class="mi">19</span> <span class="mi">23</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">ndim</span>
+<span class="mi">2</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">T</span>
+<span class="p">[[</span> <span class="mi">0</span>  <span class="mi">4</span>  <span class="mi">8</span> <span class="mi">12</span> <span class="mi">16</span> <span class="mi">20</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">1</span>  <span class="mi">5</span>  <span class="mi">9</span> <span class="mi">13</span> <span class="mi">17</span> <span class="mi">21</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">2</span>  <span class="mi">6</span> <span class="mi">10</span> <span class="mi">14</span> <span class="mi">18</span> <span class="mi">22</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">3</span>  <span class="mi">7</span> <span class="mi">11</span> <span class="mi">15</span> <span class="mi">19</span> <span class="mi">23</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mf">1.j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">2.j</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span>
+<span class="p">[</span><span class="mf">1.</span><span class="o">+</span><span class="mf">1.j</span> <span class="mf">3.</span><span class="o">+</span><span class="mf">2.j</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">real</span>
+<span class="p">[</span><span class="mf">1.</span> <span class="mf">3.</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">imag</span>
+<span class="p">[</span><span class="mf">1.</span> <span class="mf">2.</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">dtype</span>
+<span class="n">complex128</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">str</span>
+<span class="o">&lt;</span><span class="n">c16</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span>
+<span class="p">[[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">f</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">flat</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">f</span>
+<span class="o">&lt;</span><span class="n">numpy</span><span class="o">.</span><span class="n">flatiter</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x182a3c0</span><span class="o">&gt;</span>
+<span class="n">In</span><span class="p">:</span> <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span> <span class="k">print</span> <span class="n">it</span>
+<span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="mi">2</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">flat</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>
+<span class="p">[</span><span class="mi">1</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span>
+<span class="p">[[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">]]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">flat</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span>
+<span class="p">[[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">2</span> <span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="_6">数组转换</h3>
+<p>arrayconversion.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c1"># Chapter 2 Beginning with NumPy fundamentals</span>
+<span class="c1">#</span>
+<span class="c1"># Demonstrates the NumPy record data type.</span>
+<span class="c1">#</span>
+<span class="c1"># Run from the commandline with </span>
+<span class="c1">#</span>
+<span class="c1">#  python3 arrayconversion.py</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mf">1.</span><span class="o">+</span><span class="mf">1.j</span><span class="p">,</span>  <span class="mf">3.</span><span class="o">+</span><span class="mf">2.j</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">#Out: array([ 1.+1.j,  3.+2.j])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.tolist()&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="c1">#Out: [(1+1j), (3+2j)]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.tostring()&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">tostring</span><span class="p">())</span>
+<span class="c1">#Out: &#39;\x00\x00\x00\x00\x00\x00\xf0?\x00\x00\x00\x00\x00\x00\xf0?\x00\x00\x00\x00\x00\x00\x08@\x00\x00\x00\x00\x00\x00\x00@&#39;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: fromstring(b&#39;</span><span class="se">\x00\x00\x00\x00\x00\x00\xf0</span><span class="s2">?</span><span class="se">\x00\x00\x00\x00\x00\x00\xf0</span><span class="s2">?</span><span class="se">\x00\x00\x00\x00\x00\x00\x08</span><span class="s2">@</span><span class="se">\x00\x00\x00\x00\x00\x00\x00</span><span class="s2">@&#39;, dtype=complex)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\x00\x00\x00\x00\x00\xf0</span><span class="s1">?</span><span class="se">\x00\x00\x00\x00\x00\x00\xf0</span><span class="s1">?</span><span class="se">\x00\x00\x00\x00\x00\x00\x08</span><span class="s1">@</span><span class="se">\x00\x00\x00\x00\x00\x00\x00</span><span class="s1">@&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">))</span>
+<span class="c1">#Out: array([ 1.+1.j,  3.+2.j]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: fromstring(&#39;20:42:52&#39;,sep=&#39;:&#39;, dtype=int)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s1">&#39;20:42:52&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">))</span>
+<span class="c1">#Out: array([20, 42, 52])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">#Out: array([ 1.+1.j,  3.+2.j])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.astype(int)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+<span class="c1">#/usr/local/bin/ipython:1: ComplexWarning: Casting complex values to real discards the imaginary part</span>
+<span class="c1">#  #!/usr/bin/python</span>
+<span class="c1">#Out: array([1, 3])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In: b.astype(&#39;complex&#39;)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;complex&#39;</span><span class="p">))</span>
+<span class="c1">#Out: array([ 1.+1.j,  3.+2.j])</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">arrayconversion</span><span class="o">.</span><span class="n">py</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span>
+<span class="p">[</span><span class="mf">1.</span><span class="o">+</span><span class="mf">1.j</span> <span class="mf">3.</span><span class="o">+</span><span class="mf">2.j</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="p">[(</span><span class="mi">1</span><span class="o">+</span><span class="mi">1j</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="mi">2j</span><span class="p">)]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span>
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\x00\x00\x00\x00\x00\xf0</span><span class="s1">?</span><span class="se">\x00\x00\x00\x00\x00\x00\xf0</span><span class="s1">?</span><span class="se">\x00\x00\x00\x00\x00\x00\x08</span><span class="s1">@</span><span class="se">\x00\x00\x00\x00\x00\x00\x00</span><span class="s1">@&#39;</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">fromstring</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;ð?ð@@&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+<span class="p">[</span><span class="mf">1.</span><span class="o">+</span><span class="mf">1.j</span> <span class="mf">3.</span><span class="o">+</span><span class="mf">2.j</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">fromstring</span><span class="p">(</span><span class="s1">&#39;20:42:52&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">20</span> <span class="mi">42</span> <span class="mi">52</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span>
+<span class="p">[</span><span class="mf">1.</span><span class="o">+</span><span class="mf">1.j</span> <span class="mf">3.</span><span class="o">+</span><span class="mf">2.j</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">arrayconversion</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span> <span class="n">ComplexWarning</span><span class="p">:</span> <span class="n">Casting</span> <span class="nb">complex</span> <span class="n">values</span> <span class="n">to</span> <span class="n">real</span> <span class="n">discards</span> <span class="n">the</span> <span class="n">imaginary</span> <span class="n">part</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">1</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">In</span><span class="p">:</span> <span class="n">b</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="mf">1.</span><span class="o">+</span><span class="mf">1.j</span> <span class="mf">3.</span><span class="o">+</span><span class="mf">2.j</span><span class="p">]</span>
+</pre></div>
+</td></tr></table>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python 3.7极速入门教程1安装：Linux(Ubuntu 18.04)及Windows上安装Anaconda</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_quick1.html" rel="bookmark"
+           title="Permalink to python 3.7极速入门教程1安装：Linux(Ubuntu 18.04)及Windows上安装Anaconda">python 3.7极速入门教程1安装：Linux(Ubuntu 18.04)及Windows上安装Anaconda</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-05T09:20:00+08:00">
+                Published: 一 05 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <h1 id="_1">安装</h1>
+<h2 id="linux">Linux安装</h2>
+<p>Anaconda是最受欢迎的python数据科学和机器学习平台，用于大规模数据处理，预测分析和科学计算。Anaconda发行版附带了1,000多个数据包，conda命令行工具和Anaconda Navigator的桌面图形用户界面。一般而言，使用Anaconda比直接使用官方的python更好用。</p>
+<p>本教程将指导您完成在Ubuntu 18.04上下载和安装Anaconda Python Distribution。通常也适合多数其他Linux。</p>
+<h3 id="anaconda">下载Anaconda</h3>
+<p>https://www.anaconda.com/download/#linux</p>
+<p>在撰写本文时，Anaconda的最新稳定版本是5.3版本。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-128824bdee784130.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>请选择<a href="https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh">64-Bit (x86) Installer </a>进行下载，尽量不要用python2.7，很多库已经不提供python2.7支持。</p>
+<p>点击链接就会进行下载，同时会弹出信息收集框，直接关闭就好。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-dfb07445ebf47c3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="anaconda_1">安装Anaconda</h3>
+<div class="highlight"><pre><span></span>$ sudo sh Anaconda3-5.3.0-Linux-x86_64.sh 
+<span class="o">[</span>sudo<span class="o">]</span> andrew 的密码： 
+
+Welcome to Anaconda3 <span class="m">5</span>.3.0
+
+In order to <span class="k">continue</span> the installation process, please review the license
+agreement.
+Please, press ENTER to <span class="k">continue</span>
+&gt;&gt;&gt;  <span class="c1"># 按下回车</span>
+... <span class="c1"># 多次按空格读完license。</span>
+Do you accept the license terms? <span class="o">[</span>yes<span class="p">|</span>no<span class="o">]</span>
+<span class="o">[</span>no<span class="o">]</span> &gt;&gt;&gt; yes <span class="c1"># 输入yes</span>
+
+  - Press ENTER to confirm the location
+  - Press CTRL-C to abort the installation
+  - Or specify a different location below
+...
+<span class="o">[</span>/home/andrew/anaconda3<span class="o">]</span> &gt;&gt;&gt; /usr/local/anaconda3 <span class="c1"># 输入自定义目录</span>
+...  <span class="c1"># 安装根据机器性能，通常需要持续几分钟。</span>
+<span class="c1"># 讨论 钉钉群21745728 qq群144081101 567351477</span>
+<span class="c1"># 本文地址：https://www.jianshu.com/p/9fe9ff999234</span>
+
+Do you wish to proceed with the installation of Microsoft VSCode? <span class="o">[</span>yes<span class="p">|</span>no<span class="o">]</span> <span class="c1">#选择no，一般来说自带的spyder和专业IDE wingIDE更好用。</span>
+...
+Do you wish the installer to initialize Anaconda3
+in your /home/andrew/.bashrc ? <span class="o">[</span>yes<span class="p">|</span>no<span class="o">]</span>
+<span class="o">[</span>no<span class="o">]</span> &gt;&gt;&gt; <span class="c1"># 选择yes</span>
+Initializing Anaconda3 in /home/andrew/.bashrc
+A backup will be made to: /home/andrew/.bashrc-anaconda3.bak
+
+
+For this change to become active, you have to open a new terminal.
+
+Thank you <span class="k">for</span> installing Anaconda3!
+
+<span class="o">===========================================================================</span>
+
+Anaconda is partnered with Microsoft! Microsoft VSCode is a streamlined
+code editor with support <span class="k">for</span> development operations like debugging, task
+running and version control.
+
+To install Visual Studio Code, you will need:
+  - Administrator Privileges
+  - Internet connectivity
+
+Visual Studio Code License: https://code.visualstudio.com/license
+
+Do you wish to proceed with the installation of Microsoft VSCode? <span class="o">[</span>yes<span class="p">|</span>no<span class="o">]</span>
+&gt;&gt;&gt; no
+</pre></div>
+
+
+<p>添加“export PATH=/usr/local/anconda3/bin:$PATH“ 到/etc/profile，这样所有用户都可以使用Anaconda python3.7了。</p>
+<p>上面的.bashrc在刚才安装时添加了如下内容：</p>
+<div class="highlight"><pre><span></span><span class="c1"># added by Anaconda3 5.3.0 installer</span>
+<span class="c1"># &gt;&gt;&gt; conda init &gt;&gt;&gt;</span>
+<span class="c1"># !! Contents within this block are managed by &#39;conda init&#39; !!</span>
+<span class="nv">__conda_setup</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nv">CONDA_REPORT_ERRORS</span><span class="o">=</span><span class="nb">false</span> <span class="s1">&#39;/usr/local/anaconda3/bin/conda&#39;</span> shell.bash hook <span class="m">2</span>&gt; /dev/null<span class="k">)</span><span class="s2">&quot;</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="se">\e</span>val <span class="s2">&quot;</span><span class="nv">$__conda_setup</span><span class="s2">&quot;</span>
+<span class="k">else</span>
+    <span class="k">if</span> <span class="o">[</span> -f <span class="s2">&quot;/usr/local/anaconda3/etc/profile.d/conda.sh&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        . <span class="s2">&quot;/usr/local/anaconda3/etc/profile.d/conda.sh&quot;</span>
+        <span class="nv">CONDA_CHANGEPS1</span><span class="o">=</span><span class="nb">false</span> conda activate base
+    <span class="k">else</span>
+        <span class="se">\e</span>xport <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/anaconda3/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+    <span class="k">fi</span>
+<span class="k">fi</span>
+<span class="nb">unset</span> __conda_setup~/.bashrc
+<span class="c1"># &lt;&lt;&lt; conda init &lt;&lt;&lt;</span>
+</pre></div>
+
+
+<h3 id="_2">验证安装</h3>
+<p>通过重新登陆或者执行'source ~/.bashrc"加载环境变量。</p>
+<div class="highlight"><pre><span></span>$ conda info
+
+     active environment : base
+    active env location : /usr/local/anaconda3
+            shell level : <span class="m">1</span>
+       user config file : /home/andrew/.condarc
+ populated config files : 
+          conda version : <span class="m">4</span>.5.11
+    conda-build version : <span class="m">3</span>.15.1
+         python version : <span class="m">3</span>.7.0.final.0
+       base environment : /usr/local/anaconda3  <span class="o">(</span><span class="nb">read</span> only<span class="o">)</span>
+           channel URLs : https://repo.anaconda.com/pkgs/main/linux-64
+                          https://repo.anaconda.com/pkgs/main/noarch
+                          https://repo.anaconda.com/pkgs/free/linux-64
+                          https://repo.anaconda.com/pkgs/free/noarch
+                          https://repo.anaconda.com/pkgs/r/linux-64
+                          https://repo.anaconda.com/pkgs/r/noarch
+                          https://repo.anaconda.com/pkgs/pro/linux-64
+                          https://repo.anaconda.com/pkgs/pro/noarch
+          package cache : /usr/local/anaconda3/pkgs
+                          /home/andrew/.conda/pkgs
+       envs directories : /home/andrew/.conda/envs
+                          /usr/local/anaconda3/envs
+               platform : linux-64
+             user-agent : conda/4.5.11 requests/2.19.1 CPython/3.7.0 Linux/4.15.0-36-generic ubuntu/18.04 glibc/2.27
+                UID:GID : <span class="m">1000</span>:1000
+             netrc file : None
+           offline mode : False
+
+$ python
+Python <span class="m">3</span>.7.0 <span class="o">(</span>default, Jun <span class="m">28</span> <span class="m">2018</span>, <span class="m">13</span>:15:42<span class="o">)</span> 
+<span class="o">[</span>GCC <span class="m">7</span>.2.0<span class="o">]</span> :: Anaconda, Inc. on linux
+Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&quot;</span>, <span class="s2">&quot;credits&quot;</span> or <span class="s2">&quot;license&quot;</span> <span class="k">for</span> more information.
+&gt;&gt;&gt; 
+</pre></div>
+
+
+<p>至此，已经安装完毕。</p>
+<h3 id="anaconda_2">更新Anaconda</h3>
+<p>一般是有新版本发布时才需要使用。</p>
+<div class="highlight"><pre><span></span>$ conda update conda
+$ conda update anaconda
+</pre></div>
+
+
+<h3 id="anaconda_3">删除Anaconda</h3>
+<p>一般是有新版本发布时才需要使用。</p>
+<div class="highlight"><pre><span></span><span class="nv">$sudo</span> rm -rf /usr/local/anaconda3
+删除上面~/.bashrc和/etc/profile的修改
+清空隐藏文件： rm -rf ~/.condarc ~/.conda ~/.continuum
+</pre></div>
+
+
+<h3 id="_3">参考资料</h3>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 钉钉免费群21745728</li>
+<li><a href="https://china-testing.github.io/python3_crash_ch9_2.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li>https://linuxize.com/post/how-to-install-anaconda-on-ubuntu-18-04/</li>
+</ul>
+<h2 id="windows">Windows安装</h2>
+<p>下载，比如：https://repo.anaconda.com/archive/Anaconda3-5.3.0-Windows-x86_64.exe</p>
+<p>执行：</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-5bcbe6d35eb0ad95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b5e949e600fbada8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-aa9c7dc18f5c25fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-fbb80c5c32e141f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-203f9f06fb8f8c87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>上面红色的部分一定要选中，这样会帮你自动配置环境变量。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-5469c8adceb08d92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-c78544797d3434ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-6ea8e22c8d8cf64f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-4a71afc67a4d1402.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>新开cmd，输入python</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-db092dd11de4f9fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>命令行输入spyder
+<img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-28fa3fa0d53cf107.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>wingide</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e0a20bf5d68e55ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="mac">MAC安装</h2>
+<p>MAC的安装和Windows类似。</p>
+<h3 id="_4">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/python3_quick1.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

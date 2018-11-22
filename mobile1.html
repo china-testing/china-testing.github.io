@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>移动应用测试1测试用例和测试场景</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/mobile1.html" rel="bookmark"
+           title="Permalink to 移动应用测试1测试用例和测试场景">移动应用测试1测试用例和测试场景</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-14T09:55:00+08:00">
+                Published: 三 14 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info -->      <p><a href="https://china-testing.github.io/mobile.html">本系列文章目录</a></p>
+<h3 id="_1">功能测试测试用例</h3>
+<p>移动设备的功能测试通常包括测试用户交互以及测试场景。与功能测试相关的各种因素是</p>
+<ul>
+<li>应用业务类型（银行，游戏，社交或商业等）</li>
+<li>用户类型（消费者，企业，教育等）</li>
+<li>渠道（例如Apple App Store，Google play，直接发布）</li>
+</ul>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-c6aadd7fc0b75a4a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>最基本的测试场景：</p>
+<ul>
+<li>所有必需的必填字段是否按要求运行。</li>
+<li>必填字段是否与非必填字段不同的方式显示在屏幕中。</li>
+<li>启动/停止时验证应用程序是否按要求运行。</li>
+<li>来电时验证是否进入最小化模式。</li>
+<li>是否能够在应用程序运行时存储，处理和接收SMS。</li>
+<li>是否能在必要时执行所需的多任务处理要求。</li>
+<li>是否允许必要的社交网络选项，如共享，发布和导航等。与微博、微信等进行交互</li>
+<li>验证应用程序是否支持任何支付网关交易，如支付宝、Visa，Mastercard，Paypal等。微信支付也在考虑中，不过微信支付安全系数不高，尽量不要用。</li>
+<li>是否在应用程序中根据需要启用了页面滚动方案。</li>
+<li>相关模块之间的导航是否符合要求。</li>
+<li>截断</li>
+<li>是否收到类似“网络错误”的相应错误消息。一旦出现任何网络错误，请在一段时间后尝试。</li>
+<li>是否能与其他应用程序共存，并且不会影响其他应用程序的内存。</li>
+<li>在硬重启或系统崩溃的情况下，是否能恢复上次操作。</li>
+<li>安装测试。</li>
+<li>自动启动。</li>
+<li>是否按照所有Mobile版本2g，3g和4g和wifi的要求执行。</li>
+<li>回归测试。</li>
+<li>用户指南</li>
+</ul>
+<h3 id="_2">性能测试测试用例</h3>
+<ul>
+<li>是否在不同负载条件下按要求执行。</li>
+<li>确定当前网络覆盖是否能够在峰值，平均和最小用户级别支持应用程序。</li>
+<li>确定现有客户端 - 服务器配置设置是否提供所需的最佳性能级别。</li>
+<li>识别阻止应用程序在所需可接受级别执行的各种应用程序和基础架构瓶颈。</li>
+<li>验证应用程序的响应时间是否符合要求。</li>
+<li>评估产品和/或硬件以确定它是否可以处理预计的负载量。</li>
+<li>评估电池寿命是否可以支持应用程序在预计的负载量下执行。</li>
+<li>在网络从2G / 3G更改为WIFI时，验证应用程序性能，反之亦然。</li>
+<li>每个所需的CPU周期优化</li>
+<li>要验证电池消耗，内存泄漏，GPS等资源，相机性能是否符合要求。</li>
+<li>用户负载严格时验证应用程序的使用寿命。</li>
+<li>在移动设备时验证网络性能。</li>
+<li>仅在需要间歇性连接阶段时验证应用程序性能。</li>
+</ul>
+<h3 id="_3">安全测试测试用例</h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-4dd6451e2b8f1ad8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li>是否能够承受任何暴力攻击，包含用户名，密码或信用卡号等。</li>
+<li>否允许攻击者在没有正确身份验证的情况下访问敏感内容或功能。</li>
+<li>是否具有强密码保护系统，并且不允许攻击者获取，更改或恢复其他用户的密码。</li>
+<li>应用程序没有受到session 过期影响。</li>
+<li>识别动态依赖关系并采取措施防止任何攻击者访问这些漏洞。</li>
+<li>防止SQL注入相关攻击。</li>
+<li>识别非托管代码方案并从中恢复。</li>
+<li>证书是否经过验证，应用程序是否实现了证书固定。</li>
+<li>保护应用程序和网络免受拒绝服务攻击。</li>
+<li>分析数据存储和数据验证要求。</li>
+<li>启用会话管理以防止未经授权的用户访问未经请求的信息。</li>
+<li>检查是否有任何加密代码损坏并确保其已修复。</li>
+<li>业务逻辑实现是否安全且不易受到来自外部的任何攻击。</li>
+<li>分析文件系统交互，确定任何漏洞并更正这些问题。</li>
+<li>验证协议处理程序，例如尝试使用恶意iframe重新配置应用程序的默认登录页面。</li>
+<li>防止恶意客户端注入。</li>
+<li>防止恶意运行时注入。</li>
+<li>调查文件缓存并防止任何恶意可能性。</li>
+<li>防止应用程序的键盘缓存中的不安全数据存储。</li>
+<li>调查cookie并防止cookie中的任何恶意行为。</li>
+<li>数据保护分析提供定期审核。</li>
+<li>调查自定义创建的文件并防止自定义创建的文件中的任何恶意行为。</li>
+<li>防止缓冲区溢出和内存损坏的情况。</li>
+<li>分析不同的数据流。</li>
+</ul>
+<p>测试工具参考：<a href="https://www.jianshu.com/p/35262e4cc65a">软件测试专家工具包3移动端</a></p>
+<h3 id="_4">易用性测试测试用例</h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-506816b0632e7f97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li>按钮具有所需尺寸并适合大手指。</li>
+<li>按钮位于屏幕的同一部分，以避免混淆最终用户。</li>
+<li>图标自然且与应用程序一致。</li>
+<li>相同功能的按钮也应具有相同的颜色。</li>
+<li>点击放大和缩小设施的验证。</li>
+<li>适当的方式最小化键盘输入。</li>
+<li>应用程序提供一种方法，用于在可接受的持续时间内触摸错误的项目时返回或撤消操作。</li>
+<li>上下文菜单不会因为必须快速使用而过载。</li>
+<li>文本保持简单明了以便用户可见。</li>
+<li>短句和段落对最终用户可读。</li>
+<li>字体不要太大或太小。</li>
+<li>用户开始下载可能不利于应用程序性能的大量数据时，验证应用程序会提示用户。</li>
+<li>是否从不同状态执行应用程序关闭，并验证它是否以相同状态重新打开。</li>
+<li>语言翻译工具可用时将所有字符串转换为适当的语言。</li>
+<li>根据用户操作同步应用程序项。</li>
+<li>为最终用户提供用户手册</li>
+</ul>
+<p>此部分通常要手工执行</p>
+<h3 id="_5">兼容性测试测试用例</h3>
+<p>移动设备具有不同的大小，分辨率，屏幕，版本和硬件。</p>
+<ul>
+<li>用户界面是否与设备的屏幕大小相同，则文本/控件不会部分不可见或不可访问。</li>
+<li>文本对于应用程序的所有用户都是可读的。</li>
+<li>应用程序运行时启用呼叫/警报功能。在呼叫发生时最小化或暂停应用程序，然后每当呼叫停止时应用程序恢复。</li>
+</ul>
+<h3 id="_6">恢复性测试测试用例</h3>
+<ul>
+<li>崩溃恢复和事务中断</li>
+<li>在意外的中断/崩溃情况下验证有效的应用程序恢复情况。</li>
+<li>验证应用程序在电源故障期间如何处理事务（即电池耗尽或设备突然手动关闭）</li>
+<li>连接瞬断，系统需要重新建恢复受暂停连接影响的数据。</li>
+</ul>
+<p>网络的模拟推荐使用 <a href="https://github.com/china-testing/python-api-tesing#%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6">augmented-traffic-control</a></p>
+<h2 id="_7">参考资料</h2>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/mobile1.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/pytest_testing">本文源码地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+</ul>
+<h3 id="_8">重要清单</h3>
+<ul>
+<li>安装测试（应用程序是否可以在合理的时间内安装并符合要求的标准）</li>
+<li>卸载测试（是否可以在合理的时间内卸载应用程序）</li>
+<li>网络测试用例（验证网络是否在所需负载下运行，网络是否能够在测试过程中支持所有必要的应用程序）</li>
+<li>检查未映射的密钥</li>
+<li>检查应用程序启动画面</li>
+<li>在中断期间和网络问题等其他时间继续键盘输入</li>
+<li>处理退出应用程序的方法</li>
+<li>应用程序在后台运行时的充电器效果</li>
+<li>低电池和高性能需求</li>
+<li>在执行应用程序时取出电池</li>
+<li>通过应用消耗电池</li>
+<li>检查应用程序副作用</li>
+</ul>
+<h3 id="_9">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/mobile1.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python自动化测试人工智能 - andrew</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/tensorflow8.html">TensorFlow工具快速入门教程8 TensorBoard简介</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-11-22T08:28:00+08:00">
+                Published: 四 22 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info --><h3 id="tensorboard">什么是TensorBoard?</h3>
+<p>Tensorboard是可视化图形界面。并包含理解，调试和优化模型的其他工具。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-2814f38826b6f9cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li>Scalars：在模型训练期间显示不同的有用信息</li>
+<li>Graphs：显示模型</li>
+<li>Histogram：使用直方图显示权重</li>
+<li>Distribution：显示权重分布</li>
+<li>Projector 显示主成分分析和T-SNE算法。该技术用于降维</li>
+</ul>
+<p>如果查看图表，可以了解模型的工作原理。</p>
+<ul>
+<li>数据排队模型：将等于批量大小的数据量推送到模型，即每次迭代后的数据馈送数量</li>
+<li>将数据提供给Tensors</li>
+<li>训练模型</li>
+<li>显示训练期间的批次数。将模型保存在磁盘上。</li>
+</ul>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-6c8ad44839984aab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>tensorboard背后的基本思想是神经网络为黑盒子，我们需要工具来检查这个盒子里面的东西。您可以将tensorboard想象成一个手电筒。</p>
+<p>它有助于理解操作之间的依赖关系，如何计算权重，显示损失函数和许多其他有用信息。当您将所有这些信息组合在一起时，您就拥有了很好的工具来调试并改进模型。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e120043e731403f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>神经网络决定如何在模型预测结果之前连接不同的“神经元”和多少层。一旦定义了体系结构，您不仅需要训练模型，还需要使用度量来计算预测的准确性。该度量被称为损失函数。目标是最小化损失函数。换句话说，这意味着模型减少了错误。所有机器学习算法将重复多次计算，直到损失达到更平坦的线。要最大限度地减少此丢失功能，您需要定义学习率。这是您希望模型学习的速度。如果您将学习率设置得太高，则模型没有时间学习任何东西。左图是这种情况。线条正在上下移动，这意味着模型预测纯粹的猜测结果。右图显示损失在迭代中逐渐减少，直到曲线变平，这意味着模型找到了解决方案。</p>
+<p>TensorBoard是一个很好的工具，可以显示这些指标并突出潜在的问题。神经网络在找到解决方案之前可能需要数小时到数周。</p>
+<p>TensorBoard经常更新指标。在这种情况下，您无需等到最后才能看到模型是否正确训练。您可以打开TensorBoard检查训练的进展情况，并在必要时进行适当的更改。</p>
+<h3 id="_1">参考资料</h3>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 钉钉群21745728</li>
+<li><a href="https://china-testing.github.io/tensorflow7.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>   </li>
+</ul>
+<h3 id="tensorboard_1">TensorBoard快速入门</h3>
+<p>代码：</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    xurongzhong#126.com wechat:pythontesting qq:37391319</span>
+<span class="c1"># 技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) </span>
+<span class="c1"># qq群：144081101 591302926  567351477</span>
+<span class="c1"># CreateDate: 2018-11-21</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="mi">10000</span><span class="p">,</span><span class="mi">5</span><span class="p">)))</span>
+<span class="n">y_train</span> <span class="o">=</span>  <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="mi">10000</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
+<span class="n">X_train</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="n">feature_columns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">feature_column</span><span class="o">.</span><span class="n">numeric_column</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])]</span>
+<span class="n">DNN_reg</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">DNNRegressor</span><span class="p">(</span><span class="n">feature_columns</span><span class="o">=</span><span class="n">feature_columns</span><span class="p">,</span>
+<span class="c1"># Indicate where to store the log file    </span>
+     <span class="n">model_dir</span><span class="o">=</span><span class="s1">&#39;train/linreg&#39;</span><span class="p">,</span>    
+     <span class="n">hidden_units</span><span class="o">=</span><span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span>    
+     <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">ProximalAdagradOptimizer</span><span class="p">(</span>      
+          <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>      
+          <span class="n">l1_regularization_strength</span><span class="o">=</span><span class="mf">0.001</span>    
+      <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Train the estimator</span>
+<span class="n">train_input</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">numpy_input_fn</span><span class="p">(</span>    
+     <span class="n">x</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">X_train</span><span class="p">},</span>    
+     <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">num_epochs</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">DNN_reg</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">train_input</span><span class="p">,</span><span class="n">steps</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span> 
+</pre></div>
+
+
+<p>执行 tensorboard --logdir=./train/linreg，就可以在网页打开tensorboard 。比如：http://172.20.16.98:6006。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-df21f234fbf1d007.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="_2">参考资料</h2>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 钉钉免费群21745728</li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 请在github上点赞，谢谢！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li><a href="https://github.com/ageitgey/face_recognition">face_recognition</a></li>
+<li><a href="https://china-testing.github.io/opencv_books.html">2018最佳人工智能图像处理工具OpenCV书籍下载</a> </li>
+<li><a href="https://china-testing.github.io/ai_books.html">2018最佳人工智能机器学习工具书籍及下载(持续更新)</a> </li>
+<li><a href="https://china-testing.github.io/tensorflow8.html">本文最新版本地址</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/tensorflow6.html" rel="bookmark"
+                           title="Permalink to TensorFlow工具快速入门教程6 深度学习库比较">TensorFlow工具快速入门教程6 深度学习库比较</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-22T08:27:00+08:00">
+                Published: 四 22 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
+</ul>
+<h3 id="tensorflow">什么是TensorFlow简介</h3>
+<p>自2016年以来，人工智能越来越受欢迎，20％的大公司在其业务中使用人工智能（麦肯锡报告，2018年 <a href="https://www.mckinsey.com/business-functions/mckinsey-analytics/our-insights/crossing-the-frontier-how-to-apply-ai-for-impact">report</a>
+）。根据同一报告，AI可以为各行业创造巨大价值。例如，在银行业，人工智能的潜力估计为3000亿美元，零售业的数量猛增至6000亿美元。</p>
+<p>为了释放人工智能的潜在价值，公司必须选择正确的深度学习框架。</p>
+<h3 id="8">8个最佳深度学习库/框架</h3>
+<p>在此列表中，我们将比较顶级的深度学习框架。所有这些都是开源的，并且在数据科学家社区中很受欢迎。</p>
+<ul>
+<li>Torch</li>
+</ul>
+<p>Torch是一个古老的开源机器学习库。它首次发布于15年前。它是主要的编程语言是LUA，但在C中有实现。Torch支持庞大的机器学习算法库，包括深度学习。它支持并行计算的CUDA实现。</p>
+<p>大多数领先的实验室都使用Torch，如Facebook，Google，Twitter，Nvidia等。 Torch的Python库名为Pytorch。</p>
+<ul>
+<li>Infer.net</li>
+</ul>
+<p>Infer.net由Microsoft开发和维护。 Infer.net是主要关注贝叶斯统计。 Infer.net旨在为从业者提供最先进的概率建模算法。该库包含分析工具，如贝叶斯分析，隐马尔可夫链，聚类。</p>
+<ul>
+<li>Keras …</li></ul>
+                <a class="readmore" href="/tensorflow6.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/tensorflow7.html" rel="bookmark"
+                           title="Permalink to TensorFlow工具快速入门教程7 TensorFlow基础">TensorFlow工具快速入门教程7 TensorFlow基础</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-22T08:27:00+08:00">
+                Published: 四 22 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>在机器学习中，模型被提供称为特征向量的对象列表。特征向量可以是任何数据类型。特征向量通常是填充张量的主要输入。这些值将通过张量流入op节点，此操作/计算的结果将创建一个新的张量，该张量又将用于新的操作。所有这些操作都可以在图表中查看。</p>
+<h3 id="_1">张量的表示</h3>
+<p>在TensorFlow中，张量是n维的特征向量（即阵列）的集合。例如，2x3矩阵，其值为1到6</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-ce71e998a3b02d75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>TensorFlow将此矩阵表示为：</p>
+<div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span><span class="err">，</span>
+   <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
+</pre></div>
+
+
+<p>如果我们创建一个值为1到8的三维矩阵</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-f4eaf533aef8004e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>TensorFlow将此矩阵表示为：</p>
+<div class="highlight"><pre><span></span><span class="p">[[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="err">，</span>
+       <span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span><span class="err">，</span>
+       <span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span><span class="err">，</span>
+       <span class="p">[[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]]</span>
+</pre></div>
+
+
+<p>注意：张量可以用标量表示，也可以有三维以上的形状。可视化更高维度级别更加复杂。</p>
+<h3 id="_2">张量的类型</h3>
+<p>张量具有三个属性的对象：name、shape、dtype</p>
+<p>TensorFlow执行的每个操作都涉及张量的操作。您可以创建四个主要张量：tf.Variable，tf.constant，tf …</p>
+                <a class="readmore" href="/tensorflow7.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/tensorflow5.html" rel="bookmark"
+                           title="Permalink to TensorFlow工具快速入门教程5 TensorFlow简介">TensorFlow工具快速入门教程5 TensorFlow简介</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-21T08:25:00+08:00">
+                Published: 三 21 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
+</ul>
+<h3 id="tensorflow">什么是TensorFlow？</h3>
+<p>目前，世界上最出名的深度学习库是Google的TensorFlow。 Google在其所有产品中使用机器学习来改进搜索引擎，翻译，图片字幕或推荐。</p>
+<p>Google用户可以通过AI体验更快，更精准的搜索。如果用户在搜索栏中键入关键字，则Google会提供有关下个字词的建议。</p>
+<p><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-e710539761b73b15.gif?imageMogr2/auto-orient/strip"></p>
+<p>谷歌希望利用机器学习来利用其庞大的数据集，为用户提供最佳体验。角色分工有：研究人员、数据科学家、程序员。</p>
+<p>谷歌不止拥有世界最大的海量数据，还拥有世界上最庞大的计算机集群，所以TensorFlow是按比例建造的。 TensorFlow是由Google Brain Team开发的库，用于加速机器学习和深度神经网络研究。</p>
+<p>它在多个CPU或GPU甚至移动操作系统上运行，支持多种语言的包装器，如Python(为主)，C++或Java。</p>
+<h3 id="tensorflow_1">TensorFlow的历史</h3>
+<p>几年前深度学习在提供大量数据时开始超越所有其他机器学习算法。谷歌看使用这些深度神经网络来改善其服务：Gmail、照片、谷歌搜索引擎</p>
+<p>他们构建了Tensorflow的框架，让研究人员和开发人员在AI模型上协同工作。</p>
+<p>Tensorflow于2015年底首次公开，第一个稳定版本于2017年出现。它基于Apache开源许可。您可以使用它，修改它并重新发布修改后的版本，而无需向Google支付任何费用。</p>
+<h3 id="tensorflow_2">TensorFlow架构</h3>
+<p>Tensorflow架构分为三个部分：</p>
+<ul>
+<li>预处理数据</li>
+<li>建立模型</li>
+<li>训练和评估模型</li>
+</ul>
+<p>之所以叫Tensorflow …</p>
+                <a class="readmore" href="/tensorflow5.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/tensorflow4.html" rel="bookmark"
+                           title="Permalink to TensorFlow工具快速入门教程4机器学习和深度学习的区别">TensorFlow工具快速入门教程4机器学习和深度学习的区别</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-21T08:20:00+08:00">
+                Published: 三 21 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
+</ul>
+<h3 id="ai">什么是AI？</h3>
+<p>人工智能赋予机器认知能力。人工智能的基准是有关推理，言语和愿景的人类智慧。这个基准还很遥远。</p>
+<p>到目前为止，机器学习是分析，理解和识别数据模式的最佳工具。机器学习背后的主要思想之一是计算机可以训练以自动执行对于人类来说是穷举或不可能的任务。</p>
+<p>机器学习使用数据来提供可以理解输入和输出之间关系的算法。当机器完成学习时，它可以预测新数据点的值或类。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-528495fca565285b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-666ff1e6b64f3b13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_1">机器学习的过程</h3>
+<p>训练分类器以检测图像是否是：自行车、船、汽车和飞机。</p>
+<p>上面的四个对象是分类器必须识别的类。要构造分类器，您需要将数据作为输入并为其分配标签。算法将获取这些数据，找到模式，然后在相应的类中对其进行分类。</p>
+<p>这项任务称为监督学习。在监督学习中，您提供给算法的训练数据包括标签。</p>
+<p>训练算法需要遵循几个标准步骤：收集数据、训练分类器、作出预测</p>
+<p>数据决定算法成败。您选择用于训练模型的数据称为要素。在对象示例中，特征是图像的像素。</p>
+<p>图像大小为28x28，则数据集包含784列（28x28）。在下图中，每张图片都已转换为特征向量。标签告诉计算机图像中有什么对象。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-241bf477eb66e938.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>目标是使用这些训练数据来分类对象的类型。第一步包括创建要素列。然后，第二步涉及选择训练模型的算法。训练完成后，模型将预测哪个图片对应于哪个对象。之后，很容易使用该模型来预测新图像。</p>
+<h3 id="_2">深度学习过程 …</h3>
+                <a class="readmore" href="/tensorflow4.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/opencv_crash_deep_learning3.html" rel="bookmark"
+                           title="Permalink to TensorFlow工具快速入门教程3深度学习简介">TensorFlow工具快速入门教程3深度学习简介</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-20T12:20:00+08:00">
+                Published: 二 20 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
+</ul>
+<h3 id="_1">深度学习介绍</h3>
+<p>深度学习是模拟大脑中神经元网络的计算机软件。它是机器学习的子集，被称为深度学习，因为它利用了深度神经网络。</p>
+<p>深度学习算法的第一层称为输入层，最后一层称为输出层，中间的所有层都称为隐藏层。深词意味着有两层以上的神经元。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1e0fb97f8a92db90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>每个隐藏层由神经元组成。神经元彼此连接。神经元将处理然后传播上层的输入信号。给下层神经元的信号强度取决于重量，偏差和激活函数。</p>
+<p>网络消耗大量输入数据并通过多层操作它们;网络逐层学习越来越复杂的数据特征。</p>
+<h3 id="_2">深度学习过程</h3>
+<p>深度神经网络在从物体检测到语音识别的许多任务中提供最先进的精确度。他们可以自动学习，不需要程序员明确编码的预定义知识。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-2f011a9f5dd25c65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>要掌握深度学习的想法，想象一个有婴儿和父母的家庭。蹒跚学步的孩子用小指指着物体，总是说“猫”这个词。父母告诉他'是‘还是'否。小孩在内心深处不知道为什么他可以说这是猫。但他学会了如何通过观察整体宠物来提升猫的复杂特征，并继续关注尾巴或鼻子之类的细节。</p>
+<p>神经网络的工作原理完全相同。每一层代表更深层次的知识，即知识的层次结构。具有四层的神经网络将比具有两层的神经网络学习更复杂的特征。</p>
+<p>学习分两个阶段进行。第一阶段包括应用输入的非线性变换并创建统计模型作为输出。 第二阶段旨在用一种称为衍生物的数学方法来改进模型。</p>
+<p>神经网络将这两个阶段重复数百到数千次，直到达到可容忍的准确度。这个两阶段的重复被称为迭代。</p>
+<p>举个例子，模特试图学习如何跳舞。经过10分钟的训练，模特不知道如何跳舞，看起来像一个涂鸦。</p>
+<p><img alt="test.gif" src="https://upload-images.jianshu.io/upload_images/12713060-af0f71ae53bb7f97.gif?imageMogr2/auto-orient/strip"></p>
+<p>经过48小时的学习，电脑掌握了舞蹈艺术。</p>
+<p><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-38d7673e6fbed623.gif?imageMogr2/auto-orient/strip"></p>
+<h3 id="_3">神经网络的分类 …</h3>
+                <a class="readmore" href="/opencv_crash_deep_learning3.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/tensorflow3.html" rel="bookmark"
+                           title="Permalink to TensorFlow工具快速入门教程3深度学习简介">TensorFlow工具快速入门教程3深度学习简介</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-20T12:20:00+08:00">
+                Published: 二 20 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
+</ul>
+<h3 id="_1">深度学习介绍</h3>
+<p>深度学习是模拟大脑中神经元网络的计算机软件。它是机器学习的子集，被称为深度学习，因为它利用了深度神经网络。</p>
+<p>深度学习算法的第一层称为输入层，最后一层称为输出层，中间的所有层都称为隐藏层。深词意味着有两层以上的神经元。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1e0fb97f8a92db90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>每个隐藏层由神经元组成。神经元彼此连接。神经元将处理然后传播上层的输入信号。给下层神经元的信号强度取决于重量，偏差和激活函数。</p>
+<p>网络消耗大量输入数据并通过多层操作它们;网络逐层学习越来越复杂的数据特征。</p>
+<h3 id="_2">深度学习过程</h3>
+<p>深度神经网络在从物体检测到语音识别的许多任务中提供最先进的精确度。他们可以自动学习，不需要程序员明确编码的预定义知识。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-2f011a9f5dd25c65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>要掌握深度学习的想法，想象一个有婴儿和父母的家庭。蹒跚学步的孩子用小指指着物体，总是说“猫”这个词。父母告诉他'是‘还是'否。小孩在内心深处不知道为什么他可以说这是猫。但他学会了如何通过观察整体宠物来提升猫的复杂特征，并继续关注尾巴或鼻子之类的细节。</p>
+<p>神经网络的工作原理完全相同。每一层代表更深层次的知识，即知识的层次结构。具有四层的神经网络将比具有两层的神经网络学习更复杂的特征。</p>
+<p>学习分两个阶段进行。第一阶段包括应用输入的非线性变换并创建统计模型作为输出。 第二阶段旨在用一种称为衍生物的数学方法来改进模型。</p>
+<p>神经网络将这两个阶段重复数百到数千次，直到达到可容忍的准确度。这个两阶段的重复被称为迭代。</p>
+<p>举个例子，模特试图学习如何跳舞。经过10分钟的训练，模特不知道如何跳舞，看起来像一个涂鸦。</p>
+<p><img alt="test.gif" src="https://upload-images.jianshu.io/upload_images/12713060-af0f71ae53bb7f97.gif?imageMogr2/auto-orient/strip"></p>
+<p>经过48小时的学习，电脑掌握了舞蹈艺术。</p>
+<p><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-38d7673e6fbed623.gif?imageMogr2/auto-orient/strip"></p>
+<h3 id="_3">神经网络的分类 …</h3>
+                <a class="readmore" href="/tensorflow3.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/opencv_crash_deep_learning2.html" rel="bookmark"
+                           title="Permalink to 计算机视觉opcencv工具深度学习快速实战2 opencv快速入门">计算机视觉opcencv工具深度学习快速实战2 opencv快速入门</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-19T12:20:00+08:00">
+                Published: 一 19 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="opencv">opencv基本操作</h3>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    xurongzhong#126.com wechat:pythontesting qq:37391319</span>
+<span class="c1"># 技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) </span>
+<span class="c1"># qq群：144081101 591302926  567351477</span>
+<span class="c1"># CreateDate: 2018-11-17</span>
+
+<span class="kn">import</span> <span class="nn">imutils</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="c1"># 读取图片信息</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;jp.png&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;width={}, height={}, depth={}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
+
+<span class="c1"># 显示图片</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+<span class="n">cv2 …</span></pre></div>
+                <a class="readmore" href="/opencv_crash_deep_learning2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/opencv_crash_deep_learning1.html" rel="bookmark"
+                           title="Permalink to 计算机视觉opcencv工具深度学习快速实战1人脸识别">计算机视觉opcencv工具深度学习快速实战1人脸识别</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-16T19:20:00+08:00">
+                Published: 五 16 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>使用OpenCV提供的预先训练的深度学习面部检测器模型，可快速，准确的进行人脸识别。</p>
+<p>2017年8月OpenCV 3.3正式发布，带来了高改进的“深度神经网络”(dnn deep neural networks)模块。该模块支持许多深度学习框架，包括Caffe，TensorFlow和Torch / PyTorch。</p>
+<p>基于Caffe的面部检测器在<a href="https://github.com/opencv/opencv/tree/master/samples/dnn/face_detector">这里</a>。</p>
+<p>需要两组文件：</p>
+<ul>
+<li>定义模型体系结构的.prototxt文件</li>
+<li>.caffemodel文件，包含实际图层的权重</li>
+</ul>
+<p>权重文件不包含在OpenCV示例目录。</p>
+<h3 id="opencv">OpenCV深度学习面部检测器如何工作？</h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-45fc78489ba83643.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<div class="highlight"><pre><span></span><span class="c1"># 模型下载：https://itbooks.pipipan.com/fs/18113597-320346529</span>
+<span class="c1"># 代码存放：https://github.com/china-testing/python-api-tesing/tree/master/opencv_crash_deep_learning</span>
+<span class="c1"># 技术支持qq群144081101(代码和模型存放）</span>
+<span class="c1"># USAGE</span>
+<span class="c1"># python detect_faces.py --image rooster …</span></pre></div>
+                <a class="readmore" href="/opencv_crash_deep_learning1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/testing_api_interview.html" rel="bookmark"
+                           title="Permalink to 接口测试面试题">接口测试面试题</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-14T23:20:00+08:00">
+                Published: 三 14 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info -->                <p>本文最新更新体现在pdf文档：<a href="https://itbooks.pipipan.com/fs/18113597-319924422">接口测试面试题.pdf</a></p>
+<h3 id="api">什么是API？</h3>
+<p>API是(Application Programming Interface)首字母缩略词，即应用程序编程接口。 API是一组用于构建软件应用程序的规程，协议和工具。API充当软件应用程序之间的接口，并允许两个软件应用程序相互通信。 API是一组软件功能，可以由其他软件执行。</p>
+<h3 id="api_1">什么是API测试？</h3>
+<p>API测试是一种软件测试，涉及直接测试API，也是集成测试的一部分，用于检查API是否满足应用程序的功能，可靠性，性能和安全性方面的期望。在API测试中，我们主要关注软件架构的业务逻辑层。可以在包含多个API的任何软件系统上执行API测试。</p>
+<h3 id="api_2">常见的API测试类型有哪些？</h3>
+<p>API测试通常涉及以下实践：</p>
+<ul>
+<li>单元测试</li>
+<li>功能测试</li>
+<li>负载测试</li>
+<li>运行时/错误检测</li>
+<li>安全测试</li>
+<li>UI测试</li>
+<li>互操作性和WS一致性测试</li>
+<li>渗透测试</li>
+<li>模糊测试</li>
+</ul>
+<h3 id="api3">列举API测试中使用的一些常用协议？3个即可。</h3>
+<ul>
+<li>thrift</li>
+<li>HTTP</li>
+<li>REST</li>
+<li>SOAP</li>
+<li>JMS</li>
+<li>UDDI</li>
+<li>dubbo</li>
+</ul>
+<h3 id="apiweb">API和Web服务之间的区别？</h3>
+<p>Web服务：</p>
+<ul>
+<li>所有Web服务都是API …</li></ul>
+                <a class="readmore" href="/testing_api_interview.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 13
+        <a href="/author/andrew2.html">&raquo;</a>
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
