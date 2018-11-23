@@ -30,6 +30,67 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_grp.html" rel="bookmark"
+                           title="Permalink to python库介绍-grp：group数据库">python库介绍-grp：group数据库</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-28T19:20:00+08:00">
+                Published: 三 28 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>grp可以访问Unix组数据库。 </p>
+<p>组数据库项由结构体group(类似元组)表示，参见pwd.h：</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">属性</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">gr_name</td>
+<td align="center">the name of the group</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">gr_passwd</td>
+<td align="center">the (encrypted) group password; often empty</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">gr_gid</td>
+<td align="center">the numerical group ID</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">gr_mem</td>
+<td align="center">all the group member’s user names</td>
+</tr>
+</tbody>
+</table>
+<p>gid整型，name和password为字符串，gr_mem为字符串列表。</p>
+<h2 id="_2">方法</h2>
+<ul>
+<li>
+<p>grp.getgrgid(gid)</p>
+<p>Return the group …</p></li></ul>
+                <a class="readmore" href="/python3_lib_grp.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_lib_pwd.html" rel="bookmark"
                            title="Permalink to python库介绍-pwd：密码数据库">python库介绍-pwd：密码数据库</a></h1>
                 </header>
@@ -412,52 +473,6 @@ package之外的类(在<default>中)不能被导入。
 </ul>
 <div class="highlight"><pre><span></span><span class="c1"># pip3 install jpype1 …</span></pre></div>
                 <a class="readmore" href="/python3_lib_jpype1.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/linux_ubuntu_tips.html" rel="bookmark"
-                           title="Permalink to ubuntu点滴">ubuntu点滴</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-01T19:20:00+08:00">
-                Published: 四 01 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/linux.html">linux</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">快速入门(接口测试)</h2>
-<ul>
-<li>
-<p>确认mvn和jdk、jython安装ok。</p>
-</li>
-<li>
-<p>先下载dubbo的demo，编译运行demo。</p>
-</li>
-</ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># git clone https://github.com/alibaba/dubbo.git dubbo</span>
-<span class="c1"># cd dubbo/</span>
-<span class="c1"># mvn clean install -Dmaven.test.skip</span>
-<span class="c1"># cd dubbo-demo/dubbo-demo-provider/target/</span>
-<span class="c1"># tar xzvf dubbo-demo-provider-2.5.4-SNAPSHOT-assembly.tar.gz</span>
-<span class="c1"># cd dubbo-demo-provider-2.5.4-SNAPSHOT/bin …</span></pre></div></td></tr></table>
-                <a class="readmore" href="/linux_ubuntu_tips.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
