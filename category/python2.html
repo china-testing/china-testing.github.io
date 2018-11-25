@@ -30,6 +30,130 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/tensorflow4.html" rel="bookmark"
+                           title="Permalink to TensorFlow工具快速入门教程4机器学习和深度学习的区别">TensorFlow工具快速入门教程4机器学习和深度学习的区别</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-21T08:20:00+08:00">
+                Published: 三 21 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
+</ul>
+<h3 id="ai">什么是AI？</h3>
+<p>人工智能赋予机器认知能力。人工智能的基准是有关推理，言语和愿景的人类智慧。这个基准还很遥远。</p>
+<p>到目前为止，机器学习是分析，理解和识别数据模式的最佳工具。机器学习背后的主要思想之一是计算机可以训练以自动执行对于人类来说是穷举或不可能的任务。</p>
+<p>机器学习使用数据来提供可以理解输入和输出之间关系的算法。当机器完成学习时，它可以预测新数据点的值或类。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-528495fca565285b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-666ff1e6b64f3b13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_1">机器学习的过程</h3>
+<p>训练分类器以检测图像是否是：自行车、船、汽车和飞机。</p>
+<p>上面的四个对象是分类器必须识别的类。要构造分类器，您需要将数据作为输入并为其分配标签。算法将获取这些数据，找到模式，然后在相应的类中对其进行分类。</p>
+<p>这项任务称为监督学习。在监督学习中，您提供给算法的训练数据包括标签。</p>
+<p>训练算法需要遵循几个标准步骤：收集数据、训练分类器、作出预测</p>
+<p>数据决定算法成败。您选择用于训练模型的数据称为要素。在对象示例中，特征是图像的像素。</p>
+<p>图像大小为28x28，则数据集包含784列（28x28）。在下图中，每张图片都已转换为特征向量。标签告诉计算机图像中有什么对象。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-241bf477eb66e938.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>目标是使用这些训练数据来分类对象的类型。第一步包括创建要素列。然后，第二步涉及选择训练模型的算法。训练完成后，模型将预测哪个图片对应于哪个对象。之后，很容易使用该模型来预测新图像。</p>
+<h3 id="_2">深度学习过程 …</h3>
+                <a class="readmore" href="/tensorflow4.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/opencv_crash_deep_learning3.html" rel="bookmark"
+                           title="Permalink to TensorFlow工具快速入门教程3深度学习简介">TensorFlow工具快速入门教程3深度学习简介</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-20T12:20:00+08:00">
+                Published: 二 20 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
+</ul>
+<h3 id="_1">深度学习介绍</h3>
+<p>深度学习是模拟大脑中神经元网络的计算机软件。它是机器学习的子集，被称为深度学习，因为它利用了深度神经网络。</p>
+<p>深度学习算法的第一层称为输入层，最后一层称为输出层，中间的所有层都称为隐藏层。深词意味着有两层以上的神经元。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1e0fb97f8a92db90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>每个隐藏层由神经元组成。神经元彼此连接。神经元将处理然后传播上层的输入信号。给下层神经元的信号强度取决于重量，偏差和激活函数。</p>
+<p>网络消耗大量输入数据并通过多层操作它们;网络逐层学习越来越复杂的数据特征。</p>
+<h3 id="_2">深度学习过程</h3>
+<p>深度神经网络在从物体检测到语音识别的许多任务中提供最先进的精确度。他们可以自动学习，不需要程序员明确编码的预定义知识。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-2f011a9f5dd25c65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>要掌握深度学习的想法，想象一个有婴儿和父母的家庭。蹒跚学步的孩子用小指指着物体，总是说“猫”这个词。父母告诉他'是‘还是'否。小孩在内心深处不知道为什么他可以说这是猫。但他学会了如何通过观察整体宠物来提升猫的复杂特征，并继续关注尾巴或鼻子之类的细节。</p>
+<p>神经网络的工作原理完全相同。每一层代表更深层次的知识，即知识的层次结构。具有四层的神经网络将比具有两层的神经网络学习更复杂的特征。</p>
+<p>学习分两个阶段进行。第一阶段包括应用输入的非线性变换并创建统计模型作为输出。 第二阶段旨在用一种称为衍生物的数学方法来改进模型。</p>
+<p>神经网络将这两个阶段重复数百到数千次，直到达到可容忍的准确度。这个两阶段的重复被称为迭代。</p>
+<p>举个例子，模特试图学习如何跳舞。经过10分钟的训练，模特不知道如何跳舞，看起来像一个涂鸦。</p>
+<p><img alt="test.gif" src="https://upload-images.jianshu.io/upload_images/12713060-af0f71ae53bb7f97.gif?imageMogr2/auto-orient/strip"></p>
+<p>经过48小时的学习，电脑掌握了舞蹈艺术。</p>
+<p><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-38d7673e6fbed623.gif?imageMogr2/auto-orient/strip"></p>
+<h3 id="_3">神经网络的分类 …</h3>
+                <a class="readmore" href="/opencv_crash_deep_learning3.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/tensorflow3.html" rel="bookmark"
+                           title="Permalink to TensorFlow工具快速入门教程3深度学习简介">TensorFlow工具快速入门教程3深度学习简介</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-20T12:20:00+08:00">
+                Published: 二 20 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
+</ul>
+<h3 id="_1">深度学习介绍</h3>
+<p>深度学习是模拟大脑中神经元网络的计算机软件。它是机器学习的子集，被称为深度学习，因为它利用了深度神经网络。</p>
+<p>深度学习算法的第一层称为输入层，最后一层称为输出层，中间的所有层都称为隐藏层。深词意味着有两层以上的神经元。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1e0fb97f8a92db90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>每个隐藏层由神经元组成。神经元彼此连接。神经元将处理然后传播上层的输入信号。给下层神经元的信号强度取决于重量，偏差和激活函数。</p>
+<p>网络消耗大量输入数据并通过多层操作它们;网络逐层学习越来越复杂的数据特征。</p>
+<h3 id="_2">深度学习过程</h3>
+<p>深度神经网络在从物体检测到语音识别的许多任务中提供最先进的精确度。他们可以自动学习，不需要程序员明确编码的预定义知识。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-2f011a9f5dd25c65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>要掌握深度学习的想法，想象一个有婴儿和父母的家庭。蹒跚学步的孩子用小指指着物体，总是说“猫”这个词。父母告诉他'是‘还是'否。小孩在内心深处不知道为什么他可以说这是猫。但他学会了如何通过观察整体宠物来提升猫的复杂特征，并继续关注尾巴或鼻子之类的细节。</p>
+<p>神经网络的工作原理完全相同。每一层代表更深层次的知识，即知识的层次结构。具有四层的神经网络将比具有两层的神经网络学习更复杂的特征。</p>
+<p>学习分两个阶段进行。第一阶段包括应用输入的非线性变换并创建统计模型作为输出。 第二阶段旨在用一种称为衍生物的数学方法来改进模型。</p>
+<p>神经网络将这两个阶段重复数百到数千次，直到达到可容忍的准确度。这个两阶段的重复被称为迭代。</p>
+<p>举个例子，模特试图学习如何跳舞。经过10分钟的训练，模特不知道如何跳舞，看起来像一个涂鸦。</p>
+<p><img alt="test.gif" src="https://upload-images.jianshu.io/upload_images/12713060-af0f71ae53bb7f97.gif?imageMogr2/auto-orient/strip"></p>
+<p>经过48小时的学习，电脑掌握了舞蹈艺术。</p>
+<p><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-38d7673e6fbed623.gif?imageMogr2/auto-orient/strip"></p>
+<h3 id="_3">神经网络的分类 …</h3>
+                <a class="readmore" href="/tensorflow3.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/opencv_crash_deep_learning2.html" rel="bookmark"
                            title="Permalink to 计算机视觉opcencv工具深度学习快速实战2 opencv快速入门">计算机视觉opcencv工具深度学习快速实战2 opencv快速入门</a></h1>
                 </header>
@@ -295,134 +419,6 @@
 </ul>
 <p>构建模型时 …</p>
                 <a class="readmore" href="/tensorflow2.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/tensorflow.html" rel="bookmark"
-                           title="Permalink to TensorFlow工具快速入门教程1人工智能简介">TensorFlow工具快速入门教程1人工智能简介</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-12T08:30:00+08:00">
-                Published: 一 12 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li>
-<p><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></p>
-</li>
-<li>
-<p><a href="https://china-testing.github.io/tensorflow1.html">TensorFlow工具快速入门教程1人工智能简介</a></p>
-</li>
-<li><a href="https://china-testing.github.io/tensorflow2.html">TensorFlow工具快速入门教程2机器学习简介</a></li>
-<li><a href="https://china-testing.github.io/tensorflow3.html">TensorFlow工具快速入门教程3深度学习简介</a></li>
-<li><a href="https://china-testing.github.io/tensorflow4.html">TensorFlow工具快速入门教程4机器学习和深度学习的区别</a></li>
-<li><a href="https://china-testing.github.io/tensorflow5.html">TensorFlow工具快速入门教程5 TensorFlow简介</a></li>
-<li><a href="https://china-testing.github.io/tensorflow6.html">TensorFlow工具快速入门教程6 深度学习库比较</a></li>
-</ul>
-<h3 id="_1">参考资料</h3>
-<ul>
-<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
-<li><a href="https://china-testing.github.io/tensorflow.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
-</ul>
-                <a class="readmore" href="/tensorflow.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/tensorflow1.html" rel="bookmark"
-                           title="Permalink to TensorFlow工具快速入门教程1人工智能简介">TensorFlow工具快速入门教程1人工智能简介</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-12T08:30:00+08:00">
-                Published: 一 12 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
-</ul>
-<h3 id="ai">什么是AI？</h3>
-<p>具有执行认知功能（例如感知，学习，推理和解决问题）的能力的机器被认为具有人工智能。</p>
-<p>当机器具有认知能力时，存在人工智能。人工智能的基准是关于推理，说话和视觉的人类水平。</p>
-<p>AI有三个不同的级别：</p>
-<ul>
-<li>狭义的AI：当机器能够比人类更好地执行特定任务时，这是人工智能的当前水平。</li>
-<li>通用的人工智能：能够以与人类相同的准确度执行任何智力任务。</li>
-<li>强大的人工智能：人工智能在很多任务中可以击败人类。</li>
-</ul>
-<p>人工智能几乎用于所有行业，据麦肯锡称，人工智能有可能在零售业中创造价值600亿美元的价值，与其他分析技术相比，银行业的增值价值增加了​​50％。在运输和物流方面，潜在的收入增长了89％。</p>
-<p>如果一个组织将AI用于其营销团队，它可以自动执行重复的任务，使销售代表能够专注于建立关系，领导培育等任务。某公司每次销售代表打电话时，机器都会记录转录和分析聊天。 VP可以使用AI分析和推荐来制定获胜策略。</p>
-<p>简而言之，AI提供了一种尖端技术来处理人类无法处理的复杂数据。 AI可自动执行冗余作业，使工作人员能够专注于高级增值任务。当人工智能大规模实施时，可以降低成本并增加收入。</p>
-<h3 id="_1">人工智能简史</h3>
-<p>1956年，一群来自不同背景的前卫专家决定组织一个关于人工智能的夏季研究项目。四个聪明的头脑领导了这个项目; John McCarthy（达特茅斯学院），Marvin Minsky（哈佛大学 …</p>
-                <a class="readmore" href="/tensorflow1.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/pentesting11.html" rel="bookmark"
-                           title="Permalink to 渗透测试工具简介11 SQL 注入">渗透测试工具简介11 SQL 注入</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-12T08:25:00+08:00">
-                Published: 一 12 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/pentesting.html">本书目录</a></li>
-</ul>
-<h1 id="11-sql">渗透测试工具简介11 SQL注入</h1>
-<p>SQL是结构化查询语言的首字母缩写。它用于检索和操作数据库中的数据。</p>
-<h3 id="sql">什么是SQL注入？</h3>
-<p>SQL注入使动态SQL语句注释掉语句的某些部分或附加始终为真的条件来执行恶意SQL代码。</p>
-<p>可以使用SQL注入执行的攻击类型和数据库引擎相关。攻击适用于动态SQL语句。动态语句是在运行时使用来自Web表单或URI查询字符串的参数password生成的语句。</p>
-<p>某HTML表单的代码如下。</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">‘index.php’</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">required</span><span class="o">=</span><span class="s">&quot;required&quot;</span><span class="p">/&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;password&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;password&quot;</span><span class="p">/&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;remember_me&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Remember me&quot;</span><span class="p">/&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Submit&quot;</span><span class="p">/&gt;</span>
-
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</pre></div>
-
-
-<p>上面的表单接受电子邮件地址和密码，将它们提交给名为index.php的PHP文件。
-它可以选择将登录会话存储在cookie中。 我们从remember_me复选框中推断出这一点。 它使用post方法提交数据。 这意味着值不会显示在URL中 …</p>
-                <a class="readmore" href="/pentesting11.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

@@ -30,6 +30,171 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_pwd.html" rel="bookmark"
+                           title="Permalink to python库介绍-pwd：密码数据库">python库介绍-pwd：密码数据库</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-22T19:20:00+08:00">
+                Published: 四 22 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>pwd可以访问Unix用户帐户和密码数据库。 </p>
+<p>密码数据库项由结构体passwd(类似元组)表示，参见pwd.h：</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">pw_name</td>
+<td align="center">Login name</td>
+</tr>
+<tr>
+<td align="center">pw_passwd</td>
+<td align="center">Optional encrypted password</td>
+</tr>
+<tr>
+<td align="center">pw_uid</td>
+<td align="center">Numerical user ID</td>
+</tr>
+<tr>
+<td align="center">pw_gid</td>
+<td align="center">Numerical group ID</td>
+</tr>
+<tr>
+<td align="center">pw_gecos</td>
+<td align="center">User name or comment field</td>
+</tr>
+<tr>
+<td align="center">pw_dir</td>
+<td align="center">User home directory</td>
+</tr>
+<tr>
+<td align="center">pw_shell</td>
+<td align="center">User command interpreter</td>
+</tr>
+</tbody>
+</table>
+<p>除了pw_uid和pw_gid是整数外，其他都是字符串。</p>
+<h2 id="pwd">pwd方法</h2>
+<ul>
+<li>pwd.getpwuid(uid): Return the password database entry for …</li></ul>
+                <a class="readmore" href="/python3_lib_pwd.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_spwd.html" rel="bookmark"
+                           title="Permalink to python库介绍-spwd：shadow密码数据库">python库介绍-spwd：shadow密码数据库</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-12T19:20:00+08:00">
+                Published: 一 12 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>pwd可以访问Unix shadow密码数据库。  2.5新增。通常需要为root用户。</p>
+<p>密码数据库项由结构体spwd(类似元组)表示，参见shadow.h：</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">属性</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">sp_nam</td>
+<td align="center">Login name</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">sp_pwd</td>
+<td align="center">Encrypted password</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">sp_lstchg</td>
+<td align="center">Date of last change</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">sp_min</td>
+<td align="center">Minimal number of days between changes</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">sp_max</td>
+<td align="center">Maximum number of days between changes</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">sp_warn</td>
+<td align="center">Number of days before …</td></tr></tbody></table>
+                <a class="readmore" href="/python3_lib_spwd.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_pathlib.html" rel="bookmark"
+                           title="Permalink to python库介绍-pathlib: 文件系统对象">python库介绍-pathlib: 文件系统对象</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-11T19:40:00+08:00">
+                Published: 日 11 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>目的：使用面向对象的API解析，构建，测试和处理文件名和路径，而不是底层的字符串操作。</p>
+<h2 id="path">Path表示</h2>
+<p>pathlib包含用于管理使用POSIX标准或Microsoft Windows语法格式化的文件系统路径的类。它包括所谓的“pure”类，它们对字符串进行操作，但不与实际的文件系统进行交互;“concrete”类将API扩展为包含反映或修改本地文件系统数据的操作。</p>
+<p>pure类PurePosixPath和PureWindowsPath可以在任何操作系统上实例化和使用，因为它们只用于名称。要实例化正确的类来处理真实的文件系统，请使用Path来获取PosixPath或WindowsPath，具体取决于平台。</p>
+<ul>
+<li>
+<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
+</li>
+<li>
+<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
+</li>
+</ul>
+<p>[接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲]</p>
+<h2 id="path_1">构建Path</h2>
+<p>要实例化路径，字符串作为参数。Path对象的字符串表示是该字符串。要创建引用相对于现有路径的值的新路径，请使用/运算符来扩展路径。运算符的参数可以是字符串或其他路径对象。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1 …</pre></div></td></tr></table>
+                <a class="readmore" href="/python3_lib_pathlib.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_lib_enum.html" rel="bookmark"
                            title="Permalink to python库介绍-enum: 枚举">python库介绍-enum: 枚举</a></h1>
                 </header>

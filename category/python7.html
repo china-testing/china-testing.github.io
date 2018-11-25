@@ -30,6 +30,120 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_dubbo.html" rel="bookmark"
+                           title="Permalink to python库介绍-dubbo：通过telnet接口访问dubbo服务">python库介绍-dubbo：通过telnet接口访问dubbo服务</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-26T19:20:00+08:00">
+                Published: 一 26 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>dubbo服务发布之后，我们可以利用telnet命令进行调试、管理。更多资料参见 <a href="http://alibaba.github.io/dubbo-doc-static/Telnet+Command+Reference-zh-showComments=true&amp;showCommentArea=true.htm">Telnet命令参考手册</a></p>
+<p>项目地址：https://bitbucket.org/china-testing/python-chinese-library/src/46204fd809a04f4d9c7450860d48f2951dec3bc1/libraries/_dubbo/?at=default</p>
+<p>telnet 调用示例：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">telnet</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span> <span class="mi">9097</span>
+<span class="n">Trying</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span><span class="o">...</span>
+<span class="n">Connected</span> <span class="n">to</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span><span class="o">.</span>
+<span class="n">Escape</span> <span class="n">character …</span></pre></div></td></tr></table>
+                <a class="readmore" href="/python3_lib_dubbo.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_pypinyin.html" rel="bookmark"
+                           title="Permalink to python库介绍-pypinyin: 汉字拼音转换工具及中文排序">python库介绍-pypinyin: 汉字拼音转换工具及中文排序</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-26T19:20:00+08:00">
+                Published: 一 26 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>将汉字转为拼音。可以用于汉字注音、排序、检索(Russian translation) 。</p>
+<p>中文文档写得很好，这里不再罗嗦： http://pypinyin.readthedocs.io/zh_CN/master/</p>
+<p>另外可以基于该库进行中文排序：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pypinyin</span> <span class="kn">import</span> <span class="n">lazy_pinyin</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;中国人&#39;</span><span class="p">,</span> <span class="s1">&#39;啊&#39;</span><span class="p">,</span> <span class="s1">&#39;你好&#39;</span><span class="p">,</span> <span class="s1">&#39;台湾人&#39;</span><span class="p">]</span>
+<span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">char</span><span class="p">:</span> <span class="n">lazy_pinyin</span><span class="p">(</span><span class="n">char</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p><a href="https://bitbucket.org/china-testing/python-chinese-library/src/8608aa5693e502050065c0c2dd83df393775a174/libraries/pypinyin/?at=default">代码</a></p>
+<h2 id="_2">参考资料：</h2>
+<ul>
+<li>
+<p>python中文库参考项目：  https://bitbucket.org/china-testing/python-chinese-library</p>
+</li>
+<li>
+<p>python中文库参考项目文档 …</p></li></ul>
+                <a class="readmore" href="/python3_lib_pypinyin.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_buildbot.html" rel="bookmark"
+                           title="Permalink to python库介绍-buildbot教程">python库介绍-buildbot教程</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-25T19:23:00+08:00">
+                Published: 日 25 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Buildbot是python实现的开源持续构建和持续交付工具，为Python, Mozilla, Chromium, WebKit等知名项目使用。</p>
+<p>与Jenkins相比，Buildbot在大陆使用者较少。原因在于Jenkins的界面相对较美观，更容易上手；Jenkins的中文文档比较丰富。但是Jenkins因为资源消耗庞大、不太方便定制而不受一些有实力的公司欢迎。这些不少把目光聚焦在Buildbot。</p>
+<p>究竟Buildbot有哪些优点让这些公司青睐呢？Buildbot基于python网络框架Twisted，分布式做得好。Buildbot可以直接使用python包，轻松拥有上万库，具备强大的扩展能力。如果你觉得Jenkins已经轻松地满足你的需求，你不需要Buildbot。如果你在Jenkins时觉得效率低下、扩展困难、一些用python等脚本可以实现的动作在Jenkins困难重重，那么可以看看Buildbot。</p>
+<p>python的buildbot站点：　http://buildbot.python.org/all/#/</p>
+<p>Buildbot是开源的自动化软件构建，测试，发布流程的框架。</p>
+<p>Buildbot支持跨平台，分布式，并行执行jobs，与版本控制系统的灵活集成，丰富的状态报告等等。 </p>
+<p>Buildbot是一个作业调度系统：它会对作业进行排队，在所需要的资源可用时执行任务，并报告结果。</p>
+<p>Buildbot有一个或多个主机和从机。主机监控源代码库的变化，调配从机，并给用户和开发者报告结果。从机可在多种操作系统上运行。</p>
+<p>可以配置Python脚本到主机。这个脚本可以简单到只配置内置组件 …</p>
+                <a class="readmore" href="/python3_lib_buildbot.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_lib_os.path.html" rel="bookmark"
                            title="Permalink to python库介绍-os.path: 平台独立的文件名操作">python库介绍-os.path: 平台独立的文件名操作</a></h1>
                 </header>
@@ -351,171 +465,6 @@ calendar 标准模块。</p>
 <p>grp.getgrgid(gid)</p>
 <p>Return the group …</p></li></ul>
                 <a class="readmore" href="/python3_lib_grp.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_pwd.html" rel="bookmark"
-                           title="Permalink to python库介绍-pwd：密码数据库">python库介绍-pwd：密码数据库</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-22T19:20:00+08:00">
-                Published: 四 22 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>pwd可以访问Unix用户帐户和密码数据库。 </p>
-<p>密码数据库项由结构体passwd(类似元组)表示，参见pwd.h：</p>
-<table>
-<thead>
-<tr>
-<th align="center">属性</th>
-<th align="center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">pw_name</td>
-<td align="center">Login name</td>
-</tr>
-<tr>
-<td align="center">pw_passwd</td>
-<td align="center">Optional encrypted password</td>
-</tr>
-<tr>
-<td align="center">pw_uid</td>
-<td align="center">Numerical user ID</td>
-</tr>
-<tr>
-<td align="center">pw_gid</td>
-<td align="center">Numerical group ID</td>
-</tr>
-<tr>
-<td align="center">pw_gecos</td>
-<td align="center">User name or comment field</td>
-</tr>
-<tr>
-<td align="center">pw_dir</td>
-<td align="center">User home directory</td>
-</tr>
-<tr>
-<td align="center">pw_shell</td>
-<td align="center">User command interpreter</td>
-</tr>
-</tbody>
-</table>
-<p>除了pw_uid和pw_gid是整数外，其他都是字符串。</p>
-<h2 id="pwd">pwd方法</h2>
-<ul>
-<li>pwd.getpwuid(uid): Return the password database entry for …</li></ul>
-                <a class="readmore" href="/python3_lib_pwd.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_spwd.html" rel="bookmark"
-                           title="Permalink to python库介绍-spwd：shadow密码数据库">python库介绍-spwd：shadow密码数据库</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-12T19:20:00+08:00">
-                Published: 一 12 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>pwd可以访问Unix shadow密码数据库。  2.5新增。通常需要为root用户。</p>
-<p>密码数据库项由结构体spwd(类似元组)表示，参见shadow.h：</p>
-<table>
-<thead>
-<tr>
-<th align="center">序号</th>
-<th align="center">属性</th>
-<th align="center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">0</td>
-<td align="center">sp_nam</td>
-<td align="center">Login name</td>
-</tr>
-<tr>
-<td align="center">1</td>
-<td align="center">sp_pwd</td>
-<td align="center">Encrypted password</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">sp_lstchg</td>
-<td align="center">Date of last change</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">sp_min</td>
-<td align="center">Minimal number of days between changes</td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="center">sp_max</td>
-<td align="center">Maximum number of days between changes</td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td align="center">sp_warn</td>
-<td align="center">Number of days before …</td></tr></tbody></table>
-                <a class="readmore" href="/python3_lib_spwd.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_pathlib.html" rel="bookmark"
-                           title="Permalink to python库介绍-pathlib: 文件系统对象">python库介绍-pathlib: 文件系统对象</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-11T19:40:00+08:00">
-                Published: 日 11 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p>目的：使用面向对象的API解析，构建，测试和处理文件名和路径，而不是底层的字符串操作。</p>
-<h2 id="path">Path表示</h2>
-<p>pathlib包含用于管理使用POSIX标准或Microsoft Windows语法格式化的文件系统路径的类。它包括所谓的“pure”类，它们对字符串进行操作，但不与实际的文件系统进行交互;“concrete”类将API扩展为包含反映或修改本地文件系统数据的操作。</p>
-<p>pure类PurePosixPath和PureWindowsPath可以在任何操作系统上实例化和使用，因为它们只用于名称。要实例化正确的类来处理真实的文件系统，请使用Path来获取PosixPath或WindowsPath，具体取决于平台。</p>
-<ul>
-<li>
-<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
-</li>
-<li>
-<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
-</li>
-</ul>
-<p>[接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲]</p>
-<h2 id="path_1">构建Path</h2>
-<p>要实例化路径，字符串作为参数。Path对象的字符串表示是该字符串。要创建引用相对于现有路径的值的新路径，请使用/运算符来扩展路径。运算符的参数可以是字符串或其他路径对象。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1 …</pre></div></td></tr></table>
-                <a class="readmore" href="/python3_lib_pathlib.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
