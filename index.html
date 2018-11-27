@@ -28,7 +28,172 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/python_gui_books.html">python GUI工具书籍下载-持续更新</a></h1>
+                    <h1 class="entry-title"><a href="/tk1.html">python GUI作业：tkinter控件改变背景色</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-11-28T07:20:00+08:00">
+                Published: 三 28 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info --><h3 id="_1">要求</h3>
+<p>使用tkinter生成如下窗口：</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b107f1052f9ad201.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-edceb8f49a1d2b29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>在右上角文本框输入名字，在旁边的下拉框选择数字，点击"Click Me!", "Click Me!"的文本将改变成如下：</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-f5b26250186636ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>可以选择"Unchecked"和"Enabled"的其中一个。</p>
+<p>点击Blue、Gold、Red其中的一个，将会改变背景为对应的颜色。</p>
+<p>最下面的文本框可以输入文本，当列数超出范围时，可以通过滚动条操作。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-97d7f6115d7ec2aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_2">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/tk1.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+</ul>
+<h3 id="_3">参考代码</h3>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># 技术支持：https://www.jianshu.com/u/69f40328d4f0 </span>
+<span class="c1"># 技术支持 https://china-testing.github.io/</span>
+<span class="c1"># https://github.com/china-testing/python-api-tesing/blob/master/practices/tk1.py</span>
+<span class="c1"># 讨论钉钉免费群21745728 qq群144081101 567351477</span>
+<span class="c1"># CreateDate: 2018-11-27</span>
+
+<span class="kn">import</span> <span class="nn">tkinter</span> <span class="kn">as</span> <span class="nn">tk</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">ttk</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">scrolledtext</span>
+
+<span class="n">win</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>   
+
+<span class="c1"># Add a title       </span>
+<span class="n">win</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Python GUI&quot;</span><span class="p">)</span>  
+
+<span class="c1"># Modify adding a Label</span>
+<span class="n">a_label</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;A Label&quot;</span><span class="p">)</span>
+<span class="n">a_label</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Modified Button Click Function</span>
+<span class="k">def</span> <span class="nf">click_me</span><span class="p">():</span> 
+    <span class="n">action</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Hello &#39;</span> <span class="o">+</span> <span class="n">name</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> 
+                     <span class="n">number_chosen</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+
+<span class="c1"># Changing our Label</span>
+<span class="n">ttk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Enter a name:&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Adding a Textbox Entry widget</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+<span class="n">name_entered</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+<span class="n">name_entered</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Adding a Button</span>
+<span class="n">action</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Click Me!&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">click_me</span><span class="p">)</span>   
+<span class="n">action</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>                                 <span class="c1"># &lt;= change column to 2</span>
+
+<span class="c1"># Creating three checkbuttons</span>
+<span class="n">ttk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Choose a number:&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">number</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+<span class="n">number_chosen</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Combobox</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">number</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="s1">&#39;readonly&#39;</span><span class="p">)</span>
+<span class="n">number_chosen</span><span class="p">[</span><span class="s1">&#39;values&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">number_chosen</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">number_chosen</span><span class="o">.</span><span class="n">current</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">chVarDis</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">IntVar</span><span class="p">()</span>
+<span class="n">check1</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Disabled&quot;</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">chVarDis</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="s1">&#39;disabled&#39;</span><span class="p">)</span>
+<span class="n">check1</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
+<span class="n">check1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">W</span><span class="p">)</span>                   
+
+<span class="n">chVarUn</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">IntVar</span><span class="p">()</span>
+<span class="n">check2</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;UnChecked&quot;</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">chVarUn</span><span class="p">)</span>
+<span class="n">check2</span><span class="o">.</span><span class="n">deselect</span><span class="p">()</span>
+<span class="n">check2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">W</span><span class="p">)</span>                   
+
+<span class="n">chVarEn</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">IntVar</span><span class="p">()</span>
+<span class="n">check3</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Enabled&quot;</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">chVarEn</span><span class="p">)</span>
+<span class="n">check3</span><span class="o">.</span><span class="n">deselect</span><span class="p">()</span>
+<span class="n">check3</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">W</span><span class="p">)</span>                     
+
+<span class="c1"># GUI Callback function </span>
+<span class="k">def</span> <span class="nf">checkCallback</span><span class="p">(</span><span class="o">*</span><span class="n">ignoredArgs</span><span class="p">):</span>
+    <span class="c1"># only enable one checkbutton</span>
+    <span class="k">if</span> <span class="n">chVarUn</span><span class="o">.</span><span class="n">get</span><span class="p">():</span> <span class="n">check3</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="s1">&#39;disabled&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>             <span class="n">check3</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">chVarEn</span><span class="o">.</span><span class="n">get</span><span class="p">():</span> <span class="n">check2</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="s1">&#39;disabled&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>             <span class="n">check2</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">)</span> 
+
+<span class="c1"># trace the state of the two checkbuttons</span>
+<span class="n">chVarUn</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">unused0</span><span class="p">,</span> <span class="n">unused1</span><span class="p">,</span> <span class="n">unused2</span> <span class="p">:</span> <span class="n">checkCallback</span><span class="p">())</span>    
+<span class="n">chVarEn</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">unused0</span><span class="p">,</span> <span class="n">unused1</span><span class="p">,</span> <span class="n">unused2</span> <span class="p">:</span> <span class="n">checkCallback</span><span class="p">())</span>   
+
+
+<span class="c1"># First, we change our Radiobutton global variables into a list</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Blue&quot;</span><span class="p">,</span> <span class="s2">&quot;Gold&quot;</span><span class="p">,</span>  <span class="s2">&quot;Red&quot;</span><span class="p">]</span>   
+
+<span class="c1"># We have also changed the callback function to be zero-based, using the list </span>
+<span class="c1"># instead of module-level global variables </span>
+<span class="c1"># Radiobutton Callback</span>
+<span class="k">def</span> <span class="nf">radCall</span><span class="p">():</span>
+    <span class="n">radSel</span><span class="o">=</span><span class="n">radVar</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="k">if</span>   <span class="n">radSel</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">win</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># now zero-based</span>
+    <span class="k">elif</span> <span class="n">radSel</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="n">win</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># and using list</span>
+    <span class="k">elif</span> <span class="n">radSel</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="n">win</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># create three Radiobuttons using one variable</span>
+<span class="n">radVar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">IntVar</span><span class="p">()</span>
+
+<span class="c1"># Next we are selecting a non-existing index value for radVar</span>
+<span class="n">radVar</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>                                 
+
+<span class="c1"># Now we are creating all three Radiobutton widgets within one loop</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>                             
+    <span class="n">curRad</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">variable</span><span class="o">=</span><span class="n">radVar</span><span class="p">,</span> 
+                            <span class="n">value</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">radCall</span><span class="p">)</span>          
+    <span class="n">curRad</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">W</span><span class="p">)</span> 
+
+<span class="c1"># Using a scrolled Text control    </span>
+<span class="n">scrol_w</span>  <span class="o">=</span> <span class="mi">30</span>
+<span class="n">scrol_h</span>  <span class="o">=</span>  <span class="mi">3</span>
+<span class="n">scr</span> <span class="o">=</span> <span class="n">scrolledtext</span><span class="o">.</span><span class="n">ScrolledText</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">scrol_w</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">scrol_h</span><span class="p">,</span> <span class="n">wrap</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">WORD</span><span class="p">)</span>
+<span class="n">scr</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">name_entered</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>      <span class="c1"># Place cursor into name Entry</span>
+
+<span class="c1">#======================</span>
+<span class="c1"># Start GUI</span>
+<span class="c1">#======================</span>
+<span class="n">win</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+
+
+<h3 id="_4">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/tk1.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_gui_books.html" rel="bookmark"
+                           title="Permalink to python GUI工具书籍下载-持续更新">python GUI工具书籍下载-持续更新</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-11-27T18:20:00+08:00">
                 Published: 二 27 十一月 2018
@@ -39,7 +204,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info --><p><a href="https://itbooks.pipipan.com/fs/18113597-321973435">Python GUI Programming Cookbook 2nd - 2017.pdf</a></p>
+</footer><!-- /.post-info -->                <p><a href="https://itbooks.pipipan.com/fs/18113597-321973435">Python GUI Programming Cookbook 2nd - 2017.pdf</a></p>
 <p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-99cff31bfd2fbf37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <p>https://github.com/PacktPublishing/Python-GUI-Programming-Cookbook-Second-Edition 60星左右</p>
 <p><a href="https://itbooks.pipipan.com/fs/18113597-321973525">WxPython_Application_Development_Cookbook - 2015.pdf</a></p>
@@ -52,41 +217,10 @@
 <p>https://github.com/PacktPublishing/Tkinter-GUI-Programming-by-Example  不到10星</p>
 <p><a href="https://itbooks.pipipan.com/fs/18113597-321973498">Tkinter GUI Application Development Cookbook - 2018.pdf</a></p>
 <p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-9f3672fe0df4ea50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>https://github.com/PacktPublishing/Tkinter-GUI-Application-Development-Cookbook 不到10星</p>
-<p><a href="https://itbooks.pipipan.com/fs/18113597-321973489">Tkinter GUI Application Development Blueprints 2nd - 2018.pdf</a></p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-580b7d7a554bf17a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>https://github.com/PacktPublishing/Tkinter-GUI-Application-Development-Blueprints-Second-Edition 30星左右</p>
-<h3 id="_1">参考资料</h3>
-<ul>
-<li>讨论qq群144081101 591302926 567351477 钉钉免费群21745728</li>
-<li><a href="https://china-testing.github.io/python_gui_books.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
-</ul>
-<p><a href="https://itbooks.pipipan.com/fs/18113597-321973464">QT5 Python GUI Programming Cookbook - 2018.pdf</a></p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-7713e812950537f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>https://github.com/PacktPublishing/Qt5-Python-GUI-Programming-Cookbook 20星左右</p>
-<p><a href="https://itbooks.pipipan.com/fs/18113597-321973449">Python GUI programming with Tkinter - 2018.pdf</a></p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-151e628470be5c57.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>https://github.com/PacktPublishing/Python-GUI-Programming-with-Tkinter/ 20星左右</p>
-<p><a href="https://itbooks.pipipan.com/fs/18113597-321973413">Pyside GUI Application Development(2nd) - 2016.pdf</a> </p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b2492bb60fab1ecc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h3 id="_2">参考资料</h3>
-<ul>
-<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
-<li><a href="https://china-testing.github.io/python_gui_books.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
-<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>https://github.com …</p>
+                <a class="readmore" href="/python_gui_books.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -387,47 +521,6 @@
 <p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e120043e731403f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <p>神经网络决定如何在模型预测结果之前连接不同的“神经元”和多少层。一旦定义了体系结构，您不仅需要训练模型，还需要使用度量来计算预测的准确性。该度量被称为损失函数。目标是最小化损失函数。换句话说，这意味着模型减少了错误。所有机器学习算法将重复多次计算，直到损失达到更平坦的线。要最大限度地减少此丢失功能，您需要定义学习率。这是您希望模型学习的速度。如果您将学习率设置得太高，则模型没有时间学习任何东西。左图是这种情况 …</p>
                 <a class="readmore" href="/tensorflow8.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/tensorflow6.html" rel="bookmark"
-                           title="Permalink to TensorFlow工具快速入门教程6 深度学习库比较">TensorFlow工具快速入门教程6 深度学习库比较</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-22T08:27:00+08:00">
-                Published: 四 22 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
-</ul>
-<h3 id="tensorflow">什么是TensorFlow简介</h3>
-<p>自2016年以来，人工智能越来越受欢迎，20％的大公司在其业务中使用人工智能（麦肯锡报告，2018年 <a href="https://www.mckinsey.com/business-functions/mckinsey-analytics/our-insights/crossing-the-frontier-how-to-apply-ai-for-impact">report</a>
-）。根据同一报告，AI可以为各行业创造巨大价值。例如，在银行业，人工智能的潜力估计为3000亿美元，零售业的数量猛增至6000亿美元。</p>
-<p>为了释放人工智能的潜在价值，公司必须选择正确的深度学习框架。</p>
-<h3 id="8">8个最佳深度学习库/框架</h3>
-<p>在此列表中，我们将比较顶级的深度学习框架。所有这些都是开源的，并且在数据科学家社区中很受欢迎。</p>
-<ul>
-<li>Torch</li>
-</ul>
-<p>Torch是一个古老的开源机器学习库。它首次发布于15年前。它是主要的编程语言是LUA，但在C中有实现。Torch支持庞大的机器学习算法库，包括深度学习。它支持并行计算的CUDA实现。</p>
-<p>大多数领先的实验室都使用Torch，如Facebook，Google，Twitter，Nvidia等。 Torch的Python库名为Pytorch。</p>
-<ul>
-<li>Infer.net</li>
-</ul>
-<p>Infer.net由Microsoft开发和维护。 Infer.net是主要关注贝叶斯统计。 Infer.net旨在为从业者提供最先进的概率建模算法。该库包含分析工具，如贝叶斯分析，隐马尔可夫链，聚类。</p>
-<ul>
-<li>Keras …</li></ul>
-                <a class="readmore" href="/tensorflow6.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
