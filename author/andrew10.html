@@ -30,6 +30,62 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python_scrapy_cookbook2.html" rel="bookmark"
+                           title="Permalink to python爬虫cookbook-爬虫入门">python爬虫cookbook-爬虫入门</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-08T11:20:00+08:00">
+                Published: 二 08 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <p>技术支持qq群：437355848 630011153 144081101</p>
+<p><a href="https://china-testing.github.io/python_scrapy_cookbook2.html">本文最新版本</a></p>
+<p>python爬虫cookbook第二章 数据采集和提取</p>
+<p>在本章中，我们将介绍：</p>
+<ul>
+<li>如何使用BeautifulSoup解析网站并浏览DOM</li>
+<li>用BeautifulSoup查找方法搜索DOM</li>
+<li>用XPath和lxml查询DOM</li>
+<li>使用XPath和CSS选择器查询数据</li>
+<li>使用Scrapy选择器</li>
+<li>以Unicode / UTF-8格式加载数据</li>
+</ul>
+<h3 id="beautifulsoupdom">用BeautifulSoup解析网站并浏览DOM</h3>
+<p>01_bs_browser.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    china-testing#126.com wechat:pythontesting qq群:144081101</span>
+<span class="c1"># CreateDate: 2018-05-08</span>
+<span class="c1"># 02_blog_01_html.py</span>
+
+<span class="kn">import …</span></pre></div></td></tr></table>
+                <a class="readmore" href="/python_scrapy_cookbook2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_scrapy_cookbook1.html" rel="bookmark"
                            title="Permalink to python爬虫cookbook-爬虫入门">python爬虫cookbook-爬虫入门</a></h1>
                 </header>
@@ -384,52 +440,6 @@
 <p>qq群python 测试开发自动化测试 144081101 教你做免费的线上博客(放在简历中增加亮点)，自动化测试平台，性能测试工具等，让你有实际项目经验  联系qq：37391319 </p>
 <p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 …</p>
                 <a class="readmore" href="/python_opencv3_exmaple2.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_numpy_beginner_guide3rd3.html" rel="bookmark"
-                           title="Permalink to numpy学习指南3rd3:常用函数">numpy学习指南3rd3:常用函数</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-04-12T19:30:00+08:00">
-                Published: 四 12 四月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/numpy">代码地址</a></p>
-<h3 id="_1">文件读写</h3>
-<p>单位矩阵，即主对角线上的元素均为1，其余元素均为0的正方形矩阵。在NumPy中可以用 eye 函数创建一个这样的二维数组，我们只需要给定一个参数，用于指定矩阵中1的元素个数。</p>
-<p>例如，创建2×2的数组</p>
-<p>genfromtxt.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s2">&quot;eye.txt&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s2">&quot;eye.txt&quot;</span><span class="p">))</span>
-</pre></div>
-</td></tr></table>
-
-<p>执行结果：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">genfromtxt</span><span class="o">.</span><span class="n">py …</span></pre></div></td></tr></table>
-                <a class="readmore" href="/python_numpy_beginner_guide3rd3.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

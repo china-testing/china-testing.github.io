@@ -30,6 +30,52 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python_numpy_beginner_guide3rd3.html" rel="bookmark"
+                           title="Permalink to numpy学习指南3rd3:常用函数">numpy学习指南3rd3:常用函数</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-12T19:30:00+08:00">
+                Published: 四 12 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/numpy">代码地址</a></p>
+<h3 id="_1">文件读写</h3>
+<p>单位矩阵，即主对角线上的元素均为1，其余元素均为0的正方形矩阵。在NumPy中可以用 eye 函数创建一个这样的二维数组，我们只需要给定一个参数，用于指定矩阵中1的元素个数。</p>
+<p>例如，创建2×2的数组</p>
+<p>genfromtxt.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s2">&quot;eye.txt&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s2">&quot;eye.txt&quot;</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">genfromtxt</span><span class="o">.</span><span class="n">py …</span></pre></div></td></tr></table>
+                <a class="readmore" href="/python_numpy_beginner_guide3rd3.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_numpy_beginner_guide3rd2.html" rel="bookmark"
                            title="Permalink to numpy学习指南3rd2:NumPy基础">numpy学习指南3rd2:NumPy基础</a></h1>
                 </header>
@@ -446,47 +492,6 @@ Matplotlib是一个多功能的Python库，可生成数据可视化图。支持�
 
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">查看类型 …</span></pre></div>
                 <a class="readmore" href="/python_pandas_crash_tutorial1.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_pandas_crash_tutorial2.html" rel="bookmark"
-                           title="Permalink to python数据分析快速入门教程2-pandas数据结构">python数据分析快速入门教程2-pandas数据结构</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-31T09:20:00+08:00">
-                Published: 六 31 三月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/python_pandas_crash_tutorial.html">本书目录</a></p>
-<h3 id="_1">创建数据</h3>
-<p>Series和python的列表类似。DataFrame则类似值为Series的字典。</p>
-<p>create.py</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># create.py</span>
-
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">创建序列Series&quot;</span><span class="p">)</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">指定索引index创建序列Series&quot;</span><span class="p">)</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;Wes McKinney&#39;</span><span class="p">,</span> <span class="s1">&#39;Creator of Pandas&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Person&#39;</span><span class="p">,</span> <span class="s1">&#39;Who&#39;</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-
-<span class="c1"># 注意：列名未必为执行的顺序，通常为按字母排序</span>
-<span class="k">print …</span></pre></div>
-                <a class="readmore" href="/python_pandas_crash_tutorial2.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
