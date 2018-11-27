@@ -30,6 +30,62 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python_opencv3_exmaple1.html" rel="bookmark"
+                           title="Permalink to python opencv3实例(对象识别和增强现实)1-图像几何转换">python opencv3实例(对象识别和增强现实)1-图像几何转换</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-28T19:20:00+08:00">
+                Published: 三 28 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://github.com/PacktPublishing/OpenCV-3-x-with-Python-By-Example">原书代码地址</a></p>
+<p>在本章中，我们将学习如何应用酷的几何效果到图像。 知识点</p>
+<ul>
+<li>如何安装OpenCV-Python</li>
+<li>如何读取，显示和保存图像</li>
+<li>如何转换到多个颜色空间</li>
+<li>如何应用几何变换，例如平移，旋转，和缩放</li>
+<li>如何使用仿射和投影变换来应用几何效果</li>
+</ul>
+<p>本书英文版本：<a href="https://itbooks.pipipan.com/fs/18113597-310092139">OpenCV 3.x with Python By Example 2nd 2018.pdf</a> </p>
+<p>更多opencv相关书籍：<a href="https://china-testing.github.io/opencv_books.html">最佳人工智能图像处理工具OpenCV书籍下载</a></p>
+<h2 id="opencv-python">安装OpenCV-Python</h2>
+<ul>
+<li>安装</li>
+</ul>
+<p>本教程基于python3，ubuntu 16，在windows环境可能可以运行。</p>
+<p>Linux</p>
+<div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">opencv</span><span class="o">-</span><span class="n">python</span>
+</pre></div>
+
+
+<p>Windows</p>
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">opencv</span><span class="o">-</span><span class="n">python</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>文档：</p>
+<p><a href="http://docs.opencv.org/">官网</a> <a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html">opencv-python官方文档</a></p>
+</li>
+</ul>
+<h2 id="_1">读取显示和保存图片</h2>
+<p>01_reading_image.py 读取显示图片</p>
+<div class="highlight"><pre><span></span><span class="kn">import …</span></pre></div>
+                <a class="readmore" href="/python_opencv3_exmaple1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_lib_argparse.html" rel="bookmark"
                            title="Permalink to python库介绍-argparse: 命令行选项及参数解析">python库介绍-argparse: 命令行选项及参数解析</a></h1>
                 </header>
@@ -384,57 +440,6 @@ calendar 标准模块。</p>
 <li>
 <p>文档：http://pyjnius.readthedocs.io/en/latest/installation …</p></li></ul>
                 <a class="readmore" href="/python3_lib_pyjniu.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_face_recognition.html" rel="bookmark"
-                           title="Permalink to python库介绍-face_recognition 人脸识别">python库介绍-face_recognition 人脸识别</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-12T19:20:00+08:00">
-                Published: 一 12 三月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
-<p>face_recognition使用世界上最简单的人脸识别工具，在Python或命令行中识别和操作人脸。</p>
-<p>使用dlib最先进的人脸识别技术构建而成，并具有深度学习功能。 该模型在<a href="http://vis-www.cs.umass.edu/lfw/">Labeled Faces in the Wild</a>基准中的准确率为99.38％。</p>
-<p>另外还提供了face_recognition命令行工具！</p>
-<h3 id="_2">快速入门</h3>
-<p>本节我们基于ubuntu16.04,python3，使用如下图片：</p>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-625527be2687bd65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<ul>
-<li>快速入门</li>
-</ul>
-<p>face_recognition</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">face_recognition</span>
-
-<span class="n">image</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">load_image_file</span><span class="p">(</span><span class="s2">&quot;test0.jpg&quot;</span><span class="p">)</span>
-<span class="n">face_locations</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">face_locations</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;cnn&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">face_locations</span><span class="p">)</span>
-</pre></div>
-
-
-<p>执行结果：</p>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">quick</span><span class="o">.</span><span class="n">py</span> 
-<span class="p">[(</span><span class="mi">203</span><span class="p">,</span> <span class="mi">391</span><span class="p">,</span> <span class="mi">447</span><span class="p">,</span> <span class="mi">147</span><span class="p">)]</span>
-</pre></div>
-
-
-<p>model选择模型，默认为hog，该模式很多图片是无法识别的，为此一般用采用更精确但是速度更慢的cnn模型。</p>
-<ul>
-<li>显示图片：</li>
-</ul>
-<p>quick2 …</p>
-                <a class="readmore" href="/python3_lib_face_recognition.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

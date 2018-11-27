@@ -30,6 +30,51 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_string.html" rel="bookmark"
+                           title="Permalink to python标准模块介绍-string:文本常量和模板">python标准模块介绍-string:文本常量和模板</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-16T09:20:00+08:00">
+                Published: 四 16 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>string—文本常量和模板</p>
+<p>作用：包含处理文本的常量和类。</p>
+<p>Python版本：1.4及以后版本</p>
+<p>最早的Python版本就有string模块。 之前在这个模块中实现的许多函数已经移至str对象的方法。 string模块保留了几个有用的常量和类，用于处理str对象。</p>
+<p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/string">代码地址</a></p>
+<h4 id="_1">函数</h4>
+<p>capwords()的将字符串中所有单词的首字母大写。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="s2">&quot;hello world!&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">capwords</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="s1">&#39;Hello World!&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
+<span class="s1">&#39;hello world!&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+<span class="s1">&#39;Hello world!&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
+<span class="s1">&#39;hello world!&#39;</span>
+</pre></div>
+
+
+<p>结果等同于先调用split()，把结果列表中各个单词的首字母大写，然后调用join()合并结果。</p>
+<p>因为str对象已经有capitalize()方法，该函数的实际意义并不大。</p>
+<h4 id="_2">模板</h4>
+<p>字符串模板已经作为PEP 292的一部分增加到Python 2.4中，并得到扩展，以替代内置拼接(interpolation …</p>
+                <a class="readmore" href="/python3_lib_string.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_weeks.html" rel="bookmark"
                            title="Permalink to python测试开发自学每周一练">python测试开发自学每周一练</a></h1>
                 </header>
@@ -421,62 +466,6 @@ Matplotlib是一个多功能的Python库，可生成数据可视化图。支持�
 <p>安装</p>
 <div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">matplotlib …</span></pre></div>
                 <a class="readmore" href="/python_matplotlib_by_example1.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_opencv3_exmaple1.html" rel="bookmark"
-                           title="Permalink to python opencv3实例(对象识别和增强现实)1-图像几何转换">python opencv3实例(对象识别和增强现实)1-图像几何转换</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-28T19:20:00+08:00">
-                Published: 三 28 三月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://github.com/PacktPublishing/OpenCV-3-x-with-Python-By-Example">原书代码地址</a></p>
-<p>在本章中，我们将学习如何应用酷的几何效果到图像。 知识点</p>
-<ul>
-<li>如何安装OpenCV-Python</li>
-<li>如何读取，显示和保存图像</li>
-<li>如何转换到多个颜色空间</li>
-<li>如何应用几何变换，例如平移，旋转，和缩放</li>
-<li>如何使用仿射和投影变换来应用几何效果</li>
-</ul>
-<p>本书英文版本：<a href="https://itbooks.pipipan.com/fs/18113597-310092139">OpenCV 3.x with Python By Example 2nd 2018.pdf</a> </p>
-<p>更多opencv相关书籍：<a href="https://china-testing.github.io/opencv_books.html">最佳人工智能图像处理工具OpenCV书籍下载</a></p>
-<h2 id="opencv-python">安装OpenCV-Python</h2>
-<ul>
-<li>安装</li>
-</ul>
-<p>本教程基于python3，ubuntu 16，在windows环境可能可以运行。</p>
-<p>Linux</p>
-<div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">opencv</span><span class="o">-</span><span class="n">python</span>
-</pre></div>
-
-
-<p>Windows</p>
-<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">opencv</span><span class="o">-</span><span class="n">python</span>
-</pre></div>
-
-
-<ul>
-<li>
-<p>文档：</p>
-<p><a href="http://docs.opencv.org/">官网</a> <a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html">opencv-python官方文档</a></p>
-</li>
-</ul>
-<h2 id="_1">读取显示和保存图片</h2>
-<p>01_reading_image.py 读取显示图片</p>
-<div class="highlight"><pre><span></span><span class="kn">import …</span></pre></div>
-                <a class="readmore" href="/python_opencv3_exmaple1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
