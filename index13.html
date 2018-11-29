@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python自动化测试人工智能</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_buildbot.html" rel="bookmark"
+                           title="Permalink to python库介绍-buildbot教程">python库介绍-buildbot教程</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-25T19:23:00+08:00">
+                Published: 日 25 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Buildbot是python实现的开源持续构建和持续交付工具，为Python, Mozilla, Chromium, WebKit等知名项目使用。</p>
+<p>与Jenkins相比，Buildbot在大陆使用者较少。原因在于Jenkins的界面相对较美观，更容易上手；Jenkins的中文文档比较丰富。但是Jenkins因为资源消耗庞大、不太方便定制而不受一些有实力的公司欢迎。这些不少把目光聚焦在Buildbot。</p>
+<p>究竟Buildbot有哪些优点让这些公司青睐呢？Buildbot基于python网络框架Twisted，分布式做得好。Buildbot可以直接使用python包，轻松拥有上万库，具备强大的扩展能力。如果你觉得Jenkins已经轻松地满足你的需求，你不需要Buildbot。如果你在Jenkins时觉得效率低下、扩展困难、一些用python等脚本可以实现的动作在Jenkins困难重重，那么可以看看Buildbot。</p>
+<p>python的buildbot站点：　http://buildbot.python.org/all/#/</p>
+<p>Buildbot是开源的自动化软件构建，测试，发布流程的框架。</p>
+<p>Buildbot支持跨平台，分布式，并行执行jobs，与版本控制系统的灵活集成，丰富的状态报告等等。 </p>
+<p>Buildbot是一个作业调度系统：它会对作业进行排队，在所需要的资源可用时执行任务，并报告结果。</p>
+<p>Buildbot有一个或多个主机和从机。主机监控源代码库的变化，调配从机，并给用户和开发者报告结果。从机可在多种操作系统上运行。</p>
+<p>可以配置Python脚本到主机。这个脚本可以简单到只配置内置组件 …</p>
+                <a class="readmore" href="/python3_lib_buildbot.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_os.path.html" rel="bookmark"
+                           title="Permalink to python库介绍-os.path: 平台独立的文件名操作">python库介绍-os.path: 平台独立的文件名操作</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-25T19:20:00+08:00">
+                Published: 日 25 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>的：文件名和路径解析，组合，测试等。</p>
+<p>使用os.path模块中包含的函数编写代码以便在多个平台上处理文件非常简单。即使不打算在平台之间移植的程序也应该使用os.path来进行可靠的文件名解析。</p>
+<h2 id="_1">解析路径</h2>
+<p>路径解析依赖于在os中定义的几个变量：</p>
+<div class="highlight"><pre><span></span>os.sep - 路径各部分之间的分隔符（例如“/”或“\”）。
+
+os.extsep - 文件名和文件扩展名之间的分隔符。
+
+os.pardir - 上级目录(e.g., “..”)。
+
+os.curdir - 当前目录 (e.g., “.”)。
+</pre></div>
+
+
+<p>split()函数将路径分成两个独立的部分，并返回包含结果的元组。元组的第二个元素是路径的最后一个元素，第一个元素是之前的所有元素。</p>
+<div class="highlight"><pre><span></span><span class="c1"># ospath_split.py</span>
+
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="n">PATHS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;/one/two/three&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;/one/two/three/&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">PATHS</span><span class="p">:</span>
+    <span class="k">print …</span></pre></div>
+                <a class="readmore" href="/python3_lib_os.path.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_time.html" rel="bookmark"
+                           title="Permalink to python模块介绍-time 时间访问和转换">python模块介绍-time 时间访问和转换</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-22T19:20:00+08:00">
+                Published: 四 22 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">快速入门</h2>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># 获取当前时间</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">_%H-%M-%S&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">())</span> 
+<span class="n">Out</span><span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="s1">&#39;2018-06-17_20-05-36&#39;</span>
+<span class="c1"># 停顿0.5秒</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+
+
+<h2 id="_2">简介</h2>
+<p>功能：时间访问和转换。</p>
+<p>相关模块：</p>
+<p>datetime    标准模块。
+calendar 标准模块。</p>
+<p>下面介绍一些术语和约定：</p>
+<p><em>epoch</em>是时间开始点。对于Unix ，时代是1970年1月1日0点。通过time.gmtime(0)可以查看时间的起点：</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import …</span></pre></div>
+                <a class="readmore" href="/python3_lib_time.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_python-daemon.html" rel="bookmark"
+                           title="Permalink to python库介绍-python-daemon: 实现python后台程序">python库介绍-python-daemon: 实现python后台程序</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-22T19:20:00+08:00">
+                Published: 四 22 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
+<p>python-daemon实现Unix守护进程。 参考：<a href="https://www.python.org/dev/peps/pep-3143/">PEP 3143</a></p>
+<p>该库实现了PEP 3143“标准守护进程库”的良好行为守护进程规范。</p>
+<p>DaemonContext实例保存程序的行为和配置的进程环境。</p>
+<h3 id="_2">快速入门</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">with</span> <span class="n">daemon</span><span class="o">.</span><span class="n">DaemonContext</span><span class="p">():</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/test.log&quot;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        Library to implement a well-behaved Unix daemon process.</span>
+
+<span class="s1">This library …</span></pre></div></td></tr></table>
+                <a class="readmore" href="/python3_python-daemon.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_multiprocessing.html" rel="bookmark"
+                           title="Permalink to python库介绍-multiprocessing：多进程">python库介绍-multiprocessing：多进程</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-21T19:20:00+08:00">
+                Published: 三 21 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>进程是运行的程序，每个进程有自己的系统状态，包含了内存、打开文件列表、程序计数器（跟踪执行的指令）、存储函数本地调用变量的堆栈。</p>
+<p>使用os或subprocess可以创建新进程，比如：os.fork(), subprocess.Popen()。子进程和父进程是相互独立执行的。</p>
+<p>interprocess communication (IPC)进程间的通信: 最常见的形式是基于消息传递（message passing）。message是原始字节的缓存，通过I/O channel比如网络socket和管道，使用原语比如send() and recv()来发送接收消息。次常用的有内存映射区：memory-mapped regions，见mmap模块，实际上是共享内存。</p>
+<p>线程有自己的控制流和执行堆栈，但是共享系统资源和数据。</p>
+<p>并发的难点：同步和数据共享。解决的方法一般是使用互斥锁。</p>
+<div class="highlight"><pre><span></span><span class="n">write_lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
+<span class="o">...</span>
+<span class="c1"># Critical section where writing occurs</span>
+<span class="n">write_lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+<span class="n">f …</span></pre></div>
+                <a class="readmore" href="/python3_lib_multiprocessing.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_pyjniu.html" rel="bookmark"
+                           title="Permalink to python库介绍-pyjnius：访问java类">python库介绍-pyjnius：访问java类</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-18T19:20:00+08:00">
+                Published: 日 18 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>Pyjnius是一个用于访问Java类的Python库。</p>
+<p>适用场景：极个别的加密算法等内容，用python不方便实现或者实现较耗时，可基于Pyjnius把java类当做python库使用。</p>
+<h3 id="_2">参考资料：</h3>
+<hr>
+<ul>
+<li>
+<p>python中文库参考项目：  https://bitbucket.org/china-testing/python-chinese-library</p>
+</li>
+<li>
+<p>python中文库参考项目文档：https://bitbucket.org/china-testing/python-chinese-library/wiki/browse/</p>
+</li>
+<li>
+<p>技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
+</li>
+<li>
+<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
+</li>
+</ul>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
+<ul>
+<li>
+<p>文档：http://pyjnius.readthedocs.io/en/latest/installation …</p></li></ul>
+                <a class="readmore" href="/python3_lib_pyjniu.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_face_recognition.html" rel="bookmark"
+                           title="Permalink to python库介绍-face_recognition 人脸识别">python库介绍-face_recognition 人脸识别</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-12T19:20:00+08:00">
+                Published: 一 12 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
+<p>face_recognition使用世界上最简单的人脸识别工具，在Python或命令行中识别和操作人脸。</p>
+<p>使用dlib最先进的人脸识别技术构建而成，并具有深度学习功能。 该模型在<a href="http://vis-www.cs.umass.edu/lfw/">Labeled Faces in the Wild</a>基准中的准确率为99.38％。</p>
+<p>另外还提供了face_recognition命令行工具！</p>
+<h3 id="_2">快速入门</h3>
+<p>本节我们基于ubuntu16.04,python3，使用如下图片：</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-625527be2687bd65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li>快速入门</li>
+</ul>
+<p>face_recognition</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">face_recognition</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">load_image_file</span><span class="p">(</span><span class="s2">&quot;test0.jpg&quot;</span><span class="p">)</span>
+<span class="n">face_locations</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">face_locations</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;cnn&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">face_locations</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">quick</span><span class="o">.</span><span class="n">py</span> 
+<span class="p">[(</span><span class="mi">203</span><span class="p">,</span> <span class="mi">391</span><span class="p">,</span> <span class="mi">447</span><span class="p">,</span> <span class="mi">147</span><span class="p">)]</span>
+</pre></div>
+
+
+<p>model选择模型，默认为hog，该模式很多图片是无法识别的，为此一般用采用更精确但是速度更慢的cnn模型。</p>
+<ul>
+<li>显示图片：</li>
+</ul>
+<p>quick2 …</p>
+                <a class="readmore" href="/python3_lib_face_recognition.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_grp.html" rel="bookmark"
+                           title="Permalink to python库介绍-grp：group数据库">python库介绍-grp：group数据库</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-28T19:20:00+08:00">
+                Published: 三 28 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>grp可以访问Unix组数据库。 </p>
+<p>组数据库项由结构体group(类似元组)表示，参见pwd.h：</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">属性</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">gr_name</td>
+<td align="center">the name of the group</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">gr_passwd</td>
+<td align="center">the (encrypted) group password; often empty</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">gr_gid</td>
+<td align="center">the numerical group ID</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">gr_mem</td>
+<td align="center">all the group member’s user names</td>
+</tr>
+</tbody>
+</table>
+<p>gid整型，name和password为字符串，gr_mem为字符串列表。</p>
+<h2 id="_2">方法</h2>
+<ul>
+<li>
+<p>grp.getgrgid(gid)</p>
+<p>Return the group …</p></li></ul>
+                <a class="readmore" href="/python3_lib_grp.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_pwd.html" rel="bookmark"
+                           title="Permalink to python库介绍-pwd：密码数据库">python库介绍-pwd：密码数据库</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-22T19:20:00+08:00">
+                Published: 四 22 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>pwd可以访问Unix用户帐户和密码数据库。 </p>
+<p>密码数据库项由结构体passwd(类似元组)表示，参见pwd.h：</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">pw_name</td>
+<td align="center">Login name</td>
+</tr>
+<tr>
+<td align="center">pw_passwd</td>
+<td align="center">Optional encrypted password</td>
+</tr>
+<tr>
+<td align="center">pw_uid</td>
+<td align="center">Numerical user ID</td>
+</tr>
+<tr>
+<td align="center">pw_gid</td>
+<td align="center">Numerical group ID</td>
+</tr>
+<tr>
+<td align="center">pw_gecos</td>
+<td align="center">User name or comment field</td>
+</tr>
+<tr>
+<td align="center">pw_dir</td>
+<td align="center">User home directory</td>
+</tr>
+<tr>
+<td align="center">pw_shell</td>
+<td align="center">User command interpreter</td>
+</tr>
+</tbody>
+</table>
+<p>除了pw_uid和pw_gid是整数外，其他都是字符串。</p>
+<h2 id="pwd">pwd方法</h2>
+<ul>
+<li>pwd.getpwuid(uid): Return the password database entry for …</li></ul>
+                <a class="readmore" href="/python3_lib_pwd.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_spwd.html" rel="bookmark"
+                           title="Permalink to python库介绍-spwd：shadow密码数据库">python库介绍-spwd：shadow密码数据库</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-12T19:20:00+08:00">
+                Published: 一 12 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>pwd可以访问Unix shadow密码数据库。  2.5新增。通常需要为root用户。</p>
+<p>密码数据库项由结构体spwd(类似元组)表示，参见shadow.h：</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">属性</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">sp_nam</td>
+<td align="center">Login name</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">sp_pwd</td>
+<td align="center">Encrypted password</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">sp_lstchg</td>
+<td align="center">Date of last change</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">sp_min</td>
+<td align="center">Minimal number of days between changes</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">sp_max</td>
+<td align="center">Maximum number of days between changes</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">sp_warn</td>
+<td align="center">Number of days before …</td></tr></tbody></table>
+                <a class="readmore" href="/python3_lib_spwd.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="/index12.html">&laquo;</a>
+    Page 13 / 15
+        <a href="/index14.html">&raquo;</a>
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

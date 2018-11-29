@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python库介绍-collections：高性能容器数据类型</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_lib_collections.html" rel="bookmark"
+           title="Permalink to python库介绍-collections：高性能容器数据类型">python库介绍-collections：高性能容器数据类型</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-08T19:20:00+08:00">
+                Published: 四 08 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <h2 id="_1">简介</h2>
+<p>2.4新增</p>
+<p>源代码：Lib/collections.py and Lib/_abcoll.py</p>
+<p>提供了替换dict, list, set和tuple的数据类型。</p>
+<p>主要类型如下：</p>
+<ul>
+<li>namedtuple(): 命名元组，创建有名字域的元组子类的工厂函数。python 2.6新增。</li>
+<li>deque：双端队列，类似于列表，两端进栈和出栈都比较快速。python 2.4新增。</li>
+<li>Counter：字典的子类，用于统计哈希对象。python 2.7新增。</li>
+<li>OrderedDict：有序字典，字典的子类，记录了添加顺序。python 2.7新增。</li>
+<li>defaultdict：dict的子类，调用一个工厂函数支持不存在的值。python 2.5新增。</li>
+</ul>
+<p>还提供了抽象基类，用来测试类是否提供了特殊接口，不管是哈希或者映射。</p>
+<h2 id="counter">Counter</h2>
+<p>计数器(Counter)是一个容器，用来跟踪值出现了多少次。和其他语言中的bag或multiset类似。</p>
+<p>计数器支持三种形式的初始化。构造函数可以调用序列，包含key和计数的字典，或使用关键字参数。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">collections_counter_init</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+</pre></div>
+
+
+<p>注意key的出现顺序是根据计数的从大到小。</p>
+<p>可以创建空的计数器，再update：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Initial :{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;abcdaab&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Sequence:{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">})</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Dict    :{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span> <span class="n">python3</span><span class="o">.</span><span class="mi">5</span> <span class="n">collections_counter_update</span><span class="o">.</span><span class="n">py</span><span class="o">*</span>
+<span class="n">Initial</span> <span class="p">:</span><span class="n">Counter</span><span class="p">()</span>
+<span class="n">Sequence</span><span class="p">:</span><span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">Dict</span>    <span class="p">:</span><span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+</pre></div>
+
+
+<p>访问计数</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="s1">&#39;abcdaab&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s1">&#39;abcde&#39;</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{0} : {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="n">letter</span><span class="p">]))</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">5</span> <span class="n">collections_counter_get_values</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">a</span> <span class="p">:</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="p">:</span> <span class="mi">2</span>
+<span class="n">c</span> <span class="p">:</span> <span class="mi">1</span>
+<span class="n">d</span> <span class="p">:</span> <span class="mi">1</span>
+<span class="n">e</span> <span class="p">:</span> <span class="mi">0</span>
+</pre></div>
+
+
+<p>注意这里不存在的元素也会统计为0。</p>
+<p>elements方法可以列出所有元素：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="s1">&#39;extremely&#39;</span><span class="p">)</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">elements</span><span class="p">()))</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">5</span> <span class="n">collections_counter_elements</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+<span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>注意后面并没有输出计数为0的元素。</p>
+<p>most_common()可以提取出最常用的元素。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">()</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/etc/adduser.conf&#39;</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Most common:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">letter</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{0}: {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="n">count</span><span class="p">))</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">5</span> <span class="n">collections_counter_most_common</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">Most</span> <span class="n">common</span><span class="p">:</span>
+ <span class="p">:</span> <span class="mi">401</span>
+<span class="n">e</span><span class="p">:</span> <span class="mi">310</span>
+<span class="n">s</span><span class="p">:</span> <span class="mi">221</span>
+</pre></div>
+
+
+<p>Counter还支持算术和集合运算，它们都只会保留数值为正整数的key。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+
+<span class="n">c1</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="s1">&#39;alphabet&#39;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;C1:&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;C2:&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Combined counts:&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c1</span> <span class="o">+</span> <span class="n">c2</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Subtraction:&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c1</span> <span class="o">-</span> <span class="n">c2</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Intersection (taking positive minimums):&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c1</span> <span class="o">&amp;</span> <span class="n">c2</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Union (taking maximums):&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c1</span> <span class="o">|</span> <span class="n">c2</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">collections_counter_arithmetic</span><span class="o">.</span><span class="n">py</span>
+<span class="n">C1</span><span class="p">:</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">C2</span><span class="p">:</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+
+<span class="n">Combined</span> <span class="n">counts</span><span class="p">:</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+
+<span class="n">Subtraction</span><span class="p">:</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+
+<span class="n">Intersection</span> <span class="p">(</span><span class="n">taking</span> <span class="n">positive</span> <span class="n">minimums</span><span class="p">):</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+
+<span class="n">Union</span> <span class="p">(</span><span class="n">taking</span> <span class="n">maximums</span><span class="p">):</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+</pre></div>
+
+
+<p>上面的例子让人觉得collections只能处理单个字符。其实不是这样的，请看标准库中的实例。</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]:</span>
+    <span class="n">cnt</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
+<span class="n">cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">([</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">])</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
+
+<span class="n">words</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;\w+&#39;</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/etc/adduser.conf&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">collections_counter_normal</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="p">[(</span><span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="mi">27</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;be&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;if&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;will&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">)]</span>
+</pre></div>
+
+
+<p>第1段代码和第2段的代码效果式样的，后面一段代码通过Counter实现了简单的单词的统计功能。比如面试题：使用python打印出/etc/ssh/sshd_config出现次数最高的10个单词及其出现次数。</p>
+<p>下面看看Counter的相关定义：</p>
+<p>class collections.Counter([iterable-or-mapping]) 。注意Counter是无序的字典。在key不存在的时候返回0. c['sausage'] = 0。设置值为0不会删除元素，要使用del c['sausage']。</p>
+<p>除了标准的字典方法，额外增加了：</p>
+<p>elements() ：返回一个包含所有元素的迭代器，忽略小于1的计数。</p>
+<p>most_common([n])：返回最常用的元素及其计数的列表。默认返回所有元素。</p>
+<p>subtract([iterable-or-mapping]) ：相减。</p>
+<h2 id="namedtuple">namedtuple</h2>
+<p>命名元组和普通元组的的内存效率差不多。它不会针对每个实例生成字典。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">Person</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Person&#39;</span><span class="p">,</span> <span class="s1">&#39;name age gender&#39;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Type of Person:{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">Person</span><span class="p">)))</span>
+
+<span class="n">bob</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">gender</span><span class="o">=</span><span class="s1">&#39;male&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Representation: {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bob</span><span class="p">))</span>
+
+<span class="n">jane</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Jane&#39;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">29</span><span class="p">,</span> <span class="n">gender</span><span class="o">=</span><span class="s1">&#39;female&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Field by name: {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">jane</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Fields by index:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="n">bob</span><span class="p">,</span> <span class="n">jane</span><span class="p">]:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{0} is a {1} year old {2}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">))</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">collections_namedtuple_person</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Type</span> <span class="n">of</span> <span class="n">Person</span><span class="p">:</span><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">type</span><span class="s1">&#39;&gt;</span>
+
+<span class="n">Representation</span><span class="p">:</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">gender</span><span class="o">=</span><span class="s1">&#39;male&#39;</span><span class="p">)</span>
+
+<span class="n">Field</span> <span class="n">by</span> <span class="n">name</span><span class="p">:</span> <span class="n">Jane</span>
+
+<span class="n">Fields</span> <span class="n">by</span> <span class="n">index</span><span class="p">:</span>
+<span class="n">Bob</span> <span class="ow">is</span> <span class="n">a</span> <span class="mi">30</span> <span class="n">year</span> <span class="n">old</span> <span class="n">male</span>
+<span class="n">Jane</span> <span class="ow">is</span> <span class="n">a</span> <span class="mi">29</span> <span class="n">year</span> <span class="n">old</span> <span class="n">female</span>
+</pre></div>
+
+
+<p>从上例可以看出命名元组Person类和excel的表头类似，给下面的每个列取个名字，真正excel行数据则存储在Person类的实例中。好处在于可以jane.name这样的形式访问，比记元组的index要直观。</p>
+<p>注意列名在实现内部其实是个标识符，所以不能和关键字冲突，只能用字母或者下划线开头。下例会报错：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Person&#39;</span><span class="p">,</span> <span class="s1">&#39;name class age gender&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Person&#39;</span><span class="p">,</span> <span class="s1">&#39;name age gender age&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">collections_namedtuple_bad_fields</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">Type</span> <span class="n">names</span> <span class="ow">and</span> <span class="n">field</span> <span class="n">names</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">a</span> <span class="n">keyword</span><span class="p">:</span> <span class="s1">&#39;class&#39;</span>
+<span class="n">Encountered</span> <span class="n">duplicate</span> <span class="n">field</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;age&#39;</span>
+</pre></div>
+
+
+<p>设置rename=True，列名会在冲突时自动重命名，不过这种重命名并不美观。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">with_class</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Person&#39;</span><span class="p">,</span> <span class="s1">&#39;name class age gender&#39;</span><span class="p">,</span>
+                                    <span class="n">rename</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">with_class</span><span class="o">.</span><span class="n">_fields</span><span class="p">)</span>
+
+<span class="n">two_ages</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Person&#39;</span><span class="p">,</span> <span class="s1">&#39;name age gender age&#39;</span><span class="p">,</span>
+                                  <span class="n">rename</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">two_ages</span><span class="o">.</span><span class="n">_fields</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python</span> <span class="n">collections_namedtuple_rename</span><span class="o">.</span><span class="n">py</span>
+<span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;_1&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="s1">&#39;_3&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>定义</li>
+</ul>
+<p>collections.namedtuple(typename, field_names[, verbose=False][, rename=False]) 返回一个命名元组类。如果verbose为True，会打印类定义信息</p>
+<p>命名元组在处理数据库的时候比较有用：</p>
+<h2 id="chainmap">ChainMap 映射链</h2>
+<p>用于查找多个字典。</p>
+<p>ChainMap管理一系列字典，按顺序根据key查找值。</p>
+<ul>
+<li>访问值：</li>
+</ul>
+<p>API和字典类似。 </p>
+<p>collections_chainmap_read.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">}</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">}</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">ChainMap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Individual Values&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;a = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;b = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;c = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;m = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Keys = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">keys</span><span class="p">())))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Values = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">values</span><span class="p">())))</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Items:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{} = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;&quot;d&quot; in m: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="s1">&#39;d&#39;</span> <span class="ow">in</span> <span class="n">m</span><span class="p">)))</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">collections_chainmap_read</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">Individual</span> <span class="n">Values</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">A</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">B</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">C</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">ChainMap</span><span class="p">({</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">})</span>
+<span class="n">Keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<span class="n">Values</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]</span>
+
+<span class="n">Items</span><span class="p">:</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">C</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">A</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">B</span>
+
+<span class="s2">&quot;d&quot;</span> <span class="ow">in</span> <span class="n">m</span><span class="p">:</span> <span class="bp">False</span>
+</pre></div>
+
+
+<ul>
+<li>调整顺序</li>
+</ul>
+<p>collections_chainmap_reorder.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">}</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">}</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">ChainMap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">maps</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;c = {}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]))</span>
+
+<span class="c1"># reverse the list</span>
+<span class="n">m</span><span class="o">.</span><span class="n">maps</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">maps</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">maps</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;c = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]))</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">collections_chainmap_reorder</span><span class="o">.</span><span class="n">py</span>
+<span class="p">[{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">}]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">C</span>
+
+<span class="p">[{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">}]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">D</span>
+</pre></div>
+
+
+<ul>
+<li>更新值</li>
+</ul>
+<p>更新原字典：</p>
+<p>collections_chainmap_update_behind.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">}</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">}</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">ChainMap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Before: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]))</span>
+<span class="n">a</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;E&#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;After : {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]))</span>
+</pre></div>
+
+
+<p>执行结果</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">collections_chainmap_update_behind</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">Before</span><span class="p">:</span> <span class="n">C</span>
+<span class="n">After</span> <span class="p">:</span> <span class="n">E</span>
+</pre></div>
+
+
+<p>直接更新ChainMap：</p>
+<p>collections_chainmap_update_directly.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">}</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">}</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">ChainMap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Before:&#39;</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+<span class="n">m</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;E&#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;After :&#39;</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;a:&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行结果</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">collections_chainmap_update_directly</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">Before</span><span class="p">:</span> <span class="n">ChainMap</span><span class="p">({</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">})</span>
+<span class="n">After</span> <span class="p">:</span> <span class="n">ChainMap</span><span class="p">({</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">})</span>
+<span class="n">a</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">}</span>
+</pre></div>
+
+
+<p>ChainMap可以方便地在前面插入字典，这样可以避免修改原来的字典。</p>
+<p>collections_chainmap_new_child.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">}</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">}</span>
+
+<span class="n">m1</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">ChainMap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">m1</span><span class="o">.</span><span class="n">new_child</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;m1 before:&#39;</span><span class="p">,</span> <span class="n">m1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;m2 before:&#39;</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
+
+<span class="n">m2</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;E&#39;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;m1 after:&#39;</span><span class="p">,</span> <span class="n">m1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;m2 after:&#39;</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行结果</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">collections_chainmap_new_child</span><span class="o">.</span><span class="n">py</span>
+<span class="n">m1</span> <span class="n">before</span><span class="p">:</span> <span class="n">ChainMap</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">})</span>
+<span class="n">m2</span> <span class="n">before</span><span class="p">:</span> <span class="n">ChainMap</span><span class="p">({},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">})</span>
+<span class="n">m1</span> <span class="n">after</span><span class="p">:</span> <span class="n">ChainMap</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">})</span>
+<span class="n">m2</span> <span class="n">after</span><span class="p">:</span> <span class="n">ChainMap</span><span class="p">({</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">})</span>
+</pre></div>
+
+
+<p>还可以通过传入字典的方式</p>
+<p>collections_chainmap_new_child_explicit.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">}</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">}</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">}</span>
+
+<span class="n">m1</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">ChainMap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">m1</span><span class="o">.</span><span class="n">new_child</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;m1[&quot;c&quot;] = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m1</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;m2[&quot;c&quot;] = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m2</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]))</span>
+</pre></div>
+
+
+<p>执行结果</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">collections_chainmap_new_child_explicit</span><span class="o">.</span><span class="n">py</span>
+<span class="n">m1</span><span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span>
+<span class="n">m2</span><span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">E</span>
+</pre></div>
+
+
+<p>另外一种等价的方式：</p>
+<div class="highlight"><pre><span></span><span class="n">m2</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">ChainMap</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="o">*</span><span class="n">m1</span><span class="o">.</span><span class="n">maps</span><span class="p">)</span>
+</pre></div>
+
+
+<h2 id="_2">参考资料</h2>
+<ul>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/python3_lib_collections.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li>python官方文档：https://docs.python.org/3/library/collections.html</li>
+<li>https://pymotw.com/3/collections/chainmap.html</li>
+<li>http://collections-extended.lenzm.net/</li>
+<li>https://pypi.python.org/pypi/collections-extended/</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/collections">本文代码地址</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python自动化测试人工智能 - python</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/conda_pip_compare.html">python库介绍-telnetlib：Telnet客户端</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-11-29T08:20:00+08:00">
+                Published: 四 29 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info --><p>Conda和pip通常被认为几乎完全相同。虽然这两个工具的某些功能重叠，但它们设计用于不同的目的。 <a href="https://pip.pypa.io/en/stable/">Pip</a>是Python Packaging Authority推荐的用于从<a href="https://pypi.org/">Python Package Index</a>安装包的工具。 Pip安装打包为wheels或源代码分发的Python软件。后者可能要求系统安装兼容的编译器和库。</p>
+<p><a href="https://conda.io/docs/">Conda</a>是跨平台的包和环境管理器，可以安装和管理来自<a href="https://repo.anaconda.com/">Anaconda repository</a>以 <a href="https://anaconda.org/">Anaconda Cloud</a>的conda包。 Conda包是二进制文件，徐需要使用编译器来安装它们。另外，conda包不仅限于Python软件。它们还可能包含C或C ++库，R包或任何其他软件。</p>
+<p>这是conda和pip之间的关键区别。 Pip安装Python包，而conda安装包可能包含用任何语言编写的软件的包。在使用pip之前，必须通过系统包管理器或下载并运行安装程序来安装Python解释器。而Conda可以直接安装Python包以及Python解释器。</p>
+<p>另一个区别是conda能够创建可以包含不同版本的Python或其他软件包的隔离环境。在使用数据科学工具时，这非常有用，因为不同的工具可能包含冲突的要求，这些要求可能会阻止它们全部安装到单个环境中。 Pip没有内置的环境支持，而是依赖于<a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a>或<a href="https://docs.python.org/3/library/venv.html">venv </a>等其他工具来创建隔离环境。 pipenv，poetry和hatch wrap pip和virtualenv等工具提供了统一的方法来处理这些环境。</p>
+<p>Pip和conda在如何实现环境中的依赖关系方面也有所不同。安装包时，pip会在递归的串行循环中安装依赖项。没有努力确保同时满足所有包的依赖性。如果较早安装的软件包与稍后安装的软件包具有不兼容的依赖性版本，则可能导致破坏的环境。conda使用可确保满足环境中安装的所有包的所有要求。此检查可能需要额外的时间，但有助于防止创建破坏的环境，前期关于依赖关系包的元数据是正确的。</p>
+<p>考虑到conda和pip之间的相似性，有些人试图将这些工具结合起来创建数据科学环境也就不足为奇了。将pip与conda结合的主要原因是有些包只能通过pip安装。 Anaconda创酷提供超过1,500个软件包，包括最流行的数据科学，机器学习和AI框架。这些，以及包括conda-forge和bioconda在内的数据通过Anaconda云提供的数千个附加软件包，可以使用conda进行安装。尽管有大量的软件包，但与PyPI上提供的150,000多个软件包相比，它仍然很小。有时候需要的包没有conda包，但在PyPI上有，可以用pip安装。</p>
+<h3 id="_1">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/conda_pip_compare.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python_gui_books.html">python GUI工具书籍下载-持续更新</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">类别</th>
+<th align="center">conda</th>
+<th align="center">pip</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">管理</td>
+<td align="center">二进制</td>
+<td align="center">wheel 或源码</td>
+</tr>
+<tr>
+<td align="center">需要编译器</td>
+<td align="center">no</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="center">语言</td>
+<td align="center">any</td>
+<td align="center">Python</td>
+</tr>
+<tr>
+<td align="center">虚拟环境</td>
+<td align="center">支持</td>
+<td align="center">通过 virtualenv或venv等支持</td>
+</tr>
+<tr>
+<td align="center">依赖性检查</td>
+<td align="center">yes</td>
+<td align="center">屏幕提示用户选择</td>
+</tr>
+<tr>
+<td align="center">包来源</td>
+<td align="center">Anaconda repo和cloud</td>
+<td align="center">PyPi</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">参考资料</h2>
+<ul>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/tk2.html" rel="bookmark"
+                           title="Permalink to python GUI作业：tkinter grid布局">python GUI作业：tkinter grid布局</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-28T07:30:00+08:00">
+                Published: 三 28 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">要求</h3>
+<p>使用tkinter生成如下窗口：</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-90fbd70ee2f32b19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1516a3f750b2af34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-5c011adbfd85d1b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-494076825345c2b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_2">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/tk2.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python_gui_books.html">python GUI工具书籍下载-持续更新</a></li>
+</ul>
+<h3 id="_3">参考代码</h3>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># 技术支持：https://www.jianshu.com/u/69f40328d4f0 </span>
+<span class="c1"># 技术支持 https://china-testing.github.io/</span>
+<span class="c1"># https://github.com/china-testing/python-api-tesing/blob/master/practices/tk2.py</span>
+<span class="c1"># 讨论钉钉免费群21745728 qq群144081101 567351477</span>
+<span class="c1"># CreateDate: 2018-11-27</span>
+<span class="kn">import</span> <span class="nn">tkinter</span> <span class="kn">as …</span></pre></div>
+                <a class="readmore" href="/tk2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/tk1.html" rel="bookmark"
+                           title="Permalink to python GUI作业：tkinter控件改变背景色">python GUI作业：tkinter控件改变背景色</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-28T07:20:00+08:00">
+                Published: 三 28 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">要求</h3>
+<p>使用tkinter生成如下窗口：</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b107f1052f9ad201.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-edceb8f49a1d2b29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>在右上角文本框输入名字，在旁边的下拉框选择数字，点击"Click Me!", "Click Me!"的文本将改变成如下：</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-f5b26250186636ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>可以选择"Unchecked"和"Enabled"的其中一个。</p>
+<p>点击Blue、Gold、Red其中的一个，将会改变背景为对应的颜色。</p>
+<p>最下面的文本框可以输入文本，当列数超出范围时，可以通过滚动条操作。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-97d7f6115d7ec2aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_2">参考资料</h3>
+<ul>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/tk1.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+</ul>
+<h3 id="_3">参考代码</h3>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># 技术支持：https://www.jianshu.com/u/69f40328d4f0 </span>
+<span class="c1"># 技术支持 https://china-testing.github.io …</span></pre></div>
+                <a class="readmore" href="/tk1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_gui_books.html" rel="bookmark"
+                           title="Permalink to python GUI工具书籍下载-持续更新">python GUI工具书籍下载-持续更新</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-27T18:20:00+08:00">
+                Published: 二 27 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://itbooks.pipipan.com/fs/18113597-321973435">Python GUI Programming Cookbook 2nd - 2017.pdf</a></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-99cff31bfd2fbf37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>https://github.com/PacktPublishing/Python-GUI-Programming-Cookbook-Second-Edition 60星左右</p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-321973525">WxPython_Application_Development_Cookbook - 2015.pdf</a></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-38a5a22981458f32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>https://github.com/driscollis/wxPython_recipes_book_code 20星左右</p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-321973518">wxPython Recipes - 2017.pdf</a></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-12c941b5ec54c261.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-321973506">Tkinter GUI Programming By Example(conv) - 2018.pdf</a></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-31a213f4540af659.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>https://github.com/PacktPublishing/Tkinter-GUI-Programming-by-Example  不到10星</p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-321973498">Tkinter GUI Application Development Cookbook - 2018.pdf</a></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-9f3672fe0df4ea50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>https://github.com …</p>
+                <a class="readmore" href="/python_gui_books.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/list_tuple_compare.html" rel="bookmark"
+                           title="Permalink to python经典面试题：列表和元组有什么异同？">python经典面试题：列表和元组有什么异同？</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-27T05:20:00+08:00">
+                Published: 二 27 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>列表和元组是Python中最常用的两种数据结构，字典是第三种。 相同点：</p>
+<ul>
+<li>都是序列</li>
+<li>都可以存储任何数据类型</li>
+<li>可以通过索引访问</li>
+</ul>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-32a6c6361069d513.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_1">语法差异</h3>
+<p>使用方括号[]创建列表，而使用括号()创建元组。 请看以下示例：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;https://china-testing.github.io/&quot;</span><span class="p">,</span> <span class="s2">&quot;https://www.oscobo.com/&quot;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;https://china-testing.github.io/&quot;</span><span class="p">,</span> <span class="s2">&quot;https://www.oscobo.com/&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;https://china-testing.github.io/&#39;</span><span class="p">,</span> <span class="s1">&#39;https://www.oscobo.com/&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;https://china-testing.github.io/&#39;</span><span class="p">,</span> <span class="s1">&#39;https://www.oscobo.com …</span></pre></div>
+                <a class="readmore" href="/list_tuple_compare.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_ide.html" rel="bookmark"
+                           title="Permalink to 2018 最佳python编辑器和IDE">2018 最佳python编辑器和IDE</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-25T18:55:00+08:00">
+                Published: 日 25 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>IDE没有统一的标准，自己习惯就是最好的。本文列出一些较常用的IDE，供大家参考。</p>
+<p>一般而言，WingIDE、PyCharm、Spyder、Vim是比较常用的IDE。</p>
+<h3 id="spyder">Spyder</h3>
+<p>Spyder是Python(x,y)的作者为它开发的一个简单的集成开发环境。和其他的Python开发环境相比，它最大的优点就是模仿MATLAB的"工作空间"的功能，可以很方便地观察和修改数组的值。</p>
+<p>最出名的python数据科学发行版本Anaconda自带了Spyder。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-3e6b7b8166cb6a1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e28762f5ccc6a0db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>https://github.com/spyder-ide/spyder</p>
+<p>.</p>
+<h3 id="wingide">WingIDE</h3>
+<p>WingIDE是Python编写的python专用IDE。 WingIDE提供诸如强大的代码完成，出色的调试器等功能，并且它还可以在Python中编写脚本和扩展。</p>
+<p>为什么选择最好的Python IDE？</p>
+<ul>
+<li>内置强大的调试器</li>
+<li>智能编辑器</li>
+<li>您可以轻松快速地查找和修复错误</li>
+<li>轻松导航代码</li>
+<li>您可以使用自己喜欢的键绑定进行编辑并自定义工作区</li>
+<li>配置简单</li>
+<li>运行速度比Pycharm等java类的编辑快很多，占用资源少。</li>
+</ul>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-f649b0d32b0cea41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>有社区版免费使用，<a href="https://github.com/china-testing/python-api-tesing/blob/master/other/wingide6_python3_crack.py">专业版的破解</a></p>
+<p>https://wingware.com/</p>
+<h3 id="vim-ide">Vim IDE</h3>
+<p>Vim是一个高度可配置的文本编辑器，用于创建和更改任何类型的文本非常有效。</p>
+<p>它是Vi的超集 …</p>
+                <a class="readmore" href="/python_ide.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_books.html" rel="bookmark"
+                           title="Permalink to python工具书籍下载-持续更新">python工具书籍下载-持续更新</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-24T18:20:00+08:00">
+                Published: 六 24 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>呕心沥血，持续收集python精品书籍，觉得不错的话，请在下面点喜欢收藏，谢谢！</p>
+<p><a href="https://china-testing.github.io/python_structure_books.html">python数据结构基础工具书籍下载-持续更新</a></p>
+<p><a href="https://china-testing.github.io/ai_books.html">2018最佳人工智能机器学习工具书籍及下载(持续更新)</a></p>
+<p><a href="https://china-testing.github.io/opencv_books.html">2018最佳人工智能图像处理工具OpenCV书籍下载</a></p>
+<p><a href="https://china-testing.github.io/flask_books.html">web开发工具flask中文英文书籍下载-持续更新</a></p>
+<p><a href="https://china-testing.github.io/python_network_books.html">python网络基础工具书籍下载-持续更新</a></p>
+<p><a href="https://china-testing.github.io/python3_quick9.html">python 3.7极速入门教程9最佳python中文工具书籍下载</a></p>
+<p><a href="https://china-testing.github.io/pytorch_books.html">机器学习工具pytorch中文英文工具书籍下载-持续更新</a></p>
+<p><a href="https://china-testing.github.io/selnium_books.html">2018最佳selenium工具书籍汇总下载(持续更新)</a></p>
+<p><a href="https://china-testing.github.io/datas_books.html">python数据分析数据科学中文英文工具书籍下载-持续更新</a></p>
+<p><a href="https://china-testing.github.io/scrap_books.html">2018最佳人工智能数据采集(爬虫)工具书下载</a></p>
+<p><a href="https://china-testing.github.io/python_gui_books.html">python GUI工具书籍下载-持续更新</a></p>
+<p>部分示例</p>
+<h3 id="pandas-0234-pdf"><a href="https://itbooks.pipipan.com/fs/18113597-319756702">pandas  0.23.4 官方文档.pdf</a></h3>
+<h3 id="python-data-science-handbook-2017pdf"><a href="https://itbooks.pipipan.com/fs/18113597-304379322">Python Data Science Handbook - 2017.pdf</a></h3>
+<ul>
+<li>中文版待上传</li>
+</ul>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b0ccae58ef79a1e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>《Python数据科学手册》是对以数据深度需求为中心的科学、研究以及针对计算和统计方法的参考书。本书共五章，每章介绍一到两个Python数据科学中的重点工具包。首先从IPython和Jupyter开始，它们提供了数据科学家需要的计算环境；第 2章讲解能提供ndarray对象的NumPy，它可以用Python高效地存储和操作大型数组；第3章主要涉及提供DataFrame对象的Pandas，它可以用Python高效地存储和操作带标签的/列式数据 …</p>
+                <a class="readmore" href="/python_books.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_structure_books.html" rel="bookmark"
+                           title="Permalink to python数据结构基础工具书籍下载-持续更新">python数据结构基础工具书籍下载-持续更新</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-24T08:20:00+08:00">
+                Published: 六 24 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://itbooks.pipipan.com/fs/18113597-321523035">算法图解 - 2017.pdf</a></p>
+<p>本书示例丰富，图文并茂，以让人容易理解的方式阐释了算法，旨在帮助程序员在日常项目中更好地发挥算法的能量。书中的前三章将帮助你打下基础，带你学习二分查找、大O表示法、两种基本的数据结构以及递归等。余下的篇幅将主要介绍应用广泛的算法，具体内容包括：面对具体问题时的解决技巧，比如，何时采用贪婪算法或动态规划；散列表的应用；图算法；Kzui近邻算法。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-d0130f297186ca99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-321523014">数据结构与算法__Python语言描述-2015.pdf</a></p>
+<p>本书基于Python语言介绍了数据结构与算法的基本知识，主要内容包括抽象数据类型和Python面向对象程序设计、线性表、字符串、栈和队列、二叉树和树、集合、排序以及算法的基本知识。本书延续问题求解的思路，从解决问题的目标来组织教学内容，注重理论与实践的并用。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-649d4ae56ca30f50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-321522934">Python算法教程 - 2016.pdf</a></p>
+<p>Python是一种面向对象、解释型计算机程序设计语言，其应用领域非常广泛，包括数据分析、自然语言处理、机器学习、科学计算以及推荐系统构建等。 本书用Python语言来讲解算法的分析和设计。本书主要关注经典的算法，但同时会为读者理解基本算法问题和解决问题打下很好的基础。全书共11章。分别介绍了树、图、计数问题、归纳递归 …</p>
+                <a class="readmore" href="/python_structure_books.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_network_books.html" rel="bookmark"
+                           title="Permalink to python网络基础工具书籍下载-持续更新">python网络基础工具书籍下载-持续更新</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-23T08:20:00+08:00">
+                Published: 五 23 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>爬虫书籍参见：</p>
+<p><a href="https://china-testing.github.io/scrap_books.html">2018最佳人工智能数据采集(爬虫)工具书下载</a></p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-321449040">Python Network Programming Cookbook, 2nd Edition - 2017.pdf</a></p>
+<p>介绍了现实世界中几乎所有网络任务的真实示例，通过简明易懂的形式让读者掌握如何使用Python完成这些网络编程任务。具体说来，书中通过70多篇攻略讨论了Python网络编程的高阶话题，包括编写简单的网络客户端和服务器、HTTP协议网络编程、跨设备编程、屏幕抓取以及网络安全监控，等等。本书可以作为任何一门网络编程课程中培养实践技能的补充材料。《图灵程序设计丛书：Python网络编程攻略》需要读者对Python语言及TCP/IP等基本的网络概念有了解。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-828a10775ef4ec6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-321449010">Practical Network Automation Leverage the power of Python and Ansible to optimize your network - 2017.pdf</a></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-fb841838297cd5c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-321448974">O'Reilly.Twisted.Network.Programming.Essentials.2nd.Edition.Mar …</a></p>
+                <a class="readmore" href="/python_network_books.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/ai_tts.html" rel="bookmark"
+                           title="Permalink to python人工智能作业：Windows使用SAPI和tkinter用不到40行实现文本转语音">python人工智能作业：Windows使用SAPI和tkinter用不到40行实现文本转语音</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-23T07:25:00+08:00">
+                Published: 五 23 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>直接上代码：</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># 技术支持：https://www.jianshu.com/u/69f40328d4f0 </span>
+<span class="c1"># 技术支持 https://china-testing.github.io/</span>
+<span class="c1"># https://github.com/china-testing/python-api-tesing/blob/master/practices/TTS.py</span>
+<span class="c1"># 讨论钉钉免费群21745728 qq群144081101 567351477</span>
+<span class="c1"># CreateDate: 2018-11-22</span>
+
+<span class="kn">import</span> <span class="nn">win32com.client</span> <span class="kn">as</span> <span class="nn">wincl</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="k">def</span> <span class="nf">text2Speech</span><span class="p">():</span>
+ <span class="n">text</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+ <span class="n">speak</span> <span class="o">=</span> <span class="n">wincl</span><span class="o">.</span><span class="n">Dispatch …</span></pre></div>
+                <a class="readmore" href="/ai_tts.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 9
+        <a href="/category/python2.html">&raquo;</a>
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
