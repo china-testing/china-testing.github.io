@@ -28,7 +28,48 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/conda_pip_compare.html">python包管理工具：Conda和pip比较</a></h1>
+                    <h1 class="entry-title"><a href="/practices.html">python测试开发项目实战-目录</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-11-30T07:25:00+08:00">
+                Published: 五 30 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info --><p>工作日技术支持QQ群630011153 144081101</p>
+<h3 id="python-gui">python GUI</h3>
+<p><a href="https://china-testing.github.io/tk2.html">python GUI作业：tkinter grid布局</a>
+<a href="https://china-testing.github.io/tk1.html">python GUI作业：tkinter控件改变背景色</a></p>
+<h3 id="python">python 网络</h3>
+<p><a href="https://china-testing.github.io/network_ping.html">python网络作业：使用python的socket库实现ICMP协议的ping</a></p>
+<h3 id="python_1">python 人工智能</h3>
+<p><a href="https://china-testing.github.io/ai_tts.html">python人工智能作业：Windows使用SAPI和tkinter用不到40行实现文本转语音</a></p>
+<h3 id="_1">参考资料</h3>
+<ul>
+<li><a href="https://china-testing.github.io/practices.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li><a href="https://china-testing.github.io/python3_quick9.html" title="Permalink to python 3.7极速入门教程9最佳python中文工具书籍下载">python 3.7极速入门教程9最佳python中文工具书籍下载</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/practices/TTS.py">最新代码地址</a></li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/conda_pip_compare.html" rel="bookmark"
+                           title="Permalink to python包管理工具：Conda和pip比较">python包管理工具：Conda和pip比较</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-11-29T08:20:00+08:00">
                 Published: 四 29 十一月 2018
@@ -39,74 +80,14 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info --><p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-25623c3d88871cdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+</footer><!-- /.post-info -->                <p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-25623c3d88871cdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <p>Conda和pip通常被认为几乎完全相同。虽然这两个工具的某些功能重叠，但它们设计用于不同的目的。 <a href="https://pip.pypa.io/en/stable/">Pip</a>是Python Packaging Authority推荐的用于从<a href="https://pypi.org/">Python Package Index</a>安装包的工具。 Pip安装打包为wheels或源代码分发的Python软件。后者可能要求系统安装兼容的编译器和库。</p>
 <p><a href="https://conda.io/docs/">Conda</a>是跨平台的包和环境管理器，可以安装和管理来自<a href="https://repo.anaconda.com/">Anaconda repository</a>以 <a href="https://anaconda.org/">Anaconda Cloud</a>的conda包。 Conda包是二进制文件，徐需要使用编译器来安装它们。另外，conda包不仅限于Python软件。它们还可能包含C或C ++库，R包或任何其他软件。</p>
 <p>这是conda和pip之间的关键区别。 Pip安装Python包，而conda安装包可能包含用任何语言编写的软件的包。在使用pip之前，必须通过系统包管理器或下载并运行安装程序来安装Python解释器。而Conda可以直接安装Python包以及Python解释器。</p>
-<p>另一个区别是conda能够创建可以包含不同版本的Python或其他软件包的隔离环境。在使用数据科学工具时，这非常有用，因为不同的工具可能包含冲突的要求，这些要求可能会阻止它们全部安装到单个环境中。 Pip没有内置的环境支持，而是依赖于<a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a>或<a href="https://docs.python.org/3/library/venv.html">venv </a>等其他工具来创建隔离环境。 pipenv，poetry和hatch wrap pip和virtualenv等工具提供了统一的方法来处理这些环境。</p>
-<p>Pip和conda在如何实现环境中的依赖关系方面也有所不同。安装包时，pip会在递归的串行循环中安装依赖项。没有努力确保同时满足所有包的依赖性。如果较早安装的软件包与稍后安装的软件包具有不兼容的依赖性版本，则可能导致破坏的环境。conda使用可确保满足环境中安装的所有包的所有要求。此检查可能需要额外的时间，但有助于防止创建破坏的环境，前期关于依赖关系包的元数据是正确的。</p>
-<p>考虑到conda和pip之间的相似性，有些人试图将这些工具结合起来创建数据科学环境也就不足为奇了。将pip与conda结合的主要原因是有些包只能通过pip安装。 Anaconda创酷提供超过1,500个软件包，包括最流行的数据科学，机器学习和AI框架。这些，以及包括conda-forge和bioconda在内的数据通过Anaconda云提供的数千个附加软件包，可以使用conda进行安装。尽管有大量的软件包，但与PyPI上提供的150,000多个软件包相比，它仍然很小。有时候需要的包没有conda包，但在PyPI上有，可以用pip安装。</p>
-<h3 id="_1">参考资料</h3>
-<ul>
-<li>讨论  qq群144081101 567351477</li>
-<li><a href="https://china-testing.github.io/conda_pip_compare.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
-<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
-<li><a href="https://china-testing.github.io/python_gui_books.html">python GUI工具书籍下载-持续更新</a></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="center">类别</th>
-<th align="center">conda</th>
-<th align="center">pip</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">管理</td>
-<td align="center">二进制</td>
-<td align="center">wheel 或源码</td>
-</tr>
-<tr>
-<td align="center">需要编译器</td>
-<td align="center">no</td>
-<td align="center">yes</td>
-</tr>
-<tr>
-<td align="center">语言</td>
-<td align="center">any</td>
-<td align="center">Python</td>
-</tr>
-<tr>
-<td align="center">虚拟环境</td>
-<td align="center">支持</td>
-<td align="center">通过 virtualenv或venv等支持</td>
-</tr>
-<tr>
-<td align="center">依赖性检查</td>
-<td align="center">yes</td>
-<td align="center">屏幕提示用户选择</td>
-</tr>
-<tr>
-<td align="center">包来源</td>
-<td align="center">Anaconda repo和cloud</td>
-<td align="center">PyPi</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_2">参考资料</h2>
-<ul>
-<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 </li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>另一个区别是conda能够创建可以包含不同版本的Python或其他软件包的隔离环境。在使用数据科学工具时，这非常有用，因为不同的工具可能包含冲突的要求，这些要求可能会阻止它们全部安装到单个环境中。 Pip没有内置的环境支持，而是依赖于<a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a>或<a href="https://docs.python.org/3/library/venv.html">venv </a>等其他工具来创建隔离环境。 pipenv，poetry和hatch wrap pip和virtualenv等工具提供了统一的方法来处理这些环境 …</p>
+                <a class="readmore" href="/conda_pip_compare.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -414,43 +395,6 @@
 <p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-fb841838297cd5c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <p><a href="https://itbooks.pipipan.com/fs/18113597-321448974">O'Reilly.Twisted.Network.Programming.Essentials.2nd.Edition.Mar …</a></p>
                 <a class="readmore" href="/python_network_books.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/ai_tts.html" rel="bookmark"
-                           title="Permalink to python人工智能作业：Windows使用SAPI和tkinter用不到40行实现文本转语音">python人工智能作业：Windows使用SAPI和tkinter用不到40行实现文本转语音</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-23T07:25:00+08:00">
-                Published: 五 23 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p>直接上代码：</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># 技术支持：https://www.jianshu.com/u/69f40328d4f0 </span>
-<span class="c1"># 技术支持 https://china-testing.github.io/</span>
-<span class="c1"># https://github.com/china-testing/python-api-tesing/blob/master/practices/TTS.py</span>
-<span class="c1">#  qq群144081101 567351477</span>
-<span class="c1"># CreateDate: 2018-11-22</span>
-
-<span class="kn">import</span> <span class="nn">win32com.client</span> <span class="kn">as</span> <span class="nn">wincl</span>
-<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
-
-
-<span class="k">def</span> <span class="nf">text2Speech</span><span class="p">():</span>
- <span class="n">text</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
- <span class="n">speak</span> <span class="o">=</span> <span class="n">wincl</span><span class="o">.</span><span class="n">Dispatch</span><span class="p">(</span><span class="s2">&quot;SAPI …</span></pre></div>
-                <a class="readmore" href="/ai_tts.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
