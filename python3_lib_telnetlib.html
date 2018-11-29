@@ -35,166 +35,78 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2018-02-11T19:20:00+08:00">
-                Published: 日 11 二月 2018
+        <abbr class="published" title="2018-11-29T08:20:00+08:00">
+                Published: 四 29 十一月 2018
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="/author/andrew.html">andrew</a>
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
+Translations:
+        <a href="/python3_lib_telnetlib.html">cn</a>
 
-</footer><!-- /.post-info -->      <h2 id="_1">简介</h2>
-<p>telnetlib模块提供的Telnet类实现了Telnet协议(参见rfc854)。它为协议字符和telnet选项提供符号常量，符号常量来源于arpa/telnet.h，去掉了前缀TELOPT_。</p>
-<p>telnet命令有： IAC, DONT, DO, WONT, WILL, SE (Subnegotiation End), NOP (No Operation), DM (Data Mark), BRK (Break), IP (Interrupt process), AO (Abort output), AYT (Are You There), EC (Erase Character), EL (Erase Line), GA (Go Ahead), SB (Subnegotiation Begin)。</p>
-<p>class telnetlib.Telnet(host=None, port=0[, timeout])</p>
-<h2 id="_2">快速入门</h2>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># Author Rongzhong Xu 2016-08-25 wechat: pythontesting</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Name: telnet_demo.py</span>
-
-<span class="sd">Tesed in python3.5</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
-<span class="kn">import</span> <span class="nn">telnetlib</span>
-
-<span class="n">HOST</span> <span class="o">=</span> <span class="s2">&quot;172.17.100.18&quot;</span>
-<span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
-<span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;123456&quot;</span>
-
-
-<span class="k">def</span> <span class="nf">command</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">flag</span><span class="p">,</span> <span class="n">str_</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">read_until</span><span class="p">(</span><span class="n">flag</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">))</span>
-    <span class="n">con</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">str_</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">data</span>
-
-<span class="n">tn</span> <span class="o">=</span> <span class="n">telnetlib</span><span class="o">.</span><span class="n">Telnet</span><span class="p">(</span><span class="n">HOST</span><span class="p">)</span>
-<span class="n">command</span><span class="p">(</span><span class="n">tn</span><span class="p">,</span> <span class="s2">&quot;login: &quot;</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">password</span><span class="p">:</span>
-    <span class="n">command</span><span class="p">(</span><span class="n">tn</span><span class="p">,</span> <span class="s2">&quot;Password: &quot;</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
-<span class="n">command</span><span class="p">(</span><span class="n">tn</span><span class="p">,</span> <span class="s2">&quot;$&quot;</span><span class="p">,</span> <span class="s2">&quot;ls&quot;</span><span class="p">)</span>
-<span class="n">command</span><span class="p">(</span><span class="n">tn</span><span class="p">,</span> <span class="s2">&quot;$&quot;</span><span class="p">,</span> <span class="s2">&quot; exit&quot;</span><span class="p">)</span>
-<span class="n">command</span><span class="p">(</span><span class="n">tn</span><span class="p">,</span> <span class="s2">&quot;$&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="n">tn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-
-
-<p>执行结果：</p>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">telnet_demo</span><span class="o">.</span><span class="n">py</span> 
-<span class="n">CentOS</span> <span class="n">release</span> <span class="mf">6.7</span> <span class="p">(</span><span class="n">Final</span><span class="p">)</span>
-<span class="n">Kernel</span> <span class="mf">2.6</span><span class="o">.</span><span class="mi">32</span><span class="o">-</span><span class="mf">573.18</span><span class="o">.</span><span class="mf">1.</span><span class="n">el6</span><span class="o">.</span><span class="n">x86_64</span> <span class="n">on</span> <span class="n">an</span> <span class="n">x86_64</span>
-<span class="n">login</span><span class="p">:</span> 
-<span class="n">Password</span><span class="p">:</span> 
-
-<span class="n">Last</span> <span class="n">login</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">Aug</span> <span class="mi">25</span> <span class="mi">17</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">18</span> <span class="kn">from</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">153.6</span>
-<span class="p">[</span><span class="n">test</span><span class="nd">@public01</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span>
- <span class="n">ls</span>
-<span class="p">[</span><span class="n">test</span><span class="nd">@public01</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span>
- <span class="nb">exit</span>
-<span class="n">logout</span>
-</pre></div>
-
-
-<h2 id="_3">方法</h2>
+</footer><!-- /.post-info -->      <p>Conda和pip通常被认为几乎完全相同。虽然这两个工具的某些功能重叠，但它们设计用于不同的目的。 <a href="https://pip.pypa.io/en/stable/">Pip</a>是Python Packaging Authority推荐的用于从<a href="https://pypi.org/">Python Package Index</a>安装包的工具。 Pip安装打包为wheels或源代码分发的Python软件。后者可能要求系统安装兼容的编译器和库。</p>
+<p><a href="https://conda.io/docs/">Conda</a>是跨平台的包和环境管理器，可以安装和管理来自<a href="https://repo.anaconda.com/">Anaconda repository</a>以 <a href="https://anaconda.org/">Anaconda Cloud</a>的conda包。 Conda包是二进制文件，徐需要使用编译器来安装它们。另外，conda包不仅限于Python软件。它们还可能包含C或C ++库，R包或任何其他软件。</p>
+<p>这是conda和pip之间的关键区别。 Pip安装Python包，而conda安装包可能包含用任何语言编写的软件的包。在使用pip之前，必须通过系统包管理器或下载并运行安装程序来安装Python解释器。而Conda可以直接安装Python包以及Python解释器。</p>
+<p>另一个区别是conda能够创建可以包含不同版本的Python或其他软件包的隔离环境。在使用数据科学工具时，这非常有用，因为不同的工具可能包含冲突的要求，这些要求可能会阻止它们全部安装到单个环境中。 Pip没有内置的环境支持，而是依赖于<a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a>或<a href="https://docs.python.org/3/library/venv.html">venv </a>等其他工具来创建隔离环境。 pipenv，poetry和hatch wrap pip和virtualenv等工具提供了统一的方法来处理这些环境。</p>
+<p>Pip和conda在如何实现环境中的依赖关系方面也有所不同。安装包时，pip会在递归的串行循环中安装依赖项。没有努力确保同时满足所有包的依赖性。如果较早安装的软件包与稍后安装的软件包具有不兼容的依赖性版本，则可能导致破坏的环境。conda使用可确保满足环境中安装的所有包的所有要求。此检查可能需要额外的时间，但有助于防止创建破坏的环境，前期关于依赖关系包的元数据是正确的。</p>
+<p>考虑到conda和pip之间的相似性，有些人试图将这些工具结合起来创建数据科学环境也就不足为奇了。将pip与conda结合的主要原因是有些包只能通过pip安装。 Anaconda创酷提供超过1,500个软件包，包括最流行的数据科学，机器学习和AI框架。这些，以及包括conda-forge和bioconda在内的数据通过Anaconda云提供的数千个附加软件包，可以使用conda进行安装。尽管有大量的软件包，但与PyPI上提供的150,000多个软件包相比，它仍然很小。有时候需要的包没有conda包，但在PyPI上有，可以用pip安装。</p>
+<h3 id="_1">参考资料</h3>
 <ul>
-<li>Telnet.read_until(expected[, timeout]) </li>
+<li>讨论 钉钉群21745728 qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/conda_pip_compare.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python_gui_books.html">python GUI工具书籍下载-持续更新</a></li>
 </ul>
-<p>读取直到遇到了给定的字符串expected或超时秒数。</p>
-<p>当找不到匹配时，返回读取内容。连接关闭或者没有数据时触发EOFError异常。</p>
-<ul>
-<li>Telnet.read_all()</li>
-</ul>
-<p>读取所有数据直到EOF，阻塞直到连接关闭。</p>
-<ul>
-<li>Telnet.read_some()</li>
-</ul>
-<p>读取至少一个字节的数据，除非EOF。 如果没有数据则阻塞。</p>
-<ul>
-<li>Telnet.read_very_eager()</li>
-</ul>
-<p>非阻塞地读取。连接关闭或者没有数据时触发EOFError异常。返回b''如果没有数据，</p>
-<ul>
-<li>Telnet.read_eager()</li>
-</ul>
-<p>读取的已有数据。(快)</p>
-<p>连接关闭或者没有数据时触发EOFError异常。返回b''如果没有数据，</p>
-<ul>
-<li>Telnet.read_lazy()</li>
-</ul>
-<p>读取的已有数据(懒)</p>
-<p>连接关闭或者没有数据时触发EOFError异常。返回b''如果没有数据，</p>
-<ul>
-<li>Telnet.read_very_lazy()</li>
-</ul>
-<p>读取的已有数据(很懒)</p>
-<p>连接关闭或者没有数据时触发EOFError异常。返回b''如果没有数据，</p>
-<ul>
-<li>Telnet.read_sb_data()</li>
-</ul>
-<p>返回的SB/SE pair (suboption begin/end)之间的数据。此方法永远不会阻塞。</p>
-<ul>
-<li>Telnet.open(host[, port[, timeout]])</li>
-</ul>
-<p>连接到主机。可选的第二个参数是默认为标准的 Telnet 端口 （23） 的端口号。可选的超时参数指定以秒计） 阻塞操作 （如连接尝试超时 （如果不指定，将使用全局默认超时设置）。</p>
-<ul>
-<li>Telnet.msg(msg[, *args])</li>
-</ul>
-<p>当调试级别为&gt; 0 打印调试消息。</p>
-<ul>
-<li>Telnet.set_debuglevel(debuglevel)</li>
-</ul>
-<p>设置调试级别。debuglevel越高信息越多。</p>
-<ul>
-<li>Telnet.close()</li>
-</ul>
-<p>关闭该连接。</p>
-<ul>
-<li>Telnet.get_socket()</li>
-</ul>
-<p>返回套接字供内部使用。</p>
-<ul>
-<li>Telnet.fileno()</li>
-</ul>
-<p>返回套接字对象内部使用的文件描述符。</p>
-<ul>
-<li>Telnet.write(buffer)</li>
-</ul>
-<p>写入字符串到套接字，加倍 IAC 的任何字符。连接关闭是可能触发OSError异常。</p>
-<ul>
-<li>Telnet.interact()</li>
-</ul>
-<p>交由用户控制。</p>
-<ul>
-<li>Telnet.mt_interact()</li>
-</ul>
-<p>多线程的版本的interact()。</p>
-<ul>
-<li>Telnet.expect(list[, timeout])</li>
-</ul>
-<p>读取直到匹配正则表达式项列表中的一个。</p>
-<p>list是一个正则表达式列表，包含编译(regex 对象)或未编译(字节字符串)。timeout以秒为单位, 默认值为无限期阻塞。</p>
-<p>返回元组的三个项目： index为匹配正则表达式的位置；match 对象；此时读了的字节。</p>
-<p>文件结尾或没有数据时触发EOFError异常，不匹配时返回(-1, None, data)。</p>
-<p>如果正则表达式是贪婪模式或者如果多个表达式可以匹配相同的输入，结果是不确定的，可能取决于I/O定时。</p>
-<ul>
-<li>Telnet.set_option_negotiation_callback(callback)</li>
-</ul>
-<p>每次从输入流读取telnet选项时，调用callback(telnet socket, command (DO/DONT/WILL/WONT), option)，后续步骤不会执行。</p>
-<h2 id="_4">参考资料</h2>
+<table>
+<thead>
+<tr>
+<th align="center">类别</th>
+<th align="center">conda</th>
+<th align="center">pip</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">管理</td>
+<td align="center">二进制</td>
+<td align="center">wheel 或源码</td>
+</tr>
+<tr>
+<td align="center">需要编译器</td>
+<td align="center">no</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="center">语言</td>
+<td align="center">any</td>
+<td align="center">Python</td>
+</tr>
+<tr>
+<td align="center">虚拟环境</td>
+<td align="center">支持</td>
+<td align="center">通过 virtualenv或venv等支持</td>
+</tr>
+<tr>
+<td align="center">依赖性检查</td>
+<td align="center">yes</td>
+<td align="center">屏幕提示用户选择</td>
+</tr>
+<tr>
+<td align="center">包来源</td>
+<td align="center">Anaconda repo和cloud</td>
+<td align="center">PyPi</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">参考资料</h2>
 <ul>
 <li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
 <li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/python3_lib_telnetlib.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
 <li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-<li>python官方文档：https://docs.python.org/3/library/telnetlib.html</li>
-<li>pymotw文档：https://pymotw.com/3/enum/index.html</li>
-<li>effbot: http://effbot.org/librarybook/telnetlib.htm</li>
-<li>rfc854: https://tools.ietf.org/html/rfc854.html</li>
 </ul>
     </div><!-- /.entry-content -->
 
