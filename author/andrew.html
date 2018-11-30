@@ -28,7 +28,170 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/tk3.html">python GUI作业：使用tkinter的重要控件</a></h1>
+                    <h1 class="entry-title"><a href="/multi_md5.html">MD5值重复文件多进程检查工具check_md5.py - 性能测试工具开发</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-11-30T07:55:00+08:00">
+                Published: 五 30 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info --><p><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></p>
+<h2 id="md5">MD5简介</h2>
+<p>Message Digest Algorithm MD5(中文名为<a href="https://baike.so.com/doc/6941562-7163923.html">消息摘要算法</a>第五版)为计算机安全领域广泛使用的一种散列函数，用以提供消息的完整性保护。该算法的文件号为RFC 1321(R.Rivest,MIT Laboratory for Computer Science and RSA Data Security Inc. April 1992)。</p>
+<p><strong>MD5</strong>即Message-Digest Algorithm 5(信息-摘要算法5)，用于确保信息传输完整一致。是计算机广泛使用的杂凑算法之一(又译摘要算法、<a href="https://baike.so.com/doc/6902798-7123502.html">哈希算法</a>)，主流编程语言普遍已有MD5实现。将数据(如汉字)运算为另一固定长度值，是杂凑算法的基础原理，MD5的前身有MD2、<a href="https://baike.so.com/doc/2380309-2516809.html">MD3</a>和MD4。</p>
+<p>MD5算法具有以下特点:</p>
+<p>1、压缩性:任意长度的数据，算出的MD5值长度都是固定的。</p>
+<p>2、容易计算:从原数据计算出MD5值很容易。</p>
+<p>3、抗修改性:对原数据进行任何改动，哪怕只修改1个字节，所得到的MD5值都有很大区别。</p>
+<p>4、强抗碰撞:已知原数据和其MD5值，想找到一个具有相同MD5值的数据(即伪造数据)是非常困难的。</p>
+<p>MD5的作用是让大容量信息在用<a href="https://baike.so.com/doc/2871106-3029793.html">数字签名</a>软件签署私人密钥前被"<a href="https://baike.so.com/doc/3143727-3313214.html">压缩</a>"成一种保密的格式(就是把一个任意长度的字节串变换成一定长的<a href="https://baike.so.com/doc/5330668-5565842.html">十六进制</a>数字串)。除了MD5以外，其中比较有名的还有sha-1、RIPEMD以及Haval等。</p>
+<p>举个实际应用的例子。比如你在百度云qq群文件等上传文件的时候，有时上传几百兆的文件可以几秒内完成，是真的网络有这么快么？不是，通常是服务器已经存在你所上传的文件。那么系统是如何确定服务器已经存在你要上传的文件的呢？多为计算你要上传文件的MD5，如果MD5和已有文件的MD5一致，就认为文件已经存在。</p>
+<h2 id="_1">参考资料</h2>
+<ul>
+<li><a href="https://china-testing.github.io/multi_md5.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+</ul>
+<h2 id="md5_1">计算MD5</h2>
+<p>linux 下 shell命令行工具md5sum用于计算与校验RFC 1321所描述的128位MD5哈希值。 </p>
+<div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">&quot;hello&quot;</span> &gt; hello
+$ md5sum hello 
+b1946ac92492d2347c6235b4d2611184  hello
+</pre></div>
+
+
+<p>上述过程也可以用python3实现</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="s1">&#39;b1946ac92492d2347c6235b4d2611184&#39;</span>
+</pre></div>
+
+
+<p><a href="https://github.com/china-testing/python-api-tesing/blob/master/data_common.py">上述代码的函数封装</a>，参见get_md5函数。</p>
+<p>[Md5sum 英文维基百科参考](https://en.wikipedia.org/wiki/Md5sum）</p>
+<h2 id="md5_2">MD5值重复文件多进程检查工具</h2>
+<p>测试过程中经常发现MD5值相同的图片。之前没有用并发，检查过程经常需要一个小时，现在改成多进程。一般3分钟以内可以完成处理(48核)。</p>
+<p>此模式也是自行开发性能测试工具的模型之一。</p>
+<p>代码：</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    xurongzhong#126.com 技术支持qq群：144081101</span>
+<span class="c1"># CreateDate: 2018-1-8 </span>
+<span class="c1"># check_md5.py</span>
+
+<span class="kn">import</span> <span class="nn">multiprocessing</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">data_common</span>
+
+<span class="k">def</span> <span class="nf">consumer</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">break</span>        
+        <span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="n">md5</span> <span class="o">=</span> <span class="n">data_common</span><span class="o">.</span><span class="n">get_md5</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">is_file</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">md5</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Same md5&quot;</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="n">md5</span><span class="p">],</span> <span class="n">name</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">results</span><span class="p">[</span><span class="n">md5</span><span class="p">]</span> <span class="o">=</span><span class="p">[]</span>
+            <span class="n">results</span><span class="p">[</span><span class="n">md5</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">md5</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;directory&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;目录&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;typename&quot;</span><span class="p">,</span>
+                        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;文件扩展名&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--version&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;version&#39;</span><span class="p">,</span>
+                        <span class="n">version</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(prog)s</span><span class="s1"> 1.1 Rongzhong xu 2018 03 22&#39;</span><span class="p">)</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="n">process</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Manager</span><span class="p">()</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+    <span class="n">lock</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="c1"># Launch the consumer process</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span>
+            <span class="n">target</span><span class="o">=</span><span class="n">consumer</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">lock</span><span class="p">))</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">daemon</span><span class="o">=</span><span class="bp">True</span>
+        <span class="n">process</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+        <span class="n">process</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">directory</span><span class="p">)</span>   
+    <span class="k">for</span> <span class="n">item</span>  <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*.{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">typename</span><span class="p">)):</span>
+        <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+        <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span> 
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+        <span class="n">process</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>       
+
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;md5_files.txt&quot;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>   
+    <span class="n">f2</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;files.txt&quot;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>   
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+        <span class="n">f2</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;{},{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="n">results</span><span class="p">[</span><span class="n">item</span><span class="p">]))</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">item</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;{},{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="n">results</span><span class="p">[</span><span class="n">item</span><span class="p">]))</span>
+</pre></div>
+
+
+<p>演示</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">check_md5</span><span class="o">.</span><span class="n">py</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">paper</span>
+<span class="n">Same</span> <span class="n">md5</span> <span class="p">[</span><span class="s1">&#39;2018.01.07-19.38.15_0.9999967.jpg&#39;</span><span class="p">]</span> <span class="mf">2018.01</span><span class="o">.</span><span class="mo">07</span><span class="o">-</span><span class="mf">19.38</span><span class="o">.</span><span class="mi">15</span><span class="n">_0</span><span class="o">.</span><span class="mf">99999679.j</span><span class="n">pg</span>
+<span class="err">$</span> <span class="n">cat</span> <span class="n">md5_files</span><span class="o">.</span><span class="n">txt</span> 
+<span class="mi">43</span><span class="n">c5a6e1dcf79d095e97ce63885c5cd7</span><span class="p">,[</span><span class="s1">&#39;2018.01.07-19.38.15_0.9999967.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;2018.01.07-19.38.15_0.99999679.jpg&#39;</span><span class="p">]</span>
+<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">mobile_data</span><span class="o">/</span><span class="n">tools</span><span class="err">$</span>
+</pre></div>
+</td></tr></table>
+
+<p>注意，求MD5值依赖<a href="https://github.com/china-testing/python-api-tesing/blob/master/data_common.py">data_common.py</a></p>
+<p>上面使用的多进程属于python高性能的内容，如需想深入了解可以参考<a href="https://itbooks.pipipan.com/dir/18113597-29466302-126987/">书籍</a> 。</p>
+<h3 id="_2">参考资料</h3>
+<ul>
+<li>讨论  qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/multi_md5.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/tk3.html" rel="bookmark"
+                           title="Permalink to python GUI作业：使用tkinter的重要控件">python GUI作业：使用tkinter的重要控件</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-11-30T07:50:00+08:00">
                 Published: 五 30 十一月 2018
@@ -39,7 +202,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info --><p><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></p>
+</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></p>
 <h3 id="1tkinter">题目1：使用tkinter的重要控件 绘制如下菜单：</h3>
 <p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-04df871f16b35b9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <p>参考代码：</p>
@@ -56,207 +219,15 @@
 
 <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 <span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;tkinter控件&#39;</span><span class="p">)</span>
-<span class="c1">#create a frame widget for placing menu</span>
-<span class="n">my_menu_bar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">relief</span><span class="o">=</span><span class="s1">&#39;raised&#39;</span><span class="p">,</span> <span class="n">bd</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">my_menu_bar</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">X</span><span class="p">)</span>
-
-<span class="c1"># Create  Menu Widget 1 and Sub Menu 1</span>
-<span class="n">my_menu_button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Menubutton</span><span class="p">(</span>
-    <span class="n">my_menu_bar</span><span class="p">,</span>
-    <span class="n">text</span><span class="o">=</span><span class="s1">&#39;菜单1&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">my_menu_button</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">LEFT</span><span class="p">)</span>
-<span class="c1">#menu widget</span>
-<span class="n">my_menu</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Menu</span><span class="p">(</span><span class="n">my_menu_button</span><span class="p">,</span> <span class="n">tearoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">my_menu_button</span><span class="p">[</span><span class="s1">&#39;menu&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">my_menu</span>
-<span class="n">my_menu</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;command&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;子菜单1&#39;</span><span class="p">)</span>  <span class="c1">#Add Sub Menu 1</span>
-
-<span class="c1"># Create  Menu2 and Submenu2</span>
-<span class="n">menu_button_2</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Menubutton</span><span class="p">(</span>
-    <span class="n">my_menu_bar</span><span class="p">,</span>
-    <span class="n">text</span><span class="o">=</span><span class="s1">&#39;菜单2&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">menu_button_2</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">LEFT</span><span class="p">)</span>
-<span class="n">my_menu_2</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Menu</span><span class="p">(</span><span class="n">menu_button_2</span><span class="p">,</span> <span class="n">tearoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">menu_button_2</span><span class="p">[</span><span class="s1">&#39;menu&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">my_menu_2</span>
-<span class="n">my_menu_2</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;command&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;子菜单2&#39;</span><span class="p">)</span>  <span class="c1"># Add Sub Menu 2</span>
-
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1"># my_frame_1  and its contents</span>
-<span class="c1">#</span>
-
-<span class="c1"># creating a frame (my_frame_1)</span>
-<span class="n">my_frame_1</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">bd</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">relief</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">SUNKEN</span><span class="p">)</span>
-<span class="n">my_frame_1</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">LEFT</span><span class="p">)</span>
-
-<span class="c1"># add label to to my_frame_1</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">my_frame_1</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;标签&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-
-<span class="c1">#add entry widget to my_frame_1</span>
-<span class="n">tv</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>  <span class="c1">#discussed later</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">my_frame_1</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">tv</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-<span class="n">tv</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;I am an entry widget&#39;</span><span class="p">)</span>
-
-<span class="c1">#add button widget to my_frame_1</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">my_frame_1</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;tk.Button widget&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-
-<span class="c1">#add check button widget to my_frame_1</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">my_frame_1</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Checktk.Button Widget&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-
-<span class="c1">#add radio buttons to my_frame_1</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span><span class="p">(</span><span class="n">my_frame_1</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Radio tk.Button  Un&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span><span class="p">(</span><span class="n">my_frame_1</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Radio tk.Button  Dos&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span><span class="p">(</span><span class="n">my_frame_1</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Radio tk.Button  Tres&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-
-<span class="c1">#tk.OptionMenu Widget</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">my_frame_1</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Example of tk.OptionMenu Widget:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">OptionMenu</span><span class="p">(</span><span class="n">my_frame_1</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s2">&quot;Option A&quot;</span><span class="p">,</span> <span class="s2">&quot;Option B&quot;</span><span class="p">,</span> <span class="s2">&quot;Option C&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-
-<span class="c1">#adding my_image image</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">my_frame_1</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Image Fun with Bitmap Class:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-<span class="n">my_image</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">BitmapImage</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="s2">&quot;gir.xbm&quot;</span><span class="p">)</span>
-<span class="n">my_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">my_frame_1</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">my_image</span><span class="p">)</span>
-<span class="n">my_label</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">my_image</span>  <span class="c1"># keep a reference!</span>
-<span class="n">my_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1"># frame2 and widgets it contains.</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-
-<span class="c1">#create another frame(my_frame_2) to hold a list box, Spinbox Widget,Scale Widget, :</span>
-<span class="n">my_frame_2</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">bd</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">relief</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">GROOVE</span><span class="p">)</span>
-<span class="n">my_frame_2</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">)</span>
-
-<span class="c1">#add Photimage Class Widget to my_frame_2</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
-    <span class="n">my_frame_2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Image displayed with </span><span class="se">\n</span><span class="s1">PhotoImage class widget:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-<span class="n">dance_photo</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="s1">&#39;dance.gif&#39;</span><span class="p">)</span>
-<span class="n">dance_photo_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">my_frame_2</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">dance_photo</span><span class="p">)</span>
-<span class="n">dance_photo_label</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">dance_photo</span>
-<span class="n">dance_photo_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-
-<span class="c1">#add my_listbox widget to my_frame_2</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">my_frame_2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Below is an example of my_listbox widget:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-<span class="n">my_listbox</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Listbox</span><span class="p">(</span><span class="n">my_frame_2</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Listbox Choice 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice 4&#39;</span><span class="p">]:</span>
-  <span class="n">my_listbox</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
-<span class="n">my_listbox</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-
-<span class="c1">#spinbox widget</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">my_frame_2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Below is an example of spinbox widget:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Spinbox</span><span class="p">(</span><span class="n">my_frame_2</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-
-<span class="c1">#scale widget</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span>
-    <span class="n">my_frame_2</span><span class="p">,</span> <span class="n">from_</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Scale widget&#39;</span><span class="p">,</span>
-    <span class="n">orient</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-
-<span class="c1">#LabelFrame</span>
-<span class="n">label_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">LabelFrame</span><span class="p">(</span>
-    <span class="n">my_frame_2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;LabelFrame Widget&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">label_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">label_frame</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-
-<span class="c1">#message widget</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Message</span><span class="p">(</span><span class="n">my_frame_2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;I am a Message widget&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1"># tk.Frame 3</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-
-<span class="n">my_frame_3</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">bd</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">relief</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">SUNKEN</span><span class="p">)</span>
-
-<span class="c1">#text widget and associated tk.Scrollbar widget</span>
-<span class="n">my_text</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">my_frame_3</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
-<span class="n">file_object</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;textcontent.txt&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-<span class="n">file_content</span> <span class="o">=</span> <span class="n">file_object</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">file_object</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="n">my_text</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">file_content</span><span class="p">)</span>
-<span class="n">my_text</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">LEFT</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-
-<span class="c1">#add scrollbar widget to the text widget</span>
-<span class="n">my_scrollbar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Scrollbar</span><span class="p">(</span><span class="n">my_frame_3</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">my_text</span><span class="o">.</span><span class="n">yview</span><span class="p">)</span>
-<span class="n">my_scrollbar</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Y</span><span class="p">)</span>
-<span class="n">my_text</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">yscrollcommand</span><span class="o">=</span><span class="n">my_scrollbar</span><span class="o">.</span><span class="n">set</span><span class="p">)</span>
-<span class="n">my_frame_3</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1"># tk.Frame 4</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1">#create another frame(my_frame_4)</span>
-<span class="n">my_frame_4</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-<span class="n">my_frame_4</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-
-<span class="n">my_canvas</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="n">my_frame_4</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">340</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
-<span class="n">my_canvas</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-<span class="n">my_canvas</span><span class="o">.</span><span class="n">create_oval</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-<span class="n">my_canvas</span><span class="o">.</span><span class="n">create_oval</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
-<span class="n">my_canvas</span><span class="o">.</span><span class="n">create_text</span><span class="p">(</span>
-    <span class="mi">130</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;I am a tk.Canvas Widget&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;arial&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;bold&#39;</span><span class="p">))</span>
-
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1"># A paned window widget</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-
-<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Below is an example of Paned window widget:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
-    <span class="n">root</span><span class="p">,</span>
-    <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Notice you can adjust the size of each pane by dragging it&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-<span class="n">my_paned_window_1</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">PanedWindow</span><span class="p">()</span>
-<span class="n">my_paned_window_1</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">BOTH</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">left_pane_text</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">my_paned_window_1</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">my_paned_window_1</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">left_pane_text</span><span class="p">)</span>
-<span class="n">my_paned_window_2</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">PanedWindow</span><span class="p">(</span><span class="n">my_paned_window_1</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
-<span class="n">my_paned_window_1</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">my_paned_window_2</span><span class="p">)</span>
-<span class="n">top_pane_text</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">my_paned_window_2</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">my_paned_window_2</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">top_pane_text</span><span class="p">)</span>
-<span class="n">bottom_pane_text</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">my_paned_window_2</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">my_paned_window_2</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bottom_pane_text</span><span class="p">)</span>
-
-<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
-</pre></div>
-
-
-<h3 id="2tkintertk">题目2：如何查看tkinter的tk版本？</h3>
-<p>参考答案：</p>
-<div class="highlight"><pre><span></span><span class="n">tkinter</span><span class="o">.</span><span class="n">_test</span><span class="p">()</span>
-</pre></div>
-
-
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-de98f3cf80b66cda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h3 id="gui">GUI程序设计通常有哪几部分组成？</h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-7702bc107123bc9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h3 id="tkinter">tkinter的重要控件有哪些？</h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e483052fb7dbe182.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h3 id="_1">参考资料</h3>
-<ul>
-<li>讨论  qq群144081101 567351477</li>
-<li><a href="https://china-testing.github.io/tk3.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<span class="c1">#create a …</span></pre></div>
+                <a class="readmore" href="/tk3.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
                     <h1><a href="/practices.html" rel="bookmark"
-                           title="Permalink to python测试开发项目实战-目录">python测试开发项目实战-目录</a></h1>
+                           title="Permalink to python测试开发人工智能项目实战-目录">python测试开发人工智能项目实战-目录</a></h1>
                 </header>
 
                 <div class="entry-content">
@@ -271,7 +242,7 @@
 <p>In <a href="/category/python.html">python</a>.</p>
 
 </footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></p>
-<p>工作日技术支持QQ群630011153 144081101</p>
+<p>工作日技术支持QQ群 630011153 144081101</p>
 <h3 id="python-gui">python GUI</h3>
 <ul>
 <li><a href="https://china-testing.github.io/tk2.html">python GUI作业：tkinter grid布局</a></li>
@@ -285,6 +256,7 @@
 <h3 id="python_1">python 人工智能</h3>
 <ul>
 <li><a href="https://china-testing.github.io/ai_tts.html">python人工智能作业：Windows使用SAPI和tkinter用不到40行实现文本转语音</a></li>
+<li>使用face_recognition进行人脸识别 <a href="https://china-testing.github.io/python3_lib_face_recognition.html">参考</a></li>
 </ul>
 <h3 id="_1">参考资料</h3>
 <ul>
@@ -574,35 +546,6 @@
 <p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b0ccae58ef79a1e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <p>《Python数据科学手册》是对以数据深度需求为中心的科学、研究以及针对计算和统计方法的参考书。本书共五章，每章介绍一到两个Python数据科学中的重点工具包。首先从IPython和Jupyter开始，它们提供了数据科学家需要的计算环境；第 2章讲解能提供ndarray对象的NumPy，它可以用Python高效地存储和操作大型数组；第3章主要涉及提供DataFrame对象的Pandas，它可以用Python高效地存储和操作带标签的/列式数据 …</p>
                 <a class="readmore" href="/python_books.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_structure_books.html" rel="bookmark"
-                           title="Permalink to python数据结构基础工具书籍下载-持续更新">python数据结构基础工具书籍下载-持续更新</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-24T08:20:00+08:00">
-                Published: 六 24 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://itbooks.pipipan.com/fs/18113597-321523035">算法图解 - 2017.pdf</a></p>
-<p>本书示例丰富，图文并茂，以让人容易理解的方式阐释了算法，旨在帮助程序员在日常项目中更好地发挥算法的能量。书中的前三章将帮助你打下基础，带你学习二分查找、大O表示法、两种基本的数据结构以及递归等。余下的篇幅将主要介绍应用广泛的算法，具体内容包括：面对具体问题时的解决技巧，比如，何时采用贪婪算法或动态规划；散列表的应用；图算法；Kzui近邻算法。</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-d0130f297186ca99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p><a href="https://itbooks.pipipan.com/fs/18113597-321523014">数据结构与算法__Python语言描述-2015.pdf</a></p>
-<p>本书基于Python语言介绍了数据结构与算法的基本知识，主要内容包括抽象数据类型和Python面向对象程序设计、线性表、字符串、栈和队列、二叉树和树、集合、排序以及算法的基本知识。本书延续问题求解的思路，从解决问题的目标来组织教学内容，注重理论与实践的并用。</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-649d4ae56ca30f50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p><a href="https://itbooks.pipipan.com/fs/18113597-321522934">Python算法教程 - 2016.pdf</a></p>
-<p>Python是一种面向对象、解释型计算机程序设计语言，其应用领域非常广泛，包括数据分析、自然语言处理、机器学习、科学计算以及推荐系统构建等。 本书用Python语言来讲解算法的分析和设计。本书主要关注经典的算法，但同时会为读者理解基本算法问题和解决问题打下很好的基础。全书共11章。分别介绍了树、图、计数问题、归纳递归 …</p>
-                <a class="readmore" href="/python_structure_books.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
