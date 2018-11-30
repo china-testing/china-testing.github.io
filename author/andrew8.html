@@ -30,6 +30,53 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_boost.html" rel="bookmark"
+                           title="Permalink to python3外部库boost介绍 用c++为python编写扩展">python3外部库boost介绍 用c++为python编写扩展</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-15T16:20:00+08:00">
+                Published: 三 15 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">概述</h2>
+<p>有不同的方法来用C++扩展Python：</p>
+<ul>
+<li>Swig</li>
+<li>使用Boost.Python，可选择使用Py++预处理</li>
+<li>使用Cython。</li>
+</ul>
+<p>Cython出现之前，Boost.Python是编写C ++扩展模块最爽的方式。</p>
+<p>Boost.Python集成在Boost C++ Libraries中。 要在Ubuntu系统上安装；</p>
+<div class="highlight"><pre><span></span>$ sudo apt-get install libboost-python-dev 
+$ sudo apt-get install python-dev
+</pre></div>
+
+
+<h3 id="_2">快速入门</h3>
+<p>hellomodule.cpp</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">say_hello</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Hello &quot;</span> <span class="o">&lt;&lt;</span>  <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;boost/python/module.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;boost …</span></pre></div>
+                <a class="readmore" href="/python3_lib_boost.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/health_shouxiang_jichu.html" rel="bookmark"
                            title="Permalink to 手相学: 天尊山道人看相算命">手相学: 天尊山道人看相算命</a></h1>
                 </header>
@@ -428,67 +475,6 @@ import urllib</p>
 <p>RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
              'cnn': 'http://rss.cnn …</p>
                 <a class="readmore" href="/python_flask_autotest5.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_flask_autotest3.html" rel="bookmark"
-                           title="Permalink to flask构建自动化测试平台3-模板">flask构建自动化测试平台3-模板</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-05-18T10:26:00+08:00">
-                Published: 五 18 五月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="3-">3-模板</h2>
-<p>理想情况下，前端和后端组件之间的完全隔离。我们可以在很大程度上使用Jinja来实现这一目标。</p>
-<p>到本章将扩展我们的应用程序，为所选出版物显示不止一个标题。我们将为每个出版物显示多篇文章，每篇文章都链接到原始文章，我们的逻辑和视图组件将在很大程度上分开。在本章中，我们将介绍以下主题：</p>
-<ul>
-<li>
-<p>介绍Jinja</p>
-</li>
-<li>
-<p>Jinja模板使用</p>
-</li>
-<li>
-<p><a href="https://www.jianshu.com/p/912f92703d22">本文地址</a></p>
-</li>
-</ul>
-<h3 id="jinja">介绍Jinja</h3>
-<p>Jinja是一个Python模板引擎。它允许我们轻松定义由Python填充的动态HTML块。即使对于多个静态网页的网站，HTML模板也很有用
-有，如修改页眉和页脚。Flask基于Jinja，尽管可以单独使用Jinja，但Jinja仍然是Flask的固有部分。Flask和Flask提供了几种直接与Jinja工作的方法。默认情况下，Flask假定你存储了所有的Jinja模板位于您的应用程序的templates子目录中。</p>
-<h3 id="jinja_1">Jinja模板使用</h3>
-<p>home.html</p>
-<p>```#!html</p>
-<p _="%" endfor><html>
-    <head>
-        <title>Headlines</title>
-    </head>
-    <body>
-        <h1>Headlines</h1>
-        {% for article in articles %}
-            <b><a href="{{article.link}}">{{article.title}}</a></b><br />
-            <i>{{article.published}}</i><br />
-            <p>{{article.summary}}</p>
-            <hr /></p>
-<div class="highlight"><pre><span></span>&lt;/body&gt;
-</pre></div>
-
-
-<p></html></p>
-<div class="highlight"><pre><span></span><span class="sb">``</span><span class="err">`</span><span class="c1">#!python</span>
-
-<span class="kn">import</span> <span class="nn">feedparser</span>
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import …</span></pre></div>
-                <a class="readmore" href="/python_flask_autotest3.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
