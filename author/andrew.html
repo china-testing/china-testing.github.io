@@ -28,7 +28,145 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/flask_api.html">使用python3和flask构建RESTful API(接口测试服务与mockserver工具)</a></h1>
+                    <h1 class="entry-title"><a href="/network_traceroute.html">python网络作业：使用python的socket库实现ICMP协议的traceroute</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-12-01T07:25:00+08:00">
+                Published: 六 01 十二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info --><p><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></p>
+<p>直接上代码：</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># 技术支持：https://www.jianshu.com/u/69f40328d4f0 </span>
+<span class="c1"># 技术支持 https://china-testing.github.io/</span>
+<span class="c1"># https://github.com/china-testing/python-api-tesing/blob/master/practices/traceroute.py</span>
+<span class="c1"># 项目实战讨论QQ群630011153 144081101</span>
+<span class="c1"># CreateDate: 2018-11-26</span>
+
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">struct</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">class</span> <span class="nc">flushfile</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">FileIO</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span>
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">flushfile</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">dest_name</span><span class="p">):</span>
+    <span class="n">dest_addr</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">gethostbyname</span><span class="p">(</span><span class="n">dest_name</span><span class="p">)</span>
+    <span class="n">port</span> <span class="o">=</span> <span class="mi">55285</span>
+    <span class="n">max_hops</span> <span class="o">=</span> <span class="mi">30</span>
+
+    <span class="n">ttl</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">rec_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_RAW</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_ICMP</span><span class="p">)</span>
+        <span class="n">send_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_UDP</span><span class="p">)</span>
+        <span class="n">send_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_IP</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">IP_TTL</span><span class="p">,</span> <span class="n">ttl</span><span class="p">)</span>
+
+        <span class="n">timeout</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;ll&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">rec_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_RCVTIMEO</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+        <span class="n">rec_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot; </span><span class="si">%d</span><span class="s2">   &quot;</span> <span class="o">%</span> <span class="n">ttl</span><span class="p">)</span>
+        <span class="n">send_socket</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">),</span> <span class="p">(</span><span class="n">dest_name</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+
+        <span class="n">curr_addr</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">curr_name</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">finished</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">tries</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">finished</span> <span class="ow">and</span> <span class="n">tries</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">curr_addr</span> <span class="o">=</span> <span class="n">rec_socket</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>
+                <span class="n">finished</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="n">curr_addr</span> <span class="o">=</span> <span class="n">curr_addr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">curr_name</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">gethostbyaddr</span><span class="p">(</span><span class="n">curr_addr</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">error</span><span class="p">:</span>
+                    <span class="n">curr_name</span> <span class="o">=</span> <span class="n">curr_addr</span>
+            <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">error</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="n">tries</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;* &quot;</span><span class="p">)</span>
+
+        <span class="n">send_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">rec_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">finished</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="k">if</span> <span class="n">curr_addr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">curr_host</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> (</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">curr_name</span><span class="p">,</span> <span class="n">curr_addr</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">curr_host</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">curr_host</span><span class="p">))</span>
+
+        <span class="n">ttl</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">curr_addr</span> <span class="o">==</span> <span class="n">dest_addr</span> <span class="ow">or</span> <span class="n">ttl</span> <span class="o">&gt;</span> <span class="n">max_hops</span><span class="p">:</span>
+            <span class="k">break</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">(</span><span class="s2">&quot;china-testing.github.io&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="_1">参考资料</h3>
+<ul>
+<li><a href="https://china-testing.github.io/network_traceroute.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li><a href="https://china-testing.github.io/python3_quick9.html">python 3.7极速入门教程9最佳python中文工具书籍下载</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/practices/traceroute.py">最新代码地址</a></li>
+</ul>
+<h3 id="_2">执行</h3>
+<p>注意要有root或管理员权限：</p>
+<div class="highlight"><pre><span></span><span class="c1"># python3 traceroute.py china-testing.github.io -t 4</span>
+ <span class="mi">1</span>   <span class="o">*</span>
+ <span class="mi">2</span>   <span class="mf">11.223</span><span class="o">.</span><span class="mf">48.177</span> <span class="p">(</span><span class="mf">11.223</span><span class="o">.</span><span class="mf">48.177</span><span class="p">)</span>
+ <span class="mi">3</span>   <span class="mf">11.223</span><span class="o">.</span><span class="mf">48.10</span> <span class="p">(</span><span class="mf">11.223</span><span class="o">.</span><span class="mf">48.10</span><span class="p">)</span>
+ <span class="mi">4</span>   <span class="o">*</span>
+ <span class="mi">5</span>   <span class="mf">106.11</span><span class="o">.</span><span class="mf">37.58</span> <span class="p">(</span><span class="mf">106.11</span><span class="o">.</span><span class="mf">37.58</span><span class="p">)</span>
+ <span class="mi">6</span>   <span class="mf">116.251</span><span class="o">.</span><span class="mf">105.229</span> <span class="p">(</span><span class="mf">116.251</span><span class="o">.</span><span class="mf">105.229</span><span class="p">)</span>
+ <span class="mi">7</span>   <span class="mf">122.224</span><span class="o">.</span><span class="mf">214.69</span> <span class="p">(</span><span class="mf">122.224</span><span class="o">.</span><span class="mf">214.69</span><span class="p">)</span>
+ <span class="mi">8</span>   <span class="o">*</span>
+ <span class="mi">9</span>   <span class="mf">115.239</span><span class="o">.</span><span class="mf">209.30</span> <span class="p">(</span><span class="mf">115.239</span><span class="o">.</span><span class="mf">209.30</span><span class="p">)</span>
+ <span class="mi">10</span>   <span class="o">*</span>
+ <span class="mi">11</span>   <span class="o">*</span>
+<span class="o">...</span>
+</pre></div>
+
+
+<h3 id="_3">参考资料</h3>
+<ul>
+<li><a href="https://china-testing.github.io/practices.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li><a href="https://china-testing.github.io/python3_quick9.html">python 3.7极速入门教程9最佳python中文工具书籍下载</a></li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/flask_api.html" rel="bookmark"
+                           title="Permalink to 使用python3和flask构建RESTful API(接口测试服务与mockserver工具)">使用python3和flask构建RESTful API(接口测试服务与mockserver工具)</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-11-30T08:20:00+08:00">
                 Published: 五 30 十一月 2018
@@ -39,7 +177,7 @@
         </address>
 <p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
 
-</footer><!-- /.post-info --><ul>
+</footer><!-- /.post-info -->                <ul>
 <li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
 <li><a href="https://china-testing.github.io/flask_books.html">web开发工具flask中文英文书籍下载-持续更新</a></li>
 </ul>
@@ -64,291 +202,10 @@
 <p>GET - /api/Category - Retrieve all categories</p>
 </li>
 <li>
-<p>POST - /api/Category - Add a new category</p>
-</li>
-<li>
-<p>PUT - /api/Category - Update a category</p>
-</li>
-<li>
-<p>DELETE - /api/Category - Delete a category</p>
-</li>
-<li>
-<p>GET - /api/Comment - Retrieve all the stored comments</p>
-</li>
-<li>
-<p>POST - /api/Comment - Add new comment</p>
-</li>
-</ul>
-<h2 id="_5">要求</h2>
-<ul>
-<li>python3.*</li>
-<li>PostgreSQL</li>
-</ul>
-<h2 id="_6">工程目录</h2>
-<div class="highlight"><pre><span></span><span class="n">project</span><span class="o">/</span>
-<span class="err">├──</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
-<span class="err">├──</span> <span class="n">config</span><span class="o">.</span><span class="n">py</span>
-<span class="err">├──</span> <span class="n">migrate</span><span class="o">.</span><span class="n">py</span>
-<span class="err">├──</span> <span class="n">Model</span><span class="o">.</span><span class="n">py</span>
-<span class="err">├──</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
-<span class="err">├──</span> <span class="n">resources</span>
-<span class="err">│</span>   <span class="err">└──</span> <span class="n">Hello</span><span class="o">.</span><span class="n">py</span>
-<span class="err">│</span>   <span class="err">└──</span> <span class="n">Comment</span><span class="o">.</span><span class="n">py</span>
-<span class="err">│</span>   <span class="err">└──</span> <span class="n">Category</span><span class="o">.</span><span class="n">py</span>
-<span class="err">└──</span> <span class="n">run</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-
-
-<p>requirements.txt的内容如下：</p>
-<div class="highlight"><pre><span></span><span class="n">flask</span>
-<span class="n">flask_restful</span>
-<span class="n">flask_script</span>
-<span class="n">flask_migrate</span>
-<span class="n">marshmallow</span>
-<span class="n">flask_sqlalchemy</span>
-<span class="n">flask_marshmallow</span>
-<span class="n">marshmallow</span><span class="o">-</span><span class="n">sqlalchemy</span>
-<span class="n">psycopg2</span><span class="o">-</span><span class="n">binary</span>
-<span class="n">python</span><span class="o">-</span><span class="n">daemon</span>
-</pre></div>
-
-
-<ul>
-<li>
-<p>flask - Python的微框架</p>
-</li>
-<li>
-<p>flask_restful - 这是Flask的扩展，可快速构建REST API。</p>
-</li>
-<li>
-<p>flask_script - 提供了在Flask中编写外部脚本的支持。</p>
-</li>
-<li>
-<p>flask_migrate - 使用Alembic的Flask应用进行SQLAlchemy数据库迁移。</p>
-</li>
-<li>
-<p>marshmallow - ORM/ODM/框架无关的库，用于复杂数据类型（如对象）和Python数据类型转换。</p>
-</li>
-<li>
-<p>flask_sqlalchemy - Flask扩展，增加了对SQLAlchemy的支持。</p>
-</li>
-<li>
-<p>flask_marshmallow - 这是Flask和marshmallow的中间层。</p>
-</li>
-<li>
-<p>marshmallow-sqlalchemy - 这是sqlalchemy和marshmallow的中间层。</p>
-</li>
-<li>
-<p>psycopg - Python的PostgreSQL API。</p>
-</li>
-</ul>
-<p>安装依赖</p>
-<div class="highlight"><pre><span></span><span class="c1"># pip3 install -r requirements.txt</span>
-</pre></div>
-
-
-<h2 id="postgresql">安装配置PostgreSQL</h2>
-<p>这里以 Ubuntu 16.04为例：</p>
-<div class="highlight"><pre><span></span><span class="c1"># sudo apt-get update &amp;&amp; sudo apt-get upgrade</span>
-<span class="c1"># apt-get install postgresql postgresql-contrib</span>
-<span class="c1"># su - postgres</span>
-<span class="err">$</span> <span class="n">createdb</span> <span class="n">api</span>
-<span class="err">$</span> <span class="n">createuser</span> <span class="n">andrew</span> <span class="o">--</span><span class="n">pwprompt</span> <span class="c1">#创建用户</span>
-<span class="err">$</span> <span class="n">psql</span> <span class="o">-</span><span class="n">d</span> <span class="n">api</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;ALTER USER andrew WITH PASSWORD &#39;api&#39;;&quot;</span>
-</pre></div>
-
-
-<p>参考资料：</p>
-<p><a href="https://linode.com/docs/databases/postgresql/how-to-install-postgresql-on-ubuntu-16-04/">How to Install PostgreSQL on Ubuntu 16.04</a></p>
-<p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04">How To Install and Use PostgreSQL on Ubuntu 14.04</a></p>
-<h2 id="_7">配置</h2>
-<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># Author:    xurongzhong#126.com </span>
-<span class="c1"># 项目实战讨论QQ群630011153 144081101</span>
-<span class="c1"># CreateDate: 2018-1-10</span>
-
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span>
-<span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">Api</span>
-<span class="kn">from</span> <span class="nn">resources.Hello</span> <span class="kn">import</span> <span class="n">Hello</span>
-<span class="kn">from</span> <span class="nn">resources.Category</span> <span class="kn">import</span> <span class="n">CategoryResource</span>
-<span class="kn">from</span> <span class="nn">resources.Comment</span> <span class="kn">import</span> <span class="n">CommentResource</span>
-
-
-<span class="n">api_bp</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;api&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
-<span class="n">api</span> <span class="o">=</span> <span class="n">Api</span><span class="p">(</span><span class="n">api_bp</span><span class="p">)</span>
-
-<span class="c1"># Routes</span>
-<span class="n">api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">Hello</span><span class="p">,</span> <span class="s1">&#39;/Hello&#39;</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">CategoryResource</span><span class="p">,</span> <span class="s1">&#39;/Category&#39;</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">CommentResource</span><span class="p">,</span> <span class="s1">&#39;/Comment&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<h2 id="_8">快速入门</h2>
-<p>app.py</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span>
-<span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">Api</span>
-<span class="kn">from</span> <span class="nn">resources.Hello</span> <span class="kn">import</span> <span class="n">Hello</span>
-
-<span class="n">api_bp</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;api&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
-<span class="n">api</span> <span class="o">=</span> <span class="n">Api</span><span class="p">(</span><span class="n">api_bp</span><span class="p">)</span>
-
-<span class="c1"># Route</span>
-<span class="n">api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">Hello</span><span class="p">,</span> <span class="s1">&#39;/Hello&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>resource/Hello.py</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># Author:    xurongzhong#126.com wechat:pythontesting qq:37391319</span>
-<span class="c1"># CreateDate: 2018-1-10</span>
-
-<span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">Resource</span>
-
-
-<span class="k">class</span> <span class="nc">Hello</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello, World!&quot;</span><span class="p">}</span>
-
-    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello, World!&quot;</span><span class="p">}</span>
-</pre></div>
-
-
-<p>run.py</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
-
-
-<span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">config_filename</span><span class="p">):</span>
-    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="n">config_filename</span><span class="p">)</span>
-
-    <span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">api_bp</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">api_bp</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s1">&#39;/api&#39;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">app</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">app</span> <span class="o">=</span> <span class="n">create_app</span><span class="p">(</span><span class="s2">&quot;config&quot;</span><span class="p">)</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
-
-
-<p>启动服务</p>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">run</span><span class="o">.</span><span class="n">py</span>
- <span class="o">*</span> <span class="n">Running</span> <span class="n">on</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span> <span class="p">(</span><span class="n">Press</span> <span class="n">CTRL</span><span class="o">+</span><span class="n">C</span> <span class="n">to</span> <span class="n">quit</span><span class="p">)</span>
- <span class="o">*</span> <span class="n">Restarting</span> <span class="k">with</span> <span class="n">stat</span>
- <span class="o">*</span> <span class="n">Debugger</span> <span class="ow">is</span> <span class="n">active</span><span class="err">!</span>
- <span class="o">*</span> <span class="n">Debugger</span> <span class="n">PIN</span><span class="p">:</span> <span class="mi">136</span><span class="o">-</span><span class="mi">695</span><span class="o">-</span><span class="mi">873</span>
-</pre></div>
-
-
-<p>用浏览器访问： <a href="http://127.0.0.1:5000/api/Hello">http://127.0.0.1:5000/api/Hello</a></p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;hello&quot;</span><span class="p">:</span> <span class="s2">&quot;world&quot;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<h2 id="_9">接入数据库</h2>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
-<span class="kn">from</span> <span class="nn">marshmallow</span> <span class="kn">import</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">pre_load</span><span class="p">,</span> <span class="n">validate</span>
-<span class="kn">from</span> <span class="nn">flask_marshmallow</span> <span class="kn">import</span> <span class="n">Marshmallow</span>
-<span class="kn">from</span> <span class="nn">flask_sqlalchemy</span> <span class="kn">import</span> <span class="n">SQLAlchemy</span>
-
-
-<span class="n">ma</span> <span class="o">=</span> <span class="n">Marshmallow</span><span class="p">()</span>
-<span class="n">db</span> <span class="o">=</span> <span class="n">SQLAlchemy</span><span class="p">()</span>
-
-
-<span class="k">class</span> <span class="nc">Comment</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;comments&#39;</span>
-    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">comment</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">250</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">creation_date</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">TIMESTAMP</span><span class="p">,</span> <span class="n">server_default</span><span class="o">=</span><span class="n">db</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">current_timestamp</span><span class="p">(),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">category_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;categories.id&#39;</span><span class="p">,</span> <span class="n">ondelete</span><span class="o">=</span><span class="s1">&#39;CASCADE&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">category</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">relationship</span><span class="p">(</span><span class="s1">&#39;Category&#39;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="n">db</span><span class="o">.</span><span class="n">backref</span><span class="p">(</span><span class="s1">&#39;comments&#39;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="s1">&#39;dynamic&#39;</span> <span class="p">))</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comment</span><span class="p">,</span> <span class="n">category_id</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">comment</span> <span class="o">=</span> <span class="n">comment</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">category_id</span> <span class="o">=</span> <span class="n">category_id</span>
-
-
-<span class="k">class</span> <span class="nc">Category</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;categories&#39;</span>
-    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">150</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-
-
-<span class="k">class</span> <span class="nc">CategorySchema</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">Schema</span><span class="p">):</span>
-    <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">()</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">CommentSchema</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">Schema</span><span class="p">):</span>
-    <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">dump_only</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">category_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">comment</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="n">validate</span><span class="o">.</span><span class="n">Length</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">creation_date</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DateTime</span><span class="p">()</span>
-</pre></div>
-
-
-<p>migrate.py</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask_script</span> <span class="kn">import</span> <span class="n">Manager</span>
-<span class="kn">from</span> <span class="nn">flask_migrate</span> <span class="kn">import</span> <span class="n">Migrate</span><span class="p">,</span> <span class="n">MigrateCommand</span>
-<span class="kn">from</span> <span class="nn">Model</span> <span class="kn">import</span> <span class="n">db</span>
-<span class="kn">from</span> <span class="nn">run</span> <span class="kn">import</span> <span class="n">create_app</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">create_app</span><span class="p">(</span><span class="s1">&#39;config&#39;</span><span class="p">)</span>
-
-<span class="n">migrate</span> <span class="o">=</span> <span class="n">Migrate</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
-<span class="n">manager</span> <span class="o">=</span> <span class="n">Manager</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
-<span class="n">manager</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="n">MigrateCommand</span><span class="p">)</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">manager</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</pre></div>
-
-
-<p>数据迁移</p>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">migrate</span><span class="o">.</span><span class="n">py</span> <span class="n">db</span> <span class="n">init</span>
-<span class="err">$</span> <span class="n">python3</span> <span class="n">migrate</span><span class="o">.</span><span class="n">py</span> <span class="n">db</span> <span class="n">migrate</span>
-<span class="err">$</span> <span class="n">python</span> <span class="n">migrate</span><span class="o">.</span><span class="n">py</span> <span class="n">db</span> <span class="n">upgrade</span>
-</pre></div>
-
-
-<p>修改Category.py 和Comment.py， <a href="https://github.com/china-testing/python-api-tesing/tree/master/flask/api_demo">完整代码</a></p>
-<h2 id="_10">测试</h2>
-<p>可以使用curl，比如：</p>
-<div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">Category</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;name&quot;:&quot;test5&quot;,&quot;id&quot;:5}&#39;</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Content-Type: application/json&quot;</span>
-</pre></div>
-
-
-<p>也可以在chrome中使用postman：</p>
-<p><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-efa788a11a977367.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-f2313d172060f316.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-4765a5c2b45fa39e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="_11">参考资料</h2>
-<ul>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关书籍下载</a></li>
-<li>python测试等IT技术支持qq群144081101(后期会录制视频存在该群群文件) 591302926 567351477 </li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/python_flask_autotest1.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing/tree/master/flask/flask_web_service">本文代码地址</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>POST - /api/Category …</p></li></ul>
+                <a class="readmore" href="/flask_api.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -662,54 +519,6 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="p">(</span><span class="s1">&#39;https://china-testing.github.io/&#39;</span><span class="p">,</span> <span class="s1">&#39;https://www.oscobo.com …</span></pre></div>
                 <a class="readmore" href="/list_tuple_compare.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_ide.html" rel="bookmark"
-                           title="Permalink to 2018 最佳python编辑器和IDE">2018 最佳python编辑器和IDE</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-25T18:55:00+08:00">
-                Published: 日 25 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p>IDE没有统一的标准，自己习惯就是最好的。本文列出一些较常用的IDE，供大家参考。</p>
-<p>一般而言，WingIDE、PyCharm、Spyder、Vim是比较常用的IDE。</p>
-<h3 id="spyder">Spyder</h3>
-<p>Spyder是Python(x,y)的作者为它开发的一个简单的集成开发环境。和其他的Python开发环境相比，它最大的优点就是模仿MATLAB的"工作空间"的功能，可以很方便地观察和修改数组的值。</p>
-<p>最出名的python数据科学发行版本Anaconda自带了Spyder。</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-3e6b7b8166cb6a1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e28762f5ccc6a0db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>https://github.com/spyder-ide/spyder</p>
-<p>.</p>
-<h3 id="wingide">WingIDE</h3>
-<p>WingIDE是Python编写的python专用IDE。 WingIDE提供诸如强大的代码完成，出色的调试器等功能，并且它还可以在Python中编写脚本和扩展。</p>
-<p>为什么选择最好的Python IDE？</p>
-<ul>
-<li>内置强大的调试器</li>
-<li>智能编辑器</li>
-<li>您可以轻松快速地查找和修复错误</li>
-<li>轻松导航代码</li>
-<li>您可以使用自己喜欢的键绑定进行编辑并自定义工作区</li>
-<li>配置简单</li>
-<li>运行速度比Pycharm等java类的编辑快很多，占用资源少。</li>
-</ul>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-f649b0d32b0cea41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>有社区版免费使用，<a href="https://github.com/china-testing/python-api-tesing/blob/master/other/wingide6_python3_crack.py">专业版的破解</a></p>
-<p>https://wingware.com/</p>
-<h3 id="vim-ide">Vim IDE</h3>
-<p>Vim是一个高度可配置的文本编辑器，用于创建和更改任何类型的文本非常有效。</p>
-<p>它是Vi的超集 …</p>
-                <a class="readmore" href="/python_ide.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
