@@ -30,6 +30,57 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python_monitor.html" rel="bookmark"
+                           title="Permalink to python应用性能监控工具简介">python应用性能监控工具简介</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-10-22T09:20:00+08:00">
+                Published: 一 22 十月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">监控简介</h2>
+<p>监视工具捕获，分析和显示Web应用程序执行信息。每个应用程序在Web堆栈的所有层都可能出现问题。监控工具通过展示帮助开发人员和运营团队响应并修复问题。</p>
+<p>捕获和分析有关生产环境的数据对于主动处理Web应用程序的稳定性，性能和错误至关重要。</p>
+<p>监视和日志记录的目的非常相似，它们有助于诊断应用程序的问题并帮助调试。主要差异为日志基于事件触发，而监视是被动的背景数据集合。</p>
+<p>例如发生错误时，通过异常处理程序中的代码显式记录该事件。同时，监视代理程序对代码进行检测，并且不仅收集有关已记录异常的数据，还收集有关函数和方法性能的数据。</p>
+<p>操作系统和网络的监控关注: CPU、内存和磁盘利用率，网络带宽和延迟</p>
+<p>应用程序级别监视包含几个方面。 基于应用程序是重读，重写还是受到快速波动的影响而有所不同。涉及应用程序警告和错误(500级HTTP错误)、应用代码性能、模板渲染时间、浏览器渲染应用程序的时间、数据库查询性能等。</p>
+<h2 id="_2">开源监控项目</h2>
+<h3 id="_3">错误跟踪</h3>
+<ul>
+<li><a href="https://github.com/getsentry/sentry">Sentry</a></li>
+</ul>
+<p>最初只是一个Python监控项目，但现在可以用于任何编程语言。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-77698199050e060c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_4">度量</h3>
+<ul>
+<li><a href="https://github.com/etsy/statsd/">statsd</a></li>
+</ul>
+<p>是一个node.js网络守护程序，它监听指标并聚合它们以便转移到另一服务(如Graphite)。</p>
+<ul>
+<li><a href="https://graphite.readthedocs.org/en/latest/overview.html">Graphite</a></li>
+</ul>
+<p>存储时间序列数据，并通过Django Web应用程序在图形中显示它们。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a17b4bbfc3b73d29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li><a href="http://sensuapp.org/">Sensu</a></li>
+</ul>
+<p>是一个用Ruby编写的开源监控框架，但适用于任何编程语言Web应用程序。</p>
+<ul>
+<li><a href="http://vimeo.github.io/graph-explorer/">Graph Explorer …</a></li></ul>
+                <a class="readmore" href="/python_monitor.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/selenium_example5.html" rel="bookmark"
                            title="Permalink to selenium自动化测试工具python笔试面试项目实战5键盘操作">selenium自动化测试工具python笔试面试项目实战5键盘操作</a></h1>
                 </header>
@@ -396,60 +447,10 @@
                 <a class="readmore" href="/python3_lib_string.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_weeks.html" rel="bookmark"
-                           title="Permalink to python测试开发自学每周一练">python测试开发自学每周一练</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-05-25T11:26:00+08:00">
-                Published: 五 25 五月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h1 id="table-of-contents">Table of Contents</h1>
-<ul>
-<li><a href="#python每周一练">python每周一练</a></li>
-<li><a href="#2018-06-06 json格式转换">2018-06-06 json格式转换</a></li>
-<li><a href="#2018-06-01 正则表达式及拼音排序">2018-06-01 正则表达式及拼音排序</a></li>
-<li><a href="#2018-05-25-旋转图片">2018-05-25 旋转图片</a></li>
-</ul>
-<h1 id="python">python每周一练</h1>
-<p>每周五发布python需求，所有需求都来自实际企业。下周五发布参考答案。</p>
-<ul>
-<li>
-<p>技术支持 (可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
-</li>
-<li>
-<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
-</li>
-</ul>
-<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
-<p><a href="https://china-testing.github.io/python_weeks.html">本文最新版本</a> </p>
-<h3 id="2018-06-06-json">2018-06-06 json格式转换</h3>
-<p>现有 人脸标注的海量数据，部分参见：<a href="https://github.com/china-testing/python-api-tesing/tree/master/weeks/2018_06_06/data">data</a></p>
-<p>要求输出：
-1，files.txt </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6 …</pre></div></td></tr></table>
-                <a class="readmore" href="/python_weeks.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/category/python5.html">&laquo;</a>
-    Page 6 / 9
+    Page 6 / 10
         <a href="/category/python7.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->

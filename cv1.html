@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python GUI作业：tkinter控件改变背景色</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/cv1.html" rel="bookmark"
+           title="Permalink to python GUI作业：tkinter控件改变背景色">python GUI作业：tkinter控件改变背景色</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-28T07:20:00+08:00">
+                Published: 三 28 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+</ul>
+<h3 id="opencvtkinter">opencv工具作业：使用tkinter展示边缘检测</h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-fe1e8a3f479ecdc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-60b02b3c0e2aa725.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-0168f14396ee6efa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1bd74d088afd9313.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_1">参考资料</h3>
+<ul>
+<li><a href="https://china-testing.github.io/opencv.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+</ul>
+<h3 id="_2">代码</h3>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># 技术支持：https://www.jianshu.com/u/69f40328d4f0 </span>
+<span class="c1"># 技术支持 https://china-testing.github.io/</span>
+<span class="c1"># https://github.com/china-testing/python-api-tesing/blob/master/practices/cv/cv1.py</span>
+<span class="c1"># 项目实战讨论QQ群630011153 144081101</span>
+<span class="c1"># CreateDate: 2018-12-04</span>
+
+<span class="c1"># import the necessary packages</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">ImageTk</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">filedialog</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="k">def</span> <span class="nf">select_image</span><span class="p">():</span>
+    <span class="c1"># grab a reference to the image panels</span>
+    <span class="k">global</span> <span class="n">panelA</span><span class="p">,</span> <span class="n">panelB</span>
+
+    <span class="c1"># open a file chooser dialog and allow the user to select an input</span>
+    <span class="c1"># image</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askopenfilename</span><span class="p">()</span>
+
+    <span class="c1"># ensure a file path was selected</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># load the image from disk, convert it to grayscale, and detect</span>
+        <span class="c1"># edges in it</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+        <span class="n">edged</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+        <span class="c1"># OpenCV represents images in BGR order; however PIL represents</span>
+        <span class="c1"># images in RGB order, so we need to swap the channels</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+
+        <span class="c1"># convert the images to PIL format...</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">edged</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">edged</span><span class="p">)</span>
+
+        <span class="c1"># ...and then to ImageTk format</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="o">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">edged</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="o">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">edged</span><span class="p">)</span>
+
+        <span class="c1"># if the panels are None, initialize them</span>
+        <span class="k">if</span> <span class="n">panelA</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">panelB</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c1"># the first panel will store our original image</span>
+            <span class="n">panelA</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">)</span>
+            <span class="n">panelA</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span>
+            <span class="n">panelA</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+            <span class="c1"># while the second panel will store the edge map</span>
+            <span class="n">panelB</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">edged</span><span class="p">)</span>
+            <span class="n">panelB</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">edged</span>
+            <span class="n">panelB</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+        <span class="c1"># otherwise, update the image panels</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># update the pannels</span>
+            <span class="n">panelA</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">)</span>
+            <span class="n">panelB</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">edged</span><span class="p">)</span>
+            <span class="n">panelA</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span>
+            <span class="n">panelB</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">edged</span>
+
+<span class="c1"># initialize the window toolkit along with the two image panels</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="n">panelA</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">panelB</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;opencv 边缘检测演示&quot;</span><span class="p">)</span>  
+
+<span class="c1"># create a button, then when pressed, will trigger a file chooser</span>
+<span class="c1"># dialog and allow the user to select an input image; then add the</span>
+<span class="c1"># button the GUI</span>
+<span class="n">btn</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;选择图片&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">select_image</span><span class="p">)</span>
+<span class="n">btn</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="s2">&quot;100&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="s2">&quot;100&quot;</span><span class="p">)</span>
+
+<span class="c1"># kick off the GUI</span>
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+
+
+<h3 id="_3">参考资料</h3>
+<ul>
+<li>讨论  qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/tk1.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
