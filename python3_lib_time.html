@@ -44,7 +44,12 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info -->      <h2 id="_1">快速入门</h2>
+</footer><!-- /.post-info -->      <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+</ul>
+<h2 id="_1">快速入门</h2>
 <div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="c1"># 获取当前时间</span>
@@ -62,7 +67,8 @@
 calendar 标准模块。</p>
 <p>下面介绍一些术语和约定：</p>
 <p><em>epoch</em>是时间开始点。对于Unix ，时代是1970年1月1日0点。通过time.gmtime(0)可以查看时间的起点：</p>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight"><pre><span></span><span class="c1"># 讨论qq群144081101 567351477</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">struct_time</span><span class="p">(</span><span class="n">tm_year</span><span class="o">=</span><span class="mi">1970</span><span class="p">,</span> <span class="n">tm_mon</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tm_mday</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tm_hour</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tm_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tm_sec</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tm_wday</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">tm_yday</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tm_isdst</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -218,7 +224,17 @@ gmtime显示的是世界协调时间， localtime([secs])可以显示本地时�
 </pre></div>
 
 
-<h2 id="_5">时区</h2>
+<h2 id="_5">参考资料</h2>
+<ul>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关书籍下载</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li>https://docs.python.org/3/library/time.html</li>
+<li>https://pymotw.com/3/time/index.html</li>
+<li>http://effbot.org/librarybook/time.htm</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/time">代码地址</a></li>
+<li><a href="https://china-testing.github.io/python3_lib_time.html">本文最新版本地址</a></li>
+</ul>
+<h2 id="_6">时区</h2>
 <p>重置库函数的时间转换规则。实际上是修改环境变量TZ，python 2.3以后类linux支持该功能，这个功能相对不是那么常用。TZ环境变量的格式如下：</p>
 <div class="highlight"><pre><span></span><span class="n">std</span> <span class="n">offset</span> <span class="p">[</span><span class="n">dst</span> <span class="p">[</span><span class="n">offset</span> <span class="p">[,</span><span class="n">start</span><span class="p">[</span><span class="o">/</span><span class="n">time</span><span class="p">],</span> <span class="n">end</span><span class="p">[</span><span class="o">/</span><span class="n">time</span><span class="p">]]]]</span>
 </pre></div>
@@ -306,31 +322,129 @@ gmtime显示的是世界协调时间， localtime([secs])可以显示本地时�
 </pre></div>
 
 
-<h2 id="_6">格式化</h2>
+<h2 id="_7">格式化</h2>
 <p>time.strftime(format[, t])：把一个代表时间的元组或者struct_tim转为格式化的时间字符串。如果t未指定，将调用time.localtime()的返回作为输入。如果输入中任何一个元素越界将报ValueError异常。格式化参数如下:</p>
-<p>| 格式 | 含义 | 备注 |
-| %a | 本地简化星期名 |   |
-| %A | 本地完整星期名 |   |
-| %b | 本地简化月份名 |   |
-| %B | 本地完整月份名称 |   |
-| %c | 本地相应的日期和时间表示 |   |
-| %d | 日期（01 - 31） |   |
-| %H | 小时（24小时制，00 - 23） |   |
-| %I | 小时（12小时制，01 - 12） |   |
-| %j | 天数（基于年）（001 - 366） |   |
-| %m | 月份（01 - 12） |   |
-| %M | 分钟（00 - 59） |   |
-| %p | 显示am或pm的标识 |   |
-| %S | 秒（01 - 61） |   |
-| %U | 周数（基于年）（00 – 53周日是星期的开始。）第一个周日之前的所有天数都放在第0周。 |   |
-| %w | 星期中的天数（0 - 6，0是星期天） |   |
-| %W | 和%U基本相同，以星期一为星期的开始。 |   |
-| %x | 本地相应日期表示 |   |
-| %X | 本地相应时间表示 |   |
-| %y | 去掉世纪的年份（00 - 99） |   |
-| %Y | 完整的年份 |   |
-| %Z | 时区的名字（如果不存在为空字符） |   |
-| %% | '%’字符 |   |</p>
+<table>
+<thead>
+<tr>
+<th align="center">格式</th>
+<th align="center">含义</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">%a</td>
+<td align="center">本地简化星期名</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%A</td>
+<td align="center">本地完整星期名</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%b</td>
+<td align="center">本地简化月份名</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%B</td>
+<td align="center">本地完整月份名称</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%c</td>
+<td align="center">本地相应的日期和时间表示</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%d</td>
+<td align="center">日期（01 - 31）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%H</td>
+<td align="center">小时（24小时制，00 - 23）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%I</td>
+<td align="center">小时（12小时制，01 - 12）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%j</td>
+<td align="center">天数（基于年）（001 - 366）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%m</td>
+<td align="center">月份（01 - 12）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%M</td>
+<td align="center">分钟（00 - 59）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%p</td>
+<td align="center">显示am或pm的标识</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%S</td>
+<td align="center">秒（01 - 61）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%U</td>
+<td align="center">周数（基于年）（00 – 53周日是星期的开始。）第一个周日之前的所有天数都放在第0周。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%w</td>
+<td align="center">星期中的天数（0 - 6，0是星期天）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%W</td>
+<td align="center">和%U基本相同，以星期一为星期的开始。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%x</td>
+<td align="center">本地相应日期表示</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%X</td>
+<td align="center">本地相应时间表示</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%y</td>
+<td align="center">去掉世纪的年份（00 - 99）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%Y</td>
+<td align="center">完整的年份</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%Z</td>
+<td align="center">时区的名字（如果不存在为空字符）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">%%</td>
+<td align="center">'%’字符</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
 <p>备注：</p>
 <ul>
 <li>
@@ -363,7 +477,7 @@ gmtime显示的是世界协调时间， localtime([secs])可以显示本地时�
 </pre></div>
 
 
-<h2 id="_7">其他</h2>
+<h2 id="_8">其他</h2>
 <p>altzone属性查看当前夏时制时间的偏移。daylight属性查看是否使用了夏时制。timezone查看当前时区的偏移。Tzname返回本地时区和夏时制对应的时区。</p>
 <div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">altzone</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="o">-</span><span class="mi">28800</span>
@@ -376,7 +490,7 @@ gmtime显示的是世界协调时间， localtime([secs])可以显示本地时�
 </pre></div>
 
 
-<h2 id="_8">参考资料</h2>
+<h2 id="_9">参考资料</h2>
 <ul>
 <li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 </li>
 <li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
