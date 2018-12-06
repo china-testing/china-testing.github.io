@@ -28,7 +28,67 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/cv1.html">python opencv工具作业：使用tkinter展示边缘检测</a></h1>
+                    <h1 class="entry-title"><a href="/merge_excel_rows.html">python数据分析工具pandas作业：合并excel重复行</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-12-06T07:20:00+08:00">
+                Published: 四 06 十二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info --><ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+</ul>
+<h3 id="pythonpandasexcel">python数据分析工具pandas作业：合并excel重复行</h3>
+<p>工作中经常有些数据，从多个EXCEL表中汇总后，会出现同一项目多条记录的情况，需要合并这些对应的记录。</p>
+<p>数据示例：</p>
+<p>下图中，我们state和year能确定一个项目，但是有2条记录，我们需要把对应记录的pop值相加。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-fb1ab91e4def81e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_1">代码</h3>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># 技术支持：https://www.jianshu.com/u/69f40328d4f0 </span>
+<span class="c1"># 技术支持 https://china-testing.github.io/merge_excel_rows.html</span>
+<span class="c1"># https://github.com/china-testing/python-api-tesing/blob/master/practices/pandas/merge_excel_rows.py</span>
+<span class="c1"># 项目实战讨论QQ群630011153 144081101</span>
+<span class="c1"># CreateDate: 2018-12-06</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;test.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span>  <span class="n">frame</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;state&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;out.csv&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>输出的out.csv如下：</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-bcc88bbf1b1fbc6f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_2">参考资料</h3>
+<ul>
+<li>讨论  qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/merge_excel_rows.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/cv1.html" rel="bookmark"
+                           title="Permalink to python opencv工具作业：使用tkinter展示边缘检测">python opencv工具作业：使用tkinter展示边缘检测</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-12-04T07:00:00+08:00">
                 Published: 二 04 十二月 2018
@@ -39,7 +99,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info --><ul>
+</footer><!-- /.post-info -->                <ul>
 <li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
 <li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
 <li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
@@ -64,93 +124,10 @@
 <span class="c1"># 项目实战讨论QQ群630011153 144081101</span>
 <span class="c1"># CreateDate: 2018-12-04</span>
 
-<span class="c1"># import the necessary packages</span>
-<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">ImageTk</span>
-<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">filedialog</span>
-<span class="kn">import</span> <span class="nn">cv2</span>
-
-<span class="k">def</span> <span class="nf">select_image</span><span class="p">():</span>
-    <span class="c1"># grab a reference to the image panels</span>
-    <span class="k">global</span> <span class="n">panelA</span><span class="p">,</span> <span class="n">panelB</span>
-
-    <span class="c1"># open a file chooser dialog and allow the user to select an input</span>
-    <span class="c1"># image</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askopenfilename</span><span class="p">()</span>
-
-    <span class="c1"># ensure a file path was selected</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="c1"># load the image from disk, convert it to grayscale, and detect</span>
-        <span class="c1"># edges in it</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-        <span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
-        <span class="n">edged</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-
-        <span class="c1"># OpenCV represents images in BGR order; however PIL represents</span>
-        <span class="c1"># images in RGB order, so we need to swap the channels</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
-
-        <span class="c1"># convert the images to PIL format...</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-        <span class="n">edged</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">edged</span><span class="p">)</span>
-
-        <span class="c1"># ...and then to ImageTk format</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="o">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-        <span class="n">edged</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="o">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">edged</span><span class="p">)</span>
-
-        <span class="c1"># if the panels are None, initialize them</span>
-        <span class="k">if</span> <span class="n">panelA</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">panelB</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="c1"># the first panel will store our original image</span>
-            <span class="n">panelA</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">)</span>
-            <span class="n">panelA</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span>
-            <span class="n">panelA</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-            <span class="c1"># while the second panel will store the edge map</span>
-            <span class="n">panelB</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">edged</span><span class="p">)</span>
-            <span class="n">panelB</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">edged</span>
-            <span class="n">panelB</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-        <span class="c1"># otherwise, update the image panels</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># update the pannels</span>
-            <span class="n">panelA</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">)</span>
-            <span class="n">panelB</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">edged</span><span class="p">)</span>
-            <span class="n">panelA</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span>
-            <span class="n">panelB</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">edged</span>
-
-<span class="c1"># initialize the window toolkit along with the two image panels</span>
-<span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
-<span class="n">panelA</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="n">panelB</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;opencv 边缘检测演示&quot;</span><span class="p">)</span>  
-
-<span class="c1"># create a button, then when pressed, will trigger a file chooser</span>
-<span class="c1"># dialog and allow the user to select an input image; then add the</span>
-<span class="c1"># button the GUI</span>
-<span class="n">btn</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;选择图片&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">select_image</span><span class="p">)</span>
-<span class="n">btn</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="s2">&quot;100&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="s2">&quot;100&quot;</span><span class="p">)</span>
-
-<span class="c1"># kick off the GUI</span>
-<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
-</pre></div>
-
-
-<h3 id="_3">参考资料</h3>
-<ul>
-<li>讨论  qq群144081101 567351477</li>
-<li><a href="https://china-testing.github.io/tk1.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<span class="c1"># import the necessary packages …</span></pre></div>
+                <a class="readmore" href="/cv1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -467,6 +444,10 @@
 </ul>
 <p>IT类技术学习的最好方法通常是练习。下面收集了一些一流企业实际工作的项目，供大家学习参考！</p>
 <p>工作日技术支持QQ群 630011153 144081101</p>
+<h3 id="_1">数据分析</h3>
+<ul>
+<li><a href="https://china-testing.github.io/merge_excel_rows.html">python数据分析工具pandas作业：合并excel重复行</a></li>
+</ul>
 <h3 id="python-gui">python GUI</h3>
 <ul>
 <li><a href="https://china-testing.github.io/tk2.html">python GUI作业：tkinter grid布局</a></li>
@@ -486,43 +467,13 @@
 <li>使用pytesseract进行OCR光学字符识别 <a href="https://china-testing.github.io/python3_lib_pytesseract.html">python库介绍-pytesseract: OCR光学字符识别</a></li>
 <li>python opencv工具作业：使用tkinter展示边缘检测 <a href="https://china-testing.github.io/cv1.html">参考</a></li>
 </ul>
-<h3 id="python_2">python 性能</h3>
-<ul>
-<li>
-<p>使用多进程multiprocessing开发MD5检查工具</p>
-<p>参考：MD5值重复文件多进程检查工具check_md5 …</p></li></ul>
+<h3 id="python_2">python 性能 …</h3>
                 <a class="readmore" href="/practices.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/conda_pip_compare.html" rel="bookmark"
-                           title="Permalink to python包管理工具：Conda和pip比较">python包管理工具：Conda和pip比较</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-29T08:20:00+08:00">
-                Published: 四 29 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-25623c3d88871cdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>Conda和pip通常被认为几乎完全相同。虽然这两个工具的某些功能重叠，但它们设计用于不同的目的。 <a href="https://pip.pypa.io/en/stable/">Pip</a>是Python Packaging Authority推荐的用于从<a href="https://pypi.org/">Python Package Index</a>安装包的工具。 Pip安装打包为wheels或源代码分发的Python软件。后者可能要求系统安装兼容的编译器和库。</p>
-<p><a href="https://conda.io/docs/">Conda</a>是跨平台的包和环境管理器，可以安装和管理来自<a href="https://repo.anaconda.com/">Anaconda repository</a>以 <a href="https://anaconda.org/">Anaconda Cloud</a>的conda包。 Conda包是二进制文件，徐需要使用编译器来安装它们。另外，conda包不仅限于Python软件。它们还可能包含C或C ++库，R包或任何其他软件。</p>
-<p>这是conda和pip之间的关键区别。 Pip安装Python包，而conda安装包可能包含用任何语言编写的软件的包。在使用pip之前，必须通过系统包管理器或下载并运行安装程序来安装Python解释器。而Conda可以直接安装Python包以及Python解释器。</p>
-<p>另一个区别是conda能够创建可以包含不同版本的Python或其他软件包的隔离环境。在使用数据科学工具时，这非常有用，因为不同的工具可能包含冲突的要求，这些要求可能会阻止它们全部安装到单个环境中。 Pip没有内置的环境支持，而是依赖于<a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a>或<a href="https://docs.python.org/3/library/venv.html">venv </a>等其他工具来创建隔离环境。 pipenv，poetry和hatch wrap pip和virtualenv等工具提供了统一的方法来处理这些环境 …</p>
-                <a class="readmore" href="/conda_pip_compare.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 15
+    Page 1 / 16
         <a href="/author/andrew2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->

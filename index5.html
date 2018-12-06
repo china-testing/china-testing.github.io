@@ -30,6 +30,52 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/pentesting11.html" rel="bookmark"
+                           title="Permalink to 渗透测试工具简介11 SQL 注入">渗透测试工具简介11 SQL 注入</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-12T08:25:00+08:00">
+                Published: 一 12 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/pentesting.html">本书目录</a></li>
+</ul>
+<h1 id="11-sql">渗透测试工具简介11 SQL注入</h1>
+<p>SQL是结构化查询语言的首字母缩写。它用于检索和操作数据库中的数据。</p>
+<h3 id="sql">什么是SQL注入？</h3>
+<p>SQL注入使动态SQL语句注释掉语句的某些部分或附加始终为真的条件来执行恶意SQL代码。</p>
+<p>可以使用SQL注入执行的攻击类型和数据库引擎相关。攻击适用于动态SQL语句。动态语句是在运行时使用来自Web表单或URI查询字符串的参数password生成的语句。</p>
+<p>某HTML表单的代码如下。</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">‘index.php’</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">required</span><span class="o">=</span><span class="s">&quot;required&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;password&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;password&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;remember_me&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Remember me&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Submit&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>上面的表单接受电子邮件地址和密码，将它们提交给名为index.php的PHP文件。
+它可以选择将登录会话存储在cookie中。 我们从remember_me复选框中推断出这一点。 它使用post方法提交数据。 这意味着值不会显示在URL中 …</p>
+                <a class="readmore" href="/pentesting11.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/pentesting.html" rel="bookmark"
                            title="Permalink to 渗透测试简介 - 目录">渗透测试简介 - 目录</a></h1>
                 </header>
@@ -375,47 +421,10 @@
                 <a class="readmore" href="/scrap_books.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/ai_books.html" rel="bookmark"
-                           title="Permalink to 2018最佳人工智能机器学习工具书籍及下载(持续更新)">2018最佳人工智能机器学习工具书籍及下载(持续更新)</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-05T15:20:00+08:00">
-                Published: 一 05 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-9374571edcc1b10b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p><a href="https://solutionsreview.com/">Solutions Review</a>审查了许多机器学习书籍，根据相关性，流行度，评分，发布日期以及增加业务价值的能力，精心挑选了顶级机器学习书籍。 列出的每本书至少有15个亚马逊用户评论，评分为4.0或更高。</p>
-<p>您将在下面找到该领域公认的领导者，专家和技术专业人员的图书库。 从数据科学到神经网络，这些出版物甚至可以提供最终端的数据和分析专业人员。</p>
-<p>个人建议优先考虑github星级1000以上的书。</p>
-<h3 id="python-deep-learning-with-python-francois-chollet-2018pdf-">Python深度学习  <a href="https://u18113597.pipipan.com/fs/18113597-308038660">Deep Learning with Python François Chollet - 2018.pdf</a> -- 强烈推荐</h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-3c4199133358b17e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p><a href="https://itbooks.pipipan.com/fs/18113597-318700056">Python深度学习 - 2018.pdf</a></p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-fdf989121b332378.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<ul>
-<li><a href="https://github.com/fchollet/deep-learning-with-python-notebooks">源码</a> github星级  5000左右</li>
-<li>页数：386</li>
-</ul>
-<p>Deep Learning with Python使用Python语言和强大的Keras库引入深度学习。 本书由Keras作者，Google AI研究员FrançoisChollet撰写，通过直观的解释和实际例子帮助您的理解，涉及计算机视觉，自然语言处理和生成模型。</p>
-<p>中文版(文字版)可以在qq群144081101等找到。</p>
-<h3 id="scikit-learntensorflow-hands-on-machine-learning-with-scikit-learn-and-tensorflow-2017pdf">机器学习实战:基于Scikit-Learn和TensorFlow …</h3>
-                <a class="readmore" href="/ai_books.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/index4.html">&laquo;</a>
-    Page 5 / 15
+    Page 5 / 16
         <a href="/index6.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
