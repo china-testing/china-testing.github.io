@@ -28,7 +28,159 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/jenkins_books.html">持续集成工具jenkins书籍</a></h1>
+                    <h1 class="entry-title"><a href="/cv_install.html">安装人工智能图像处理工具OpenCV</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-12-06T08:40:00+08:00">
+                Published: 四 06 十二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info --><ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+</ul>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-3b72904a89216ebf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="python">python版本安装</h2>
+<p>适合所有平台：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">opencv</span><span class="o">-</span><span class="n">python</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">opencv</span><span class="o">-</span><span class="n">contrib</span><span class="o">-</span><span class="n">python</span>
+</pre></div>
+
+
+<h2 id="windows">Windows</h2>
+<p>https://sourceforge.net/projects/opencvlibrary/ 下载对应的exe安装即可。</p>
+<h2 id="macos-x">macOS X</h2>
+<p>brew install opencv --with-tbb --with-opengl</p>
+<h3 id="opencv">安装OpenCV依赖</h3>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">upgrade</span>
+<span class="c1"># 开发工具</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">cmake</span> <span class="n">unzip</span> <span class="n">pkg</span><span class="o">-</span><span class="n">config</span>
+<span class="c1"># 图形库   </span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libjpeg</span><span class="o">-</span><span class="n">dev</span> <span class="n">libpng</span><span class="o">-</span><span class="n">dev</span> <span class="n">libtiff</span><span class="o">-</span><span class="n">dev</span>
+<span class="c1"># 视频库   </span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libjpeg</span><span class="o">-</span><span class="n">dev</span> <span class="n">libpng</span><span class="o">-</span><span class="n">dev</span> <span class="n">libtiff</span><span class="o">-</span><span class="n">dev</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libxvidcore</span><span class="o">-</span><span class="n">dev</span> <span class="n">libx264</span><span class="o">-</span><span class="n">dev</span>
+<span class="c1"># GTK</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libgtk</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">dev</span>
+<span class="c1"># 其他</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libatlas</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">dev</span> <span class="n">gfortran</span>
+<span class="c1"># python头文件</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+
+
+<h3 id="_1">下载</h3>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">cd</span> <span class="o">~</span>
+<span class="err">$</span> <span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="n">opencv</span><span class="o">.</span><span class="n">zip</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">opencv</span><span class="o">/</span><span class="n">opencv</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mf">1.</span><span class="n">zip</span> 
+<span class="err">$</span> <span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="n">opencv_contrib</span><span class="o">.</span><span class="n">zip</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">opencv</span><span class="o">/</span><span class="n">opencv_contrib</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mf">1.</span><span class="n">zip</span>
+<span class="err">$</span> <span class="n">unzip</span> <span class="n">opencv</span><span class="o">.</span><span class="n">zip</span>
+<span class="err">$</span> <span class="n">unzip</span> <span class="n">opencv_contrib</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+
+
+<p><a href="https://docs.opencv.org/3.4.3/d7/d9f/tutorial_linux_install.html">官方安装文档</a></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-41e4a1a2b3aa839e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>上图的右上角的"OpenCV"旁边可以看到最新的版本号。如果你要使用opencv3.4.3，修改https://github.com/opencv/opencv/archive/3.4.1.zip 为https://github.com/opencv/opencv/archive/3.4.3.zip 即可。</p>
+<h3 id="_2">安装</h3>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">mkdir</span> <span class="n">build</span>
+<span class="err">$</span> <span class="n">cd</span> <span class="n">build</span>
+<span class="err">$</span> <span class="n">cmake</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span> <span class="o">-</span><span class="n">DOPENCV_EXTRA_MODULES_PATH</span><span class="o">=../../</span><span class="n">opencv_contrib</span><span class="o">-</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">modules</span> <span class="o">-</span><span class="n">DOPENCV_ENABLE_NONFREE</span><span class="o">=</span><span class="bp">True</span> 
+
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+<span class="err">$</span> <span class="n">export</span> <span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="p">:</span><span class="err">$</span><span class="n">LD_LIBRARY_PATH</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">ldconfig</span>
+</pre></div>
+
+
+<h2 id="2413-ubuntu-1404">2.4.13  ubuntu 14.04</h2>
+<div class="highlight"><pre><span></span><span class="c1"># install dependencies</span>
+sudo apt-get update
+sudo apt-get install -y build-essential
+sudo apt-get install -y cmake
+sudo apt-get install -y libgtk2.0-dev
+sudo apt-get install -y pkg-config
+sudo apt-get install -y python-numpy python-dev
+sudo apt-get install -y libavcodec-dev libavformat-dev libswscale-dev
+sudo apt-get install -y libjpeg-dev libpng-dev libtiff-dev libjasper-dev
+
+sudo apt-get -qq install libopencv-dev build-essential checkinstall cmake pkg-config yasm libjpeg-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev libxine-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev python-dev python-numpy libtbb-dev libqt4-dev libgtk2.0-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils
+
+<span class="c1"># download opencv-2.4.13</span>
+wget http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.13/opencv-2.4.13.zip
+unzip opencv-2.4.13.zip
+<span class="nb">cd</span> opencv-2.4.13
+mkdir release
+<span class="nb">cd</span> release
+
+<span class="c1"># compile and install</span>
+cmake -G <span class="s2">&quot;Unix Makefiles&quot;</span> -D <span class="nv">CMAKE_CXX_COMPILER</span><span class="o">=</span>/usr/bin/g++ <span class="nv">CMAKE_C_COMPILER</span><span class="o">=</span>/usr/bin/gcc -D <span class="nv">CMAKE_BUILD_TYPE</span><span class="o">=</span>RELEASE -D <span class="nv">CMAKE_INSTALL_PREFIX</span><span class="o">=</span>/usr/local -D <span class="nv">WITH_TBB</span><span class="o">=</span>ON -D <span class="nv">BUILD_NEW_PYTHON_SUPPORT</span><span class="o">=</span>ON -D <span class="nv">WITH_V4L</span><span class="o">=</span>ON -D <span class="nv">INSTALL_C_EXAMPLES</span><span class="o">=</span>ON -D <span class="nv">INSTALL_PYTHON_EXAMPLES</span><span class="o">=</span>ON -D <span class="nv">BUILD_EXAMPLES</span><span class="o">=</span>ON -D <span class="nv">WITH_QT</span><span class="o">=</span>ON -D <span class="nv">WITH_OPENGL</span><span class="o">=</span>ON -D <span class="nv">BUILD_FAT_JAVA_LIB</span><span class="o">=</span>ON -D <span class="nv">INSTALL_TO_MANGLED_PATHS</span><span class="o">=</span>ON -D <span class="nv">INSTALL_CREATE_DISTRIB</span><span class="o">=</span>ON -D <span class="nv">INSTALL_TESTS</span><span class="o">=</span>ON -D <span class="nv">ENABLE_FAST_MATH</span><span class="o">=</span>ON -D <span class="nv">WITH_IMAGEIO</span><span class="o">=</span>ON -D <span class="nv">BUILD_SHARED_LIBS</span><span class="o">=</span>OFF -D <span class="nv">WITH_GSTREAMER</span><span class="o">=</span>ON -DBUILD_TIFF<span class="o">=</span>ON ..
+make all -j8 <span class="c1"># 8 cores</span>
+sudo make install
+</pre></div>
+
+
+<h3 id="_3">参考资料</h3>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 钉钉免费群21745728</li>
+<li><a href="https://china-testing.github.io/cv_install.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing/tree/master/python_crash_tutorial">本文源码地址</a></li>
+<li><a href="http://www.python36.com/how-to-install-opencv340-on-ubuntu1604/">How to install OpenCV 3.4.0 on Ubuntu 16.04</a></li>
+<li><a href="https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/">Ubuntu 18.04: How to install OpenCV</a></li>
+<li><a href="https://github.com/opencv/opencv">opencv github</a></li>
+<li><a href="https://gist.github.com/bigsnarfdude/7305c8d8335c7cfc91888485a33d9bd9">[opencv] 2.4.13 on ubuntu 14.04 </a></li>
+<li><a href="https://stackoverflow.com/questions/17275348/how-to-specify-new-gcc-path-for-cmake">How to specify new GCC path for CMake</a></li>
+</ul>
+<h3 id="faq">FAQ</h3>
+<ul>
+<li>qmake</li>
+</ul>
+<div class="highlight"><pre><span></span>qmake: could not <span class="nb">exec</span> <span class="s1">&#39;/usr/lib/x86_64-linux-gnu/qt4/bin/qmake&#39;</span>: No such file or directory 
+
+解决：sudo apt-get install qt-sdk 
+参考：https://stackoverflow.com/questions/23703864/cmake-not-working-could-not-exec-qmake
+</pre></div>
+
+
+<ul>
+<li><a href="https://stackoverflow.com/questions/45518317/in-source-builds-are-not-allowed-in-cmake">In-source builds are not allowed” in cmake</a></li>
+</ul>
+<div class="highlight"><pre><span></span>mkdir my_build_dir
+<span class="nb">cd</span> my_build_dir
+rm ../CMakeCache.txt
+cmake .. -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DCMAKE_INSTALL_PREFIX<span class="o">=</span>/home/jinha/OCV/source
+</pre></div>
+
+
+<h2 id="_4">参考资料</h2>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://china-testing.github.io/opencv_books.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>   </li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/jenkins_books.html" rel="bookmark"
+                           title="Permalink to 持续集成工具jenkins书籍">持续集成工具jenkins书籍</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-12-06T08:20:00+08:00">
                 Published: 四 06 十二月 2018
@@ -39,7 +191,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info --><ul>
+</footer><!-- /.post-info -->                <ul>
 <li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
 <li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
 <li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
@@ -67,55 +219,10 @@
 <li>将构建的Docker镜像发布到Docker Registry，并使用社区最佳实践部署Jenkins管道的循环</li>
 </ul>
 <p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-f53128c7458b7732.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h3 id="jenkins-2x-continuous-integration-cookbook3rd-2017pdf"><a href="https://itbooks.ctfile.com/fs/18113597-323355315">Jenkins 2.x Continuous Integration Cookbook(3rd) - 2017.pdf</a></h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-8683ca9ad5337a76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<ul>
-<li>探索使用40多种最佳插件来提高效率</li>
-<li>Jenkins 2.x与LDAP和CAS（一种单点登录解决方案）集成</li>
-<li>使用管道进行代码有效地构建，从而提高团队的工作效率</li>
-</ul>
-<p>如果您是Java开发人员，软件架构师，技术项目经理，构建经理或开发人员或QA工程师，那么本书非常适合您。需要对软件开发生命周期和Java开发有基本的了解，以及对Jenkins的基本理解。</p>
-<p>你会学到什么</p>
-<ul>
-<li>在AWS和Azure上安装和配置Jenkins 2.x.</li>
-<li>探索管理和监控Jenkins 2.x的有效方法</li>
-<li>使用基于Matrix的安全性保护Jenkins 2.x.</li>
-<li>将Jenkins 2.x中的WAR文件部署到Azure App Services和AWS Beanstalk</li>
-<li>在AWS和Azure PaaS上自动部署应用程序</li>
-<li>持续测试 - 单元测试执行，功能测试和负载测试</li>
-</ul>
-<h3 id="pro-continuous-delivery-with-jenkins-20-2017pdf"><a href="https://itbooks.ctfile.com/fs/18113597-323355337">Pro Continuous Delivery With Jenkins 2.0 - 2017.pdf</a></h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-979a93b83ee07026.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>使用Jenkins 2.0中的所有新功能（如管道作为代码，多分支管道等）创建连续交付管道。您将学习实现更快的软件交付管道的三个关键要素：可互换的构建/测试环境，可管理和可重现的管道以及可扩展的构建/测试基础架构</p>
-<h3 id="_1">参考资料</h3>
-<ul>
-<li>讨论qq群144081101 591302926 567351477</li>
-<li><a href="https://china-testing.github.io/jenkins_books.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>   </li>
-<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
-</ul>
-<h3 id="learning-continuous-integration-with-jenkins-second-edition-2017pdf"><a href="https://itbooks.pipipan.com/fs/18113597-323355327">Learning Continuous Integration with Jenkins - Second Edition - 2017.pdf</a></h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b6195be0530a7c13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h3 id="jenkins-fundamentals-2018pdf"><a href="https://itbooks.pipipan.com/fs/18113597-323355322">Jenkins Fundamentals - 2018.pdf</a></h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-ee3c914a61a6233b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h3 id="jenkins-2-up-and-running-brent-laster-2018pdf"><a href="https://itbooks.pipipan.com/fs/18113597-323355277">Jenkins 2 Up and Running - Brent Laster - 2018.pdf</a></h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-6f8da7383e416ba3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h3 id="_2">参考资料</h3>
-<ul>
-<li>讨论  qq群144081101 567351477</li>
-<li><a href="https://china-testing.github.io/flask_books.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<h3 id="jenkins-2x-continuous-integration-cookbook3rd-2017pdf"><a href="https://itbooks.ctfile.com/fs/18113597-323355315">Jenkins 2.x Continuous Integration Cookbook(3rd …</a></h3>
+                <a class="readmore" href="/jenkins_books.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -451,45 +558,6 @@
 <p>1、压缩性:任意长度的数据，算出的MD5值长度都是固定的。</p>
 <p>2 …</p>
                 <a class="readmore" href="/multi_md5.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/tk3.html" rel="bookmark"
-                           title="Permalink to python GUI作业：使用tkinter的重要控件">python GUI作业：使用tkinter的重要控件</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-30T07:50:00+08:00">
-                Published: 五 30 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></p>
-<h3 id="1tkinter">题目1：使用tkinter的重要控件 绘制如下菜单：</h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-04df871f16b35b9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>参考代码：</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># 技术支持：https://www.jianshu.com/u/69f40328d4f0 </span>
-<span class="c1"># 技术支持 https://china-testing.github.io/</span>
-<span class="c1"># https://github.com/china-testing/python-api-tesing/blob/master/practices/tk/tk3.py</span>
-<span class="c1"># 项目实战讨论QQ群630011153 144081101</span>
-<span class="c1"># CreateDate: 2018-11-29</span>
-
-
-<span class="kn">import</span> <span class="nn">tkinter</span> <span class="kn">as</span> <span class="nn">tk</span>
-
-<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
-<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;tkinter控件&#39;</span><span class="p">)</span>
-<span class="c1">#create a …</span></pre></div>
-                <a class="readmore" href="/tk3.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
