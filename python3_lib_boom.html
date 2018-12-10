@@ -49,42 +49,45 @@
 <h4 id="boom_1">boom安装</h4>
 <p>ubuntu 执行“pip install boom“即可，注意可能需要先执行"apt-get install libevent python-dev"。它使用Gevent创建虚拟用户，使用Requests发送请求。</p>
 <h4 id="boom_2">boom快速入门</h4>
-<p>```#!sh</p>
-<h1 id="boom-n1000-c10-httplocalhost">boom -n1000 -c10 http://localhost</h1>
-<p>/usr/local/anaconda3/lib/python3.6/site-packages/boom/boom.py:28: MonkeyPatchWarning: Monkey-patching ssl after ssl has already been imported may lead to errors, including RecursionError on Python 3.6. Please monkey-patch earlier. See https://github.com/gevent/gevent/issues/1016
-  monkey.patch_all()
-Server Software: nginx/1.10.3 (Ubuntu)
+<div class="highlight"><pre><span></span><span class="c1"># boom -n1000 -c10 http://localhost</span>
+/usr/local/anaconda3/lib/python3.6/site-packages/boom/boom.py:28: MonkeyPatchWarning: Monkey-patching ssl after ssl has already been imported may lead to errors, including RecursionError on Python <span class="m">3</span>.6. Please monkey-patch earlier. See https://github.com/gevent/gevent/issues/1016
+  monkey.patch_all<span class="o">()</span>
+Server Software: nginx/1.10.3 <span class="o">(</span>Ubuntu<span class="o">)</span>
 Running GET http://127.0.0.1:80
     Host: localhost
-Running 1000 queries - concurrency 10
-[================================================================&gt;.] 99% Done</p>
-<p>-------- Results --------
-Successful calls        1000
-Total time              4.7209 s<br>
-Average                 0.0405 s<br>
-Fastest                 0.0128 s<br>
-Slowest                 0.0732 s<br>
-Amplitude               0.0604 s<br>
-Standard deviation      0.009018
-RPS                     211
-BSI                     Pretty good</p>
-<p>-------- Status codes --------
-Code 200                1000 times.</p>
-<p>-------- Legend --------
-RPS: Request Per Second
-BSI: Boom Speed Index</p>
-<div class="highlight"><pre><span></span>Average：每批请求的平均处理时间。 Fastest：每批请求的最快处理时间。 Slowest：每批请求的最慢处理时间。 Amplitude：振幅，即最慢与最忙批次处理时间差。
+Running <span class="m">1000</span> queries - concurrency <span class="m">10</span>
+<span class="o">[================================================================</span>&gt;.<span class="o">]</span> <span class="m">99</span>% Done
 
-#### boom参考
-```#!sh
-# boom -h
-/usr/local/anaconda3/lib/python3.6/site-packages/boom/boom.py:28: MonkeyPatchWarning: Monkey-patching ssl after ssl has already been imported may lead to errors, including RecursionError on Python 3.6. Please monkey-patch earlier. See https://github.com/gevent/gevent/issues/1016
-  monkey.patch_all()
-usage: boom [-h] [--version] [-m {GET,POST,DELETE,PUT,HEAD,OPTIONS}]
-            [--content-type CONTENT_TYPE] [-D DATA] [-c CONCURRENCY] [-a AUTH]
-            [--header HEADER] [--pre-hook PRE_HOOK] [--post-hook POST_HOOK]
-            [--json-output] [-q] [-n REQUESTS | -d DURATION]
-            [url]
+-------- Results --------
+Successful calls        <span class="m">1000</span>
+Total <span class="nb">time</span>              <span class="m">4</span>.7209 s  
+Average                 <span class="m">0</span>.0405 s  
+Fastest                 <span class="m">0</span>.0128 s  
+Slowest                 <span class="m">0</span>.0732 s  
+Amplitude               <span class="m">0</span>.0604 s  
+Standard deviation      <span class="m">0</span>.009018
+RPS                     <span class="m">211</span>
+BSI                     Pretty good
+
+-------- Status codes --------
+Code <span class="m">200</span>                <span class="m">1000</span> times.
+
+-------- Legend --------
+RPS: Request Per Second
+BSI: Boom Speed Index
+</pre></div>
+
+
+<p>Average：每批请求的平均处理时间。 Fastest：每批请求的最快处理时间。 Slowest：每批请求的最慢处理时间。 Amplitude：振幅，即最慢与最忙批次处理时间差。</p>
+<h4 id="boom_3">boom参考</h4>
+<div class="highlight"><pre><span></span><span class="c1"># boom -h</span>
+/usr/local/anaconda3/lib/python3.6/site-packages/boom/boom.py:28: MonkeyPatchWarning: Monkey-patching ssl after ssl has already been imported may lead to errors, including RecursionError on Python <span class="m">3</span>.6. Please monkey-patch earlier. See https://github.com/gevent/gevent/issues/1016
+  monkey.patch_all<span class="o">()</span>
+usage: boom <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--version<span class="o">]</span> <span class="o">[</span>-m <span class="o">{</span>GET,POST,DELETE,PUT,HEAD,OPTIONS<span class="o">}]</span>
+            <span class="o">[</span>--content-type CONTENT_TYPE<span class="o">]</span> <span class="o">[</span>-D DATA<span class="o">]</span> <span class="o">[</span>-c CONCURRENCY<span class="o">]</span> <span class="o">[</span>-a AUTH<span class="o">]</span>
+            <span class="o">[</span>--header HEADER<span class="o">]</span> <span class="o">[</span>--pre-hook PRE_HOOK<span class="o">]</span> <span class="o">[</span>--post-hook POST_HOOK<span class="o">]</span>
+            <span class="o">[</span>--json-output<span class="o">]</span> <span class="o">[</span>-q<span class="o">]</span> <span class="o">[</span>-n REQUESTS <span class="p">|</span> -d DURATION<span class="o">]</span>
+            <span class="o">[</span>url<span class="o">]</span>
 
 Simple HTTP Load runner.
 
@@ -92,31 +95,31 @@ positional arguments:
   url                   URL to hit
 
 optional arguments:
-  -h, --help            show this help message and exit
+  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
   --version             Displays version and exits.
-  -m {GET,POST,DELETE,PUT,HEAD,OPTIONS}, --method {GET,POST,DELETE,PUT,HEAD,OPTIONS}
+  -m <span class="o">{</span>GET,POST,DELETE,PUT,HEAD,OPTIONS<span class="o">}</span>, --method <span class="o">{</span>GET,POST,DELETE,PUT,HEAD,OPTIONS<span class="o">}</span>
                         HTTP Method
   --content-type CONTENT_TYPE
                         Content-Type
-  -D DATA, --data DATA  Data. Prefixed by &quot;py:&quot; to point a python callable.
+  -D DATA, --data DATA  Data. Prefixed by <span class="s2">&quot;py:&quot;</span> to point a python callable.
   -c CONCURRENCY, --concurrency CONCURRENCY
                         Concurrency
   -a AUTH, --auth AUTH  Basic authentication user:password
   --header HEADER       Custom header. name:value
-  --pre-hook PRE_HOOK   Python module path (eg: mymodule.pre_hook) to a
+  --pre-hook PRE_HOOK   Python module path <span class="o">(</span>eg: mymodule.pre_hook<span class="o">)</span> to a
                         callable which will be executed before doing a request
-                        for example: pre_hook(method, url, options). It must
-                        return a tupple of parameters given in function
+                        <span class="k">for</span> example: pre_hook<span class="o">(</span>method, url, options<span class="o">)</span>. It must
+                        <span class="k">return</span> a tupple of parameters given in <span class="k">function</span>
                         definition
   --post-hook POST_HOOK
-                        Python module path (eg: mymodule.post_hook) to a
+                        Python module path <span class="o">(</span>eg: mymodule.post_hook<span class="o">)</span> to a
                         callable which will be executed after a request is
-                        done for example: eg. post_hook(response). It must
-                        return a given response parameter or raise an
-                        `boom.boom.RequestException` for failed request.
+                        <span class="k">done</span> <span class="k">for</span> example: eg. post_hook<span class="o">(</span>response<span class="o">)</span>. It must
+                        <span class="k">return</span> a given response parameter or raise an
+                        <span class="sb">`</span>boom.boom.RequestException<span class="sb">`</span> <span class="k">for</span> failed request.
   --json-output         Prints the results in JSON instead of the default
                         format
-  -q, --quiet           Don&#39;t display progress bar
+  -q, --quiet           Don<span class="err">&#39;</span>t display progress bar
   -n REQUESTS, --requests REQUESTS
                         Number of requests
   -d DURATION, --duration DURATION
