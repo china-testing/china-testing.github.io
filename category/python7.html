@@ -30,6 +30,54 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python_pep8.html" rel="bookmark"
+                           title="Permalink to python代码风格指南(PEP8中文版)">python代码风格指南(PEP8中文版)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-21T14:50:00+08:00">
+                Published: 二 21 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>本文给出主Python版本标准库的编码约定。CPython的C代码风格参见<a href="https://www.python.org/dev/peps/pep-0007/">PEP7</a>。</p>
+<p>本文和<a href="https://www.python.org/dev/peps/pep-0257/">PEP 257 文档字符串标准</a>改编自Guido最初的《Python Style Guide》, 并增加了Barry的<a href="http://barry.warsaw.us/software/STYLEGUIDE.txt">GNU Mailman Coding Style Guide</a>的部分内容。</p>
+<p>本文会随着语言改变等而改变。</p>
+<p>许多项目都有自己的编码风格指南，冲突时自己的指南为准。</p>
+<h2 id="_1">一致性考虑</h2>
+<p>Guido的关键点之一是：代码更多是用来读而不是写。本指南旨在改善Python代码的可读性，即<a href="https://www.python.org/dev/peps/pep-0020/">PEP 20</a>所说的“可读性计数"(Readability counts)。</p>
+<p>风格指南强调一致性。项目、模块或函数保持一致都很重要。</p>
+<p>最重要的是知道何时不一致, 有时风格指南并不适用。当有疑惑时运用你的最佳判断，参考其他例子并多问！</p>
+<p>特别注意：不要因为遵守本PEP而破坏向后兼容性！</p>
+<p>部分可以违背指南情况：</p>
+<ul>
+<li>
+<p>遵循指南会降低可读性。</p>
+</li>
+<li>
+<p>与周围其他代码不一致。</p>
+</li>
+<li>
+<p>代码在引入指南完成，暂时没有理由修改。</p>
+</li>
+<li>
+<p>旧版本兼容。</p>
+</li>
+</ul>
+<h2 id="_2">代码布局</h2>
+<h4 id="_3">缩进</h4>
+<p>每级缩进用4个空格 …</p>
+                <a class="readmore" href="/python_pep8.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_lib_ftplib.html" rel="bookmark"
                            title="Permalink to [雪峰磁针石博客]python模块介绍-ftplib：FTP协议客户端">[雪峰磁针石博客]python模块介绍-ftplib：FTP协议客户端</a></h1>
                 </header>
@@ -410,52 +458,6 @@
 <p>qq群python 测试开发自动化测试 144081101 教你做免费的线上博客(放在简历中增加亮点)，自动化测试平台，性能测试工具等，让你有实际项目经验  联系qq：37391319 </p>
 <p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 …</p>
                 <a class="readmore" href="/python_opencv3_exmaple2.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_numpy_beginner_guide3rd3.html" rel="bookmark"
-                           title="Permalink to numpy学习指南3rd3:常用函数">numpy学习指南3rd3:常用函数</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-04-12T19:30:00+08:00">
-                Published: 四 12 四月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/numpy">代码地址</a></p>
-<h3 id="_1">文件读写</h3>
-<p>单位矩阵，即主对角线上的元素均为1，其余元素均为0的正方形矩阵。在NumPy中可以用 eye 函数创建一个这样的二维数组，我们只需要给定一个参数，用于指定矩阵中1的元素个数。</p>
-<p>例如，创建2×2的数组</p>
-<p>genfromtxt.py</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s2">&quot;eye.txt&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s2">&quot;eye.txt&quot;</span><span class="p">))</span>
-</pre></div>
-</td></tr></table>
-
-<p>执行结果：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">genfromtxt</span><span class="o">.</span><span class="n">py …</span></pre></div></td></tr></table>
-                <a class="readmore" href="/python_numpy_beginner_guide3rd3.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
