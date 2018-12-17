@@ -30,6 +30,52 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/pentesting11.html" rel="bookmark"
+                           title="Permalink to 渗透测试工具简介11 SQL 注入">渗透测试工具简介11 SQL 注入</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-12T08:25:00+08:00">
+                Published: 一 12 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/pentesting.html">本书目录</a></li>
+</ul>
+<h1 id="11-sql">渗透测试工具简介11 SQL注入</h1>
+<p>SQL是结构化查询语言的首字母缩写。它用于检索和操作数据库中的数据。</p>
+<h3 id="sql">什么是SQL注入？</h3>
+<p>SQL注入使动态SQL语句注释掉语句的某些部分或附加始终为真的条件来执行恶意SQL代码。</p>
+<p>可以使用SQL注入执行的攻击类型和数据库引擎相关。攻击适用于动态SQL语句。动态语句是在运行时使用来自Web表单或URI查询字符串的参数password生成的语句。</p>
+<p>某HTML表单的代码如下。</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">‘index.php’</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">required</span><span class="o">=</span><span class="s">&quot;required&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;password&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;password&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;remember_me&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Remember me&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Submit&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>上面的表单接受电子邮件地址和密码，将它们提交给名为index.php的PHP文件。
+它可以选择将登录会话存储在cookie中。 我们从remember_me复选框中推断出这一点。 它使用post方法提交数据。 这意味着值不会显示在URL中 …</p>
+                <a class="readmore" href="/pentesting11.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/pentesting.html" rel="bookmark"
                            title="Permalink to 渗透测试简介 - 目录">渗透测试简介 - 目录</a></h1>
                 </header>
@@ -376,37 +422,6 @@
 <p>中文版(文字版)可以在qq群144081101等找到。</p>
 <h3 id="scikit-learntensorflow-hands-on-machine-learning-with-scikit-learn-and-tensorflow-2017pdf">机器学习实战:基于Scikit-Learn和TensorFlow …</h3>
                 <a class="readmore" href="/ai_books.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/selnium_books.html" rel="bookmark"
-                           title="Permalink to 2018最佳selenium工具书籍汇总下载(持续更新)">2018最佳selenium工具书籍汇总下载(持续更新)</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-05T13:20:00+08:00">
-                Published: 一 05 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
-<p>本文是https://github.com/china-testing/python-api-tesing/blob/master/books.md的节选。</p>
-<p>欢迎转载，转载请附带此简介，谢谢！</p>
-<h3 id="practical-web-scraping-for-data-science-best-practices-and-examples-with-python-2018pdf"><a href="https://itbooks.pipipan.com/fs/18113597-308349318">Practical Web Scraping for Data Science -Best Practices and Examples with Python - 2018.pdf</a></h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-56aa85e2dcab446c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>https://github.com/Apress/practical-web-scraping-for-data-science 星级 低于100</p>
-<p>本书提供了完整的现代Web抓取指南，使用Python作为编程语言。 作者建议网络抓取作为任何数据科学家的强大工具，因为许多数据科学项目都是从获得适当的数据集开始的。</p>
-<p>作者探讨了HTTP，HTML和CSS的核心概念，以提供坚实的基础。 除了快速的Python入门，它们还包括Selenium用于JavaScript重型站点和网络爬行的详细信息。 本书最后概述了最佳实践和一系列示例，这些示例汇集了您学到的所有内容，并说明了各种数据科学用例。</p>
-<p>-- 本书的selenium教程写得简明扼要，后面还配有丰富的实例。</p>
-<h3 id="selenium-python-2018pdf"><a href="https://itbooks.pipipan.com/fs/18113597-315206043">Selenium自动化测试 基于 …</a></h3>
-                <a class="readmore" href="/selnium_books.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
