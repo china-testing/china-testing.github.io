@@ -44,104 +44,126 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info -->      <ul>
+</footer><!-- /.post-info -->      <p>pandas是一个功能强大的开源Python库，用于数据分析，处理和可视化，当前版本：0.23.4。用户在1000万左右，并成为Python数据科学工具包中的“必须使用”的工具。</p>
+<p>许多数据科学家都向我提出过​​这样的问题：</p>
+<p>pandas 可靠吗？</p>
+<p>以后还会维护么？</p>
+<p>为什么没有发布1.0版本！</p>
+<p>版本号可用于表示产品的成熟度。但在开源世界中，版本号并不一定能告诉关于库的成熟度或可靠性的信息。 实际上 pandas既成熟又可靠！不过版本号传达了API的稳定性。</p>
+<ul>
 <li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
 <li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
 <li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
 </ul>
-<h3 id="opencvtkinter">opencv工具作业：使用tkinter展示边缘检测</h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-fe1e8a3f479ecdc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-60b02b3c0e2aa725.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-0168f14396ee6efa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1bd74d088afd9313.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h3 id="_1">参考资料</h3>
+<h3 id="pandas-10">走向pandas 1.0</h3>
 <ul>
-<li><a href="https://china-testing.github.io/opencv.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>推荐使用方法链</li>
 </ul>
-<h3 id="_2">代码</h3>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># 技术支持：https://www.jianshu.com/u/69f40328d4f0 </span>
-<span class="c1"># 技术支持 https://china-testing.github.io/</span>
-<span class="c1"># https://github.com/china-testing/python-api-tesing/blob/master/practices/cv/cv1.py</span>
-<span class="c1"># 项目实战讨论QQ群630011153 144081101</span>
-<span class="c1"># CreateDate: 2018-12-04</span>
+<p>不使用方法链的例子：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
 
-<span class="c1"># import the necessary packages</span>
-<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">ImageTk</span>
-<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">filedialog</span>
-<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/titanic.csv.gz&#39;</span><span class="p">)</span> 
 
-<span class="k">def</span> <span class="nf">select_image</span><span class="p">():</span>
-    <span class="c1"># grab a reference to the image panels</span>
-    <span class="k">global</span> <span class="n">panelA</span><span class="p">,</span> <span class="n">panelB</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span> <span class="o">&lt;</span> <span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="o">.</span><span class="mi">99</span><span class="p">)]</span> 
 
-    <span class="c1"># open a file chooser dialog and allow the user to select an input</span>
-    <span class="c1"># image</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askopenfilename</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
 
-    <span class="c1"># ensure a file path was selected</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="c1"># load the image from disk, convert it to grayscale, and detect</span>
-        <span class="c1"># edges in it</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-        <span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
-        <span class="n">edged</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span> 
 
-        <span class="c1"># OpenCV represents images in BGR order; however PIL represents</span>
-        <span class="c1"># images in RGB order, so we need to swap the channels</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+                      <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span>
 
-        <span class="c1"># convert the images to PIL format...</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-        <span class="n">edged</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">edged</span><span class="p">)</span>
+                      <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Underage&#39;</span><span class="p">,</span> <span class="s1">&#39;Young&#39;</span><span class="p">,</span> <span class="s1">&#39;Experienced&#39;</span><span class="p">])</span>
 
-        <span class="c1"># ...and then to ImageTk format</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="o">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-        <span class="n">edged</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="o">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">edged</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;female&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span> 
 
-        <span class="c1"># if the panels are None, initialize them</span>
-        <span class="k">if</span> <span class="n">panelA</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">panelB</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="c1"># the first panel will store our original image</span>
-            <span class="n">panelA</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">)</span>
-            <span class="n">panelA</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span>
-            <span class="n">panelA</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span> 
 
-            <span class="c1"># while the second panel will store the edge map</span>
-            <span class="n">panelB</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">edged</span><span class="p">)</span>
-            <span class="n">panelB</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">edged</span>
-            <span class="n">panelB</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span> 
 
-        <span class="c1"># otherwise, update the image panels</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># update the pannels</span>
-            <span class="n">panelA</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">)</span>
-            <span class="n">panelB</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">edged</span><span class="p">)</span>
-            <span class="n">panelA</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span>
-            <span class="n">panelB</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">edged</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;Class {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span> 
 
-<span class="c1"># initialize the window toolkit along with the two image panels</span>
-<span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
-<span class="n">panelA</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="n">panelB</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;opencv 边缘检测演示&quot;</span><span class="p">)</span>  
-
-<span class="c1"># create a button, then when pressed, will trigger a file chooser</span>
-<span class="c1"># dialog and allow the user to select an input image; then add the</span>
-<span class="c1"># button the GUI</span>
-<span class="n">btn</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;选择图片&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">select_image</span><span class="p">)</span>
-<span class="n">btn</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="s2">&quot;100&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="s2">&quot;100&quot;</span><span class="p">)</span>
-
-<span class="c1"># kick off the GUI</span>
-<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;{:.2%}&#39;</span><span class="p">)</span> 
 </pre></div>
 
 
-<h3 id="_3">参考资料</h3>
+<p>使用方法链的例子：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
+
+<span class="p">(</span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/titanic.csv.gz&#39;</span><span class="p">)</span>
+
+      <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Age &lt; Age.quantile(.99)&#39;</span><span class="p">)</span>
+
+      <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Sex</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;female&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}),</span>
+
+              <span class="n">Age</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">pandas</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">median</span><span class="p">()),</span>
+
+                                        <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span>
+
+                                        <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Underage&#39;</span><span class="p">,</span> <span class="s1">&#39;Young&#39;</span><span class="p">,</span> <span class="s1">&#39;Experienced&#39;</span><span class="p">]))</span>
+
+      <span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+
+      <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+
+      <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;Class {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+
+      <span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;{:.2%}&#39;</span><span class="p">))</span>
+</pre></div>
+
+
+<p>他们更喜欢方法链的主要原因是：可读性和性能。不过实际上长方法链的可读性不太好。参考资料：https://tomaugspurger.github.io/method-chaining.html</p>
+<ul>
+<li>不建议使用inplace</li>
+</ul>
+<p>pandas核心团队不鼓励使用inplace参数，最终会删除inplace。原因如下：</p>
+<p>inplace在方法链中不起作用；使用inplace通常不会阻止创建副本；删除inplace选项会降低pandas代码库的复杂性。</p>
+<p>就个人而言，我是inplace的粉丝，我喜欢写df.reset_index（inplace = True）而不是df = df.reset_index（）。话虽这么说，许多初学者确实在内部感到困惑，并且有一个明确的方法来做大熊猫的事情，所以最终我会对弃用很好。</p>
+<p>如果您想了解更多关于如何在熊猫中管理内存的话，我建议您观看Marc演讲的这个5分钟部分。</p>
+<ul>
+<li>Apache Arrow</li>
+</ul>
+<p>Apache Arrow作为pandas的后台。 Arrow是由pandas创始人Wes McKinney在2015年创建的，用于解决pandas DataFrame的许多潜在局限性（以及其他语言中的类似数据结构）。</p>
+<p>Arrow的目标是创建一个开放标准，用于表示原生支持复杂数据格式的表格数据，并针对性能进行了高度优化。尽管Arrow的灵感来自pandas，但它的设计目标是成为跨多种语言的数据科学工作的共享计算基础架构。</p>
+<p>Arrow最终用作pandas后端可能在pandas 1.0之后，对于pandas最终用户来应该是是透明的。但会带来更好的性能，并且支持在pandas中使用大于内存的数据集。</p>
+<ul>
+<li>扩展数组</li>
+</ul>
+<p>Extension Arrays允许您创建用于pandas的自定义数据类型。</p>
+<p>之前大熊猫团队必须编写大量自定义代码来实现NumPy本身不支持的数据类型（例如分类）。随着Extension Arrays的发布，现在任何人都可以使用的自定义类型的通用接口。</p>
+<p>pandas团队已经使用此接口编写支持缺失值的整数数据类型，也称为“NA”或“NaN”值。以前将任何值标记为缺失，则整数列将转换为浮点数。Integer NA”类型将在下一版本（0.24）中提供。</p>
+<ul>
+<li>其他弃用</li>
+</ul>
+<p>ix访问器已在0.20版本中弃用，请使用loc和iloc。</p>
+<p>在版本0.20中也弃用了三维数据的Panel数据结构，而支持具有MultiIndex的DataFrame。</p>
+<p>DataFrame主要为缺失值时，SparseDataFrame可能会在即将发布的版本中弃用。 （但是您应该能够将数据存储在常规DataFrame中。）</p>
+<p>2019年1月起从pandas放弃Python 2支持！</p>
+<h3 id="_1">参考资料</h3>
+<ul>
+<li>
+<p><a href="https://china-testing.github.io/pil1.html">本文最新版本地址</a></p>
+</li>
+<li>
+<p><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</p>
+</li>
+<li>
+<p><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/python3_lib_pil.html">python库介绍-图像处理工具pillow中文文档-手册(2018 5.*)</a></p>
+</li>
+<li>
+<p>代码地址：https://github.com/china-testing/python-api-tesing/blob/master/practices/pil_merge.py</p>
+</li>
+<li>
+<p>路线图</p>
+</li>
+</ul>
+<p>0.23.4是最近发布的大熊猫（2018年8月）。</p>
+<p>根据GitHub的里程碑，0.24的目标是2018年底。</p>
+<p>0.25：2019年初的目标，它将1.0中的所有弃用内容进行警告。</p>
+<p>1.0将与0.25相同，但将删除所有已弃用的功能。</p>
+<h3 id="_2">参考资料</h3>
 <ul>
 <li>讨论  qq群144081101 567351477</li>
 <li><a href="https://china-testing.github.io/tk1.html">本文最新版本地址</a></li>
