@@ -30,6 +30,37 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_pytesseract.html" rel="bookmark"
+                           title="Permalink to python库介绍-pytesseract: OCR光学字符识别">python库介绍-pytesseract: OCR光学字符识别</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-25T19:20:00+08:00">
+                Published: 三 25 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+</ul>
+<h2 id="_1">简介</h2>
+<p>可以使用pytesseract库从图像中提取文本。<a href="https://github.com/tesseract-ocr/tesseract">Tesseract</a>是一款由Google赞助的开源OCR。 pytesseract是python包装器，它为可执行文件提供了pythonic API。</p>
+<p>Tesseract(/'tesərækt/) 这个词的意思是"超立方体"，指的是几何学里的四维标准方体，又称"正八胞体"。下图是一个正八胞体绕着两个四维空间中互相正交的平面进行双旋转时的透视投影。不过这里要讲的，是一款以其命名的开源 OCR(Optical Character Recognition, 光学字符识别) 软件。</p>
+<p>所谓 OCR 是图像识别领域中的一个子领域，该领域专注于对图片中的文字信息进行识别并转换成能被常规文本编辑器编辑的文本。</p>
+<p>Tesseract 已经有 30 年历史，开始它是惠普实验室的一款专利软件，然后在 2005 年开源，自 2006 年后由 Google 赞助进行后续的开发和维护。</p>
+<p>在 1995 年 Tesseract 曾是世界前三的 OCR 引擎，而且在现在的免费 …</p>
+                <a class="readmore" href="/python3_lib_pytesseract.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_opencv3_exmaples0.html" rel="bookmark"
                            title="Permalink to 使用opencv转换3d图片">使用opencv转换3d图片</a></h1>
                 </header>
@@ -435,49 +466,6 @@ Matplotlib是一个多功能的Python库，可生成数据可视化图。支持�
 <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">parser</span><span class="o">.</span><span class="n">add_argument …</span></pre></div>
                 <a class="readmore" href="/python3_lib_argparse.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_dubbo.html" rel="bookmark"
-                           title="Permalink to python库介绍-dubbo：通过telnet接口访问dubbo服务">python库介绍-dubbo：通过telnet接口访问dubbo服务</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-26T19:20:00+08:00">
-                Published: 一 26 三月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/python3_quick.html">本文教程目录</a></li>
-<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
-<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
-</ul>
-<h2 id="_1">简介</h2>
-<p>dubbo服务发布之后，我们可以利用telnet命令进行调试、管理。更多资料参见 <a href="http://alibaba.github.io/dubbo-doc-static/Telnet+Command+Reference-zh-showComments=true&amp;showCommentArea=true.htm">Telnet命令参考手册</a></p>
-<p>项目地址：https://bitbucket.org/china-testing/python-chinese-library/src/46204fd809a04f4d9c7450860d48f2951dec3bc1/libraries/_dubbo/?at=default</p>
-<p>telnet 调用示例：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">telnet</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span> <span class="mi">9097</span>
-<span class="n">Trying</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span><span class="o">...</span>
-<span class="n">Connected</span> <span class="n">to</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103 …</span></pre></div></td></tr></table>
-                <a class="readmore" href="/python3_lib_dubbo.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

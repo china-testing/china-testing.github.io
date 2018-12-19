@@ -30,6 +30,48 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python_opencv3_exmaple2.html" rel="bookmark"
+                           title="Permalink to python opencv3实例(对象识别和增强现实)2-边缘检测和应用图像过滤器">python opencv3实例(对象识别和增强现实)2-边缘检测和应用图像过滤器</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-17T19:20:00+08:00">
+                Published: 二 17 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://github.com/PacktPublishing/OpenCV-3-x-with-Python-By-Example">原书代码地址</a></p>
+<p>在本章中，我们将看到如何将酷视觉效果应用于图片。 我们将学习如何使用基本的图像处理操作器，讨论边缘检测，并了解我们如何使用图像滤镜来应用各种图像影响照片。</p>
+<p>在本章的最后，你会知道：
+<em> 2D卷积是什么，以及如何使用它
+</em> 如何模糊图像
+<em> 如何检测图像中的边缘
+</em> 如何将运动模糊应用于图像
+<em> 如何锐化和浮雕图像
+</em> 如何侵蚀和扩大形象
+<em> 如何创建晕影过滤器
+</em> 如何增强图像对比度</p>
+<h2 id="2d">2D卷积</h2>
+<p>卷积是图像处理中的基本操作，是我们对每个像素应用数学运算符，并在一些像素中更改其值办法。</p>
+<p><img alt="Alt Text" src="/images/python_opencv_example2_kernel.PNG">    </p>
+<p><img alt="Alt Text" src="/images/python_opencv_example2_filter.PNG">    </p>
+<ul>
+<li>你的赞助是我们前进的动力：</li>
+</ul>
+<p>一流企业专家自动化性能接口测试 数据分析 python一对一教，非骗人的培训机构(多数大陆培训机构的老师实际未入门）承接excel合并，电脑自动化操作等工程 并欢迎讨论中医草药风水相学等道家国学</p>
+<p>qq群python 测试开发自动化测试 144081101 教你做免费的线上博客(放在简历中增加亮点)，自动化测试平台，性能测试工具等，让你有实际项目经验  联系qq：37391319 </p>
+<p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 …</p>
+                <a class="readmore" href="/python_opencv3_exmaple2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_numpy_beginner_guide3rd3.html" rel="bookmark"
                            title="Permalink to numpy学习指南3rd3:常用函数">numpy学习指南3rd3:常用函数</a></h1>
                 </header>
@@ -455,44 +497,6 @@ Matplotlib是一个多功能的Python库，可生成数据可视化图。支持�
 <li>承接知乎点赞，2元一个，钉钉或微信：pythontesting qq: 37391319</li>
 </ul>
                 <a class="readmore" href="/python_pandas_crash_tutorial.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_pandas_crash_tutorial1.html" rel="bookmark"
-                           title="Permalink to python数据分析快速入门教程1-开胃菜.">python数据分析快速入门教程1-开胃菜.</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-31T09:20:00+08:00">
-                Published: 六 31 三月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/python_pandas_crash_tutorial.html">本书目录</a></p>
-<h3 id="_1">简介</h3>
-<p>Pandas是用于数据分析的开源Python库,也是目前数据分析最重要的开源库。它能够处理类似电子表格的数据，用于快速数据加载，操作，对齐，合并等。为Python提供这些增强功能，Pandas的数据类型为：Series和DataFrame。DataFrame为整个电子表格或矩形数据，而Series是DataFrame的列。DataFrame也可以被认为是字典或Series的集合。</p>
-<h3 id="_2">加载数据</h3>
-<p>load.py</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># load.py</span>
-
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;../data/gapminder.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> 
-
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">查看前五行&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">查看类型 …</span></pre></div>
-                <a class="readmore" href="/python_pandas_crash_tutorial1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

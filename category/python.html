@@ -28,7 +28,91 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/pandas1.0.html">最流行的开源数据分析，处理和可视化工具pandas的未来</a></h1>
+                    <h1 class="entry-title"><a href="/nltk1.html">Python自然语言工具库NLTK快速入门教程1简介</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-12-19T18:25:00+08:00">
+                Published: 三 19 十二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info --><ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+</ul>
+<h3 id="_1">什么是自然语言处理？</h3>
+<p>自然语言处理是指通过软件或机器理解并操作文本或语音。 人类互动，了解彼此的观点，并用适当的答案作出回应。 在NLP中，这种交互，理解，响应是由计算机而不是人类完成的。</p>
+<h3 id="nltk">什么是NLTK？</h3>
+<p>NLTK代表Natural Language Toolkit。它包使计算机理解人类语言并使用适当的响应回复它。 本教程中将讨论标记，粉刺，词形还原，标点，字符计数，字数统计等。</p>
+<h3 id="_2">自然语言库介绍</h3>
+<ul>
+<li>NLTK  最有用，且是是所有NLP库中的鼻祖。</li>
+<li>spaCy 这是完全优化和高度准确的库，广泛用于深度学习</li>
+<li>Stanford CoreNLP Python 基于C-S的体系结构,用JAVA编写的，但它提供了在Python API</li>
+<li>TextBlob 处理文本数据，主要以API的形式提供所有类型的操作。</li>
+<li>Gensim    强大、非常高效且可扩展。</li>
+<li>Pattern 个轻量级NLP模块。 这通常用于Web挖掘，爬虫。 p</li>
+<li>Polyglot  轻松处理多语言应用程序，基于身份和实体方式的特征提取。</li>
+<li>PyNLPl    又名Pineapple。 它为许多数据格式提供了解析器，如FoLiA/Giza/Moses/ARPA/Timbl/CQL。</li>
+<li>Vocabulary 从给定文本中获取语义类型信息。</li>
+</ul>
+<p>另外还有jieba、SnowNLP、thulac等系列中文库，可以参考下：https://github.com/china-testing/python-api-tesing</p>
+<h3 id="nltk_1">NLTK安装</h3>
+<div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">nltk</span>
+</pre></div>
+
+
+<p>下载数据集</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span> <span class="p">()</span>
+</pre></div>
+
+
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-d18c95e52ac197c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>验证数据集</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">brown</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">brown</span><span class="o">.</span><span class="n">words</span><span class="p">()</span>
+<span class="p">[</span><span class="s1">&#39;The&#39;</span><span class="p">,</span> <span class="s1">&#39;Fulton&#39;</span><span class="p">,</span> <span class="s1">&#39;County&#39;</span><span class="p">,</span> <span class="s1">&#39;Grand&#39;</span><span class="p">,</span> <span class="s1">&#39;Jury&#39;</span><span class="p">,</span> <span class="s1">&#39;said&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+</pre></div>
+
+
+<p>分词快速入门</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">RegexpTokenizer</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">RegexpTokenizer</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">filterdText</span><span class="o">=</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="s1">&#39;Hello https://china-testing.github.io/, You have build a very good site and I love visiting your site.&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">filterdText</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;Hello&#39;</span><span class="p">,</span> <span class="s1">&#39;https&#39;</span><span class="p">,</span> <span class="s1">&#39;china&#39;</span><span class="p">,</span> <span class="s1">&#39;testing&#39;</span><span class="p">,</span> <span class="s1">&#39;github&#39;</span><span class="p">,</span> <span class="s1">&#39;io&#39;</span><span class="p">,</span> <span class="s1">&#39;You&#39;</span><span class="p">,</span> <span class="s1">&#39;have&#39;</span><span class="p">,</span> <span class="s1">&#39;build&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;very&#39;</span><span class="p">,</span> <span class="s1">&#39;good&#39;</span><span class="p">,</span> <span class="s1">&#39;site&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;love&#39;</span><span class="p">,</span> <span class="s1">&#39;visiting&#39;</span><span class="p">,</span> <span class="s1">&#39;your&#39;</span><span class="p">,</span> <span class="s1">&#39;site&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>RegexpTokenizer删除所有表达式，符号，字符，数字或任何你去掉的东西。</p>
+<h3 id="_3">参考资料</h3>
+<ul>
+<li><a href="https://china-testing.github.io/practices.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li><a href="https://china-testing.github.io/python3_quick9.html" title="Permalink to python 3.7极速入门教程9最佳python中文工具书籍下载">python 3.7极速入门教程9最佳python中文工具书籍下载</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/practices/TTS.py">最新代码地址</a></li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/pandas1.0.html" rel="bookmark"
+                           title="Permalink to 最流行的开源数据分析，处理和可视化工具pandas的未来">最流行的开源数据分析，处理和可视化工具pandas的未来</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-12-18T09:20:00+08:00">
                 Published: 二 18 十二月 2018
@@ -39,7 +123,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info --><ul>
+</footer><!-- /.post-info -->                <ul>
 <li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
 <li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
 <li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
@@ -62,126 +146,10 @@
 <p>不使用方法链的例子：</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/titanic.csv.gz&#39;</span><span class="p">)</span> 
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span> <span class="o">&lt;</span> <span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="o">.</span><span class="mi">99</span><span class="p">)]</span> 
-
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
-
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span> 
-
-                      <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span>
-
-                      <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Underage&#39;</span><span class="p">,</span> <span class="s1">&#39;Young&#39;</span><span class="p">,</span> <span class="s1">&#39;Experienced&#39;</span><span class="p">])</span>
-
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;female&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span> 
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span> 
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span> 
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;Class {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span> 
-
-<span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;{:.2%}&#39;</span><span class="p">)</span> 
-</pre></div>
-
-
-<p>使用方法链的例子：</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
-
-<span class="p">(</span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/titanic.csv.gz&#39;</span><span class="p">)</span>
-
-      <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Age &lt; Age.quantile(.99)&#39;</span><span class="p">)</span>
-
-      <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Sex</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;female&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}),</span>
-
-              <span class="n">Age</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">pandas</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">median</span><span class="p">()),</span>
-
-                                        <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span>
-
-                                        <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Underage&#39;</span><span class="p">,</span> <span class="s1">&#39;Young&#39;</span><span class="p">,</span> <span class="s1">&#39;Experienced&#39;</span><span class="p">]))</span>
-
-      <span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
-
-      <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
-
-      <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;Class {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
-
-      <span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;{:.2%}&#39;</span><span class="p">))</span>
-</pre></div>
-
-
-<p>他们更喜欢方法链的主要原因是：可读性和性能。不过实际上长方法链的可读性不太好。参考资料：https://tomaugspurger.github.io/method-chaining.html</p>
-<ul>
-<li>不建议使用inplace</li>
-</ul>
-<p>pandas核心团队不鼓励使用inplace参数，最终会删除inplace。原因如下：</p>
-<p>inplace在方法链中不起作用；使用inplace通常不会阻止创建副本；删除inplace选项会降低pandas代码库的复杂性。</p>
-<p>就个人而言，我是inplace的粉丝，我喜欢写df.reset_index（inplace = True）而不是df = df.reset_index（）。话虽这么说，许多初学者确实在内部感到困惑，并且有一个明确的方法来做大熊猫的事情，所以最终我会对弃用很好。</p>
-<p>如果您想了解更多关于如何在熊猫中管理内存的话，我建议您观看Marc演讲的这个5分钟部分。</p>
-<ul>
-<li>Apache Arrow</li>
-</ul>
-<p>Apache Arrow作为pandas的后台。 Arrow是由pandas创始人Wes McKinney在2015年创建的，用于解决pandas DataFrame的许多潜在局限性（以及其他语言中的类似数据结构）。</p>
-<p>Arrow的目标是创建一个开放标准，用于表示原生支持复杂数据格式的表格数据，并针对性能进行了高度优化。尽管Arrow的灵感来自pandas，但它的设计目标是成为跨多种语言的数据科学工作的共享计算基础架构。</p>
-<p>Arrow最终用作pandas后端可能在pandas 1.0之后，对于pandas最终用户来应该是是透明的。但会带来更好的性能，并且支持在pandas中使用大于内存的数据集。</p>
-<ul>
-<li>扩展数组</li>
-</ul>
-<p>Extension Arrays允许您创建用于pandas的自定义数据类型。</p>
-<p>之前大熊猫团队必须编写大量自定义代码来实现NumPy本身不支持的数据类型（例如分类）。随着Extension Arrays的发布，现在任何人都可以使用的自定义类型的通用接口。</p>
-<p>pandas团队已经使用此接口编写支持缺失值的整数数据类型，也称为“NA”或“NaN”值。以前将任何值标记为缺失，则整数列将转换为浮点数。Integer NA”类型将在下一版本（0.24）中提供。</p>
-<ul>
-<li>其他弃用</li>
-</ul>
-<p>ix访问器已在0.20版本中弃用，请使用loc和iloc。</p>
-<p>在版本0.20中也弃用了三维数据的Panel数据结构，而支持具有MultiIndex的DataFrame。</p>
-<p>DataFrame主要为缺失值时，SparseDataFrame可能会在即将发布的版本中弃用。 （但是您应该能够将数据存储在常规DataFrame中。）</p>
-<p>2019年1月起从pandas放弃Python 2支持！</p>
-<h3 id="_1">参考资料</h3>
-<ul>
-<li>
-<p><a href="https://china-testing.github.io/pil1.html">本文最新版本地址</a></p>
-</li>
-<li>
-<p><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</p>
-</li>
-<li>
-<p><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></p>
-</li>
-<li>
-<p><a href="https://china-testing.github.io/python3_lib_pil.html">python库介绍-图像处理工具pillow中文文档-手册(2018 5.*)</a></p>
-</li>
-<li>
-<p>代码地址：https://github.com/china-testing/python-api-tesing/blob/master/practices/pil_merge.py</p>
-</li>
-<li>
-<p>路线图</p>
-</li>
-</ul>
-<p>0.23.4是最近发布的大熊猫（2018年8月）。</p>
-<p>根据GitHub的里程碑，0.24的目标是2018年底。</p>
-<p>0.25：2019年初的目标，它将1.0中的所有弃用内容进行警告。</p>
-<p>1.0将与0.25相同，但将删除所有已弃用的功能。</p>
-<h3 id="_2">参考资料</h3>
-<ul>
-<li>讨论  qq群144081101 567351477</li>
-<li><a href="https://china-testing.github.io/scrap_books.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
-<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
-<li>https://github.com/lorien/awesome-web-scraping/blob/master/python.md</li>
-<li>最好用的Python爬虫推荐 https://www.jianshu.com/p/7da43c16dd87</li>
-<li>https://www.zhihu.com/question/41277528</li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/titanic.csv.gz …</span></pre></div>
+                <a class="readmore" href="/pandas1.0.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -506,45 +474,6 @@
 <p>这个库还支持更改图像大小、旋转、任意仿射变换。</p>
 <p>直方图方法允许你统计图像，这可以用于对比度增强和全局统计分析 …</p>
                 <a class="readmore" href="/python3_lib_pil.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/network_traceroute.html" rel="bookmark"
-                           title="Permalink to python网络作业：使用python的socket库实现ICMP协议的traceroute">python网络作业：使用python的socket库实现ICMP协议的traceroute</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-12-01T07:25:00+08:00">
-                Published: 六 01 十二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></p>
-<p>直接上代码：</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># 技术支持：https://www.jianshu.com/u/69f40328d4f0 </span>
-<span class="c1"># 技术支持 https://china-testing.github.io/</span>
-<span class="c1"># https://github.com/china-testing/python-api-tesing/blob/master/practices/traceroute.py</span>
-<span class="c1"># 项目实战讨论QQ群630011153 144081101</span>
-<span class="c1"># CreateDate: 2018-11-26</span>
-
-<span class="kn">import</span> <span class="nn">socket</span>
-<span class="kn">import</span> <span class="nn">io</span>
-<span class="kn">import</span> <span class="nn">struct</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="k">class</span> <span class="nc">flushfile</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">FileIO</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
-        <span class="bp">self …</span></pre></div>
-                <a class="readmore" href="/network_traceroute.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
