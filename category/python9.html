@@ -30,6 +30,37 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_argparse.html" rel="bookmark"
+                           title="Permalink to python库介绍-argparse: 命令行选项及参数解析">python库介绍-argparse: 命令行选项及参数解析</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-27T19:20:00+08:00">
+                Published: 二 27 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">快速入门</h2>
+<p>argparse是一个完整的参数处理库。参数可以根据add_argument()的action选项触发不同action。支持的action有存储参数（单个，或作为列表的一部分）;存储常量的值（对布尔开关true/false有特殊处理）。默认动作是存储参数值。支持type(指定存储类型)和dest(指定存储变量)等参数。 </p>
+<p>然后使用函数parse_args()进行参数解析，这个函数的输入默认是sys.argv[1:]，也可以使用其他字符串列表。选项使用GNU/POSIX语法处理，可以混合选项和参数值。parse_args的返回值是一个包含命令参数的Namespace。所有参数以属性的形式存在，比如args.myoption。</p>
+<p>下面是一个简单的示例：argparse_short.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Short sample app&#39;</span><span class="p">)</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument …</span></pre></div>
+                <a class="readmore" href="/python3_lib_argparse.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_lib_dubbo.html" rel="bookmark"
                            title="Permalink to python库介绍-dubbo：通过telnet接口访问dubbo服务">python库介绍-dubbo：通过telnet接口访问dubbo服务</a></h1>
                 </header>
@@ -420,71 +451,10 @@ calendar 标准模块。</p>
                 <a class="readmore" href="/python3_lib_face_recognition.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_grp.html" rel="bookmark"
-                           title="Permalink to python库介绍-grp：group数据库">python库介绍-grp：group数据库</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-28T19:20:00+08:00">
-                Published: 三 28 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>grp可以访问Unix组数据库。 </p>
-<p>组数据库项由结构体group(类似元组)表示，参见pwd.h：</p>
-<table>
-<thead>
-<tr>
-<th align="center">序号</th>
-<th align="center">属性</th>
-<th align="center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">0</td>
-<td align="center">gr_name</td>
-<td align="center">the name of the group</td>
-</tr>
-<tr>
-<td align="center">1</td>
-<td align="center">gr_passwd</td>
-<td align="center">the (encrypted) group password; often empty</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">gr_gid</td>
-<td align="center">the numerical group ID</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">gr_mem</td>
-<td align="center">all the group member’s user names</td>
-</tr>
-</tbody>
-</table>
-<p>gid整型，name和password为字符串，gr_mem为字符串列表。</p>
-<h2 id="_2">方法</h2>
-<ul>
-<li>
-<p>grp.getgrgid(gid)</p>
-<p>Return the group …</p></li></ul>
-                <a class="readmore" href="/python3_lib_grp.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/category/python8.html">&laquo;</a>
-    Page 9 / 10
+    Page 9 / 11
         <a href="/category/python10.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->

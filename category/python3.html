@@ -30,6 +30,47 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/list_tuple_compare.html" rel="bookmark"
+                           title="Permalink to python经典面试题：列表和元组有什么异同？">python经典面试题：列表和元组有什么异同？</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-27T05:20:00+08:00">
+                Published: 二 27 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+</ul>
+<p>列表和元组是Python中最常用的两种数据结构，字典是第三种。 相同点：</p>
+<ul>
+<li>都是序列</li>
+<li>都可以存储任何数据类型</li>
+<li>可以通过索引访问</li>
+</ul>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-32a6c6361069d513.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_1">语法差异</h3>
+<p>使用方括号[]创建列表，而使用括号()创建元组。 请看以下示例：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;https://china-testing.github.io/&quot;</span><span class="p">,</span> <span class="s2">&quot;https://www.oscobo.com/&quot;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;https://china-testing.github.io/&quot;</span><span class="p">,</span> <span class="s2">&quot;https://www.oscobo.com/&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;https://china-testing.github.io/&#39;</span><span class="p">,</span> <span class="s1">&#39;https://www.oscobo.com/&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;https://china-testing …</span></pre></div>
+                <a class="readmore" href="/list_tuple_compare.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_ide.html" rel="bookmark"
                            title="Permalink to 2018 最佳python编辑器和IDE">2018 最佳python编辑器和IDE</a></h1>
                 </header>
@@ -388,53 +429,10 @@
                 <a class="readmore" href="/tensorflow7.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/tensorflow5.html" rel="bookmark"
-                           title="Permalink to TensorFlow工具快速入门教程5 TensorFlow简介">TensorFlow工具快速入门教程5 TensorFlow简介</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-21T08:25:00+08:00">
-                Published: 三 21 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
-</ul>
-<h3 id="tensorflow">什么是TensorFlow？</h3>
-<p>目前，世界上最出名的深度学习库是Google的TensorFlow。 Google在其所有产品中使用机器学习来改进搜索引擎，翻译，图片字幕或推荐。</p>
-<p>Google用户可以通过AI体验更快，更精准的搜索。如果用户在搜索栏中键入关键字，则Google会提供有关下个字词的建议。</p>
-<p><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-e710539761b73b15.gif?imageMogr2/auto-orient/strip"></p>
-<p>谷歌希望利用机器学习来利用其庞大的数据集，为用户提供最佳体验。角色分工有：研究人员、数据科学家、程序员。</p>
-<p>谷歌不止拥有世界最大的海量数据，还拥有世界上最庞大的计算机集群，所以TensorFlow是按比例建造的。 TensorFlow是由Google Brain Team开发的库，用于加速机器学习和深度神经网络研究。</p>
-<p>它在多个CPU或GPU甚至移动操作系统上运行，支持多种语言的包装器，如Python(为主)，C++或Java。</p>
-<h3 id="tensorflow_1">TensorFlow的历史</h3>
-<p>几年前深度学习在提供大量数据时开始超越所有其他机器学习算法。谷歌看使用这些深度神经网络来改善其服务：Gmail、照片、谷歌搜索引擎</p>
-<p>他们构建了Tensorflow的框架，让研究人员和开发人员在AI模型上协同工作。</p>
-<p>Tensorflow于2015年底首次公开，第一个稳定版本于2017年出现。它基于Apache开源许可。您可以使用它，修改它并重新发布修改后的版本，而无需向Google支付任何费用。</p>
-<h3 id="tensorflow_2">TensorFlow架构</h3>
-<p>Tensorflow架构分为三个部分：</p>
-<ul>
-<li>预处理数据</li>
-<li>建立模型</li>
-<li>训练和评估模型</li>
-</ul>
-<p>之所以叫Tensorflow …</p>
-                <a class="readmore" href="/tensorflow5.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/category/python2.html">&laquo;</a>
-    Page 3 / 10
+    Page 3 / 11
         <a href="/category/python4.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
