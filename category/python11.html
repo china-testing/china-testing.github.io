@@ -30,6 +30,84 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_jpype1.html" rel="bookmark"
+                           title="Permalink to python库介绍-jpype：python到java桥">python库介绍-jpype：python到java桥</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-03T19:20:00+08:00">
+                Published: 六 03 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>Python 作为一种灵活的软件开发语言在当今被广泛使用。在软件开发过程中，有时需要在 Python 项目中利用既有的 Java 代码，已达到节省时间和开发成本的目的。因此，找到一个 Python 代码调用 Java 代码的桥梁是非常有意义的。 JPype 就是这样的一个工具，利用它可以使 Python 程序方便的调用 Java 代码。</p>
+<p>JPype使Python可以完全访问Java类库。Jython/JPython重新实现了Python，JPype则提供了两个虚拟机的接口。JPype可以在JSP，Servlet、RMI服务器和IDE插件都方面用Python代替Java。</p>
+<p>缺陷：
+package之外的类(在<default>中)不能被导入。
+不能重启JVM。
+不能处理依赖当前类的方法。</p>
+<ul>
+<li>技术支持 (可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</li>
+</ul>
+<h2 id="_2">快速入门</h2>
+<ul>
+<li>安装</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># pip3 install jpype1</span>
+<span class="n">Collecting</span> <span class="n">jpype1 …</span></pre></div>
+                <a class="readmore" href="/python3_lib_jpype1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/testing_performance_tool_ngrinder.html" rel="bookmark"
+                           title="Permalink to 性能测试工具nGrinder介绍">性能测试工具nGrinder介绍</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-01T19:20:00+08:00">
+                Published: 四 01 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">安装</h2>
+<p>以linux，这里采用的版本是centos 6 64bit，性能测试工具不建议在Windows上部署。</p>
+<p>下载： </p>
+<p>https://github.com/naver/ngrinder/releases/</p>
+<p>选择最后面的war包。</p>
+<p>服务器端启动：</p>
+<div class="highlight"><pre><span></span><span class="c1"># java -XX:MaxPermSize=200m -jar ngrinder-controller-3.4.war --port 8058</span>
+</pre></div>
+
+
+<p>这样nGrinder的管理页面就部署好，你可以简单的把ngrinder-controller的功能理解为性能测试展示和控制，后面会进行详细介绍。</p>
+<p>打开网址： </p>
+<p>http://183.131.22.113:8058</p>
+<p>默认用户名和密码都为admin</p>
+<p><img alt="捕获.JPG" src="https://bitbucket.org/repo/AqzM76/images/1423288448-%E6%8D%95%E8%8E%B7.JPG"></p>
+<p>注意：这里的"Remember me"是短暂停留，页面关闭之后还是需要重新登陆的。</p>
+<p>登录后点击右上角的admin，选择"下载代理"</p>
+<p><img alt="捕获.JPG" src="https://bitbucket.org/repo/AqzM76/images/1175392996-%E6%8D%95%E8%8E%B7.JPG"></p>
+<p>拷贝下载的文件到agent，现在可以简单理解为agent的功能为执行性能测试，通常不建议与ngrinder-controller部署在同一台，同一台机器也不建议部署多个agent。</p>
+<p>客户端启动 …</p>
+                <a class="readmore" href="/testing_performance_tool_ngrinder.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/testing_performance_tool_ngrinder_dubb.html" rel="bookmark"
                            title="Permalink to 使用jython进行dubbo接口及ngrinder性能测试">使用jython进行dubbo接口及ngrinder性能测试</a></h1>
                 </header>

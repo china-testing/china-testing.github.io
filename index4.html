@@ -30,6 +30,90 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/network_ping.html" rel="bookmark"
+                           title="Permalink to python网络作业：使用python的socket库实现ICMP协议的ping">python网络作业：使用python的socket库实现ICMP协议的ping</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-23T07:20:00+08:00">
+                Published: 五 23 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>ICMP ping是您遇到过的最常见的网络扫描类型。 打开命令行提示符或终端并输入ping www.google.com非常容易。 </p>
+<p>为什么要在python中实现？</p>
+<ul>
+<li>很多名牌大学喜欢考试用python的socket库实现ICMP协议的ping</li>
+<li>个别环境没有ping</li>
+</ul>
+<p>直接上代码：</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># 技术支持：https://www.jianshu.com/u/69f40328d4f0 </span>
+<span class="c1"># 技术支持 https://china-testing.github.io/</span>
+<span class="c1"># https://github.com/china-testing/python-api-tesing/blob/master/practices/ping.py</span>
+<span class="c1">#  qq群144081101 567351477</span>
+<span class="c1"># CreateDate: 2018-11-22</span>
+
+<span class="kn">import</span> <span class="nn">os</span> 
+<span class="kn">import</span> <span class="nn">argparse</span> 
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">struct</span>
+<span class="kn">import …</span></pre></div>
+                <a class="readmore" href="/network_ping.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/tensorflow8.html" rel="bookmark"
+                           title="Permalink to TensorFlow工具快速入门教程8 TensorBoard简介">TensorFlow工具快速入门教程8 TensorBoard简介</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-22T08:28:00+08:00">
+                Published: 四 22 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="tensorboard">什么是TensorBoard?</h3>
+<p>Tensorboard是可视化图形界面。并包含理解，调试和优化模型的其他工具。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-2814f38826b6f9cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li>Scalars：在模型训练期间显示不同的有用信息</li>
+<li>Graphs：显示模型</li>
+<li>Histogram：使用直方图显示权重</li>
+<li>Distribution：显示权重分布</li>
+<li>Projector 显示主成分分析和T-SNE算法。该技术用于降维</li>
+</ul>
+<p>如果查看图表，可以了解模型的工作原理。</p>
+<ul>
+<li>数据排队模型：将等于批量大小的数据量推送到模型，即每次迭代后的数据馈送数量</li>
+<li>将数据提供给Tensors</li>
+<li>训练模型</li>
+<li>显示训练期间的批次数。将模型保存在磁盘上。</li>
+</ul>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-6c8ad44839984aab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>tensorboard背后的基本思想是神经网络为黑盒子，我们需要工具来检查这个盒子里面的东西。您可以将tensorboard想象成一个手电筒。</p>
+<p>它有助于理解操作之间的依赖关系，如何计算权重，显示损失函数和许多其他有用信息。当您将所有这些信息组合在一起时，您就拥有了很好的工具来调试并改进模型。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e120043e731403f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>神经网络决定如何在模型预测结果之前连接不同的“神经元”和多少层。一旦定义了体系结构，您不仅需要训练模型，还需要使用度量来计算预测的准确性。该度量被称为损失函数。目标是最小化损失函数。换句话说，这意味着模型减少了错误。所有机器学习算法将重复多次计算，直到损失达到更平坦的线。要最大限度地减少此丢失功能，您需要定义学习率。这是您希望模型学习的速度。如果您将学习率设置得太高，则模型没有时间学习任何东西。左图是这种情况 …</p>
+                <a class="readmore" href="/tensorflow8.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/tensorflow6.html" rel="bookmark"
                            title="Permalink to TensorFlow工具快速入门教程6 深度学习库比较">TensorFlow工具快速入门教程6 深度学习库比较</a></h1>
                 </header>
@@ -356,108 +440,10 @@
                 <a class="readmore" href="/opencv_crash_deep_learning1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/testing_api_interview.html" rel="bookmark"
-                           title="Permalink to 接口测试面试题">接口测试面试题</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-14T23:20:00+08:00">
-                Published: 三 14 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi.html">测试</a>.</p>
-
-</footer><!-- /.post-info -->                <p>本文最新更新体现在pdf文档：<a href="https://itbooks.pipipan.com/fs/18113597-319924422">接口测试面试题.pdf</a></p>
-<h3 id="api">什么是API？</h3>
-<p>API是(Application Programming Interface)首字母缩略词，即应用程序编程接口。 API是一组用于构建软件应用程序的规程，协议和工具。API充当软件应用程序之间的接口，并允许两个软件应用程序相互通信。 API是一组软件功能，可以由其他软件执行。</p>
-<h3 id="api_1">什么是API测试？</h3>
-<p>API测试是一种软件测试，涉及直接测试API，也是集成测试的一部分，用于检查API是否满足应用程序的功能，可靠性，性能和安全性方面的期望。在API测试中，我们主要关注软件架构的业务逻辑层。可以在包含多个API的任何软件系统上执行API测试。</p>
-<h3 id="api_2">常见的API测试类型有哪些？</h3>
-<p>API测试通常涉及以下实践：</p>
-<ul>
-<li>单元测试</li>
-<li>功能测试</li>
-<li>负载测试</li>
-<li>运行时/错误检测</li>
-<li>安全测试</li>
-<li>UI测试</li>
-<li>互操作性和WS一致性测试</li>
-<li>渗透测试</li>
-<li>模糊测试</li>
-</ul>
-<h3 id="api3">列举API测试中使用的一些常用协议？3个即可。</h3>
-<ul>
-<li>thrift</li>
-<li>HTTP</li>
-<li>REST</li>
-<li>SOAP</li>
-<li>JMS</li>
-<li>UDDI</li>
-<li>dubbo</li>
-</ul>
-<h3 id="apiweb">API和Web服务之间的区别？</h3>
-<p>Web服务：</p>
-<ul>
-<li>所有Web服务都是API …</li></ul>
-                <a class="readmore" href="/testing_api_interview.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/mobile1.html" rel="bookmark"
-                           title="Permalink to 移动应用测试1测试用例和测试场景">移动应用测试1测试用例和测试场景</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-14T09:55:00+08:00">
-                Published: 三 14 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi.html">测试</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/mobile.html">本系列文章目录</a></p>
-<h3 id="_1">功能测试测试用例</h3>
-<p>移动设备的功能测试通常包括测试用户交互以及测试场景。与功能测试相关的各种因素是</p>
-<ul>
-<li>应用业务类型（银行，游戏，社交或商业等）</li>
-<li>用户类型（消费者，企业，教育等）</li>
-<li>渠道（例如Apple App Store，Google play，直接发布）</li>
-</ul>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-c6aadd7fc0b75a4a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>最基本的测试场景：</p>
-<ul>
-<li>所有必需的必填字段是否按要求运行。</li>
-<li>必填字段是否与非必填字段不同的方式显示在屏幕中。</li>
-<li>启动/停止时验证应用程序是否按要求运行。</li>
-<li>来电时验证是否进入最小化模式。</li>
-<li>是否能够在应用程序运行时存储，处理和接收SMS。</li>
-<li>是否能在必要时执行所需的多任务处理要求。</li>
-<li>是否允许必要的社交网络选项，如共享，发布和导航等。与微博、微信等进行交互</li>
-<li>验证应用程序是否支持任何支付网关交易，如支付宝、Visa，Mastercard，Paypal等。微信支付也在考虑中，不过微信支付安全系数不高，尽量不要用。</li>
-<li>是否在应用程序中根据需要启用了页面滚动方案。</li>
-<li>相关模块之间的导航是否符合要求。</li>
-<li>截断</li>
-<li>是否收到类似“网络错误”的相应错误消息。一旦出现任何网络错误，请在一段时间后尝试。</li>
-<li>是否能与其他应用程序共存 …</li></ul>
-                <a class="readmore" href="/mobile1.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/index3.html">&laquo;</a>
-    Page 4 / 16
+    Page 4 / 17
         <a href="/index5.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->

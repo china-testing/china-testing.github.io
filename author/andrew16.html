@@ -30,6 +30,103 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_pathlib.html" rel="bookmark"
+                           title="Permalink to python库介绍-pathlib: 文件系统对象">python库介绍-pathlib: 文件系统对象</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-11T19:40:00+08:00">
+                Published: 日 11 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>目的：使用面向对象的API解析，构建，测试和处理文件名和路径，而不是底层的字符串操作。</p>
+<h2 id="path">Path表示</h2>
+<p>pathlib包含用于管理使用POSIX标准或Microsoft Windows语法格式化的文件系统路径的类。它包括所谓的“pure”类，它们对字符串进行操作，但不与实际的文件系统进行交互;“concrete”类将API扩展为包含反映或修改本地文件系统数据的操作。</p>
+<p>pure类PurePosixPath和PureWindowsPath可以在任何操作系统上实例化和使用，因为它们只用于名称。要实例化正确的类来处理真实的文件系统，请使用Path来获取PosixPath或WindowsPath，具体取决于平台。</p>
+<ul>
+<li>
+<p>技术支持 (可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
+</li>
+<li>
+<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
+</li>
+</ul>
+<p>[接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲]</p>
+<h2 id="path_1">构建Path</h2>
+<p>要实例化路径，字符串作为参数。Path对象的字符串表示是该字符串。要创建引用相对于现有路径的值的新路径，请使用/运算符来扩展路径。运算符的参数可以是字符串或其他路径对象。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3 …</pre></div></td></tr></table>
+                <a class="readmore" href="/python3_lib_pathlib.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_enum.html" rel="bookmark"
+                           title="Permalink to python库介绍-enum: 枚举">python库介绍-enum: 枚举</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-11T19:20:00+08:00">
+                Published: 日 11 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>枚举是常量的集合，支持根据id比较和迭代等功能。</p>
+<ul>
+<li>
+<p>python官方文档：https://docs.python.org/3/library/enum.html</p>
+</li>
+<li>
+<p>pymotw文档：https://pymotw.com/3/enum/index.html</p>
+</li>
+<li>
+<p>完稿日期：2016.08.22</p>
+</li>
+</ul>
+<h2 id="_2">创建枚举</h2>
+<p>继承Enum类，添加类属性即可创建枚举。</p>
+<p>enum_create.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21 …</pre></div></td></tr></table>
+                <a class="readmore" href="/python3_lib_enum.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_lib_telnetlib.html" rel="bookmark"
                            title="Permalink to python库介绍-telnetlib：Telnet客户端">python库介绍-telnetlib：Telnet客户端</a></h1>
                 </header>
@@ -324,101 +421,11 @@ package之外的类(在<default>中)不能被导入。
                 <a class="readmore" href="/testing_performance_tool_ngrinder_dubb.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/address.html" rel="bookmark"
-                           title="Permalink to 网站导航">网站导航</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2010-02-11T19:20:00+08:00">
-                Published: 四 11 二月 2010
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/common.html">common</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://bitbucket.org/china-testing/life/wiki/%5B%E9%9B%AA%E5%B3%B0%E7%A3%81%E9%92%88%E7%9F%B3%E5%8D%9A%E5%AE%A2%5D%20%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99">人工智能相关资料</a></p>
-<h2 id="_1">常用网站</h2>
-<table>
-<thead>
-<tr>
-<th align="center">类别</th>
-<th align="center">名称</th>
-<th align="center">名称</th>
-<th align="center">名称</th>
-<th align="center">名称</th>
-<th align="center">名称</th>
-<th align="center">名称</th>
-<th align="center">名称</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">本人博客</td>
-<td align="center"><a href="https://bitbucket.org/china-testing/python-chinese-library/wiki/browse/">python中文库</a></td>
-<td align="center"><a href="https://bitbucket.org/china-testing/work_log/wiki/browse/">私有工作日志</a></td>
-<td align="center"><a href="https://bitbucket.org/china-testing/life/wiki/browse/">生活其他等</a></td>
-<td align="center"><a href="https://bitbucket.org/china-testing/health/wiki/browse/">健康</a></td>
-<td align="center"><a href="https://bitbucket.org/china-testing/small_python_daily_tools/wiki/browse/">python小脚本</a></td>
-<td align="center"><a href="https://bitbucket.org/china-testing/testing/wiki/browse/">软件测试博客</a></td>
-<td align="center"><a href="https://bitbucket.org/china-testing/testing/wiki/browse/">java测试开发</a></td>
-</tr>
-<tr>
-<td align="center">常用引擎类</td>
-<td align="center"><a href="https://www.google.com.hk/?gws_rd=ssl">谷歌</a></td>
-<td align="center"><a href="https://zh.wikipedia.org/wiki/Python">维基百科中文</a></td>
-<td align="center"><a href="http://translate.google.cn/?hl=zh-CN">谷歌翻译</a></td>
-<td align="center"><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">维基百科英文</a></td>
-<td align="center"><a href="http://dict.youdao.com/">有道词典</a></td>
-<td align="center"><a href="https://searchcode.com/">代码搜索</a></td>
-<td align="center"><a href="http://stackoverflow.com/">stackoverflow</a></td>
-</tr>
-<tr>
-<td align="center">常用引擎类</td>
-<td align="center"><a href="https://cn.bing.com/search?q=site%3Achina-testing.github.io&amp;qs=n&amp;form=QBLH&amp;sp=-1&amp;pq=site%3Achina-testing.github.io&amp;sc=0-26&amp;sk=&amp;cvid=CF01D3E7586D46EDA7A260FAD61344CD">必应</a></td>
-<td align="center"><a href="https://www.so.com/s?ie=utf-8&amp;fr=none&amp;src=360sou_newhome&amp;q=site%3Achina-testing.github.io">so</a></td>
-<td align="center"><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">维基百科英文</a></td>
-<td align="center"><a href="http://dict.youdao.com/">有道词典</a></td>
-<td align="center"><a href="https://searchcode.com/">代码搜索</a></td>
-<td align="center"><a href="http://stackoverflow.com/">stackoverflow</a></td>
-<td align="center"><a href="https://www.oscobo.com">oscobo</a></td>
-</tr>
-<tr>
-<td align="center">每日新闻</td>
-<td align="center"><a href="http://www.voachinese.com/">美国之音</a></td>
-<td align="center"><a href="http://www.szmb.gov.cn/">深圳气象</a></td>
-<td align="center"><a href="http://www.zaobao.com/">联合早报</a></td>
-<td align="center"><a href="http://www.ifeng.com/">凤凰网</a></td>
-<td align="center"><a href="http://www.weather.com.cn/weather/101280601.shtml">天气预报</a></td>
-<td align="center"><a href="http://www.sznews.com/news/node_18235.htm">深圳要闻</a></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">每日新闻</td>
-<td align="center"><a href="http://www.ftchinese.com/">ft中文</a></td>
-<td align="center"><a href="http://cn.wsj.com/gb/index.asp">华尔街</a></td>
-<td align="center"><a href="http://cn.reuters.com">路透社</a></td>
-<td align="center"><a href="http://www.cnetnews.com.cn/"></a></td>
-<td align="center"><a href="http://www.weather.com.cn/weather/101280601.shtml"></a></td>
-<td align="center"><a href="http://www.sznews.com/news/node_18235.htm">cnet</a></td>
-<td align="center"><a href="http://aqicn.org/map/hk/#@g/24.0686/113.7764/7z">亚洲空气污染</a></td>
-</tr>
-<tr>
-<td align="center">排名</td>
-<td align="center"><a href="http://pypl.github.io/PYPL.html">编程流行度</a></td>
-<td align="center"><a href="http://www.tiobe.com/tiobe-index/">TIOBE …</a></td></tr></tbody></table>
-                <a class="readmore" href="/address.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/author/andrew15.html">&laquo;</a>
-    Page 16 / 16
+    Page 16 / 17
+        <a href="/author/andrew17.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
         <section id="extras" class="body">

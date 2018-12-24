@@ -30,6 +30,52 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python_pytest_testing7.html" rel="bookmark"
+                           title="Permalink to 自动化测试框架pytest教程7-与其他工具集成">自动化测试框架pytest教程7-与其他工具集成</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-16T10:20:00+08:00">
+                Published: 三 16 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <p>第7章 与其他工具集成</p>
+<p>正在紧张整理中</p>
+                <a class="readmore" href="/python_pytest_testing7.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pytest_testing8.html" rel="bookmark"
+                           title="Permalink to 自动化测试框架pytest教程8-更多插件">自动化测试框架pytest教程8-更多插件</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-16T10:20:00+08:00">
+                Published: 三 16 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <p>第8章 更多插件</p>
+<p>正在紧张整理中</p>
+                <a class="readmore" href="/python_pytest_testing8.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_pytest_testing9.html" rel="bookmark"
                            title="Permalink to 自动化测试框架pytest教程9-应用实例">自动化测试框架pytest教程9-应用实例</a></h1>
                 </header>
@@ -341,81 +387,10 @@
                 <a class="readmore" href="/python_opencv3_cookbook1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_pandas_crash_tutorial5.html" rel="bookmark"
-                           title="Permalink to python数据分析快速入门教程5-处理缺失数据">python数据分析快速入门教程5-处理缺失数据</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-05-03T09:20:00+08:00">
-                Published: 四 03 五月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/python_pandas_crash_tutorial.html">本书目录</a></p>
-<p>第5章 缺失数据</p>
-<h2 id="_1">介绍</h2>
-<p>很少没有任何缺失值的数据集。 有许多缺失数据的表示。 在数据库中是NULL值，一些编程语言使用NA。缺失值可以是空字符串：''或者甚至是数值88或99等。Pandas显示缺失值为NaN。</p>
-<p>本章将涵盖：</p>
-<ul>
-<li>什么是缺失值</li>
-<li>如何创建缺失值</li>
-<li>如何重新编码并使用缺失值进行计算</li>
-</ul>
-<h3 id="_2">什么是缺失值</h3>
-<p>可以从numpy中获得NaN值，在Python中看到缺失值使用几种方式显示：NaN，NAN或nan，他们都是相等的。</p>
-<p>NaN不等于0或空字符串''。</p>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">NaN</span><span class="p">,</span> <span class="n">NAN</span><span class="p">,</span> <span class="n">nan</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">NaN</span> <span class="o">==</span> <span class="bp">True</span><span class="p">,</span> <span class="n">NaN</span> <span class="o">==</span> <span class="bp">False</span><span class="p">,</span> <span class="n">NaN</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NaN</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
-<span class="bp">False</span><span class="o">|</span><span class="bp">False</span><span class="o">|</span><span class="bp">False</span><span class="o">|</span><span class="bp">False</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">NaN</span> <span class="o">==</span> <span class="n">NaN …</span></pre></div>
-                <a class="readmore" href="/python_pandas_crash_tutorial5.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_pytesseract.html" rel="bookmark"
-                           title="Permalink to python库介绍-pytesseract: OCR光学字符识别">python库介绍-pytesseract: OCR光学字符识别</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-04-25T19:20:00+08:00">
-                Published: 三 25 四月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
-<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
-</ul>
-<h2 id="_1">简介</h2>
-<p>可以使用pytesseract库从图像中提取文本。<a href="https://github.com/tesseract-ocr/tesseract">Tesseract</a>是一款由Google赞助的开源OCR。 pytesseract是python包装器，它为可执行文件提供了pythonic API。</p>
-<p>Tesseract(/'tesərækt/) 这个词的意思是"超立方体"，指的是几何学里的四维标准方体，又称"正八胞体"。下图是一个正八胞体绕着两个四维空间中互相正交的平面进行双旋转时的透视投影。不过这里要讲的，是一款以其命名的开源 OCR(Optical Character Recognition, 光学字符识别) 软件。</p>
-<p>所谓 OCR 是图像识别领域中的一个子领域，该领域专注于对图片中的文字信息进行识别并转换成能被常规文本编辑器编辑的文本。</p>
-<p>Tesseract 已经有 30 年历史，开始它是惠普实验室的一款专利软件，然后在 2005 年开源，自 2006 年后由 Google 赞助进行后续的开发和维护。</p>
-<p>在 1995 年 Tesseract 曾是世界前三的 OCR 引擎，而且在现在的免费 …</p>
-                <a class="readmore" href="/python3_lib_pytesseract.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/author/andrew11.html">&laquo;</a>
-    Page 12 / 16
+    Page 12 / 17
         <a href="/author/andrew13.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->

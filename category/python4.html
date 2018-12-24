@@ -30,6 +30,92 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/tensorflow6.html" rel="bookmark"
+                           title="Permalink to TensorFlow工具快速入门教程6 深度学习库比较">TensorFlow工具快速入门教程6 深度学习库比较</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-22T08:27:00+08:00">
+                Published: 四 22 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
+</ul>
+<h3 id="tensorflow">什么是TensorFlow简介</h3>
+<p>自2016年以来，人工智能越来越受欢迎，20％的大公司在其业务中使用人工智能（麦肯锡报告，2018年 <a href="https://www.mckinsey.com/business-functions/mckinsey-analytics/our-insights/crossing-the-frontier-how-to-apply-ai-for-impact">report</a>
+）。根据同一报告，AI可以为各行业创造巨大价值。例如，在银行业，人工智能的潜力估计为3000亿美元，零售业的数量猛增至6000亿美元。</p>
+<p>为了释放人工智能的潜在价值，公司必须选择正确的深度学习框架。</p>
+<h3 id="8">8个最佳深度学习库/框架</h3>
+<p>在此列表中，我们将比较顶级的深度学习框架。所有这些都是开源的，并且在数据科学家社区中很受欢迎。</p>
+<ul>
+<li>Torch</li>
+</ul>
+<p>Torch是一个古老的开源机器学习库。它首次发布于15年前。它是主要的编程语言是LUA，但在C中有实现。Torch支持庞大的机器学习算法库，包括深度学习。它支持并行计算的CUDA实现。</p>
+<p>大多数领先的实验室都使用Torch，如Facebook，Google，Twitter，Nvidia等。 Torch的Python库名为Pytorch。</p>
+<ul>
+<li>Infer.net</li>
+</ul>
+<p>Infer.net由Microsoft开发和维护。 Infer.net是主要关注贝叶斯统计。 Infer.net旨在为从业者提供最先进的概率建模算法。该库包含分析工具，如贝叶斯分析，隐马尔可夫链，聚类。</p>
+<ul>
+<li>Keras …</li></ul>
+                <a class="readmore" href="/tensorflow6.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/tensorflow7.html" rel="bookmark"
+                           title="Permalink to TensorFlow工具快速入门教程7 TensorFlow基础">TensorFlow工具快速入门教程7 TensorFlow基础</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-22T08:27:00+08:00">
+                Published: 四 22 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>在机器学习中，模型被提供称为特征向量的对象列表。特征向量可以是任何数据类型。特征向量通常是填充张量的主要输入。这些值将通过张量流入op节点，此操作/计算的结果将创建一个新的张量，该张量又将用于新的操作。所有这些操作都可以在图表中查看。</p>
+<h3 id="_1">张量的表示</h3>
+<p>在TensorFlow中，张量是n维的特征向量（即阵列）的集合。例如，2x3矩阵，其值为1到6</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-ce71e998a3b02d75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>TensorFlow将此矩阵表示为：</p>
+<div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span><span class="err">，</span>
+   <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
+</pre></div>
+
+
+<p>如果我们创建一个值为1到8的三维矩阵</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-f4eaf533aef8004e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>TensorFlow将此矩阵表示为：</p>
+<div class="highlight"><pre><span></span><span class="p">[[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="err">，</span>
+       <span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span><span class="err">，</span>
+       <span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span><span class="err">，</span>
+       <span class="p">[[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]]</span>
+</pre></div>
+
+
+<p>注意：张量可以用标量表示，也可以有三维以上的形状。可视化更高维度级别更加复杂。</p>
+<h3 id="_2">张量的类型</h3>
+<p>张量具有三个属性的对象：name、shape、dtype</p>
+<p>TensorFlow执行的每个操作都涉及张量的操作。您可以创建四个主要张量：tf.Variable，tf.constant，tf …</p>
+                <a class="readmore" href="/tensorflow7.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/tensorflow5.html" rel="bookmark"
                            title="Permalink to TensorFlow工具快速入门教程5 TensorFlow简介">TensorFlow工具快速入门教程5 TensorFlow简介</a></h1>
                 </header>
@@ -341,90 +427,6 @@
 <span class="o">...</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">:</span>
 <span class="o">...</span>         <span class="n">words …</span></pre></div>
                 <a class="readmore" href="/python3_quick5.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_quick4.html" rel="bookmark"
-                           title="Permalink to python 3.7极速入门教程4函数">python 3.7极速入门教程4函数</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-12T19:25:00+08:00">
-                Published: 一 12 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/python3_quick.html">本文教程目录</a></p>
-<h1 id="4">4函数</h1>
-<h2 id="_1">菲波那契序列:</h2>
-<div class="highlight"><pre><span></span>&gt;&gt;&gt; # Fibonacci series:
-... # the sum of two elements defines the next
-... a, b = 0, 1
-&gt;&gt;&gt; while b &lt; 10:
-...     print(b)
-...     a, b = b, a+b
-...
-1
-1
-2
-3
-5
-8
-</pre></div>
-
-
-<p>本例的新特性。</p>
-<ul>
-<li>
-<p>第一行和最后一行有多赋值：第一行变量a和b同时获得了新的值0和1。最后一行右边首先完成计算，右边的表达式从左到右计算。</p>
-</li>
-<li>
-<p>条件(b &lt; 10)为true时while循环执行。这里Python类似C ，任何非零整数都为true；0为 false。判断条件也可以是字符串或列表等序列；所有长度不为零的为true ，空序列为false。示例中的测试是一个简单的比较 …</p></li></ul>
-                <a class="readmore" href="/python3_quick4.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_quick3.html" rel="bookmark"
-                           title="Permalink to python 3.7极速入门教程3正式开始">python 3.7极速入门教程3正式开始</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-12T19:20:00+08:00">
-                Published: 一 12 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/python3_quick.html">本文教程目录</a></li>
-<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
-<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
-</ul>
-<h1 id="3">3正式开始</h1>
-<p>本章内容比较多，除了代码部分，其他内容可以后面回头再看。</p>
-<h3 id="_1">简介</h3>
-<p>Python是一门简单易学，功能强大的编程语言。它具有高效的高层次数据结构，简单但有效的方式支持面向对象编程，语法优雅，动态类型，解释执行。使之成为多数平台上很多领域的脚本和快速应用开发的理想语言。它的设计理念强调代码的可读性, 跟C ++或Java等语言比可以用更少的代码实现同样的概念。Python能清晰地实现小型和大型程序。</p>
-<p>Python解释器及其丰富的标准库的源码或者二进制版本可以从<a href="http://www.python.org/">http://www.python.org/</a>免费获取和转发。该还包含很多免费的第三方Python模块、程序、工具的发布链接及附加文档。</p>
-<p>Python的解释器很容易用C或C++(或其他c可以调用的语言)扩展新功能和数据类型。 Python也适用于作为定制应用的扩展语言。</p>
-<p>Python支持多种编程范式，包括面向对象的，命令式和函数式或过程式编程风格。它具有动态类型系统和自动内存管理和拥有庞大而全面的标准库</p>
-<p>Python虚拟机本身几乎可以在所有的作业系统中运行。使用一些诸如py2exe、PyPy、PyInstaller之类的工具可以将Python源代码转换成可以脱离Python解释器运行的程序。</p>
-<p>Python的官方解释器是CPython，该解释器用C语言编写，是一个由社区驱动的自由软件，目前由Python软件基金会管理。</p>
-<p>本教程向读者通俗地介绍Python语言和系统的基本概念和特点。配合Python解释器边学边练最佳，所有例子已经自包含在教程中，也可离线阅读。</p>
-<p>标准对象和模块参见 …</p>
-                <a class="readmore" href="/python3_quick3.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
