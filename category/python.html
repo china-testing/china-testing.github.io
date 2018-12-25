@@ -28,7 +28,130 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/python_vision_deep2.html">python计算机视觉深度学习工具2图像基础</a></h1>
+                    <h1 class="entry-title"><a href="/python_vision_deep3.html">python计算机视觉深度学习3图像分类基础</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-12-25T07:35:00+08:00">
+                Published: 二 25 十二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info --><p><a href="https://china-testing.github.io/python_vision_deep.html">本文教程目录</a></p>
+<h3 id="_1">什么是图像分类？</h3>
+<p>图像分类的核心任务是从预定义的一类图像中为图像分配标签。分析输入图像并返回标签对图像进行分类。标签始终来自一组预定义的可能类别。</p>
+<p>比如预定义的标签为：</p>
+<div class="highlight"><pre><span></span><span class="n">categories</span> <span class="o">=</span> <span class="p">{</span><span class="n">cat</span><span class="p">,</span> <span class="n">dog</span><span class="p">,</span> <span class="n">panda</span><span class="p">}</span>
+</pre></div>
+
+
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-f3241e2af4aeb025.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>分类系统还可以通过概率为图像分配多个标签。比如狗：95％;猫：4％;熊猫：1％。更重要的是，W×H像素输入图像有三个通道，Red，Green和Blue，分析W×H×3 = N像素图像，并弄清楚如何正确分类图像的内容。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-54931b9b725c4a23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>在图像分类中，我们的数据集是图像的集合。因此，每个图像都是数据点。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-4d820c1ca4b36890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>左边猫，右边狗，电脑看到的是像素矩阵。实际上，计算机并不知道图像中有动物。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-a6ae0fd8aadc7d84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>上图可描述如下：
+•空间：天空位于图像的顶部，沙/海洋位于底部。
+•颜色：天空是深蓝色，海水浅蓝色，而沙子则是
+棕褐色。
+•纹理：天空具有相对均匀的图案，而沙子非常粗糙。</p>
+<p>需要应用特征提取来量化图像的内容。特征提取是获取输入图像，应用算法和获得特征向量的过程。可使用HOG，LBP或其他传统图像量化方法。也可应用深度学习来自动学习。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-0cf976c2956795eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li>视角：方向/旋转等</li>
+<li>大小</li>
+<li>变形</li>
+<li>遮挡</li>
+<li>照明</li>
+<li>背景</li>
+<li>类内变异</li>
+</ul>
+<p>对内容做出假设：图像以及容忍的变化。最终目标是什么？我们想要建立什么？</p>
+<p>如果采用过于广泛的方法，例如“我想对厨房的每个对象进行分类和检测，除非你有多年构建图像分类器的经验，否则不太可能表现良好。但是，如果你构建问题并使其范围缩小，例如“我想要识别只是炉子和冰箱“，那么你的系统更可能是准确和有效。尽管深度学习和卷积神经网络强大，你仍然应该尽可能地保持项目的范围。ImageNet的图像分类的事实标准的基准数据集：计算算法由我们在日常生活中遇到的1,000个对象组成。</p>
+<h3 id="_2">学习类型</h3>
+<p>常见的监督学习算法包括逻辑回归(Logistic Regression)，支持向量机(SVM  Support Vector Machine）随机森林(Random Forest)和人工神经网络(Artificial Neural Network)。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-2b1c2826a0300955.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>无监督学习(有时称为自学式学习)没有与输入数据相关联的标签，因此我们无法更正我们的模型预测。
+用于无监督学习的经典机器学习算法包括主成分分析(PCA  Principle Component Analysis）和k均值聚类( k-means clustering)。对于神经网络，还有自动编码器(Autoencoders)，自组织映射(Self-Organizing Map: SOM）和自适应共振理论(Adaptive Resonance Theory)。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-e7a5c9246c6fa3c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>半监督学习算法将采用已知的数据，分析它们，并尝试标记每个未标记的数据点。半监督学习在计算机视觉中特别有用，我们根本没有时间或资源来标记每个个人形象。方法有标签传播(label spreading)，标签累积(label propagation)，梯形网络(ladder network)和共同学习/共同培训(co-learning/co-training)。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-f0aac569afbd3c6c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_3">深度学习的流程</h3>
+<p>思维方式的转变</p>
+<p>0,1,1,2,3,5,8,13,21,34 ......
+当然，我们也可以使用（在极其未经优化的）Python函数中定义此模式
+递归：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="o">...</span>             <span class="k">return</span> <span class="mi">0</span>
+<span class="o">...</span>     <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<span class="o">...</span>             <span class="k">return</span> <span class="mi">1</span>
+<span class="o">...</span>     <span class="k">else</span><span class="p">:</span>
+<span class="o">...</span>             <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fib</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="mi">13</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fib</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+<span class="mi">233</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fib</span><span class="p">(</span><span class="mi">35</span>
+</pre></div>
+
+
+<p>深度学习和图像分类没有定义函数这么简单。没有确定的规则，而是采用数据驱动的方法归类。
+每个类别看起来像然后教我们的算法识别之间的差异</p>
+<p>训练数据集包括：
+1.图像
+2.图像的标签/类别(即狗，猫，熊猫等)</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-dd938beb342ac5f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li>步骤＃1：收集数据集</li>
+</ul>
+<p>图像本身以及与每个图像相关联的标签。例如：categories = dog，cat，panda。此外，每个类别的图像数量应大致相同(即每个类别的相同数量的例子)。</p>
+<ul>
+<li>步骤2：拆分数据集</li>
+</ul>
+<p>现在我们有了初始数据集，我们需要将它分成两部分：
+1.训练集
+2.测试集</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-bf7b4bfae383b737.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>神经网络有需要调整，例如，学习率，衰减，正则化等，称为超参数。注意训练集、调整超参数的验证集和测试集一定要严格分开。</p>
+<ul>
+<li>步骤3：训练您的网络</li>
+</ul>
+<p>网络了解如何识别标记数据中的每个类别。当模型出错时，如何从这个错误中学习并改进自己。一般来说，我们应用一种梯度下降的方法。</p>
+<ul>
+<li>步骤＃4：评估测试</li>
+</ul>
+<p>除了正确性(ground-truth标签)，还有聚合报告，如精度，recall和f-measure，用于量化整个网络的性能。</p>
+<p>在传统的，基于特征的图像分类方法中，在步骤＃2和步骤＃3之间有特征提取。采用HOG、LBP等算法，基于我们想要编码的图像的特定分量(即形状、颜色、纹理)量化图像的内容，然后继续训练我们的分类器并对其进行评估。</p>
+<p>在构建卷积神经网络时，我们实际上可以跳过特征提取。这是因为CNN是端到端的模型。但训练CNN是非常重要的过程。</p>
+<h3 id="_4">参考资料</h3>
+<ul>
+<li>讨论  qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/python3_quick4.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_vision_deep2.html" rel="bookmark"
+                           title="Permalink to python计算机视觉深度学习工具2图像基础">python计算机视觉深度学习工具2图像基础</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-12-24T21:35:00+08:00">
                 Published: 一 24 十二月 2018
@@ -39,7 +162,7 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info --><p><a href="https://china-testing.github.io/python_vision_deep.html">本文教程目录</a></p>
+</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/python_vision_deep.html">本文教程目录</a></p>
 <p>构建自己的图像分类器之前需要了解图像是什么。</p>
 <h3 id="_1">像素：图像的元素</h3>
 <p>像素是图像的基本元素。每个图像都由一组像素组成。没有比像素更细的粒度。</p>
@@ -56,57 +179,10 @@
 <p>黑色：(0, 0, 0)
 红色：(255, 0, 0)</p>
 <p>RGB色彩空间的主要缺点包括：
-•不使用“颜色选择器”工具时表示颜色不直观
-•它不像人类看待颜色的方式。</p>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-cc6d2a585697b0ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-97b41eb842b38b5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h3 id="_2">图像坐标系统</h3>
-<p>OpenCV和scikit-image用多维NumPy数组表示RGB。</p>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-9a62e681017ca83f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;example.png&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-
-
-<p>执行结果：</p>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python</span> <span class="n">load_display</span><span class="o">.</span><span class="n">py</span>
-<span class="p">(</span><span class="mi">248</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
-
-
-<p>像素访问</p>
-<div class="highlight"><pre><span></span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span> <span class="c1"># accesses pixel at x=100, y=20</span>
-<span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span> <span class="c1"># accesses pixel at x=25, y=75</span>
-<span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">85</span><span class="p">]</span> <span class="c1"># accesses pixel at x=85, y=90</span>
-</pre></div>
-
-
-<p>OpenCV的存储顺序：Blue, Green, Red</p>
-<ul>
-<li>技术支持qq群144081101  591302926 567351477 钉钉免费群：21745728 </li>
-</ul>
-<h3 id="_3">缩放</h3>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-d40f2bb3f453550a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>多数神经网络和卷积神经网络应用于图像任务分类要求固定大小的输入，意味着你通过的所有图像的尺寸必须相同。输入的宽度和高度图像尺寸的常见选择卷积神经网络包括32×32,64×64,224×224,227×227,256×256和299×299。</p>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-10ec44bc9defa33e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h3 id="_4">参考资料</h3>
-<ul>
-<li>讨论  qq群144081101 567351477</li>
-<li><a href="https://china-testing.github.io/python3_quick4.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+•不使用“颜色选择器”工具时表示颜色不直观 …</p>
+                <a class="readmore" href="/python_vision_deep2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -175,13 +251,16 @@
 </li>
 <li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
 <li>
-<p><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></p>
+<p><a href="https://china-testing.github.io/python3_quick.html">python计算机视觉深度学习3图像分类基础</a></p>
 </li>
 <li>
 <p><a href="https://china-testing.github.io/python_vision_deep1.html">python计算机视觉深度学习1简介</a></p>
 </li>
 <li>
 <p><a href="https://china-testing.github.io/python_vision_deep2.html">python计算机视觉深度学习工具2图像基础</a></p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/python_vision_deep3.html">python计算机视觉深度学习工具2图像基础</a></p>
 </li>
 </ul>
 <h3 id="_1">参考资料</h3>
@@ -414,56 +493,6 @@
 
 <span class="n">df …</span></pre></div>
                 <a class="readmore" href="/merge_excel_rows2.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/jenkins_books.html" rel="bookmark"
-                           title="Permalink to 持续集成工具jenkins书籍">持续集成工具jenkins书籍</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-12-06T08:20:00+08:00">
-                Published: 四 06 十二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
-<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
-<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
-</ul>
-<h3 id="continuous-delivery-with-docker-and-jenkins-2017pdf"><a href="https://itbooks.pipipan.com/fs/18113597-323355259">Continuous Delivery with Docker and Jenkins - 2017.pdf</a></h3>
-<p>使用Docker和Jenkins持续交付pdf</p>
-<p>主要特点</p>
-<ul>
-<li>使用Docker容器构建可靠且安全的应用程序。</li>
-<li>使用Docker，Jenkins和Ansible创建完整的Continuous Delivery管道。</li>
-<li>直接在Docker Swarm集群上提供应用程序。</li>
-<li>使用多容器和数据库迁移创建更复杂的解决方案。</li>
-<li>严重依赖python</li>
-</ul>
-<p>你将学到什么</p>
-<ul>
-<li>掌握Docker基础知识以及如何将应用程序停靠在持续交付流程中</li>
-<li>配置Jenkins并使用基于Docker的代理进行扩展</li>
-<li>了解成功的持续交付管道的原则和技术方面</li>
-<li>使用现代工具创建完整的持续交付流程：Docker，Jenkins和Ansible</li>
-<li>使用Cucumber编写验收测试，并使用Jenkins在Docker生态系统中运行它们</li>
-<li>使用Docker Compose创建多容器应用程序</li>
-<li>管理持续交付流程中的数据库更改，并了解有效的框架，如Cucumber和Flyweight</li>
-<li>使用Docker Swarm使用Jenkins构建群集应用程序</li>
-<li>将构建的Docker镜像发布到Docker Registry，并使用社区最佳实践部署Jenkins管道的循环</li>
-</ul>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-f53128c7458b7732.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h3 id="jenkins-2x-continuous-integration-cookbook3rd-2017pdf"><a href="https://itbooks.ctfile.com/fs/18113597-323355315">Jenkins 2.x Continuous Integration Cookbook(3rd …</a></h3>
-                <a class="readmore" href="/jenkins_books.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
