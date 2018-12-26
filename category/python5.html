@@ -30,6 +30,43 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/opencv_crash_deep_learning1.html" rel="bookmark"
+                           title="Permalink to 计算机视觉opcencv工具深度学习快速实战1人脸识别">计算机视觉opcencv工具深度学习快速实战1人脸识别</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-16T19:20:00+08:00">
+                Published: 五 16 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>使用OpenCV提供的预先训练的深度学习面部检测器模型，可快速，准确的进行人脸识别。</p>
+<p>2017年8月OpenCV 3.3正式发布，带来了高改进的“深度神经网络”(dnn deep neural networks)模块。该模块支持许多深度学习框架，包括Caffe，TensorFlow和Torch / PyTorch。</p>
+<p>基于Caffe的面部检测器在<a href="https://github.com/opencv/opencv/tree/master/samples/dnn/face_detector">这里</a>。</p>
+<p>需要两组文件：</p>
+<ul>
+<li>定义模型体系结构的.prototxt文件</li>
+<li>.caffemodel文件，包含实际图层的权重</li>
+</ul>
+<p>权重文件不包含在OpenCV示例目录。</p>
+<h3 id="opencv">OpenCV深度学习面部检测器如何工作？</h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-45fc78489ba83643.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<div class="highlight"><pre><span></span><span class="c1"># 模型下载：https://itbooks.pipipan.com/fs/18113597-320346529</span>
+<span class="c1"># 代码存放：https://github.com/china-testing/python-api-tesing/tree/master/opencv_crash_deep_learning</span>
+<span class="c1"># 技术支持qq群144081101(代码和模型存放）</span>
+<span class="c1"># USAGE</span>
+<span class="c1"># python detect_faces.py --image rooster …</span></pre></div>
+                <a class="readmore" href="/opencv_crash_deep_learning1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/datas_books.html" rel="bookmark"
                            title="Permalink to python数据分析数据科学中文英文工具书籍下载-持续更新">python数据分析数据科学中文英文工具书籍下载-持续更新</a></h1>
                 </header>
@@ -393,50 +430,6 @@
 <li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
 </ul>
                 <a class="readmore" href="/pentesting.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/pentesting1.html" rel="bookmark"
-                           title="Permalink to 渗透测试简介1渗透测试简介">渗透测试简介1渗透测试简介</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-12T08:20:00+08:00">
-                Published: 一 12 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/pentesting.html">本书目录</a></li>
-</ul>
-<h1 id="_1">渗透测试简介</h1>
-<h2 id="_2">什么是渗透测试</h2>
-<p>黑客利用计算机或网络等的弱点获取访问，比如使用密码破解算法获取对系统的访问权限。黑客可使用计算机进行欺诈行为，例如欺诈，侵犯隐私，窃取公司/个人数据等。网络犯罪每年使许多组织损失数百万美元。企业需要保护自己免受此类攻击。</p>
-<p>黑客是发现并利用计算机系统和/或网络中的弱点来获取访问权的人。黑客通常是具有计算机安全知识的熟练计算机程序员。</p>
-<p>黑客根据其行为的意图进行分类。以下列表根据黑客的意图对黑客进行了分类。</p>
-<h3 id="_3">黑客类型</h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-ea900bc628df810a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>道德黑客（白帽子White Hat）：访问系统以修复已发现的弱点。他们还可以执行渗透测试和漏洞评估。</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-ba5a862d9bd79d5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>Cracker（黑帽子 Black hat）：未经授权访问计算机系统。目的通常是窃取公司数据，侵犯隐私权，从银行账户转移资金等。</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-4782680696ca2bca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>灰帽子（Grey hat）：介于道德黑客和黑帽黑客之间。在没有权限的情况下闯入计算机系统，以识别弱点并将其显示给系统所有者。</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-91460cabed193455.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>脚本小子：使用已经制作的工具访问计算机系统的非技术人员。</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-655bc860fcfe718d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>黑客活动家：利用黑客发送社交，宗教和政治等信息。通常是通过劫持网站并将消息留在被劫持的网站上。</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b8941ee9cd9e27e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>Phreaker：识别和利用电话而不是计算机的弱点的黑客。</p>
-<h3 id="_4">什么是网络犯罪？</h3>
-<p>网络犯罪是利用计算机和网络进行非法活动，如传播计算机病毒，在线欺凌，进行未经授权的电子资金转移等 …</p>
-                <a class="readmore" href="/pentesting1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
