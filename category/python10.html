@@ -30,6 +30,51 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_pypinyin.html" rel="bookmark"
+                           title="Permalink to python库介绍-pypinyin: 汉字拼音转换工具及中文排序">python库介绍-pypinyin: 汉字拼音转换工具及中文排序</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-26T19:20:00+08:00">
+                Published: Mon 26 March 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>将汉字转为拼音。可以用于汉字注音、排序、检索(Russian translation) 。</p>
+<p>中文文档写得很好，这里不再罗嗦： http://pypinyin.readthedocs.io/zh_CN/master/</p>
+<p>另外可以基于该库进行中文排序：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pypinyin</span> <span class="kn">import</span> <span class="n">lazy_pinyin</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;中国人&#39;</span><span class="p">,</span> <span class="s1">&#39;啊&#39;</span><span class="p">,</span> <span class="s1">&#39;你好&#39;</span><span class="p">,</span> <span class="s1">&#39;台湾人&#39;</span><span class="p">]</span>
+<span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">char</span><span class="p">:</span> <span class="n">lazy_pinyin</span><span class="p">(</span><span class="n">char</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p><a href="https://bitbucket.org/china-testing/python-chinese-library/src/8608aa5693e502050065c0c2dd83df393775a174/libraries/pypinyin/?at=default">代码</a></p>
+<h2 id="_2">参考资料：</h2>
+<ul>
+<li>
+<p>python中文库参考项目：  https://bitbucket.org/china-testing/python-chinese-library</p>
+</li>
+<li>
+<p>python中文库参考项目文档 …</p></li></ul>
+                <a class="readmore" href="/python3_lib_pypinyin.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_lib_buildbot.html" rel="bookmark"
                            title="Permalink to python库介绍-buildbot教程">python库介绍-buildbot教程</a></h1>
                 </header>
@@ -37,7 +82,7 @@
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-25T19:23:00+08:00">
-                Published: 日 25 三月 2018
+                Published: Sun 25 March 2018
         </abbr>
 
         <address class="vcard author">
@@ -70,7 +115,7 @@
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-25T19:20:00+08:00">
-                Published: 日 25 三月 2018
+                Published: Sun 25 March 2018
         </abbr>
 
         <address class="vcard author">
@@ -120,7 +165,7 @@ os.curdir - 当前目录 (e.g., “.”)。
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-22T19:20:00+08:00">
-                Published: 四 22 三月 2018
+                Published: Thu 22 March 2018
         </abbr>
 
         <address class="vcard author">
@@ -164,7 +209,7 @@ calendar 标准模块。</p>
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-22T19:20:00+08:00">
-                Published: 四 22 三月 2018
+                Published: Thu 22 March 2018
         </abbr>
 
         <address class="vcard author">
@@ -212,7 +257,7 @@ calendar 标准模块。</p>
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-21T19:20:00+08:00">
-                Published: 三 21 三月 2018
+                Published: Wed 21 March 2018
         </abbr>
 
         <address class="vcard author">
@@ -244,7 +289,7 @@ calendar 标准模块。</p>
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-18T19:20:00+08:00">
-                Published: 日 18 三月 2018
+                Published: Sun 18 March 2018
         </abbr>
 
         <address class="vcard author">
@@ -291,7 +336,7 @@ calendar 标准模块。</p>
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-12T19:20:00+08:00">
-                Published: 一 12 三月 2018
+                Published: Mon 12 March 2018
         </abbr>
 
         <address class="vcard author">
@@ -342,7 +387,7 @@ calendar 标准模块。</p>
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-02-28T19:20:00+08:00">
-                Published: 三 28 二月 2018
+                Published: Wed 28 February 2018
         </abbr>
 
         <address class="vcard author">
@@ -403,7 +448,7 @@ calendar 标准模块。</p>
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-02-22T19:20:00+08:00">
-                Published: 四 22 二月 2018
+                Published: Thu 22 February 2018
         </abbr>
 
         <address class="vcard author">
@@ -457,68 +502,6 @@ calendar 标准模块。</p>
 <ul>
 <li>pwd.getpwuid(uid): Return the password database entry for …</li></ul>
                 <a class="readmore" href="/python3_lib_pwd.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_spwd.html" rel="bookmark"
-                           title="Permalink to python库介绍-spwd：shadow密码数据库">python库介绍-spwd：shadow密码数据库</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-12T19:20:00+08:00">
-                Published: 一 12 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>pwd可以访问Unix shadow密码数据库。  2.5新增。通常需要为root用户。</p>
-<p>密码数据库项由结构体spwd(类似元组)表示，参见shadow.h：</p>
-<table>
-<thead>
-<tr>
-<th align="center">序号</th>
-<th align="center">属性</th>
-<th align="center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">0</td>
-<td align="center">sp_nam</td>
-<td align="center">Login name</td>
-</tr>
-<tr>
-<td align="center">1</td>
-<td align="center">sp_pwd</td>
-<td align="center">Encrypted password</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">sp_lstchg</td>
-<td align="center">Date of last change</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">sp_min</td>
-<td align="center">Minimal number of days between changes</td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="center">sp_max</td>
-<td align="center">Maximum number of days between changes</td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td align="center">sp_warn</td>
-<td align="center">Number of days before …</td></tr></tbody></table>
-                <a class="readmore" href="/python3_lib_spwd.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

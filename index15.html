@@ -30,6 +30,47 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python_pandas_crash_tutorial2.html" rel="bookmark"
+                           title="Permalink to python数据分析快速入门教程2-pandas数据结构">python数据分析快速入门教程2-pandas数据结构</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-31T09:20:00+08:00">
+                Published: Sat 31 March 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/python_pandas_crash_tutorial.html">本书目录</a></p>
+<h3 id="_1">创建数据</h3>
+<p>Series和python的列表类似。DataFrame则类似值为Series的字典。</p>
+<p>create.py</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># create.py</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">创建序列Series&quot;</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">指定索引index创建序列Series&quot;</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;Wes McKinney&#39;</span><span class="p">,</span> <span class="s1">&#39;Creator of Pandas&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Person&#39;</span><span class="p">,</span> <span class="s1">&#39;Who&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="c1"># 注意：列名未必为执行的顺序，通常为按字母排序</span>
+<span class="k">print …</span></pre></div>
+                <a class="readmore" href="/python_pandas_crash_tutorial2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_pandas_crash_tutorial3.html" rel="bookmark"
                            title="Permalink to python数据分析快速入门教程3-绘图">python数据分析快速入门教程3-绘图</a></h1>
                 </header>
@@ -37,7 +78,7 @@
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-31T09:20:00+08:00">
-                Published: 六 31 三月 2018
+                Published: Sat 31 March 2018
         </abbr>
 
         <address class="vcard author">
@@ -62,7 +103,7 @@
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-28T19:20:00+08:00">
-                Published: 三 28 三月 2018
+                Published: Wed 28 March 2018
         </abbr>
 
         <address class="vcard author">
@@ -118,7 +159,7 @@
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-27T19:20:00+08:00">
-                Published: 二 27 三月 2018
+                Published: Tue 27 March 2018
         </abbr>
 
         <address class="vcard author">
@@ -149,7 +190,7 @@
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-26T19:20:00+08:00">
-                Published: 一 26 三月 2018
+                Published: Mon 26 March 2018
         </abbr>
 
         <address class="vcard author">
@@ -192,7 +233,7 @@
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-26T19:20:00+08:00">
-                Published: 一 26 三月 2018
+                Published: Mon 26 March 2018
         </abbr>
 
         <address class="vcard author">
@@ -237,7 +278,7 @@
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-25T19:23:00+08:00">
-                Published: 日 25 三月 2018
+                Published: Sun 25 March 2018
         </abbr>
 
         <address class="vcard author">
@@ -270,7 +311,7 @@
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-25T19:20:00+08:00">
-                Published: 日 25 三月 2018
+                Published: Sun 25 March 2018
         </abbr>
 
         <address class="vcard author">
@@ -320,7 +361,7 @@ os.curdir - 当前目录 (e.g., “.”)。
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-22T19:20:00+08:00">
-                Published: 四 22 三月 2018
+                Published: Thu 22 March 2018
         </abbr>
 
         <address class="vcard author">
@@ -364,7 +405,7 @@ calendar 标准模块。</p>
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-22T19:20:00+08:00">
-                Published: 四 22 三月 2018
+                Published: Thu 22 March 2018
         </abbr>
 
         <address class="vcard author">
@@ -400,38 +441,6 @@ calendar 标准模块。</p>
 
 <span class="s1">This library …</span></pre></div></td></tr></table>
                 <a class="readmore" href="/python3_python-daemon.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_multiprocessing.html" rel="bookmark"
-                           title="Permalink to python库介绍-multiprocessing：多进程">python库介绍-multiprocessing：多进程</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-21T19:20:00+08:00">
-                Published: 三 21 三月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>进程是运行的程序，每个进程有自己的系统状态，包含了内存、打开文件列表、程序计数器（跟踪执行的指令）、存储函数本地调用变量的堆栈。</p>
-<p>使用os或subprocess可以创建新进程，比如：os.fork(), subprocess.Popen()。子进程和父进程是相互独立执行的。</p>
-<p>interprocess communication (IPC)进程间的通信: 最常见的形式是基于消息传递（message passing）。message是原始字节的缓存，通过I/O channel比如网络socket和管道，使用原语比如send() and recv()来发送接收消息。次常用的有内存映射区：memory-mapped regions，见mmap模块，实际上是共享内存。</p>
-<p>线程有自己的控制流和执行堆栈，但是共享系统资源和数据。</p>
-<p>并发的难点：同步和数据共享。解决的方法一般是使用互斥锁。</p>
-<div class="highlight"><pre><span></span><span class="n">write_lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
-<span class="o">...</span>
-<span class="c1"># Critical section where writing occurs</span>
-<span class="n">write_lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
-<span class="n">f …</span></pre></div>
-                <a class="readmore" href="/python3_lib_multiprocessing.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

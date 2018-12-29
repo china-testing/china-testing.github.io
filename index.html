@@ -28,10 +28,10 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/docker_books.html">2019最佳devops工具docker书籍</a></h1>
+                    <h1 class="entry-title"><a href="/pptx.html">2018最佳人工智能机器学习工具书籍及下载(持续更新)</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2018-12-27T07:20:00+08:00">
-                Published: 四 27 十二月 2018
+        <abbr class="published" title="2018-12-29T15:20:00+08:00">
+                Published: Sat 29 December 2018
         </abbr>
 
         <address class="vcard author">
@@ -39,164 +39,242 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info --><ul>
+</footer><!-- /.post-info --><h3 id="hello">hello</h3>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">pptx</span> <span class="kn">import</span> <span class="n">Presentation</span>
+
+<span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
+<span class="n">title_slide_layout</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slide_layouts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">slide</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">title_slide_layout</span><span class="p">)</span>
+<span class="n">title</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">title</span>
+<span class="n">subtitle</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">placeholders</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hello, World!&quot;</span>
+<span class="n">subtitle</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;python-pptx 可以轻松制作powerpoint!&quot;</span>
+
+<span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.pptx&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a5f192eeed1c0c42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="bullet">Bullet</h3>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pptx</span> <span class="kn">import</span> <span class="n">Presentation</span>
+
+<span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
+<span class="n">bullet_slide_layout</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slide_layouts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">slide</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">bullet_slide_layout</span><span class="p">)</span>
+<span class="n">shapes</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span>
+
+<span class="n">title_shape</span> <span class="o">=</span> <span class="n">shapes</span><span class="o">.</span><span class="n">title</span>
+<span class="n">body_shape</span> <span class="o">=</span> <span class="n">shapes</span><span class="o">.</span><span class="n">placeholders</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">title_shape</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Adding a Bullet Slide&#39;</span>
+
+<span class="n">tf</span> <span class="o">=</span> <span class="n">body_shape</span><span class="o">.</span><span class="n">text_frame</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Find the bullet slide layout&#39;</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Use _TextFrame.text for first bullet&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Use _TextFrame.add_paragraph() for subsequent bullets&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.pptx&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b2de5bf203033cf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>并非所有shape都可以包含文本，但至少有段落。 _BaseShape.has_text_frame可用于确定shape是否可以包含文本，所有shape都是_BaseShape的子类 。当_BaseShape.has_text_frame为True 时，_BaseShape.text_frame.paragraphs[0]返回第一段。 可以使用text_frame.paragraphs[0].text设置文本。 _BaseShape.text和_TextFrame.text可以达到同样的效果。 </p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pptx</span> <span class="kn">import</span> <span class="n">Presentation</span>
+
+<span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
+<span class="n">bullet_slide_layout</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slide_layouts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">slide</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">bullet_slide_layout</span><span class="p">)</span>
+<span class="n">shapes</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span>
+
+<span class="n">title_shape</span> <span class="o">=</span> <span class="n">shapes</span><span class="o">.</span><span class="n">title</span>
+<span class="n">body_shape</span> <span class="o">=</span> <span class="n">shapes</span><span class="o">.</span><span class="n">placeholders</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">title_shape</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Adding a Bullet Slide&#39;</span>
+
+<span class="n">tf</span> <span class="o">=</span> <span class="n">body_shape</span><span class="o">.</span><span class="n">text_frame</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Find the bullet slide layout&#39;</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Use _TextFrame.text for first bullet&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Use _TextFrame.add_paragraph() for subsequent bullets&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.pptx&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="_1">参考资料</h3>
+<ul>
 <li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
 <li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
 <li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
-</ul>
-<h3 id="docker-deep-dive">Docker Deep Dive</h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-c65ebb71403800e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>亚马逊美国 4.5 100+评论</p>
-<p>The ultimate book for learning Docker. Deep theory and lots of hands-on labs so that you get a solid understanding. Lots of clear diagrams. Now covers all objectives on the Docker Certified Associate (DCA) exam.</p>
-<p><a href="https://itbooks.pipipan.com/fs/18113597-327672255">Docker Deep Dive - 2018.pdf</a></p>
-<h3 id="practical-docker-with-python-build-release-and-distribute-your-python-app-with-docker">Practical Docker with Python: Build, Release and Distribute your Python App with Docker</h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-16e54afb38fb0850.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>Learn the key differences between containers and virtual machines. Adopting a project based approach, this book introduces you to a simple Python application to be developed and containerized with Docker.</p>
-<p>After an introduction to Containers and Docker you'll be guided through Docker installation and configuration.  You'll also learn basic functions and commands used in Docker by running a simple container using Docker commands. </p>
-<p>The book then moves on to developing a Python based Messaging Bot using required libraries and virtual environment where you'll add Docker Volumes to your project, ensuring your container data is safe. 
-You'll create a database container and link your project to it and finally, bring up the Bot-associated database all at once with Docker Compose. </p>
-<p>What You'll Learn</p>
-<div class="highlight"><pre><span></span>Build, run, and distribute Docker containers
-Develop a Python App and containerize it
-Use Dockerfile to run the Python App
-Define and run multi-container applications with Docker Compose 
-Work with persisting data generated by and used by Docker containers
-</pre></div>
-
-
-<p>Who This Book Is For</p>
-<p>Intermediate developers/DevOps practitioners who are looking to improve their build and release workflow by containerizing applications</p>
-<p>https://github.com/Apress/practical-docker-with-python</p>
-<p><a href="https://itbooks.pipipan.com/fs/18113597-327672309">Practical Docker with Python - 2018.pdf</a></p>
-<h3 id="_1">参考资料</h3>
-<ul>
 <li>讨论qq群630011153 144081101</li>
+<li><a href="https://china-testing.github.io/pptx.html">原文地址</a></li>
 <li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
-<li><a href="https://china-testing.github.io/docker_books.html">本文最新版本</a></li>
-<li>https://whatpixel.com/best-docker-books/</li>
-<li>https://reactdom.com/docker</li>
+<li>[本文相关海量书籍下载](https://github.com/china-testing/python-api-tesing/blob/master/books.md</li>
 </ul>
-<h3 id="docker-up-running-2nd">Docker: Up &amp; Running 2nd</h3>
-<p>《Docker即学即用》作者是New Relic公司的两名首席网站可靠性工程师，他们在Docker发布不久之后就开始使用了。本书内容是根据他们在生产环境中使用Docker的经验写就的，目的是让你了解这项技术的优势，避免他们曾犯过的错误。本书主要内容有：学习如何使用 Docker 简化依赖管理和应用的部署流程。着手使用Docker映像，容器和命令行工具。使用实用的技术在生产环境中部署和测试基于 Docker的Linux容器。理解容器的组成和内部机理，便于调试。在数据中心或云环境中大规模部署容器。探讨一些Docker的高级话题，包括部署工具，网络，编排，安全和配置。</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-f2c5fc0a1169fbe9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-639ed0f4d0c97cf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p><a href="https://itbooks.pipipan.com/fs/18113597-327672259">Docker Up &amp; Running 2nd - 2018.pdf</a></p>
-<h3 id="the-docker-book-containerization-is-the-new-virtualization-2018">The Docker Book: Containerization is the new virtualization - 2018</h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-2776d217c9546ae3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-309ef2ebee128b1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>Updated for Docker Community Edition 18.09!</p>
-<p>A new book designed for SysAdmins, SREs, Operations staff, Developers and DevOps who are interested in deploying the open source container service Docker.</p>
-<p>In this book, we will walk you through installing, deploying, managing, and extending Docker. We're going to do that by first introducing you to the basics of Docker and its components. Then we'll start to use Docker to build containers and services to perform a variety of tasks.</p>
-<p>We're going to take you through the development life cycle, from testing to production, and see where Docker fits in and how it can make your life easier. We'll make use of Docker to build test environments for new projects, demonstrate how to integrate Docker with continuous integration workflow, and then how to build application services and platforms. Finally, we'll show you how to use Docker's API and how to extend Docker yourself.</p>
-<p>We'll teach you how to:</p>
+<h3 id="_2">字体</h3>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pptx</span> <span class="kn">import</span> <span class="n">Presentation</span>
+<span class="kn">from</span> <span class="nn">pptx.util</span> <span class="kn">import</span> <span class="n">Inches</span><span class="p">,</span> <span class="n">Pt</span>
+
+<span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
+<span class="n">blank_slide_layout</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slide_layouts</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">slide</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">blank_slide_layout</span><span class="p">)</span>
+
+<span class="n">left</span> <span class="o">=</span> <span class="n">top</span> <span class="o">=</span> <span class="n">width</span> <span class="o">=</span> <span class="n">height</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">txBox</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">add_textbox</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+<span class="n">tf</span> <span class="o">=</span> <span class="n">txBox</span><span class="o">.</span><span class="n">text_frame</span>
+
+<span class="n">tf</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;This is text inside a textbox&quot;</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;This is a second paragraph that&#39;s bold&quot;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;This is a third paragraph that&#39;s big&quot;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">Pt</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+
+<span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.pptx&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1d692a6f4f1f4e21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_3">图片</h3>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">pptx</span> <span class="kn">import</span> <span class="n">Presentation</span>
+<span class="kn">from</span> <span class="nn">pptx.util</span> <span class="kn">import</span> <span class="n">Inches</span>
+
+<span class="n">img_path</span> <span class="o">=</span> <span class="s1">&#39;test.jpg&#39;</span>
+
+<span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
+<span class="n">blank_slide_layout</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slide_layouts</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">slide</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">blank_slide_layout</span><span class="p">)</span>
+
+<span class="n">left</span> <span class="o">=</span> <span class="n">top</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pic</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">add_picture</span><span class="p">(</span><span class="n">img_path</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">)</span>
+
+<span class="n">left</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">5.5</span><span class="p">)</span>
+<span class="n">pic</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">add_picture</span><span class="p">(</span><span class="n">img_path</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">)</span>
+
+<span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.pptx&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-356e980ceafdd16e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="autoshape">Autoshape</h3>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">pptx</span> <span class="kn">import</span> <span class="n">Presentation</span>
+<span class="kn">from</span> <span class="nn">pptx.enum.shapes</span> <span class="kn">import</span> <span class="n">MSO_SHAPE</span>
+<span class="kn">from</span> <span class="nn">pptx.util</span> <span class="kn">import</span> <span class="n">Inches</span>
+
+<span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
+<span class="n">title_only_slide_layout</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slide_layouts</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">slide</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">title_only_slide_layout</span><span class="p">)</span>
+<span class="n">shapes</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span>
+
+<span class="n">shapes</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Adding an AutoShape&#39;</span>
+
+<span class="n">left</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">0.93</span><span class="p">)</span>  <span class="c1"># 0.93&quot; centers this overall set of shapes</span>
+<span class="n">top</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="n">width</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">1.75</span><span class="p">)</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">shape</span> <span class="o">=</span> <span class="n">shapes</span><span class="o">.</span><span class="n">add_shape</span><span class="p">(</span><span class="n">MSO_SHAPE</span><span class="o">.</span><span class="n">PENTAGON</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+<span class="n">shape</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Step 1&#39;</span>
+
+<span class="n">left</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="n">width</span> <span class="o">-</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">width</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>  <span class="c1"># chevrons need more width for visual balance</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">shapes</span><span class="o">.</span><span class="n">add_shape</span><span class="p">(</span><span class="n">MSO_SHAPE</span><span class="o">.</span><span class="n">CHEVRON</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+            <span class="n">shape</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Step </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">n</span>
+                <span class="n">left</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="n">width</span> <span class="o">-</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
+
+                <span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.pptx&#39;</span><span class="p">)</span>
+                <span class="sb">``</span><span class="err">`</span>
+
+
+                <span class="err">!</span><span class="p">[</span><span class="err">图片</span><span class="o">.</span><span class="n">png</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">upload</span><span class="o">-</span><span class="n">images</span><span class="o">.</span><span class="n">jianshu</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">upload_images</span><span class="o">/</span><span class="mi">12713060</span><span class="o">-</span><span class="mi">1496517</span><span class="n">c5fa064ac</span><span class="o">.</span><span class="n">png</span><span class="err">?</span><span class="n">imageMogr2</span><span class="o">/</span><span class="n">auto</span><span class="o">-</span><span class="n">orient</span><span class="o">/</span><span class="n">strip</span><span class="o">%</span><span class="mi">7</span><span class="n">CimageView2</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">w</span><span class="o">/</span><span class="mi">1240</span><span class="p">)</span>
+
+<span class="c1">### 表格</span>
+
+<span class="sb">``</span><span class="err">`</span><span class="n">python</span>
+<span class="c1">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">pptx</span> <span class="kn">import</span> <span class="n">Presentation</span>
+<span class="kn">from</span> <span class="nn">pptx.util</span> <span class="kn">import</span> <span class="n">Inches</span>
+
+<span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
+<span class="n">title_only_slide_layout</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slide_layouts</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">slide</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">title_only_slide_layout</span><span class="p">)</span>
+<span class="n">shapes</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span>
+
+<span class="n">shapes</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Adding a Table&#39;</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="n">cols</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">left</span> <span class="o">=</span> <span class="n">top</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="n">width</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">6.0</span><span class="p">)</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">shapes</span><span class="o">.</span><span class="n">add_table</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span><span class="o">.</span><span class="n">table</span>
+
+<span class="c1"># set column widths</span>
+<span class="n">table</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="n">table</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span>
+
+<span class="c1"># write column headings</span>
+<span class="n">table</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Foo&#39;</span>
+<span class="n">table</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Bar&#39;</span>
+
+<span class="c1"># write body cells</span>
+<span class="n">table</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Baz&#39;</span>
+<span class="n">table</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Qux&#39;</span>
+
+<span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.pptx&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-9dd23078b7a9aeff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_4">提取文本</h3>
+<p>```python
+from pptx import Presentation</p>
+<p>prs = Presentation(path_to_presentation)</p>
+<h1 id="text_runs-will-be-populated-with-a-list-of-strings">text_runs will be populated with a list of strings,</h1>
+<h1 id="one-for-each-text-run-in-presentation">one for each text run in presentation</h1>
+<p>text_runs = []</p>
+<p>for slide in prs.slides:
+        for shape in slide.shapes:
+                    if not shape.has_text_frame:
+                                    continue
+                                            for paragraph in shape.text_frame.paragraphs:
+                                                            for run in paragraph.runs:
+                                                                                text_runs.append(run.text)
+                                                                                ```</p>
+<h3 id="_5">参考资料</h3>
 <ul>
-<li>Install Docker.</li>
-<li>Take your first steps with a Docker container.</li>
-<li>Build Docker images.</li>
-<li>Manage and share Docker images.</li>
-<li>Run and manage more complex Docker containers.</li>
-<li>Deploy Docker containers as part of your testing pipeline.</li>
-<li>Build multi-container applications and environments.</li>
-<li>Learn about orchestration. Use Compose and Swarm for the orchestration of Docker containers and Consul for service discovery.</li>
-<li>Explore the Docker API.</li>
-<li>Getting Help and Extending Docker.</li>
-</ul>
-<p>Updated for Docker Community Edition 18.09!</p>
-<p>亚马逊美国 4.5 100左右评论</p>
-<p><a href="https://itbooks.pipipan.com/fs/18113597-327672319">The Docker Book - 2018.pdf</a></p>
-<h3 id="learn-docker-fundamentals-of-docker-18x-2018">Learn Docker - Fundamentals of Docker 18.x  - 2018</h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-0acd9a5964f0ea65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>Enhance your software deployment workflow using containers</p>
-<p>Key Features
-Get up-and-running with basic to advanced concepts of Docker
-Get acquainted with concepts such as Docker containers, Docker images, orchestrators and so on.
-Practical test-based approach to learning a prominent containerization tool
-Book Description
-Docker containers have revolutionized the software supply chain in small and big enterprises. Never before has a new technology so rapidly penetrated the top 500 enterprises worldwide. Companies that embrace containers and containerize their traditional mission-critical applications have reported savings of at least 50% in total maintenance cost and a reduction of 90% (or more) of the time required to deploy new versions of those applications. Furthermore they are benefitting from increased security just by using containers as opposed to running applications outside containers.</p>
-<p>This book starts from scratch, introducing you to Docker fundamentals and setting up an environment to work with it. Then we delve into concepts such as Docker containers, Docker images, Docker Compose, and so on. We will also cover the concepts of deployment, orchestration, networking, and security. Furthermore, we explain Docker functionalities on public clouds such as AWS.</p>
-<p>By the end of this book, you will have hands-on experience working with Docker containers and orchestrators such as SwarmKit and Kubernetes.</p>
-<p>What you will learn
-Containerize your traditional or microservice-based application
-Share or ship your application as an immutable container image
-Build a Docker swarm and a Kubernetes cluster in the cloud
-Run a highly distributed application using Docker Swarm or Kubernetes
-Update or rollback a distributed application with zero downtime
-Secure your applications via encapsulation, networks, and secrets
-Know your options when deploying your containerized app into the cloud
-Who This Book Is For
-This book is targeted at system administrators, operations engineers, DevOps engineers, and developers or stakeholders who are interested in getting started with Docker from scratch. No prior experience with Docker Containers is required.</p>
-<p>Table of Contents
-What Are Containers and Why Should I Use Them?
-Setting up a Working Environment
-Working with Containers
-Creating and Managing Container Images
-Data Volumes and System Management
-Distributed Application Architecture
-Single-Host Networking
-Docker Compose
-Orchestrators
-Introduction to Docker Swarm
-Zero Downtime Deployments and Secrets
-Introduction to Kubernetes
-Deploying, Updating and Securing an Application with Kubernetes
-Running a Containerized App in the Cloud</p>
-<p>https://github.com/fundamentalsofdocker/labs</p>
-<p><a href="https://itbooks.pipipan.com/fs/18113597-327672306">Learn Docker - Fundamentals of Docker 18.x - 2018.pdf</a></p>
-<h3 id="docker-cookbook-over-100-practical-and-insightful-recipes-to-build-distributed-applications-with-docker-2nd-edition-english-edition-2018">Docker Cookbook: Over 100 practical and insightful recipes to build distributed applications with Docker , 2nd Edition (English Edition) - 2018</h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-23a79de407706cf3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>Leverage Docker to deploying software at scale
-Key Features</p>
-<div class="highlight"><pre><span></span>Leverage practical examples to manage containers efficiently
-Integrate with orchestration tools such as Kubernetes for controlled deployments
-Learn to implement best practices on improving efficiency and security of containers
-</pre></div>
-
-
-<p>Book Description</p>
-<p>Docker is an open source platform for building, shipping, managing, and securing containers. Docker has become the tool of choice for people willing to work with containers. Since the market is moving toward containerization, Docker will definitely have a big role to play in the future tech market.</p>
-<p>This book starts with setting up Docker in different environment, and helps you learn how to work with Docker images. Then, you will take a deep dive into network and data management for containers. The book explores the RESTful APIs provided by Docker to perform different actions, such as image/container operations. The book then explores logs and troubleshooting Docker to solve issues and bottlenecks. You will gain an understanding of Docker use cases, orchestration, security, ecosystems, and hosting platforms to make your applications easy to deploy, build, and collaborate on. The book covers the new features of Docker 18.xx (or later), such as working with AWS and Azure, Docker Engine, Docker Swarm, Docker Compose, and so on.</p>
-<p>By the end of this book, you will have gained hands-on experience of finding quick solutions to different problems encountered while working with Docker.
-What you will learn</p>
-<div class="highlight"><pre><span></span>Install Docker on various platforms
-Work with Docker images and containers
-Container networking and data sharing
-Docker APIs and language bindings
-Various PaaS solutions for Docker
-Implement container orchestration using Docker Swarm and Kubernetes
-Container security
-Docker on various clouds
-</pre></div>
-
-
-<p>Who this book is for</p>
-<p>Book is targeted towards developers, system administrators, and DevOps engineers who want to use Docker in his/her development, QA, or production environments.</p>
-<p>It is expected that the reader has basic Linux/Unix skills such as installing packages, editing files, managing services, and so on.</p>
-<p>Any experience in virtualization technologies such as KVM, XEN, and VMware will be an added advantage
-Table of Contents</p>
-<div class="highlight"><pre><span></span>Introduction and Installation
-Working with Docker Containers
-Working with Docker Images
-Network and Data Management for Containers
-Docker Use Cases
-Docker APIs and SDKs
-Docker Performance
-Docker Orchestration and Hosting a Platform
-Docker Security
-Getting Help and Tips and Tricks
-Docker on the Cloud
-</pre></div>
-
-
-<p><a href="https://itbooks.pipipan.com/fs/18113597-327672223">Docker Cookbook 2nd - 2018.pdf</a></p>
-<p>更多的书籍会逐步添加，最新版本参见：https://china-testing.github.io/docker_books.html</p>
-<h3 id="_2">参考资料</h3>
-<ul>
-<li>讨论  qq群630011153 144081101</li>
+<li>讨论  qq群144081101 567351477</li>
 <li><a href="https://china-testing.github.io/ai_books.html">本文最新版本地址</a></li>
 <li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
 <li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50 元每人次起。请联系钉钉或者微信pythontesting</li>
 <li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
 <li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
 </ul>                </article>
@@ -208,6 +286,43 @@ Docker on the Cloud
 
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/docker_books.html" rel="bookmark"
+                           title="Permalink to 2019最佳devops工具docker书籍">2019最佳devops工具docker书籍</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-12-27T07:20:00+08:00">
+                Published: Thu 27 December 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+</ul>
+<h3 id="_1">汇总下载</h3>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-327750046">码农：Docker云图 - 2015.pdf</a></p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-327750036">高性能Docker - 2016.pdf</a></p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-327750030">第一本Docker书 修订版 - 2015.pdf</a></p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-327750027">Docker全攻略 - 2016.pdf</a></p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-327749959">Docker进阶与实战 - 2016.pdf</a></p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-327749958">Docker技术入门与实战（第2版）- 2017.pdf</a></p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-327749941">Docker - 从入门到实践 - 2017.pdf</a></p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-327672319">The Docker Book - 2018.pdf</a></p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-327672309">Practical Docker with Python - 2018.pdf</a></p>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-327672306">Learn Docker - Fundamentals of Docker 18.x …</a></p>
+                <a class="readmore" href="/docker_books.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/cv_img_diff.html" rel="bookmark"
                            title="Permalink to python图像处理工具opencv练习:比较图像差异">python图像处理工具opencv练习:比较图像差异</a></h1>
                 </header>
@@ -215,7 +330,7 @@ Docker on the Cloud
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-12-26T08:25:00+08:00">
-                Published: 三 26 十二月 2018
+                Published: Wed 26 December 2018
         </abbr>
 
         <address class="vcard author">
@@ -252,7 +367,7 @@ Docker on the Cloud
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-12-26T08:20:00+08:00">
-                Published: 三 26 十二月 2018
+                Published: Wed 26 December 2018
         </abbr>
 
         <address class="vcard author">
@@ -292,7 +407,7 @@ Docker on the Cloud
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-12-25T07:35:00+08:00">
-                Published: 二 25 十二月 2018
+                Published: Tue 25 December 2018
         </abbr>
 
         <address class="vcard author">
@@ -334,7 +449,7 @@ Docker on the Cloud
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-12-24T21:35:00+08:00">
-                Published: 一 24 十二月 2018
+                Published: Mon 24 December 2018
         </abbr>
 
         <address class="vcard author">
@@ -373,7 +488,7 @@ Docker on the Cloud
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-12-24T08:35:00+08:00">
-                Published: 一 24 十二月 2018
+                Published: Mon 24 December 2018
         </abbr>
 
         <address class="vcard author">
@@ -414,7 +529,7 @@ Docker on the Cloud
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-12-24T08:25:00+08:00">
-                Published: 一 24 十二月 2018
+                Published: Mon 24 December 2018
         </abbr>
 
         <address class="vcard author">
@@ -466,7 +581,7 @@ Docker on the Cloud
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-12-20T07:20:00+08:00">
-                Published: 四 20 十二月 2018
+                Published: Thu 20 December 2018
         </abbr>
 
         <address class="vcard author">
@@ -500,7 +615,7 @@ Docker on the Cloud
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-12-19T18:25:00+08:00">
-                Published: 三 19 十二月 2018
+                Published: Wed 19 December 2018
         </abbr>
 
         <address class="vcard author">
@@ -526,51 +641,6 @@ Docker on the Cloud
 <li>Gensim    强大、非常高效且可扩展。</li>
 <li>Pattern 个轻量级NLP模块。 这通常用于Web挖掘，爬虫 …</li></ul>
                 <a class="readmore" href="/nltk1.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/pandas1.0.html" rel="bookmark"
-                           title="Permalink to 最流行的开源数据分析，处理和可视化工具pandas的未来">最流行的开源数据分析，处理和可视化工具pandas的未来</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-12-18T09:20:00+08:00">
-                Published: 二 18 十二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
-<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
-<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
-</ul>
-<p>pandas是一个功能强大的开源Python库，用于数据分析，处理和可视化，当前版本：0.23.4。用户在1000万左右，并成为Python数据科学工具包中的“必须使用”的工具。</p>
-<p>许多数据科学家都向我提出过​​这样的问题：</p>
-<p>pandas 可靠吗？</p>
-<p>以后还会维护么？</p>
-<p>为什么没有发布1.0版本！</p>
-<p>版本号可用于表示产品的成熟度。但在开源世界中，版本号并不一定能告诉关于库的成熟度或可靠性的信息。 实际上 pandas既成熟又可靠！不过版本号传达了API的稳定性。</p>
-<ul>
-<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
-<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
-<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
-</ul>
-<h3 id="pandas-10">走向pandas 1.0</h3>
-<ul>
-<li>推荐使用方法链</li>
-</ul>
-<p>不使用方法链的例子：</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/titanic.csv.gz …</span></pre></div>
-                <a class="readmore" href="/pandas1.0.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
