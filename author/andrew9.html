@@ -26,6 +26,42 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_requests.html" rel="bookmark"
+                           title="Permalink to python工具库介绍-requests：人性化的HTTP">python工具库介绍-requests：人性化的HTTP</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-10-15T09:20:00+08:00">
+                Published: 一 15 十月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Requests是Python基于<a href="http://docs.python-requests.org/en/latest/user/intro/#apache2">Apache2 Licensed</a>许可证的人性化HTTP库。</p>
+<p>Python标准库中urllib2提供了不少HTTP 功能，但API不系统。它有点过时，完成最简单的任务也需要大量工作。</p>
+<p>下面我们用实例演示访问github。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://api.github.com/user&#39;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;ouyangchongwu@test.com&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span>
+<span class="mi">200</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;content-type&#39;</span><span class="p">]</span>
+<span class="s1">&#39;application/json; charset=utf-8&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">encoding</span>
+<span class="s1">&#39;utf-8&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+<span class="sa">u</span><span class="s1">&#39;{&quot;login&quot;:&quot;oychw&quot;,...}&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="p">{</span><span class="sa">u</span><span class="s1">&#39;disk_usage&#39;</span><span class="p">:</span> <span class="mi">176</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;private_gists …</span></pre></div>
+                <a class="readmore" href="/python3_lib_requests.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/yao_jinyinhua.html" rel="bookmark"
                            title="Permalink to 中草药的故事-金银花(标准中药)- 清热解毒，疏散风热">中草药的故事-金银花(标准中药)- 清热解毒，疏散风热</a></h1>
                 </header>
@@ -342,56 +378,6 @@
 相关模块:uu, binhex, uu, quopri</p>
 <p>Base64 是一种基于 64 个可打印字符来表示二进制数据的表示方法。由于 2 的 6 次方等于 64,所以每 6 …</p>
                 <a class="readmore" href="/python3_lib_base64.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_platform.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python模块介绍-platform：底层平台信息">[雪峰磁针石博客]python模块介绍-platform：底层平台信息</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:10:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">解释器信息</h2>
-<ul>
-<li>
-<p>platform.python_version():  返回的Python版本字符串'major.minor.patchlevel'。sys.version有类似功能，但是返回的信息更多。</p>
-</li>
-<li>
-<p>platform.python_version_tuple(): 返回Python版本 (major, minor, patchlevel)。</p>
-</li>
-<li>
-<p>platform.python_build(): 返回元组(buildno, builddate)，即Python版本号和日期。</p>
-</li>
-<li>
-<p>platform.python_compiler()：返回说明编译Python的编译器的字符串。</p>
-</li>
-<li>
-<p>platform.python_branch()：返回说明编译Python分支。</p>
-</li>
-<li>
-<p>platform.python_implementation()：返回Python实现，比如‘CPython’, ‘IronPython’, ‘Jython’, ‘PyPy’。</p>
-</li>
-<li>
-<p>platform.python_revision()：返回Python补丁版本号。  </p>
-</li>
-</ul>
-<p>下面是ubuntu 16.04执行的结果：</p>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">platform</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">platform</span><span class="o">.</span><span class="n">python_version</span><span class="p">()</span>
-<span class="n">Out …</span></pre></div>
-                <a class="readmore" href="/python3_lib_platform.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

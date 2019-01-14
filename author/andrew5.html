@@ -26,6 +26,51 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/tensorflow7.html" rel="bookmark"
+                           title="Permalink to TensorFlow工具快速入门教程7 TensorFlow基础">TensorFlow工具快速入门教程7 TensorFlow基础</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-22T08:27:00+08:00">
+                Published: 四 22 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>在机器学习中，模型被提供称为特征向量的对象列表。特征向量可以是任何数据类型。特征向量通常是填充张量的主要输入。这些值将通过张量流入op节点，此操作/计算的结果将创建一个新的张量，该张量又将用于新的操作。所有这些操作都可以在图表中查看。</p>
+<h3 id="_1">张量的表示</h3>
+<p>在TensorFlow中，张量是n维的特征向量（即阵列）的集合。例如，2x3矩阵，其值为1到6</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-ce71e998a3b02d75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>TensorFlow将此矩阵表示为：</p>
+<div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span><span class="err">，</span>
+   <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
+</pre></div>
+
+
+<p>如果我们创建一个值为1到8的三维矩阵</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-f4eaf533aef8004e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>TensorFlow将此矩阵表示为：</p>
+<div class="highlight"><pre><span></span><span class="p">[[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="err">，</span>
+       <span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span><span class="err">，</span>
+       <span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span><span class="err">，</span>
+       <span class="p">[[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]]</span>
+</pre></div>
+
+
+<p>注意：张量可以用标量表示，也可以有三维以上的形状。可视化更高维度级别更加复杂。</p>
+<h3 id="_2">张量的类型</h3>
+<p>张量具有三个属性的对象：name、shape、dtype</p>
+<p>TensorFlow执行的每个操作都涉及张量的操作。您可以创建四个主要张量：tf.Variable，tf.constant，tf …</p>
+                <a class="readmore" href="/tensorflow7.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/tensorflow5.html" rel="bookmark"
                            title="Permalink to TensorFlow工具快速入门教程5 TensorFlow简介">TensorFlow工具快速入门教程5 TensorFlow简介</a></h1>
                 </header>
@@ -394,38 +439,6 @@
 <li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
 </ul>
                 <a class="readmore" href="/mobile.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/datas_books.html" rel="bookmark"
-                           title="Permalink to python数据分析数据科学中文英文工具书籍下载-持续更新">python数据分析数据科学中文英文工具书籍下载-持续更新</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-13T12:20:00+08:00">
-                Published: 二 13 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></p>
-<h3 id="pandas-0234-pdf"><a href="https://itbooks.pipipan.com/fs/18113597-319756702">pandas  0.23.4 官方文档.pdf</a></h3>
-<h3 id="python-data-science-handbook-2017pdf"><a href="https://itbooks.pipipan.com/fs/18113597-304379322">Python Data Science Handbook - 2017.pdf</a></h3>
-<ul>
-<li>中文版待上传</li>
-</ul>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b0ccae58ef79a1e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>《Python数据科学手册》是对以数据深度需求为中心的科学、研究以及针对计算和统计方法的参考书。本书共五章，每章介绍一到两个Python数据科学中的重点工具包。首先从IPython和Jupyter开始，它们提供了数据科学家需要的计算环境；第 2章讲解能提供ndarray对象的NumPy，它可以用Python高效地存储和操作大型数组；第3章主要涉及提供DataFrame对象的Pandas，它可以用Python高效地存储和操作带标签的/列式数据；第4章的主角是Matplotlib，它为Python提供了许多数据可视化功能；第5章以Scikit-Learn为主，这个程序库为重要的机器学习算法提供了高效整洁的Python版实现。</p>
-<p>《Python数据科学手册》适合有编程背景，并打算将开源Python工具用作分析、操作、可视化以及学习数据的数据科学研究人员</p>
-<p>https://github.com/jakevdp/PythonDataScienceHandbook 近12000+ 星</p>
-<h3 id="python-for-data-analysis-2nd-edition-2017pdf"><a href="https://itbooks.pipipan.com/fs/18113597-304379499">Python for Data Analysis, 2nd Edition - 2017 …</a></h3>
-                <a class="readmore" href="/datas_books.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

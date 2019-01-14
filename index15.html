@@ -26,6 +26,44 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python_pandas_crash_tutorial1.html" rel="bookmark"
+                           title="Permalink to python数据分析快速入门教程1-开胃菜.">python数据分析快速入门教程1-开胃菜.</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-31T09:20:00+08:00">
+                Published: 六 31 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/python_pandas_crash_tutorial.html">本书目录</a></p>
+<h3 id="_1">简介</h3>
+<p>Pandas是用于数据分析的开源Python库,也是目前数据分析最重要的开源库。它能够处理类似电子表格的数据，用于快速数据加载，操作，对齐，合并等。为Python提供这些增强功能，Pandas的数据类型为：Series和DataFrame。DataFrame为整个电子表格或矩形数据，而Series是DataFrame的列。DataFrame也可以被认为是字典或Series的集合。</p>
+<h3 id="_2">加载数据</h3>
+<p>load.py</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># load.py</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;../data/gapminder.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> 
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">查看前五行&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">查看类型 …</span></pre></div>
+                <a class="readmore" href="/python_pandas_crash_tutorial1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python_pandas_crash_tutorial2.html" rel="bookmark"
                            title="Permalink to python数据分析快速入门教程2-pandas数据结构">python数据分析快速入门教程2-pandas数据结构</a></h1>
                 </header>
@@ -389,54 +427,6 @@ calendar 标准模块。</p>
 <p>下面介绍一些术语和约定：</p>
 <p><em>epoch</em>是时间开始点。对于Unix ，时代是1970年1月1日0点。通过time …</p>
                 <a class="readmore" href="/python3_lib_time.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_python-daemon.html" rel="bookmark"
-                           title="Permalink to python库介绍-python-daemon: 实现python后台程序">python库介绍-python-daemon: 实现python后台程序</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-22T19:20:00+08:00">
-                Published: 四 22 三月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
-<p>python-daemon实现Unix守护进程。 参考：<a href="https://www.python.org/dev/peps/pep-3143/">PEP 3143</a></p>
-<p>该库实现了PEP 3143“标准守护进程库”的良好行为守护进程规范。</p>
-<p>DaemonContext实例保存程序的行为和配置的进程环境。</p>
-<h3 id="_2">快速入门</h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-
-<span class="k">with</span> <span class="n">daemon</span><span class="o">.</span><span class="n">DaemonContext</span><span class="p">():</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/test.log&quot;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">        Library to implement a well-behaved Unix daemon process.</span>
-
-<span class="s1">This library …</span></pre></div></td></tr></table>
-                <a class="readmore" href="/python3_python-daemon.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
