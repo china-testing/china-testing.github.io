@@ -26,6 +26,40 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/pandas_tips.html" rel="bookmark"
+                           title="Permalink to pandas试题与技巧">pandas试题与技巧</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-12-20T07:20:00+08:00">
+                Published: 四 20 十二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+</ul>
+<h3 id="_1">删除包含某个值的行</h3>
+<p>现有df = pd.DataFrame([[1,0,2],[1,2,3],[0,1,2],[4,5,6]])，请删除其中包含0的行。</p>
+<p>参考答案：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">df</span>
+   <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>
+<span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">0 …</span></pre></div>
+                <a class="readmore" href="/pandas_tips.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/nltk1.html" rel="bookmark"
                            title="Permalink to Python自然语言工具库NLTK快速入门教程1简介">Python自然语言工具库NLTK快速入门教程1简介</a></h1>
                 </header>
@@ -379,53 +413,6 @@
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span> <span class="o">&lt;</span> <span class="n">df</span><span class="o">.</span><span class="n">Age …</span></pre></div>
                 <a class="readmore" href="/cv1.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/pil1.html" rel="bookmark"
-                           title="Permalink to python图像处理pillow工具作业：合并拼接图片">python图像处理pillow工具作业：合并拼接图片</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-12-03T19:25:00+08:00">
-                Published: 一 03 十二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
-<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
-<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
-</ul>
-<h3 id="pillow">pillow简介</h3>
-<p>Python Imaging Library给Python解释器增加了图像处理能力。</p>
-<p>该库提供了广泛的文件格式支持，高效的内部展现，以及十分强大的图像处理能力。</p>
-<p>核心图像库专为以几种存储为基本像素格式数据的快速访问而设计。它为通用图像处理工具提供了坚实的基础。</p>
-<p>我们来看看这个库的用途。</p>
-<ul>
-<li>图像存储</li>
-</ul>
-<p>PIL适合图像归档和图像批量处理，你可以使用它建立缩略图，转换格式，打印图片等。</p>
-<p>现在的版本可以识别和读取大量的图片格式，写入常用的转换和表示格式。</p>
-<ul>
-<li>图像显示</li>
-</ul>
-<p>当前版本包含了Tk <a href="https://pillow.readthedocs.io/en/latest/reference/ImageTk.html#PIL.ImageTk.PhotoImage">PhotoImage</a>和<a href="https://pillow.readthedocs.io/en/latest/reference/ImageTk.html#PIL.ImageTk.BitmapImage">BitmapImage</a>接口, 以及<a href="https://pillow.readthedocs.io/en/latest/reference/ImageTk.html#PIL.ImageTk.BitmapImage">Windows DIB interface</a> ，可以在PythonWin和其他基于Windows的工具包中使用。许多其他GUI工具包带有某种类型的PIL支持。</p>
-<p>为了方便调试还提供了show()方法，可以保存图像到磁盘并调用外显示。它将图像保存到磁盘，并调用外部显示工具。</p>
-<ul>
-<li>图像处理</li>
-</ul>
-<p>这个库包含了基本的图像处理功能，包括点操作，使用内置卷积内核过滤，色彩空间转换。</p>
-<p>这个库还支持更改图像大小、旋转、任意仿射变换。</p>
-<p>直方图方法允许你统计图像，这可以用于对比度增强和全局统计分析 …</p>
-                <a class="readmore" href="/pil1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

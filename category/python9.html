@@ -26,6 +26,56 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python_weeks.html" rel="bookmark"
+                           title="Permalink to python测试开发自学每周一练">python测试开发自学每周一练</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-25T11:26:00+08:00">
+                Published: 五 25 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h1 id="table-of-contents">Table of Contents</h1>
+<ul>
+<li><a href="#python每周一练">python每周一练</a></li>
+<li><a href="#2018-06-06 json格式转换">2018-06-06 json格式转换</a></li>
+<li><a href="#2018-06-01 正则表达式及拼音排序">2018-06-01 正则表达式及拼音排序</a></li>
+<li><a href="#2018-05-25-旋转图片">2018-05-25 旋转图片</a></li>
+</ul>
+<h1 id="python">python每周一练</h1>
+<p>每周五发布python需求，所有需求都来自实际企业。下周五发布参考答案。</p>
+<ul>
+<li>
+<p>技术支持 (可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
+</li>
+<li>
+<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
+</li>
+</ul>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
+<p><a href="https://china-testing.github.io/python_weeks.html">本文最新版本</a> </p>
+<h3 id="2018-06-06-json">2018-06-06 json格式转换</h3>
+<p>现有 人脸标注的海量数据，部分参见：<a href="https://github.com/china-testing/python-api-tesing/tree/master/weeks/2018_06_06/data">data</a></p>
+<p>要求输出：
+1，files.txt </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6 …</pre></div></td></tr></table>
+                <a class="readmore" href="/python_weeks.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_lib_pytesseract.html" rel="bookmark"
                            title="Permalink to python库介绍-pytesseract: OCR光学字符识别">python库介绍-pytesseract: OCR光学字符识别</a></h1>
                 </header>
@@ -433,41 +483,10 @@ Matplotlib是一个多功能的Python库，可生成数据可视化图。支持�
                 <a class="readmore" href="/python_opencv3_exmaple1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_argparse.html" rel="bookmark"
-                           title="Permalink to python库介绍-argparse: 命令行选项及参数解析">python库介绍-argparse: 命令行选项及参数解析</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-27T19:20:00+08:00">
-                Published: 二 27 三月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">快速入门</h2>
-<p>argparse是一个完整的参数处理库。参数可以根据add_argument()的action选项触发不同action。支持的action有存储参数（单个，或作为列表的一部分）;存储常量的值（对布尔开关true/false有特殊处理）。默认动作是存储参数值。支持type(指定存储类型)和dest(指定存储变量)等参数。 </p>
-<p>然后使用函数parse_args()进行参数解析，这个函数的输入默认是sys.argv[1:]，也可以使用其他字符串列表。选项使用GNU/POSIX语法处理，可以混合选项和参数值。parse_args的返回值是一个包含命令参数的Namespace。所有参数以属性的形式存在，比如args.myoption。</p>
-<p>下面是一个简单的示例：argparse_short.py</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
-
-<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Short sample app&#39;</span><span class="p">)</span>
-
-<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="n">parser</span><span class="o">.</span><span class="n">add_argument …</span></pre></div>
-                <a class="readmore" href="/python3_lib_argparse.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/category/python8.html">&laquo;</a>
-    Page 9 / 11
+    Page 9 / 12
         <a href="/category/python10.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
