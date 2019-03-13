@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>[雪峰磁针石博客]python3快速入门教程2数据结构1变量与赋值</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_crash5.html" rel="bookmark"
+           title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构1变量与赋值">[雪峰磁针石博客]python3快速入门教程2数据结构1变量与赋值</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:30:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <h2 id="_1">语法基础</h2>
+<p>解释器像简单的计算器：可以输入表达式，它会返回值。表达式语法很简单：运算符 + ， - ， * 和 / 与其它语言一样(例如Pascal或C)；括号用于分组。例如:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">50</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="mi">6</span>
+<span class="mi">20</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="mi">50</span> <span class="o">-</span> <span class="mf">5.0</span><span class="o">*</span><span class="mi">6</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>
+<span class="mf">5.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">8</span> <span class="o">/</span> <span class="mf">5.0</span>
+<span class="mf">1.6</span>
+</pre></div>
+
+
+<p>整数(例如2、4、20 )的类型是 int，带有小数部分的数字(例如5.0、1.6)的类型是 float。</p>
+<p>除法(/)永远返回浮点数。地板除使用 // 运算符；要计算余数你可以使用 %。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">17</span> <span class="o">/</span> <span class="mi">3</span>  <span class="c1"># classic division returns a float</span>
+<span class="mf">5.666666666666667</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">17</span> <span class="o">//</span> <span class="mi">3</span>  <span class="c1"># floor division discards the fractional part</span>
+<span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">17</span> <span class="o">%</span> <span class="mi">3</span>  <span class="c1"># the % operator returns the remainder of the division</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span>  <span class="c1"># result * divisor + remainder</span>
+<span class="mi">17</span>
+</pre></div>
+
+
+<p>"**"表示乘方：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">5</span> <span class="o">**</span> <span class="mi">2</span>  <span class="c1"># 5 squared</span>
+<span class="mi">25</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">7</span>  <span class="c1"># 2 to the power of 7</span>
+<span class="mi">128</span>
+</pre></div>
+
+
+<p>在Python中，名称（ 标识符）只能由字母、数字和下划线（_）构成，且不能以数字打头。因此 Plan9 是合法的变量名，而 9Plan 不是。在某种程度上说，标识符命名规则基于Unicode标准，详情请参阅“Python语言参考手册”（https://docs.python.org/3/reference/lexical_analysis.html）。也就是说中文变量名也是可以的。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="err">你好</span> <span class="o">=</span> <span class="s1">&#39;你好&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="err">你好</span><span class="p">)</span>
+<span class="err">你好</span>
+</pre></div>
+
+
+<p>等号（ '=' ）用于给变量赋值:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="mi">9</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height900</span>
+</pre></div>
+
+
+<p>同一值可以同时赋给几个变量:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Zero x, y and z</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">z</span>
+<span class="mi">0</span>
+</pre></div>
+
+
+<p>变量在使用前必须"定义"(赋值)，否则会出错:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">n</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s1">&#39;n&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+</pre></div>
+
+
+<p>支持浮点数，混合计算时会自动整型转为浮点数:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">4</span> <span class="o">*</span> <span class="mf">3.75</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="mf">14.0</span>
+</pre></div>
+
+
+<p>交互模式中，最近表达式的值赋给变量 _ 。更方便连续计算把Python当作桌面计算器，例如:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">tax</span> <span class="o">=</span> <span class="mf">12.5</span> <span class="o">/</span> <span class="mi">100</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">price</span> <span class="o">=</span> <span class="mf">100.50</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">price</span> <span class="o">*</span> <span class="n">tax</span>
+<span class="mf">12.5625</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">price</span> <span class="o">+</span> <span class="n">_</span>
+<span class="mf">113.0625</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mf">113.06</span>
+</pre></div>
+
+
+<p>此变量对于用户是只读的。</p>
+<p>除了int和float，还有fractions(https://docs.python.org/2/library/fractions.html#fractions.Fraction)和decimal(https://docs.python.org/2/library/decimal.html#decimal.Decimal)。</p>
+<p>下面的复数部分很少使用，通常可以不阅读。</p>
+<p>支持复数，虚数带有后缀j或J，有非零实部的复数写为(real+imagj)，或者用complex(real, imag)函数创建。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">1j</span> <span class="o">*</span> <span class="mi">1</span><span class="n">J</span>
+<span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">+</span><span class="mi">0j</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">1j</span> <span class="o">*</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">+</span><span class="mi">0j</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">3</span><span class="o">+</span><span class="mi">1j</span><span class="o">*</span><span class="mi">3</span>
+<span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="mi">3j</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="mi">1j</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span>
+<span class="p">(</span><span class="mi">9</span><span class="o">+</span><span class="mi">3j</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2j</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">1j</span><span class="p">)</span>
+<span class="p">(</span><span class="mf">1.5</span><span class="o">+</span><span class="mf">0.5j</span><span class="p">)</span>
+</pre></div>
+
+
+<p>复数的实部和虚部总是记为两个浮点数。要从复数z中提取实部和虚部，使用z.real和 z.imag。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="mf">1.5</span><span class="o">+</span><span class="mf">0.5j</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">real</span>
+<span class="mf">1.5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">imag</span>
+<span class="mf">0.5</span>
+</pre></div>
+
+
+<p>浮点数和整数转换函数(float(), int()和long())不适用于复数。没有方法把复数转成实数。函数abs(z)用于取模(为浮点数)或z.real取实部:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="mf">3.0</span><span class="o">+</span><span class="mf">4.0j</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">can</span><span class="s1">&#39;t convert complex to float</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">real</span>
+<span class="mf">3.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">imag</span>
+<span class="mf">4.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># sqrt(a.real**2 + a.imag**2)</span>
+<span class="mf">5.0</span>
+</pre></div>
+
+
+<h2 id="_2">变量与赋值</h2>
+<p>自己实现求最大值。</p>
+<p>代码：</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    xurongzhong#126.com wechat:pythontesting qq:37391319</span>
+<span class="c1"># 技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) </span>
+<span class="c1"># qq群：144081101 591302926  567351477</span>
+<span class="c1"># CreateDate: 2018-6-12 </span>
+<span class="c1"># mymax2.py</span>
+<span class="c1"># Write max function without built-in max().</span>
+
+<span class="k">def</span> <span class="nf">mymax2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return larger of x and y.&quot;&quot;&quot;</span>
+    <span class="n">largest_so_far</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="n">largest_so_far</span><span class="p">:</span>
+        <span class="n">largest_so_far</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">largest_so_far</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;MyMax: Enter two values to find the larger.&quot;</span><span class="p">)</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;First value: &quot;</span><span class="p">))</span>
+    <span class="n">second</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Second value: &quot;</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The larger value is&quot;</span><span class="p">,</span> <span class="n">mymax2</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">))</span>
+
+<span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+
+<p>执行：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">mymax2</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">MyMax</span><span class="p">:</span> <span class="n">Enter</span> <span class="n">two</span> <span class="n">values</span> <span class="n">to</span> <span class="n">find</span> <span class="n">the</span> <span class="n">larger</span><span class="o">.</span>
+<span class="n">First</span> <span class="n">value</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">Second</span> <span class="n">value</span><span class="p">:</span> <span class="mi">89</span>
+<span class="n">The</span> <span class="n">larger</span> <span class="n">value</span> <span class="ow">is</span> <span class="mf">89.0</span>
+</pre></div>
+
+
+<p>注意赋值是=，判断是否等于是==。</p>
+<p>实际上python的内置函数max已经很好的实现了这个功能。数值相关的内置函数如下：</p>
+<p>方法  | 功能
+| --- | --- |
+abs(x) | 绝对值。
+max(x, y) | 最大值
+min(x, y)| 最小值
+pow(x, y) | x的次方</p>
+<p>参考资料：
+<a href="https://www.jianshu.com/p/19305a680273">[雪峰磁针石博客]python3标准库-中文版2:内置函数</a></p>
+<p>输入输出的内置函数</p>
+<p>方法  | 功能
+| --- | --- |
+input(prompt) | 打印可选prompt并将用户输入的值作为字符串返回。
+print(value1, value2, ...) | 打印value1, value2等，以空格分隔。</p>
+<p>python的基础数据类型有bool、float、int、str</p>
+<p>类型  | 描述
+| --- | --- |
+bool | True或False
+float | 带小数点浮点数值，如3.141，-23.8,7.0或5.92e7 = 5.92×10 7
+int | 如847，-19或7
+str | 单，双或三引号内的字符串。如“abc”，“它在这里！”或文档字符串等</p>
+<p>这四种类型同时还有可以进行类型转换的内置函数。</p>
+<ul>
+<li>学英文、练python题目：</li>
+</ul>
+<p>计算机等级考试python二级 浙江高考 全国中学生奥赛模拟题</p>
+<p>Write a function grade(score) to return the corresponding letter grade for a given numerical score. That is, for 90 or above, return the string "A" , for 80 or above, return "B", etc. Include a main() to test your function.</p>
+<h2 id="_3">计算</h2>
+<p>计算投资收益</p>
+<p>代码：</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    xurongzhong#126.com wechat:pythontesting qq:37391319</span>
+<span class="c1"># 技术支持 钉钉群：21745728(可以加钉钉pythontesting邀请加入) </span>
+<span class="c1"># qq群：144081101 591302926  567351477</span>
+<span class="c1"># CreateDate: 2018-6-12 </span>
+<span class="c1"># balance_table.py</span>
+<span class="c1"># Print table of account balances earning interest.</span>
+
+<span class="k">def</span> <span class="nf">balance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return new balance using compound annual interest.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span><span class="o">**</span><span class="n">t</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Calculates compound interest over time.&quot;</span><span class="p">)</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Principal: &quot;</span><span class="p">))</span>
+    <span class="n">rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Interest rate (as a decimal): &quot;</span><span class="p">))</span>
+    <span class="n">years</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Number of years: &quot;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">years</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">balance</span><span class="p">(</span><span class="n">principal</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="n">year</span><span class="p">))</span>
+
+<span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+
+<p>执行：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">balance_table</span><span class="o">.</span><span class="n">py</span> 
+<span class="n">Calculates</span> <span class="n">compound</span> <span class="n">interest</span> <span class="n">over</span> <span class="n">time</span><span class="o">.</span>
+<span class="n">Principal</span><span class="p">:</span> <span class="mi">1000</span>
+<span class="n">Interest</span> <span class="n">rate</span> <span class="p">(</span><span class="k">as</span> <span class="n">a</span> <span class="n">decimal</span><span class="p">):</span> <span class="mf">0.055</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">years</span><span class="p">:</span> <span class="mi">5</span>
+<span class="mi">0</span> <span class="mf">1000.0</span>
+<span class="mi">1</span> <span class="mf">1055.0</span>
+<span class="mi">2</span> <span class="mf">1113.0249999999999</span>
+<span class="mi">3</span> <span class="mf">1174.2413749999998</span>
+<span class="mi">4</span> <span class="mf">1238.8246506249998</span>
+<span class="mi">5</span> <span class="mf">1306.9600064093747</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="mi">17</span><span class="o">/</span><span class="mi">5</span> <span class="c1"># 除</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="mf">3.4</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="mi">17</span><span class="o">//</span><span class="mi">5</span> <span class="c1">#整除</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="mi">3</span>
+</pre></div>
+
+
+<p>优先级  | 运算符
+| --- | --- |
+高 | *<em>
+中 | </em>, /, //, %
+低 | +, -</p>
+<p>math模块还有一些增强：</p>
+<p>函数 | 功能
+| --- | --- |
+sqrt(x) | x的平方根
+floor(x) |  地板：小于或等于x的最大整数
+ceil(x) | 天花板：大于或等于x最小的整数
+log(x) | 自然对数
+exp(x) | 指数
+pi | 指数</p>
+<p>符合运算符</p>
+<p>优先级  | 运算符
+| --- | --- |
++= | x = x + y</p>
+<p>类似的有-=、*=、/=、//=、 %=</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="mi">9</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>  <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="mi">14</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">//=</span><span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="mi">7</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">%=</span><span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="mi">1</span>
+</pre></div>
+
+
+<p>内置函数bin、hex、int可用于进制转换，请在<a href="https://www.jianshu.com/p/19305a680273">[雪峰磁针石博客]python3标准库-中文版2:内置函数</a>学习。后面的习题会覆盖这3个函数。</p>
+<h2 id="_4">习题</h2>
+<p>1.python3.6+中下面哪个对于int内置函数的使用不合法</p>
+<p>A. int('16',base=10) B. int('1.6') C. int(1.6)  D. int('16_6',base=10)</p>
+<ol>
+<li>hex(25)、 int("0x1C", 16)、int("0b10101", 2)、int("0x1C", 16)的返回值各是多少？</li>
+</ol>
+<h2 id="_5">参考资料</h2>
+<ul>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/python3_crash5.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

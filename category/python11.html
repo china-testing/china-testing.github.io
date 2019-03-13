@@ -26,14 +26,14 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/python3_lib_grp.html" rel="bookmark"
-                           title="Permalink to python库介绍-grp：group数据库">python库介绍-grp：group数据库</a></h1>
+                    <h1><a href="/python_numpy_beginner_guide3rd1.html" rel="bookmark"
+                           title="Permalink to numpy学习指南3rd1:NumPy快速入门">numpy学习指南3rd1:NumPy快速入门</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2018-02-28T19:20:00+08:00">
-                Published: 三 28 二月 2018
+        <abbr class="published" title="2018-04-10T19:20:00+08:00">
+                Published: 二 10 四月 2018
         </abbr>
 
         <address class="vcard author">
@@ -41,250 +41,13 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>grp可以访问Unix组数据库。 </p>
-<p>组数据库项由结构体group(类似元组)表示，参见pwd.h：</p>
-<table>
-<thead>
-<tr>
-<th align="center">序号</th>
-<th align="center">属性</th>
-<th align="center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">0</td>
-<td align="center">gr_name</td>
-<td align="center">the name of the group</td>
-</tr>
-<tr>
-<td align="center">1</td>
-<td align="center">gr_passwd</td>
-<td align="center">the (encrypted) group password; often empty</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">gr_gid</td>
-<td align="center">the numerical group ID</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">gr_mem</td>
-<td align="center">all the group member’s user names</td>
-</tr>
-</tbody>
-</table>
-<p>gid整型，name和password为字符串，gr_mem为字符串列表。</p>
-<h2 id="_2">方法</h2>
+</footer><!-- /.post-info -->                <p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/numpy">代码地址</a></p>
 <ul>
-<li>
-<p>grp.getgrgid(gid)</p>
-<p>Return the group …</p></li></ul>
-                <a class="readmore" href="/python3_lib_grp.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_pwd.html" rel="bookmark"
-                           title="Permalink to python库介绍-pwd：密码数据库">python库介绍-pwd：密码数据库</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-22T19:20:00+08:00">
-                Published: 四 22 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>pwd可以访问Unix用户帐户和密码数据库。 </p>
-<p>密码数据库项由结构体passwd(类似元组)表示，参见pwd.h：</p>
-<table>
-<thead>
-<tr>
-<th align="center">属性</th>
-<th align="center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">pw_name</td>
-<td align="center">Login name</td>
-</tr>
-<tr>
-<td align="center">pw_passwd</td>
-<td align="center">Optional encrypted password</td>
-</tr>
-<tr>
-<td align="center">pw_uid</td>
-<td align="center">Numerical user ID</td>
-</tr>
-<tr>
-<td align="center">pw_gid</td>
-<td align="center">Numerical group ID</td>
-</tr>
-<tr>
-<td align="center">pw_gecos</td>
-<td align="center">User name or comment field</td>
-</tr>
-<tr>
-<td align="center">pw_dir</td>
-<td align="center">User home directory</td>
-</tr>
-<tr>
-<td align="center">pw_shell</td>
-<td align="center">User command interpreter</td>
-</tr>
-</tbody>
-</table>
-<p>除了pw_uid和pw_gid是整数外，其他都是字符串。</p>
-<h2 id="pwd">pwd方法</h2>
-<ul>
-<li>pwd.getpwuid(uid): Return the password database entry for …</li></ul>
-                <a class="readmore" href="/python3_lib_pwd.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_spwd.html" rel="bookmark"
-                           title="Permalink to python库介绍-spwd：shadow密码数据库">python库介绍-spwd：shadow密码数据库</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-12T19:20:00+08:00">
-                Published: 一 12 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>pwd可以访问Unix shadow密码数据库。  2.5新增。通常需要为root用户。</p>
-<p>密码数据库项由结构体spwd(类似元组)表示，参见shadow.h：</p>
-<table>
-<thead>
-<tr>
-<th align="center">序号</th>
-<th align="center">属性</th>
-<th align="center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">0</td>
-<td align="center">sp_nam</td>
-<td align="center">Login name</td>
-</tr>
-<tr>
-<td align="center">1</td>
-<td align="center">sp_pwd</td>
-<td align="center">Encrypted password</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">sp_lstchg</td>
-<td align="center">Date of last change</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">sp_min</td>
-<td align="center">Minimal number of days between changes</td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="center">sp_max</td>
-<td align="center">Maximum number of days between changes</td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td align="center">sp_warn</td>
-<td align="center">Number of days before …</td></tr></tbody></table>
-                <a class="readmore" href="/python3_lib_spwd.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_pathlib.html" rel="bookmark"
-                           title="Permalink to python库介绍-pathlib: 文件系统对象">python库介绍-pathlib: 文件系统对象</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-11T19:40:00+08:00">
-                Published: 日 11 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p>目的：使用面向对象的API解析，构建，测试和处理文件名和路径，而不是底层的字符串操作。</p>
-<h2 id="path">Path表示</h2>
-<p>pathlib包含用于管理使用POSIX标准或Microsoft Windows语法格式化的文件系统路径的类。它包括所谓的“pure”类，它们对字符串进行操作，但不与实际的文件系统进行交互;“concrete”类将API扩展为包含反映或修改本地文件系统数据的操作。</p>
-<p>pure类PurePosixPath和PureWindowsPath可以在任何操作系统上实例化和使用，因为它们只用于名称。要实例化正确的类来处理真实的文件系统，请使用Path来获取PosixPath或WindowsPath，具体取决于平台。</p>
-<ul>
-<li>
-<p>技术支持 (可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
-</li>
-<li>
-<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
-</li>
+<li>你的赞助是我们前进的动力：</li>
 </ul>
-<p>[接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲]</p>
-<h2 id="path_1">构建Path</h2>
-<p>要实例化路径，字符串作为参数。Path对象的字符串表示是该字符串。要创建引用相对于现有路径的值的新路径，请使用/运算符来扩展路径。运算符的参数可以是字符串或其他路径对象。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3 …</pre></div></td></tr></table>
-                <a class="readmore" href="/python3_lib_pathlib.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_enum.html" rel="bookmark"
-                           title="Permalink to python库介绍-enum: 枚举">python库介绍-enum: 枚举</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-11T19:20:00+08:00">
-                Published: 日 11 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>枚举是常量的集合，支持根据id比较和迭代等功能。</p>
-<ul>
-<li>
-<p>python官方文档：https://docs.python.org/3/library/enum.html</p>
-</li>
-<li>
-<p>pymotw文档：https://pymotw.com/3/enum/index.html</p>
-</li>
-<li>
-<p>完稿日期：2016.08.22</p>
-</li>
-</ul>
-<h2 id="_2">创建枚举</h2>
-<p>继承Enum类，添加类属性即可创建枚举。</p>
-<p>enum_create.py</p>
+<p>一流企业专家自动化性能接口测试 数据分析 python一对一教，非骗人的培训机构(多数大陆培训机构的老师实际未入门）承接excel合并，电脑自动化操作等工程 并欢迎讨论中医草药风水相学等道家国学</p>
+<p>qq群python 测试开发自动化测试 144081101 教你做免费的线上博客(放在简历中增加亮点)，自动化测试平台，性能测试工具等，让你有实际项目经验  联系qq：37391319 </p>
+<p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 184175668 中医草药湿热湿疹胃病 291184506 python高级人工智能视觉 6089740</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -299,27 +62,352 @@
 12
 13
 14
-15
-16
-17
-18
-19
-20
-21 …</pre></div></td></tr></table>
-                <a class="readmore" href="/python3_lib_enum.html">read more</a>
+15 …</pre></div></td></tr></table>
+                <a class="readmore" href="/python_numpy_beginner_guide3rd1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/python3_lib_telnetlib.html" rel="bookmark"
-                           title="Permalink to python库介绍-telnetlib：Telnet客户端">python库介绍-telnetlib：Telnet客户端</a></h1>
+                    <h1><a href="/python_matplotlib_by_example2.html" rel="bookmark"
+                           title="Permalink to matplotlib实例2-美图">matplotlib实例2-美图</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2018-02-11T19:20:00+08:00">
-                Published: 日 11 二月 2018
+        <abbr class="published" title="2018-04-02T09:50:00+08:00">
+                Published: 一 02 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">术语</h2>
+<p><img alt="Alt Text" src="/images/matplotlib_anatomy.png">   </p>
+<p>颜色列表：</p>
+<p>缩写 | 颜色
+:--------:|:--------:|
+b | Blue
+g | Green
+r | Red
+c | Cyan
+m | Magenta
+y | Yellow
+k | Black
+w | White</p>
+<p><a href="https://matplotlib.org/examples/color/named_colors.html">HTML颜色参考</a></p>
+<p>RGB或RGBA，A表示透明度。16进制的表示：'#ff0000'。灰度图的深度比如0.1,0.32, 0.5或0.75.</p>
+<p>设置不同的颜色：colors.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="n">years</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2009</span><span class="p">,</span><span class="mi">2017</span><span class="p">))</span>
+<span class="n">android</span> <span class="o">=</span> <span class="p">[</span><span class="mf">6.8</span><span class="p">,</span><span class="mf">67.22 …</span></pre></div>
+                <a class="readmore" href="/python_matplotlib_by_example2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_matplotlib_by_example1.html" rel="bookmark"
+                           title="Permalink to matplotlib实例1-快速入门">matplotlib实例1-快速入门</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-02T09:20:00+08:00">
+                Published: 一 02 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">快速入门</h2>
+<p>什么是Matplotlib？
+Matplotlib是一个多功能的Python库，可生成数据可视化图。支持多种类型和精炼的样式选项，它非常适合创建专业演示文稿和科学出版物。Matplotlib能简单的生成图片，从幻灯片演示，高质量的海报打印和动画到基于网络的交互式。 除了典型的2D图，还支持基本的3D绘图。另外还可以支持python以外的语言。</p>
+<ul>
+<li>你的赞助是我们前进的动力：</li>
+</ul>
+<p>一流企业专家自动化性能接口测试 数据分析 python一对一教，非骗人的培训机构(多数大陆培训机构的老师实际未入门）承接excel合并，电脑自动化操作等工程 并欢迎讨论中医草药风水相学等道家国学</p>
+<p>qq群python 测试开发自动化测试 144081101 教你做免费的线上博客(放在简历中增加亮点)，自动化测试平台，性能测试工具等，让你有实际项目经验  联系qq：37391319 </p>
+<p>交流QQ群：python 测试开发自动化测试 144081101  Python数据分析pandas Excel 630011153 中医草药自学自救大数据 391441566 南方中医草药鉴别学习 184175668 中医草药湿热湿疹胃病 291184506 python高级人工智能视觉 6089740</p>
+<p>安装</p>
+<div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">matplotlib …</span></pre></div>
+                <a class="readmore" href="/python_matplotlib_by_example1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_opencv3_exmaple1.html" rel="bookmark"
+                           title="Permalink to python opencv3实例(对象识别和增强现实)1-图像几何转换">python opencv3实例(对象识别和增强现实)1-图像几何转换</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-28T19:20:00+08:00">
+                Published: 三 28 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://github.com/PacktPublishing/OpenCV-3-x-with-Python-By-Example">原书代码地址</a></p>
+<p>在本章中，我们将学习如何应用酷的几何效果到图像。 知识点</p>
+<ul>
+<li>如何安装OpenCV-Python</li>
+<li>如何读取，显示和保存图像</li>
+<li>如何转换到多个颜色空间</li>
+<li>如何应用几何变换，例如平移，旋转，和缩放</li>
+<li>如何使用仿射和投影变换来应用几何效果</li>
+</ul>
+<p>本书英文版本：<a href="https://itbooks.pipipan.com/fs/18113597-310092139">OpenCV 3.x with Python By Example 2nd 2018.pdf</a> </p>
+<p>更多opencv相关书籍：<a href="https://china-testing.github.io/opencv_books.html">最佳人工智能图像处理工具OpenCV书籍下载</a></p>
+<h2 id="opencv-python">安装OpenCV-Python</h2>
+<ul>
+<li>安装</li>
+</ul>
+<p>本教程基于python3，ubuntu 16，在windows环境可能可以运行。</p>
+<p>Linux</p>
+<div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">opencv</span><span class="o">-</span><span class="n">python</span>
+</pre></div>
+
+
+<p>Windows</p>
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">opencv</span><span class="o">-</span><span class="n">python</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>文档：</p>
+<p><a href="http://docs.opencv.org/">官网</a> <a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html">opencv-python官方文档</a></p>
+</li>
+</ul>
+<h2 id="_1">读取显示和保存图片</h2>
+<p>01_reading_image.py 读取显示图片</p>
+<div class="highlight"><pre><span></span><span class="kn">import …</span></pre></div>
+                <a class="readmore" href="/python_opencv3_exmaple1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_argparse.html" rel="bookmark"
+                           title="Permalink to python库介绍-argparse: 命令行选项及参数解析">python库介绍-argparse: 命令行选项及参数解析</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-27T19:20:00+08:00">
+                Published: 二 27 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">快速入门</h2>
+<p>argparse是一个完整的参数处理库。参数可以根据add_argument()的action选项触发不同action。支持的action有存储参数（单个，或作为列表的一部分）;存储常量的值（对布尔开关true/false有特殊处理）。默认动作是存储参数值。支持type(指定存储类型)和dest(指定存储变量)等参数。 </p>
+<p>然后使用函数parse_args()进行参数解析，这个函数的输入默认是sys.argv[1:]，也可以使用其他字符串列表。选项使用GNU/POSIX语法处理，可以混合选项和参数值。parse_args的返回值是一个包含命令参数的Namespace。所有参数以属性的形式存在，比如args.myoption。</p>
+<p>下面是一个简单的示例：argparse_short.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Short sample app&#39;</span><span class="p">)</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument …</span></pre></div>
+                <a class="readmore" href="/python3_lib_argparse.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_dubbo.html" rel="bookmark"
+                           title="Permalink to python库介绍-dubbo：通过telnet接口访问dubbo服务">python库介绍-dubbo：通过telnet接口访问dubbo服务</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-26T19:20:00+08:00">
+                Published: 一 26 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/python3_quick.html">本文教程目录</a></li>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+</ul>
+<h2 id="_1">简介</h2>
+<p>dubbo服务发布之后，我们可以利用telnet命令进行调试、管理。更多资料参见 <a href="http://alibaba.github.io/dubbo-doc-static/Telnet+Command+Reference-zh-showComments=true&amp;showCommentArea=true.htm">Telnet命令参考手册</a></p>
+<p>项目地址：https://bitbucket.org/china-testing/python-chinese-library/src/46204fd809a04f4d9c7450860d48f2951dec3bc1/libraries/_dubbo/?at=default</p>
+<p>telnet 调用示例：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">telnet</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span> <span class="mi">9097</span>
+<span class="n">Trying</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103.110</span><span class="o">...</span>
+<span class="n">Connected</span> <span class="n">to</span> <span class="mf">172.17</span><span class="o">.</span><span class="mf">103 …</span></pre></div></td></tr></table>
+                <a class="readmore" href="/python3_lib_dubbo.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_pypinyin.html" rel="bookmark"
+                           title="Permalink to python库介绍-pypinyin: 汉字拼音转换工具及中文排序">python库介绍-pypinyin: 汉字拼音转换工具及中文排序</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-26T19:20:00+08:00">
+                Published: 一 26 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>将汉字转为拼音。可以用于汉字注音、排序、检索(Russian translation) 。</p>
+<p>中文文档写得很好，这里不再罗嗦： http://pypinyin.readthedocs.io/zh_CN/master/</p>
+<p>另外可以基于该库进行中文排序：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pypinyin</span> <span class="kn">import</span> <span class="n">lazy_pinyin</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;中国人&#39;</span><span class="p">,</span> <span class="s1">&#39;啊&#39;</span><span class="p">,</span> <span class="s1">&#39;你好&#39;</span><span class="p">,</span> <span class="s1">&#39;台湾人&#39;</span><span class="p">]</span>
+<span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">char</span><span class="p">:</span> <span class="n">lazy_pinyin</span><span class="p">(</span><span class="n">char</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p><a href="https://bitbucket.org/china-testing/python-chinese-library/src/8608aa5693e502050065c0c2dd83df393775a174/libraries/pypinyin/?at=default">代码</a></p>
+<h2 id="_2">参考资料：</h2>
+<ul>
+<li>
+<p>python中文库参考项目：  https://bitbucket.org/china-testing/python-chinese-library</p>
+</li>
+<li>
+<p>python中文库参考项目文档 …</p></li></ul>
+                <a class="readmore" href="/python3_lib_pypinyin.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_buildbot.html" rel="bookmark"
+                           title="Permalink to python库介绍-buildbot教程">python库介绍-buildbot教程</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-25T19:23:00+08:00">
+                Published: 日 25 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+</ul>
+<p>Buildbot是python实现的开源持续构建和持续交付工具，为Python, Mozilla, Chromium, WebKit等知名项目使用。</p>
+<p>与Jenkins相比，Buildbot在大陆使用者较少。原因在于Jenkins的界面相对较美观，更容易上手；Jenkins的中文文档比较丰富。但是Jenkins因为资源消耗庞大、不太方便定制而不受一些有实力的公司欢迎。这些不少把目光聚焦在Buildbot。</p>
+<p>究竟Buildbot有哪些优点让这些公司青睐呢？Buildbot基于python网络框架Twisted，分布式做得好。Buildbot可以直接使用python包，轻松拥有上万库，具备强大的扩展能力。如果你觉得Jenkins已经轻松地满足你的需求，你不需要Buildbot。如果你在Jenkins时觉得效率低下、扩展困难、一些用python等脚本可以实现的动作在Jenkins困难重重，那么可以看看Buildbot。</p>
+<p>python的buildbot站点：　http://buildbot.python.org/all/#/</p>
+<p>Buildbot是开源的自动化软件构建，测试，发布流程的框架。</p>
+<p>Buildbot支持跨平台，分布式，并行执行jobs，与版本控制系统的灵活集成，丰富的状态报告等等。 </p>
+<p>Buildbot是一个作业调度系统：它会对作业进行排队，在所需要的资源可用时执行任务，并报告结果。</p>
+<p>Buildbot有一个或多个主机和从机。主机监控源代码库的变化，调配从机，并给用户和开发者报告结果。从机可在多种操作系统上运行 …</p>
+                <a class="readmore" href="/python3_lib_buildbot.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_os.path.html" rel="bookmark"
+                           title="Permalink to python库介绍-os.path: 平台独立的文件名操作">python库介绍-os.path: 平台独立的文件名操作</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-25T19:20:00+08:00">
+                Published: 日 25 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>的：文件名和路径解析，组合，测试等。</p>
+<p>使用os.path模块中包含的函数编写代码以便在多个平台上处理文件非常简单。即使不打算在平台之间移植的程序也应该使用os.path来进行可靠的文件名解析。</p>
+<h2 id="_1">解析路径</h2>
+<p>路径解析依赖于在os中定义的几个变量：</p>
+<div class="highlight"><pre><span></span>os.sep - 路径各部分之间的分隔符（例如“/”或“\”）。
+
+os.extsep - 文件名和文件扩展名之间的分隔符。
+
+os.pardir - 上级目录(e.g., “..”)。
+
+os.curdir - 当前目录 (e.g., “.”)。
+</pre></div>
+
+
+<p>split()函数将路径分成两个独立的部分，并返回包含结果的元组。元组的第二个元素是路径的最后一个元素，第一个元素是之前的所有元素。</p>
+<div class="highlight"><pre><span></span><span class="c1"># ospath_split.py</span>
+
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="n">PATHS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;/one/two/three&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;/one/two/three/&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">PATHS</span><span class="p">:</span>
+    <span class="k">print …</span></pre></div>
+                <a class="readmore" href="/python3_lib_os.path.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_time.html" rel="bookmark"
+                           title="Permalink to python模块介绍-time 时间访问和转换">python模块介绍-time 时间访问和转换</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-22T19:20:00+08:00">
+                Published: 四 22 三月 2018
         </abbr>
 
         <address class="vcard author">
@@ -332,168 +420,31 @@
 <li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
 <li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
 </ul>
-<h2 id="_1">简介</h2>
-<p>telnetlib模块提供的Telnet类实现了Telnet协议(参见rfc854)。它为协议字符和telnet选项提供符号常量，符号常量来源于arpa/telnet.h，去掉了前缀TELOPT_。</p>
-<p>telnet命令有： IAC, DONT, DO, WONT, WILL, SE (Subnegotiation End), NOP (No Operation), DM (Data Mark), BRK (Break), IP (Interrupt process), AO (Abort output), AYT (Are You There), EC (Erase Character), EL (Erase Line), GA (Go Ahead …</p>
-                <a class="readmore" href="/python3_lib_telnetlib.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+<h2 id="_1">快速入门</h2>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">time</span>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_pandas_excel.html" rel="bookmark"
-                           title="Permalink to 使用pandas处理excel">使用pandas处理excel</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-11T19:20:00+08:00">
-                Published: 日 11 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p>pandas有强大的excel数据处理和导入处理功能，本文简单介绍pandas在csv和excel等格式方面处理的应用及绘制图表等功能。</p>
-<p>pandas处理excel依赖xlutils, OpenPyXL, XlsxWriter等库。</p>
-<ul>
-<li>
-<p>python处理excel库的参考：https://github.com/china-testing/python-api-tesing</p>
-</li>
-<li>
-<p>本文代码地址：https://github.com/china-testing/python-api-tesing/tree/master/pandas/excel_demo</p>
-</li>
-<li>
-<p><a href="https://china-testing.github.io/">本文最新版本地址</a></p>
-</li>
-</ul>
-<p>更多参考资料：</p>
-<p>https://www.dataquest.io/blog/excel-and-pandas/</p>
-<p><a href="https://realpython.com/blog/python/working-with-large-excel-files-in-pandas/">Using Pandas to Read Large Excel Files in Python</a> <a href="https://python.freelycode.com/contribution/detail/38">中文</a></p>
-<p>Foundations for Analytics with Python From Non-Programmer to Hacker - 2016.pdf …</p>
-                <a class="readmore" href="/python_pandas_excel.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_collections.html" rel="bookmark"
-                           title="Permalink to python库介绍-collections：高性能容器数据类型">python库介绍-collections：高性能容器数据类型</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-08T19:20:00+08:00">
-                Published: 四 08 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
-<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
-<li>python 3.7极速入门教程 - 目录](https://china-testing.github.io/python3_quick.html)</li>
-</ul>
-<h2 id="_1">简介</h2>
-<p>2.4新增</p>
-<p>源代码：Lib/collections.py and Lib/_abcoll.py</p>
-<p>提供了替换dict, list, set和tuple的数据类型。</p>
-<p>主要类型如下：</p>
-<ul>
-<li>namedtuple(): 命名元组，创建有名字域的元组子类的工厂函数。python 2.6新增。</li>
-<li>deque：双端队列，类似于列表，两端进栈和出栈都比较快速。python 2.4新增。</li>
-<li>Counter：字典的子类，用于统计哈希对象。python 2.7新增。</li>
-<li>OrderedDict：有序字典，字典的子类，记录了添加顺序 …</li></ul>
-                <a class="readmore" href="/python3_lib_collections.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_jpype1.html" rel="bookmark"
-                           title="Permalink to python库介绍-jpype：python到java桥">python库介绍-jpype：python到java桥</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-03T19:20:00+08:00">
-                Published: 六 03 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>Python 作为一种灵活的软件开发语言在当今被广泛使用。在软件开发过程中，有时需要在 Python 项目中利用既有的 Java 代码，已达到节省时间和开发成本的目的。因此，找到一个 Python 代码调用 Java 代码的桥梁是非常有意义的。 JPype 就是这样的一个工具，利用它可以使 Python 程序方便的调用 Java 代码。</p>
-<p>JPype使Python可以完全访问Java类库。Jython/JPython重新实现了Python，JPype则提供了两个虚拟机的接口。JPype可以在JSP，Servlet、RMI服务器和IDE插件都方面用Python代替Java。</p>
-<p>缺陷：
-package之外的类(在<default>中)不能被导入。
-不能重启JVM。
-不能处理依赖当前类的方法。</p>
-<ul>
-<li>技术支持 (可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</li>
-</ul>
-<h2 id="_2">快速入门</h2>
-<ul>
-<li>安装</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="c1"># pip3 install jpype1</span>
-<span class="n">Collecting</span> <span class="n">jpype1 …</span></pre></div>
-                <a class="readmore" href="/python3_lib_jpype1.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/testing_performance_tool_ngrinder.html" rel="bookmark"
-                           title="Permalink to 性能测试工具nGrinder介绍">性能测试工具nGrinder介绍</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-01T19:20:00+08:00">
-                Published: 四 01 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">安装</h2>
-<p>以linux，这里采用的版本是centos 6 64bit，性能测试工具不建议在Windows上部署。</p>
-<p>下载： </p>
-<p>https://github.com/naver/ngrinder/releases/</p>
-<p>选择最后面的war包。</p>
-<p>服务器端启动：</p>
-<div class="highlight"><pre><span></span><span class="c1"># java -XX:MaxPermSize=200m -jar ngrinder-controller-3.4.war --port 8058</span>
+<span class="c1"># 获取当前时间</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">_%H-%M-%S&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">())</span> 
+<span class="n">Out</span><span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="s1">&#39;2018-06-17_20-05-36&#39;</span>
+<span class="c1"># 停顿0.5秒</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">]:</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 
 
-<p>这样nGrinder的管理页面就部署好，你可以简单的把ngrinder-controller的功能理解为性能测试展示和控制，后面会进行详细介绍。</p>
-<p>打开网址： </p>
-<p>http://183.131.22.113:8058</p>
-<p>默认用户名和密码都为admin</p>
-<p><img alt="捕获.JPG" src="https://bitbucket.org/repo/AqzM76/images/1423288448-%E6%8D%95%E8%8E%B7.JPG"></p>
-<p>注意：这里的"Remember me"是短暂停留，页面关闭之后还是需要重新登陆的。</p>
-<p>登录后点击右上角的admin，选择"下载代理"</p>
-<p><img alt="捕获.JPG" src="https://bitbucket.org/repo/AqzM76/images/1175392996-%E6%8D%95%E8%8E%B7.JPG"></p>
-<p>拷贝下载的文件到agent，现在可以简单理解为agent的功能为执行性能测试，通常不建议与ngrinder-controller部署在同一台，同一台机器也不建议部署多个agent。</p>
-<p>客户端启动 …</p>
-                <a class="readmore" href="/testing_performance_tool_ngrinder.html">read more</a>
+<h2 id="_2">简介</h2>
+<p>功能：时间访问和转换。</p>
+<p>相关模块：</p>
+<p>datetime    标准模块。
+calendar 标准模块。</p>
+<p>下面介绍一些术语和约定：</p>
+<p><em>epoch</em>是时间开始点。对于Unix ，时代是1970年1月1日0点。通过time …</p>
+                <a class="readmore" href="/python3_lib_time.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/category/python10.html">&laquo;</a>
-    Page 11 / 12
+    Page 11 / 13
         <a href="/category/python12.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->

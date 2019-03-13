@@ -189,14 +189,14 @@
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/python_pep8.html" rel="bookmark"
-                           title="Permalink to python代码风格指南(PEP8中文版)">python代码风格指南(PEP8中文版)</a></h1>
+                    <h1><a href="/python3_crash_ch9_2.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程9重要的标准库-高级篇">[雪峰磁针石博客]python3快速入门教程9重要的标准库-高级篇</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2018-08-21T14:50:00+08:00">
-                Published: 二 21 八月 2018
+        <abbr class="published" title="2018-09-04T08:50:00+08:00">
+                Published: 二 04 九月 2018
         </abbr>
 
         <address class="vcard author">
@@ -204,252 +204,195 @@
         </address>
 <p>In <a href="/category/python.html">python</a>.</p>
 
-</footer><!-- /.post-info -->                <p>本文给出主Python版本标准库的编码约定。CPython的C代码风格参见<a href="https://www.python.org/dev/peps/pep-0007/">PEP7</a>。</p>
-<p>本文和<a href="https://www.python.org/dev/peps/pep-0257/">PEP 257 文档字符串标准</a>改编自Guido最初的《Python Style Guide》, 并增加了Barry的<a href="http://barry.warsaw.us/software/STYLEGUIDE.txt">GNU Mailman Coding Style Guide</a>的部分内容。</p>
-<p>本文会随着语言改变等而改变。</p>
-<p>许多项目都有自己的编码风格指南，冲突时自己的指南为准。</p>
-<h2 id="_1">一致性考虑</h2>
-<p>Guido的关键点之一是：代码更多是用来读而不是写。本指南旨在改善Python代码的可读性，即<a href="https://www.python.org/dev/peps/pep-0020/">PEP 20</a>所说的“可读性计数"(Readability counts)。</p>
-<p>风格指南强调一致性。项目、模块或函数保持一致都很重要。</p>
-<p>最重要的是知道何时不一致, 有时风格指南并不适用。当有疑惑时运用你的最佳判断，参考其他例子并多问！</p>
-<p>特别注意：不要因为遵守本PEP而破坏向后兼容性！</p>
-<p>部分可以违背指南情况：</p>
-<ul>
-<li>
-<p>遵循指南会降低可读性。</p>
-</li>
-<li>
-<p>与周围其他代码不一致。</p>
-</li>
-<li>
-<p>代码在引入指南完成，暂时没有理由修改。</p>
-</li>
-<li>
-<p>旧版本兼容。</p>
-</li>
-</ul>
-<h2 id="_2">代码布局</h2>
-<h4 id="_3">缩进</h4>
-<p>每级缩进用4个空格 …</p>
-                <a class="readmore" href="/python_pep8.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_ftplib.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python模块介绍-ftplib：FTP协议客户端">[雪峰磁针石博客]python模块介绍-ftplib：FTP协议客户端</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:20:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">概述</h2>
-<p>该模块定义了FTP类和一些相关项。FTP类实现了FTP协议的客户端。你可以用它来编写使用FTP的URL。有关FTP（文件传输协议）的详细信息，请参阅Internet RFC959 [tools.ietf.org/html/rfc959.html]。</p>
-<h2 id="_2">快速入门</h2>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">ftplib</span> <span class="kn">import</span> <span class="n">FTP</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">ftp</span> <span class="o">=</span> <span class="n">FTP</span><span class="p">(</span><span class="s1">&#39;ftp.fi.muni.cz&#39;</span><span class="p">)</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>          
-<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span>  <span class="s1">&#39;230-Hello...&#39;</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span>  <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s1">&#39;andrew&#39;</span><span class="p">,</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="s1">&#39;230 Login successful.&#39;</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">6 …</span></pre></div>
-                <a class="readmore" href="/python3_lib_ftplib.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_binascii.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python标准模块介绍- binascii 二进制和ASCII转换">[雪峰磁针石博客]python标准模块介绍- binascii 二进制和ASCII转换</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:17:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
-<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
-<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
-</ul>
-<h2 id="_1">简介</h2>
-<p>binascii模块包含很多用来方法来转换二进制和各种ASCII编码的二进制表示法。通常不直接使用这些功能，而是使用封装模块，如uu, base64或binhex。binascii模块包含用C语言编写更快的低级功能，通常为高级模块所使用。</p>
-<ul>
-<li>
-<p>功能：二进制和ASCII转换。</p>
-</li>
-<li>
-<p>类型：标准模块</p>
-</li>
-<li>
-<p>相关模块：</p>
-<ol>
-<li>
-<p>base64 标准模块。</p>
-</li>
-<li>
-<p>binhex 标准模块。</p>
-</li>
-<li>
-<p>uu        标准模块。</p>
-</li>
-<li>
-<p>quopri  标准模块。</p>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="uu">Uu编码</h2>
-<p>uu编码格式现在已经比较少使用（<a href="http://zh.wikipedia.org/wiki/Uuencode">http://zh.wikipedia.org/wiki/Uuencode</a>），相关函数binascii.a2b_uu(string)和binascii.b2a_uu(data)这里不做介绍。 更多资料参见：<a href="http://docs.python.org/2/library/uu.html">http://docs.python.org/2/library/uu …</a></p>
-                <a class="readmore" href="/python3_lib_binascii.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_base64.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python标准模块介绍 -Base64： Base64, Base85等数据编码">[雪峰磁针石博客]python标准模块介绍 -Base64： Base64, Base85等数据编码</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:15:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
-<p>功能:RFC 3548: Base16, Base32, Base64 数据编码。转换二进制数据为适合明文协议传输的 ASCII 序列。转换<br>
-8bits 为每个字节包含 6,5 或 4bits 的有效数据,比如 SMTP, URL 的一部分或者 HTTP POST 的一部分。参考: RFC 3548。编码算法不同于 uuencode。  </p>
-<p>类型:标准库<br>
-相关模块:uu, binhex, uu, quopri</p>
-<p>Base64 是一种基于 64 个可打印字符来表示二进制数据的表示方法。由于 2 的 6 次方等于 64,所以每 6 …</p>
-                <a class="readmore" href="/python3_lib_base64.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_platform.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python模块介绍-platform：底层平台信息">[雪峰磁针石博客]python模块介绍-platform：底层平台信息</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:10:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">解释器信息</h2>
-<ul>
-<li>
-<p>platform.python_version():  返回的Python版本字符串'major.minor.patchlevel'。sys.version有类似功能，但是返回的信息更多。</p>
-</li>
-<li>
-<p>platform.python_version_tuple(): 返回Python版本 (major, minor, patchlevel)。</p>
-</li>
-<li>
-<p>platform.python_build(): 返回元组(buildno, builddate)，即Python版本号和日期。</p>
-</li>
-<li>
-<p>platform.python_compiler()：返回说明编译Python的编译器的字符串。</p>
-</li>
-<li>
-<p>platform.python_branch()：返回说明编译Python分支。</p>
-</li>
-<li>
-<p>platform.python_implementation()：返回Python实现，比如‘CPython’, ‘IronPython’, ‘Jython’, ‘PyPy’。</p>
-</li>
-<li>
-<p>platform.python_revision()：返回Python补丁版本号。  </p>
-</li>
-</ul>
-<p>下面是ubuntu 16.04执行的结果：</p>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">platform</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">platform</span><span class="o">.</span><span class="n">python_version</span><span class="p">()</span>
-<span class="n">Out …</span></pre></div>
-                <a class="readmore" href="/python3_lib_platform.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_string.html" rel="bookmark"
-                           title="Permalink to python标准模块介绍-string:文本常量和模板">python标准模块介绍-string:文本常量和模板</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-16T09:20:00+08:00">
-                Published: 四 16 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p>string—文本常量和模板</p>
-<p>作用：包含处理文本的常量和类。</p>
-<p>Python版本：1.4及以后版本</p>
-<p>最早的Python版本就有string模块。 之前在这个模块中实现的许多函数已经移至str对象的方法。 string模块保留了几个有用的常量和类，用于处理str对象。</p>
-<p><a href="https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/string">代码地址</a></p>
-<h4 id="_1">函数</h4>
-<p>capwords()的将字符串中所有单词的首字母大写。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="s2">&quot;hello world!&quot;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">capwords</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="s1">&#39;Hello World!&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
-<span class="s1">&#39;hello world!&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
-<span class="s1">&#39;Hello world!&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
-<span class="s1">&#39;hello world!&#39;</span>
+</footer><!-- /.post-info -->                <h3 id="_1">日志</h3>
+<p>logging模块提供了完整和灵活的日志系统。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Debugging information&#39;</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Informational message&#39;</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Warning:config file </span><span class="si">%s</span><span class="s1"> not found&#39;</span><span class="p">,</span> <span class="s1">&#39;server.conf&#39;</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Error occurred&#39;</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s1">&#39;Critical error -- shutting down&#39;</span><span class="p">)</span>
 </pre></div>
 
 
-<p>结果等同于先调用split()，把结果列表中各个单词的首字母大写，然后调用join()合并结果。</p>
-<p>因为str对象已经有capitalize()方法，该函数的实际意义并不大。</p>
-<h4 id="_2">模板</h4>
-<p>字符串模板已经作为PEP 292的一部分增加到Python 2.4中，并得到扩展，以替代内置拼接(interpolation …</p>
-                <a class="readmore" href="/python3_lib_string.html">read more</a>
+<p>输出如下:</p>
+<div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="ne">Warning</span><span class="p">:</span><span class="n">config</span> <span class="nb">file</span> <span class="n">server</span><span class="o">.</span><span class="n">conf</span> <span class="ow">not</span> <span class="n">found</span>
+<span class="n">ERROR</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">Error</span> <span class="n">occurred</span>
+<span class="n">CRITICAL</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">Critical</span> <span class="n">error …</span></pre></div>
+                <a class="readmore" href="/python3_crash_ch9_2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash_ch11.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程11命令行自动化工具与pexpect">[雪峰磁针石博客]python3快速入门教程11命令行自动化工具与pexpect</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T13:50:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="pexpect">命令行自动化与pexpect</h2>
+<h3 id="_1">简介</h3>
+<p>Pexpect 是一个用来启动交互式命令行子程序并对其进行自动控制的 Python 工具模块。 Pexpect 可以用来和像 ssh、ftp、passwd、telnet 等命令行程序进行自动交互。可广泛用于自动化运维和测试，实现同时控制多台设备和自动化。Linux中的知名装包软件就使用了Pexpect。 Pexpect在IBM，alibaba，google等公司有广泛使用，在https://pypi.python.org/pypi/pexpect 的日下载量一万左右。</p>
+<p>纯python实现，依赖pty模块(不支持Windows)。</p>
+<p>最新英文版文档参见：<a href="http://pexpect.readthedocs.org/en/latest/">http://pexpect.readthedocs.org/en/latest/</a></p>
+<p>安装：</p>
+<p>版本要求：Python 2.6、3.2 或以上</p>
+<h3 id="_2">快速入门</h3>
+<p>ssh登录是常用的操作，过程如下：</p>
+<div class="highlight"><pre><span></span><span class="c1"># ssh test@172 …</span></pre></div>
+                <a class="readmore" href="/python3_crash_ch11.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash_ch9_1.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程9重要的标准库-基础篇">[雪峰磁针石博客]python3快速入门教程9重要的标准库-基础篇</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T13:50:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">操作系统接口</h3>
+<p>os模块提供了一些与操作系统交互的函数:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">os</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>      <span class="c1"># Return the current working directory</span>
+<span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Python36&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/server/accesslogs&#39;</span><span class="p">)</span>   <span class="c1"># Change current working directory</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;mkdir today&#39;</span><span class="p">)</span>   <span class="c1"># Run the command mkdir in the system shell</span>
+<span class="mi">0</span>
+</pre></div>
+
+
+<p>用import os而不是from os import *。否则os.open()会覆盖内置函数open()。</p>
+<p>对os这样的大型模块, 内置的open()和help()函数非常有用:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">os</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="n">os</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">returns …</span></pre></div>
+                <a class="readmore" href="/python3_crash_ch9_1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash_ch8.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程8错误和异常">[雪峰磁针石博客]python3快速入门教程8错误和异常</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T13:40:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Python 中(至少)有两种错误：语法错误(syntax errors)和异常(exceptions)。</p>
+<h2 id="_1">语法错误</h2>
+<p>语法错误又称作解析错误:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="bp">True</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="bp">True</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
+                           <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+</pre></div>
+
+
+<p>语法分析器指出错误行，并且在检测到错误的位置前面显示^。 </p>
+<h2 id="_2">异常</h2>
+<p>即使语句或表达式在语法上是正确的，执行时也可能会引发错误。运行期检测到的错误称为异常</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">division …</span></pre></div>
+                <a class="readmore" href="/python3_crash_ch8.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash9.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程3文本处理1正则表达式">[雪峰磁针石博客]python3快速入门教程3文本处理1正则表达式</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:45:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>-- 后面有很多习题，可以先做题目再来看文章</p>
+<p>参考资料：https://docs.python.org/3/howto/index.html</p>
+<p>正则表达式(Regular expressions  REs或regexes或regex patterns）本质是小的且高度专业化的编程语言。它嵌入到 Python 中，调用使用re模块。需要指定一些规则来描述那些你希望匹配的字符串集合。这些字符串集合可能包含英语句子、e-mail地址、TeX 命令，或任何你想要的东东。然后可以提出问题，例如“字符串是否匹配该模式？”或“模式是否匹配字符串？”。 您还可以使用RE修改字符串或以各种方式拆分它。</p>
+<p>正则表达式模式被编译成字节码，然后由 C 语言写的匹配引擎执行。对于高级的使用，你可能需要关注匹配引擎是如何执行给定RE，并通过一定的方式来编写RE，以便产生运行得更快的字节码。</p>
+<p>正则表达式语言小而严格，不是所有的字符处理都可以使用正则表达式。还有一些任务，可以使用正则表达式来完成，但是表达式非常复杂。在这种情况下编写 Python 代码来处理会更好些 …</p>
+                <a class="readmore" href="/python3_crash9.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash8.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构4其他数据结构">[雪峰磁针石博客]python3快速入门教程2数据结构4其他数据结构</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:40:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">数据结构</h2>
+<h4 id="_2">函数式编程工具</h4>
+<p>对于列表来讲，有三个内置函数非常有用: filter(), map(), 以及reduce()。  </p>
+<p>filter(function, sequence)返回function(item)为true的子序列。会尽量返回和sequence相同的类型）。sequence是string或者tuple时返回相同类型，其他情况返回list 。实例：返回能被3或者5整除的序列:  </p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">25</span><span class="p">)))</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+</pre></div>
+
+
+<p>map(function, sequence) 为每个元素调用 …</p>
+                <a class="readmore" href="/python3_crash8.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/category/python7.html">&laquo;</a>
-    Page 8 / 12
+    Page 8 / 13
         <a href="/category/python9.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
