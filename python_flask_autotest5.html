@@ -46,194 +46,207 @@
 <li>cookies</li>
 <li>CSS</li>
 </ul>
-<p><a href="https://www.jianshu.com/p/5a4eb6947e41">本文最新版本</a> </p>
+<p><a href="https://china-testing.github.io/python_flask_autotest5.html">本文最新版本</a> </p>
 <p>代码： headlines.py</p>
-<p>```#!python
-import feedparser
-from flask import Flask
-from flask import render_template
-from flask import request
-from flask import make_response</p>
-<p>import datetime
-import json
-import urllib</p>
-<p>app = Flask(<strong>name</strong>)</p>
-<p>RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
-             'cnn': 'http://rss.cnn.com/rss/edition.rss',
-             'fox': 'http://feeds.foxnews.com/foxnews/latest',
-             'iol': 'http://www.iol.co.za/cmlink/1.640'}</p>
-<p>WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q={}&amp;units=metric&amp;APPID=cb932829eacb6a0e9ee4f38bfbf112ed"
-CURRENCY_URL = "https://openexchangerates.org//api/latest.json?app_id=b23c94daab584f4580e4e2bf75cbcf7e"</p>
-<p>DEFAULTS = {'publication': 'bbc',
-            'city': 'London,UK',
-            'currency_from': 'GBP',
-            'currency_to': 'USD'
-            }</p>
-<p>def get_value_with_fallback(key):
-    if request.args.get(key):
-        return request.args.get(key)
-    if request.cookies.get(key):
-        return request.cookies.get(key)
-    return DEFAULTS[key]</p>
-<p>@app.route("/")
-def home():
-    # get customised headlines, based on user input or default
-    publication = get_value_with_fallback("publication")
-    articles = get_news(publication)</p>
-<div class="highlight"><pre><span></span># get customised weather based on user input or default
-city = get_value_with_fallback(&quot;city&quot;)
-weather = get_weather(city)
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">feedparser</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">make_response</span>
 
-# get customised currency based on user input or default
-currency_from = get_value_with_fallback(&quot;currency_from&quot;)
-currency_to = get_value_with_fallback(&quot;currency_to&quot;)
-rate, currencies = get_rate(currency_from, currency_to)
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
 
-# save cookies and return template
-response = make_response(render_template(&quot;home.html&quot;, articles=articles,
-                                         weather=weather, currency_from=currency_from,
-                                         currency_to=currency_to, rate=rate, currencies=sorted(currencies)))
-expires = datetime.datetime.now() + datetime.timedelta(days=365)
-response.set_cookie(&quot;publication&quot;, publication, expires=expires)
-response.set_cookie(&quot;city&quot;, city, expires=expires)
-response.set_cookie(&quot;currency_from&quot;, currency_from, expires=expires)
-response.set_cookie(&quot;currency_to&quot;, currency_to, expires=expires)
-return response
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">RSS_FEEDS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ft&#39;</span><span class="p">:</span> <span class="s1">&#39;http://www.ftchinese.com/rss/feed&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;zhihu&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.zhihu.com/rss&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;people&#39;</span><span class="p">:</span> <span class="s1">&#39;http://www.people.com.cn/rss/politics.xml&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;iol&#39;</span><span class="p">:</span> <span class="s1">&#39;http://www.iol.co.za/cmlink/1.640&#39;</span><span class="p">}</span>
+
+
+<span class="n">WEATHER_URL</span> <span class="o">=</span> <span class="s2">&quot;http://api.openweathermap.org/data/2.5/weather?q={}&amp;units=metric&amp;APPID=cb932829eacb6a0e9ee4f38bfbf112ed&quot;</span>
+<span class="n">CURRENCY_URL</span> <span class="o">=</span> <span class="s2">&quot;https://openexchangerates.org//api/latest.json?app_id=b23c94daab584f4580e4e2bf75cbcf7e&quot;</span>
+
+<span class="n">DEFAULTS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;publication&#39;</span><span class="p">:</span> <span class="s1">&#39;ft&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;wugang&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;currency_from&#39;</span><span class="p">:</span> <span class="s1">&#39;GBP&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;currency_to&#39;</span><span class="p">:</span> <span class="s1">&#39;USD&#39;</span>
+            <span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">get_value_with_fallback</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">request</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">DEFAULTS</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">home</span><span class="p">():</span>
+    <span class="c1"># get customised headlines, based on user input or default</span>
+    <span class="n">publication</span> <span class="o">=</span> <span class="n">get_value_with_fallback</span><span class="p">(</span><span class="s2">&quot;publication&quot;</span><span class="p">)</span>
+    <span class="n">articles</span> <span class="o">=</span> <span class="n">get_news</span><span class="p">(</span><span class="n">publication</span><span class="p">)</span>
+
+    <span class="c1"># get customised weather based on user input or default</span>
+    <span class="n">city</span> <span class="o">=</span> <span class="n">get_value_with_fallback</span><span class="p">(</span><span class="s2">&quot;city&quot;</span><span class="p">)</span>
+    <span class="n">weather</span> <span class="o">=</span> <span class="n">get_weather</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+
+    <span class="c1"># get customised currency based on user input or default</span>
+    <span class="n">currency_from</span> <span class="o">=</span> <span class="n">get_value_with_fallback</span><span class="p">(</span><span class="s2">&quot;currency_from&quot;</span><span class="p">)</span>
+    <span class="n">currency_to</span> <span class="o">=</span> <span class="n">get_value_with_fallback</span><span class="p">(</span><span class="s2">&quot;currency_to&quot;</span><span class="p">)</span>
+    <span class="n">rate</span><span class="p">,</span> <span class="n">currencies</span> <span class="o">=</span> <span class="n">get_rate</span><span class="p">(</span><span class="n">currency_from</span><span class="p">,</span> <span class="n">currency_to</span><span class="p">)</span>
+
+    <span class="c1"># save cookies and return template</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;home.html&quot;</span><span class="p">,</span> <span class="n">articles</span><span class="o">=</span><span class="n">articles</span><span class="p">,</span>
+                                             <span class="n">weather</span><span class="o">=</span><span class="n">weather</span><span class="p">,</span> <span class="n">currency_from</span><span class="o">=</span><span class="n">currency_from</span><span class="p">,</span>
+                                             <span class="n">currency_to</span><span class="o">=</span><span class="n">currency_to</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">,</span> <span class="n">currencies</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">currencies</span><span class="p">)))</span>
+    <span class="n">expires</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="s2">&quot;publication&quot;</span><span class="p">,</span> <span class="n">publication</span><span class="p">,</span> <span class="n">expires</span><span class="o">=</span><span class="n">expires</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="s2">&quot;city&quot;</span><span class="p">,</span> <span class="n">city</span><span class="p">,</span> <span class="n">expires</span><span class="o">=</span><span class="n">expires</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="s2">&quot;currency_from&quot;</span><span class="p">,</span> <span class="n">currency_from</span><span class="p">,</span> <span class="n">expires</span><span class="o">=</span><span class="n">expires</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="s2">&quot;currency_to&quot;</span><span class="p">,</span> <span class="n">currency_to</span><span class="p">,</span> <span class="n">expires</span><span class="o">=</span><span class="n">expires</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">get_rate</span><span class="p">(</span><span class="n">frm</span><span class="p">,</span> <span class="n">to</span><span class="p">):</span>
+    <span class="n">all_currency</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">CURRENCY_URL</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="n">parsed</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">all_currency</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;rates&#39;</span><span class="p">)</span>
+    <span class="n">frm_rate</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">frm</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+    <span class="n">to_rate</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">to</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">to_rate</span> <span class="o">/</span> <span class="n">frm_rate</span><span class="p">,</span> <span class="n">parsed</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+
+<span class="k">def</span> <span class="nf">get_news</span><span class="p">(</span><span class="n">publication</span><span class="p">):</span>
+    <span class="n">feed</span> <span class="o">=</span> <span class="n">feedparser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">RSS_FEEDS</span><span class="p">[</span><span class="n">publication</span><span class="o">.</span><span class="n">lower</span><span class="p">()])</span>
+    <span class="k">return</span> <span class="n">feed</span><span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">get_weather</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">WEATHER_URL</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="n">parsed</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">weather</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">parsed</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;weather&#39;</span><span class="p">):</span>
+        <span class="n">weather</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">parsed</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;description&#39;</span><span class="p">],</span>
+                   <span class="s1">&#39;temperature&#39;</span><span class="p">:</span> <span class="n">parsed</span><span class="p">[</span><span class="s1">&#39;main&#39;</span><span class="p">][</span><span class="s1">&#39;temp&#39;</span><span class="p">],</span>
+                   <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="n">parsed</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+                   <span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="n">parsed</span><span class="p">[</span><span class="s1">&#39;sys&#39;</span><span class="p">][</span><span class="s1">&#39;country&#39;</span><span class="p">]</span>
+                   <span class="p">}</span>
+    <span class="k">return</span> <span class="n">weather</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span><span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 
 
-<p>def get_rate(frm, to):
-    all_currency = urllib.request.urlopen(CURRENCY_URL).read().decode('utf-8')
-    parsed = json.loads(all_currency).get('rates')
-    frm_rate = parsed.get(frm.upper())
-    to_rate = parsed.get(to.upper())
-    return (to_rate / frm_rate, parsed.keys())</p>
-<p>def get_news(publication):
-    feed = feedparser.parse(RSS_FEEDS[publication.lower()])
-    return feed['entries']</p>
-<p>def get_weather(query):
-    query = urllib.parse.quote(query)
-    url = WEATHER_URL.format(query)
-    data = urllib.request.urlopen(url).read().decode('utf-8')
-    parsed = json.loads(data)
-    weather = None
-    if parsed.get('weather'):
-        weather = {'description': parsed['weather'][0]['description'],
-                   'temperature': parsed['main']['temp'],
-                   'city': parsed['name'],
-                   'country': parsed['sys']['country']
-                   }
-    return weather</p>
-<p>if <strong>name</strong> == "<strong>main</strong>":
-    app.run(host='0.0.0.0',port=8000, debug=True)</p>
-<div class="highlight"><pre><span></span>home.html
+<p>home.html</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Headlines<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+      <span class="nt">html</span> <span class="p">{</span>
+        <span class="k">font-family</span><span class="p">:</span> <span class="s2">&quot;Helvetica&quot;</span><span class="p">;</span>
+        <span class="k">background</span><span class="p">:</span> <span class="kc">white</span><span class="p">;</span>
+      <span class="p">}</span>
 
-```#!html
+      <span class="nt">body</span> <span class="p">{</span>
+        <span class="k">background</span><span class="p">:</span> <span class="kc">lightgrey</span><span class="p">;</span>
+        <span class="k">max-width</span><span class="p">:</span> <span class="mi">900</span><span class="kt">px</span><span class="p">;</span>
+        <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="kc">auto</span><span class="p">;</span>
+      <span class="p">}</span>
 
+      <span class="p">#</span><span class="nn">header</span> <span class="p">{</span>
+        <span class="k">padding-top</span><span class="p">:</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="k">background</span><span class="p">:</span> <span class="kc">lightsteelblue</span><span class="p">;</span>
+      <span class="p">}</span>
 
-<span class="nt">&lt;html&gt;</span>
-  <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;title&gt;</span>Headlines<span class="nt">&lt;/title&gt;</span>
-    <span class="nt">&lt;style&gt;</span>
-      html {
-        font-family: &quot;Helvetica&quot;;
-        background: white;
-      }
+      <span class="p">#</span><span class="nn">inner-header</span> <span class="p">{</span>
+        <span class="k">padding-left</span><span class="p">:</span> <span class="mi">10</span><span class="p">;</span>
+      <span class="p">}</span>
 
-      body {
-        background: lightgrey;
-        max-width: 900px;
-        margin: 0 auto;
-      }
+      <span class="p">#</span><span class="nn">main</span><span class="p">{</span>
+        <span class="k">padding-left</span><span class="p">:</span> <span class="mi">10</span>
+      <span class="p">}</span>
 
-      #header {
-        padding-top: 5;
-        background: lightsteelblue;
-      }
+      <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="o">],</span> <span class="nt">select</span> <span class="p">{</span>
+        <span class="k">color</span><span class="p">:</span> <span class="kc">grey</span><span class="p">;</span>
+        <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">lightsteelblue</span><span class="p">;</span>
+        <span class="k">height</span><span class="p">:</span> <span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+        <span class="k">line-height</span><span class="p">:</span><span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+        <span class="k">margin</span><span class="p">:</span> <span class="mi">2</span><span class="kt">px</span> <span class="mi">6</span><span class="kt">px</span> <span class="mi">16</span><span class="kt">px</span> <span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+      <span class="p">}</span>
 
-      #inner-header {
-        padding-left: 10;
-      }
+      <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span><span class="o">]</span> <span class="p">{</span>
+        <span class="k">padding</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">5</span><span class="kt">px</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+        <span class="k">color</span><span class="p">:</span> <span class="kc">black</span><span class="p">;</span>
+        <span class="k">background</span><span class="p">:</span> <span class="kc">lightsteelblue</span><span class="p">;</span>
+        <span class="k">border</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+        <span class="k">box-shadow</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">1</span><span class="kt">px</span> <span class="mh">#4C6E91</span><span class="p">;</span>
+      <span class="p">}</span>
 
-      #main{
-        padding-left: 10
-      }
+      <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span><span class="o">]</span><span class="p">:</span><span class="nd">hover</span><span class="p">{</span>
+        <span class="k">background</span><span class="p">:</span> <span class="kc">steelblue</span><span class="p">;</span>
+      <span class="p">}</span>
 
-      input[type=&quot;text&quot;], select {
-        color: grey;
-        border: 1px solid lightsteelblue;
-        height: 30px;
-        line-height:15px;
-        margin: 2px 6px 16px 0px;
-      }
+      <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>   
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;header&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;inner-header&quot;</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Headlines<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Headlines. Currency. Weather.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">hr</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;main&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Current weather<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
 
-      input[type=&quot;submit&quot;] {
-        padding: 5px 10px 5px 10px;
-        color: black;
-        background: lightsteelblue;
-        border: none;
-        box-shadow: 1px 1px 1px #4C6E91;
-      }
+        <span class="p">&lt;</span><span class="nt">form</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;city&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;weather search&quot;</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Submit&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>City: <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>{{weather.city}}, {{weather.country}}<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{weather.description}} |{{weather.temperature}}<span class="err">&amp;</span>#8451<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 
-      input[type=&quot;submit&quot;]:hover{
-        background: steelblue;
-      }
-
-      <span class="nt">&lt;/style&gt;</span>   
-    <span class="nt">&lt;/head&gt;</span>
-    <span class="nt">&lt;body&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;header&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;inner-header&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;h1&gt;</span>Headlines<span class="nt">&lt;/h1&gt;</span>
-          <span class="nt">&lt;p&gt;</span>Headlines. Currency. Weather.<span class="nt">&lt;/p&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;h2&gt;</span>Current weather<span class="nt">&lt;/h2&gt;</span>
-
-        <span class="nt">&lt;form&gt;</span>
-          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;city&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;weather search&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Submit&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;/form&gt;</span>
-        <span class="nt">&lt;p&gt;</span>City: <span class="nt">&lt;b&gt;</span><span class="cp">{{</span><span class="nv">weather.city</span><span class="cp">}}</span>, <span class="cp">{{</span><span class="nv">weather.country</span><span class="cp">}}</span><span class="nt">&lt;/b&gt;&lt;/p&gt;</span>
-        <span class="nt">&lt;p&gt;</span><span class="cp">{{</span><span class="nv">weather.description</span><span class="cp">}}</span> |<span class="cp">{{</span><span class="nv">weather.temperature</span><span class="cp">}}</span><span class="err">&amp;</span>#8451<span class="nt">&lt;/p&gt;</span>
-
-        <span class="nt">&lt;h2&gt;</span>Currency<span class="nt">&lt;/h2&gt;</span>
-        <span class="nt">&lt;form&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Currency<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">form</span><span class="p">&gt;</span>
           from: 
-          <span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">&quot;currency_from&quot;</span><span class="nt">&gt;</span>
-            <span class="cp">{%</span> <span class="k">for</span> <span class="nv">currency</span> <span class="k">in</span> <span class="nv">currencies</span> <span class="cp">%}</span>
-              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;</span><span class="cp">{{</span><span class="nv">currency</span><span class="cp">}}</span><span class="s">&quot;</span> <span class="cp">{{</span><span class="s1">&#39;selected=&quot;selected&quot;&#39;</span> <span class="k">if</span> <span class="nv">currency_from</span><span class="o">==</span><span class="nv">currency</span><span class="cp">}}</span><span class="nt">&gt;</span><span class="cp">{{</span><span class="nv">currency</span><span class="cp">}}</span><span class="nt">&lt;/option&gt;</span>
-            <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
-          <span class="nt">&lt;/select&gt;</span>
+          <span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;currency_from&quot;</span><span class="p">&gt;</span>
+            {% for currency in currencies %}
+              <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{currency}}&quot;</span> <span class="err">{{&#39;</span><span class="na">selected</span><span class="o">=</span><span class="s">&quot;selected&quot;</span><span class="err">&#39;</span> <span class="na">if</span> <span class="na">currency_from</span><span class="o">=</span><span class="s">=currency}}</span><span class="p">&gt;</span>{{currency}}<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+            {% endfor %}
+          <span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
           to: 
-          <span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">&quot;currency_to&quot;</span><span class="nt">&gt;</span>
-            <span class="cp">{%</span> <span class="k">for</span> <span class="nv">currency</span> <span class="k">in</span> <span class="nv">currencies</span> <span class="cp">%}</span>
-              <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;</span><span class="cp">{{</span><span class="nv">currency</span><span class="cp">}}</span><span class="s">&quot;</span> <span class="cp">{{</span><span class="s1">&#39;selected=&quot;selected&quot;&#39;</span> <span class="k">if</span> <span class="nv">currency_to</span><span class="o">==</span><span class="nv">currency</span><span class="cp">}}</span><span class="nt">&gt;</span><span class="cp">{{</span><span class="nv">currency</span><span class="cp">}}</span><span class="nt">&lt;/option&gt;</span>
-            <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
-          <span class="nt">&lt;/select&gt;</span>
-          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Submit&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;/form&gt;</span>
+          <span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;currency_to&quot;</span><span class="p">&gt;</span>
+            {% for currency in currencies %}
+              <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{currency}}&quot;</span> <span class="err">{{&#39;</span><span class="na">selected</span><span class="o">=</span><span class="s">&quot;selected&quot;</span><span class="err">&#39;</span> <span class="na">if</span> <span class="na">currency_to</span><span class="o">=</span><span class="s">=currency}}</span><span class="p">&gt;</span>{{currency}}<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+            {% endfor %}
+          <span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Submit&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 
-        1 <span class="cp">{{</span><span class="nv">currency_from</span><span class="cp">}}</span> = <span class="cp">{{</span><span class="nv">currency_to</span><span class="cp">}}</span> <span class="cp">{{</span><span class="nv">rate</span><span class="cp">}}</span>
+        1 {{currency_from}} = {{currency_to}} {{rate}}
 
-        <span class="nt">&lt;h2&gt;</span>Headlines<span class="nt">&lt;/h2&gt;</span>
-        <span class="nt">&lt;form&gt;</span>
-          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;publication&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;search&quot;</span> <span class="nt">/&gt;</span>
-          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Submit&quot;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;/form&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Headlines<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">form</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;publication&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;search&quot;</span> <span class="p">/&gt;</span>
+          <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Submit&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 
-        <span class="cp">{%</span> <span class="k">for</span> <span class="nv">article</span> <span class="k">in</span> <span class="nv">articles</span> <span class="cp">%}</span>
-          <span class="nt">&lt;b&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span><span class="nv">article.link</span><span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span><span class="nv">article.title</span><span class="cp">}}</span><span class="nt">&lt;/a&gt;&lt;/b&gt;&lt;br</span> <span class="nt">/&gt;</span>
-          <span class="nt">&lt;i&gt;</span><span class="cp">{{</span><span class="nv">article.published</span><span class="cp">}}</span><span class="nt">&lt;/i&gt;&lt;br</span> <span class="nt">/&gt;</span>
-          <span class="nt">&lt;p&gt;</span><span class="cp">{{</span><span class="nv">article.summary</span><span class="cp">}}</span><span class="nt">&lt;/p&gt;</span> 
-          <span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
-        <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+        {% for article in articles %}
+          <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{article.link}}&quot;</span><span class="p">&gt;</span>{{article.title}}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">b</span><span class="p">&gt;&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+          <span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span>{{article.published}}<span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+          <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{article.summary}}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span> 
+          <span class="p">&lt;</span><span class="nt">hr</span> <span class="p">/&gt;</span>
+        {% endfor %}
 
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 
 
@@ -241,7 +254,7 @@ return response
 <h2 id="_1">参考资料</h2>
 <ul>
 <li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关书籍下载</a></li>
-<li>python测试等IT技术支持qq群144081101(后期会录制视频存在该群群文件) 591302926 567351477 </li>
+<li>工作日技术支持QQ群 630011153 144081101</li>
 <li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
 <li><a href="https://china-testing.github.io/python_flask_autotest5.html">本文最新版本地址</a></li>
 <li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
