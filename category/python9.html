@@ -26,6 +26,39 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_crash8.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构4其他数据结构">[雪峰磁针石博客]python3快速入门教程2数据结构4其他数据结构</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:40:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">数据结构</h2>
+<h4 id="_2">函数式编程工具</h4>
+<p>对于列表来讲，有三个内置函数非常有用: filter(), map(), 以及reduce()。  </p>
+<p>filter(function, sequence)返回function(item)为true的子序列。会尽量返回和sequence相同的类型）。sequence是string或者tuple时返回相同类型，其他情况返回list 。实例：返回能被3或者5整除的序列:  </p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">25</span><span class="p">)))</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+</pre></div>
+
+
+<p>map(function, sequence) 为每个元素调用 …</p>
+                <a class="readmore" href="/python3_crash8.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_crash_ch7.html" rel="bookmark"
                            title="Permalink to [雪峰磁针石博客]python3快速入门教程7输入和输出">[雪峰磁针石博客]python3快速入门教程7输入和输出</a></h1>
                 </header>
@@ -394,33 +427,6 @@
 <h2 id="uu">Uu编码</h2>
 <p>uu编码格式现在已经比较少使用（<a href="http://zh.wikipedia.org/wiki/Uuencode">http://zh.wikipedia.org/wiki/Uuencode</a>），相关函数binascii.a2b_uu(string)和binascii.b2a_uu(data)这里不做介绍。 更多资料参见：<a href="http://docs.python.org/2/library/uu.html">http://docs.python.org/2/library/uu …</a></p>
                 <a class="readmore" href="/python3_lib_binascii.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_base64.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python标准模块介绍 -Base64： Base64, Base85等数据编码">[雪峰磁针石博客]python标准模块介绍 -Base64： Base64, Base85等数据编码</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:15:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
-<p>功能:RFC 3548: Base16, Base32, Base64 数据编码。转换二进制数据为适合明文协议传输的 ASCII 序列。转换<br>
-8bits 为每个字节包含 6,5 或 4bits 的有效数据,比如 SMTP, URL 的一部分或者 HTTP POST 的一部分。参考: RFC 3548。编码算法不同于 uuencode。  </p>
-<p>类型:标准库<br>
-相关模块:uu, binhex, uu, quopri</p>
-<p>Base64 是一种基于 64 个可打印字符来表示二进制数据的表示方法。由于 2 的 6 次方等于 64,所以每 6 …</p>
-                <a class="readmore" href="/python3_lib_base64.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
