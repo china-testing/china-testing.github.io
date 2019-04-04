@@ -19,11 +19,64 @@
                     <li><a href="/category/shu-ji.html">书籍</a></li>
                     <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
                     <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/testing_api_10min.html" rel="bookmark"
+                           title="Permalink to 10分钟学会API测试">10分钟学会API测试</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-04T09:20:00+08:00">
+                Published: 五 04 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="api">什么是API</h2>
+<p>在进行Api测试之前，让我们先了解一下什么是API？</p>
+<p>API是应用程序编程接口(Application Programming Interface)的首字母缩写。</p>
+<p>它支持两个独立软件系统之间的通信和数据交换。实现API的软件系统包含可以由其他软件系统执行的功能/子程序。</p>
+<h2 id="api_1">什么是API测试？</h2>
+<p>API测试与GUI测试完全不同，主要集中在软件架构的业务逻辑层。这种测试不太关注应用程序的外观和感觉。</p>
+<p>在API测试中，您不必使用标准用户输入（键盘）和输出，而是使用软件将调用发送到API，获取输出并记下系统的响应。</p>
+<p>在API测试中测试需要应用程序与API进行交互。为了测试API，你需要</p>
+<ul>
+<li>使用测试工具来驱动API</li>
+<li>编写你自己的代码来测试API</li>
+</ul>
+<p><img alt="Alt Text" src="/images/testing_api_10min_level.png"> </p>
+<h2 id="api_2">设置API测试环境</h2>
+<ul>
+<li>API测试与其他测试类型不同，因为GUI不可用，但您需要设置初始环境，以调用具有所需参数集的API，然后最终检查测试结果。</li>
+<li>因此，为API测试设置测试环境似乎有点复杂。</li>
+<li>数据库和服务器应按照应用程序要求进行配置。</li>
+<li>安装完成后，应调用API函数来检查该API是否正常工作。</li>
+</ul>
+<h2 id="api_3">API的输出类型</h2>
+<p>API的输出可能是</p>
+<ul>
+<li>任何类型的数据</li>
+</ul>
+<p>例如：有一个API函数应该为两个整数求和：</p>
+<div class="highlight"><pre><span></span><span class="n">Long</span> <span class="n">add</span><span class="err">（</span><span class="kt">int</span> <span class="n">a</span><span class="err">，</span><span class="kt">int</span> <span class="n">b</span><span class="err">）</span>
+</pre></div>
+
+
+<p>数字必须作为输入参数给出。输出应该是两个整数的总和 …</p>
+                <a class="readmore" href="/testing_api_10min.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
             <li><article class="hentry">
                 <header>
                     <h1><a href="/python_pandas_crash_tutorial4.html" rel="bookmark"
@@ -410,55 +463,6 @@
 44
 45 …</pre></div></td></tr></table>
                 <a class="readmore" href="/python_numpy_beginner_guide3rd2.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_pandas_example1.html" rel="bookmark"
-                           title="Permalink to pandas大数据分析性能优化实例-read_csv引擎和分组等">pandas大数据分析性能优化实例-read_csv引擎和分组等</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-04-11T17:20:00+08:00">
-                Published: 三 11 四月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/shu-ju-fen-xi.html">数据分析</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="_1">需求</h3>
-<p>人脸识别的人名如下，共452人</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">head</span> <span class="n">i_enroll</span><span class="o">.</span><span class="n">txt</span> 
-<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">D23</span>
-<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">I54</span>
-<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">G23</span>
-<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">G43</span>
-<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">F38</span>
-<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">I20</span>
-<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">J19</span>
-<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">E42</span>
-<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">F31</span>
-<span class="n">output</span><span class="o">/</span><span class="n">enroll_list</span><span class="o">/</span><span class="n">F22</span>
-</pre></div>
-</td></tr></table>
-
-<p>人脸识别的图片列表如下，共269796张</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1 …</pre></div></td></tr></table>
-                <a class="readmore" href="/python_pandas_example1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

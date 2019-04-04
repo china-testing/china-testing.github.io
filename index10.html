@@ -19,11 +19,51 @@
                     <li><a href="/category/shu-ji.html">书籍</a></li>
                     <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
                     <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash_ch8.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程8错误和异常">[雪峰磁针石博客]python3快速入门教程8错误和异常</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T13:40:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Python 中(至少)有两种错误：语法错误(syntax errors)和异常(exceptions)。</p>
+<h2 id="_1">语法错误</h2>
+<p>语法错误又称作解析错误:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="bp">True</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="bp">True</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
+                           <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+</pre></div>
+
+
+<p>语法分析器指出错误行，并且在检测到错误的位置前面显示^。 </p>
+<h2 id="_2">异常</h2>
+<p>即使语句或表达式在语法上是正确的，执行时也可能会引发错误。运行期检测到的错误称为异常</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">division …</span></pre></div>
+                <a class="readmore" href="/python3_crash_ch8.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
             <li><article class="hentry">
                 <header>
                     <h1><a href="/python3_crash9.html" rel="bookmark"
@@ -364,39 +404,6 @@
 <h4 id="_3">缩进</h4>
 <p>每级缩进用4个空格 …</p>
                 <a class="readmore" href="/python_pep8.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/testing_tools_mobile.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]软件测试专家工具包3移动端">[雪峰磁针石博客]软件测试专家工具包3移动端</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-21T11:30:00+08:00">
-                Published: 二 21 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi.html">测试</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="ui-automator">UI Automator</h3>
-<p>UI Automator提供了一组API来构建基于交互UI的测试。API允许你执行操作，如打开设置菜单，非常适合黑盒自动化测试，在测试代码不依赖于应用的内部实现</p>
-<p>uiautomatorviewer提供了一个方便的图形用户界面进行扫描和分析在Android设备上当前显示的UI组件。您可以使用此工具来检查的布局层次和查看UI组件。 </p>
-<p>UiDevice类可以访问设备并进行操作。你可以调用它的方法来访问设备属性，如当前的方向或显示尺寸。该UiDevice类也让您执行操作，例如：旋转设备；按下D-pad按钮；按Back、Home、Menu等；打开通知树栏；当前窗口截图等。</p>
-<p>应用相关的API： UiCollection枚举容器的UI元素以计数，或通过文字(或属性等)针定位子元素; UIObject表示是在设备上可见的UI元素; UiScrollable?：为可滚动UI容器提供查找支持； UiSelector?：查询一个或者多个UI元素; Configurator: 设置参数。</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1edb5256ab4105cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>示例：更改语言</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="kn">from</span> <span class="nn">uiautomator</span> <span class="kn">import</span> <span class="n">device</span> <span class="k">as</span> <span class="n">d</span>
-
-<span class="n">d</span><span class="o">.</span><span class="n">screen …</span></pre></div>
-                <a class="readmore" href="/testing_tools_mobile.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
