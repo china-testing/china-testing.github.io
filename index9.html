@@ -27,6 +27,57 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python_monitor.html" rel="bookmark"
+                           title="Permalink to python应用性能监控工具简介">python应用性能监控工具简介</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-10-22T09:20:00+08:00">
+                Published: 一 22 十月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">监控简介</h2>
+<p>监视工具捕获，分析和显示Web应用程序执行信息。每个应用程序在Web堆栈的所有层都可能出现问题。监控工具通过展示帮助开发人员和运营团队响应并修复问题。</p>
+<p>捕获和分析有关生产环境的数据对于主动处理Web应用程序的稳定性，性能和错误至关重要。</p>
+<p>监视和日志记录的目的非常相似，它们有助于诊断应用程序的问题并帮助调试。主要差异为日志基于事件触发，而监视是被动的背景数据集合。</p>
+<p>例如发生错误时，通过异常处理程序中的代码显式记录该事件。同时，监视代理程序对代码进行检测，并且不仅收集有关已记录异常的数据，还收集有关函数和方法性能的数据。</p>
+<p>操作系统和网络的监控关注: CPU、内存和磁盘利用率，网络带宽和延迟</p>
+<p>应用程序级别监视包含几个方面。 基于应用程序是重读，重写还是受到快速波动的影响而有所不同。涉及应用程序警告和错误(500级HTTP错误)、应用代码性能、模板渲染时间、浏览器渲染应用程序的时间、数据库查询性能等。</p>
+<h2 id="_2">开源监控项目</h2>
+<h3 id="_3">错误跟踪</h3>
+<ul>
+<li><a href="https://github.com/getsentry/sentry">Sentry</a></li>
+</ul>
+<p>最初只是一个Python监控项目，但现在可以用于任何编程语言。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-77698199050e060c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_4">度量</h3>
+<ul>
+<li><a href="https://github.com/etsy/statsd/">statsd</a></li>
+</ul>
+<p>是一个node.js网络守护程序，它监听指标并聚合它们以便转移到另一服务(如Graphite)。</p>
+<ul>
+<li><a href="https://graphite.readthedocs.org/en/latest/overview.html">Graphite</a></li>
+</ul>
+<p>存储时间序列数据，并通过Django Web应用程序在图形中显示它们。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a17b4bbfc3b73d29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li><a href="http://sensuapp.org/">Sensu</a></li>
+</ul>
+<p>是一个用Ruby编写的开源监控框架，但适用于任何编程语言Web应用程序。</p>
+<ul>
+<li><a href="http://vimeo.github.io/graph-explorer/">Graph Explorer …</a></li></ul>
+                <a class="readmore" href="/python_monitor.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/selenium_example5.html" rel="bookmark"
                            title="Permalink to selenium自动化测试工具python笔试面试项目实战5键盘操作">selenium自动化测试工具python笔试面试项目实战5键盘操作</a></h1>
                 </header>
@@ -330,37 +381,6 @@ OpenCV and Python 使用OpenCV和Python对机器学习和图像处理世界的�
 <span class="n">ERROR</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">Error</span> <span class="n">occurred</span>
 <span class="n">CRITICAL</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">Critical</span> <span class="n">error …</span></pre></div>
                 <a class="readmore" href="/python3_crash_ch9_2.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_crash_ch11.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python3快速入门教程11命令行自动化工具与pexpect">[雪峰磁针石博客]python3快速入门教程11命令行自动化工具与pexpect</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-09-02T13:50:00+08:00">
-                Published: 日 02 九月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="pexpect">命令行自动化与pexpect</h2>
-<h3 id="_1">简介</h3>
-<p>Pexpect 是一个用来启动交互式命令行子程序并对其进行自动控制的 Python 工具模块。 Pexpect 可以用来和像 ssh、ftp、passwd、telnet 等命令行程序进行自动交互。可广泛用于自动化运维和测试，实现同时控制多台设备和自动化。Linux中的知名装包软件就使用了Pexpect。 Pexpect在IBM，alibaba，google等公司有广泛使用，在https://pypi.python.org/pypi/pexpect 的日下载量一万左右。</p>
-<p>纯python实现，依赖pty模块(不支持Windows)。</p>
-<p>最新英文版文档参见：<a href="http://pexpect.readthedocs.org/en/latest/">http://pexpect.readthedocs.org/en/latest/</a></p>
-<p>安装：</p>
-<p>版本要求：Python 2.6、3.2 或以上</p>
-<h3 id="_2">快速入门</h3>
-<p>ssh登录是常用的操作，过程如下：</p>
-<div class="highlight"><pre><span></span><span class="c1"># ssh test@172 …</span></pre></div>
-                <a class="readmore" href="/python3_crash_ch11.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
