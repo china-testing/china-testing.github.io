@@ -27,6 +27,43 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/ai_tts.html" rel="bookmark"
+                           title="Permalink to python人工智能作业：Windows使用SAPI和tkinter用不到40行实现文本转语音">python人工智能作业：Windows使用SAPI和tkinter用不到40行实现文本转语音</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-23T07:25:00+08:00">
+                Published: 五 23 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>直接上代码：</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># 技术支持：https://www.jianshu.com/u/69f40328d4f0 </span>
+<span class="c1"># 技术支持 https://china-testing.github.io/</span>
+<span class="c1"># https://github.com/china-testing/python-api-tesing/blob/master/practices/TTS.py</span>
+<span class="c1">#  qq群144081101 567351477</span>
+<span class="c1"># CreateDate: 2018-11-22</span>
+
+<span class="kn">import</span> <span class="nn">win32com.client</span> <span class="kn">as</span> <span class="nn">wincl</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="k">def</span> <span class="nf">text2Speech</span><span class="p">():</span>
+ <span class="n">text</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+ <span class="n">speak</span> <span class="o">=</span> <span class="n">wincl</span><span class="o">.</span><span class="n">Dispatch</span><span class="p">(</span><span class="s2">&quot;SAPI …</span></pre></div>
+                <a class="readmore" href="/ai_tts.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/network_ping.html" rel="bookmark"
                            title="Permalink to python网络作业：使用python的socket库实现ICMP协议的ping">python网络作业：使用python的socket库实现ICMP协议的ping</a></h1>
                 </header>
@@ -398,43 +435,6 @@
 <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
 <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0 …</span></pre></div>
                 <a class="readmore" href="/opencv_crash_deep_learning2.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/opencv_crash_deep_learning1.html" rel="bookmark"
-                           title="Permalink to 计算机视觉opcencv工具深度学习快速实战1人脸识别">计算机视觉opcencv工具深度学习快速实战1人脸识别</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-16T19:20:00+08:00">
-                Published: 五 16 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p>使用OpenCV提供的预先训练的深度学习面部检测器模型，可快速，准确的进行人脸识别。</p>
-<p>2017年8月OpenCV 3.3正式发布，带来了高改进的“深度神经网络”(dnn deep neural networks)模块。该模块支持许多深度学习框架，包括Caffe，TensorFlow和Torch / PyTorch。</p>
-<p>基于Caffe的面部检测器在<a href="https://github.com/opencv/opencv/tree/master/samples/dnn/face_detector">这里</a>。</p>
-<p>需要两组文件：</p>
-<ul>
-<li>定义模型体系结构的.prototxt文件</li>
-<li>.caffemodel文件，包含实际图层的权重</li>
-</ul>
-<p>权重文件不包含在OpenCV示例目录。</p>
-<h3 id="opencv">OpenCV深度学习面部检测器如何工作？</h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-45fc78489ba83643.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<div class="highlight"><pre><span></span><span class="c1"># 模型下载：https://itbooks.pipipan.com/fs/18113597-320346529</span>
-<span class="c1"># 代码存放：https://github.com/china-testing/python-api-tesing/tree/master/opencv_crash_deep_learning</span>
-<span class="c1"># 技术支持qq群144081101(代码和模型存放）</span>
-<span class="c1"># USAGE</span>
-<span class="c1"># python detect_faces.py --image rooster …</span></pre></div>
-                <a class="readmore" href="/opencv_crash_deep_learning1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

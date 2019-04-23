@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>机器学习快速入门1分类</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/ml_quick1.html" rel="bookmark"
+           title="Permalink to 机器学习快速入门1分类">机器学习快速入门1分类</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-04-23T08:20:00+08:00">
+                Published: 二 23 四月 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <h2 id="_1">什么是分类？</h2>
+<h3 id="mnist">MNIST</h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a3dd7e25bfa0a166.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>MNIST(Modified National Institute of Standards and Technology database)</p>
+<p>这是机器学习的经典案例。数据由一组手写0到9数字图像组成，多用于OCR(光学字符识别 optical  character   recognition)。</p>
+<h3 id="_2">数据类型</h3>
+<p>在机器学习中，您会发现有两种非常常见的数据类型。</p>
+<p>MNIST由图像组成。图像通常属于“计算机视觉”领域。</p>
+<p>机器学习中使用的另一种常见数据格式是文本。比如“自然语言处理”。</p>
+<h3 id="_3">垃圾邮件分类</h3>
+<p>Gmail，Yahoo，Hotmail等会自动为您分类垃圾邮件和非垃圾邮件。他们并不总能做对，但非常好。</p>
+<p>这是怎么做到的？机器学习算法接收电子邮件作为输入，并输出预测：它将该电子邮件分类为垃圾邮件或非垃圾邮件。机器学习分类算法接受输入，并输出分类预测！</p>
+<h3 id="_4">业务场景</h3>
+<p>当然，必须有些不属于图像和文本的分类示例。企业正在利用机器学习来改善服务并赚更多钱。比如在线广告，这通常采用横幅广告或视频广告的形式。广告客户收集了一些您的数据。例如，他们知道您的年龄，性别和位置。</p>
+<p>他们知道昨天，你做了谷歌搜索“太阳镜”。
+重要的一个细节是广告客户有一组可能的广告向您展示（这些广告由其客户提供）。
+假设他们的客户包括：</p>
+<ul>
+<li>太阳镜公司</li>
+<li>泳装公司</li>
+<li>办公家具公司</li>
+<li>化妆美容公司</li>
+<li>跑鞋公司</li>
+</ul>
+<p>对于每个广告，我们希望能够预测用户是否会点击广告。在上面列出的公司中，属于太阳镜公司的广告可能最适合您（但基于其他属性，可能不是！）这个例子和垃圾邮件分类示例都是二进制分类的例子，意味着您的预测始终是2个类别中的一个。</p>
+<p>-（1）垃圾邮件（2）不是垃圾邮件
+- （1）点击（2）无点击</p>
+<h3 id="_5">模式是什么？</h3>
+<p>对于每个例子，我们有3件事：
+- 输入数据（图像，文本或识别你的属性列表）
+- 机器学习分类器
+- 分类器做出的预测。比如图像代表什么数字？电子邮件是垃圾邮件还是垃圾邮件？
+此用户是否会点击广告？</p>
+<p>即：输入&gt;模型&gt;预测</p>
+<h3 id="_6">做出正确的预测</h3>
+<p>机器学习分类器如何学会做出正确的预测？这就是“机器学习”中的“学习”所在。</p>
+<p>通常，在机器学习中，我们有一个数据表可供学习（我们将很快看到它的编程方式）。
+但是我们不仅拥有输入数据，如图像或文本或用户属性，而且我们也有正确的答案。
+通常，人们将这些称为标签或目标。</p>
+<p>分类器学习如何做出正确预测的简短答案是模型给出了大量输入和真实标签的例子，并且一些算法学会识别这种模式。</p>
+<p>详细答案是，一旦给出一组数据（包括输入和相应的目标），实际上可以应用许多不同类型的学习算法。比如线性回归，逻辑回归，决策树，随机森林，神经网络等，本书只要结果，不会涉及中间过程和这些具体的算法。</p>
+<h3 id="_7">数据“看起来像什么”？</h3>
+<p>我们已经看了一些例子（图像分类，文本分类，点击分类）。</p>
+<p>假设我想预测班上的学生是否会通过考试（另一个二元分类问题）。我从过去的学生那里做了一些测量，以帮助我做出这个预测：他们研究的小时数以及他们在学习期间玩电子游戏的小时数。我可以制作一张包含所有这些测量值的表格。每行代表不同学生的测量值，并将数据存储为CSV（逗号分隔值）电子表格。
+<img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-8a3d0c1fd65431fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>在内存中，输入数据（表的前2列）将由2-D数组表示。您的目标（表格的最后一列，以灰色突出显示）将由相同长度的一维数组表示。
+机器学习背后的想法是我可以学习从这些数据中识别模式。
+因此，对于明年的课程，我可以问一个学生，“你学了几个小时，你花了多长时间玩视频游戏？”并使用这些数据我可以预测那个学生是否会通过我的考试。</p>
+<h3 id="_8">黑盒</h3>
+<p>我们将机器学习算法视为黑盒子，它能够做两件事。
+- 它可以根据训练数据学习模式。请记住，此训练数据由两部分组成：输入和相应的目标。人们通常分别称这些X和Y.
+- 在从训练数据中学习模式后，它可以对新数据进行预测。</p>
+<p>例如，Gmail的垃圾邮件分类器可能从未见过我今天收到的电子邮件。
+那么Gmail的垃圾邮件分类器如何收集它从未见过的电子邮件并预测它是垃圾邮件还是垃圾邮件？
+原因在于它已经学会正确识别垃圾邮件和非垃圾邮件之间的模式。</p>
+<h3 id="_9">参考资料</h3>
+<ul>
+<li>讨论qq群630011153 144081101</li>
+<li>本文最新版本地址 https://china-testing.github.io/ml_quick1.html</li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>   </li>
+<li><a href="https://china-testing.github.io/ai_books.html">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
+<li>本教程视频介绍 https://itbooks.pipipan.com/fs/18113597-367675945 </li>
+<li>入门教材 https://itbooks.pipipan.com/fs/18113597-314076882</li>
+<li>本教程目录  https://china-testing.github.io/ml_quick.html</li>
+</ul>
+<h3 id="_10">如何用代码实现？</h3>
+<p>scikit-learn API具有执行我们刚才谈到的2个任务所需的功能。</p>
+<p>我们首先考虑一下我们的数据。记住，我们通常将这些称为X和Y.我们之前讨论过，X将是一个二维数组，Y将是一个相同长度的一维数组。</p>
+<p>一般来说，我们的数据X可以被认为是NxD矩阵。N代表样本数，D代表维数。请注意，如果X有N行，那么Y也必须有N行。这是因为对于我们拥有的每个输入样本，我们必须有一个相应的目标。</p>
+<p>假设现在我们有一些数据加载函数，它返回我们需要的2个数组：</p>
+<div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span>  <span class="n">Y</span>   <span class="o">=</span>   <span class="n">load_data</span><span class="p">()</span><span class="err">。</span>
+</pre></div>
+
+
+<p>现在我们有了数据，我们需要一个分类器。让我们选择scikit-learn的RandomForestClassifier。由于RandomForestClassifier是一个对象，我们需要实例化它：</p>
+<div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+</pre></div>
+
+
+<p>记住，分类器必须做的两件事：＃1：学习，＃2：做出预测。
+学习很简单。我们只是调用实例方法“fit”，然后传入X和Y.model.fit(X, Y)
+预测同样非常简单。我们将实例方法称为predict，并传入一些数据X.</p>
+<div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+
+
+<p>注意预测不必接受任何Y参数。为什么会这样？当我们做出预测时，我们根本不需要被告知正确的答案。如果我们已经知道正确的答案，就没有必要做出任何预测！</p>
+<h3 id="_11">模型评估</h3>
+<p>我们还想做的一件事是评估我们的模型。换句话说，在我们训练了模型之后，我们想要问：“这个模型有多好？”通过分类，我们对分类率感兴趣，也称为准确度。
+这两个术语也可互换使用。
+这只是你得到的预测数量除以你做出的预测总数。
+准确度=＃correct / #total在scikit-learn中，这只是另一个称为“得分”的函数。当然，您也可以尝试自己实施分数功能，作为练习。您应该只使用模型的预测功能来完成此操作。</p>
+<div class="highlight"><pre><span></span><span class="n">accuracy</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="_12">参考资料</h3>
+<ul>
+<li>讨论qq群630011153 144081101</li>
+<li>本文最新版本地址 https://china-testing.github.io/ml_quick1.html</li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>   </li>
+<li><a href="https://china-testing.github.io/ai_books.html">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
+<li>本教程视频介绍 https://itbooks.pipipan.com/fs/18113597-367675945 </li>
+<li>入门教材 https://itbooks.pipipan.com/fs/18113597-314076882</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
