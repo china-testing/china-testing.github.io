@@ -13,6 +13,7 @@
                     <li><a href="/category/ce-shi.html">测试</a></li>
                     <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
                     <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
                     <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
                     <li><a href="/category/linux.html">linux</a></li>
                     <li><a href="/category/python.html">python</a></li>
@@ -25,6 +26,43 @@
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/testing_tools_web.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]软件测试专家工具包1web测试">[雪峰磁针石博客]软件测试专家工具包1web测试</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-20T11:20:00+08:00">
+                Published: 一 20 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="web">web测试</h2>
+<p>本章主要涉及功能测试、自动化测试(参考： <a href="https://china-testing.github.io/testing_automation_tips.html">软件自动化测试初学者忠告</a>)
+、接口测试(参考：<a href="https://china-testing.github.io/testing_api_10min.html">10分钟学会API测试</a>)、跨浏览器测试、可访问性测试和可用性测试的测试工具列表。 安全测试工具和性能测试工具在其他章节。</p>
+<h3 id="selenium">selenium</h3>
+<p>web ui自动化测试的霸主，在爬虫领域也颇有市场。</p>
+<p>官网 <a href="http://www.seleniumhq.org">http://www.seleniumhq.org</a></p>
+<p>实例：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
+
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
+
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.yahoo.com&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="s1">&#39;Yahoo&#39;</span> <span class="ow">in</span> <span class="n">browser</span><span class="o">.</span><span class="n">title</span>
+
+<span class="n">elem</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">find_element_by_name</span><span class="p">(</span><span class="s1">&#39;p …</span></pre></div>
+                <a class="readmore" href="/testing_tools_web.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
             <li><article class="hentry">
                 <header>
                     <h1><a href="/python3_lib_string.html" rel="bookmark"
@@ -399,59 +437,6 @@ $ sudo apt-get install python-dev
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">email …</span></pre></div></td></tr></table>
                 <a class="readmore" href="/python_flask_autotest9.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_flask_autotest6.html" rel="bookmark"
-                           title="Permalink to flask构建自动化测试平台6-交互式犯罪地图">flask构建自动化测试平台6-交互式犯罪地图</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-05-22T11:26:00+08:00">
-                Published: 二 22 五月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="6-">6-交互式犯罪地图</h2>
-<p>本章将介绍以下主题：</p>
-<ul>
-<li>mysql</li>
-<li>创建犯罪地图</li>
-</ul>
-<p><a href="https://china-testing.github.io/python_flask_autotest6.html">本文最新版本</a> 
-<a href="https://github.com/china-testing/python-api-tesing/tree/master/flask/flask_web_service/Chapter06">代码地址</a></p>
-<p>安装mysql</p>
-<p>```#!sh</p>
-<h1 id="apt-get-install-mysql-server">apt-get install mysql-server</h1>
-<h1 id="pip3-install-pymysql">pip3 install pymysql</h1>
-<h1 id="python-db_setuppy">python db_setup.py # 创建数据库</h1>
-<div class="highlight"><pre><span></span>dbconfig.py
-
-```#!python
-
-test = False
-db_user = &#39;root&#39;
-db_password = &#39;654321_&#39;
-</pre></div>
-
-
-<p>db_setup.py</p>
-<p>```#!python</p>
-<p>import pymysql
-import dbconfig
-connection = pymysql.connect(host='localhost',
-                             user=dbconfig.db_user,
-                             passwd=dbconfig.db_password)</p>
-<p>try:
-    with connection.cursor() as …</p>
-                <a class="readmore" href="/python_flask_autotest6.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

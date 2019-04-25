@@ -13,6 +13,7 @@
                     <li><a href="/category/ce-shi.html">测试</a></li>
                     <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
                     <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
                     <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
                     <li><a href="/category/linux.html">linux</a></li>
                     <li><a href="/category/python.html">python</a></li>
@@ -25,6 +26,46 @@
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/img_rotate.html" rel="bookmark"
+                           title="Permalink to python图像处理工具pillow opencv等练习1 旋转">python图像处理工具pillow opencv等练习1 旋转</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-12-26T08:20:00+08:00">
+                Published: 三 26 十二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+</ul>
+<h3 id="_1">对如下图片旋转</h3>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-3b0e1960983e5502.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>将上面图片逆时针旋转45度，90度，要求图片内容完整。</p>
+<h3 id="pillow">pillow</h3>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># https://china-testing.github.io/pil1.html</span>
+<span class="c1"># https://github.com/china-testing/python-api-tesing/blob/master/practices/pillow/rotate.py</span>
+<span class="c1"># 项目实战讨论QQ群630011153 144081101</span>
+<span class="c1"># CreateDate: 2018-12-26</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;qun.jpg&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">size …</span></pre></div>
+                <a class="readmore" href="/img_rotate.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
             <li><article class="hentry">
                 <header>
                     <h1><a href="/python_vision_deep3.html" rel="bookmark"
@@ -373,48 +414,6 @@
 <div class="highlight"><pre><span></span><span class="c1"># boom -n1000 -c10 http://localhost</span>
 /usr/local/anaconda3/lib/python3.6/site-packages/boom/boom.py:28: MonkeyPatchWarning: Monkey-patching ssl after ssl has already been imported may lead to errors, including RecursionError on …</pre></div>
                 <a class="readmore" href="/python3_lib_boom.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/merge_excel_rows2.html" rel="bookmark"
-                           title="Permalink to python数据分析工具pandas作业：把多行合并成一行">python数据分析工具pandas作业：把多行合并成一行</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-12-06T08:55:00+08:00">
-                Published: 四 06 十二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
-<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
-<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
-</ul>
-<h3 id="pythonpandasexcel">python数据分析工具pandas作业：合并excel重复行</h3>
-<p>数据示例：</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e61ea4bc9abc5a1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>转换成：</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-012737f08825f15d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h3 id="_1">代码</h3>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># 技术支持：https://www.jianshu.com/u/69f40328d4f0 </span>
-<span class="c1"># 技术支持 https://china-testing.github.io/merge_excel_rows.html</span>
-<span class="c1"># https://github.com/china-testing/python-api-tesing/blob/master/practices/pandas/merge_excel_rows2.py</span>
-<span class="c1"># 项目实战讨论QQ群630011153 144081101</span>
-<span class="c1"># CreateDate: 2018-12-06</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-
-<span class="n">df …</span></pre></div>
-                <a class="readmore" href="/merge_excel_rows2.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

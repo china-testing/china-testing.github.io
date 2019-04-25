@@ -13,6 +13,7 @@
                     <li><a href="/category/ce-shi.html">测试</a></li>
                     <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
                     <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
                     <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
                     <li><a href="/category/linux.html">linux</a></li>
                     <li><a href="/category/python.html">python</a></li>
@@ -25,6 +26,42 @@
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash_ch9_2.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程9重要的标准库-高级篇">[雪峰磁针石博客]python3快速入门教程9重要的标准库-高级篇</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-04T08:50:00+08:00">
+                Published: 二 04 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">日志</h3>
+<p>logging模块提供了完整和灵活的日志系统。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Debugging information&#39;</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Informational message&#39;</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Warning:config file </span><span class="si">%s</span><span class="s1"> not found&#39;</span><span class="p">,</span> <span class="s1">&#39;server.conf&#39;</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Error occurred&#39;</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s1">&#39;Critical error -- shutting down&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>输出如下:</p>
+<div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="ne">Warning</span><span class="p">:</span><span class="n">config</span> <span class="nb">file</span> <span class="n">server</span><span class="o">.</span><span class="n">conf</span> <span class="ow">not</span> <span class="n">found</span>
+<span class="n">ERROR</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">Error</span> <span class="n">occurred</span>
+<span class="n">CRITICAL</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">Critical</span> <span class="n">error …</span></pre></div>
+                <a class="readmore" href="/python3_crash_ch9_2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
             <li><article class="hentry">
                 <header>
                     <h1><a href="/python3_crash_ch11.html" rel="bookmark"
@@ -335,46 +372,6 @@
 <p>除法(/)永远返回浮点数。地板除使用 // 运算符；要计算余数你可以使用 %。</p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">17</span> <span class="o">/</span> <span class="mi">3 …</span></pre></div>
                 <a class="readmore" href="/python3_crash5.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_crash4.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python3快速入门教程1 turtle绘图-4选择与随机数">[雪峰磁针石博客]python3快速入门教程1 turtle绘图-4选择与随机数</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-09-02T10:25:00+08:00">
-                Published: 日 02 九月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">语法</h2>
-<h3 id="if">if语句</h3>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter an integer: &quot;</span><span class="p">))</span>
-<span class="n">Please</span> <span class="n">enter</span> <span class="n">an</span> <span class="n">integer</span><span class="p">:</span> <span class="mi">42</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="o">...</span>     <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Negative changed to zero&#39;</span><span class="p">)</span>
-<span class="o">...</span> <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Zero&#39;</span><span class="p">)</span>
-<span class="o">...</span> <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Single&#39;</span><span class="p">)</span>
-<span class="o">...</span> <span class="k">else</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;More&#39;</span><span class="p">)</span>
-<span class="o">...</span>
-<span class="n">More</span>
-</pre></div>
-
-
-<p>可能会有零到多个elif部分，else是可选的。关键字‘elif‘是‘else if’的缩写，可避免过深的缩进。 if ... elif ... elif序列用于替代其它语言中的switch或case语句 …</p>
-                <a class="readmore" href="/python3_crash4.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

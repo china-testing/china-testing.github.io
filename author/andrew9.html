@@ -13,6 +13,7 @@
                     <li><a href="/category/ce-shi.html">测试</a></li>
                     <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
                     <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
                     <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
                     <li><a href="/category/linux.html">linux</a></li>
                     <li><a href="/category/python.html">python</a></li>
@@ -25,6 +26,43 @@
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_quick1.html" rel="bookmark"
+                           title="Permalink to python 3.7极速入门教程1安装：Linux(Ubuntu 18.04)及Windows上安装Anaconda">python 3.7极速入门教程1安装：Linux(Ubuntu 18.04)及Windows上安装Anaconda</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-05T09:20:00+08:00">
+                Published: 一 05 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h1 id="_1">安装</h1>
+<h2 id="linux">Linux安装</h2>
+<p>Anaconda是最受欢迎的python数据科学和机器学习平台，用于大规模数据处理，预测分析和科学计算。Anaconda发行版附带了1,000多个数据包，conda命令行工具和Anaconda Navigator的桌面图形用户界面。一般而言，使用Anaconda比直接使用官方的python更好用。</p>
+<p>本教程将指导您完成在Ubuntu 18.04上下载和安装Anaconda Python Distribution。通常也适合多数其他Linux。</p>
+<h3 id="anaconda">下载Anaconda</h3>
+<p>https://www.anaconda.com/download/#linux</p>
+<p>在撰写本文时，Anaconda的最新稳定版本是5.3版本。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-128824bdee784130.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>请选择<a href="https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh">64-Bit (x86) Installer </a>进行下载，尽量不要用python2.7，很多库已经不提供python2.7支持。</p>
+<p>点击链接就会进行下载，同时会弹出信息收集框，直接关闭就好。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-dfb07445ebf47c3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="anaconda_1">安装Anaconda</h3>
+<div class="highlight"><pre><span></span>$ sudo sh Anaconda3-5.3.0-Linux-x86_64.sh 
+<span class="o">[</span>sudo<span class="o">]</span> andrew 的密码： 
+
+Welcome …</pre></div>
+                <a class="readmore" href="/python3_quick1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
             <li><article class="hentry">
                 <header>
                     <h1><a href="/python_monitor.html" rel="bookmark"
@@ -345,42 +383,6 @@ OpenCV and Python 使用OpenCV和Python对机器学习和图像处理世界的�
 <p>吴使回国后，吴王一听楚王这么无礼，就同楚国断了交。</p>
 <p>几年过后 …</p>
                 <a class="readmore" href="/yao_wuzhuyu.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_crash_ch9_2.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python3快速入门教程9重要的标准库-高级篇">[雪峰磁针石博客]python3快速入门教程9重要的标准库-高级篇</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-09-04T08:50:00+08:00">
-                Published: 二 04 九月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="_1">日志</h3>
-<p>logging模块提供了完整和灵活的日志系统。</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Debugging information&#39;</span><span class="p">)</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Informational message&#39;</span><span class="p">)</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Warning:config file </span><span class="si">%s</span><span class="s1"> not found&#39;</span><span class="p">,</span> <span class="s1">&#39;server.conf&#39;</span><span class="p">)</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Error occurred&#39;</span><span class="p">)</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s1">&#39;Critical error -- shutting down&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>输出如下:</p>
-<div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="ne">Warning</span><span class="p">:</span><span class="n">config</span> <span class="nb">file</span> <span class="n">server</span><span class="o">.</span><span class="n">conf</span> <span class="ow">not</span> <span class="n">found</span>
-<span class="n">ERROR</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">Error</span> <span class="n">occurred</span>
-<span class="n">CRITICAL</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">Critical</span> <span class="n">error …</span></pre></div>
-                <a class="readmore" href="/python3_crash_ch9_2.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

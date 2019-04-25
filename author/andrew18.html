@@ -13,6 +13,7 @@
                     <li><a href="/category/ce-shi.html">测试</a></li>
                     <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
                     <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
                     <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
                     <li><a href="/category/linux.html">linux</a></li>
                     <li><a href="/category/python.html">python</a></li>
@@ -25,6 +26,54 @@
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_python-daemon.html" rel="bookmark"
+                           title="Permalink to python库介绍-python-daemon: 实现python后台程序">python库介绍-python-daemon: 实现python后台程序</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-22T19:20:00+08:00">
+                Published: 四 22 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
+<p>python-daemon实现Unix守护进程。 参考：<a href="https://www.python.org/dev/peps/pep-3143/">PEP 3143</a></p>
+<p>该库实现了PEP 3143“标准守护进程库”的良好行为守护进程规范。</p>
+<p>DaemonContext实例保存程序的行为和配置的进程环境。</p>
+<h3 id="_2">快速入门</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">with</span> <span class="n">daemon</span><span class="o">.</span><span class="n">DaemonContext</span><span class="p">():</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/test.log&quot;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        Library to implement a well-behaved Unix daemon process.</span>
+
+<span class="s1">This library …</span></pre></div></td></tr></table>
+                <a class="readmore" href="/python3_python-daemon.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
             <li><article class="hentry">
                 <header>
                     <h1><a href="/python3_lib_multiprocessing.html" rel="bookmark"
@@ -467,44 +516,6 @@
 <p>telnetlib模块提供的Telnet类实现了Telnet协议(参见rfc854)。它为协议字符和telnet选项提供符号常量，符号常量来源于arpa/telnet.h，去掉了前缀TELOPT_。</p>
 <p>telnet命令有： IAC, DONT, DO, WONT, WILL, SE (Subnegotiation End), NOP (No Operation), DM (Data Mark), BRK (Break), IP (Interrupt process), AO (Abort output), AYT (Are You There), EC (Erase Character), EL (Erase Line), GA (Go Ahead …</p>
                 <a class="readmore" href="/python3_lib_telnetlib.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_pandas_excel.html" rel="bookmark"
-                           title="Permalink to 使用pandas处理excel">使用pandas处理excel</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-11T19:20:00+08:00">
-                Published: 日 11 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p>pandas有强大的excel数据处理和导入处理功能，本文简单介绍pandas在csv和excel等格式方面处理的应用及绘制图表等功能。</p>
-<p>pandas处理excel依赖xlutils, OpenPyXL, XlsxWriter等库。</p>
-<ul>
-<li>
-<p>python处理excel库的参考：https://github.com/china-testing/python-api-tesing</p>
-</li>
-<li>
-<p>本文代码地址：https://github.com/china-testing/python-api-tesing/tree/master/pandas/excel_demo</p>
-</li>
-<li>
-<p><a href="https://china-testing.github.io/">本文最新版本地址</a></p>
-</li>
-</ul>
-<p>更多参考资料：</p>
-<p>https://www.dataquest.io/blog/excel-and-pandas/</p>
-<p><a href="https://realpython.com/blog/python/working-with-large-excel-files-in-pandas/">Using Pandas to Read Large Excel Files in Python</a> <a href="https://python.freelycode.com/contribution/detail/38">中文</a></p>
-<p>Foundations for Analytics with Python From Non-Programmer to Hacker - 2016.pdf …</p>
-                <a class="readmore" href="/python_pandas_excel.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
