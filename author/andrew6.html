@@ -29,6 +29,49 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/tensorflow5.html" rel="bookmark"
+                           title="Permalink to TensorFlow工具快速入门教程5 TensorFlow简介">TensorFlow工具快速入门教程5 TensorFlow简介</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-21T08:25:00+08:00">
+                Published: 三 21 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
+</ul>
+<h3 id="tensorflow">什么是TensorFlow？</h3>
+<p>目前，世界上最出名的深度学习库是Google的TensorFlow。 Google在其所有产品中使用机器学习来改进搜索引擎，翻译，图片字幕或推荐。</p>
+<p>Google用户可以通过AI体验更快，更精准的搜索。如果用户在搜索栏中键入关键字，则Google会提供有关下个字词的建议。</p>
+<p><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-e710539761b73b15.gif?imageMogr2/auto-orient/strip"></p>
+<p>谷歌希望利用机器学习来利用其庞大的数据集，为用户提供最佳体验。角色分工有：研究人员、数据科学家、程序员。</p>
+<p>谷歌不止拥有世界最大的海量数据，还拥有世界上最庞大的计算机集群，所以TensorFlow是按比例建造的。 TensorFlow是由Google Brain Team开发的库，用于加速机器学习和深度神经网络研究。</p>
+<p>它在多个CPU或GPU甚至移动操作系统上运行，支持多种语言的包装器，如Python(为主)，C++或Java。</p>
+<h3 id="tensorflow_1">TensorFlow的历史</h3>
+<p>几年前深度学习在提供大量数据时开始超越所有其他机器学习算法。谷歌看使用这些深度神经网络来改善其服务：Gmail、照片、谷歌搜索引擎</p>
+<p>他们构建了Tensorflow的框架，让研究人员和开发人员在AI模型上协同工作。</p>
+<p>Tensorflow于2015年底首次公开，第一个稳定版本于2017年出现。它基于Apache开源许可。您可以使用它，修改它并重新发布修改后的版本，而无需向Google支付任何费用。</p>
+<h3 id="tensorflow_2">TensorFlow架构</h3>
+<p>Tensorflow架构分为三个部分：</p>
+<ul>
+<li>预处理数据</li>
+<li>建立模型</li>
+<li>训练和评估模型</li>
+</ul>
+<p>之所以叫Tensorflow …</p>
+                <a class="readmore" href="/tensorflow5.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/tensorflow4.html" rel="bookmark"
                            title="Permalink to TensorFlow工具快速入门教程4机器学习和深度学习的区别">TensorFlow工具快速入门教程4机器学习和深度学习的区别</a></h1>
                 </header>
@@ -388,51 +431,10 @@
                 <a class="readmore" href="/datas_books.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_quick5.html" rel="bookmark"
-                           title="Permalink to python 3.7极速入门教程5循环">python 3.7极速入门教程5循环</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-12T19:55:00+08:00">
-                Published: 一 12 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/python3_quick.html">本文教程目录</a></p>
-<h1 id="5">5循环</h1>
-<h2 id="_1">语法基础</h2>
-<h3 id="for">for语句</h3>
-<p>Python的for语句针对序列(列表或字符串等)中的子项进行循环，按它们在序列中的顺序来进行迭代。  </p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># Measure some strings:</span>
-<span class="o">...</span> <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;window&#39;</span><span class="p">,</span> <span class="s1">&#39;defenestrate&#39;</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
-<span class="o">...</span>
-<span class="n">cat</span> <span class="mi">3</span>
-<span class="n">window</span> <span class="mi">6</span>
-<span class="n">defenestrate</span> <span class="mi">12</span>
-</pre></div>
-
-
-<p>在迭代过程中修改迭代序列不安全，可能导致部分元素重复两次，建议先拷贝:  </p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">[:]:</span>  <span class="c1"># Loop over a slice copy of the entire list.</span>
-<span class="o">...</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">:</span>
-<span class="o">...</span>         <span class="n">words …</span></pre></div>
-                <a class="readmore" href="/python3_quick5.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/author/andrew5.html">&laquo;</a>
-    Page 6 / 19
+    Page 6 / 20
         <a href="/author/andrew7.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
