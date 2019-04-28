@@ -28,6 +28,48 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_crash7.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构3列表">[雪峰磁针石博客]python3快速入门教程2数据结构3列表</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:35:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">快速入门</h2>
+<p>Python有一些复合数据类型，用于组合值。最常用的是 list(列表))，为中括号之间的逗号分隔的值。列表的元素可以是多种类型，但是通常是同一类型。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+</pre></div>
+
+
+<p>像字符串和其他序列类型，列表可支持切片和索引:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># indexing returns the item</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="mi">25</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>  <span class="c1"># slicing returns a new list</span>
+<span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+</pre></div>
+
+
+<p>切片返回新的列表，下面操作返回列表a的浅拷贝:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[:]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16 …</span></pre></div>
+                <a class="readmore" href="/python3_crash7.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_crash5.html" rel="bookmark"
                            title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构1变量与赋值">[雪峰磁针石博客]python3快速入门教程2数据结构1变量与赋值</a></h1>
                 </header>
@@ -383,56 +425,6 @@
 相关模块:uu, binhex, uu, quopri</p>
 <p>Base64 是一种基于 64 个可打印字符来表示二进制数据的表示方法。由于 2 的 6 次方等于 64,所以每 6 …</p>
                 <a class="readmore" href="/python3_lib_base64.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_platform.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python模块介绍-platform：底层平台信息">[雪峰磁针石博客]python模块介绍-platform：底层平台信息</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:10:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">解释器信息</h2>
-<ul>
-<li>
-<p>platform.python_version():  返回的Python版本字符串'major.minor.patchlevel'。sys.version有类似功能，但是返回的信息更多。</p>
-</li>
-<li>
-<p>platform.python_version_tuple(): 返回Python版本 (major, minor, patchlevel)。</p>
-</li>
-<li>
-<p>platform.python_build(): 返回元组(buildno, builddate)，即Python版本号和日期。</p>
-</li>
-<li>
-<p>platform.python_compiler()：返回说明编译Python的编译器的字符串。</p>
-</li>
-<li>
-<p>platform.python_branch()：返回说明编译Python分支。</p>
-</li>
-<li>
-<p>platform.python_implementation()：返回Python实现，比如‘CPython’, ‘IronPython’, ‘Jython’, ‘PyPy’。</p>
-</li>
-<li>
-<p>platform.python_revision()：返回Python补丁版本号。  </p>
-</li>
-</ul>
-<p>下面是ubuntu 16.04执行的结果：</p>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">platform</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">platform</span><span class="o">.</span><span class="n">python_version</span><span class="p">()</span>
-<span class="n">Out …</span></pre></div>
-                <a class="readmore" href="/python3_lib_platform.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
