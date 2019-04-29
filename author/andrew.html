@@ -29,7 +29,431 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/data_warehouse_quick1.html">数据仓库快速入门教程1简介</a></h1>
+                    <h1 class="entry-title"><a href="/data_warehouse_quick6.html">数据仓库快速入门教程6-OLAP</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2019-04-29T08:36:00+08:00">
+                Published: 一 29 四月 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/da-shu-ju.html">大数据</a>.</p>
+
+</footer><!-- /.post-info --><ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+</ul>
+<h2 id="_1">什么是在线分析处理？</h2>
+<p>OLAP(Online Analytical Processing)允许用户同时分析来自多个数据库系统的信息。 这项技术使分析师能够从不同的角度提取和查看业务数据。</p>
+<p>分析师经常需要分组，汇总和加入数据。 关系数据库中的这些操作是资源密集型的。 使用OLAP数据可以预先计算和预先聚合，从而加快分析速度。</p>
+<p>OLAP数据库分为一个或多个多维数据集。 立方体的设计使得创建和查看报告变得容易。</p>
+<h2 id="olap">OLAP多维数据集：</h2>
+<p><a href="https://www.guru99.com/images/1/022218_1238_WhatisOLAPO1.png"><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-5f6d0be658050d2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a> </p>
+<p>OLAP的核心是OLAP多维数据集。 OLAP多维数据集是为快速数据分析而优化的数据结构。</p>
+<p>OLAP多维数据集由称为度量的数字事实组成，这些度量按维度分类。 OLAP Cube也称为<strong>超立方体</strong> 。</p>
+<p>通常，使用简单的电子表格执行数据操作和分析，其中数据值以行和列格式排列。 这是二维数据的理想选择。 但是，OLAP包含多维数据，数据通常从不同且不相关的源获取。 使用电子表格不是最佳选择。 多维数据集可以以逻辑和有序的方式存储和分析多维数据。</p>
+<p><strong>它是如何工作的？</strong></p>
+<p>数据仓库将从多个数据源和格式中提取信息，如文本文件，Excel工作表，多媒体文件等。</p>
+<p>提取的数据被清理和转换。 将数据加载到OLAP服务器(或OLAP多维数据集)中，在这里预先计算信息以供进一步分析。</p>
+<h2 id="olap_1">OLAP的基本分析操作</h2>
+<p>OLAP中的四种分析操作是：</p>
+<ol>
+<li>Roll-up 汇聚</li>
+<li>Drill-down 下沉</li>
+<li>Slice and dice 切片和骰子</li>
+<li>Pivot 旋转</li>
+</ol>
+<p><strong>1） Roll-up ：</strong></p>
+<p>汇总也称为“合并”或“聚合”。 有两种方式</p>
+<ol>
+<li>减少尺寸</li>
+<li>概念层次结构是一种根据订单或级别对事物进行分组的系统。</li>
+</ol>
+<p><a href="https://www.guru99.com/images/1/022218_1238_WhatisOLAPO2.png"><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-8a5c6d9c00179280.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a> </p>
+<ul>
+<li>在这个例子中，城市新泽西和洛杉矶归入美国。</li>
+<li>新泽西州和洛杉矶的销售额分别为440和1560，合并为2000。</li>
+<li>在此聚合过程中，数据是位置层次结构从城市向国家。</li>
+<li>在卷起过程中，需要移除至少一个或多个尺寸。 在此示例中，Quater维度已删除。</li>
+</ul>
+<p><strong>2）下沉</strong></p>
+<ul>
+<li>向下移动概念层次结构</li>
+<li>增加维度</li>
+</ul>
+<p><a href="https://www.guru99.com/images/1/022218_1238_WhatisOLAPO3.png"><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-769131d5d2128405.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a> </p>
+<ul>
+<li>Quater Q1将在1月，2月和3月进行。 相应的销售也是登记册。</li>
+<li>在此示例中，添加了维度月份。</li>
+</ul>
+<p><strong>3）切片：</strong></p>
+<p>选择维度，创建新的子多维数据集。</p>
+<p>下图说明了切片操作的执行方式：</p>
+<p><a href="https://www.guru99.com/images/1/022218_1238_WhatisOLAPO4.png"><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-3c9396e27d8092a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a> </p>
+<ul>
+<li>使用Q1作为过滤器对尺寸时间进行切片。</li>
+<li>完全创建了一个新的多维数据集。</li>
+</ul>
+<p><strong>Dice：</strong></p>
+<p>类似于切片。 不同之处在于您选择了2个或更多维度，从而导致创建子多维数据集。</p>
+<p><a href="https://www.guru99.com/images/1/022218_1238_WhatisOLAPO5.png"><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-f3c650b6b722c198.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a> </p>
+<p><strong>4）枢轴</strong></p>
+<p>在Pivot中，您可以旋转数据轴以提供数据的替代表示。</p>
+<p>在以下示例中，数据透视表基于项类型。</p>
+<p><a href="https://www.guru99.com/images/1/022218_1238_WhatisOLAPO6.png"><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-f132ba9f2e7fc613.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a> </p>
+<h2 id="olap_2">OLAP系统的类型</h2>
+<p>OLAP分层结构</p>
+<p><a href="https://www.guru99.com/images/1/022218_1238_WhatisOLAPO7.png"><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-57e19d5ee479ee02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a></p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>OLAP的类型</strong></th>
+<th align="center"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>关系OLAP（ROLAP）：</strong></td>
+<td align="center">扩展的RDBMS以及多维数据映射，以执行标准的关系操作。</td>
+</tr>
+<tr>
+<td align="center"><strong>多维OLAP（MOLAP）</strong></td>
+<td align="center">在多维数据中实现操作。</td>
+</tr>
+<tr>
+<td align="center"><strong>混合在线分析处理（HOLAP）</strong></td>
+<td align="center">在HOLAP方法中，聚合总计存储在多维数据库中，而详细数据存储在关系数据库中。 这提供了ROLAP模型的数据效率和MOLAP模型的性能。</td>
+</tr>
+<tr>
+<td align="center"><strong>桌面OLAP（DOLAP）</strong></td>
+<td align="center">在桌面OLAP中，用户从本地或在桌面上从数据库下载部分数据并进行分析。  DOLAP的部署成本相对较低，因为与其他OLAP系统相比，它提供的功能非常少。</td>
+</tr>
+<tr>
+<td align="center"><strong>Web OLAP（WOLAP）</strong></td>
+<td align="center">可以通过Web浏览器访问OLAP系统的Web OLAP。 WOLAP是一个三层架构。 它由三个组件组成：客户端，中间件和数据库服务器。</td>
+</tr>
+<tr>
+<td align="center"><strong>移动OLAP：</strong></td>
+<td align="center">Mobile OLAP可帮助用户使用移动设备访问和分析OLAP数据</td>
+</tr>
+<tr>
+<td align="center"><strong>空间OLAP：</strong></td>
+<td align="center">创建SOLAP是为了便于管理地理信息系统（GIS）中的空间和非空间数据</td>
+</tr>
+</tbody>
+</table>
+<h2 id="rolap">ROLAP</h2>
+<p>ROLAP使用关系数据库中存在的数据。 事实和维度表存储为关系表。 它还允许对数据进行多维分析，是增长最快的OLAP。</p>
+<p><strong>ROLAP模型的优点：</strong></p>
+<ul>
+<li><strong>高数据效率。</strong> 它提供了高数据效率，因为查询性能和访问语言特别针对多维数据分析进行了优化。</li>
+<li><strong>可扩展性。</strong> 这种类型的OLAP系统为管理大量数据提供了可扩展性，即使数据正在稳步增长。</li>
+</ul>
+<p><strong>ROLAP模型的缺点：</strong></p>
+<ul>
+<li><strong>对更高资源的需求：</strong> ROLAP需要高人力，软件和硬件资源的利用率。</li>
+<li><strong>聚合数据限制。</strong> ROLAP工具使用SQL进行聚合数据的所有计算。 但是，处理计算没有设置限制。</li>
+<li><strong>查询性能慢。</strong> 与MOLAP相比，此模型中的查询性能较慢</li>
+</ul>
+<h2 id="molap">MOLAP</h2>
+<p>MOLAP使用基于数组的多维存储引擎来显示数据的多维视图。 基本上，他们使用OLAP多维数据集。</p>
+<h3 id="_2">参考资料</h3>
+<ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+<li>讨论qq群630011153 144081101</li>
+<li><a href="https://china-testing.github.io/pptx.html">原文地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li>[本文相关海量书籍下载](https://github.com/china-testing/python-api-tesing/blob/master/books.md</li>
+<li>http://spark.apache.org/docs/2.1.0/api/python/pyspark.sql.html</li>
+</ul>
+<h2 id="olap_3">混合OLAP</h2>
+<p>混合OLAP是ROLAP和MOLAP的混合体。 它提供了MOLAP的快速计算和ROLAP的更高可扩展性。 HOLAP使用两个数据库。</p>
+<ol>
+<li>聚合或计算数据存储在多维OLAP多维数据集中</li>
+<li>详细信息存储在关系数据库中。</li>
+</ol>
+<p><strong>混合OLAP的好处：</strong></p>
+<ul>
+<li>这种OLAP有助于节省磁盘空间，并且它还保持紧凑，有助于避免与访问速度和便利性相关的问题。</li>
+<li>Hybrid HOLAP使用立方体技术，可以更快地处理所有类型的数据。</li>
+<li>ROLAP即时更新，HOLAP用户可以访问这些实时即时更新的数据。 MOLAP带来了数据的清理和转换，从而提高了数据的相关性。 这带来了两全其美。</li>
+</ul>
+<p><strong>混合OLAP的缺点：</strong></p>
+<ul>
+<li>更高的复杂性级别<strong>：</strong> HOLAP系统的主要缺点是它支持ROLAP和MOLAP工具和应用程序。 因此，它非常复杂。</li>
+<li>潜在的重叠<strong>：</strong>特别是在功能方面存在重叠的可能性更高。</li>
+</ul>
+<h2 id="olap_4">OLAP的优点</h2>
+<ul>
+<li>OLAP是适用于所有类型业务的平台，包括计划，预算，报告和分析。</li>
+<li>OLAP多维数据集中的信息和计算是一致的。 这是一个至关重要的好处。</li>
+<li>快速创建和分析“假设”场景</li>
+<li>轻松搜索OLAP数据库以获取广泛或特定的术语。</li>
+<li>OLAP为业务建模工具，数据挖掘工具，性能报告工具提供构建块。</li>
+<li>允许用户通过各种维度，度量和过滤器完成切片和切块立方体数据。</li>
+<li>它有利于分析时间序列。</li>
+<li>使用OLAP可以轻松找到一些集群和异常值。</li>
+<li>它是一个功能强大的可视化在线分析处理系统，可提供更快的响</li>
+</ul>
+<h2 id="olap_5">OLAP的缺点</h2>
+<ul>
+<li>OLAP要求将数据组织成星形或雪花模式。 这些模式实现和管理起来很复杂</li>
+<li>您不能在单个OLAP多维数据集中拥有大量维度</li>
+<li>OLAP系统无法访问事务数据。</li>
+<li>OLAP多维数据集中的任何修改都需要完全更新多维数据集。 这是一个耗时的过程</li>
+</ul>
+<h2 id="_3">摘要：</h2>
+<ul>
+<li>OLAP是一种技术，使分析师能够从不同的角度提取和查看业务数据。</li>
+<li>OLAP的核心是OLAP多维数据集。</li>
+<li>各种业务应用程序和其他数据操作都需要使用OLAP Cube。</li>
+<li>OLAP中有五种主要的分析操作1）卷起2）向下钻取3）切片4）骰子和5）旋转</li>
+<li>三种广泛使用的OLAP系统是MOLAP，ROLAP和Hybrid OLAP。</li>
+<li>桌面OLAP，Web OLAP和移动OLAP是一些其他类型的OLAP系统。</li>
+</ul>
+<h3 id="_4">参考资料</h3>
+<ul>
+<li>工作日技术支持QQ群 630011153 144081101</li>
+<li><a href="https://china-testing.github.io/data_warehouse_quick6.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看八字、风水、手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/data_warehouse_quick5.html" rel="bookmark"
+                           title="Permalink to 数据仓库快速入门教程5-ETL与ELT的差异">数据仓库快速入门教程5-ETL与ELT的差异</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-04-29T08:35:00+08:00">
+                Published: 一 29 四月 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/da-shu-ju.html">大数据</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+</ul>
+<h2 id="etl">什么是ETL？</h2>
+<p>ETL是Extract，Transform和Load的缩写。 在此过程中，ETL工具从不同的RDBMS源系统中提取数据，然后转换数据，如应用计算，连接等，然后将数据加载到数据仓库系统中。</p>
+<p>在ETL中，数据是从源流向目标。 在ETL过程中，转换引擎负责数据更改。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-f2e6a5370a702775.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="elt">什么是ELT？</h2>
+<p>ELT是用于查看数据移动。 ELT不在数据写入之前转换数据，而是让目标系统进行转换。 数据首先复制到目标，然后转换。</p>
+<p>ELT通常与无Sql数据库(如Hadoop集群，数据设备或云)一起使用。</p>
+<p><a href="https://www.guru99.com/images/1/022218_0954_ETLvsELTMus2.png"><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-9f235d22cafb2b43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a></p>
+<p>ETL与ELT之间的区别</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">ETL</th>
+<th align="center">ELT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">处理</td>
+<td align="center">数据在staging服务器上转换，然后传输到Datawarehouse DB。</td>
+<td align="center">数据保留在Datawarehouse的DB中。</td>
+</tr>
+<tr>
+<td align="center">代码</td>
+<td align="center">计算密集型转换;少量数据</td>
+<td align="center">用于大量数据</td>
+</tr>
+<tr>
+<td align="center">转型</td>
+<td align="center">转换在ETL服务器/staging区域中完成。</td>
+<td align="center">转换在目标系统中执行</td>
+</tr>
+<tr>
+<td align="center">时间负载</td>
+<td align="center">数据首先加载到暂存中，然后加载到目标系统中。 时间密集。</td>
+<td align="center">数据仅一次加载到目标系统。 更快。</td>
+</tr>
+<tr>
+<td align="center">时间转换</td>
+<td align="center">ETL过程需要等待转换完成 …</td></tr></tbody></table>
+                <a class="readmore" href="/data_warehouse_quick5.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/data_warehouse_quick4.html" rel="bookmark"
+                           title="Permalink to 数据仓库快速入门教程4-ETL">数据仓库快速入门教程4-ETL</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-04-29T08:34:00+08:00">
+                Published: 一 29 四月 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/da-shu-ju.html">大数据</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+</ul>
+<h2 id="etl">什么是ETL？</h2>
+<p>ETL是Extract，Transform和Load的缩写。 在此过程中，ETL工具从不同的RDBMS源系统中提取数据，然后转换数据，如应用计算，连接等，然后将数据加载到数据仓库系统中。</p>
+<p>ETL流程需要来自各种利益相关方（包括开发人员，分析师，测试人员，高级管理人员)的积极参与.为了保持其作为决策者工具的价值，数据仓库系统需要随业务变化而变化。 ETL是数据仓库系统的重复活动(每日，每周，每月)，需要灵活，自动化且有良好的文档。</p>
+<h2 id="etl_1">你为什么需要ETL？</h2>
+<p>在组织中采用ETL的原因有很多：</p>
+<ul>
+<li>它可以帮助公司分析业务数据，从而做出关键业务决策。</li>
+<li>事务数据库无法回答ETL可以回答的复杂业务问题。</li>
+<li>数据仓库提供公共数据存储库</li>
+<li>ETL提供了将数据从各种源移动到数据仓库的方法。</li>
+<li>随着数据源的变化，数据仓库将自动更新。</li>
+<li>精心设计和记录的ETL系统对于数据仓库项目的成功几乎是必不可少的。</li>
+<li>允许验证数据转换，聚合和计算规则。</li>
+<li>ETL过程允许源和目标系统之间的样本数据比较。</li>
+<li>ETL过程可以执行复杂的转换，并需要额外的区域来存储数据。</li>
+<li>ETL有助于将数据迁移到数据仓库中。 转换为各种格式和类型。</li>
+<li>ETL是用于访问和操作源数据到目标数据库的预定义过程。</li>
+<li>ETL为业务提供深刻的历史背景。</li>
+<li>它有助于提高生产力。</li>
+</ul>
+<h2 id="etl_2">数据仓库中的ETL过程</h2>
+<p>ETL分为3个步骤</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-d8e9219ab0447c8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_1">提取</h3>
+<p>在此步骤中，将数据从源系统提取到暂存区域 …</p>
+                <a class="readmore" href="/data_warehouse_quick4.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/data_warehouse_quick3.html" rel="bookmark"
+                           title="Permalink to 数据仓库快速入门教程3架构">数据仓库快速入门教程3架构</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-04-29T08:33:00+08:00">
+                Published: 一 29 四月 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/da-shu-ju.html">大数据</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+</ul>
+<h2 id="_1">数据仓库的特点</h2>
+<p>数据仓库具有以下特征：</p>
+<ul>
+<li>面向主题</li>
+<li>集成</li>
+<li>时变</li>
+<li>非易失性</li>
+</ul>
+<h3 id="_2">面向主题</h3>
+<p>数据仓库以主题为导向，因为它提供有关主题的信息，而不是公司正在进行的操作。 这些主题可以是销售，营销，分发等。</p>
+<p>数据仓库从不关注正在进行的操作。 相反，它强调建模和分析数据以供<strong>决策</strong> 。 它还通过排除无助于支持决策过程的数据，提供围绕特定主题的简单而简洁的视图。</p>
+<h3 id="_3">集成</h3>
+<p>在数据仓库中，集成意味着为来自不同数据库的所有类似数据建立公共测量单位。 数据还需要以通用和普遍接受的方式存储在Datawarehouse中。</p>
+<p>数据仓库是通过集成来自各种来源的数据(如大型机，关系数据库，平面文件等)而开发的。此外，它必须保持一致的命名约定，格式和编码。</p>
+<p>集成有助于有效分析数据。 必须确保命名约定，属性度量，编码结构等的一致性。 请考虑以下示例：</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b7dadb500305a339.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>在上面的示例中，有三个不同的应用程序标记为A，B和C.存储在这些应用程序中的信息是Gender，Date和Balance。 但是，每个应用程序的数据都以不同的方式存储。</p>
+<ul>
+<li>在应用程序A中，性别字段存储逻辑值，如M或F.</li>
+<li>在应用B中，性别字段是数值 …</li></ul>
+                <a class="readmore" href="/data_warehouse_quick3.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/data_warehouse_quick2.html" rel="bookmark"
+                           title="Permalink to 数据仓库快速入门教程2数据库与数据仓库的差异">数据仓库快速入门教程2数据库与数据仓库的差异</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-04-29T08:32:00+08:00">
+                Published: 一 29 四月 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/da-shu-ju.html">大数据</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+</ul>
+<h2 id="_1">什么是数据库？</h2>
+<p>数据库是相关数据的集合，代表现实世界的一些元素。 它旨在构建和填充特定任务的数据。 它也是数据解决方案的构建块。</p>
+<h2 id="_2">什么是数据仓库？</h2>
+<p>数据仓库是一种信息系统，用于存储来自单个或多个来源的历史和可交换数据。 它旨在分析​​，报告，整合来自不同来源的交易数据。</p>
+<p>数据仓库简化了组织的分析和报告流程。 它也是组织决策和预测过程的单一版本。</p>
+<h2 id="_3">为什么要使用数据库？</h2>
+<p>这里是使用数据库系统的主要原因：</p>
+<ul>
+<li>它提供数据及其访问的安全性</li>
+<li>数据库提供了各种存储和检索数据的技术。</li>
+<li>数据库充当有效的处理程序，以使用相同的数据平衡多个应用程序的需求</li>
+<li>DBMS提供完整性约束以获得高级别的保护，以防止访问禁止的数据。</li>
+<li>数据库允许您以这样的方式访问并发数据，即一次只有一个用户可以访问相同的数据。</li>
+</ul>
+<h2 id="_4">为何使用数据仓库？</h2>
+<p>这里是使用数据仓库的重要原因：</p>
+<ul>
+<li>数据仓库可帮助业务用户在一个位置访问来自某些来源的关键数据。</li>
+<li>它提供有关各种跨职能活动的一致信息</li>
+<li>帮助您集成许多数据源，以减轻生产系统的压力。</li>
+<li>数据仓库可帮助您减少分析和报告的TAT（总周转时间）。</li>
+<li>数据仓库可以帮助用户在一个地方访问来自不同来源的关键数据，从而节省用户从多个来源检索数据信息的时间。 您还可以轻松地从云访问数据。</li>
+<li>数据仓库允许您存储大量历史数据，以分析不同的时段和趋势，以便进行未来预测。</li>
+<li>增强运营业务应用程序和客户关系管理系统的价值</li>
+<li>将分析处理与事务数据库分开，从而提高两个系统的性能</li>
+<li>利益相关者和用户可能过高估计源系统中的数据质量。 数据仓库提供更准确的报告。</li>
+</ul>
+<h2 id="_5">数据库的特征</h2>
+<ul>
+<li>提供安全性并消除冗余</li>
+<li>允许多个数据视图</li>
+<li>数据库系统遵循ACID合规性（原子性，一致性 …</li></ul>
+                <a class="readmore" href="/data_warehouse_quick2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/data_warehouse_quick1.html" rel="bookmark"
+                           title="Permalink to 数据仓库快速入门教程1简介">数据仓库快速入门教程1简介</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2019-04-29T08:31:00+08:00">
                 Published: 一 29 四月 2019
@@ -40,7 +464,7 @@
         </address>
 <p>In <a href="/category/da-shu-ju.html">大数据</a>.</p>
 
-</footer><!-- /.post-info --><ul>
+</footer><!-- /.post-info -->                <ul>
 <li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
 <li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
 </ul>
@@ -60,154 +484,10 @@
 </ul>
 <p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e0b8f45693c78141.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <h2 id="_1">数据仓库的历史</h2>
-<p>数据仓库使用户能够理解并提高其组织的绩效。 随着计算机系统变得越来越复杂并需要处理越来越多的信息，仓库数据的需求也在不断变化。</p>
-<ul>
-<li>1960年 - Dartmouth和General Mills在一个联合研究项目中，提出了维度概念。</li>
-<li>1970 - Nielsen和IR为零售引入了维度数据。</li>
-<li>1983- Tera推出了专为决策支持而设计的数据库管理系统</li>
-<li>
-<p>数据仓库始于20世纪80年代后期，当时IBM工作人员Paul Murphy和Barry Devlin开发了业务数据仓库。</p>
-</li>
-<li>
-<p>然而，真正的概念是由Inmon Bill提出的。 他是数据仓库之父。 他撰写了关于仓库和公司信息工厂的建设，使用和维护的各种主题。</p>
-</li>
-</ul>
-<h2 id="datawarehouse">Datawarehouse如何运作？</h2>
-<p>数据仓库作为中央存储库，信息从一个或多个数据源到达。 数据从事务系统和其他关系数据库流入数据仓库。</p>
-<p>数据可能是：</p>
-<ol>
-<li>结构化的</li>
-<li>半结构化</li>
-<li>非结构化数据</li>
-</ol>
-<p>处理，转换和提取数据，以便用户可以通过商业智能工具，SQL客户端和电子表格访问数据仓库中的已处理数据。 数据仓库将来自不同来源的信息合并到综合数据库中。</p>
-<p>通过合并所有这些信息，组织可以更全面地分析其客户。 这有助于确保它已考虑所有可用信息。 数据仓库使数据挖掘成为可能。 数据挖掘旨在寻找可能导致更高销售额和利润的数据模式。</p>
-<h2 id="_2">数据仓库的类型</h2>
-<p><strong>1.企业数据仓库：</strong></p>
-<p>企业数据仓库是一个集中式仓库。 它为整个企业提供决策支持服务。 它提供了统一的方法来组织和表示数据。 它还提供根据主题对数据进行分类并根据这些划分进行访问的能力。</p>
-<p><strong>2.运营数据存储：</strong></p>
-<p>只需要数据存储的运营数据存储(也称为ODS Operational Data Store)。 在ODS中，数据仓库实时刷新。 因此，它广泛地用于诸如存储雇员记录等。</p>
-<p><strong>3.数据集市：</strong></p>
-<p>数据集市是数据仓库的子集。 它专门针对特定业务部门而设计，例如销售，财务，销售或财务。 在独立的数据集市中，数据可以直接从源收集。</p>
-<h2 id="_3">数据仓库的一般阶段</h2>
-<p><strong>离线操作数据库：</strong></p>
-<p>在此阶段，数据只是从运营系统复制到服务器。</p>
-<p><strong>离线数据仓库：</strong></p>
-<p>数据仓库中的数据定期从运营数据库更新。 数据仓库中的数据经过映射和转换，以满足数据仓库的目标。</p>
-<p><strong>实时数据仓库：</strong></p>
-<p>运营数据库中发生任何事务，就会更新数据仓库。 例如，航空公司或铁路预订系统。</p>
-<p><strong>集成数据仓库：</strong></p>
-<p>运营系统执行事务时，数据仓库会不断更新。 然后，Datawarehouse生成传递回运营系统的事务。</p>
-<h2 id="_4">数据仓库的组件</h2>
-<p><strong>数据仓库的四个组成部分是：</strong></p>
-<p><strong>加载管理器：</strong>加载管理器也称为前端组件。 它执行与提取和加载数据到仓库相关的所有操作。 这些操作包括转换准备用于进入数据仓库的数据。</p>
-<p><strong>仓库管理：</strong>仓库管理执行与仓库中数据管理相关的操作。 它执行数据分析等操作，以确保一致性，索引和视图的创建，非规范化和聚合的生成，源数据的转换和合并以及归档和备份数据。</p>
-<p><strong>查询管理器：</strong>查询管理器 也被称为后端组件。 它执行与用户查询管理相关的所有操作操作。 此数据仓库组件的操作是对相应表的直接查询。</p>
-<p><strong>最终用户访问工具：</strong></p>
-<p>这分为五个不同的组，如1.数据报告　2.查询工具　3.应用程序开发工具　4. EIS工具 5.OLAP工具和数据挖掘工具。</p>
-<h3 id="_5">参考资料</h3>
-<ul>
-<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
-<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
-<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
-<li>讨论qq群630011153 144081101</li>
-<li><a href="https://china-testing.github.io/pptx.html">原文地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li>[本文相关海量书籍下载](https://github.com/china-testing/python-api-tesing/blob/master/books.md</li>
-<li>http://spark.apache.org/docs/2.1.0/api/python/pyspark.sql.html</li>
-</ul>
-<h2 id="_6">谁需要数据仓库？</h2>
-<ul>
-<li>依赖大数据的决策者</li>
-<li>使用自定义复杂流程从多个数据源获取信息的用户。</li>
-</ul>
-<p><strong>航空公司：</strong></p>
-<p>在航空公司系统中，它用于职员分配，路线盈利能力分析，旅客计划促销等。</p>
-<p><strong>银行业：</strong></p>
-<p>管理可用的资源。 一些银行也用于市场调研，产品和运营的绩效分析。</p>
-<p><strong>卫生保健：</strong></p>
-<p>医疗保健行业还使用数据仓库来制定战略并预测结果，生成患者的治疗报告，与保险公司等共享数据，医疗援助服务等。</p>
-<p><strong>公共部门：</strong></p>
-<p>在公共部门，数据仓库用于情报收集。 它有助于政府机构维护和分析每个人的税务记录，健康政策记录。</p>
-<p><strong>投资和保险业：</strong></p>
-<p>分析数据模式，客户趋势以及跟踪市场变动。</p>
-<p><strong>零售：</strong></p>
-<p>在零售连锁店中，数据仓库广泛用于分销和营销。 它还有助于跟踪项目，客户购买模式，促销以及用于确定定价政策。</p>
-<p><strong>电信：</strong></p>
-<p>产品促销，销售决策和制定分销决策。</p>
-<p><strong>酒店业：</strong></p>
-<p>设计和估计他们希望根据客户的反馈和旅行模式定位客户的广告和促销活动。</p>
-<h2 id="_7">实施数据仓库的步骤</h2>
-<ol>
-<li><strong>企业战略</strong> ：在此我们确定技术，包括当前的架构和工具。 我们还确定事实，维度和属性。 还传递了数据映射和转换。</li>
-<li><strong>分阶段交付</strong> ：应根据主题领域分阶段实施数据仓库。 应首先实施预订和计费等相关业务实体，然后相互集成。</li>
-<li><strong>迭代原型</strong> ：数据仓库应该迭代开发和测试。</li>
-</ol>
-<p>这里是Datawarehouse实施的关键步骤及其可交付成果。</p>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-29de184f328e375d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h2 id="_8">实施数据仓库的最佳实践</h2>
-<ul>
-<li>确定计划以测试数据的一致性，准确性和完整性。</li>
-<li>数据仓库必须很好地集成，定义良好并带有时间戳。</li>
-<li>在设计Datawarehouse时，请确保使用正确的工具，坚持生命周期，注意数据冲突并准备好从错误中学习。</li>
-<li>切勿更换运营系统和报告</li>
-<li>不要在提取，清理和加载数据上花费太多时间。</li>
-<li>确保所有利益相关者（包括业务人员）参与数据仓库实施流程。 确定数据仓库是联合/团队项目。 您不希望创建对最终用户无用的数据仓库。</li>
-<li>为最终用户准备培训计划。</li>
-</ul>
-<h2 id="_9">为什么我们需要数据仓库？ 优点缺点</h2>
-<p><strong>数据仓库的优点：</strong></p>
-<ul>
-<li>数据仓库允许业务用户快速访问来自某些来源的关键数据。</li>
-<li>数据仓库提供有关各种跨职能活动的一致信息。 它还支持临时报告和查询。</li>
-<li>数据仓库有助于集成许多数据源，以减少生产系统的压力。</li>
-<li>数据仓库有助于缩短分析和报告的总周转时间。</li>
-<li>重组和集成使用户更容易用于报告和分析。</li>
-<li>数据仓库允许用户访问多个源关键数据。 因此，它节省了用户从多个源检索数据的时间。</li>
-<li>数据仓库存储大量历史数据。 这有助于用户分析不同的时间段和趋势，以便进行未来的预测。</li>
-</ul>
-<p><strong>数据仓库的缺点：</strong></p>
-<ul>
-<li>不是非结构化数据的理想选择。</li>
-<li>数据仓库的创建和实施肯定会有时间混乱。</li>
-<li>数据仓库很容易过时</li>
-<li>难以对数据类型和范围，数据源架构，索引和查询进行更改。</li>
-<li>数据仓库看起来很简单，但实际上，对于普通用户来说，它太复杂了。</li>
-<li>尽管在项目管理方面做出了最大努力，但数据仓库项目范围仍将不断增加。</li>
-<li>有时仓库用户会制定不同的业务规则。</li>
-<li>组织需要将大量资源用于培训和实施目的。</li>
-</ul>
-<h2 id="_10">数据仓库的未来</h2>
-<ul>
-<li><strong>监管约束的</strong>变化可能会限制组合不同数据来源的能力。 这些不同的来源可能包括难以存储的非结构化数据。</li>
-<li>随着数据库<strong>规模</strong>的增长，对构成非常大的数据库的估计值继续增长。 构建和运行数据仓库系统非常复杂，而且数据仓库系统的规模也在不断扩大。 目前可用的硬件和软件资源不允许在线保存大量数据。</li>
-<li><strong>多媒体数据</strong>检索问题。</li>
-</ul>
-<h2 id="_11">数据仓库工具</h2>
-<p>市场上有许多数据仓库工具。 这里有一些最突出的：</p>
-<p><strong>1.MarkLogic：</strong></p>
-<p>MarkLogic使用一系列企业功能使数据集成更容易，更快捷。 此工具有助于执行非常复杂的搜索操作。 它可以查询不同类型的数据，如文档，关系和元数据。</p>
-<p><a href="http://developer.marklogic.com/products">http://developer.marklogic.com/products</a></p>
-<p><strong>甲骨文：</strong></p>
-<p>Oracle是业界领先的数据库。 它为内部部署和云端提供了广泛的数据仓库解决方案选择。 它有助于通过提高运营效率来优化客户体验。</p>
-<p><a href="https://www.oracle.com/index.html">https://www.oracle.com/index.html</a></p>
-<p><strong>3.亚马逊RedShift：</strong></p>
-<p>它使用标准SQL和现有BI工具分析所有类型数据的简单且经济高效的工具。 它还允许使用查询优化技术运行针对数PB的结构化数据的复杂查询。</p>
-<p><a href="https://aws.amazon.com/redshift/?nc2=h_m1">https://aws.amazon.com/redshift/?nc2=h_m1</a></p>
-<h3 id="_12">参考资料</h3>
-<ul>
-<li>工作日技术支持QQ群 630011153 144081101</li>
-<li><a href="https://china-testing.github.io/bazi.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
-<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看八字、风水、手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
-<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>数据仓库使用户能够理解并提高其组织的绩效 …</p>
+                <a class="readmore" href="/data_warehouse_quick1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -340,200 +620,6 @@
 <p>梦见兔子跑进屋，预示着你近期遇到困难的时候，有人出手帮助自己。</p>
 <p>梦见兔子生兔子 …</p>
                 <a class="readmore" href="/jiemeng_tuzi.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/jiemeng_xuanya.html" rel="bookmark"
-                           title="Permalink to 周公解梦：梦见悬崖 山崖">周公解梦：梦见悬崖 山崖</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2019-04-28T08:30:00+08:00">
-                Published: 日 28 四月 2019
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/jie-meng.html">解梦</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
-<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
-</ul>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713117-993bb85f556e3859.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<div class="highlight"><pre><span></span>梦见悬崖，生命和财产都会受到严重的威胁。
-</pre></div>
-
-
-<p>梦见站在悬崖边上，灾难会降临在自己和家人的头上。</p>
-<p>梦见从悬崖上掉下来，生意会倒闭。</p>
-<p>已婚女人梦见自己从悬崖上掉下来，会被丈夫看不起。</p>
-<p>青年男女梦见从悬崖上掉下来，是不祥之兆，至交的竟会失败。</p>
-<p>商人梦见从悬崖上跌落下来，生意会突然受到冲击。</p>
-<p>病人梦见从悬崖上跌落下来，处境艰难。</p>
-<p>老人梦见从悬崖上掉下来，孩子会溘然而逝。</p>
-<p>工作人员梦见掉在悬崖下，会有被解雇的危险，或被辞退。</p>
-<p>梦见陌生人从悬崖上跌落下来，能治服自己的仇敌，但是会与自己的支持者分道扬镳。</p>
-<p>梦见妻子从悬崖上掉下来，妻子会更加体贴自己。</p>
-<p>梦见有人把自己从悬崖上推下去，会遭人暗算，有可能丧生。</p>
-<p>梦见站在高高的悬崖峭壁上，预示着不幸的和灾难性的事件。WWW.ZGJM.ORG</p>
-<p>原版周公解梦</p>
-<p>见悬崖，主有不吉。《周公解梦》</p>
-<p>心理学解梦</p>
-<p>梦境解说：梦见悬崖峭壁，大多数情况下，预示你的财产将遭到严重威胁，或是你的健康将会受到影响。梦到站在悬崖边上，有一种想要往下掉的恐惧感，这是一种现实中失控的表现，或者是近期受到过惊吓，通常是一种力不从心的感觉 …</p>
-                <a class="readmore" href="/jiemeng_xuanya.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/fengshui_books.html" rel="bookmark"
-                           title="Permalink to 风水书籍汇总">风水书籍汇总</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2019-04-25T08:30:00+08:00">
-                Published: 四 25 四月 2019
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/feng-shui.html">风水</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
-<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
-</ul>
-<h3 id="-2011pdf"><a href="https://itbooks.pipipan.com/fs/18113597-367731581">顺风顺水：现代家居风水与健康参考手册 - 2011.pdf</a></h3>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14634966-cfc0edadabc271a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>本书将晦涩难懂的风水理论运用于现代生活中，侧重于追求家居生活的健康和品位，更科学、更专业地传授给你改善家居风水的技巧和秘诀。风水咨询钉钉或微信pythontesting。介绍了宅地、家居、植物风水、物品风水等知识，对疾病风水解释与补救等生活中涉及的风水学常识也做了全方位的展示。</p>
-<h3 id="_1">参考资料</h3>
-<ul>
-<li>讨论钉钉群21734177, qq群391441566 184175668 338228106</li>
-<li><a href="https://china-testing.github.io/testing_books.html">本文最新版本地址</a></li>
-<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
-<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/society_books.md">本文相关海量书籍下载</a> </li>
-<li>本书下载 https://itbooks.pipipan.com/fs/18113597-367731581</li>
-<li>本书下载 https://itbooks.pipipan.com/fs/18113597-367731560</li>
-</ul>
-<h3 id="14-2011pdf"><a href="https://itbooks.pipipan.com/fs/18113597-367731560">受用一生的14堂实用风水课 - 2011.pdf</a></h3>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14634966-200b8c9c77f8e0bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>《受用一生的14堂实用风水课》以阴阳宅为主要对象，从事业、爱情、姓名、装修等方面着手，由浅入深，去伪存真 …</p>
-                <a class="readmore" href="/fengshui_books.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/fengshui_zhanglang.html" rel="bookmark"
-                           title="Permalink to 家里蟑螂多会严重影响风水，教你免费的灭蟑大法！">家里蟑螂多会严重影响风水，教你免费的灭蟑大法！</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2019-04-25T08:20:00+08:00">
-                Published: 四 25 四月 2019
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/feng-shui.html">风水</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
-<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
-</ul>
-<h3 id="_1">蟑螂的风水提示</h3>
-<p>蟑螂是生命力非常顽强的小动物，但也是人们非常讨厌的小动物，因为它对我们的生活会造成很大的影响，那么你知道在中家里有蟑螂预示着什么吗？有以下几种可能：</p>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14634966-beebfa27abd03c3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<ul>
-<li>创业失败</li>
-</ul>
-<p>一粒老鼠屎毁了一锅粥，蟑螂的出现不仅让这个美满幸福的家变得脏乱，还会影响一个的运气。太多蟑螂的光顾从风水学上讲预示着这家的男主人公很有可能遇到创业失败，工作上不顺利。蟑螂的出现已经影响了家庭的和谐，工作的不顺心更加使人恼怒，或许会做出一些极端的事。</p>
-<ul>
-<li>意外发生</li>
-</ul>
-<p>一般人家庭打扫卫生好的话很少会见到蟑螂。然而此次蟑螂的出现，一定要加以防范，不要忽略了它们。蟑螂的出现，使这个家潮气太重，阴气重重，也预示着房主要改头换面，重新梳理自己的感情，倘若忽略很有可能会发生意外。遭遇车祸或者抢劫等。霉运当头，破财又不免灾。</p>
-<ul>
-<li>生病消财</li>
-</ul>
-<p>家里有很多蟑螂，说明了这个家潮气很重，容易招致小鬼，吸走阳气，因此家里的小孩经常生病，花了很多钱就是医治不好。</p>
-<ul>
-<li>地震预兆</li>
-</ul>
-<p>有几只蟑螂出现可能是卫生不太好，要即使通风，保持良好的空气环境。然而蟑螂突然爆发，增多，从风水学来讲，必定有意外之事发生。我们都知道，动物的耳朵要比人的耳朵灵验，能提前感知地震，蟑螂的爆发也说明了在不就之后会有地震发生 …</p>
-                <a class="readmore" href="/fengshui_zhanglang.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/ml_quick2.html" rel="bookmark"
-                           title="Permalink to 机器学习快速入门2分类的代码实现">机器学习快速入门2分类的代码实现</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2019-04-23T08:25:00+08:00">
-                Published: 二 23 四月 2019
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="_1">威斯康星乳腺癌数据集</h3>
-<p>威斯康星乳腺癌（Breast Cancer Wisconsin）数据集共包含569个恶性或者良性肿瘤细胞样本。数据集的前两列分别存储了样本唯一的ID以及对样本的诊断结果（M代表恶性，B代表良性）。数据集的3～32列包含了30个从细胞核照片中提取、用实数值标识的特征，它们可以用于构建判定模型，对肿瘤是良性还是恶性做出预测。威斯康星乳腺癌数据集已经存储在UCI机器学习数据集库中，关于此数据集更多的信息请访问链接：http://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/</p>
-<p>sklearn已经包含了该数据集。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">array</span><span class="p">([[</span><span class="mf">1.799e+01</span><span class="p">,</span> <span class="mf">1.038e+01</span><span class="p">,</span> <span class="mf">1.228e+02</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="mf">2 …</span></pre></div>
-                <a class="readmore" href="/ml_quick2.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/ml_quick1.html" rel="bookmark"
-                           title="Permalink to 机器学习快速入门1分类">机器学习快速入门1分类</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2019-04-23T08:20:00+08:00">
-                Published: 二 23 四月 2019
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">什么是分类？</h2>
-<h3 id="mnist">MNIST</h3>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a3dd7e25bfa0a166.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>MNIST(Modified National Institute of Standards and Technology database)</p>
-<p>这是机器学习的经典案例。数据由一组手写0到9数字图像组成，多用于OCR(光学字符识别 optical  character   recognition)。</p>
-<h3 id="_2">数据类型</h3>
-<p>在机器学习中，您会发现有两种非常常见的数据类型。</p>
-<p>MNIST由图像组成。图像通常属于“计算机视觉”领域。</p>
-<p>机器学习中使用的另一种常见数据格式是文本。比如“自然语言处理”。</p>
-<h3 id="_3">垃圾邮件分类</h3>
-<p>Gmail，Yahoo，Hotmail等会自动为您分类垃圾邮件和非垃圾邮件。他们并不总能做对，但非常好。</p>
-<p>这是怎么做到的？机器学习算法接收电子邮件作为输入，并输出预测：它将该电子邮件分类为垃圾邮件或非垃圾邮件。机器学习分类算法接受输入，并输出分类预测！</p>
-<h3 id="_4">业务场景</h3>
-<p>当然，必须有些不属于图像和文本的分类示例。企业正在利用机器学习来改善服务并赚更多钱。比如在线广告，这通常采用横幅广告或视频广告的形式。广告客户收集了一些您的数据。例如，他们知道您的年龄，性别和位置 …</p>
-                <a class="readmore" href="/ml_quick1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
