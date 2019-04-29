@@ -14,6 +14,7 @@
                     <li><a href="/category/ce-shi.html">测试</a></li>
                     <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
                     <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
                     <li><a href="/category/feng-shui.html">风水</a></li>
                     <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
                     <li><a href="/category/jie-meng.html">解梦</a></li>
@@ -28,6 +29,57 @@
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_lib_face_recognition.html" rel="bookmark"
+                           title="Permalink to python库介绍-face_recognition 人脸识别">python库介绍-face_recognition 人脸识别</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-12T19:20:00+08:00">
+                Published: 一 12 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">简介</h3>
+<p>face_recognition使用世界上最简单的人脸识别工具，在Python或命令行中识别和操作人脸。</p>
+<p>使用dlib最先进的人脸识别技术构建而成，并具有深度学习功能。 该模型在<a href="http://vis-www.cs.umass.edu/lfw/">Labeled Faces in the Wild</a>基准中的准确率为99.38％。</p>
+<p>另外还提供了face_recognition命令行工具！</p>
+<h3 id="_2">快速入门</h3>
+<p>本节我们基于ubuntu16.04,python3，使用如下图片：</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-625527be2687bd65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li>快速入门</li>
+</ul>
+<p>face_recognition</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">face_recognition</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">load_image_file</span><span class="p">(</span><span class="s2">&quot;test0.jpg&quot;</span><span class="p">)</span>
+<span class="n">face_locations</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">face_locations</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;cnn&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">face_locations</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">quick</span><span class="o">.</span><span class="n">py</span> 
+<span class="p">[(</span><span class="mi">203</span><span class="p">,</span> <span class="mi">391</span><span class="p">,</span> <span class="mi">447</span><span class="p">,</span> <span class="mi">147</span><span class="p">)]</span>
+</pre></div>
+
+
+<p>model选择模型，默认为hog，该模式很多图片是无法识别的，为此一般用采用更精确但是速度更慢的cnn模型。</p>
+<ul>
+<li>显示图片：</li>
+</ul>
+<p>quick2 …</p>
+                <a class="readmore" href="/python3_lib_face_recognition.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
             <li><article class="hentry">
                 <header>
                     <h1><a href="/python3_lib_grp.html" rel="bookmark"
@@ -445,43 +497,6 @@
 <li>Counter：字典的子类，用于统计哈希对象。python 2.7新增。</li>
 <li>OrderedDict：有序字典，字典的子类，记录了添加顺序 …</li></ul>
                 <a class="readmore" href="/python3_lib_collections.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_jpype1.html" rel="bookmark"
-                           title="Permalink to python库介绍-jpype：python到java桥">python库介绍-jpype：python到java桥</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-03T19:20:00+08:00">
-                Published: 六 03 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
-<p>Python 作为一种灵活的软件开发语言在当今被广泛使用。在软件开发过程中，有时需要在 Python 项目中利用既有的 Java 代码，已达到节省时间和开发成本的目的。因此，找到一个 Python 代码调用 Java 代码的桥梁是非常有意义的。 JPype 就是这样的一个工具，利用它可以使 Python 程序方便的调用 Java 代码。</p>
-<p>JPype使Python可以完全访问Java类库。Jython/JPython重新实现了Python，JPype则提供了两个虚拟机的接口。JPype可以在JSP，Servlet、RMI服务器和IDE插件都方面用Python代替Java。</p>
-<p>缺陷：
-package之外的类(在<default>中)不能被导入。
-不能重启JVM。
-不能处理依赖当前类的方法。</p>
-<ul>
-<li>技术支持 (可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</li>
-</ul>
-<h2 id="_2">快速入门</h2>
-<ul>
-<li>安装</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="c1"># pip3 install jpype1</span>
-<span class="n">Collecting</span> <span class="n">jpype1 …</span></pre></div>
-                <a class="readmore" href="/python3_lib_jpype1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
