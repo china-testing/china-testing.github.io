@@ -31,6 +31,39 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_lib_buildbot.html" rel="bookmark"
+                           title="Permalink to python库介绍-buildbot教程">python库介绍-buildbot教程</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-25T19:23:00+08:00">
+                Published: 日 25 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+</ul>
+<p>Buildbot是python实现的开源持续构建和持续交付工具，为Python, Mozilla, Chromium, WebKit等知名项目使用。</p>
+<p>与Jenkins相比，Buildbot在大陆使用者较少。原因在于Jenkins的界面相对较美观，更容易上手；Jenkins的中文文档比较丰富。但是Jenkins因为资源消耗庞大、不太方便定制而不受一些有实力的公司欢迎。这些不少把目光聚焦在Buildbot。</p>
+<p>究竟Buildbot有哪些优点让这些公司青睐呢？Buildbot基于python网络框架Twisted，分布式做得好。Buildbot可以直接使用python包，轻松拥有上万库，具备强大的扩展能力。如果你觉得Jenkins已经轻松地满足你的需求，你不需要Buildbot。如果你在Jenkins时觉得效率低下、扩展困难、一些用python等脚本可以实现的动作在Jenkins困难重重，那么可以看看Buildbot。</p>
+<p>python的buildbot站点：　http://buildbot.python.org/all/#/</p>
+<p>Buildbot是开源的自动化软件构建，测试，发布流程的框架。</p>
+<p>Buildbot支持跨平台，分布式，并行执行jobs，与版本控制系统的灵活集成，丰富的状态报告等等。 </p>
+<p>Buildbot是一个作业调度系统：它会对作业进行排队，在所需要的资源可用时执行任务，并报告结果。</p>
+<p>Buildbot有一个或多个主机和从机。主机监控源代码库的变化，调配从机，并给用户和开发者报告结果。从机可在多种操作系统上运行 …</p>
+                <a class="readmore" href="/python3_lib_buildbot.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_lib_os.path.html" rel="bookmark"
                            title="Permalink to python库介绍-os.path: 平台独立的文件名操作">python库介绍-os.path: 平台独立的文件名操作</a></h1>
                 </header>
@@ -489,49 +522,10 @@ calendar 标准模块。</p>
                 <a class="readmore" href="/python3_lib_spwd.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_pathlib.html" rel="bookmark"
-                           title="Permalink to python库介绍-pathlib: 文件系统对象">python库介绍-pathlib: 文件系统对象</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-11T19:40:00+08:00">
-                Published: 日 11 二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p>目的：使用面向对象的API解析，构建，测试和处理文件名和路径，而不是底层的字符串操作。</p>
-<h2 id="path">Path表示</h2>
-<p>pathlib包含用于管理使用POSIX标准或Microsoft Windows语法格式化的文件系统路径的类。它包括所谓的“pure”类，它们对字符串进行操作，但不与实际的文件系统进行交互;“concrete”类将API扩展为包含反映或修改本地文件系统数据的操作。</p>
-<p>pure类PurePosixPath和PureWindowsPath可以在任何操作系统上实例化和使用，因为它们只用于名称。要实例化正确的类来处理真实的文件系统，请使用Path来获取PosixPath或WindowsPath，具体取决于平台。</p>
-<ul>
-<li>
-<p>技术支持 (可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
-</li>
-<li>
-<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
-</li>
-</ul>
-<p>[接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲]</p>
-<h2 id="path_1">构建Path</h2>
-<p>要实例化路径，字符串作为参数。Path对象的字符串表示是该字符串。要创建引用相对于现有路径的值的新路径，请使用/运算符来扩展路径。运算符的参数可以是字符串或其他路径对象。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3 …</pre></div></td></tr></table>
-                <a class="readmore" href="/python3_lib_pathlib.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/index18.html">&laquo;</a>
-    Page 19 / 20
+    Page 19 / 21
         <a href="/index20.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->

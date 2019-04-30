@@ -31,6 +31,45 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/network_traceroute.html" rel="bookmark"
+                           title="Permalink to python网络作业：使用python的socket库实现ICMP协议的traceroute">python网络作业：使用python的socket库实现ICMP协议的traceroute</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-12-01T07:25:00+08:00">
+                Published: 六 01 十二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></p>
+<p>直接上代码：</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># 技术支持：https://www.jianshu.com/u/69f40328d4f0 </span>
+<span class="c1"># 技术支持 https://china-testing.github.io/</span>
+<span class="c1"># https://github.com/china-testing/python-api-tesing/blob/master/practices/traceroute.py</span>
+<span class="c1"># 项目实战讨论QQ群630011153 144081101</span>
+<span class="c1"># CreateDate: 2018-11-26</span>
+
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">struct</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">class</span> <span class="nc">flushfile</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">FileIO</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="bp">self …</span></pre></div>
+                <a class="readmore" href="/network_traceroute.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/pygame_house.html" rel="bookmark"
                            title="Permalink to python绘图作业：使用pygame库画房子">python绘图作业：使用pygame库画房子</a></h1>
                 </header>
@@ -404,51 +443,10 @@
                 <a class="readmore" href="/python_gui_books.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/list_tuple_compare.html" rel="bookmark"
-                           title="Permalink to python经典面试题：列表和元组有什么异同？">python经典面试题：列表和元组有什么异同？</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-27T05:20:00+08:00">
-                Published: 二 27 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
-<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
-<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
-</ul>
-<p>列表和元组是Python中最常用的两种数据结构，字典是第三种。 相同点：</p>
-<ul>
-<li>都是序列</li>
-<li>都可以存储任何数据类型</li>
-<li>可以通过索引访问</li>
-</ul>
-<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-32a6c6361069d513.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<h3 id="_1">语法差异</h3>
-<p>使用方括号[]创建列表，而使用括号()创建元组。 请看以下示例：</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;https://china-testing.github.io/&quot;</span><span class="p">,</span> <span class="s2">&quot;https://www.oscobo.com/&quot;</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;https://china-testing.github.io/&quot;</span><span class="p">,</span> <span class="s2">&quot;https://www.oscobo.com/&quot;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
-<span class="p">[</span><span class="s1">&#39;https://china-testing.github.io/&#39;</span><span class="p">,</span> <span class="s1">&#39;https://www.oscobo.com/&#39;</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="p">(</span><span class="s1">&#39;https://china-testing …</span></pre></div>
-                <a class="readmore" href="/list_tuple_compare.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/author/andrew4.html">&laquo;</a>
-    Page 5 / 20
+    Page 5 / 21
         <a href="/author/andrew6.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
