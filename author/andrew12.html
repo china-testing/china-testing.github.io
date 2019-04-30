@@ -31,6 +31,39 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/python3_crash8.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构4其他数据结构">[雪峰磁针石博客]python3快速入门教程2数据结构4其他数据结构</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:40:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">数据结构</h2>
+<h4 id="_2">函数式编程工具</h4>
+<p>对于列表来讲，有三个内置函数非常有用: filter(), map(), 以及reduce()。  </p>
+<p>filter(function, sequence)返回function(item)为true的子序列。会尽量返回和sequence相同的类型）。sequence是string或者tuple时返回相同类型，其他情况返回list 。实例：返回能被3或者5整除的序列:  </p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">25</span><span class="p">)))</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+</pre></div>
+
+
+<p>map(function, sequence) 为每个元素调用 …</p>
+                <a class="readmore" href="/python3_crash8.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/python3_crash_ch7.html" rel="bookmark"
                            title="Permalink to [雪峰磁针石博客]python3快速入门教程7输入和输出">[雪峰磁针石博客]python3快速入门教程7输入和输出</a></h1>
                 </header>
@@ -378,41 +411,6 @@
 <li>
 <p>高级超链接和HTML表单支持 …</p></li></ul>
                 <a class="readmore" href="/testing_tools_perf.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python3_lib_ftplib.html" rel="bookmark"
-                           title="Permalink to [雪峰磁针石博客]python模块介绍-ftplib：FTP协议客户端">[雪峰磁针石博客]python模块介绍-ftplib：FTP协议客户端</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-20T16:20:00+08:00">
-                Published: 一 20 八月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h2 id="_1">概述</h2>
-<p>该模块定义了FTP类和一些相关项。FTP类实现了FTP协议的客户端。你可以用它来编写使用FTP的URL。有关FTP（文件传输协议）的详细信息，请参阅Internet RFC959 [tools.ietf.org/html/rfc959.html]。</p>
-<h2 id="_2">快速入门</h2>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">ftplib</span> <span class="kn">import</span> <span class="n">FTP</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">ftp</span> <span class="o">=</span> <span class="n">FTP</span><span class="p">(</span><span class="s1">&#39;ftp.fi.muni.cz&#39;</span><span class="p">)</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>          
-<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span>  <span class="s1">&#39;230-Hello...&#39;</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span>  <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s1">&#39;andrew&#39;</span><span class="p">,</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="s1">&#39;230 Login successful.&#39;</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">6 …</span></pre></div>
-                <a class="readmore" href="/python3_lib_ftplib.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
