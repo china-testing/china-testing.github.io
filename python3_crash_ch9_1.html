@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>[雪峰磁针石博客]python3快速入门教程9重要的标准库-基础篇</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_crash_ch9_1.html" rel="bookmark"
+           title="Permalink to [雪峰磁针石博客]python3快速入门教程9重要的标准库-基础篇">[雪峰磁针石博客]python3快速入门教程9重要的标准库-基础篇</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T13:50:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <h3 id="_1">操作系统接口</h3>
+<p>os模块提供了一些与操作系统交互的函数:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">os</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>      <span class="c1"># Return the current working directory</span>
+<span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Python36&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/server/accesslogs&#39;</span><span class="p">)</span>   <span class="c1"># Change current working directory</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;mkdir today&#39;</span><span class="p">)</span>   <span class="c1"># Run the command mkdir in the system shell</span>
+<span class="mi">0</span>
+</pre></div>
+
+
+<p>用import os而不是from os import *。否则os.open()会覆盖内置函数open()。</p>
+<p>对os这样的大型模块, 内置的open()和help()函数非常有用:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">os</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="n">os</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">returns</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">module</span> <span class="n">functions</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">help</span><span class="p">(</span><span class="n">os</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">returns</span> <span class="n">an</span> <span class="n">extensive</span> <span class="n">manual</span> <span class="n">page</span> <span class="n">created</span> <span class="kn">from</span> <span class="nn">the</span> <span class="nn">module</span><span class="s1">&#39;s docstrings&gt;</span>
+</pre></div>
+
+
+<p>针对日常的文件和目录管理任务，shutil模块提供了易于使用的高级接口:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">shutil</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="s1">&#39;data.db&#39;</span><span class="p">,</span> <span class="s1">&#39;archive.db&#39;</span><span class="p">)</span>
+<span class="s1">&#39;archive.db&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s1">&#39;/build/executables&#39;</span><span class="p">,</span> <span class="s1">&#39;installdir&#39;</span><span class="p">)</span>
+<span class="s1">&#39;installdir&#39;</span>
+</pre></div>
+
+
+<ul>
+<li>参考资料</li>
+</ul>
+<p><a href="https://china-testing.github.io/python3_lib_os.path.html">[雪峰磁针石博客]python库介绍-os.path: 平台独立的文件名操作</a></p>
+<p><a href="https://china-testing.github.io/python3_lib_pathlib.html">[雪峰磁针石博客]python库介绍-pathlib: 文件系统对象</a></p>
+<h3 id="_2">文件通配符</h3>
+<p>glob模块提供了函数用于从目录通配符搜索生成文件列表:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">glob</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;primes.py&#39;</span><span class="p">,</span> <span class="s1">&#39;random.py&#39;</span><span class="p">,</span> <span class="s1">&#39;quote.py&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<h3 id="_3">命令行参数</h3>
+<p>命令行参数以列表形式存储于sys.argv 变量。例如在命令行中执行 python demo.py one two three 后可以得到以下输出结果:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;demo.py&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>getopt(不推荐使用)模块使用Unix getopt()函数处理 sys.argv。更多的复杂命令行处理参见argparse。</p>
+<p><a href="https://china-testing.github.io/python3_lib_argparse.html">[雪峰磁针石博客]python库介绍-argparse: 命令行选项及参数解析</a></p>
+<h3 id="_4">错误输出重定向和程序终止</h3>
+<p>sys的stdin、stdout和 stderr属性，即使stdout重定向，stderr也可显示警告和错误信息:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Warning, log file not found starting a new one</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="ne">Warning</span><span class="p">,</span> <span class="n">log</span> <span class="nb">file</span> <span class="ow">not</span> <span class="n">found</span> <span class="n">starting</span> <span class="n">a</span> <span class="n">new</span> <span class="n">one</span>
+</pre></div>
+
+
+<p>直接终止多使用 sys.exit()。</p>
+<h3 id="_5">字符串模式匹配</h3>
+<p>re模块为高级字符串处理提供了正则表达式工具。对于复杂的匹配和处理，正则表达式提供了简洁、最优的解决方案:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">re</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\bf[a-z]*&#39;</span><span class="p">,</span> <span class="s1">&#39;which foot or hand fell fastest&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;foot&#39;</span><span class="p">,</span> <span class="s1">&#39;fell&#39;</span><span class="p">,</span> <span class="s1">&#39;fastest&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\b[a-z]+) \1&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1&#39;</span><span class="p">,</span> <span class="s1">&#39;cat in the the hat&#39;</span><span class="p">)</span>
+<span class="s1">&#39;cat in the hat&#39;</span>
+</pre></div>
+
+
+<p>简单操作，字符串方法最好用，因为它们易读又容易调试:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;tea for too&#39;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;too&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">)</span>
+<span class="s1">&#39;tea for two&#39;</span>
+</pre></div>
+
+
+<h3 id="_6">数学</h3>
+<p>math模块为浮点运算提供了底层C函数库的访问:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">math</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span>
+<span class="mf">0.70710678118654757</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mf">10.0</span>
+</pre></div>
+
+
+<p>random提供了生成随机数的工具:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">random</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;pear&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">])</span>
+<span class="s1">&#39;apple&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>   <span class="c1"># sampling without replacement</span>
+<span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">33</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>    <span class="c1"># random float</span>
+<span class="mf">0.17970987693706186</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>    <span class="c1"># random integer chosen from range(6)</span>
+<span class="mi">4</span>
+</pre></div>
+
+
+<p>statistics模块计算数字数据的基本统计属性(平均值，中位数，方差等)：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">statistics</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.75</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="mf">1.6071428571428572</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">statistics</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="mf">1.25</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">statistics</span><span class="o">.</span><span class="n">variance</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="mf">1.3720238095238095</span>
+</pre></div>
+
+
+<p>[SciPy项目]https://scipy.org/about.html)有许多其他数值计算模块。其中的numpy的数值计算和随机数功能都很强悍。pandas则是数据分析的利器。<a href="http://scikit-learn.org/">scikit-learn</a>则有强大的统计功能。</p>
+<ul>
+<li>参考资料：</li>
+</ul>
+<p><a href="https://china-testing.github.io/python_scikit-learn_cookbook1.html">[雪峰磁针石博客]scikit-learn_cookbook1: 高性能机器学习-NumPy</a></p>
+<h3 id="_7">互联网访问</h3>
+<p>有几个模块用于访问互联网以及处理网络通信协议。其中最简单的：urllib.request从URL获取信息；发送电子邮件的smtplib。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;http://tycho.usno.navy.mil/cgi-bin/timer.pl&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+<span class="o">...</span>         <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>  <span class="c1"># Decoding the binary data to text.</span>
+<span class="o">...</span>         <span class="k">if</span> <span class="s1">&#39;EST&#39;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">or</span> <span class="s1">&#39;EDT&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>  <span class="c1"># look for Eastern Time</span>
+<span class="o">...</span>             <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="o">&lt;</span><span class="n">BR</span><span class="o">&gt;</span><span class="n">Nov</span><span class="o">.</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">09</span><span class="p">:</span><span class="mi">43</span><span class="p">:</span><span class="mi">32</span> <span class="n">PM</span> <span class="n">EST</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">smtplib</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">server</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="s1">&#39;soothsayer@example.org&#39;</span><span class="p">,</span> <span class="s1">&#39;jcaesar@example.org&#39;</span><span class="p">,</span>
+<span class="o">...</span> <span class="s2">&quot;&quot;&quot;To: jcaesar@example.org</span>
+<span class="s2">... From: soothsayer@example.org</span>
+<span class="s2">...</span>
+<span class="s2">... Beware the Ides of March.</span>
+<span class="s2">... &quot;&quot;&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">server</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+
+
+<p>(注意第二个例子需要在localhost运行邮件服务器。)</p>
+<h3 id="_8">日期和时间</h3>
+<p>datetime 模块为日期和时间处理同时提供了简单和复杂的方法。支持日期和时间算法的同时，实现的重点放在更有效的处理和格式化输出。该模块还支持时区处理。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># dates are easily constructed and formatted</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">now</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">now</span>
+<span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2003</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m-</span><span class="si">%d</span><span class="s2">-%y. </span><span class="si">%d</span><span class="s2"> %b %Y is a %A on the </span><span class="si">%d</span><span class="s2"> day of %B.&quot;</span><span class="p">)</span>
+<span class="s1">&#39;12-02-03. 02 Dec 2003 is a Tuesday on the 02 day of December.&#39;</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># dates support calendar arithmetic</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">birthday</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">1964</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">age</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">birthday</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">age</span><span class="o">.</span><span class="n">days</span>
+<span class="mi">14368</span>
+</pre></div>
+
+
+<h3 id="_9">数据压缩</h3>
+<p>以下模块直接支持通用的数据打包和压缩格式：zlib， gzip， bz2， lzma， zipfile 以及 tarfile。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">zlib</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;witch which has which witches wrist watch&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="mi">41</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="n">zlib</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="mi">37</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">zlib</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="sa">b</span><span class="s1">&#39;witch which has which witches wrist watch&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">zlib</span><span class="o">.</span><span class="n">crc32</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="mi">226805979</span>
+</pre></div>
+
+
+<h3 id="_10">性能度量</h3>
+<p>例如元组封装和解包来交换元素比使用传统的方法更快。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Timer</span><span class="p">(</span><span class="s1">&#39;t=a; a=b; b=t&#39;</span><span class="p">,</span> <span class="s1">&#39;a=1; b=2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<span class="mf">0.57535828626024577</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Timer</span><span class="p">(</span><span class="s1">&#39;a,b = b,a&#39;</span><span class="p">,</span> <span class="s1">&#39;a=1; b=2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<span class="mf">0.54962537085770791</span>
+</pre></div>
+
+
+<p>profile和、pstats提供了针对更大代码块的时间度量工具。</p>
+<h3 id="_11">质量控制</h3>
+<p>一种开发高质量软件的方法是为每个函数开发测试代码，并且在开发过程中经常进行测试。</p>
+<p>doctest根据程序中内嵌的文档字符串执行测试。测试构造如同简单的将它的输出结果剪切并粘贴到文档字符串中，通过式通过实例改善了文档:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Computes the arithmetic mean of a list of numbers.</span>
+
+<span class="sd">    &gt;&gt;&gt; print(average([20, 30, 70]))</span>
+<span class="sd">    40.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">doctest</span>
+<span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>   <span class="c1"># automatically validate the embedded tests</span>
+</pre></div>
+
+
+<p>unittest模块不像doctest那么容易使用，不过它可以在文件里提供更全面的测试集:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="k">class</span> <span class="nc">TestStatisticalFunctions</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">test_average</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">average</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">]),</span> <span class="mf">40.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">average</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]),</span> <span class="mi">1</span><span class="p">),</span> <span class="mf">4.3</span><span class="p">)</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ZeroDivisionError</span><span class="p">):</span>
+            <span class="n">average</span><span class="p">([])</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
+            <span class="n">average</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+
+<span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>  <span class="c1"># Calling from the command line invokes all tests</span>
+</pre></div>
+
+
+<p>外部库pytest提供了极其强悍的测试功能，很多测试平台就是基于pytest构建的。nose也是一个不错的选择。</p>
+<ul>
+<li>参考资料</li>
+</ul>
+<p><a href="https://github.com/china-testing/python-api-tesing#%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6">[雪峰磁针石博客]python外部测试框架</a>
+<a href="https://china-testing.github.io/python_pytest_testing1.html">[雪峰磁针石博客]自动化测试框架pytest教程</a></p>
+<h3 id="_12">更多库简介</h3>
+<ul>
+<li>
+<p>xmlrpc.client和xmlrpc.server模块让远程过程调用变得轻而易举。用户无需处理XML。</p>
+</li>
+<li>
+<p>email 包是管理邮件信息的库，包括MIME和其它基于RFC2822的信息文档。不同于实际发送和接收信息的 smtplib 和 poplib 模块，email包含构造或解析复杂消息结构（包括附件）及实现互联网编码和头协议的完整工具集。</p>
+</li>
+<li>
+<p>json包为解析json这种流行的数据交换格式提供了强大的支持。 csv模块支持直接读写逗号分隔值格式文件。 XML处理由xml.etree.ElementTree，xml.dom和xml.sax包支持。</p>
+</li>
+<li>
+<p>sqlite3模块提供了一个持久数据库，可以使用与标准的SQL略有差异的语法来更新和访问。</p>
+</li>
+<li>
+<p>国际化由 gettext， locale 和 codecs 包支持。</p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/python3_lib_collections.html">[雪峰磁针石博客]python库介绍-collections：高性能容器数据类型</a>, 提供有序字典、命名元组和双端队列等数据类型。</p>
+</li>
+</ul>
+<h2 id="_13">参考资料</h2>
+<ul>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 钉钉免费群：21745728</li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/python3_crash_ch11.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

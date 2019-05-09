@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>计算机视觉opcencv工具深度学习快速实战1人脸识别</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/opencv_crash_deep_learning1.html" rel="bookmark"
+           title="Permalink to 计算机视觉opcencv工具深度学习快速实战1人脸识别">计算机视觉opcencv工具深度学习快速实战1人脸识别</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-16T19:20:00+08:00">
+                Published: 五 16 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <p>使用OpenCV提供的预先训练的深度学习面部检测器模型，可快速，准确的进行人脸识别。</p>
+<p>2017年8月OpenCV 3.3正式发布，带来了高改进的“深度神经网络”(dnn deep neural networks)模块。该模块支持许多深度学习框架，包括Caffe，TensorFlow和Torch / PyTorch。</p>
+<p>基于Caffe的面部检测器在<a href="https://github.com/opencv/opencv/tree/master/samples/dnn/face_detector">这里</a>。</p>
+<p>需要两组文件：</p>
+<ul>
+<li>定义模型体系结构的.prototxt文件</li>
+<li>.caffemodel文件，包含实际图层的权重</li>
+</ul>
+<p>权重文件不包含在OpenCV示例目录。</p>
+<h3 id="opencv">OpenCV深度学习面部检测器如何工作？</h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-45fc78489ba83643.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<div class="highlight"><pre><span></span><span class="c1"># 模型下载：https://itbooks.pipipan.com/fs/18113597-320346529</span>
+<span class="c1"># 代码存放：https://github.com/china-testing/python-api-tesing/tree/master/opencv_crash_deep_learning</span>
+<span class="c1"># 技术支持qq群144081101(代码和模型存放）</span>
+<span class="c1"># USAGE</span>
+<span class="c1"># python detect_faces.py --image rooster.jpg --prototxt deploy.prototxt.txt --model res10_300x300_ssd_iter_140000.caffemodel</span>
+
+<span class="c1"># import the necessary packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="c1"># construct the argument parse and parse the arguments</span>
+<span class="n">ap</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+<span class="n">ap</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">,</span> <span class="s2">&quot;--image&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;path to input image&quot;</span><span class="p">)</span>
+<span class="n">ap</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-p&quot;</span><span class="p">,</span> <span class="s2">&quot;--prototxt&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;path to Caffe &#39;deploy&#39; prototxt file&quot;</span><span class="p">)</span>
+<span class="n">ap</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-m&quot;</span><span class="p">,</span> <span class="s2">&quot;--model&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;path to Caffe pre-trained model&quot;</span><span class="p">)</span>
+<span class="n">ap</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="s2">&quot;--confidence&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;minimum probability to filter weak detections&quot;</span><span class="p">)</span>
+<span class="n">args</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">(</span><span class="n">ap</span><span class="o">.</span><span class="n">parse_args</span><span class="p">())</span>
+
+<span class="c1"># load our serialized model from disk</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;[INFO] loading model...&quot;</span><span class="p">)</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">dnn</span><span class="o">.</span><span class="n">readNetFromCaffe</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;prototxt&quot;</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">])</span>
+
+<span class="c1"># load the input image and construct an input blob for the image</span>
+<span class="c1"># by resizing to a fixed 300x300 pixels and then normalizing it</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">])</span>
+<span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">blob</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">dnn</span><span class="o">.</span><span class="n">blobFromImage</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)),</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="p">(</span><span class="mf">104.0</span><span class="p">,</span> <span class="mf">177.0</span><span class="p">,</span> <span class="mf">123.0</span><span class="p">))</span>
+
+<span class="c1"># pass the blob through the network and obtain the detections and</span>
+<span class="c1"># predictions</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;[INFO] computing object detections...&quot;</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">setInput</span><span class="p">(</span><span class="n">blob</span><span class="p">)</span>
+<span class="n">detections</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">forward</span><span class="p">()</span>
+
+<span class="c1"># loop over the detections</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">detections</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
+    <span class="c1"># extract the confidence (i.e., probability) associated with the</span>
+    <span class="c1"># prediction</span>
+    <span class="n">confidence</span> <span class="o">=</span> <span class="n">detections</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+    <span class="c1"># filter out weak detections by ensuring the `confidence` is</span>
+    <span class="c1"># greater than the minimum confidence</span>
+    <span class="k">if</span> <span class="n">confidence</span> <span class="o">&gt;</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;confidence&quot;</span><span class="p">]:</span>
+        <span class="c1"># compute the (x, y)-coordinates of the bounding box for the</span>
+        <span class="c1"># object</span>
+        <span class="n">box</span> <span class="o">=</span> <span class="n">detections</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">])</span>
+        <span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">startY</span><span class="p">,</span> <span class="n">endX</span><span class="p">,</span> <span class="n">endY</span><span class="p">)</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">)</span>
+
+        <span class="c1"># draw the bounding box of the face along with the associated</span>
+        <span class="c1"># probability</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;{:.2f}%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">confidence</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">startY</span> <span class="o">-</span> <span class="mi">10</span> <span class="k">if</span> <span class="n">startY</span> <span class="o">-</span> <span class="mi">10</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="k">else</span> <span class="n">startY</span> <span class="o">+</span> <span class="mi">10</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">startY</span><span class="p">),</span> <span class="p">(</span><span class="n">endX</span><span class="p">,</span> <span class="n">endY</span><span class="p">),</span>
+            <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>
+            <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># show the output image</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Output&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python</span> <span class="n">detect_faces</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">image</span> <span class="n">rooster</span><span class="o">.</span><span class="n">jpg</span> <span class="o">--</span><span class="n">prototxt</span> <span class="n">deploy</span><span class="o">.</span><span class="n">prototxt</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">model</span> <span class="n">res10_300x300_ssd_iter_140000</span><span class="o">.</span><span class="n">caffemodel</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-03721bf05e5855e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>上面的面部有74.30％的置信度。 尽管OpenCV的Haar级联因缺少“直接”角度的面孔，但通过使用OpenCV的深度学习面部探测器，依然能够测到脸部。</p>
+<p>再来看三个面孔的示例：</p>
+<div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">detect_faces</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">image</span> <span class="n">iron_chic</span><span class="o">.</span><span class="n">jpg</span> <span class="o">--</span><span class="n">prototxt</span> <span class="n">deploy</span><span class="o">.</span><span class="n">prototxt</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">model</span> <span class="n">res10_300x300_ssd_iter_140000</span><span class="o">.</span><span class="n">caffemodel</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-c5a2ced01772c945.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_1">视频，视频流和网络摄像头应用人脸检测</h3>
+<div class="highlight"><pre><span></span><span class="c1"># USAGE</span>
+<span class="c1"># python detect_faces_video.py --prototxt deploy.prototxt.txt --model res10_300x300_ssd_iter_140000.caffemodel</span>
+
+<span class="c1"># import the necessary packages</span>
+<span class="kn">from</span> <span class="nn">imutils.video</span> <span class="kn">import</span> <span class="n">VideoStream</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">imutils</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="c1"># construct the argument parse and parse the arguments</span>
+<span class="n">ap</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+<span class="n">ap</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-p&quot;</span><span class="p">,</span> <span class="s2">&quot;--prototxt&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;path to Caffe &#39;deploy&#39; prototxt file&quot;</span><span class="p">)</span>
+<span class="n">ap</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-m&quot;</span><span class="p">,</span> <span class="s2">&quot;--model&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;path to Caffe pre-trained model&quot;</span><span class="p">)</span>
+<span class="n">ap</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="s2">&quot;--confidence&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;minimum probability to filter weak detections&quot;</span><span class="p">)</span>
+<span class="n">args</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">(</span><span class="n">ap</span><span class="o">.</span><span class="n">parse_args</span><span class="p">())</span>
+
+<span class="c1"># load our serialized model from disk</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;[INFO] loading model...&quot;</span><span class="p">)</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">dnn</span><span class="o">.</span><span class="n">readNetFromCaffe</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;prototxt&quot;</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">])</span>
+
+<span class="c1"># initialize the video stream and allow the cammera sensor to warmup</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;[INFO] starting video stream...&quot;</span><span class="p">)</span>
+<span class="n">vs</span> <span class="o">=</span> <span class="n">VideoStream</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+
+<span class="c1"># loop over the frames from the video stream</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="c1"># grab the frame from the threaded video stream and resize it</span>
+    <span class="c1"># to have a maximum width of 400 pixels</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">vs</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">imutils</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+
+    <span class="c1"># grab the frame dimensions and convert it to a blob</span>
+    <span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">blob</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">dnn</span><span class="o">.</span><span class="n">blobFromImage</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)),</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="p">(</span><span class="mf">104.0</span><span class="p">,</span> <span class="mf">177.0</span><span class="p">,</span> <span class="mf">123.0</span><span class="p">))</span>
+
+    <span class="c1"># pass the blob through the network and obtain the detections and</span>
+    <span class="c1"># predictions</span>
+    <span class="n">net</span><span class="o">.</span><span class="n">setInput</span><span class="p">(</span><span class="n">blob</span><span class="p">)</span>
+    <span class="n">detections</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">forward</span><span class="p">()</span>
+
+    <span class="c1"># loop over the detections</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">detections</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
+        <span class="c1"># extract the confidence (i.e., probability) associated with the</span>
+        <span class="c1"># prediction</span>
+        <span class="n">confidence</span> <span class="o">=</span> <span class="n">detections</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+        <span class="c1"># filter out weak detections by ensuring the `confidence` is</span>
+        <span class="c1"># greater than the minimum confidence</span>
+        <span class="k">if</span> <span class="n">confidence</span> <span class="o">&lt;</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;confidence&quot;</span><span class="p">]:</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># compute the (x, y)-coordinates of the bounding box for the</span>
+        <span class="c1"># object</span>
+        <span class="n">box</span> <span class="o">=</span> <span class="n">detections</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">])</span>
+        <span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">startY</span><span class="p">,</span> <span class="n">endX</span><span class="p">,</span> <span class="n">endY</span><span class="p">)</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">)</span>
+
+        <span class="c1"># draw the bounding box of the face along with the associated</span>
+        <span class="c1"># probability</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;{:.2f}%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">confidence</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">startY</span> <span class="o">-</span> <span class="mi">10</span> <span class="k">if</span> <span class="n">startY</span> <span class="o">-</span> <span class="mi">10</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="k">else</span> <span class="n">startY</span> <span class="o">+</span> <span class="mi">10</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">startY</span><span class="p">),</span> <span class="p">(</span><span class="n">endX</span><span class="p">,</span> <span class="n">endY</span><span class="p">),</span>
+            <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>
+            <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># show the output frame</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Frame&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span>
+
+    <span class="c1"># if the `q` key was pressed, break from the loop</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">):</span>
+        <span class="k">break</span>
+
+<span class="c1"># do a bit of cleanup</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+<span class="n">vs</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+
+
+<p>执行：</p>
+<div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">detect_faces_video</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">prototxt</span> <span class="n">deploy</span><span class="o">.</span><span class="n">prototxt</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">model</span> <span class="n">res10_300x300_ssd_iter_140000</span><span class="o">.</span><span class="n">caffemodel</span>
+</pre></div>
+
+
+<p><img alt="deep_learning_face_detection_opencv.gif" src="https://upload-images.jianshu.io/upload_images/12713060-1ff050f64fc2b9c5.gif?imageMogr2/auto-orient/strip"></p>
+<h3 id="_2">参考资料</h3>
+<ul>
+<li>技术支持qq群144081101(代码和模型存放）</li>
+<li><a href="https://china-testing.github.io/opencv_crash_deep_learning1.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>   </li>
+<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
+<li>模型下载：https://itbooks.pipipan.com/fs/18113597-320346529</li>
+</ul>
+<h3 id="python">其他python人脸识别库介绍</h3>
+<p><a href="https://china-testing.github.io/python3_lib_face_recognition.html" title="Permalink to python库介绍-face_recognition 人脸识别">python库介绍-face_recognition 人脸识别</a></p>
+<p>可以命令识别人脸框。 </p>
+<div class="highlight"><pre><span></span>$ face_detection --model cnn iron_chic.jpg 
+iron_chic.jpg,79,422,243,258
+iron_chic.jpg,146,272,310,108
+iron_chic.jpg,194,144,330,7
+</pre></div>
+
+
+<h2 id="_3">参考资料</h2>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 </li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 请在github上点赞，谢谢！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li><a href="https://github.com/ageitgey/face_recognition">face_recognition</a></li>
+<li><a href="https://china-testing.github.io/opencv_books.html">2018最佳人工智能图像处理工具OpenCV书籍下载</a> </li>
+<li><a href="https://china-testing.github.io/ai_books.html">2018最佳人工智能机器学习工具书籍及下载(持续更新)</a> </li>
+<li><a href="https://china-testing.github.io/opencv_crash_deep_learning1.html">本文最新版本地址</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>[雪峰磁针石博客]软件测试专家工具包2性能测试</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li class="active"><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/testing_tools_perf.html" rel="bookmark"
+           title="Permalink to [雪峰磁针石博客]软件测试专家工具包2性能测试">[雪峰磁针石博客]软件测试专家工具包2性能测试</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-20T16:35:00+08:00">
+                Published: 一 20 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info -->      <h3 id="locust">Locust(推荐)</h3>
+<p>了解服务器端性能的好工具。 语言python3。<a href="https://github.com/locustio/locust">源码</a> python3+ python2.7+ github上star和fork最多的性能测试工具。</p>
+<p>Locust是易于使用、分布式的用户负载测试工具。用于网站(或其他系统)的负载测试，计算出系统可以处理并发用户数。</p>
+<p>测试时大量蝗虫会攻击你的网站。每只蝗虫(或叫测试用户)可以自定义、测试过程由web界面实时监控。这能帮助测试并确定瓶颈。</p>
+<p>Locust 完全基于的事件，单机可以支持数千用户。它不使用回调，而是基于轻量进程gevent, 能简单地实线各种场景。</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-acaee51940c65dca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="multi-mechanize">Multi-Mechanize(推荐)</h3>
+<p>Multi-Mechanize 是一个开源的性能和负载测试框架，它并发运行多个 Python 脚本对网站或者服务生成负载（组合事务)。测试输出报告保存为HTML或JMeter的兼容的XML。Multi-Mechanize最常用于web性能 和可扩展性（scalability）测试，也适用于任何python可以访问的API。尤其适合后台性能测试。稍微懂点编程的话，这个工具会远强过商业 的性能测试工具。</p>
+<p>主要特性：</p>
+<ul>
+<li>
+<p>支持各种 HTTP methods</p>
+</li>
+<li>
+<p>高级超链接和HTML表单支持</p>
+</li>
+<li>
+<p>支持 SSL</p>
+</li>
+<li>
+<p>自动处理 Cookies</p>
+</li>
+<li>
+<p>可设置HTTP头</p>
+</li>
+<li>
+<p>自动处理重定向</p>
+</li>
+<li>
+<p>支持代理</p>
+</li>
+<li>
+<p>支持 HTTP 认证</p>
+</li>
+</ul>
+<p><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-d4df210201d1fc59?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>--基于python多进程和多线程实现，学习自行开发性能测试的佳品。 Python 2.6 or 2.7 较长时间没有更新，一般只建议改造使用。</p>
+<p><img alt="image" src="https://upload-images.jianshu.io/upload_images/12713060-2ad4113d61eb2f47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="ngrinder">nGrinder(推荐)</h3>
+<p>nGrinder是基于Grinder开源项目，由NHN公司的开发团队进行了重新设计和完善。nGrinder是一款非常易用，有简洁友好的用户界面和controller-agent分布式结构的强大的压力测试工具。
+nGrinder测试基于python测试脚本(groovy也可)，用户按照一定规范编写测试脚本，controller会将脚本一集需要的资源分发到agent，用jython执行。并且在执行的过程中收集运行情况、相应时间、测试目标服务器的运行情况等。并且保存这些数据生成测试报告，以供查看。
+这款框架的一大特点就是非常的简单易用，安装也很容易，可以说是开箱即用。</p>
+<p>源码地址：https://naver.github.io/ngrinder/
+<a href="https://bitbucket.org/xurongzhong/testing/wiki/%5B%E9%9B%AA%E5%B3%B0%E7%A3%81%E9%92%88%E7%9F%B3%E5%8D%9A%E5%AE%A2%5D%20%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7nGrinder%E4%BB%8B%E7%BB%8D">性能测试工具nGrinder介绍</a></p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-a14e2d087c6dc7d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="grinder">grinder</h3>
+<p>分布式结构的强大的压力测试工具 http://grinder.sourceforge.net/</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-b69fd9d6d05c329f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="gtmetrix">GTmetrix</h3>
+<p>https://gtmetrix.com/ 基于Google的Pagespeed和Yslow，还可以监控网站。</p>
+<ul>
+<li>收集关键性能指标如页面加载时间，总页面大小和请求的总数。</li>
+<li>在真实Android设备上分析页面。</li>
+<li>从世界各地测试你的页面。</li>
+</ul>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-323024f2cbd20e3a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-db41c7fb9b18368b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="loadwise">LoadWise</h3>
+<p>LoadWise是一个简单的性能负载测试工具，使用Firefox浏览器脚本记录器。 也可用于功能测试，免费版本只支持三个用户。</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-0e8d4db96b3455f9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-eeea3d7182f16c36.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="badboy">Badboy</h3>
+<p>Badboy是功能强大的开源工具，专门用于复杂的Web应用的自动化测试和负载测试。支持录制/回放界面、性能测试、报告等功能，很多地方和JMeter类似，在处理AJAX方面更好。</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-ec528527d1cb9a04.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="webperformance">Webperformance</h3>
+<p>Webperformance是商业负载测试工具，无需安装应用程序和配置服务器。测试启动可以创建基于URL和录制。 </p>
+<p>主页：http://www.webperformance.com/</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-c76ed6e32b42ab98.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-38052cf0a63df501.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="webpagetest">webPagetest</h3>
+<p>WebPagetest是用于测量和分析网页性能的开源工具。提交URL后它产生的页面级指标问题的报告，包括加载时间，所有加载时间，第一个字节的时间，开始渲染时间，速度指标，DOM元素和返回码。</p>
+<p>主页：http://www.webpagetest.org/</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-6c6315e41f766cf4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>百度也提供了类似功能，参见：http://developer.baidu.com/apm/</p>
+<h3 id="loaderio">Loader.io</h3>
+<p>Loader.io是免费的负载测试服务，可以对你的webapps和API进行上千并发连接的压力测试。上传token文件验证网站之后即可实时或定时测试。</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-07c5a1dce2926828.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>主页：https://loader.io/</p>
+<h3 id="sourcemonitor">SourceMonitor</h3>
+<p>免费程序SourceMonitor可查看软件源代码大小及相对模块复杂度。</p>
+<ul>
+<li>分析速度：一万行/秒</li>
+<li>支持C++, C, C#, VB.NET, Java, Delphi, Visual Basic (VB6) or HTML</li>
+<li>在软件开发过程中保存检查点指标</li>
+<li>显示和打印度量表格和图表，包括Kiviat图。</li>
+</ul>
+<p>主页：http://www.campwoodsw.com/sourcemonitor.html</p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-b711676a3a8d1349.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="流行的软件测试工具介绍" src="http://upload-images.jianshu.io/upload_images/12713060-d9e0437f46619d23.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>性能测试参考资料：</p>
+<p>https://blazemeter.com/blog/open-source-load-testing-tools-which-one-should-you-use</p>
+<h3 id="bees-with-machine-guns"><a href="https://github.com/newsapps/beeswithmachineguns">Bees with Machine Guns</a></h3>
+<p>进行负载测试的蜜蜂(微型EC2实例)。 语言python3+ python2.6+</p>
+<h3 id="siege"><a href="http://www.joedog.org/siege-home/">Siege</a></h3>
+<p>http负载测试和基准测试工具。 Siege支持基本身份验证，Cookie以及HTTP和HTTPS协议，并允许用户使用可配置数量模拟Web浏览器访问Web服务器。</p>
+<h3 id="apache-bench"><a href="https://httpd.apache.org/docs/2.4/programs/ab.html">Apache Bench</a></h3>
+<p>ApacheBench 是一个用来衡量http服务器性能的单线程命令行工具。原本针对Apache http服务器，但是也适用于其他http服务器。</p>
+<h3 id="httperf"><a href="https://github.com/httperf/httperf">Httperf</a></h3>
+<p>测量Web服务器性能，并为生成各种HTTP工作负载和测量服务器性能提供灵活的工具。重点不是实施特定的基准，而是提供强大的高性能工具，有助于构建微观和宏观基准。 httperf的三个显着特征是强大，包括产生和维持服务器过载的能力;支持HTTP / 1.1和SSL协议;及其对新工作负载生成器和性能测量的可扩展性。</p>
+<h3 id="jmeter"><a href="https://jmeter.apache.org/">JMeter</a>  (推荐)</h3>
+<p>测试静态和动态资源（文件，servlet，Perl脚本，Java对象，数据库和查询，FTP服务器等）的性能。您还可以使用它来模拟服务器，网络或对象上的重负载，以测试其强度或分析不同负载类型下的整体性能。还可对性能进行图形分析，或者在繁重的并发负载下测试服务器/脚本/对象的行为。</p>
+<h3 id="google-pagespeed-insights"><a href="https://developers.google.com/speed/pagespeed/insights/">Google PageSpeed Insights</a></h3>
+<p>分析网页内容并生成建议以加快网页加载速度的服务。</p>
+<h3 id="sitespeedio"><a href="https://www.sitespeed.io/">Sitespeed.io</a></h3>
+<p>根据性能最佳实践和时序指标分析您网站的速度和性能。您可以分析一个站点，分析和比较多个站点，或者在性能不合格时让持续集成服务器停止构建。</p>
+<h3 id="google-ngx_pagespeed"><a href="https://developers.google.com/speed/pagespeed/ngx">Google ngx_pagespeed</a></h3>
+<p>可加快您的网站速度并缩短网页加载时间。此开源Apache服务器模块自动将Web性能最佳实践应用于页面和关联资源CSS，JavaScript，图像。</p>
+<h3 id="google-mod_pagespeed"><a href="https://developers.google.com/speed/pagespeed/mod">Google mod_pagespeed</a></h3>
+<p>可加快您的网站速度并缩短网页加载时间。此开源nginx服务器模块自动将Web性能最佳实践应用于页面和关联资源CSS，JavaScript，图像。</p>
+<h2 id="_1">参考资料</h2>
+<ul>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关书籍下载</a></li>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_tools_perf.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

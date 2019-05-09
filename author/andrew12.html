@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python自动化测试人工智能 - andrew</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash_ch8.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程8错误和异常">[雪峰磁针石博客]python3快速入门教程8错误和异常</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T13:40:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Python 中(至少)有两种错误：语法错误(syntax errors)和异常(exceptions)。</p>
+<h2 id="_1">语法错误</h2>
+<p>语法错误又称作解析错误:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="bp">True</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="bp">True</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
+                           <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+</pre></div>
+
+
+<p>语法分析器指出错误行，并且在检测到错误的位置前面显示^。 </p>
+<h2 id="_2">异常</h2>
+<p>即使语句或表达式在语法上是正确的，执行时也可能会引发错误。运行期检测到的错误称为异常</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">division …</span></pre></div>
+                <a class="readmore" href="/python3_crash_ch8.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash9.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程3文本处理1正则表达式">[雪峰磁针石博客]python3快速入门教程3文本处理1正则表达式</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:45:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">简介</h2>
+<p>-- 后面有很多习题，可以先做题目再来看文章</p>
+<p>参考资料：https://docs.python.org/3/howto/index.html</p>
+<p>正则表达式(Regular expressions  REs或regexes或regex patterns）本质是小的且高度专业化的编程语言。它嵌入到 Python 中，调用使用re模块。需要指定一些规则来描述那些你希望匹配的字符串集合。这些字符串集合可能包含英语句子、e-mail地址、TeX 命令，或任何你想要的东东。然后可以提出问题，例如“字符串是否匹配该模式？”或“模式是否匹配字符串？”。 您还可以使用RE修改字符串或以各种方式拆分它。</p>
+<p>正则表达式模式被编译成字节码，然后由 C 语言写的匹配引擎执行。对于高级的使用，你可能需要关注匹配引擎是如何执行给定RE，并通过一定的方式来编写RE，以便产生运行得更快的字节码。</p>
+<p>正则表达式语言小而严格，不是所有的字符处理都可以使用正则表达式。还有一些任务，可以使用正则表达式来完成，但是表达式非常复杂。在这种情况下编写 Python 代码来处理会更好些 …</p>
+                <a class="readmore" href="/python3_crash9.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash8.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构4其他数据结构">[雪峰磁针石博客]python3快速入门教程2数据结构4其他数据结构</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:40:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">数据结构</h2>
+<h4 id="_2">函数式编程工具</h4>
+<p>对于列表来讲，有三个内置函数非常有用: filter(), map(), 以及reduce()。  </p>
+<p>filter(function, sequence)返回function(item)为true的子序列。会尽量返回和sequence相同的类型）。sequence是string或者tuple时返回相同类型，其他情况返回list 。实例：返回能被3或者5整除的序列:  </p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">25</span><span class="p">)))</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+</pre></div>
+
+
+<p>map(function, sequence) 为每个元素调用 …</p>
+                <a class="readmore" href="/python3_crash8.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash_ch7.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程7输入和输出">[雪峰磁针石博客]python3快速入门教程7输入和输出</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:40:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>python有多种输出方式：屏幕打印数据，或者写入文件。</p>
+<h2 id="_1">格式化输出</h2>
+<p>我们有两种大相径庭地输出值方法：表达式语句* 和 <a href="https://docs.python.org/3/library/functions.html#print">print()</a> 函数(第三种方法使用文件对象的write()方法，标准文件输出可以参考sys.stdout)。</p>
+<p>通常需要对输出做更多的格式控制，而不是简单的打印空格分隔值。有两种方法可以格式化你的输出：第一种方法是由你自己处理整个字符串，通过使用字符串切片和连接操作可以创建任何你想要的输出形式。string 类型包含一些将字符串填充到指定列宽度的有用操作。第二种方法是使用 <a href="https://docs.python.org/3/library/stdtypes.html#str.format">str.format()</a> 方法。</p>
+<p>标准模块 <a href="https://docs.python.org/3/library/string.html#module-string">string</a> 的<a href="https://docs.python.org/3/library/string.html#string.Template">Template</a> 类可以替换字符串的值。(<a href="https://china-testing.github.io/python3_lib_string.html">python标准模块介绍-string:文本常量和模板</a>)</p>
+<p>Python 有办法将任意值转为字符串： <a href="https://docs.python.org/3/library/functions.html#repr">repr()</a> 或 <a href="https://docs.python.org/3/library/stdtypes.html#str">str()</a> 函数。</p>
+<p>函数 <a href="https://docs.python.org/3/library/stdtypes.html#str">str()</a> 用于将值转化为适于人阅读的形式，而 <a href="https://docs.python.org/3/library/functions.html#repr">repr()</a> 转化为供解释器读取的形式（如果没有相关语法，则会发生 <a href="https://docs.python.org/3/library/exceptions.html#SyntaxError">SyntaxError</a> 异常，没有<a href="https://docs.python.org/3/library/stdtypes.html#str">str()</a> 会返回与 …</p>
+                <a class="readmore" href="/python3_crash_ch7.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash6.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构2字符串">[雪峰磁针石博客]python3快速入门教程2数据结构2字符串</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:35:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">快速入门</h2>
+<p>字符串可以包含在单引号或双引号中。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;spam eggs&#39;</span>  <span class="c1"># single quotes</span>
+<span class="s1">&#39;spam eggs&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;doesn</span><span class="se">\&#39;</span><span class="s1">t&#39;</span>  <span class="c1"># use \&#39; to escape the single quote...</span>
+<span class="s2">&quot;doesn&#39;t&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;doesn&#39;t&quot;</span>  <span class="c1"># ...or use double quotes instead</span>
+<span class="s2">&quot;doesn&#39;t&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;&quot;Yes,&quot; he said.&#39;</span>
+<span class="s1">&#39;&quot;Yes,&quot; he said.&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">Yes,</span><span class="se">\&quot;</span><span class="s2"> he said.&quot;</span>
+<span class="s1">&#39;&quot;Yes,&quot; he said.&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;&quot;Isn</span><span class="se">\&#39;</span><span class="s1">t,&quot; she said.&#39;</span>
+<span class="s1">&#39;&quot;Isn</span><span class="se">\&#39;</span><span class="s1">t,&quot; she said.&#39;</span>
+</pre></div>
+
+
+<p>解释器按照字符串被输入的方式显示字符串，通常包含在单引号中，如果内容包含包含单引号 …</p>
+                <a class="readmore" href="/python3_crash6.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash7.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构3列表">[雪峰磁针石博客]python3快速入门教程2数据结构3列表</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:35:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">快速入门</h2>
+<p>Python有一些复合数据类型，用于组合值。最常用的是 list(列表))，为中括号之间的逗号分隔的值。列表的元素可以是多种类型，但是通常是同一类型。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+</pre></div>
+
+
+<p>像字符串和其他序列类型，列表可支持切片和索引:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># indexing returns the item</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="mi">25</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>  <span class="c1"># slicing returns a new list</span>
+<span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+</pre></div>
+
+
+<p>切片返回新的列表，下面操作返回列表a的浅拷贝:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[:]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16 …</span></pre></div>
+                <a class="readmore" href="/python3_crash7.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash5.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程2数据结构1变量与赋值">[雪峰磁针石博客]python3快速入门教程2数据结构1变量与赋值</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:30:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">语法基础</h2>
+<p>解释器像简单的计算器：可以输入表达式，它会返回值。表达式语法很简单：运算符 + ， - ， * 和 / 与其它语言一样(例如Pascal或C)；括号用于分组。例如:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">50</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="mi">6</span>
+<span class="mi">20</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="mi">50</span> <span class="o">-</span> <span class="mf">5.0</span><span class="o">*</span><span class="mi">6</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>
+<span class="mf">5.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">8</span> <span class="o">/</span> <span class="mf">5.0</span>
+<span class="mf">1.6</span>
+</pre></div>
+
+
+<p>整数(例如2、4、20 )的类型是 int，带有小数部分的数字(例如5.0、1.6)的类型是 float。</p>
+<p>除法(/)永远返回浮点数。地板除使用 // 运算符；要计算余数你可以使用 %。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">17</span> <span class="o">/</span> <span class="mi">3 …</span></pre></div>
+                <a class="readmore" href="/python3_crash5.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash4.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程1 turtle绘图-4选择与随机数">[雪峰磁针石博客]python3快速入门教程1 turtle绘图-4选择与随机数</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:25:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">语法</h2>
+<h3 id="if">if语句</h3>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter an integer: &quot;</span><span class="p">))</span>
+<span class="n">Please</span> <span class="n">enter</span> <span class="n">an</span> <span class="n">integer</span><span class="p">:</span> <span class="mi">42</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="o">...</span>     <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Negative changed to zero&#39;</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Zero&#39;</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Single&#39;</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">else</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;More&#39;</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="n">More</span>
+</pre></div>
+
+
+<p>可能会有零到多个elif部分，else是可选的。关键字‘elif‘是‘else if’的缩写，可避免过深的缩进。 if ... elif ... elif序列用于替代其它语言中的switch或case语句 …</p>
+                <a class="readmore" href="/python3_crash4.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python3_crash3.html" rel="bookmark"
+                           title="Permalink to [雪峰磁针石博客]python3快速入门教程1 turtle绘图-3循环">[雪峰磁针石博客]python3快速入门教程1 turtle绘图-3循环</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-02T10:20:00+08:00">
+                Published: 日 02 九月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">语法基础</h2>
+<h3 id="for">for语句</h3>
+<p>Python的for语句针对序列(列表或字符串等)中的子项进行循环，按它们在序列中的顺序来进行迭代。  </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># Measure some strings:</span>
+<span class="o">...</span> <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;window&#39;</span><span class="p">,</span> <span class="s1">&#39;defenestrate&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+<span class="o">...</span>
+<span class="n">cat</span> <span class="mi">3</span>
+<span class="n">window</span> <span class="mi">6</span>
+<span class="n">defenestrate</span> <span class="mi">12</span>
+</pre></div>
+</td></tr></table>
+
+<p>在迭代过程中修改迭代序列不安全，可能导致部分元素重复两次，建议先拷贝:  </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">[:]:</span>  <span class="c1"># Loop over …</span></pre></div></td></tr></table>
+                <a class="readmore" href="/python3_crash3.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_pep8.html" rel="bookmark"
+                           title="Permalink to python代码风格指南(PEP8中文版)">python代码风格指南(PEP8中文版)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-21T14:50:00+08:00">
+                Published: 二 21 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>本文给出主Python版本标准库的编码约定。CPython的C代码风格参见<a href="https://www.python.org/dev/peps/pep-0007/">PEP7</a>。</p>
+<p>本文和<a href="https://www.python.org/dev/peps/pep-0257/">PEP 257 文档字符串标准</a>改编自Guido最初的《Python Style Guide》, 并增加了Barry的<a href="http://barry.warsaw.us/software/STYLEGUIDE.txt">GNU Mailman Coding Style Guide</a>的部分内容。</p>
+<p>本文会随着语言改变等而改变。</p>
+<p>许多项目都有自己的编码风格指南，冲突时自己的指南为准。</p>
+<h2 id="_1">一致性考虑</h2>
+<p>Guido的关键点之一是：代码更多是用来读而不是写。本指南旨在改善Python代码的可读性，即<a href="https://www.python.org/dev/peps/pep-0020/">PEP 20</a>所说的“可读性计数"(Readability counts)。</p>
+<p>风格指南强调一致性。项目、模块或函数保持一致都很重要。</p>
+<p>最重要的是知道何时不一致, 有时风格指南并不适用。当有疑惑时运用你的最佳判断，参考其他例子并多问！</p>
+<p>特别注意：不要因为遵守本PEP而破坏向后兼容性！</p>
+<p>部分可以违背指南情况：</p>
+<ul>
+<li>
+<p>遵循指南会降低可读性。</p>
+</li>
+<li>
+<p>与周围其他代码不一致。</p>
+</li>
+<li>
+<p>代码在引入指南完成，暂时没有理由修改。</p>
+</li>
+<li>
+<p>旧版本兼容。</p>
+</li>
+</ul>
+<h2 id="_2">代码布局</h2>
+<h4 id="_3">缩进</h4>
+<p>每级缩进用4个空格 …</p>
+                <a class="readmore" href="/python_pep8.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="/author/andrew11.html">&laquo;</a>
+    Page 12 / 21
+        <a href="/author/andrew13.html">&raquo;</a>
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

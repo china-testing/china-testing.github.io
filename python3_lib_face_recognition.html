@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python库介绍-face_recognition 人脸识别</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_lib_face_recognition.html" rel="bookmark"
+           title="Permalink to python库介绍-face_recognition 人脸识别">python库介绍-face_recognition 人脸识别</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-12T19:20:00+08:00">
+                Published: 一 12 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <h3 id="_1">简介</h3>
+<p>face_recognition使用世界上最简单的人脸识别工具，在Python或命令行中识别和操作人脸。</p>
+<p>使用dlib最先进的人脸识别技术构建而成，并具有深度学习功能。 该模型在<a href="http://vis-www.cs.umass.edu/lfw/">Labeled Faces in the Wild</a>基准中的准确率为99.38％。</p>
+<p>另外还提供了face_recognition命令行工具！</p>
+<h3 id="_2">快速入门</h3>
+<p>本节我们基于ubuntu16.04,python3，使用如下图片：</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-625527be2687bd65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li>快速入门</li>
+</ul>
+<p>face_recognition</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">face_recognition</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">load_image_file</span><span class="p">(</span><span class="s2">&quot;test0.jpg&quot;</span><span class="p">)</span>
+<span class="n">face_locations</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">face_locations</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;cnn&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">face_locations</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">quick</span><span class="o">.</span><span class="n">py</span> 
+<span class="p">[(</span><span class="mi">203</span><span class="p">,</span> <span class="mi">391</span><span class="p">,</span> <span class="mi">447</span><span class="p">,</span> <span class="mi">147</span><span class="p">)]</span>
+</pre></div>
+
+
+<p>model选择模型，默认为hog，该模式很多图片是无法识别的，为此一般用采用更精确但是速度更慢的cnn模型。</p>
+<ul>
+<li>显示图片：</li>
+</ul>
+<p>quick2.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">face_recognition</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">load_image_file</span><span class="p">(</span><span class="s2">&quot;test0.jpg&quot;</span><span class="p">)</span>
+<span class="n">face_locations</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">face_locations</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;cnn&quot;</span><span class="p">)</span>
+<span class="n">top</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">left</span> <span class="o">=</span> <span class="n">face_locations</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A face is located at pixel location Top: {}, Left: {}, Bottom: {}, Right: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">right</span><span class="p">))</span>
+<span class="n">face_image</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="n">top</span><span class="p">:</span><span class="n">bottom</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span><span class="n">right</span><span class="p">]</span>
+<span class="n">pil_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">face_image</span><span class="p">)</span>
+<span class="n">pil_image</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">pil_image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;quick2.jpg&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行后会在当前目录生成quick2.jpg，并在屏幕显示美女头像。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-589529c7279f9eef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li>上口红</li>
+</ul>
+<p>quick3.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">face_recognition</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">load_image_file</span><span class="p">(</span><span class="s2">&quot;test1.jpg&quot;</span><span class="p">)</span>
+<span class="n">face_landmarks_list</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">face_landmarks</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">face_landmarks_list</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">face_landmarks</span> <span class="ow">in</span> <span class="n">face_landmarks_list</span><span class="p">:</span>
+
+    <span class="n">pil_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">pil_image</span><span class="p">,</span> <span class="s1">&#39;RGBA&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Gloss the lips</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">face_landmarks</span><span class="p">[</span><span class="s1">&#39;top_lip&#39;</span><span class="p">],</span> <span class="n">fill</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">face_landmarks</span><span class="p">[</span><span class="s1">&#39;bottom_lip&#39;</span><span class="p">],</span> <span class="n">fill</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">face_landmarks</span><span class="p">[</span><span class="s1">&#39;top_lip&#39;</span><span class="p">],</span> <span class="n">fill</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">face_landmarks</span><span class="p">[</span><span class="s1">&#39;bottom_lip&#39;</span><span class="p">],</span> <span class="n">fill</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>    
+
+    <span class="n">pil_image</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">pil_image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;quick3.jpg&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>上口红之前：</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-ec278fb134420e73.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>上口红之后：</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-5d8120d3b82b5f81.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>个人总是觉得没上口红的更好看，偏偏有那么多喜欢化成妖怪的女人。</p>
+<ul>
+<li>框选</li>
+</ul>
+<p>下面代码把脸部框选出来，注意：face_locations返回的图片和PIL使用的坐标不同，为此需要一定的转换。</p>
+<p>quick4.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">face_recognition</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">load_image_file</span><span class="p">(</span><span class="s2">&quot;test1.jpg&quot;</span><span class="p">)</span>
+<span class="n">locations</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">face_locations</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">locations</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">pil_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">pil_image</span><span class="p">,</span> <span class="s1">&#39;RGBA&#39;</span><span class="p">)</span>
+<span class="n">d</span><span class="o">.</span><span class="n">rectangle</span><span class="p">((</span><span class="n">pos</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="n">pil_image</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">pil_image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;quick4.jpg&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-2b94580d838a7730.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>本文代码地址： https://github.com/china-testing/python-api-tesing/tree/master/python3_libraries/face_recognition</p>
+<h3 id="_3">其他</h3>
+<ul>
+<li>旋转</li>
+</ul>
+<p>face_recognition只能识别头在上嘴在下的图片比较好，如果你的照片是横向的，有可能要旋转才能识别。
+<img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-8594241eb5974f65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>sleep.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">face_recognition</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">load_image_file</span><span class="p">(</span><span class="s2">&quot;sleep.jpg&quot;</span><span class="p">)</span>
+<span class="n">locations</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">face_locations</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;sleep.jpg&quot;</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span><span class="n">expand</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;/tmp/tmp.jpg&quot;</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">load_image_file</span><span class="p">(</span><span class="s2">&quot;/tmp/tmp.jpg&quot;</span><span class="p">)</span>
+<span class="n">locations</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">face_locations</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
+
+<span class="n">pil_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="n">pil_image</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="p">[]</span>
+<span class="p">[(</span><span class="mi">166</span><span class="p">,</span> <span class="mi">424</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">335</span><span class="p">)]</span>
+</pre></div>
+
+
+<p>当然此图使用cnn模式不用旋转也是可以识别的，但是我们实验中发现一些图片，比如戴墨镜的横向图片，还是要旋转才能识别。</p>
+<p>注意旋转方向是逆时针的。</p>
+<h2 id="_4">参考资料</h2>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 </li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 请在github上点赞，谢谢！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li><a href="https://github.com/ageitgey/face_recognition">face_recognition</a></li>
+<li><a href="https://china-testing.github.io/opencv_books.html">2018最佳人工智能图像处理工具OpenCV书籍下载</a> </li>
+<li><a href="https://china-testing.github.io/ai_books.html">2018最佳人工智能机器学习工具书籍及下载(持续更新)</a> </li>
+<li><a href="https://china-testing.github.io/python3_lib_face_recognition.html">本文最新版本地址</a></li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python标准模块介绍-性能测试工具boom</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_lib_boom.html" rel="bookmark"
+           title="Permalink to python标准模块介绍-性能测试工具boom">python标准模块介绍-性能测试工具boom</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-12-10T07:20:00+08:00">
+                Published: 一 10 十二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <h3 id="boom">boom简介</h3>
+<p>boom是python替代ab的模块，并增加了部分功能。</p>
+<h4 id="boom_1">boom安装</h4>
+<p>ubuntu 执行“pip install boom“即可，注意可能需要先执行"apt-get install libevent python-dev"。它使用Gevent创建虚拟用户，使用Requests发送请求。</p>
+<h4 id="boom_2">boom快速入门</h4>
+<div class="highlight"><pre><span></span><span class="c1"># boom -n1000 -c10 http://localhost</span>
+/usr/local/anaconda3/lib/python3.6/site-packages/boom/boom.py:28: MonkeyPatchWarning: Monkey-patching ssl after ssl has already been imported may lead to errors, including RecursionError on Python <span class="m">3</span>.6. Please monkey-patch earlier. See https://github.com/gevent/gevent/issues/1016
+  monkey.patch_all<span class="o">()</span>
+Server Software: nginx/1.10.3 <span class="o">(</span>Ubuntu<span class="o">)</span>
+Running GET http://127.0.0.1:80
+    Host: localhost
+Running <span class="m">1000</span> queries - concurrency <span class="m">10</span>
+<span class="o">[================================================================</span>&gt;.<span class="o">]</span> <span class="m">99</span>% Done
+
+-------- Results --------
+Successful calls        <span class="m">1000</span>
+Total <span class="nb">time</span>              <span class="m">4</span>.7209 s  
+Average                 <span class="m">0</span>.0405 s  
+Fastest                 <span class="m">0</span>.0128 s  
+Slowest                 <span class="m">0</span>.0732 s  
+Amplitude               <span class="m">0</span>.0604 s  
+Standard deviation      <span class="m">0</span>.009018
+RPS                     <span class="m">211</span>
+BSI                     Pretty good
+
+-------- Status codes --------
+Code <span class="m">200</span>                <span class="m">1000</span> times.
+
+-------- Legend --------
+RPS: Request Per Second
+BSI: Boom Speed Index
+</pre></div>
+
+
+<p>Average：每批请求的平均处理时间。 Fastest：每批请求的最快处理时间。 Slowest：每批请求的最慢处理时间。 Amplitude：振幅，即最慢与最忙批次处理时间差。</p>
+<h4 id="boom_3">boom参考</h4>
+<div class="highlight"><pre><span></span><span class="c1"># boom -h</span>
+/usr/local/anaconda3/lib/python3.6/site-packages/boom/boom.py:28: MonkeyPatchWarning: Monkey-patching ssl after ssl has already been imported may lead to errors, including RecursionError on Python <span class="m">3</span>.6. Please monkey-patch earlier. See https://github.com/gevent/gevent/issues/1016
+  monkey.patch_all<span class="o">()</span>
+usage: boom <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--version<span class="o">]</span> <span class="o">[</span>-m <span class="o">{</span>GET,POST,DELETE,PUT,HEAD,OPTIONS<span class="o">}]</span>
+            <span class="o">[</span>--content-type CONTENT_TYPE<span class="o">]</span> <span class="o">[</span>-D DATA<span class="o">]</span> <span class="o">[</span>-c CONCURRENCY<span class="o">]</span> <span class="o">[</span>-a AUTH<span class="o">]</span>
+            <span class="o">[</span>--header HEADER<span class="o">]</span> <span class="o">[</span>--pre-hook PRE_HOOK<span class="o">]</span> <span class="o">[</span>--post-hook POST_HOOK<span class="o">]</span>
+            <span class="o">[</span>--json-output<span class="o">]</span> <span class="o">[</span>-q<span class="o">]</span> <span class="o">[</span>-n REQUESTS <span class="p">|</span> -d DURATION<span class="o">]</span>
+            <span class="o">[</span>url<span class="o">]</span>
+
+Simple HTTP Load runner.
+
+positional arguments:
+  url                   URL to hit
+
+optional arguments:
+  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  --version             Displays version and exits.
+  -m <span class="o">{</span>GET,POST,DELETE,PUT,HEAD,OPTIONS<span class="o">}</span>, --method <span class="o">{</span>GET,POST,DELETE,PUT,HEAD,OPTIONS<span class="o">}</span>
+                        HTTP Method
+  --content-type CONTENT_TYPE
+                        Content-Type
+  -D DATA, --data DATA  Data. Prefixed by <span class="s2">&quot;py:&quot;</span> to point a python callable.
+  -c CONCURRENCY, --concurrency CONCURRENCY
+                        Concurrency
+  -a AUTH, --auth AUTH  Basic authentication user:password
+  --header HEADER       Custom header. name:value
+  --pre-hook PRE_HOOK   Python module path <span class="o">(</span>eg: mymodule.pre_hook<span class="o">)</span> to a
+                        callable which will be executed before doing a request
+                        <span class="k">for</span> example: pre_hook<span class="o">(</span>method, url, options<span class="o">)</span>. It must
+                        <span class="k">return</span> a tupple of parameters given in <span class="k">function</span>
+                        definition
+  --post-hook POST_HOOK
+                        Python module path <span class="o">(</span>eg: mymodule.post_hook<span class="o">)</span> to a
+                        callable which will be executed after a request is
+                        <span class="k">done</span> <span class="k">for</span> example: eg. post_hook<span class="o">(</span>response<span class="o">)</span>. It must
+                        <span class="k">return</span> a given response parameter or raise an
+                        <span class="sb">`</span>boom.boom.RequestException<span class="sb">`</span> <span class="k">for</span> failed request.
+  --json-output         Prints the results in JSON instead of the default
+                        format
+  -q, --quiet           Don<span class="err">&#39;</span>t display progress bar
+  -n REQUESTS, --requests REQUESTS
+                        Number of requests
+  -d DURATION, --duration DURATION
+                        Duration in seconds
+</pre></div>
+
+
+<h3 id="_1">结论</h3>
+<p>ab和boom在功能上远不及multi-mechanize和nGrinder、Locust等主力python性能测试工具，甚至还比不上庞大且扩能能力差的loadrunner。只建议在对单个中间件的基准测试时使用。</p>
+<h2 id="_2">参考资料</h2>
+<ul>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/python3_lib_string.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://docs.python.org/3.6/library/string.html">Standard library documentation for string</a></li>
+<li><a href="https://docs.python.org/3/library/stdtypes.html#string-methods">String Methods</a> – Methods of <code>str</code> objects that replace the deprecated functions in <code>string</code>.</li>
+<li><a href="https://www.python.org/dev/peps/pep-0292"><strong>PEP 292</strong></a> – Simpler String Substitutions</li>
+<li><a href="https://docs.python.org/3.5/library/string.html#format-string-syntax">Format String Syntax</a> – The formal definition of the layout specification language used by <code>Formatter</code> and <code>str.format()</code>.</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

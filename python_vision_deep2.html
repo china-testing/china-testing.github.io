@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python计算机视觉深度学习工具2图像基础</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python_vision_deep2.html" rel="bookmark"
+           title="Permalink to python计算机视觉深度学习工具2图像基础">python计算机视觉深度学习工具2图像基础</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-12-24T21:35:00+08:00">
+                Published: 一 24 十二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <p><a href="https://china-testing.github.io/python_vision_deep.html">本文教程目录</a></p>
+<p>构建自己的图像分类器之前需要了解图像是什么。</p>
+<h3 id="_1">像素：图像的元素</h3>
+<p>像素是图像的基本元素。每个图像都由一组像素组成。没有比像素更细的粒度。</p>
+<p>通常像素是光的“颜色”或“强度”。</p>
+<p>下图的分辨率为1,000×750，这意味着它是1,000像素宽750像素高。我们可以将图像概念化为(多维)矩阵。图片中总共有1,000×750 = 750,000像素。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-03baa175f901e0bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>大多数像素以两种方式表示：
+1.灰度/单通道
+2.颜色</p>
+<p>在灰度图像中，每个像素是0到255之间的标量值，其中零对应为“黑色”，255为“白色”。
+<img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-def6b6370b523d5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>彩色像素通常在RGB颜色空间中表示（其他颜色空间通常要转成RGB）。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-588ed03546979273.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>黑色：(0, 0, 0)
+红色：(255, 0, 0)</p>
+<p>RGB色彩空间的主要缺点包括：
+•不使用“颜色选择器”工具时表示颜色不直观
+•它不像人类看待颜色的方式。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-cc6d2a585697b0ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-97b41eb842b38b5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_2">图像坐标系统</h3>
+<p>OpenCV和scikit-image用多维NumPy数组表示RGB。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-9a62e681017ca83f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;example.png&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行结果：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python</span> <span class="n">load_display</span><span class="o">.</span><span class="n">py</span>
+<span class="p">(</span><span class="mi">248</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+
+<p>像素访问</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span> <span class="c1"># accesses pixel at x=100, y=20</span>
+<span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span> <span class="c1"># accesses pixel at x=25, y=75</span>
+<span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">85</span><span class="p">]</span> <span class="c1"># accesses pixel at x=85, y=90</span>
+</pre></div>
+
+
+<p>OpenCV的存储顺序：Blue, Green, Red</p>
+<ul>
+<li>技术支持qq群144081101  591302926 567351477 钉钉免费群：21745728 </li>
+</ul>
+<h3 id="_3">缩放</h3>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-d40f2bb3f453550a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>多数神经网络和卷积神经网络应用于图像任务分类要求固定大小的输入，意味着你通过的所有图像的尺寸必须相同。输入的宽度和高度图像尺寸的常见选择卷积神经网络包括32×32,64×64,224×224,227×227,256×256和299×299。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-10ec44bc9defa33e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_4">参考资料</h3>
+<ul>
+<li>讨论  qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/python3_quick4.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

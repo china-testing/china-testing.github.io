@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>最流行的开源数据分析，处理和可视化工具pandas的未来</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/pandas1.0.html" rel="bookmark"
+           title="Permalink to 最流行的开源数据分析，处理和可视化工具pandas的未来">最流行的开源数据分析，处理和可视化工具pandas的未来</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-12-18T09:20:00+08:00">
+                Published: 二 18 十二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+</ul>
+<p>pandas是一个功能强大的开源Python库，用于数据分析，处理和可视化，当前版本：0.23.4。用户在1000万左右，并成为Python数据科学工具包中的“必须使用”的工具。</p>
+<p>许多数据科学家都向我提出过​​这样的问题：</p>
+<p>pandas 可靠吗？</p>
+<p>以后还会维护么？</p>
+<p>为什么没有发布1.0版本！</p>
+<p>版本号可用于表示产品的成熟度。但在开源世界中，版本号并不一定能告诉关于库的成熟度或可靠性的信息。 实际上 pandas既成熟又可靠！不过版本号传达了API的稳定性。</p>
+<ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+</ul>
+<h3 id="pandas-10">走向pandas 1.0</h3>
+<ul>
+<li>推荐使用方法链</li>
+</ul>
+<p>不使用方法链的例子：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/titanic.csv.gz&#39;</span><span class="p">)</span> 
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span> <span class="o">&lt;</span> <span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="o">.</span><span class="mi">99</span><span class="p">)]</span> 
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span> 
+
+                      <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span>
+
+                      <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Underage&#39;</span><span class="p">,</span> <span class="s1">&#39;Young&#39;</span><span class="p">,</span> <span class="s1">&#39;Experienced&#39;</span><span class="p">])</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;female&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span> 
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span> 
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span> 
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;Class {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span> 
+
+<span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;{:.2%}&#39;</span><span class="p">)</span> 
+</pre></div>
+
+
+<p>使用方法链的例子：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
+
+<span class="p">(</span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/titanic.csv.gz&#39;</span><span class="p">)</span>
+
+      <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Age &lt; Age.quantile(.99)&#39;</span><span class="p">)</span>
+
+      <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Sex</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;female&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}),</span>
+
+              <span class="n">Age</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">pandas</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">median</span><span class="p">()),</span>
+
+                                        <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span>
+
+                                        <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Underage&#39;</span><span class="p">,</span> <span class="s1">&#39;Young&#39;</span><span class="p">,</span> <span class="s1">&#39;Experienced&#39;</span><span class="p">]))</span>
+
+      <span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+
+      <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+
+      <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;Class {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+
+      <span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;{:.2%}&#39;</span><span class="p">))</span>
+</pre></div>
+
+
+<p>他们更喜欢方法链的主要原因是：可读性和性能。不过实际上长方法链的可读性不太好。参考资料：https://tomaugspurger.github.io/method-chaining.html</p>
+<ul>
+<li>不建议使用inplace</li>
+</ul>
+<p>pandas核心团队不鼓励使用inplace参数，最终会删除inplace。原因如下：</p>
+<p>inplace在方法链中不起作用；使用inplace通常不会阻止创建副本；删除inplace选项会降低pandas代码库的复杂性。</p>
+<p>就个人而言，我是inplace的粉丝，我喜欢写df.reset_index（inplace = True）而不是df = df.reset_index（）。话虽这么说，许多初学者确实在内部感到困惑，并且有一个明确的方法来做大熊猫的事情，所以最终我会对弃用很好。</p>
+<p>如果您想了解更多关于如何在熊猫中管理内存的话，我建议您观看Marc演讲的这个5分钟部分。</p>
+<ul>
+<li>Apache Arrow</li>
+</ul>
+<p>Apache Arrow作为pandas的后台。 Arrow是由pandas创始人Wes McKinney在2015年创建的，用于解决pandas DataFrame的许多潜在局限性（以及其他语言中的类似数据结构）。</p>
+<p>Arrow的目标是创建一个开放标准，用于表示原生支持复杂数据格式的表格数据，并针对性能进行了高度优化。尽管Arrow的灵感来自pandas，但它的设计目标是成为跨多种语言的数据科学工作的共享计算基础架构。</p>
+<p>Arrow最终用作pandas后端可能在pandas 1.0之后，对于pandas最终用户来应该是是透明的。但会带来更好的性能，并且支持在pandas中使用大于内存的数据集。</p>
+<ul>
+<li>扩展数组</li>
+</ul>
+<p>Extension Arrays允许您创建用于pandas的自定义数据类型。</p>
+<p>之前大熊猫团队必须编写大量自定义代码来实现NumPy本身不支持的数据类型（例如分类）。随着Extension Arrays的发布，现在任何人都可以使用的自定义类型的通用接口。</p>
+<p>pandas团队已经使用此接口编写支持缺失值的整数数据类型，也称为“NA”或“NaN”值。以前将任何值标记为缺失，则整数列将转换为浮点数。Integer NA”类型将在下一版本（0.24）中提供。</p>
+<ul>
+<li>其他弃用</li>
+</ul>
+<p>ix访问器已在0.20版本中弃用，请使用loc和iloc。</p>
+<p>在版本0.20中也弃用了三维数据的Panel数据结构，而支持具有MultiIndex的DataFrame。</p>
+<p>DataFrame主要为缺失值时，SparseDataFrame可能会在即将发布的版本中弃用。 （但是您应该能够将数据存储在常规DataFrame中。）</p>
+<p>2019年1月起从pandas放弃Python 2支持！</p>
+<h3 id="_1">参考资料</h3>
+<ul>
+<li>
+<p><a href="https://china-testing.github.io/pil1.html">本文最新版本地址</a></p>
+</li>
+<li>
+<p><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</p>
+</li>
+<li>
+<p><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/python3_lib_pil.html">python库介绍-图像处理工具pillow中文文档-手册(2018 5.*)</a></p>
+</li>
+<li>
+<p>代码地址：https://github.com/china-testing/python-api-tesing/blob/master/practices/pil_merge.py</p>
+</li>
+<li>
+<p>路线图</p>
+</li>
+</ul>
+<p>0.23.4是最近发布的大熊猫（2018年8月）。</p>
+<p>根据GitHub的里程碑，0.24的目标是2018年底。</p>
+<p>0.25：2019年初的目标，它将1.0中的所有弃用内容进行警告。</p>
+<p>1.0将与0.25相同，但将删除所有已弃用的功能。</p>
+<h3 id="_2">参考资料</h3>
+<ul>
+<li>讨论  qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/scrap_books.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
+<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
+<li>https://github.com/lorien/awesome-web-scraping/blob/master/python.md</li>
+<li>最好用的Python爬虫推荐 https://www.jianshu.com/p/7da43c16dd87</li>
+<li>https://www.zhihu.com/question/41277528</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python自动化测试人工智能 - 测试框架</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li class="active"><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/cv_install.html">安装人工智能图像处理工具OpenCV</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-12-06T08:40:00+08:00">
+                Published: 四 06 十二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info --><ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+</ul>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-3b72904a89216ebf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="python">python版本安装</h2>
+<p>适合所有平台：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">opencv</span><span class="o">-</span><span class="n">python</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">opencv</span><span class="o">-</span><span class="n">contrib</span><span class="o">-</span><span class="n">python</span>
+</pre></div>
+
+
+<h2 id="windows">Windows</h2>
+<p>https://sourceforge.net/projects/opencvlibrary/ 下载对应的exe安装即可。</p>
+<h2 id="macos-x">macOS X</h2>
+<p>brew install opencv --with-tbb --with-opengl</p>
+<h3 id="opencv">安装OpenCV依赖</h3>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">upgrade</span>
+<span class="c1"># 开发工具</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">cmake</span> <span class="n">unzip</span> <span class="n">pkg</span><span class="o">-</span><span class="n">config</span>
+<span class="c1"># 图形库   </span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libjpeg</span><span class="o">-</span><span class="n">dev</span> <span class="n">libpng</span><span class="o">-</span><span class="n">dev</span> <span class="n">libtiff</span><span class="o">-</span><span class="n">dev</span>
+<span class="c1"># 视频库   </span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libjpeg</span><span class="o">-</span><span class="n">dev</span> <span class="n">libpng</span><span class="o">-</span><span class="n">dev</span> <span class="n">libtiff</span><span class="o">-</span><span class="n">dev</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libxvidcore</span><span class="o">-</span><span class="n">dev</span> <span class="n">libx264</span><span class="o">-</span><span class="n">dev</span>
+<span class="c1"># GTK</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libgtk</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">dev</span>
+<span class="c1"># 其他</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libatlas</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">dev</span> <span class="n">gfortran</span>
+<span class="c1"># python头文件</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+
+
+<h3 id="_1">下载</h3>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">cd</span> <span class="o">~</span>
+<span class="err">$</span> <span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="n">opencv</span><span class="o">.</span><span class="n">zip</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">opencv</span><span class="o">/</span><span class="n">opencv</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mf">1.</span><span class="n">zip</span> 
+<span class="err">$</span> <span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="n">opencv_contrib</span><span class="o">.</span><span class="n">zip</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">opencv</span><span class="o">/</span><span class="n">opencv_contrib</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mf">1.</span><span class="n">zip</span>
+<span class="err">$</span> <span class="n">unzip</span> <span class="n">opencv</span><span class="o">.</span><span class="n">zip</span>
+<span class="err">$</span> <span class="n">unzip</span> <span class="n">opencv_contrib</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+
+
+<p><a href="https://docs.opencv.org/3.4.3/d7/d9f/tutorial_linux_install.html">官方安装文档</a></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-41e4a1a2b3aa839e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>上图的右上角的"OpenCV"旁边可以看到最新的版本号。如果你要使用opencv3.4.3，修改https://github.com/opencv/opencv/archive/3.4.1.zip 为https://github.com/opencv/opencv/archive/3.4.3.zip 即可。</p>
+<h3 id="_2">安装</h3>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">mkdir</span> <span class="n">build</span>
+<span class="err">$</span> <span class="n">cd</span> <span class="n">build</span>
+<span class="err">$</span> <span class="n">cmake</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span> <span class="o">-</span><span class="n">DOPENCV_EXTRA_MODULES_PATH</span><span class="o">=../../</span><span class="n">opencv_contrib</span><span class="o">-</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">modules</span> <span class="o">-</span><span class="n">DOPENCV_ENABLE_NONFREE</span><span class="o">=</span><span class="bp">True</span> 
+
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+<span class="err">$</span> <span class="n">export</span> <span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="p">:</span><span class="err">$</span><span class="n">LD_LIBRARY_PATH</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">ldconfig</span>
+</pre></div>
+
+
+<h2 id="2413-ubuntu-1404">2.4.13  ubuntu 14.04</h2>
+<div class="highlight"><pre><span></span><span class="c1"># install dependencies</span>
+sudo apt-get update
+sudo apt-get install -y build-essential
+sudo apt-get install -y cmake
+sudo apt-get install -y libgtk2.0-dev
+sudo apt-get install -y pkg-config
+sudo apt-get install -y python-numpy python-dev
+sudo apt-get install -y libavcodec-dev libavformat-dev libswscale-dev
+sudo apt-get install -y libjpeg-dev libpng-dev libtiff-dev libjasper-dev
+
+sudo apt-get -qq install libopencv-dev build-essential checkinstall cmake pkg-config yasm libjpeg-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev libxine-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev python-dev python-numpy libtbb-dev libqt4-dev libgtk2.0-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils
+
+<span class="c1"># download opencv-2.4.13</span>
+wget http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.13/opencv-2.4.13.zip
+unzip opencv-2.4.13.zip
+<span class="nb">cd</span> opencv-2.4.13
+mkdir release
+<span class="nb">cd</span> release
+
+<span class="c1"># compile and install</span>
+cmake -G <span class="s2">&quot;Unix Makefiles&quot;</span> -D <span class="nv">CMAKE_CXX_COMPILER</span><span class="o">=</span>/usr/bin/g++ <span class="nv">CMAKE_C_COMPILER</span><span class="o">=</span>/usr/bin/gcc -D <span class="nv">CMAKE_BUILD_TYPE</span><span class="o">=</span>RELEASE -D <span class="nv">CMAKE_INSTALL_PREFIX</span><span class="o">=</span>/usr/local -D <span class="nv">WITH_TBB</span><span class="o">=</span>ON -D <span class="nv">BUILD_NEW_PYTHON_SUPPORT</span><span class="o">=</span>ON -D <span class="nv">WITH_V4L</span><span class="o">=</span>ON -D <span class="nv">INSTALL_C_EXAMPLES</span><span class="o">=</span>ON -D <span class="nv">INSTALL_PYTHON_EXAMPLES</span><span class="o">=</span>ON -D <span class="nv">BUILD_EXAMPLES</span><span class="o">=</span>ON -D <span class="nv">WITH_QT</span><span class="o">=</span>ON -D <span class="nv">WITH_OPENGL</span><span class="o">=</span>ON -D <span class="nv">BUILD_FAT_JAVA_LIB</span><span class="o">=</span>ON -D <span class="nv">INSTALL_TO_MANGLED_PATHS</span><span class="o">=</span>ON -D <span class="nv">INSTALL_CREATE_DISTRIB</span><span class="o">=</span>ON -D <span class="nv">INSTALL_TESTS</span><span class="o">=</span>ON -D <span class="nv">ENABLE_FAST_MATH</span><span class="o">=</span>ON -D <span class="nv">WITH_IMAGEIO</span><span class="o">=</span>ON -D <span class="nv">BUILD_SHARED_LIBS</span><span class="o">=</span>OFF -D <span class="nv">WITH_GSTREAMER</span><span class="o">=</span>ON -DBUILD_TIFF<span class="o">=</span>ON ..
+make all -j8 <span class="c1"># 8 cores</span>
+sudo make install
+</pre></div>
+
+
+<h3 id="_3">参考资料</h3>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 钉钉免费群21745728</li>
+<li><a href="https://china-testing.github.io/cv_install.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing/tree/master/python_crash_tutorial">本文源码地址</a></li>
+<li><a href="http://www.python36.com/how-to-install-opencv340-on-ubuntu1604/">How to install OpenCV 3.4.0 on Ubuntu 16.04</a></li>
+<li><a href="https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/">Ubuntu 18.04: How to install OpenCV</a></li>
+<li><a href="https://github.com/opencv/opencv">opencv github</a></li>
+<li><a href="https://gist.github.com/bigsnarfdude/7305c8d8335c7cfc91888485a33d9bd9">[opencv] 2.4.13 on ubuntu 14.04 </a></li>
+<li><a href="https://stackoverflow.com/questions/17275348/how-to-specify-new-gcc-path-for-cmake">How to specify new GCC path for CMake</a></li>
+</ul>
+<h3 id="faq">FAQ</h3>
+<ul>
+<li>qmake</li>
+</ul>
+<div class="highlight"><pre><span></span>qmake: could not <span class="nb">exec</span> <span class="s1">&#39;/usr/lib/x86_64-linux-gnu/qt4/bin/qmake&#39;</span>: No such file or directory 
+
+解决：sudo apt-get install qt-sdk 
+参考：https://stackoverflow.com/questions/23703864/cmake-not-working-could-not-exec-qmake
+</pre></div>
+
+
+<ul>
+<li><a href="https://stackoverflow.com/questions/45518317/in-source-builds-are-not-allowed-in-cmake">In-source builds are not allowed” in cmake</a></li>
+</ul>
+<div class="highlight"><pre><span></span>mkdir my_build_dir
+<span class="nb">cd</span> my_build_dir
+rm ../CMakeCache.txt
+cmake .. -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DCMAKE_INSTALL_PREFIX<span class="o">=</span>/home/jinha/OCV/source
+</pre></div>
+
+
+<h2 id="_4">参考资料</h2>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://china-testing.github.io/opencv_books.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>   </li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/flask_api.html" rel="bookmark"
+                           title="Permalink to 使用python3和flask构建RESTful API(接口测试服务与mockserver工具)">使用python3和flask构建RESTful API(接口测试服务与mockserver工具)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-30T08:20:00+08:00">
+                Published: 五 30 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/flask_books.html">web开发工具flask中文英文书籍下载-持续更新</a></li>
+</ul>
+<h2 id="_1">引言</h2>
+<p>构建RESTful API貌似是开发的工作，和测试有和关系？</p>
+<p>其实测试开发需要构建RESTful API的场景很多。比如测试Android应用，一般的接口测试只考虑了服务器端，至于客户端在网络异常或者服务端异常时如何反应，多数天朝的测试人员是没有考虑到的。客户端在对这些异常处理不够充分的时候，会出现崩溃等各种莫名其妙的问题。</p>
+<p>为此一些走在前沿的测试人员会自己写一些RESTful API， 把服务端的域名劫持到自己的API，故意返回各种异常，看客户端的稳定性。</p>
+<p>另外测试开发的测试工具需要和其他系统对接等场景也经常需要API。</p>
+<h2 id="_2">参考资料</h2>
+<ul>
+<li><a href="https://www.codementor.io/dongido/how-to-build-restful-apis-with-python-and-flask-fh5x7zjrx">How to Build RESTful APIs with Python and Flask</a></li>
+<li><a href="https://china-testing.github.io/flask_api.html">本文地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing/tree/master/flask/api_demo">本文源码地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关书籍下载</a></li>
+</ul>
+<h2 id="_3">术语</h2>
+<p>REST： REpresentational State Transfer</p>
+<h2 id="_4">目标</h2>
+<ul>
+<li>
+<p>GET - /api/Category - Retrieve all categories</p>
+</li>
+<li>
+<p>POST - /api/Category …</p></li></ul>
+                <a class="readmore" href="/flask_api.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/opencv_books.html" rel="bookmark"
+                           title="Permalink to 2018最佳人工智能图像处理工具OpenCV书籍下载">2018最佳人工智能图像处理工具OpenCV书籍下载</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-10-15T15:20:00+08:00">
+                Published: 一 15 十月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></p>
+<h3 id="machine-learning-for-opencv-2017pdf"><a href="https://itbooks.pipipan.com/fs/18113597-310106487">@Machine Learning for OpenCV - 2017.pdf</a></h3>
+<p>A practical introduction to the world of machine learning and image processing using
+OpenCV and Python 使用OpenCV和Python对机器学习和图像处理世界的实用介绍</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-b6e6d51b3d273984.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>机器学习不再仅仅是一个流行语，它就在我们身边：从保护您的电子邮件到自动标记图片中的朋友，到预测您喜欢的电影。计算机视觉是当今最令人兴奋的机器学习应用领域之一，深度学习驱动创新系统，如自动驾驶汽车和谷歌的DeepMind。</p>
+<p>OpenCV位于这些主题的交叉点，为经典以及最先进的计算机视觉和机器学习算法提供了一个全面的开源库。结合Python Anaconda，您可以访问您可能要求的所有开源计算库。</p>
+<p>OpenCV的机器学习首先向您介绍统计学习的基本概念，例如分类和回归。一旦涵盖了所有基础知识，您将开始探索各种算法，如决策树，支持向量机和贝叶斯网络，并学习如何将它们与其他OpenCV功能相结合。随着本书的进展，您的机器学习技能也将如此，直到您准备好接受当今最热门的话题：深度学习。</p>
+<p>在本书的最后，您将准备好通过构建现有的源代码或从头开发自己的算法来解决您自己的机器学习问题！</p>
+<p>https …</p>
+                <a class="readmore" href="/opencv_books.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_flask_autotest10.html" rel="bookmark"
+                           title="Permalink to flask构建自动化测试平台10-模板继承和表单">flask构建自动化测试平台10-模板继承和表单</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-23T17:26:00+08:00">
+                Published: 三 23 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="10-">10-模板继承和表单</h2>
+<p>主要内容：</p>
+<ul>
+<li>添加帐户和表格</li>
+<li>缩短网址</li>
+<li>添加帐户和表格</li>
+<li>添加处理注意请求的功能</li>
+<li>通过WTForms添加用户反馈</li>
+</ul>
+<p>技术支持QQ群：　144081101 591302926 567351477</p>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
+<p><a href="https://china-testing.github.io/python_flask_autotest10.html">本文最新版本</a>  </p>
+<h3 id="bootstrap">bootstrap</h3>
+<p>Bootstrap是来自Twitter的开源框架，它提供了用户界面组件以创造简洁并有吸引力的网页并兼容所有现在的网络浏览器。参考资料：<a href="https://baike.so.com/doc/5866541-7589096.html">bootstrap</a> <a href="https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)">wikipedia</a> <a href="http://getbootstrap.com/">主页</a> <a href="https://getbootstrap.com/docs/3.3/getting-started/">入门</a> <a href="https://getbootstrap.com/docs/3.3/components/">组件</a></p>
+<p><a href="http://getbootstrap.com/getting-started/#download">下载</a>,解压文件到static。</p>
+<p>我们将采用<a href="https://getbootstrap.com/docs/3.3/examples/jumbotron/">模板</a></p>
+<h3 id="_1">账户管理</h3>
+<p><a href="https://flask-login.readthedocs.org/en/latest/">flask-login</a></p>
+<p>user.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self …</span></pre></div></td></tr></table>
+                <a class="readmore" href="/python_flask_autotest10.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_flask_autotest8.html" rel="bookmark"
+                           title="Permalink to flask构建自动化测试平台8-验证用户输入">flask构建自动化测试平台8-验证用户输入</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-22T16:26:00+08:00">
+                Published: 二 22 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="8-">8-验证用户输入</h2>
+<p>正在紧张整理中</p>
+                <a class="readmore" href="/python_flask_autotest8.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_flask_autotest9.html" rel="bookmark"
+                           title="Permalink to flask构建自动化测试平台9-点餐应用">flask构建自动化测试平台9-点餐应用</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-22T16:26:00+08:00">
+                Published: 二 22 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="9-">9-点餐应用</h2>
+<p>主要内容：</p>
+<ul>
+<li>bootstrap</li>
+<li>账户管理</li>
+</ul>
+<p>技术支持QQ群：　144081101 591302926 567351477</p>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
+<p><a href="https://china-testing.github.io/python_flask_autotest9.html">本文最新版本</a>  </p>
+<h3 id="bootstrap">bootstrap</h3>
+<p>Bootstrap是来自Twitter的开源框架，它提供了用户界面组件以创造简洁并有吸引力的网页并兼容所有现在的网络浏览器。参考资料：<a href="https://baike.so.com/doc/5866541-7589096.html">bootstrap</a> <a href="https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)">wikipedia</a> <a href="http://getbootstrap.com/">主页</a> <a href="https://getbootstrap.com/docs/3.3/getting-started/">入门</a> <a href="https://getbootstrap.com/docs/3.3/components/">组件</a></p>
+<p><a href="http://getbootstrap.com/getting-started/#download">下载</a>,解压文件到static。</p>
+<p>我们将采用<a href="https://getbootstrap.com/docs/3.3/examples/jumbotron/">模板</a></p>
+<h3 id="_1">账户管理</h3>
+<p><a href="https://flask-login.readthedocs.org/en/latest/">flask-login</a></p>
+<p>user.py</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">email …</span></pre></div></td></tr></table>
+                <a class="readmore" href="/python_flask_autotest9.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_flask_autotest6.html" rel="bookmark"
+                           title="Permalink to flask构建自动化测试平台6-交互式犯罪地图">flask构建自动化测试平台6-交互式犯罪地图</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-22T11:26:00+08:00">
+                Published: 二 22 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="6-">6-交互式犯罪地图</h2>
+<p>本章将介绍以下主题：</p>
+<ul>
+<li>mysql</li>
+<li>创建犯罪地图</li>
+</ul>
+<p><a href="https://china-testing.github.io/python_flask_autotest6.html">本文最新版本</a> 
+<a href="https://github.com/china-testing/python-api-tesing/tree/master/flask/flask_web_service/Chapter06">代码地址</a></p>
+<p>安装mysql</p>
+<p>```#!sh</p>
+<h1 id="apt-get-install-mysql-server">apt-get install mysql-server</h1>
+<h1 id="pip3-install-pymysql">pip3 install pymysql</h1>
+<h1 id="python-db_setuppy">python db_setup.py # 创建数据库</h1>
+<div class="highlight"><pre><span></span>dbconfig.py
+
+```#!python
+
+test = False
+db_user = &#39;root&#39;
+db_password = &#39;654321_&#39;
+</pre></div>
+
+
+<p>db_setup.py</p>
+<p>```#!python</p>
+<p>import pymysql
+import dbconfig
+connection = pymysql.connect(host='localhost',
+                             user=dbconfig.db_user,
+                             passwd=dbconfig.db_password)</p>
+<p>try:
+    with connection.cursor() as …</p>
+                <a class="readmore" href="/python_flask_autotest6.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_flask_autotest7.html" rel="bookmark"
+                           title="Permalink to flask构建自动化测试平台7-添加google地图">flask构建自动化测试平台7-添加google地图</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-22T11:26:00+08:00">
+                Published: 二 22 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="7-google">7-添加google地图</h2>
+<p>本章将介绍以下主题：</p>
+<ul>
+<li>mock数据库</li>
+<li>创建犯罪地图</li>
+</ul>
+<p>技术支持QQ群：　144081101 591302926 567351477</p>
+<p><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲</a></p>
+<p><a href="https://china-testing.github.io/python_flask_autotest7.html">本文最新版本</a> </p>
+<h3 id="mock">mock数据库</h3>
+<p>mockdbhelper.py </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MockDBHelper</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s2">&quot;crimemap&quot;</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">add_crime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude …</span></pre></div></td></tr></table>
+                <a class="readmore" href="/python_flask_autotest7.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_flask_autotest5.html" rel="bookmark"
+                           title="Permalink to flask构建自动化测试平台5-提高用户体验">flask构建自动化测试平台5-提高用户体验</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-22T10:26:00+08:00">
+                Published: 二 22 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="5-">5-提高用户体验</h2>
+<p>本章将介绍以下主题：</p>
+<ul>
+<li>cookies</li>
+<li>CSS</li>
+</ul>
+<p><a href="https://china-testing.github.io/python_flask_autotest5.html">本文最新版本</a> </p>
+<p>代码： headlines.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">feedparser</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">make_response</span>
+
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">RSS_FEEDS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ft&#39;</span><span class="p">:</span> <span class="s1">&#39;http://www.ftchinese.com/rss/feed&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;zhihu&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.zhihu.com/rss&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;people …</span></pre></div>
+                <a class="readmore" href="/python_flask_autotest5.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python_flask_autotest3.html" rel="bookmark"
+                           title="Permalink to flask构建自动化测试平台3-模板">flask构建自动化测试平台3-模板</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-18T10:26:00+08:00">
+                Published: 五 18 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="3-">3-模板</h2>
+<p>理想情况下，前端和后端组件之间的完全隔离。我们可以在很大程度上使用Jinja来实现这一目标。</p>
+<p>到本章将扩展我们的应用程序，为所选出版物显示不止一个标题。我们将为每个出版物显示多篇文章，每篇文章都链接到原始文章，我们的逻辑和视图组件将在很大程度上分开。在本章中，我们将介绍以下主题：</p>
+<ul>
+<li>
+<p>介绍Jinja</p>
+</li>
+<li>
+<p>Jinja模板使用</p>
+</li>
+<li>
+<p><a href="https://china-testing.github.io/python_flask_autotest3.html">本文最新版本</a> </p>
+</li>
+</ul>
+<h3 id="jinja">介绍Jinja</h3>
+<p>Jinja是一个Python模板引擎。它允许我们轻松定义由Python填充的动态HTML块。即使对于多个静态网页的网站，HTML模板也很有用，如修改页眉和页脚。Flask基于Jinja，尽管可以单独使用Jinja，但Jinja仍然是Flask的固有部分。Flask提供了几种直接与Jinja工作的方法。默认情况下，Flask假定你存储了所有的Jinja模板位于您的应用程序的templates子目录中。</p>
+<h3 id="jinja_1">Jinja模板使用</h3>
+<p>home.html</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Headlines<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Headlines<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        {% for article in articles %}
+            <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{article.link}}&quot;</span><span class="p">&gt;</span>{{article.title …</pre></div>
+                <a class="readmore" href="/python_flask_autotest3.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 3
+        <a href="/category/ce-shi-kuang-jia2.html">&raquo;</a>
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

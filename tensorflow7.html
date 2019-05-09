@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>TensorFlow工具快速入门教程7 TensorFlow基础</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/tensorflow7.html" rel="bookmark"
+           title="Permalink to TensorFlow工具快速入门教程7 TensorFlow基础">TensorFlow工具快速入门教程7 TensorFlow基础</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-22T08:27:00+08:00">
+                Published: 四 22 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <p>在机器学习中，模型被提供称为特征向量的对象列表。特征向量可以是任何数据类型。特征向量通常是填充张量的主要输入。这些值将通过张量流入op节点，此操作/计算的结果将创建一个新的张量，该张量又将用于新的操作。所有这些操作都可以在图表中查看。</p>
+<h3 id="_1">张量的表示</h3>
+<p>在TensorFlow中，张量是n维的特征向量（即阵列）的集合。例如，2x3矩阵，其值为1到6</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-ce71e998a3b02d75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>TensorFlow将此矩阵表示为：</p>
+<div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span><span class="err">，</span>
+   <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
+</pre></div>
+
+
+<p>如果我们创建一个值为1到8的三维矩阵</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-f4eaf533aef8004e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>TensorFlow将此矩阵表示为：</p>
+<div class="highlight"><pre><span></span><span class="p">[[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="err">，</span>
+       <span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span><span class="err">，</span>
+       <span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span><span class="err">，</span>
+       <span class="p">[[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]]</span>
+</pre></div>
+
+
+<p>注意：张量可以用标量表示，也可以有三维以上的形状。可视化更高维度级别更加复杂。</p>
+<h3 id="_2">张量的类型</h3>
+<p>张量具有三个属性的对象：name、shape、dtype</p>
+<p>TensorFlow执行的每个操作都涉及张量的操作。您可以创建四个主要张量：tf.Variable，tf.constant，tf.placeholder，tf.SparseTensor</p>
+<h3 id="_3">张量的维度</h3>
+<p>tf.constant的使用说明：</p>
+<div class="highlight"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">arguments</span>
+
+<span class="o">-</span> <span class="sb">`value`</span><span class="p">:</span> <span class="n">Value</span> <span class="n">of</span> <span class="n">n</span> <span class="n">dimension</span> <span class="n">to</span> <span class="n">define</span> <span class="n">the</span> <span class="n">tensor</span><span class="o">.</span> <span class="n">Optional</span>
+<span class="o">-</span> <span class="sb">`dtype`</span><span class="p">:</span> <span class="n">Define</span> <span class="n">the</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">data</span><span class="p">:</span>    
+    <span class="o">-</span> <span class="sb">`tf.string`</span><span class="p">:</span> <span class="n">String</span> <span class="n">variable</span>    
+    <span class="o">-</span> <span class="sb">`tf.float32`</span><span class="p">:</span> <span class="n">Flot</span> <span class="n">variable</span>    
+    <span class="o">-</span> <span class="sb">`tf.int16`</span><span class="p">:</span> <span class="n">Integer</span> <span class="n">variable</span>
+<span class="o">-</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">tensor</span><span class="o">.</span> <span class="n">Optional</span><span class="o">.</span> <span class="n">By</span> <span class="n">default</span><span class="p">,</span> <span class="sb">`Const_1:0`</span>     
+</pre></div>
+
+
+<p>0维，即标量：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r1</span>
+<span class="o">&lt;</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span> <span class="s1">&#39;Const:0&#39;</span> <span class="n">shape</span><span class="o">=</span><span class="p">()</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int16</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-6a642cf53aff49b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>可以给标量取个名字：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">int16</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;my_scalar&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r2</span>
+<span class="o">&lt;</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span> <span class="s1">&#39;my_scalar:0&#39;</span> <span class="n">shape</span><span class="o">=</span><span class="p">()</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int16</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r1_decimal</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.12345</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r1_decimal</span>
+<span class="o">&lt;</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span> <span class="s1">&#39;Const_1:0&#39;</span> <span class="n">shape</span><span class="o">=</span><span class="p">()</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r1_string</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="s2">&quot;https://china-testing.github.io&quot;</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r1_string</span>
+<span class="o">&lt;</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span> <span class="s1">&#39;Const_2:0&#39;</span> <span class="n">shape</span><span class="o">=</span><span class="p">()</span> <span class="n">dtype</span><span class="o">=</span><span class="n">string</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>维度：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">r1_vector</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">tf</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r1_vector</span>
+<span class="o">&lt;</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span> <span class="s1">&#39;Const_3:0&#39;</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,)</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int16</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r2_boolean</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">],</span> <span class="n">tf</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r2_boolean</span>
+<span class="o">&lt;</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span> <span class="s1">&#39;Const_4:0&#39;</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,)</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r2_matrix</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="p">],</span><span class="n">tf</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r2_matrix</span>
+<span class="o">&lt;</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span> <span class="s1">&#39;Const_5:0&#39;</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int16</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r3_matrix</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span> <span class="p">],</span> <span class="n">tf</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r3_matrix</span>
+<span class="o">&lt;</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span> <span class="s1">&#39;Const_6:0&#39;</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int16</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<h3 id="shape">张量的Shape</h3>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">m_shape</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span>   <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span> <span class="p">]</span> <span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m_shape</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">TensorShape</span><span class="p">([</span><span class="n">Dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">Dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">)])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span> <span class="s1">&#39;zeros:0&#39;</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,)</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tf</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="o">&lt;</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span> <span class="s1">&#39;ones:0&#39;</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tf</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">m_shape</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="o">&lt;</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span> <span class="s1">&#39;ones_2:0&#39;</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,)</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tf</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">m_shape</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="o">&lt;</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span> <span class="s1">&#39;ones_4:0&#39;</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tf</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">m_shape</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span> <span class="s1">&#39;ones_5:0&#39;</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<h3 id="_4">张量的数据类型</h3>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">m_shape</span><span class="o">.</span><span class="n">dtype</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">int32</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">type_float</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">3.123456789</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">type_int</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">type_float</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">type_float</span><span class="o">.</span><span class="n">dtype</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">float32</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">type_int</span><span class="o">.</span><span class="n">dtype</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">int32</span>
+</pre></div>
+
+
+<h3 id="_5">操作</h3>
+<ul>
+<li>tf.add(a, b)</li>
+<li>tf.substract(a, b)</li>
+<li>tf.multiply(a, b)</li>
+<li>tf.div(a, b)</li>
+<li>tf.pow(a, b)</li>
+<li>tf.exp(a)</li>
+<li>tf.sqrt(a)</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">tensor_a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tensor_b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tensor_add</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tensor_a</span><span class="p">,</span> <span class="n">tensor_b</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tensor_add</span>
+<span class="o">&lt;</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span> <span class="s1">&#39;Add:0&#39;</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int32</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tensor_multiply</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">tensor_a</span><span class="p">,</span> <span class="n">tensor_b</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tensor_multiply</span>
+<span class="o">&lt;</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span> <span class="s1">&#39;Mul:0&#39;</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int32</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<h3 id="_6">参考资料</h3>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 </li>
+<li><a href="https://china-testing.github.io/tensorflow7.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>   </li>
+<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
+</ul>
+<h3 id="_7">变量</h3>
+<div class="highlight"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">initializer</span><span class="p">)</span>
+<span class="n">argument</span>
+<span class="o">-</span> <span class="sb">`name = &quot;&quot;`</span><span class="p">:</span> <span class="n">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">variable</span>
+<span class="o">-</span> <span class="sb">`values`</span><span class="p">:</span> <span class="n">Dimension</span> <span class="n">of</span> <span class="n">the</span> <span class="n">tensor</span>
+<span class="o">-</span> <span class="sb">`dtype`</span><span class="p">:</span> <span class="n">Type</span> <span class="n">of</span> <span class="n">data</span><span class="o">.</span> <span class="n">Optional</span>
+<span class="o">-</span> <span class="sb">`initializer`</span><span class="p">:</span> <span class="n">How</span> <span class="n">to</span> <span class="n">initialize</span> <span class="n">the</span> <span class="n">tensor</span><span class="o">.</span> <span class="n">Optional</span>
+<span class="n">If</span> <span class="n">initializer</span> <span class="ow">is</span> <span class="n">specified</span><span class="p">,</span> <span class="n">there</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">need</span> <span class="n">to</span> <span class="n">include</span> <span class="n">the</span> <span class="sb">`values`</span> <span class="k">as</span> <span class="n">the</span> <span class="n">shape</span> <span class="n">of</span> <span class="sb">`initializer`</span> <span class="ow">is</span> <span class="n">used</span><span class="o">.</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">var</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s2">&quot;var&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">var</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">TensorShape</span><span class="p">([</span><span class="n">Dimension</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">Dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">)])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">var_init_1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s2">&quot;var_init_1&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span>  <span class="n">initializer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros_initializer</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">var_init_1</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">TensorShape</span><span class="p">([</span><span class="n">Dimension</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">Dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">)])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tensor_const</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">var_init_2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s2">&quot;var_init_2&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span>  <span class="n">initializer</span><span class="o">=</span><span class="n">tensor_const</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">var_init_2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e8ad07aff843d7ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_8">占位符</h3>
+<div class="highlight"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="bp">None</span> <span class="p">)</span>
+<span class="n">arguments</span><span class="p">:</span>
+<span class="o">-</span> <span class="sb">`dtype`</span><span class="p">:</span> <span class="n">Type</span> <span class="n">of</span> <span class="n">data</span>
+<span class="o">-</span> <span class="sb">`shape`</span><span class="p">:</span> <span class="n">dimension</span> <span class="n">of</span> <span class="n">the</span> <span class="n">placeholder</span><span class="o">.</span> <span class="n">Optional</span><span class="o">.</span> <span class="n">By</span> <span class="n">default</span><span class="p">,</span> <span class="n">shape</span> <span class="n">of</span> <span class="n">the</span> <span class="n">data</span>
+<span class="o">-</span> <span class="sb">`name`</span><span class="p">:</span> <span class="n">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">placeholder</span><span class="o">.</span> <span class="n">Optional</span>         
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">data_placeholder_a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;data_placeholder_a&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">data_placeholder_a</span><span class="p">)</span>
+<span class="n">Tensor</span><span class="p">(</span><span class="s2">&quot;data_placeholder_a:0&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="session">Session</h3>
+<ul>
+<li>
+<p>Graph
+TensorFlow的基础。 所有数学运算(ops)都在Graph中执行。 您可以将Graph想象为每个操作都已完成的项目。 节点代表这些操作，它们可以吸收或创建新的张量。</p>
+</li>
+<li>
+<p>Tensor</p>
+</li>
+</ul>
+<p>张量表示在操作之间进行的数据。 您之前看到过如何初始化张量。 常量和变量之间的差异是变量的初始值将随时间变化。</p>
+<ul>
+<li>Session</li>
+</ul>
+<p>会话将从图中执行操作。 要使用张量值来提供图形，您需要打开会话。 在会话内，运行操作以创建输出。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">4</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">multiply</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">21</span> <span class="mi">22</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mf">34.184786</span><span class="p">:</span> <span class="n">I</span> <span class="n">tensorflow</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">cpu_feature_guard</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">141</span><span class="p">]</span> <span class="n">Your</span> <span class="n">CPU</span> <span class="n">supports</span> <span class="n">instructions</span> <span class="n">that</span> <span class="n">this</span> <span class="n">TensorFlow</span> <span class="n">binary</span> <span class="n">was</span> <span class="ow">not</span> <span class="n">compiled</span> <span class="n">to</span> <span class="n">use</span><span class="p">:</span> <span class="n">AVX2</span> <span class="n">FMA</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">result_1</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">multiply</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">result_1</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">8</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sess</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+<span class="o">...</span>     <span class="n">result_2</span> <span class="o">=</span> <span class="n">multiply</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">result_2</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="p">[</span><span class="mi">8</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">r1</span><span class="p">))</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">r2_matrix</span><span class="p">))</span>
+<span class="p">[[</span><span class="mi">1</span> <span class="mi">2</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">3</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">r3_matrix</span><span class="p">))</span>
+<span class="p">[[[</span><span class="mi">1</span> <span class="mi">2</span><span class="p">]</span>
+  <span class="p">[</span><span class="mi">3</span> <span class="mi">4</span><span class="p">]</span>
+  <span class="p">[</span><span class="mi">5</span> <span class="mi">6</span><span class="p">]]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">var</span><span class="p">))</span>
+<span class="p">[[</span> <span class="mf">0.5487809</span> <span class="o">-</span><span class="mf">0.9846178</span><span class="p">]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">var_init_1</span><span class="p">))</span>
+<span class="p">[[</span><span class="mi">0</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">var_init_2</span><span class="p">))</span>
+<span class="p">[[</span><span class="mi">10</span> <span class="mi">20</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">30</span> <span class="mi">40</span><span class="p">]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">power_a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">data_placeholder_a</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+<span class="o">...</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">power_a</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">data_placeholder_a</span><span class="p">:</span> <span class="n">data</span><span class="p">}))</span>  <span class="c1"># Will succeed.</span>
+<span class="o">...</span>
+<span class="p">[[</span><span class="mf">0.00214566</span> <span class="mf">0.22329086</span> <span class="mf">0.03267581</span> <span class="mf">0.97980934</span> <span class="mf">0.10616333</span> <span class="mf">0.08555447</span>
+  <span class="mf">0.06780323</span> <span class="mf">0.23336452</span> <span class="mf">0.10076617</span> <span class="mf">0.01539159</span><span class="p">]]</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a31ac316f9895ec1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-50d10d4c73c6a0b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span>  <span class="n">initializer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">5</span><span class="p">]))</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span>  <span class="n">initializer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">6</span><span class="p">]))</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">5</span><span class="p">],</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;constant&quot;</span><span class="p">)</span>
+<span class="n">square</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">2</span><span class="p">],</span> <span class="n">name</span> <span class="o">=</span>    <span class="s2">&quot;square&quot;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span> <span class="o">+</span> <span class="n">z</span> <span class="o">+</span> <span class="n">c</span>
+<span class="n">init</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span> <span class="c1"># prepare to initialize all variables</span>
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="n">init</span><span class="o">.</span><span class="n">run</span><span class="p">()</span> <span class="c1"># Initialize x and y  </span>
+    <span class="n">function_result</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">function_result</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行结果： [66]  </p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-c3bbd7dfc9fe0398.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="_9">参考资料</h2>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 </li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 请在github上点赞，谢谢！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li><a href="https://github.com/ageitgey/face_recognition">face_recognition</a></li>
+<li><a href="https://china-testing.github.io/opencv_books.html">2018最佳人工智能图像处理工具OpenCV书籍下载</a> </li>
+<li><a href="https://china-testing.github.io/ai_books.html">2018最佳人工智能机器学习工具书籍及下载(持续更新)</a> </li>
+<li><a href="https://china-testing.github.io/tensorflow7.html">本文最新版本地址</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

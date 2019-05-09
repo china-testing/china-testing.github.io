@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python图像处理工具opencv练习:比较图像差异</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/cv_img_diff.html" rel="bookmark"
+           title="Permalink to python图像处理工具opencv练习:比较图像差异">python图像处理工具opencv练习:比较图像差异</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-12-26T08:25:00+08:00">
+                Published: 三 26 十二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+</ul>
+<p>为了计算两幅图像之间的差异，我们将利用Wang等人介绍的结构相似性指数：Image Quality Assessment: From Error Visibility to Structural Similarity。此方法已在scikit-image库中实现，论文下载：https://itbooks.pipipan.com/fs/18113597-326895607 。</p>
+<p>首先需要安装Python，OpenCV，scikit-image和imutils。</p>
+<h3 id="_1">计算图像差异</h3>
+<p>你能发现这两个图像之间的区别吗？</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-7cc410de19979d80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>代码: </p>
+<p><img alt="" src="https://upload-images.jianshu.io/upload_images/12713060-b10ad1f9221c50d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>执行结果</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a71a7686566153f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>源码： https://github.com/china-testing/python-api-tesing/blob/master/practices/cv/image_diff_pil.py
+代码及配套图片：https://itbooks.pipipan.com/fs/18113597-326879233</p>
+<p>使用scikit-image中的compare_ssim函数，我们计算得分和差异图像diff。</p>
+<p>分数表示两个输入图像之间的结构相似性指数。 该值在[-1,1]范围内，值为1是“完美匹配”。</p>
+<p>差异图像包含我们希望可视化的两个输入图像之间的实际图像差异。 差异图像当前表示为[0,1]范围内的浮点数据类型，因此我们首先将数组转换为[0,255]范围内的8位无符号整数，然后我们才能使用OpenCV进一步处理它 。</p>
+<p>然后我们找到轮廓，以便我们可以在标识为“不同”的区域周围放置矩形。
+。我们使用门限cv2.THRESH_BINARY_INV和cv2.THRESH_OTS。参考：https://docs.opencv.org/trunk/d7/d4d/tutorial_py_thresholding.html。</p>
+<p>下面图4中的图像清楚地显示了已被操纵的图像的ROI：</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-c87c0c68b398940c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>我们将轮廓存储在列表中，并为图像的不同区域周围绘制矩形：</p>
+<p>使用cv2.boundingRect函数计算轮廓周围的边界框。然后我们使用这些值在cv2.rectangle的图像上绘制红色矩形。此时可以基于长宽，过滤掉过小的矩形区域。</p>
+<p>执行： python image_diff.py --first images/original_01.png --second images/modified_01.png</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-72671be114a0c0bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_2">参考资料</h3>
+<ul>
+<li><a href="https://www.pyimagesearch.com/2014/09/15/python-compare-two-images/">how to compare two images with Python</a></li>
+<li>讨论qq群630011153 144081101</li>
+<li><a href="https://china-testing.github.io/cv_img_diff.html">原文地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li>[本文相关海量书籍下载](https://github.com/china-testing/python-api-tesing/blob/master/books.md</li>
+<li>http://scikit-image.org/docs/dev/api/skimage.measure.html#skimage.measure.compare_ssim</li>
+</ul>
+<h3 id="_3">更多实例</h3>
+<p>$   python image_diff.py --first images/original_02.png --second images/modified_02.png</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-6b7ba30599f91155.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>$ python image_diff.py --first images/original_03.png  --second images/modified_03.png</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a6b258c0c060e95a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_4">参考资料</h3>
+<ul>
+<li>讨论  qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/ai_books.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

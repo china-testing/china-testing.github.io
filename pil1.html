@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python图像处理pillow工具作业：合并拼接图片</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/pil1.html" rel="bookmark"
+           title="Permalink to python图像处理pillow工具作业：合并拼接图片">python图像处理pillow工具作业：合并拼接图片</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-12-03T19:25:00+08:00">
+                Published: 一 03 十二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+</ul>
+<h3 id="pillow">pillow简介</h3>
+<p>Python Imaging Library给Python解释器增加了图像处理能力。</p>
+<p>该库提供了广泛的文件格式支持，高效的内部展现，以及十分强大的图像处理能力。</p>
+<p>核心图像库专为以几种存储为基本像素格式数据的快速访问而设计。它为通用图像处理工具提供了坚实的基础。</p>
+<p>我们来看看这个库的用途。</p>
+<ul>
+<li>图像存储</li>
+</ul>
+<p>PIL适合图像归档和图像批量处理，你可以使用它建立缩略图，转换格式，打印图片等。</p>
+<p>现在的版本可以识别和读取大量的图片格式，写入常用的转换和表示格式。</p>
+<ul>
+<li>图像显示</li>
+</ul>
+<p>当前版本包含了Tk <a href="https://pillow.readthedocs.io/en/latest/reference/ImageTk.html#PIL.ImageTk.PhotoImage">PhotoImage</a>和<a href="https://pillow.readthedocs.io/en/latest/reference/ImageTk.html#PIL.ImageTk.BitmapImage">BitmapImage</a>接口, 以及<a href="https://pillow.readthedocs.io/en/latest/reference/ImageTk.html#PIL.ImageTk.BitmapImage">Windows DIB interface</a> ，可以在PythonWin和其他基于Windows的工具包中使用。许多其他GUI工具包带有某种类型的PIL支持。</p>
+<p>为了方便调试还提供了show()方法，可以保存图像到磁盘并调用外显示。它将图像保存到磁盘，并调用外部显示工具。</p>
+<ul>
+<li>图像处理</li>
+</ul>
+<p>这个库包含了基本的图像处理功能，包括点操作，使用内置卷积内核过滤，色彩空间转换。</p>
+<p>这个库还支持更改图像大小、旋转、任意仿射变换。</p>
+<p>直方图方法允许你统计图像，这可以用于对比度增强和全局统计分析。</p>
+<p>更多内容参见：<a href="https://china-testing.github.io/python3_lib_pil.html">python库介绍-图像处理工具pillow中文文档-手册(2018 5.*)</a></p>
+<h3 id="pythonpillow">python图像处理pillow工具作业：合并拼接图片</h3>
+<p>图片实例：</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-28542d0d1cf05945.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>现在有多个分辨率和大小相同的图片，要求能拼接2,3...张图片，每行2张。展示效果如下：</p>
+<p>2张：</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-ee3a844225b46f23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>3张</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-40de16b94d4f8075.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>11张</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e48a70d22d5cd78b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>以此类推..</p>
+<h3 id="_1">参考资料</h3>
+<ul>
+<li><a href="https://china-testing.github.io/pil1.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li><a href="https://china-testing.github.io/python3_lib_pil.html">python库介绍-图像处理工具pillow中文文档-手册(2018 5.*)</a></li>
+<li>代码地址：https://github.com/china-testing/python-api-tesing/blob/master/practices/pil_merge.py</li>
+</ul>
+<h3 id="_2">代码</h3>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># 技术支持：https://www.jianshu.com/u/69f40328d4f0 </span>
+<span class="c1"># 技术支持 https://china-testing.github.io/</span>
+<span class="c1"># https://github.com/china-testing/python-api-tesing/blob/master/practices/pil_merge.py</span>
+<span class="c1"># 项目实战讨论QQ群630011153 144081101</span>
+<span class="c1"># CreateDate: 2018-11-22</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="n">column</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mi">802</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mi">286</span>
+<span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">802</span><span class="p">,</span> <span class="mi">286</span><span class="p">)</span>
+
+<span class="n">list_im</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;d:\code.jpg&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;d:\code.jpg&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;d:\code.jpg&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;d:\code.jpg&#39;</span><span class="p">,</span> 
+           <span class="sa">r</span><span class="s1">&#39;d:\code.jpg&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;d:\code.jpg&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;d:\code.jpg&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;d:\code.jpg&#39;</span><span class="p">,</span>
+           <span class="sa">r</span><span class="s1">&#39;d:\code.jpg&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;d:\code.jpg&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;d:\code.jpg&#39;</span><span class="p">]</span>
+<span class="n">list_im</span> <span class="o">=</span> <span class="n">list_im</span><span class="o">*</span><span class="mi">11</span>
+<span class="n">imgs</span> <span class="o">=</span> <span class="p">[</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">list_im</span><span class="p">]</span>
+
+<span class="n">row_num</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">imgs</span><span class="p">)</span><span class="o">/</span><span class="n">column</span><span class="p">)</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span><span class="o">*</span><span class="n">column</span><span class="p">,</span> <span class="n">height</span><span class="o">*</span><span class="n">row_num</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">list_im</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="n">column</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_im</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">column</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_im</span><span class="p">)</span> <span class="k">else</span> <span class="n">i</span> <span class="o">+</span> <span class="n">column</span> 
+        <span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">image</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">imgs</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">column</span><span class="p">]):</span>
+            <span class="n">target</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span><span class="o">*</span><span class="n">col</span><span class="p">,</span> <span class="n">height</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">//</span><span class="n">column</span><span class="p">),</span> 
+                                 <span class="n">width</span><span class="o">*</span><span class="p">(</span><span class="n">col</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">height</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">//</span><span class="n">column</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>   
+<span class="n">target</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">target</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;d:\code2.jpg&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h2 id="_3">参考资料</h2>
+<ul>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

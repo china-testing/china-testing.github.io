@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>python库介绍-pathlib: 文件系统对象</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python3_lib_pathlib.html" rel="bookmark"
+           title="Permalink to python库介绍-pathlib: 文件系统对象">python库介绍-pathlib: 文件系统对象</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-11T19:40:00+08:00">
+                Published: 日 11 二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <p>目的：使用面向对象的API解析，构建，测试和处理文件名和路径，而不是底层的字符串操作。</p>
+<h2 id="path">Path表示</h2>
+<p>pathlib包含用于管理使用POSIX标准或Microsoft Windows语法格式化的文件系统路径的类。它包括所谓的“pure”类，它们对字符串进行操作，但不与实际的文件系统进行交互;“concrete”类将API扩展为包含反映或修改本地文件系统数据的操作。</p>
+<p>pure类PurePosixPath和PureWindowsPath可以在任何操作系统上实例化和使用，因为它们只用于名称。要实例化正确的类来处理真实的文件系统，请使用Path来获取PosixPath或WindowsPath，具体取决于平台。</p>
+<ul>
+<li>
+<p>技术支持 (可以加钉钉pythontesting邀请加入) qq群：144081101 591302926  567351477</p>
+</li>
+<li>
+<p>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</p>
+</li>
+</ul>
+<p>[接口自动化性能测试数据分析人工智能从业专家一对一线上培训大纲]</p>
+<h2 id="path_1">构建Path</h2>
+<p>要实例化路径，字符串作为参数。Path对象的字符串表示是该字符串。要创建引用相对于现有路径的值的新路径，请使用/运算符来扩展路径。运算符的参数可以是字符串或其他路径对象。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">usr</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;/usr&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">usr</span><span class="p">)</span>
+
+<span class="n">usr_local</span> <span class="o">=</span> <span class="n">usr</span> <span class="o">/</span> <span class="s1">&#39;local&#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">usr_local</span><span class="p">)</span>
+
+<span class="n">usr_share</span> <span class="o">=</span> <span class="n">usr</span> <span class="o">/</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">usr_share</span><span class="p">)</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">usr</span> <span class="o">/</span> <span class="s1">&#39;..&#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+
+<span class="n">etc</span> <span class="o">=</span> <span class="n">root</span> <span class="o">/</span> <span class="s1">&#39;/etc/&#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">etc</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/..</span>
+<span class="o">/</span><span class="n">etc</span>
+</pre></div>
+</td></tr></table>
+
+<p>正如示例输出中的root值所示，操作符按照给定的方式组合路径值，并且在包含父目录引用“..”的情况下不会对结果进行解析。 但是，如果以os.sep开头它被解释为新的“根”引用。</p>
+<p>具体路径类的resolve()方法，通过查看目录和符号链接的文件系统来解析路径，并生成名称引用的绝对路径。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_resolve.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">usr_local</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/usr/local&#39;</span><span class="p">)</span>
+<span class="n">share</span> <span class="o">=</span> <span class="n">usr_local</span> <span class="o">/</span> <span class="s1">&#39;..&#39;</span> <span class="o">/</span> <span class="s1">&#39;share&#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">share</span><span class="o">.</span><span class="n">resolve</span><span class="p">()))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">share</span><span class="o">.</span><span class="n">resolve</span><span class="p">())</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">pathlib</span><span class="o">.</span><span class="n">PosixPath</span><span class="s1">&#39;&gt;</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span>
+</pre></div>
+</td></tr></table>
+
+<p>joinpath()可以组合路径。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_joinpath.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="n">subdirs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;usr&#39;</span><span class="p">,</span> <span class="s1">&#39;local&#39;</span><span class="p">]</span>
+<span class="n">usr_local</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="o">*</span><span class="n">subdirs</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">usr_local</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">pathlib_joinpath</span><span class="o">.</span><span class="n">py</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
+</pre></div>
+</td></tr></table>
+
+<p>使用with_name()创建新路径，用不同的文件名替换路径的名称部分。 使用Use with_suffix()创建新路径，用不同的值替换文件名的扩展名。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_from_existing.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">ind</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;source/pathlib/index.rst&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span>
+
+<span class="n">py</span> <span class="o">=</span> <span class="n">ind</span><span class="o">.</span><span class="n">with_name</span><span class="p">(</span><span class="s1">&#39;pathlib_from_existing.py&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">py</span><span class="p">)</span>
+
+<span class="n">pyc</span> <span class="o">=</span> <span class="n">py</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.pyc&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pyc</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">pathlib_from_existing</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">source</span><span class="o">/</span><span class="n">pathlib</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">rst</span>
+<span class="n">source</span><span class="o">/</span><span class="n">pathlib</span><span class="o">/</span><span class="n">pathlib_from_existing</span><span class="o">.</span><span class="n">py</span>
+<span class="n">source</span><span class="o">/</span><span class="n">pathlib</span><span class="o">/</span><span class="n">pathlib_from_existing</span><span class="o">.</span><span class="n">pyc</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="_1">解析路径</h2>
+<p>Path对象具有用于从名称中提取部分值的方法和属性。例如，parts属性会生成一系列基于路径分隔符值解析的路径段。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_parts.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;/usr/local&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">parts</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">pathlib_parts</span><span class="o">.</span><span class="n">py</span>
+
+<span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;usr&#39;</span><span class="p">,</span> <span class="s1">&#39;local&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>有两种方法可以从给定的路径对象中“向上”导航文件系统层次结构。父属性引用包含路径的目录的新路径实例，即os.path.dirname()返回的值。父项属性是迭代器，它产生父目录引用，不断地向上“提升”路径层次直到到达根目录。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;/usr/local/lib&#39;</span><span class="p">)</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;parent: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">parent</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">hierarchy:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">up</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">parents</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">up</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">pathlib_parents</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">parent</span><span class="p">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
+
+<span class="n">hierarchy</span><span class="p">:</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
+<span class="o">/</span><span class="n">usr</span>
+<span class="o">/</span>
+</pre></div>
+</td></tr></table>
+
+<p>路径的其他部分可以通过路径对象的属性来访问。 name属性保存最后一个路径分隔符（与 os.path.basename()产生的值相同）后的最后一部分路径。后缀属性保存扩展分隔符后面的值，并且stem属性保留后缀之前的名称部分。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_name.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;./source/pathlib/pathlib_name.py&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;path  : {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;name  : {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;suffix: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">suffix</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;stem  : {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">stem</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">pathlib_name</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">path</span>  <span class="p">:</span> <span class="n">source</span><span class="o">/</span><span class="n">pathlib</span><span class="o">/</span><span class="n">pathlib_name</span><span class="o">.</span><span class="n">py</span>
+<span class="n">name</span>  <span class="p">:</span> <span class="n">pathlib_name</span><span class="o">.</span><span class="n">py</span>
+<span class="n">suffix</span><span class="p">:</span> <span class="o">.</span><span class="n">py</span>
+<span class="n">stem</span>  <span class="p">:</span> <span class="n">pathlib_name</span>
+</pre></div>
+</td></tr></table>
+
+<p>尽管suffix和stem与 os.path.splitext()生成的值相似，但值仅基于name而不是完整路径。</p>
+<h2 id="concrete">创建Concrete路径</h2>
+<p>Concrete Path类的实例可以通过引用文件系统上的文件，目录或符号链接的名称（或潜在名称）的字符串参数来创建。 该类还提供了几种便捷方法来构建使用常用位置（如当前工作目录和用户主目录）的实例。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_convenience.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">home</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;home: &#39;</span><span class="p">,</span> <span class="n">home</span><span class="p">)</span>
+
+<span class="n">cwd</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;cwd : &#39;</span><span class="p">,</span> <span class="n">cwd</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">home</span><span class="p">:</span>  <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span>
+<span class="n">cwd</span> <span class="p">:</span>  <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">chinese</span><span class="o">-</span><span class="n">library</span><span class="o">/</span><span class="n">libraries</span><span class="o">/</span><span class="n">pathlib</span>
+<span class="n">stem</span>  <span class="p">:</span> <span class="n">pathlib_name</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="_2">目录内容</h2>
+<p>有三种方法可以访问目录列表，以发现文件系统上可用文件的名称。 iterdir()是生成器，为包含目录中的每个项目生成新的Path实例。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_convenience.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">home</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;home: &#39;</span><span class="p">,</span> <span class="n">home</span><span class="p">)</span>
+
+<span class="n">cwd</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;cwd : &#39;</span><span class="p">,</span> <span class="n">cwd</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">pathlib_name</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_parents</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_parts</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_joinpath</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_from_existing</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_operator</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_resolve</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_convenience</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_iterdir</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</td></tr></table>
+
+<p>如果路径不是目录，则iterdir()会引发NotADirectoryError。</p>
+<p>使用glob()仅查找匹配模式的文件。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">pathlib_glob</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_name</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_parents</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_parts</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_glob</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_joinpath</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_from_existing</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_operator</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_resolve</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_convenience</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pathlib_iterdir</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</td></tr></table>
+
+<p>glob处理器支持使用模式前缀**或通过调用rglob()而不是glob()来进行递归扫描。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_rglob.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">heapq</span><span class="o">/</span><span class="n">heapq_demo</span><span class="o">.</span><span class="n">py</span>
+<span class="o">../</span><span class="n">_dubbo</span><span class="o">/</span><span class="n">dubbo</span><span class="o">.</span><span class="n">py</span>
+<span class="o">../</span><span class="n">pathlib</span><span class="o">/</span><span class="n">pathlib_name</span><span class="o">.</span><span class="n">py</span>
+<span class="o">../</span><span class="n">pathlib</span><span class="o">/</span><span class="n">pathlib_parents</span><span class="o">.</span><span class="n">py</span>
+<span class="o">../</span><span class="n">pathlib</span><span class="o">/</span><span class="n">pathlib_rglob</span><span class="o">.</span><span class="n">py</span>
+<span class="o">../</span><span class="n">pathlib</span><span class="o">/</span><span class="n">pathlib_parts</span><span class="o">.</span><span class="n">py</span>
+<span class="o">...</span>
+</pre></div>
+</td></tr></table>
+
+<p>下面的两种用法也实现了类似的功能：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_rglob2.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;**/*.py&#39;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_rglob3.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*.py&#39;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>上面在指定目录中查找特定类型的文件，或许是pathlib中最有用的功能了。</p>
+<h2 id="_3">读写文件</h2>
+<p>每个Path实例都包含处理它所引用的文件内容的方法。 要立即检索内容，请使用read_bytes()或read_text()。 要写入文件，请使用write_bytes()或write_text()。 使用open()方法打开文件并保留文件句柄，而不是将名称传递给内置的open()函数。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_read_write.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;example.txt&#39;</span><span class="p">)</span>
+
+<span class="n">f</span><span class="o">.</span><span class="n">write_bytes</span><span class="p">(</span><span class="s1">&#39;This is the content&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+
+<span class="k">with</span> <span class="n">f</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;read from open(): {!r}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">handle</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;read_text(): {!r}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)))</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">read</span> <span class="kn">from</span> <span class="nn">open</span><span class="p">():</span> <span class="s1">&#39;This is the content&#39;</span>
+<span class="n">read_text</span><span class="p">():</span> <span class="s1">&#39;This is the content&#39;</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="_4">目录和符号链接</h2>
+<p>不存在的目录或符号链接的路径可用于创建。</p>
+<p>如果路径已经存在，mkdir()会引发一个FileExistsError。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_mkdir.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;example_dir&#39;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Creating {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+<span class="n">p</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">pathlib_mkdir</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">Creating</span> <span class="n">example_dir</span>
+
+<span class="err">$</span> <span class="n">python3</span> <span class="n">pathlib_mkdir</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">Creating</span> <span class="n">example_dir</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;pathlib_mkdir.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">16</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
+  <span class="n">File</span> <span class="s2">&quot;.../lib/python3.5/pathlib.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1214</span><span class="p">,</span> <span class="ow">in</span> <span class="n">mkdir</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;.../lib/python3.5/pathlib.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">371</span><span class="p">,</span> <span class="ow">in</span> <span class="n">wrapped</span>
+    <span class="k">return</span> <span class="n">strfunc</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">pathobj</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="n">FileExistsError</span><span class="p">:</span> <span class="p">[</span><span class="n">Errno</span> <span class="mi">17</span><span class="p">]</span> <span class="n">File</span> <span class="n">exists</span><span class="p">:</span> <span class="s1">&#39;example_dir&#39;</span>
+</pre></div>
+</td></tr></table>
+
+<p>使用symlink_to() 创建符号链接。该链接将根据路径的值进行命名，并将引用作为symlink_to()的参数的名称。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_symlink_to.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;example_link&#39;</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">symlink_to</span><span class="p">(</span><span class="s1">&#39;example.txt&#39;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">example_link</span>
+<span class="n">example</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="_5">文件类型</h2>
+<p>Path实例包含几种用于测试路径引用的文件类型的方法。本示例创建了多个不同类型的文件，并测试这些文件以及本地操作系统上可用的一些其他设备特定的文件。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_types.py</span>
+
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;test_files&#39;</span><span class="p">)</span>
+
+<span class="c1"># Clean up from previous runs.</span>
+<span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
+
+<span class="c1"># Create test files</span>
+<span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s1">&#39;file&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span>
+    <span class="s1">&#39;This is a regular file&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s1">&#39;symlink&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">symlink_to</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">mkfifo</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s1">&#39;fifo&#39;</span><span class="p">))</span>
+
+<span class="c1"># Check the file types</span>
+<span class="n">to_scan</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">iterdir</span><span class="p">(),</span>
+    <span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/dev/disk0&#39;</span><span class="p">),</span>
+     <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/dev/console&#39;</span><span class="p">)],</span>
+<span class="p">)</span>
+<span class="n">hfmt</span> <span class="o">=</span> <span class="s1">&#39;{:18s}&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;  {:&gt;5}&#39;</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hfmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;File&#39;</span><span class="p">,</span> <span class="s1">&#39;Dir&#39;</span><span class="p">,</span> <span class="s1">&#39;Link&#39;</span><span class="p">,</span> <span class="s1">&#39;FIFO&#39;</span><span class="p">,</span> <span class="s1">&#39;Block&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Character&#39;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">()</span>
+
+<span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;{:20s}  &#39;</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;{!r:&gt;5}  &#39;</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">to_scan</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="p">),</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">is_file</span><span class="p">(),</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">is_dir</span><span class="p">(),</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">is_symlink</span><span class="p">(),</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">is_fifo</span><span class="p">(),</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">is_block_device</span><span class="p">(),</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">is_char_device</span><span class="p">(),</span>
+    <span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>is_dir(), is_file(), is_symlink(), is_socket(), is_fifo(), is_block_device(), is_char_device()都不带任何参数。</p>
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Name</span>                 <span class="n">File</span>    <span class="n">Dir</span>   <span class="n">Link</span>   <span class="n">FIFO</span>  <span class="n">Block</span>  <span class="n">Character</span>
+
+<span class="n">test_files</span><span class="o">/</span><span class="nb">file</span>        <span class="bp">True</span>  <span class="bp">False</span>  <span class="bp">False</span>  <span class="bp">False</span>  <span class="bp">False</span>  <span class="bp">False</span>  
+<span class="n">test_files</span><span class="o">/</span><span class="n">fifo</span>       <span class="bp">False</span>  <span class="bp">False</span>  <span class="bp">False</span>   <span class="bp">True</span>  <span class="bp">False</span>  <span class="bp">False</span>  
+<span class="n">test_files</span><span class="o">/</span><span class="n">symlink</span>     <span class="bp">True</span>  <span class="bp">False</span>   <span class="bp">True</span>  <span class="bp">False</span>  <span class="bp">False</span>  <span class="bp">False</span>  
+<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">disk0</span>            <span class="bp">False</span>  <span class="bp">False</span>  <span class="bp">False</span>  <span class="bp">False</span>  <span class="bp">False</span>  <span class="bp">False</span>  
+<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">console</span>          <span class="bp">False</span>  <span class="bp">False</span>  <span class="bp">False</span>  <span class="bp">False</span>  <span class="bp">False</span>   <span class="bp">True</span> 
+</pre></div>
+</td></tr></table>
+
+<p>这里格式化的方法挺有意思。</p>
+<h2 id="_6">文件属性</h2>
+<p>有关文件的详细信息可以使用stat() 或lstat() 方法来访问（用于检查可能是符号链接的状态）。这些方法产生与os.stat() os.lstat() 相同的结果。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="vm">__file__</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="n">stat_info</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;{}:&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;  Size:&#39;</span><span class="p">,</span> <span class="n">stat_info</span><span class="o">.</span><span class="n">st_size</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;  Permissions:&#39;</span><span class="p">,</span> <span class="nb">oct</span><span class="p">(</span><span class="n">stat_info</span><span class="o">.</span><span class="n">st_mode</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;  Owner:&#39;</span><span class="p">,</span> <span class="n">stat_info</span><span class="o">.</span><span class="n">st_uid</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;  Device:&#39;</span><span class="p">,</span> <span class="n">stat_info</span><span class="o">.</span><span class="n">st_dev</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;  Created      :&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">stat_info</span><span class="o">.</span><span class="n">st_ctime</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;  Last modified:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">stat_info</span><span class="o">.</span><span class="n">st_mtime</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;  Last accessed:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">stat_info</span><span class="o">.</span><span class="n">st_atime</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">pathlib_stat</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">pathlib_stat</span><span class="o">.</span><span class="n">py</span><span class="p">:</span>
+  <span class="n">Size</span><span class="p">:</span> <span class="mi">607</span>
+  <span class="n">Permissions</span><span class="p">:</span> <span class="mi">0</span><span class="n">o100644</span>
+  <span class="n">Owner</span><span class="p">:</span> <span class="mi">527</span>
+  <span class="n">Device</span><span class="p">:</span> <span class="mi">16777218</span>
+  <span class="n">Created</span>      <span class="p">:</span> <span class="n">Thu</span> <span class="n">Dec</span> <span class="mi">29</span> <span class="mi">12</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">25</span> <span class="mi">2016</span>
+  <span class="n">Last</span> <span class="n">modified</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">Dec</span> <span class="mi">29</span> <span class="mi">12</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">25</span> <span class="mi">2016</span>
+  <span class="n">Last</span> <span class="n">accessed</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">Dec</span> <span class="mi">29</span> <span class="mi">12</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">34</span> <span class="mi">2016</span>
+
+<span class="err">$</span> <span class="n">python3</span> <span class="n">pathlib_stat</span><span class="o">.</span><span class="n">py</span> <span class="n">index</span><span class="o">.</span><span class="n">rst</span>
+
+<span class="n">index</span><span class="o">.</span><span class="n">rst</span><span class="p">:</span>
+  <span class="n">Size</span><span class="p">:</span> <span class="mi">19363</span>
+  <span class="n">Permissions</span><span class="p">:</span> <span class="mi">0</span><span class="n">o100644</span>
+  <span class="n">Owner</span><span class="p">:</span> <span class="mi">527</span>
+  <span class="n">Device</span><span class="p">:</span> <span class="mi">16777218</span>
+  <span class="n">Created</span>      <span class="p">:</span> <span class="n">Thu</span> <span class="n">Dec</span> <span class="mi">29</span> <span class="mi">11</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mi">58</span> <span class="mi">2016</span>
+  <span class="n">Last</span> <span class="n">modified</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">Dec</span> <span class="mi">29</span> <span class="mi">11</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mi">58</span> <span class="mi">2016</span>
+  <span class="n">Last</span> <span class="n">accessed</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">Dec</span> <span class="mi">29</span> <span class="mi">12</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">33</span> <span class="mi">2016</span>       <span class="bp">False</span>  <span class="bp">False</span>  <span class="bp">False</span>  <span class="bp">False</span>  <span class="bp">False</span>   <span class="bp">True</span> 
+</pre></div>
+</td></tr></table>
+
+<p>要更简单地访问有关文件所有者的信息，请使用owner()和group()。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_ownership.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;{} is owned by {}/{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">owner</span><span class="p">(),</span> <span class="n">p</span><span class="o">.</span><span class="n">group</span><span class="p">()))</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">chinese</span><span class="o">-</span><span class="n">library</span><span class="o">/</span><span class="n">libraries</span><span class="o">/</span><span class="n">pathlib</span><span class="o">/</span><span class="n">pathlib_ownership</span><span class="o">.</span><span class="n">py</span> <span class="ow">is</span> <span class="n">owned</span> <span class="n">by</span> <span class="n">andrew</span><span class="o">/</span><span class="n">andrew</span>
+</pre></div>
+</td></tr></table>
+
+<p>stat() 返回数字，这些方法将查找与ID相关联的名称。</p>
+<p>touch()方法与Unix命令touch类似，用于创建文件或更新现有文件的修改时间和权限。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_touch.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;touched&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;already exists&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;creating new&#39;</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">touch</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">touch</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Start:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">start</span><span class="o">.</span><span class="n">st_mtime</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;End  :&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">end</span><span class="o">.</span><span class="n">st_mtime</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">pathlib_touch</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">creating</span> <span class="n">new</span>
+<span class="n">Start</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">Dec</span> <span class="mi">29</span> <span class="mi">12</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">34</span> <span class="mi">2016</span>
+<span class="n">End</span>  <span class="p">:</span> <span class="n">Thu</span> <span class="n">Dec</span> <span class="mi">29</span> <span class="mi">12</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">35</span> <span class="mi">2016</span>
+
+<span class="err">$</span> <span class="n">python3</span> <span class="n">pathlib_touch</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">already</span> <span class="n">exists</span>
+<span class="n">Start</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">Dec</span> <span class="mi">29</span> <span class="mi">12</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">35</span> <span class="mi">2016</span>
+<span class="n">End</span>  <span class="p">:</span> <span class="n">Thu</span> <span class="n">Dec</span> <span class="mi">29</span> <span class="mi">12</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">36</span> <span class="mi">2016</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="_7">权限</h2>
+<p>在类Unix系统上，可以使用chmod()更改文件权限，将模式作为整数传递。模式值可以使用stat模块中定义的常量来构造。这个例子切换用户的执行权限位。</p>
+<p>脚本假定它具有运行时修改文件模式所需的权限。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_chmod.py</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">stat</span>
+
+<span class="c1"># Create a fresh test file.</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;pathlib_chmod_example.txt&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s1">&#39;contents&#39;</span><span class="p">)</span>
+
+<span class="c1"># Determine what permissions are already set using stat.</span>
+<span class="n">existing_permissions</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">S_IMODE</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_mode</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Before: {:o}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">existing_permissions</span><span class="p">))</span>
+
+<span class="c1"># Decide which way to toggle them.</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">existing_permissions</span> <span class="o">&amp;</span> <span class="n">os</span><span class="o">.</span><span class="n">X_OK</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Adding execute permission&#39;</span><span class="p">)</span>
+    <span class="n">new_permissions</span> <span class="o">=</span> <span class="n">existing_permissions</span> <span class="o">|</span> <span class="n">stat</span><span class="o">.</span><span class="n">S_IXUSR</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Removing execute permission&#39;</span><span class="p">)</span>
+    <span class="c1"># use xor to remove the user execute permission</span>
+    <span class="n">new_permissions</span> <span class="o">=</span> <span class="n">existing_permissions</span> <span class="o">^</span> <span class="n">stat</span><span class="o">.</span><span class="n">S_IXUSR</span>
+
+<span class="c1"># Make the change and show the new value.</span>
+<span class="n">f</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="n">new_permissions</span><span class="p">)</span>
+<span class="n">after_permissions</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">S_IMODE</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_mode</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;After: {:o}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">after_permissions</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">pathlib_chmod</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">Before</span><span class="p">:</span> <span class="mi">644</span>
+<span class="n">Adding</span> <span class="n">execute</span> <span class="n">permission</span>
+<span class="n">After</span><span class="p">:</span> <span class="mi">744</span>
+</pre></div>
+</td></tr></table>
+
+<p>本文代码地址：https://bitbucket.org/china-testing/python-chinese-library/src/e8a0671ecdb6c2b24d561f155415e102d6c40cbf/libraries/pathlib/?at=default</p>
+<p>本文最新版本地址：http://t.cn/R8LireQ</p>
+<p>交流QQ群：python 测试开发 144081101</p>
+<p>wechat： pythontesting</p>
+<p>淘宝天猫可以把链接发给qq850766020，为你生成优惠券，降低你的购物成本！</p>
+<p>快来领取支付宝跨年红包！1月1日起还有机会额外获得专享红包哦！复制此消息，打开最新版支付宝就能领取！2C56CV70sA</p>
+<h2 id="_8">删除</h2>
+<p>有两种从文件系统中删除东西的方法，具体取决于类型。要删除空目录，请使用rmdir()。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_rmdir.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;example_dir&#39;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Removing {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+<span class="n">p</span><span class="o">.</span><span class="n">rmdir</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">pathlib_rmdir</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">Removing</span> <span class="n">example_dir</span>
+
+<span class="err">$</span> <span class="n">python3</span> <span class="n">pathlib_rmdir</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">Removing</span> <span class="n">example_dir</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;pathlib_rmdir.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">16</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">rmdir</span><span class="p">()</span>
+  <span class="n">File</span> <span class="s2">&quot;.../lib/python3.5/pathlib.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1262</span><span class="p">,</span> <span class="ow">in</span> <span class="n">rmdir</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;.../lib/python3.5/pathlib.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">371</span><span class="p">,</span> <span class="ow">in</span> <span class="n">wrapped</span>
+    <span class="k">return</span> <span class="n">strfunc</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">pathobj</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="n">FileNotFoundError</span><span class="p">:</span> <span class="p">[</span><span class="n">Errno</span> <span class="mi">2</span><span class="p">]</span> <span class="n">No</span> <span class="n">such</span> <span class="nb">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="p">:</span>
+<span class="s1">&#39;example_dir&#39;</span>
+</pre></div>
+</td></tr></table>
+
+<p>如果目录不存在，则会引发FileNotFoundError异常。尝试删除非空的目录也是错误的。</p>
+<p>对于文件，符号链接和大多数其他路径类型使用unlink()。</p>
+<p>用户必须具有删除文件，符号链接，套接字或其他文件系统对象的权限。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pathlib_unlink.py</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;touched&#39;</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">touch</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;exists before removing:&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;exists after removing:&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span>
+</pre></div>
+</td></tr></table>
+
+<p>执行结果：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">pathlib_unlink</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">exists</span> <span class="n">before</span> <span class="n">removing</span><span class="p">:</span> <span class="bp">True</span>
+<span class="n">exists</span> <span class="n">after</span> <span class="n">removing</span><span class="p">:</span> <span class="bp">False</span>
+</pre></div>
+</td></tr></table>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

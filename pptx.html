@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>ppt制作工具python-pptx 快速入门</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/pptx.html" rel="bookmark"
+           title="Permalink to ppt制作工具python-pptx 快速入门">ppt制作工具python-pptx 快速入门</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-12-29T15:20:00+08:00">
+                Published: 六 29 十二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <h3 id="hello">hello</h3>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">pptx</span> <span class="kn">import</span> <span class="n">Presentation</span>
+
+<span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
+<span class="n">title_slide_layout</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slide_layouts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">slide</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">title_slide_layout</span><span class="p">)</span>
+<span class="n">title</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">title</span>
+<span class="n">subtitle</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">placeholders</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hello, World!&quot;</span>
+<span class="n">subtitle</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;python-pptx 可以轻松制作powerpoint!&quot;</span>
+
+<span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.pptx&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a5f192eeed1c0c42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="bullet">Bullet</h3>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pptx</span> <span class="kn">import</span> <span class="n">Presentation</span>
+
+<span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
+<span class="n">bullet_slide_layout</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slide_layouts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">slide</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">bullet_slide_layout</span><span class="p">)</span>
+<span class="n">shapes</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span>
+
+<span class="n">title_shape</span> <span class="o">=</span> <span class="n">shapes</span><span class="o">.</span><span class="n">title</span>
+<span class="n">body_shape</span> <span class="o">=</span> <span class="n">shapes</span><span class="o">.</span><span class="n">placeholders</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">title_shape</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Adding a Bullet Slide&#39;</span>
+
+<span class="n">tf</span> <span class="o">=</span> <span class="n">body_shape</span><span class="o">.</span><span class="n">text_frame</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Find the bullet slide layout&#39;</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Use _TextFrame.text for first bullet&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Use _TextFrame.add_paragraph() for subsequent bullets&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.pptx&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b2de5bf203033cf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>并非所有shape都可以包含文本，但至少有段落。 _BaseShape.has_text_frame可用于确定shape是否可以包含文本，所有shape都是_BaseShape的子类 。当_BaseShape.has_text_frame为True 时，_BaseShape.text_frame.paragraphs[0]返回第一段。 可以使用text_frame.paragraphs[0].text设置文本。 _BaseShape.text和_TextFrame.text可以达到同样的效果。 </p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pptx</span> <span class="kn">import</span> <span class="n">Presentation</span>
+
+<span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
+<span class="n">bullet_slide_layout</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slide_layouts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">slide</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">bullet_slide_layout</span><span class="p">)</span>
+<span class="n">shapes</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span>
+
+<span class="n">title_shape</span> <span class="o">=</span> <span class="n">shapes</span><span class="o">.</span><span class="n">title</span>
+<span class="n">body_shape</span> <span class="o">=</span> <span class="n">shapes</span><span class="o">.</span><span class="n">placeholders</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">title_shape</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Adding a Bullet Slide&#39;</span>
+
+<span class="n">tf</span> <span class="o">=</span> <span class="n">body_shape</span><span class="o">.</span><span class="n">text_frame</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Find the bullet slide layout&#39;</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Use _TextFrame.text for first bullet&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Use _TextFrame.add_paragraph() for subsequent bullets&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.pptx&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="_1">参考资料</h3>
+<ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+<li>讨论qq群630011153 144081101</li>
+<li><a href="https://china-testing.github.io/pptx.html">原文地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li>[本文相关海量书籍下载](https://github.com/china-testing/python-api-tesing/blob/master/books.md</li>
+</ul>
+<h3 id="_2">字体</h3>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pptx</span> <span class="kn">import</span> <span class="n">Presentation</span>
+<span class="kn">from</span> <span class="nn">pptx.util</span> <span class="kn">import</span> <span class="n">Inches</span><span class="p">,</span> <span class="n">Pt</span>
+
+<span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
+<span class="n">blank_slide_layout</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slide_layouts</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">slide</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">blank_slide_layout</span><span class="p">)</span>
+
+<span class="n">left</span> <span class="o">=</span> <span class="n">top</span> <span class="o">=</span> <span class="n">width</span> <span class="o">=</span> <span class="n">height</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">txBox</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">add_textbox</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+<span class="n">tf</span> <span class="o">=</span> <span class="n">txBox</span><span class="o">.</span><span class="n">text_frame</span>
+
+<span class="n">tf</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;This is text inside a textbox&quot;</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;This is a second paragraph that&#39;s bold&quot;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;This is a third paragraph that&#39;s big&quot;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">Pt</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+
+<span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.pptx&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1d692a6f4f1f4e21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_3">图片</h3>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">pptx</span> <span class="kn">import</span> <span class="n">Presentation</span>
+<span class="kn">from</span> <span class="nn">pptx.util</span> <span class="kn">import</span> <span class="n">Inches</span>
+
+<span class="n">img_path</span> <span class="o">=</span> <span class="s1">&#39;test.jpg&#39;</span>
+
+<span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
+<span class="n">blank_slide_layout</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slide_layouts</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">slide</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">blank_slide_layout</span><span class="p">)</span>
+
+<span class="n">left</span> <span class="o">=</span> <span class="n">top</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pic</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">add_picture</span><span class="p">(</span><span class="n">img_path</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">)</span>
+
+<span class="n">left</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">5.5</span><span class="p">)</span>
+<span class="n">pic</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">add_picture</span><span class="p">(</span><span class="n">img_path</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">)</span>
+
+<span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.pptx&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-356e980ceafdd16e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="autoshape">Autoshape</h3>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">pptx</span> <span class="kn">import</span> <span class="n">Presentation</span>
+<span class="kn">from</span> <span class="nn">pptx.enum.shapes</span> <span class="kn">import</span> <span class="n">MSO_SHAPE</span>
+<span class="kn">from</span> <span class="nn">pptx.util</span> <span class="kn">import</span> <span class="n">Inches</span>
+
+<span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
+<span class="n">title_only_slide_layout</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slide_layouts</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">slide</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">title_only_slide_layout</span><span class="p">)</span>
+<span class="n">shapes</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span>
+
+<span class="n">shapes</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Adding an AutoShape&#39;</span>
+
+<span class="n">left</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">0.93</span><span class="p">)</span>  <span class="c1"># 0.93&quot; centers this overall set of shapes</span>
+<span class="n">top</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="n">width</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">1.75</span><span class="p">)</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">shape</span> <span class="o">=</span> <span class="n">shapes</span><span class="o">.</span><span class="n">add_shape</span><span class="p">(</span><span class="n">MSO_SHAPE</span><span class="o">.</span><span class="n">PENTAGON</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+<span class="n">shape</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Step 1&#39;</span>
+
+<span class="n">left</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="n">width</span> <span class="o">-</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">width</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>  <span class="c1"># chevrons need more width for visual balance</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">shapes</span><span class="o">.</span><span class="n">add_shape</span><span class="p">(</span><span class="n">MSO_SHAPE</span><span class="o">.</span><span class="n">CHEVRON</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+            <span class="n">shape</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Step </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">n</span>
+                <span class="n">left</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="n">width</span> <span class="o">-</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
+
+                <span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.pptx&#39;</span><span class="p">)</span>
+
+                <span class="sb">``</span><span class="err">`</span>
+
+                <span class="err">!</span><span class="p">[</span><span class="err">图片</span><span class="o">.</span><span class="n">png</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">upload</span><span class="o">-</span><span class="n">images</span><span class="o">.</span><span class="n">jianshu</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">upload_images</span><span class="o">/</span><span class="mi">12713060</span><span class="o">-</span><span class="mi">1496517</span><span class="n">c5fa064ac</span><span class="o">.</span><span class="n">png</span><span class="err">?</span><span class="n">imageMogr2</span><span class="o">/</span><span class="n">auto</span><span class="o">-</span><span class="n">orient</span><span class="o">/</span><span class="n">strip</span><span class="o">%</span><span class="mi">7</span><span class="n">CimageView2</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">w</span><span class="o">/</span><span class="mi">1240</span><span class="p">)</span>
+
+<span class="c1">### 表格</span>
+
+<span class="sb">``</span><span class="err">`</span><span class="n">python</span>
+<span class="c1">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">pptx</span> <span class="kn">import</span> <span class="n">Presentation</span>
+<span class="kn">from</span> <span class="nn">pptx.util</span> <span class="kn">import</span> <span class="n">Inches</span>
+
+<span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
+<span class="n">title_only_slide_layout</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slide_layouts</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">slide</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">title_only_slide_layout</span><span class="p">)</span>
+<span class="n">shapes</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span>
+
+<span class="n">shapes</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Adding a Table&#39;</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="n">cols</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">left</span> <span class="o">=</span> <span class="n">top</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="n">width</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">6.0</span><span class="p">)</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">shapes</span><span class="o">.</span><span class="n">add_table</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span><span class="o">.</span><span class="n">table</span>
+
+<span class="c1"># set column widths</span>
+<span class="n">table</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="n">table</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span>
+
+<span class="c1"># write column headings</span>
+<span class="n">table</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Foo&#39;</span>
+<span class="n">table</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Bar&#39;</span>
+
+<span class="c1"># write body cells</span>
+<span class="n">table</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Baz&#39;</span>
+<span class="n">table</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Qux&#39;</span>
+
+<span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.pptx&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-9dd23078b7a9aeff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="_4">提取文本</h3>
+<p>```python
+from pptx import Presentation</p>
+<p>prs = Presentation(path_to_presentation)</p>
+<h1 id="text_runs-will-be-populated-with-a-list-of-strings">text_runs will be populated with a list of strings,</h1>
+<h1 id="one-for-each-text-run-in-presentation">one for each text run in presentation</h1>
+<p>text_runs = []</p>
+<p>for slide in prs.slides:
+        for shape in slide.shapes:
+                    if not shape.has_text_frame:
+                                    continue
+                                            for paragraph in shape.text_frame.paragraphs:
+                                                            for run in paragraph.runs:
+                                                                                text_runs.append(run.text)
+                                                                                ```</p>
+<h3 id="_5">参考资料</h3>
+<ul>
+<li>讨论  qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/ai_books.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50 元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

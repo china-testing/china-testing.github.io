@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>安装人工智能图像处理工具OpenCV</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li class="active"><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/cv_install.html" rel="bookmark"
+           title="Permalink to 安装人工智能图像处理工具OpenCV">安装人工智能图像处理工具OpenCV</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-12-06T08:40:00+08:00">
+                Published: 四 06 十二月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi-kuang-jia.html">测试框架</a>.</p>
+
+</footer><!-- /.post-info -->      <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+</ul>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-3b72904a89216ebf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="python">python版本安装</h2>
+<p>适合所有平台：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">opencv</span><span class="o">-</span><span class="n">python</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">opencv</span><span class="o">-</span><span class="n">contrib</span><span class="o">-</span><span class="n">python</span>
+</pre></div>
+
+
+<h2 id="windows">Windows</h2>
+<p>https://sourceforge.net/projects/opencvlibrary/ 下载对应的exe安装即可。</p>
+<h2 id="macos-x">macOS X</h2>
+<p>brew install opencv --with-tbb --with-opengl</p>
+<h3 id="opencv">安装OpenCV依赖</h3>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">upgrade</span>
+<span class="c1"># 开发工具</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">cmake</span> <span class="n">unzip</span> <span class="n">pkg</span><span class="o">-</span><span class="n">config</span>
+<span class="c1"># 图形库   </span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libjpeg</span><span class="o">-</span><span class="n">dev</span> <span class="n">libpng</span><span class="o">-</span><span class="n">dev</span> <span class="n">libtiff</span><span class="o">-</span><span class="n">dev</span>
+<span class="c1"># 视频库   </span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libjpeg</span><span class="o">-</span><span class="n">dev</span> <span class="n">libpng</span><span class="o">-</span><span class="n">dev</span> <span class="n">libtiff</span><span class="o">-</span><span class="n">dev</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libxvidcore</span><span class="o">-</span><span class="n">dev</span> <span class="n">libx264</span><span class="o">-</span><span class="n">dev</span>
+<span class="c1"># GTK</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libgtk</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">dev</span>
+<span class="c1"># 其他</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libatlas</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">dev</span> <span class="n">gfortran</span>
+<span class="c1"># python头文件</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+
+
+<h3 id="_1">下载</h3>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">cd</span> <span class="o">~</span>
+<span class="err">$</span> <span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="n">opencv</span><span class="o">.</span><span class="n">zip</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">opencv</span><span class="o">/</span><span class="n">opencv</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mf">1.</span><span class="n">zip</span> 
+<span class="err">$</span> <span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="n">opencv_contrib</span><span class="o">.</span><span class="n">zip</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">opencv</span><span class="o">/</span><span class="n">opencv_contrib</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mf">1.</span><span class="n">zip</span>
+<span class="err">$</span> <span class="n">unzip</span> <span class="n">opencv</span><span class="o">.</span><span class="n">zip</span>
+<span class="err">$</span> <span class="n">unzip</span> <span class="n">opencv_contrib</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+
+
+<p><a href="https://docs.opencv.org/3.4.3/d7/d9f/tutorial_linux_install.html">官方安装文档</a></p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-41e4a1a2b3aa839e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>上图的右上角的"OpenCV"旁边可以看到最新的版本号。如果你要使用opencv3.4.3，修改https://github.com/opencv/opencv/archive/3.4.1.zip 为https://github.com/opencv/opencv/archive/3.4.3.zip 即可。</p>
+<h3 id="_2">安装</h3>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">mkdir</span> <span class="n">build</span>
+<span class="err">$</span> <span class="n">cd</span> <span class="n">build</span>
+<span class="err">$</span> <span class="n">cmake</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span> <span class="o">-</span><span class="n">DOPENCV_EXTRA_MODULES_PATH</span><span class="o">=../../</span><span class="n">opencv_contrib</span><span class="o">-</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">modules</span> <span class="o">-</span><span class="n">DOPENCV_ENABLE_NONFREE</span><span class="o">=</span><span class="bp">True</span> 
+
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+<span class="err">$</span> <span class="n">export</span> <span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="p">:</span><span class="err">$</span><span class="n">LD_LIBRARY_PATH</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">ldconfig</span>
+</pre></div>
+
+
+<h2 id="2413-ubuntu-1404">2.4.13  ubuntu 14.04</h2>
+<div class="highlight"><pre><span></span><span class="c1"># install dependencies</span>
+sudo apt-get update
+sudo apt-get install -y build-essential
+sudo apt-get install -y cmake
+sudo apt-get install -y libgtk2.0-dev
+sudo apt-get install -y pkg-config
+sudo apt-get install -y python-numpy python-dev
+sudo apt-get install -y libavcodec-dev libavformat-dev libswscale-dev
+sudo apt-get install -y libjpeg-dev libpng-dev libtiff-dev libjasper-dev
+
+sudo apt-get -qq install libopencv-dev build-essential checkinstall cmake pkg-config yasm libjpeg-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev libxine-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev python-dev python-numpy libtbb-dev libqt4-dev libgtk2.0-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils
+
+<span class="c1"># download opencv-2.4.13</span>
+wget http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.13/opencv-2.4.13.zip
+unzip opencv-2.4.13.zip
+<span class="nb">cd</span> opencv-2.4.13
+mkdir release
+<span class="nb">cd</span> release
+
+<span class="c1"># compile and install</span>
+cmake -G <span class="s2">&quot;Unix Makefiles&quot;</span> -D <span class="nv">CMAKE_CXX_COMPILER</span><span class="o">=</span>/usr/bin/g++ <span class="nv">CMAKE_C_COMPILER</span><span class="o">=</span>/usr/bin/gcc -D <span class="nv">CMAKE_BUILD_TYPE</span><span class="o">=</span>RELEASE -D <span class="nv">CMAKE_INSTALL_PREFIX</span><span class="o">=</span>/usr/local -D <span class="nv">WITH_TBB</span><span class="o">=</span>ON -D <span class="nv">BUILD_NEW_PYTHON_SUPPORT</span><span class="o">=</span>ON -D <span class="nv">WITH_V4L</span><span class="o">=</span>ON -D <span class="nv">INSTALL_C_EXAMPLES</span><span class="o">=</span>ON -D <span class="nv">INSTALL_PYTHON_EXAMPLES</span><span class="o">=</span>ON -D <span class="nv">BUILD_EXAMPLES</span><span class="o">=</span>ON -D <span class="nv">WITH_QT</span><span class="o">=</span>ON -D <span class="nv">WITH_OPENGL</span><span class="o">=</span>ON -D <span class="nv">BUILD_FAT_JAVA_LIB</span><span class="o">=</span>ON -D <span class="nv">INSTALL_TO_MANGLED_PATHS</span><span class="o">=</span>ON -D <span class="nv">INSTALL_CREATE_DISTRIB</span><span class="o">=</span>ON -D <span class="nv">INSTALL_TESTS</span><span class="o">=</span>ON -D <span class="nv">ENABLE_FAST_MATH</span><span class="o">=</span>ON -D <span class="nv">WITH_IMAGEIO</span><span class="o">=</span>ON -D <span class="nv">BUILD_SHARED_LIBS</span><span class="o">=</span>OFF -D <span class="nv">WITH_GSTREAMER</span><span class="o">=</span>ON -DBUILD_TIFF<span class="o">=</span>ON ..
+make all -j8 <span class="c1"># 8 cores</span>
+sudo make install
+</pre></div>
+
+
+<h3 id="_3">参考资料</h3>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 钉钉免费群21745728</li>
+<li><a href="https://china-testing.github.io/cv_install.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing/tree/master/python_crash_tutorial">本文源码地址</a></li>
+<li><a href="http://www.python36.com/how-to-install-opencv340-on-ubuntu1604/">How to install OpenCV 3.4.0 on Ubuntu 16.04</a></li>
+<li><a href="https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/">Ubuntu 18.04: How to install OpenCV</a></li>
+<li><a href="https://github.com/opencv/opencv">opencv github</a></li>
+<li><a href="https://gist.github.com/bigsnarfdude/7305c8d8335c7cfc91888485a33d9bd9">[opencv] 2.4.13 on ubuntu 14.04 </a></li>
+<li><a href="https://stackoverflow.com/questions/17275348/how-to-specify-new-gcc-path-for-cmake">How to specify new GCC path for CMake</a></li>
+</ul>
+<h3 id="faq">FAQ</h3>
+<ul>
+<li>qmake</li>
+</ul>
+<div class="highlight"><pre><span></span>qmake: could not <span class="nb">exec</span> <span class="s1">&#39;/usr/lib/x86_64-linux-gnu/qt4/bin/qmake&#39;</span>: No such file or directory 
+
+解决：sudo apt-get install qt-sdk 
+参考：https://stackoverflow.com/questions/23703864/cmake-not-working-could-not-exec-qmake
+</pre></div>
+
+
+<ul>
+<li><a href="https://stackoverflow.com/questions/45518317/in-source-builds-are-not-allowed-in-cmake">In-source builds are not allowed” in cmake</a></li>
+</ul>
+<div class="highlight"><pre><span></span>mkdir my_build_dir
+<span class="nb">cd</span> my_build_dir
+rm ../CMakeCache.txt
+cmake .. -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DCMAKE_INSTALL_PREFIX<span class="o">=</span>/home/jinha/OCV/source
+</pre></div>
+
+
+<h2 id="_4">参考资料</h2>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://china-testing.github.io/opencv_books.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>   </li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

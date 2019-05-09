@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>MD5值重复文件多进程检查工具check_md5.py - 性能测试工具开发</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/multi_md5.html" rel="bookmark"
+           title="Permalink to MD5值重复文件多进程检查工具check_md5.py - 性能测试工具开发">MD5值重复文件多进程检查工具check_md5.py - 性能测试工具开发</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-30T07:55:00+08:00">
+                Published: 五 30 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <p><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></p>
+<h2 id="md5">MD5简介</h2>
+<p>Message Digest Algorithm MD5(中文名为<a href="https://baike.so.com/doc/6941562-7163923.html">消息摘要算法</a>第五版)为计算机安全领域广泛使用的一种散列函数，用以提供消息的完整性保护。该算法的文件号为RFC 1321(R.Rivest,MIT Laboratory for Computer Science and RSA Data Security Inc. April 1992)。</p>
+<p><strong>MD5</strong>即Message-Digest Algorithm 5(信息-摘要算法5)，用于确保信息传输完整一致。是计算机广泛使用的杂凑算法之一(又译摘要算法、<a href="https://baike.so.com/doc/6902798-7123502.html">哈希算法</a>)，主流编程语言普遍已有MD5实现。将数据(如汉字)运算为另一固定长度值，是杂凑算法的基础原理，MD5的前身有MD2、<a href="https://baike.so.com/doc/2380309-2516809.html">MD3</a>和MD4。</p>
+<p>MD5算法具有以下特点:</p>
+<p>1、压缩性:任意长度的数据，算出的MD5值长度都是固定的。</p>
+<p>2、容易计算:从原数据计算出MD5值很容易。</p>
+<p>3、抗修改性:对原数据进行任何改动，哪怕只修改1个字节，所得到的MD5值都有很大区别。</p>
+<p>4、强抗碰撞:已知原数据和其MD5值，想找到一个具有相同MD5值的数据(即伪造数据)是非常困难的。</p>
+<p>MD5的作用是让大容量信息在用<a href="https://baike.so.com/doc/2871106-3029793.html">数字签名</a>软件签署私人密钥前被"<a href="https://baike.so.com/doc/3143727-3313214.html">压缩</a>"成一种保密的格式(就是把一个任意长度的字节串变换成一定长的<a href="https://baike.so.com/doc/5330668-5565842.html">十六进制</a>数字串)。除了MD5以外，其中比较有名的还有sha-1、RIPEMD以及Haval等。</p>
+<p>举个实际应用的例子。比如你在百度云qq群文件等上传文件的时候，有时上传几百兆的文件可以几秒内完成，是真的网络有这么快么？不是，通常是服务器已经存在你所上传的文件。那么系统是如何确定服务器已经存在你要上传的文件的呢？多为计算你要上传文件的MD5，如果MD5和已有文件的MD5一致，就认为文件已经存在。</p>
+<h2 id="_1">参考资料</h2>
+<ul>
+<li><a href="https://china-testing.github.io/multi_md5.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+</ul>
+<h2 id="md5_1">计算MD5</h2>
+<p>linux 下 shell命令行工具md5sum用于计算与校验RFC 1321所描述的128位MD5哈希值。 </p>
+<div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">&quot;hello&quot;</span> &gt; hello
+$ md5sum hello 
+b1946ac92492d2347c6235b4d2611184  hello
+</pre></div>
+
+
+<p>上述过程也可以用python3实现</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="s1">&#39;b1946ac92492d2347c6235b4d2611184&#39;</span>
+</pre></div>
+
+
+<p><a href="https://github.com/china-testing/python-api-tesing/blob/master/data_common.py">上述代码的函数封装</a>，参见get_md5函数。</p>
+<p>[Md5sum 英文维基百科参考](https://en.wikipedia.org/wiki/Md5sum）</p>
+<h2 id="md5_2">MD5值重复文件多进程检查工具</h2>
+<p>测试过程中经常发现MD5值相同的图片。之前没有用并发，检查过程经常需要一个小时，现在改成多进程。一般3分钟以内可以完成处理(48核)。</p>
+<p>此模式也是自行开发性能测试工具的模型之一。</p>
+<p>代码：</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Author:    xurongzhong#126.com 技术支持qq群：144081101</span>
+<span class="c1"># CreateDate: 2018-1-8 </span>
+<span class="c1"># check_md5.py</span>
+
+<span class="kn">import</span> <span class="nn">multiprocessing</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">data_common</span>
+
+<span class="k">def</span> <span class="nf">consumer</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">break</span>        
+        <span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="n">md5</span> <span class="o">=</span> <span class="n">data_common</span><span class="o">.</span><span class="n">get_md5</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">is_file</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">md5</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Same md5&quot;</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="n">md5</span><span class="p">],</span> <span class="n">name</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">results</span><span class="p">[</span><span class="n">md5</span><span class="p">]</span> <span class="o">=</span><span class="p">[]</span>
+            <span class="n">results</span><span class="p">[</span><span class="n">md5</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">md5</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;directory&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;目录&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;typename&quot;</span><span class="p">,</span>
+                        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;文件扩展名&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--version&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;version&#39;</span><span class="p">,</span>
+                        <span class="n">version</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(prog)s</span><span class="s1"> 1.1 Rongzhong xu 2018 03 22&#39;</span><span class="p">)</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="n">process</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Manager</span><span class="p">()</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+    <span class="n">lock</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="c1"># Launch the consumer process</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span>
+            <span class="n">target</span><span class="o">=</span><span class="n">consumer</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">lock</span><span class="p">))</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">daemon</span><span class="o">=</span><span class="bp">True</span>
+        <span class="n">process</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+        <span class="n">process</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">directory</span><span class="p">)</span>   
+    <span class="k">for</span> <span class="n">item</span>  <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*.{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">typename</span><span class="p">)):</span>
+        <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+        <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span> 
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+        <span class="n">process</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>       
+
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;md5_files.txt&quot;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>   
+    <span class="n">f2</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;files.txt&quot;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>   
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+        <span class="n">f2</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;{},{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="n">results</span><span class="p">[</span><span class="n">item</span><span class="p">]))</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">item</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;{},{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="n">results</span><span class="p">[</span><span class="n">item</span><span class="p">]))</span>
+</pre></div>
+
+
+<p>演示</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">python3</span> <span class="n">check_md5</span><span class="o">.</span><span class="n">py</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">andrew</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">paper</span>
+<span class="n">Same</span> <span class="n">md5</span> <span class="p">[</span><span class="s1">&#39;2018.01.07-19.38.15_0.9999967.jpg&#39;</span><span class="p">]</span> <span class="mf">2018.01</span><span class="o">.</span><span class="mo">07</span><span class="o">-</span><span class="mf">19.38</span><span class="o">.</span><span class="mi">15</span><span class="n">_0</span><span class="o">.</span><span class="mf">99999679.j</span><span class="n">pg</span>
+<span class="err">$</span> <span class="n">cat</span> <span class="n">md5_files</span><span class="o">.</span><span class="n">txt</span> 
+<span class="mi">43</span><span class="n">c5a6e1dcf79d095e97ce63885c5cd7</span><span class="p">,[</span><span class="s1">&#39;2018.01.07-19.38.15_0.9999967.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;2018.01.07-19.38.15_0.99999679.jpg&#39;</span><span class="p">]</span>
+<span class="n">andrew</span><span class="nd">@andrew</span><span class="o">-</span><span class="n">PowerEdge</span><span class="o">-</span><span class="n">T630</span><span class="p">:</span><span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">mobile_data</span><span class="o">/</span><span class="n">tools</span><span class="err">$</span>
+</pre></div>
+</td></tr></table>
+
+<p>注意，求MD5值依赖<a href="https://github.com/china-testing/python-api-tesing/blob/master/data_common.py">data_common.py</a></p>
+<p>上面使用的多进程属于python高性能的内容，如需想深入了解可以参考<a href="https://itbooks.pipipan.com/dir/18113597-29466302-126987/">书籍</a> 。</p>
+<h3 id="_2">参考资料</h3>
+<ul>
+<li>讨论  qq群144081101 567351477</li>
+<li><a href="https://china-testing.github.io/multi_md5.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

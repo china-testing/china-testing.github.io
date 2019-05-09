@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>TensorFlow工具快速入门教程3深度学习简介</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/tensorflow3.html" rel="bookmark"
+           title="Permalink to TensorFlow工具快速入门教程3深度学习简介">TensorFlow工具快速入门教程3深度学习简介</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-20T12:20:00+08:00">
+                Published: 二 20 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <ul>
+<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
+</ul>
+<h3 id="_1">深度学习介绍</h3>
+<p>深度学习是模拟大脑中神经元网络的计算机软件。它是机器学习的子集，被称为深度学习，因为它利用了深度神经网络。</p>
+<p>深度学习算法的第一层称为输入层，最后一层称为输出层，中间的所有层都称为隐藏层。深词意味着有两层以上的神经元。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-1e0fb97f8a92db90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>每个隐藏层由神经元组成。神经元彼此连接。神经元将处理然后传播上层的输入信号。给下层神经元的信号强度取决于重量，偏差和激活函数。</p>
+<p>网络消耗大量输入数据并通过多层操作它们;网络逐层学习越来越复杂的数据特征。</p>
+<h3 id="_2">深度学习过程</h3>
+<p>深度神经网络在从物体检测到语音识别的许多任务中提供最先进的精确度。他们可以自动学习，不需要程序员明确编码的预定义知识。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-2f011a9f5dd25c65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>要掌握深度学习的想法，想象一个有婴儿和父母的家庭。蹒跚学步的孩子用小指指着物体，总是说“猫”这个词。父母告诉他'是‘还是'否。小孩在内心深处不知道为什么他可以说这是猫。但他学会了如何通过观察整体宠物来提升猫的复杂特征，并继续关注尾巴或鼻子之类的细节。</p>
+<p>神经网络的工作原理完全相同。每一层代表更深层次的知识，即知识的层次结构。具有四层的神经网络将比具有两层的神经网络学习更复杂的特征。</p>
+<p>学习分两个阶段进行。第一阶段包括应用输入的非线性变换并创建统计模型作为输出。 第二阶段旨在用一种称为衍生物的数学方法来改进模型。</p>
+<p>神经网络将这两个阶段重复数百到数千次，直到达到可容忍的准确度。这个两阶段的重复被称为迭代。</p>
+<p>举个例子，模特试图学习如何跳舞。经过10分钟的训练，模特不知道如何跳舞，看起来像一个涂鸦。</p>
+<p><img alt="test.gif" src="https://upload-images.jianshu.io/upload_images/12713060-af0f71ae53bb7f97.gif?imageMogr2/auto-orient/strip"></p>
+<p>经过48小时的学习，电脑掌握了舞蹈艺术。</p>
+<p><img alt="image" src="http://upload-images.jianshu.io/upload_images/12713060-38d7673e6fbed623.gif?imageMogr2/auto-orient/strip"></p>
+<h3 id="_3">神经网络的分类</h3>
+<p>浅层神经网络：浅层神经网络在输入和输出之间只有一个隐藏层。</p>
+<p>深度神经网络：深度神经网络有不止一层。例如，用于图像识别的Google LeNet模型计为22层。</p>
+<p>如今，深度学习被用于许多方面，如无人驾驶汽车，移动电话，谷歌搜索引擎，欺诈检测，电视等。</p>
+<h3 id="_4">深度学习网络的类型</h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-be11da6bb85e01b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<ul>
+<li>前馈神经网络(Feed-forward neural networks)</li>
+</ul>
+<p>最简单的人工神经网络。使用这种类型的体系结构，信息只向一个方向流动。信息流从输入层开始，进入“隐藏”层，并在输出层结束。</p>
+<ul>
+<li>递归神经网络（RNN Recurrent neural networks）</li>
+</ul>
+<p>RNN是一种多层神经网络，可以在上下文节点中存储信息，允许它学习数据序列并输出一个或多个序列。简单来说，它是一个人工神经网络，其神经元之间的连接包括环。 RNN非常适合处理输入序列。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-e904d69dc7b854b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>比如预测"Do you want a…………?"的下一个单词。</p>
+<p>RNN神经元向句子开头的信号。</p>
+<p>接收单词“Do”作为输入并产生向量。该向量被反馈给神经元以向网络提供存储器。这个阶段有助于网络记住它收到的“Do”，它在第一个位置收到它。</p>
+<p>网络将类似地进行下一个单词。它需要“you”和“want”这个词。在接收到每个单词时更新神经元的状态。</p>
+<p>最后阶段在收到“a”后发生。神经网络将为每个可用于完成句子的英语单词提供概率。训练有素的RNN可能会给“café”，“drink”，“burger”等高概率词。</p>
+<p>RNN的常见用途</p>
+<p>帮助证券交易者生成分析报告；检测财务报表合同中的异常情况；检测欺诈性信用卡交易；为图像提供标题；聊天机器人；时间序列数据或序列（例如，音频记录或文本）的标准使用。</p>
+<ul>
+<li>卷积神经网络（CNN Convolutional neural networks）</li>
+</ul>
+<p>CNN是一个多层神经网络，具有独特的架构，旨在提取每层数据的日益复杂的特征，以确定输出。 CNN非常适合感知任务。</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-860bf5d9c9dcabf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>当存在非结构化数据集（例如，图像。</p>
+<p>例如预测图像标题：</p>
+<p>CNN接收一张猫咪的图像，这个图像在计算机术语中是像素的集合。通常，灰度图片为一层，彩色图片为三层。</p>
+<p>在特征学习期间（即隐藏层），网络将识别独特的特征，例如猫的尾巴，耳朵等。</p>
+<p>当网络彻底学会如何识别图片时，它可以为其知道的每个图像提供概率。具有最高概率的标签将成为网络的预测。</p>
+<p>这是目前人脸识别最常用的技术之一。</p>
+<ul>
+<li>强化学习(Reinforcement Learning)</li>
+</ul>
+<p>强化学习是机器学习的子领域，通过接收虚拟“奖励”或“惩罚”来训练，主要是通过反复试验来学习。谷歌的DeepMind已经使用强化学习来击败围棋冠军。强化学习也用于视频游戏，通过提供更智能的机器人来改善游戏体验。</p>
+<p>著名的算法有：Q-learning，Deep Q network，State-Action-Reward-State-Action (SARSA)、Deep Deterministic Policy Gradient (DDPG)。</p>
+<h3 id="_5">深度学习应用</h3>
+<ul>
+<li>财务人工智能：金融技术部门已经开始使用人工智能来节省时间，降低成本并增加价值。深度学习正在通过使用更强大的信用评分来改变贷款行业。信用决策者可以将人工智能用于强大的信贷出租应用程序，以实现更快，更准确的风险评估，使用机器智能来考虑申请人的性格和能力。</li>
+</ul>
+<p>Underwrite是一家为信贷公司提供AI解决方案的Fintech公司。 underwrite.ai使用AI来检测哪个申请人更有可能偿还贷款。他们的方法完全优于传统方法。</p>
+<ul>
+<li>人力资源AI：Under Armour，一家运动服装公司在人工智能的帮助下彻底改变了招聘和现代化的候选人体验。事实上，Under Armour减少了零售店的招聘时间35％。 Under Armour在2012年面临着越来越受欢迎的兴趣。他们平均每个月有30000份简历。阅读所有这些申请并开始筛选和面试过程花了太长时间。让人们受雇和入职的漫长过程影响了Under Armour能够让他们的零售店充分配备，增加并准备运营的能力。</li>
+</ul>
+<p>当时，Under Armour拥有所有“必备”人力资源技术，例如采购，应用，跟踪和入职的交易解决方案，但这些工具不够用。 Under Armour选择HireVue，一个人工智能解决方案提供商，用于按需和现场采访。</p>
+<h3 id="_6">参考资料</h3>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 </li>
+<li><a href="https://china-testing.github.io/tensorflow3.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a>   </li>
+<li><a href="https://www.jianshu.com/p/49202312f855">2018最佳人工智能机器学习工具书及下载(持续更新)</a></li>
+</ul>
+<h3 id="_7">为什么深度学习很重要？</h3>
+<p>深度学习是使预测成为可行结果的有力工具。深度学习在模式发现（无监督学习）和基于知识的预测方面表现优异。大数据是深度学习的动力。当两者结合在一起时，组织可以在生产力，销售，管理和创新方面获得前所未有的成果。</p>
+<p>深度学习可以胜过传统方法。例如，深度学习算法比图像分类中的机器学习算法精确41％，面部识别精度高27％，语音识别精度高25％。</p>
+<h3 id="_8">深度学习的局限性</h3>
+<ul>
+<li>数据标签</li>
+</ul>
+<p>大多数当前的AI模型都是通过“监督学习”进行培训的。这意味着人类必须对基础数据进行标记和分类，这可能是一个相当大且容易出错的工作。例如，开发自驾车技术的公司正在雇佣数百人手动注释原型车的数小时视频输入，以帮助培训这些系统。</p>
+<ul>
+<li>获得庞大的训练数据集</li>
+</ul>
+<p>已经表明，像CNN这样的简单深度学习技术在某些情况下可以模仿医学和其他领域专家的知识。然而，当前的机器学习浪潮需要训练数据集，这些数据集不仅标记，而且足够广泛和通用。</p>
+<p>深度学习方法需要对模型进行数千次观察才能在分类任务中变得相对较好，并且在某些情况下，需要数百万才能在人类层面上执行。毫不奇怪，深度学习在大型科技公司中很有名;他们正在使用大数据来累积数PB的数据。它允许他们创建令人印象深刻且高度准确的深度学习模型。</p>
+<ul>
+<li>解释问题</li>
+</ul>
+<p>从人的角度来看，大而复杂的模型很难解释。</p>
+<p>此外，随着AI应用的扩展，监管要求也可能需要更多可解释的AI模型。</p>
+<h2 id="_9">参考资料</h2>
+<ul>
+<li>讨论qq群144081101 591302926 567351477 </li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 请在github上点赞，谢谢！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a> </li>
+<li><a href="https://github.com/ageitgey/face_recognition">face_recognition</a></li>
+<li><a href="https://china-testing.github.io/opencv_books.html">2018最佳人工智能图像处理工具OpenCV书籍下载</a> </li>
+<li><a href="https://china-testing.github.io/ai_books.html">2018最佳人工智能机器学习工具书籍及下载(持续更新)</a> </li>
+<li><a href="https://china-testing.github.io/tensorflow3.html">本文最新版本地址</a></li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

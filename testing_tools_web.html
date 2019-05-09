@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>[雪峰磁针石博客]软件测试专家工具包1web测试</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li class="active"><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/testing_tools_web.html" rel="bookmark"
+           title="Permalink to [雪峰磁针石博客]软件测试专家工具包1web测试">[雪峰磁针石博客]软件测试专家工具包1web测试</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-20T11:20:00+08:00">
+                Published: 一 20 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/ce-shi.html">测试</a>.</p>
+
+</footer><!-- /.post-info -->      <h2 id="web">web测试</h2>
+<p>本章主要涉及功能测试、自动化测试(参考： <a href="https://china-testing.github.io/testing_automation_tips.html">软件自动化测试初学者忠告</a>)
+、接口测试(参考：<a href="https://china-testing.github.io/testing_api_10min.html">10分钟学会API测试</a>)、跨浏览器测试、可访问性测试和可用性测试的测试工具列表。 安全测试工具和性能测试工具在其他章节。</p>
+<h3 id="selenium">selenium</h3>
+<p>web ui自动化测试的霸主，在爬虫领域也颇有市场。</p>
+<p>官网 <a href="http://www.seleniumhq.org">http://www.seleniumhq.org</a></p>
+<p>实例：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
+
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
+
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.yahoo.com&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="s1">&#39;Yahoo&#39;</span> <span class="ow">in</span> <span class="n">browser</span><span class="o">.</span><span class="n">title</span>
+
+<span class="n">elem</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">find_element_by_name</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>  <span class="c1"># Find the search box</span>
+<span class="n">elem</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;seleniumhq&#39;</span> <span class="o">+</span> <span class="n">Keys</span><span class="o">.</span><span class="n">RETURN</span><span class="p">)</span>
+
+<span class="n">browser</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+
+
+<h3 id="httpie-http">HTTPie(推荐) - 适用HTTP接口测试</h3>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-777046cd65aa3eff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>HTTPie是HTTP 的命令行客户端。其目标是让 CLI 和 web 服务之间的交互尽可能的人性化。</p>
+<p>这个工具提供了简洁的 http 命令，允许通过自然的语法发送任意 HTTP 请求数据，展示色彩化的输出。HTTPie 可用于与 HTTP 服务器做测试、调试和常规交互。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-042104455106b361.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>主要特性：</p>
+<ul>
+<li>直观的语法</li>
+<li>格式化和色彩化的终端输出</li>
+<li>内置 JSON 支持</li>
+<li>表单和文件上传</li>
+<li>HTTPS、代理和认证</li>
+<li>任意请求数据</li>
+<li>自定义头部</li>
+<li>持久性会话</li>
+<li>类 Wget 下载</li>
+<li>支持 Python 2.6, 2.7 和 3.x</li>
+<li>支持 Linux, Mac OS X 和 Windows</li>
+<li>插件</li>
+<li>文档</li>
+<li>测试覆盖率</li>
+</ul>
+<p>HTTPie 是用 Python 编写，用到了 Requests 和 Pygments 这些出色的库。</p>
+<p>主页：<a href="https://github.com/jakubroztocil/httpie">https://github.com/jakubroztocil/httpie</a></p>
+<p>目前在 Github 获得了 20k+ star。</p>
+<p>使用 HTTP GET 方法时，就无需明确指定 HTTP 方法。</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">http</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">china</span><span class="o">-</span><span class="n">testing</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span>
+
+<span class="err">$</span> <span class="n">http</span> <span class="n">HEAD</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">china</span><span class="o">-</span><span class="n">testing</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span>
+<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
+<span class="n">Accept</span><span class="o">-</span><span class="n">Ranges</span><span class="p">:</span> <span class="nb">bytes</span>
+<span class="n">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Origin</span><span class="p">:</span> <span class="o">*</span>
+<span class="n">Age</span><span class="p">:</span> <span class="mi">141</span>
+<span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="p">:</span> <span class="nb">max</span><span class="o">-</span><span class="n">age</span><span class="o">=</span><span class="mi">600</span>
+<span class="n">Connection</span><span class="p">:</span> <span class="n">keep</span><span class="o">-</span><span class="n">alive</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Encoding</span><span class="p">:</span> <span class="n">gzip</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">10478</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">Date</span><span class="p">:</span> <span class="n">Sun</span><span class="p">,</span> <span class="mi">19</span> <span class="n">Aug</span> <span class="mi">2018</span> <span class="mi">08</span><span class="p">:</span><span class="mo">03</span><span class="p">:</span><span class="mi">11</span> <span class="n">GMT</span>
+<span class="n">Expires</span><span class="p">:</span> <span class="n">Sun</span><span class="p">,</span> <span class="mi">19</span> <span class="n">Aug</span> <span class="mi">2018</span> <span class="mo">07</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mo">03</span> <span class="n">GMT</span>
+<span class="n">Last</span><span class="o">-</span><span class="n">Modified</span><span class="p">:</span> <span class="n">Fri</span><span class="p">,</span> <span class="mi">17</span> <span class="n">Aug</span> <span class="mi">2018</span> <span class="mi">09</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">28</span> <span class="n">GMT</span>
+<span class="n">Server</span><span class="p">:</span> <span class="n">GitHub</span><span class="o">.</span><span class="n">com</span>
+<span class="n">Strict</span><span class="o">-</span><span class="n">Transport</span><span class="o">-</span><span class="n">Security</span><span class="p">:</span> <span class="nb">max</span><span class="o">-</span><span class="n">age</span><span class="o">=</span><span class="mi">31556952</span>
+<span class="n">Vary</span><span class="p">:</span> <span class="n">Accept</span><span class="o">-</span><span class="n">Encoding</span>
+<span class="n">Via</span><span class="p">:</span> <span class="mf">1.1</span> <span class="n">varnish</span>
+<span class="n">X</span><span class="o">-</span><span class="n">Cache</span><span class="p">:</span> <span class="n">HIT</span>
+<span class="n">X</span><span class="o">-</span><span class="n">Cache</span><span class="o">-</span><span class="n">Hits</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">X</span><span class="o">-</span><span class="n">Fastly</span><span class="o">-</span><span class="n">Request</span><span class="o">-</span><span class="n">ID</span><span class="p">:</span> <span class="mi">1</span><span class="n">ee91d0b6ca01fa38b9db3e910548b6fb4ad4867</span>
+<span class="n">X</span><span class="o">-</span><span class="n">GitHub</span><span class="o">-</span><span class="n">Request</span><span class="o">-</span><span class="n">Id</span><span class="p">:</span> <span class="mi">27</span><span class="n">A2</span><span class="p">:</span><span class="mi">3</span><span class="n">F58</span><span class="p">:</span><span class="mi">6</span><span class="n">BE9A7</span><span class="p">:</span><span class="mi">95</span><span class="n">AAAA</span><span class="p">:</span><span class="mi">5</span><span class="n">B791F85</span>
+<span class="n">X</span><span class="o">-</span><span class="n">Served</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">cache</span><span class="o">-</span><span class="n">hkg17925</span><span class="o">-</span><span class="n">HKG</span>
+<span class="n">X</span><span class="o">-</span><span class="n">Timer</span><span class="p">:</span> <span class="n">S1534665791</span><span class="o">.</span><span class="mi">152406</span><span class="p">,</span><span class="n">VS0</span><span class="p">,</span><span class="n">VE0</span>
+
+<span class="err">$</span> <span class="n">http</span> <span class="o">-</span><span class="n">f</span> <span class="n">POST</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">httpbin</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">post</span> <span class="n">key1</span><span class="o">=</span><span class="n">value1</span> <span class="n">key2</span><span class="o">=</span><span class="n">values</span>
+<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
+<span class="n">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Credentials</span><span class="p">:</span> <span class="n">true</span>
+<span class="n">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Origin</span><span class="p">:</span> <span class="o">*</span>
+<span class="n">Connection</span><span class="p">:</span> <span class="n">keep</span><span class="o">-</span><span class="n">alive</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">469</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Date</span><span class="p">:</span> <span class="n">Sun</span><span class="p">,</span> <span class="mi">19</span> <span class="n">Aug</span> <span class="mi">2018</span> <span class="mi">08</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mo">06</span> <span class="n">GMT</span>
+<span class="n">Server</span><span class="p">:</span> <span class="n">gunicorn</span><span class="o">/</span><span class="mf">19.9</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">Via</span><span class="p">:</span> <span class="mf">1.1</span> <span class="n">vegur</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;files&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;form&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key1&quot;</span><span class="p">:</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;key2&quot;</span><span class="p">:</span> <span class="s2">&quot;values&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;*/*&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Accept-Encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;gzip, deflate&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Connection&quot;</span><span class="p">:</span> <span class="s2">&quot;close&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Content-Length&quot;</span><span class="p">:</span> <span class="s2">&quot;23&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/x-www-form-urlencoded; charset=utf-8&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Host&quot;</span><span class="p">:</span> <span class="s2">&quot;httpbin.org&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;HTTPie/0.9.9&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;json&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;183.62.236.90&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://httpbin.org/post&quot;</span>
+<span class="p">}</span>
+<span class="c1"># 下载图片</span>
+<span class="err">$</span> <span class="n">http</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">china</span><span class="o">-</span><span class="n">testing</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">testing_training2</span><span class="o">.</span><span class="n">png</span> <span class="o">&gt;</span> <span class="n">test</span><span class="o">.</span><span class="n">png</span>
+</pre></div>
+
+
+<h3 id="curl">curl</h3>
+<ul>
+<li>
+<p>背景</p>
+<p>越来越多的应用程序迁移到Web上，为此大量需要HTTP脚本自动地从网络中提取信息，模拟用户post或上传数据到web服务器。</p>
+<p>Curl是用于做各种URL操作和传输的命令行工具。本文关注HTTP请求。并假定你已经会使用 'curl --help'或'curl --manual'获取帮助。</p>
+<p>Curl主要负责发送数据和获取返回，更复杂的功能比如循环请使用python之类的脚本语言。</p>
+</li>
+<li>
+<p>HTTP协议</p>
+<p>HTTP是用来从Web服务器获取数据的协议。它是基于TCP/IP非常简单的协议。该协议还允许信息从客户端发送到服务器。</p>
+<p>HTTP是客户端发送到服务器请求特定的动作的普通ASCII文本行以及服务器返回实际内容前的几行。</p>
+<p>Curl发送一个HTTP请求。该请求包含方法（如GET，POST，HEAD等），请求头，有时还有请求体。 HTTP服务器响应包含状态行，响应头和通常有body。 body部分是你请求的明文数据比如实际的HTML或图像等。</p>
+</li>
+<li>
+<p>查看协议
+    使用curl的选项--verbose（-v的缩写）会显示curl发送到服务器的命令及其他文本信息。</p>
+<p>--trace和--trace-ASCII甚至提供了更多细节。</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">curl</span> <span class="o">-</span><span class="n">v</span> <span class="n">china</span><span class="o">-</span><span class="n">testing</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">testing_training2</span><span class="o">.</span><span class="n">png</span>
+<span class="o">*</span>   <span class="n">Trying</span> <span class="mf">185.199</span><span class="o">.</span><span class="mf">108.153</span><span class="o">...</span>
+<span class="o">*</span> <span class="n">TCP_NODELAY</span> <span class="nb">set</span>
+<span class="o">*</span> <span class="n">Connected</span> <span class="n">to</span> <span class="n">china</span><span class="o">-</span><span class="n">testing</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span> <span class="p">(</span><span class="mf">185.199</span><span class="o">.</span><span class="mf">108.153</span><span class="p">)</span> <span class="n">port</span> <span class="mi">80</span> <span class="p">(</span><span class="c1">#0)</span>
+<span class="o">&gt;</span> <span class="n">GET</span> <span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">testing_training2</span><span class="o">.</span><span class="n">png</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="o">&gt;</span> <span class="n">Host</span><span class="p">:</span> <span class="n">china</span><span class="o">-</span><span class="n">testing</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span>
+<span class="o">&gt;</span> <span class="n">User</span><span class="o">-</span><span class="n">Agent</span><span class="p">:</span> <span class="n">curl</span><span class="o">/</span><span class="mf">7.60</span><span class="o">.</span><span class="mi">0</span>
+<span class="o">&gt;</span> <span class="n">Accept</span><span class="p">:</span> <span class="o">*/*</span>
+<span class="o">&gt;</span>
+<span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">301</span> <span class="n">Moved</span> <span class="n">Permanently</span>
+<span class="o">&lt;</span> <span class="n">Server</span><span class="p">:</span> <span class="n">GitHub</span><span class="o">.</span><span class="n">com</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span>
+<span class="o">&lt;</span> <span class="n">Strict</span><span class="o">-</span><span class="n">Transport</span><span class="o">-</span><span class="n">Security</span><span class="p">:</span> <span class="nb">max</span><span class="o">-</span><span class="n">age</span><span class="o">=</span><span class="mi">31556952</span>
+<span class="o">&lt;</span> <span class="n">Location</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">china</span><span class="o">-</span><span class="n">testing</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">testing_training2</span><span class="o">.</span><span class="n">png</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">GitHub</span><span class="o">-</span><span class="n">Request</span><span class="o">-</span><span class="n">Id</span><span class="p">:</span> <span class="n">EFCE</span><span class="p">:</span><span class="mi">4360</span><span class="p">:</span><span class="mi">8</span><span class="n">FF815</span><span class="p">:</span><span class="n">BF8995</span><span class="p">:</span><span class="mi">5</span><span class="n">B79706B</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">178</span>
+<span class="o">&lt;</span> <span class="n">Accept</span><span class="o">-</span><span class="n">Ranges</span><span class="p">:</span> <span class="nb">bytes</span>
+<span class="o">&lt;</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Sun</span><span class="p">,</span> <span class="mi">19</span> <span class="n">Aug</span> <span class="mi">2018</span> <span class="mi">13</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">12</span> <span class="n">GMT</span>
+<span class="o">&lt;</span> <span class="n">Via</span><span class="p">:</span> <span class="mf">1.1</span> <span class="n">varnish</span>
+<span class="o">&lt;</span> <span class="n">Age</span><span class="p">:</span> <span class="mi">0</span>
+<span class="o">&lt;</span> <span class="n">Connection</span><span class="p">:</span> <span class="n">keep</span><span class="o">-</span><span class="n">alive</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Served</span><span class="o">-</span><span class="n">By</span><span class="p">:</span> <span class="n">cache</span><span class="o">-</span><span class="n">hkg17928</span><span class="o">-</span><span class="n">HKG</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Cache</span><span class="p">:</span> <span class="n">MISS</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Cache</span><span class="o">-</span><span class="n">Hits</span><span class="p">:</span> <span class="mi">0</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Timer</span><span class="p">:</span> <span class="n">S1534685292</span><span class="o">.</span><span class="mi">854374</span><span class="p">,</span><span class="n">VS0</span><span class="p">,</span><span class="n">VE230</span>
+<span class="o">&lt;</span> <span class="n">Vary</span><span class="p">:</span> <span class="n">Accept</span><span class="o">-</span><span class="n">Encoding</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Fastly</span><span class="o">-</span><span class="n">Request</span><span class="o">-</span><span class="n">ID</span><span class="p">:</span> <span class="mi">4</span><span class="n">b3d799aa5d4b80bc504e08749e34962db119f30</span>
+<span class="o">&lt;</span>
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="mi">301</span> <span class="n">Moved</span> <span class="n">Permanently</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">body</span> <span class="n">bgcolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="mi">301</span> <span class="n">Moved</span> <span class="n">Permanently</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;&lt;/</span><span class="n">center</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">hr</span><span class="o">&gt;&lt;</span><span class="n">center</span><span class="o">&gt;</span><span class="n">nginx</span><span class="o">&lt;/</span><span class="n">center</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+<span class="err">$</span> <span class="n">curl</span> <span class="o">--</span><span class="n">trace</span><span class="o">-</span><span class="n">ascii</span> <span class="n">debug</span><span class="o">.</span><span class="n">txt</span> <span class="n">china</span><span class="o">-</span><span class="n">testing</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">testing_training2</span><span class="o">.</span><span class="n">png</span>
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="mi">301</span> <span class="n">Moved</span> <span class="n">Permanently</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">body</span> <span class="n">bgcolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="mi">301</span> <span class="n">Moved</span> <span class="n">Permanently</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;&lt;/</span><span class="n">center</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">hr</span><span class="o">&gt;&lt;</span><span class="n">center</span><span class="o">&gt;</span><span class="n">nginx</span><span class="o">&lt;/</span><span class="n">center</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+
+<span class="c1">#   查看时间</span>
+<span class="err">$</span> <span class="n">curl</span> <span class="o">--</span><span class="n">trace</span><span class="o">-</span><span class="n">ascii</span> <span class="n">debug</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">trace</span><span class="o">-</span><span class="n">time</span> <span class="n">china</span><span class="o">-</span><span class="n">testing</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">testing_training2</span><span class="o">.</span><span class="n">png</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>查看响应</p>
+<p>默认情况下curl发送响应到stdout。可以使用-o或-O重定向。
+*   URL</p>
+<p>统一资源定位符的格式是互联网上资源的地址。比如http://automationtesting.sinaapp.com/。 标准参见：RFC3986。</p>
+</li>
+<li>
+<p>域名解析
+     主机名使用DNS解析或/etc/hosts解析为IP地址，也可以在URL中指定IP地址，而不是名称来指定IP地址。</p>
+<p>通过--resolve可以自定义域名解析： 对于开发等尝试的情况下，你可以点出一个不同的IP地址，比如--resolve选项的主机名：</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>curl --resolve www.example.org:8080:127.0.0.1 http://www.example.org
+</pre></div>
+
+
+<ul>
+<li>端口和代理</li>
+</ul>
+<div class="highlight"><pre><span></span>curl --proxy http://proxy.example.org:4321 http://remote.example.org
+</pre></div>
+
+
+<ul>
+<li>用户名和密码</li>
+</ul>
+<div class="highlight"><pre><span></span>curl http://user:password@example.org
+curl -u user:password http://example.org/
+</pre></div>
+
+
+<ul>
+<li>GET</li>
+</ul>
+<div class="highlight"><pre><span></span>$ curl https://china-testing.github.io/
+$ curl <span class="s2">&quot;http://www.hotmail.com/when/junk.cgi?birthyear=1905&amp;press=OK&quot;</span>
+</pre></div>
+
+
+<p>--include (-i) 可以额外显示响应头。</p>
+<ul>
+<li>
+<p>HEAD</p>
+<p>--head (-I)只请求头部。但是有些网站未必支持。</p>
+</li>
+<li>
+<p>POST</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>$ curl --data <span class="s2">&quot;key1=value1&amp;key2=value2&quot;</span> http://httpbin.org/post
+<span class="o">{</span>
+  <span class="s2">&quot;args&quot;</span>: <span class="o">{}</span>,
+  <span class="s2">&quot;data&quot;</span>: <span class="s2">&quot;&quot;</span>,
+  <span class="s2">&quot;files&quot;</span>: <span class="o">{}</span>,
+  <span class="s2">&quot;form&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;key1&quot;</span>: <span class="s2">&quot;value1&quot;</span>,
+    <span class="s2">&quot;key2&quot;</span>: <span class="s2">&quot;value2&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;headers&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;Accept&quot;</span>: <span class="s2">&quot;*/*&quot;</span>,
+    <span class="s2">&quot;Connection&quot;</span>: <span class="s2">&quot;close&quot;</span>,
+    <span class="s2">&quot;Content-Length&quot;</span>: <span class="s2">&quot;23&quot;</span>,
+    <span class="s2">&quot;Content-Type&quot;</span>: <span class="s2">&quot;application/x-www-form-urlencoded&quot;</span>,
+    <span class="s2">&quot;Host&quot;</span>: <span class="s2">&quot;httpbin.org&quot;</span>,
+    <span class="s2">&quot;User-Agent&quot;</span>: <span class="s2">&quot;curl/7.60.0&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;json&quot;</span>: null,
+  <span class="s2">&quot;origin&quot;</span>: <span class="s2">&quot;183.62.236.90&quot;</span>,
+  <span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;http://httpbin.org/post&quot;</span>
+<span class="o">}</span>
+$ curl --data-urlencode <span class="s2">&quot;name=I am Daniel&quot;</span> http://www.example.com
+</pre></div>
+
+
+<ul>
+<li>文件上传POST</li>
+</ul>
+<div class="highlight"><pre><span></span>curl --form <span class="nv">upload</span><span class="o">=</span>@localfilename --form <span class="nv">press</span><span class="o">=</span>OK <span class="o">[</span>URL<span class="o">]</span>
+</pre></div>
+
+
+<h3 id="postman-http">POSTMAN(推荐) - 适用HTTP接口测试</h3>
+<p>Postman的主要功能</p>
+<p>模拟各种HTTP请求：从常用的GET，POST到基于REST的PUT，DELETE ...等等甚至还可以送出档案，送出额外的头。</p>
+<p>收集功能：收集是请求的集合，在做完单一个测试的时候，你可以把这次的要求存到特定的收藏里面，如此一来，下次要测试的时候，就不需要重新输入。</p>
+<p>养成习惯以后，网站API的每个方法都写好存进去，以后在开发的时候，就可以迅速得看到结果。而收藏还可以导入或是分享出来，让团队里面的其他人，可以一起使用你建立起来的集合。</p>
+<div class="highlight"><pre><span></span>$ curl --data <span class="s2">&quot;key1=value1&amp;key2=value2&quot;</span> http://httpbin.org/post
+<span class="o">{</span>
+  <span class="s2">&quot;args&quot;</span>: <span class="o">{}</span>,
+  <span class="s2">&quot;data&quot;</span>: <span class="s2">&quot;&quot;</span>,
+  <span class="s2">&quot;files&quot;</span>: <span class="o">{}</span>,
+  <span class="s2">&quot;form&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;key1&quot;</span>: <span class="s2">&quot;value1&quot;</span>,
+    <span class="s2">&quot;key2&quot;</span>: <span class="s2">&quot;value2&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;headers&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;Accept&quot;</span>: <span class="s2">&quot;*/*&quot;</span>,
+    <span class="s2">&quot;Connection&quot;</span>: <span class="s2">&quot;close&quot;</span>,
+    <span class="s2">&quot;Content-Length&quot;</span>: <span class="s2">&quot;23&quot;</span>,
+    <span class="s2">&quot;Content-Type&quot;</span>: <span class="s2">&quot;application/x-www-form-urlencoded&quot;</span>,
+    <span class="s2">&quot;Host&quot;</span>: <span class="s2">&quot;httpbin.org&quot;</span>,
+    <span class="s2">&quot;User-Agent&quot;</span>: <span class="s2">&quot;curl/7.60.0&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;json&quot;</span>: null,
+  <span class="s2">&quot;origin&quot;</span>: <span class="s2">&quot;183.62.236.90&quot;</span>,
+  <span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;http://httpbin.org/post&quot;</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>整理過後的回傳結果：一般在用其他工具來測試的時候，回傳的東西通常都是純文字的生的，但如果是JSON，就是塞成一整行的JSON。这会造成阅读时的障碍，而Postman可以针对回传资料的格式自动美化，JSON，XML或是HTML都会整理成人类可以阅读的型态。</p>
+<p>设定环境：Postman可以自由新增环境，一般我们可能会有多种环境，发展，分期或地方，而这几种环境的请求的URL也各不相同新增环境，可以让我们设定一些环境变数，使得切换环境测试的时候，不用重写请求。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-1102dc1cb0344d80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-4e354969c7765ba2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>另外还支持使用js自定义测试脚本，测试结果还可以存储在云端。</p>
+<h3 id="firefox-measureit">Firefox MeasureIt</h3>
+<p>MeasureIt是屏幕尺子，通过它可以丈量页面元素的尺寸。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-6af5e2917c299e0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="firesizer">Firesizer</h3>
+<p>用于测试分辨率。较新版本火狐需要The Addon Bar插件的支持。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-309fb80677f11cff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="fireshot">FireShot</h3>
+<p>截图应用有很多，比如：Picasa、Flickr、ImageShack等。FireShot 创建完整的网页截图的火狐插件。截图可以被快速注释以及： 上传到 Picasa、Flickr、ImageShack...。特性有</p>
+<ul>
+<li>以 PNG、GIF、JPEG、PDF 、BMP格式保存到磁盘</li>
+<li>复制到剪贴板</li>
+<li>打印</li>
+<li>使用电子邮件发送</li>
+<li>在外部编辑器中打开</li>
+</ul>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-238800874d8ddd33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="spof-o-matc">SPOF-O-MATC</h3>
+<p>SPOF-O-MATIC是检测的第三方单点故障的Chrome扩展, 并可以模拟第三方单点故障。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-97b2677f7759fa07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="imacros">iMacros</h3>
+<p>如果你喜欢FireFox网页浏览器，但是厌倦了重复性的任务比如每天访问相同的网站，填写表单，记忆密码，那么iMacros（Firefox版）就是你梦想的解决方案!
+iMacros用来自动执行网页上最具重复性的任务。有了iMacros，你就可以轻松快速的填写表单，记忆密码，从其它网站下载信息，抓取网页（从多个网站中获取信息），还有更多。你可以在你的计算机上保留宏供自己使用，或者将它们放入网页，博客，公司内部网或者如何社交书签服务和其他人一起分享。使用的极限只取决与你的想象力！<strong><em> 任何你用FireFox做的，iMacros都可以自动执行它。</em></strong></p>
+<p>免费版本支持Firefox、Chrome、Internet Explorer。</p>
+<p>收费版本通过屏幕和图片识别技术支持Adobe Flash, Adobe Flex, Silverlight和Java applet。</p>
+<p>免费版本无控制结构功能。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-6d9a4a0934c3c3b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="powerfuzzer">Powerfuzzer</h3>
+<p>Powerfuzzer是开源的、高度自动化的，完全可定制，基于其他fuzzer的python web fuzzer。主要针对HTTP协议，生成大量随机数据，试图crash网站。最近更新时间2009，比较久远，慎重使用。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-8cb92bef24272915.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><a href="https://sourceforge.net/projects/powerfuzzer/files/powerfuzzer/v1%20BETA/">源码地址</a></p>
+<h3 id="robot-framework">Robot Framework</h3>
+<p>Robot Framework是开源的自动化测试验收测试框架，测试用例基于关键字驱动，使用表格式语法。表格可以写在纯文本，HTML，制表符分隔值（TSV），或reST格式的文件中表示。</p>
+<p>基于Robot Framework封装开发了大量库，比如appium、selenium。</p>
+<p>下面列出部分Robot Framework，它们都可以在<a href="https://pypi.python.org/">https://pypi.python.org</a>
+搜索到。</p>
+<p>robotframework-httplibrary、robotframework-imaplibrary、robotframework-ioslibrary、robotframework-sshlibrary、robotframework-tools、robotframework-pabot(并行测试)、robotframework-databaselibrary、robotframework-extendedselenium2library、plone.app.robotframework、robotframework-seleniumlibrary、robotframework-ride(编辑器)、robotframework-requests(网络请求)、robotframework-pageobjects、robotremoteserver、TestLink-API-Python-client、robotsuite</p>
+<p>Robot Framework的长处在与漂亮的报表、不懂编程也可以使用。缺点是深入使用需要库的开发工作量比较大，有很多python中能直接使用的功能不能调用，对于懂代码的人，不如直接使用pytest等框架来得直接。</p>
+<p>参考资料：<a href="http://blog.chinaunix.net/uid-20393955-id-3072256.html">http://blog.chinaunix.net/uid-20393955-id-3072256.html</a> 后期会撤掉该文。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-6f7e5b845f828301.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-b1287c7d736b7dfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="telerik">Telerik</h3>
+<p>商业工具：Telerik, 基于windows，可以测试web、桌面、移动应用。它是用于功能测试，自动化测试，性能测试和移动应用测试。</p>
+<p>特性包括：</p>
+<ul>
+<li>无脚本测试录制回放。</li>
+<li>跨流行的浏览器支持</li>
+<li>支持HTML，AJAX，Silverlight、.NET应用程序测试。</li>
+<li>能集成在Visual Studio Team Foundation Server中。</li>
+<li>能与Nunit, MbUnit等XUnit集成单元测试。</li>
+<li>与CruiseControl、MS Build Server及TeamCity集成</li>
+<li>Bug跟踪工具的集成。</li>
+<li>Fiddler Web调试集成。</li>
+<li>与HP Quality Center集成。</li>
+</ul>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-1e20da80909a58cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="twill">twill</h3>
+<ul>
+<li>注意：最近更新时间为2014年，请谨慎使用。</li>
+</ul>
+<p>twill是一门简单的语言，允许用户用命令行界面浏览网页。还支持表格，cookies等最标准的Web功能。</p>
+<p>twill通过简单的Python接口支持自动化的Web测试。</p>
+<p>twill是Python开源软件。</p>
+<p>下载：https://pypi.python.org/pypi/twill/
+主页：http://twill.idyll.org/
+不需要太多编程基础，推荐初学者使用。</p>
+<p>实例：在google搜索"twill Python"</p>
+<div class="highlight"><pre><span></span><span class="n">setlocal</span> <span class="n">query</span> <span class="s2">&quot;twill Python&quot;</span>
+
+<span class="n">go</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
+
+<span class="n">fv</span> <span class="mi">1</span> <span class="n">q</span> <span class="err">$</span><span class="n">query</span>
+<span class="n">submit</span> <span class="n">btnI</span>     <span class="c1"># use the &quot;I&#39;m feeling lucky&quot; button</span>
+
+<span class="n">show</span>
+</pre></div>
+
+
+<h3 id="testingbot">Testingbot</h3>
+<p>Testingbot在500多种浏览器组运行跨浏览器测试，包括
+Internet浏览器6，7，8，9，10，11和MicrosoftEdge。支持SeleniumRC和WebDriver测试。 Testingbot可在网络上轻松运行测试，支持流行的语言和测试框架，也支持iPhone / iPad（iOS 8的）和Android的Appium测试。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-8d3f97af2fd31b57.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-f02f8e8f8c8b994b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>商业软件，<a href="https://testingbot.com/">主页</a></p>
+<h3 id="sahi">Sahi</h3>
+<p>http://sahipro.com/</p>
+<p>SAHI是Web应用程序测试的自动化免费开源工具。 SAHI特别
+适用于使用AJAX和Java的复杂Web应用程序的跨浏览器/多浏览器测试</p>
+<p>主要特征
+ * Internet Explorer，Firefox、Chrome浏览器，Safari，Opera等录制回放。
+ * 非常简单而强大的对象识别机制，工作acrossbrowsers。 SAHI不使用的XPath或CSS选择器。它基于JavaScript的DOM，使用简单，易于维护。 SAHI当元素没有IDS也可使用。 SAHI使用关系型API，如_in，_near，_under，_leftOf，_rightOf等来唯一地标识的元件。 SAHI遍历frame和iframe。 SAHI自动等待页面加载和AJAX
+活动。95％的情况下没有必要添加等待语句。SAHI不需要求
+浏览器聚焦点。 SAHI可以同时播放多个脚本减少播放时间。 SAHI自动创建报表。 SAHI支持HTML5自定义标签和阴影DOM。</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-3b30a6cbba811f29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-02c22cb7b7e70b47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-30bf95a5c1f10fe4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="check-my-links">Check    My    Links</h3>
+<p>死链接检查Chrome扩展：https://chrome.google.com/webstore/detail/check-my-links/ojkcdipcgfaekbeaelaapakgnjflfglf?hl=en-GB</p>
+<h3 id="dead-link-checker">Dead    Link    Checker</h3>
+<p>在线死链接检测：https://www.deadlinkchecker.com/</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-42f4057eee399619.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="hotjar">HotJar</h3>
+<p>Hotjar是在线的可用性工具，分析用户行为，收费服务。https://www.hotjar.com/</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-d48c68c528b77347.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="webpage-spell-check-chrome-extension">Webpage    Spell-Check    Chrome    Extension</h3>
+<p>chrome拼写检查扩展：https://chrome.google.com/webstore/category/extensions</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-1f0866fccc59b5ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="seo-centro">SEO    Centro</h3>
+<p>在线SEO测试：https://www.seocentro.com/</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-0476b329a0383cb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="tenon">Tenon</h3>
+<p>在线可访问性测试： https://tenon.io/</p>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-6f0b07b3dbb86bb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="robobrowser">RoboBrowser</h3>
+<p>简单的，Python 风格的库，用来浏览网站，而不需要一个独立安装的浏览器。<a href="https://github.com/jmcarp/robobrowser">链接</a></p>
+<h3 id="robobrowser_1">RoboBrowser</h3>
+<p>简单的，Python 风格的库，用来浏览网站，而不需要一个独立安装的浏览器。<a href="https://github.com/jmcarp/robobrowser">链接</a></p>
+<h3 id="mechanicalsoup">MechanicalSoup</h3>
+<p>用于自动和网络站点交互的 Python 库。<a href="https://github.com/MechanicalSoup/MechanicalSoup">链接</a></p>
+<h3 id="scrapy">Scrapy</h3>
+<p>快速高级的屏幕爬取及网页采集框架。<a href="https://github.com/scrapy/scrapy">链接</a> --强烈推荐</p>
+<h2 id="_1">参考资料</h2>
+<ul>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关书籍下载</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing#web-ui%E6%B5%8B%E8%AF%95%E8%87%AA%E5%8A%A8%E5%8C%96">python Web UI测试自动化</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing#%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%ABweb-crawling">python 网络爬虫(Web Crawling)</a></li>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_tools_web.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

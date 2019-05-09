@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+        <meta charset="utf-8" />
+        <title>数据仓库快速入门教程3架构</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/ba-zi.html">八字</a></li>
+                    <li><a href="/category/ce-shi.html">测试</a></li>
+                    <li><a href="/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="/category/common.html">common</a></li>
+                    <li class="active"><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/feng-shui.html">风水</a></li>
+                    <li><a href="/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="/category/jie-meng.html">解梦</a></li>
+                    <li><a href="/category/linux.html">linux</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/shu-ji.html">书籍</a></li>
+                    <li><a href="/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/data_warehouse_quick3.html" rel="bookmark"
+           title="Permalink to 数据仓库快速入门教程3架构">数据仓库快速入门教程3架构</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-04-29T08:33:00+08:00">
+                Published: 一 29 四月 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/da-shu-ju.html">大数据</a>.</p>
+
+</footer><!-- /.post-info -->      <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+</ul>
+<h2 id="_1">数据仓库的特点</h2>
+<p>数据仓库具有以下特征：</p>
+<ul>
+<li>面向主题</li>
+<li>集成</li>
+<li>时变</li>
+<li>非易失性</li>
+</ul>
+<h3 id="_2">面向主题</h3>
+<p>数据仓库以主题为导向，因为它提供有关主题的信息，而不是公司正在进行的操作。 这些主题可以是销售，营销，分发等。</p>
+<p>数据仓库从不关注正在进行的操作。 相反，它强调建模和分析数据以供<strong>决策</strong> 。 它还通过排除无助于支持决策过程的数据，提供围绕特定主题的简单而简洁的视图。</p>
+<h3 id="_3">集成</h3>
+<p>在数据仓库中，集成意味着为来自不同数据库的所有类似数据建立公共测量单位。 数据还需要以通用和普遍接受的方式存储在Datawarehouse中。</p>
+<p>数据仓库是通过集成来自各种来源的数据(如大型机，关系数据库，平面文件等)而开发的。此外，它必须保持一致的命名约定，格式和编码。</p>
+<p>集成有助于有效分析数据。 必须确保命名约定，属性度量，编码结构等的一致性。 请考虑以下示例：</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b7dadb500305a339.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>在上面的示例中，有三个不同的应用程序标记为A，B和C.存储在这些应用程序中的信息是Gender，Date和Balance。 但是，每个应用程序的数据都以不同的方式存储。</p>
+<ul>
+<li>在应用程序A中，性别字段存储逻辑值，如M或F.</li>
+<li>在应用B中，性别字段是数值，</li>
+<li>在Application C应用程序中，性别字段以字符值的形式存储。</li>
+<li>日期和余额的情况也是如此</li>
+</ul>
+<p>转换和清理过程之后，所有这些数据都以通用格式存储在数据仓库中。</p>
+<h3 id="_4">时变</h3>
+<p>与操作系统相比，数据仓库的时间范围非常广泛。 在数据仓库中收集的数据在特定时期内被识别，并从历史角度提供信息。 它包含显式或隐式的时间元素。</p>
+<p>Datawarehouse数据显示时间差异的一个地方是记录键的结构。 DW中包含的每个主键都应该隐式或显式地包含时间元素。比如日期，周月等</p>
+<p>时间差异的另一个方面是，一旦将数据插入仓库，就无法更新或更改。</p>
+<h3 id="_5">非易失性</h3>
+<p>数据仓库也是非易失性的，意味着在输入新数据时不会删除先前的数据。</p>
+<p>数据是只读的并定期刷新。 这也有助于分析历史数据并了解发生的情况和发生时间。 它不需要事务处理，恢复和并发控制机制。</p>
+<p>在数据仓库环境中，省略了在操作应用程序环境中执行的删除，更新和插入等活动。 在数据仓库中只执行两种类型的数据操作</p>
+<ol>
+<li>数据加载</li>
+<li>数据访问</li>
+</ol>
+<p>这里是Application和Data Warehouse之间的一些主要区别</p>
+<p>运营应用    |数据仓库
+|:----:|:----
+必须对复杂程序进行编码，以确保数据升级过程保持最终产品的高度完整性。  |由于不会数据更新，因此不会发生此类问题。
+数据以标准化形式放置，以确保最小的冗余。    | 数据不以标准化形式存储。
+支持事务，数据恢复，回滚和解决死锁非常复杂 | 相对简单的技术。</p>
+<h2 id="_6">数据仓库架构</h2>
+<p>Datawarehouse架构主要有三种类型： </p>
+<ul>
+<li>单层架构</li>
+</ul>
+<p>单层的目标是最小化存储的数据量。 此目标是删除数据冗余。 在实践中并不经常使用。</p>
+<ul>
+<li>双层架构</li>
+</ul>
+<p>双层架构将物理可用的源和数据仓库分开。 不可扩展，也不支持大量最终用户。 由于网络限制，它还存在连接问题。</p>
+<ul>
+<li>三层架构</li>
+</ul>
+<p>这是使用最广泛的架构。</p>
+<p>它由顶层，中层和底层组成。</p>
+<p>底层： Datawarehouse服务器的数据库作为底层。 它通常是关系数据库系统。 使用后端工具清理，转换数据并将其加载到此层中。</p>
+<p>中间层：数据仓库中的中间层是使用ROLAP或MOLAP模型实现的OLAP服务器。 对于用户，此应用程序层提供数据库的抽象视图。 该层还充当最终用户和数据库之间的中介。</p>
+<p>顶级：顶层是前端客户端层。 顶层是您连接并从数据仓库中获取数据的工具和API。 它可以是查询工具，报告工具，托管查询工具，分析工具和数据挖掘工具。</p>
+<h2 id="datawarehouse">Datawarehouse组件</h2>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-cda9a13eb78689f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>数据仓库基于RDBMS服务器，该服务器有中央信息存储库及一些关键组件，使整个环境可管理和可访问</p>
+<p>数据仓库主要有五个组件：</p>
+<h3 id="_7">数据仓库数据库</h3>
+<p>中央数据库是数据仓库环境的基础。 该数据库是在RDBMS技术上实现的。 尽管如此，传统的RDBMS系统针对事务数据库处理而非数据仓库进行了优化，这种实现受到限制。 例如，特殊查询，多表连接，聚合是资源密集的，会降低性能。</p>
+<p>因此，数据库的替代方法如下：</p>
+<ul>
+<li>在数据仓库中，并行部署关系数据库以实现可扩展性。 并行关系数据库还允许在各种多处理器配置或大规模并行处理器上共享内存或无共享模型。</li>
+<li>新的索引结构用于绕过关系表扫描并提高速度。</li>
+<li>使用多维数据库（MDDB）来克服由于关系数据模型的任何限制。 示例：Oracle的Essbase。</li>
+</ul>
+<h3 id="etl">获取，清理和转换工具(ETL)</h3>
+<p>数据源，转换和迁移工具用于执行所有转换， 它们也称为提取，转换和加载（ETL）工具。</p>
+<p>他们的功能包括：</p>
+<ul>
+<li>根据监管规定对数据进行匿名化。</li>
+<li>消除不需要的数据</li>
+<li>搜索和替换来自不同来源的数据的通用名称和定义。</li>
+<li>计算摘要和派生数据</li>
+<li>如果缺少数据，使用默认值填充。</li>
+<li>去重。</li>
+</ul>
+<p>这些Extract，Transform和Load工具可以生成定期更新数据仓库中数据的cron作业，后台作业，Cobol程序，shell脚本等。 
+这些ETL工具必须应对数据库和数据异构性的挑战。</p>
+<h3 id="_8">参考资料</h3>
+<ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+<li><a href="https://china-testing.github.io/python3_quick.html">python 3.7极速入门教程 - 目录</a></li>
+<li>讨论qq群630011153 144081101</li>
+<li><a href="https://china-testing.github.io/pptx.html">原文地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li>[本文相关海量书籍下载](https://github.com/china-testing/python-api-tesing/blob/master/books.md</li>
+<li>http://spark.apache.org/docs/2.1.0/api/python/pyspark.sql.html</li>
+</ul>
+<h3 id="_9">元数据</h3>
+<p>元数据是关于定义数据仓库的数据的数据。 它用于构建，维护和管理数据仓库。</p>
+<p>在数据仓库体系结构中，元数据在指定数据仓库数据的来源，用法，值和功能时起着重要作用。 它还定义了如何更改和处理数据。它与数据仓库紧密相连。</p>
+<p>例如，销售数据库中的一行可能包含：</p>
+<div class="highlight"><pre><span></span><span class="mi">4030</span> <span class="n">KJ732</span> <span class="mf">299.90</span>
+</pre></div>
+
+
+<p>在没有Meta的情况系是毫无意义的数据。</p>
+<div class="highlight"><pre><span></span><span class="n">Model</span> <span class="n">number</span><span class="p">:</span> <span class="mi">4030</span>
+<span class="n">Sales</span> <span class="n">Agent</span> <span class="n">ID</span><span class="p">:</span> <span class="n">KJ732</span>
+<span class="n">Total</span> <span class="n">sales</span> <span class="n">amount</span> <span class="n">of</span> <span class="err">$</span><span class="mf">299.90</span>
+</pre></div>
+
+
+<p>元数据有助于回答以下问题</p>
+<ul>
+<li>数据仓库包含哪些表，属性和键？</li>
+<li>数据来自哪里？</li>
+<li>重新加载数据的次数是多少？</li>
+<li>清理采用了哪些转变？</li>
+</ul>
+<p>元数据可以分为以下几类：</p>
+<ol>
+<li><strong>技术元数据</strong> ：此类元数据包含有关数据仓库设计人员和管理员使用的仓库的信息。</li>
+<li><strong>业务元数据：</strong>这种元数据包含详细信息，为最终用户提供了理解存储在数据仓库中的信息的方式。</li>
+</ol>
+<h2 id="_10">查询工具</h2>
+<p>数据仓库的主要目标之一是为企业提供信息以做出战略决策。 查询工具允许用户与数据仓库系统进行交互。</p>
+<p>这些工具分为四类：</p>
+<ol>
+<li>查询和报告工具</li>
+<li>应用开发工具</li>
+<li>数据挖掘工具</li>
+<li>OLAP工具</li>
+</ol>
+<h4 id="1">1.查询和报告工具：</h4>
+<p>查询和报告工具可以进一步分为</p>
+<ul>
+<li>报告工具</li>
+<li>管理查询工具</li>
+</ul>
+<p><strong>报告工具：</strong>报告工具可以进一步分为生产报告工具和桌面报告编写器。</p>
+<ol>
+<li>报告编写者：这种报告工具是为最终用户进行分析而设计的工具。</li>
+<li>生产报告：这种工具允许组织生成定期的运营报告。 它还支持大批量批量作业，如打印和计算。 一些流行的报告工具：Brio，Business Objects，Oracle，PowerSoft，SAS Institute。</li>
+</ol>
+<p><strong>托管查询工具：</strong></p>
+<p>这种访问工具通过在用户和数据库之间插入元层，帮助最终用户解决数据库，SQL和数据库结构中的障碍。</p>
+<h4 id="2">2.应用程序开发工具：</h4>
+<p>有时内置的图形和分析工具无法满足组织的分析需求。 在这种情况下，使用应用程序开发工具开发自定义报告。</p>
+<h4 id="3">3.数据挖掘工具：</h4>
+<p>数据挖掘是通过挖掘大量数据来发现有意义的新关联，模式和趋势的过程。 数据挖掘工具用于自动完成此过程。</p>
+<h4 id="446-olap">4. OLAP工具：</h4>
+<p>这些工具基于多维数据库的概念。 它允许用户使用精细复杂的多维视图分析数据。</p>
+<h2 id="_11">数据仓库总线架构</h2>
+<p>数据仓库总线确定仓库中的数据流。 数据仓库中的数据流可以分为流入，上流，下流，流出和元流。</p>
+<p>在设计数据总线时，需要考虑数据集市中的共享维度和事实。</p>
+<h3 id="_12">数据集市</h3>
+<p>数据集市是一个访问层，用于将数据输出给用户。 它作为大型数据仓库的选项提供，因为它需要更少的时间和金钱来构建。 但是，没有数据集市的标准，定义因人而异。</p>
+<p>简而言之，Data mart是数据仓库的子集。 数据集市用于为特定用户组创建的数据分区。</p>
+<p>数据集市可以在与Datawarehouse相同的数据库中创建，也可以在物理上独立的数据库中创建。</p>
+<h2 id="_13">数据仓库架构最佳实践</h2>
+<p>要设计数据仓库架构，您需要遵循以下给定的最佳实践：</p>
+<ul>
+<li>使用为信息检索而优化的数据模型，可以是维模式，非规范化或混合方法。</li>
+<li>需要确保快速准确地处理数据。 与此同时，将数据合并到单一版本。</li>
+<li>仔细设计数据仓库的数据采集和清理过程。</li>
+<li>设计MetaData架构，允许在数据仓库的组件之间共享元数据</li>
+<li>当信息检索需要位于数据抽象金字塔底部附近或需要访问多个操作源时，请考虑实施ODS模型。</li>
+<li>应该确保数据模型是集成的，而不仅仅是整合。 在这种情况下，您应该考虑3NF数据模型。 它也是获取ETL和数据清理工具的理想选择</li>
+</ul>
+<h2 id="_14">摘要：</h2>
+<ul>
+<li>数据仓库是一个信息系统，包含来自单个或多个来源的历史和可交换数据。</li>
+<li>数据仓库以主题为导向，因为它提供有关主题的信息，而不是组织的持续运营。</li>
+<li>在数据仓库中，集成意味着为来自不同数据库的所有类似数据建立通用度量单位</li>
+<li>数据仓库也是非易失性的，意味着在输入新数据时不会删除先前的数据。</li>
+<li>数据仓库是时变的，因为DW中的数据具有高保质期。</li>
+<li>Datawarehouse有5个主要组件。 1）数据库2）ETL工具3）元数据4）查询工具5）DataMarts</li>
+<li>这些是查询工具的四大类1.查询和报告，工具2.应用程序开发工具，3。数据挖掘工具4. OLAP工具</li>
+<li>数据源，转换和迁移工具用于执行所有转换和摘要。</li>
+<li>在数据仓库体系结构中，元数据在指定数据仓库数据的来源，用法，值和功能时起着重要作用。</li>
+</ul>
+<h3 id="_15">参考资料</h3>
+<ul>
+<li>工作日技术支持QQ群 630011153 144081101</li>
+<li><a href="https://china-testing.github.io/data_warehouse_quick3.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关海量书籍下载</a></li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看八字、风水、手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_training.html">接口自动化性能测试线上培训大纲</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
