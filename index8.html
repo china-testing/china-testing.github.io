@@ -31,6 +31,43 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/opencv_crash_deep_learning1.html" rel="bookmark"
+                           title="Permalink to 计算机视觉opcencv工具深度学习快速实战1人脸识别">计算机视觉opcencv工具深度学习快速实战1人脸识别</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-16T19:20:00+08:00">
+                Published: 五 16 十一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>使用OpenCV提供的预先训练的深度学习面部检测器模型，可快速，准确的进行人脸识别。</p>
+<p>2017年8月OpenCV 3.3正式发布，带来了高改进的“深度神经网络”(dnn deep neural networks)模块。该模块支持许多深度学习框架，包括Caffe，TensorFlow和Torch / PyTorch。</p>
+<p>基于Caffe的面部检测器在<a href="https://github.com/opencv/opencv/tree/master/samples/dnn/face_detector">这里</a>。</p>
+<p>需要两组文件：</p>
+<ul>
+<li>定义模型体系结构的.prototxt文件</li>
+<li>.caffemodel文件，包含实际图层的权重</li>
+</ul>
+<p>权重文件不包含在OpenCV示例目录。</p>
+<h3 id="opencv">OpenCV深度学习面部检测器如何工作？</h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-45fc78489ba83643.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<div class="highlight"><pre><span></span><span class="c1"># 模型下载：https://itbooks.pipipan.com/fs/18113597-320346529</span>
+<span class="c1"># 代码存放：https://github.com/china-testing/python-api-tesing/tree/master/opencv_crash_deep_learning</span>
+<span class="c1"># 技术支持qq群144081101(代码和模型存放）</span>
+<span class="c1"># USAGE</span>
+<span class="c1"># python detect_faces.py --image rooster …</span></pre></div>
+                <a class="readmore" href="/opencv_crash_deep_learning1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/testing_api_interview.html" rel="bookmark"
                            title="Permalink to 接口测试面试题">接口测试面试题</a></h1>
                 </header>
@@ -403,44 +440,6 @@
 <li><a href="https://www.fullstackpython.com/monitoring.html">Monitoring</a></li>
 </ul>
                 <a class="readmore" href="/tensorflow.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/tensorflow1.html" rel="bookmark"
-                           title="Permalink to TensorFlow工具快速入门教程1人工智能简介">TensorFlow工具快速入门教程1人工智能简介</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-11-12T08:30:00+08:00">
-                Published: 一 12 十一月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://china-testing.github.io/tensorflow.html">本书目录</a></li>
-</ul>
-<h3 id="ai">什么是AI？</h3>
-<p>具有执行认知功能（例如感知，学习，推理和解决问题）的能力的机器被认为具有人工智能。</p>
-<p>当机器具有认知能力时，存在人工智能。人工智能的基准是关于推理，说话和视觉的人类水平。</p>
-<p>AI有三个不同的级别：</p>
-<ul>
-<li>狭义的AI：当机器能够比人类更好地执行特定任务时，这是人工智能的当前水平。</li>
-<li>通用的人工智能：能够以与人类相同的准确度执行任何智力任务。</li>
-<li>强大的人工智能：人工智能在很多任务中可以击败人类。</li>
-</ul>
-<p>人工智能几乎用于所有行业，据麦肯锡称，人工智能有可能在零售业中创造价值600亿美元的价值，与其他分析技术相比，银行业的增值价值增加了​​50％。在运输和物流方面，潜在的收入增长了89％。</p>
-<p>如果一个组织将AI用于其营销团队，它可以自动执行重复的任务，使销售代表能够专注于建立关系，领导培育等任务。某公司每次销售代表打电话时，机器都会记录转录和分析聊天。 VP可以使用AI分析和推荐来制定获胜策略。</p>
-<p>简而言之，AI提供了一种尖端技术来处理人类无法处理的复杂数据。 AI可自动执行冗余作业，使工作人员能够专注于高级增值任务。当人工智能大规模实施时，可以降低成本并增加收入。</p>
-<h3 id="_1">人工智能简史</h3>
-<p>1956年，一群来自不同背景的前卫专家决定组织一个关于人工智能的夏季研究项目。四个聪明的头脑领导了这个项目; John McCarthy（达特茅斯学院），Marvin Minsky（哈佛大学 …</p>
-                <a class="readmore" href="/tensorflow1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

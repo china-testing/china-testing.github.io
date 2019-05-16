@@ -31,6 +31,41 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/ml_quick1.html" rel="bookmark"
+                           title="Permalink to 机器学习快速入门1分类">机器学习快速入门1分类</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-04-23T08:20:00+08:00">
+                Published: 二 23 四月 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h2 id="_1">什么是分类？</h2>
+<h3 id="mnist">MNIST</h3>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-a3dd7e25bfa0a166.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>MNIST(Modified National Institute of Standards and Technology database)</p>
+<p>这是机器学习的经典案例。数据由一组手写0到9数字图像组成，多用于OCR(光学字符识别 optical  character   recognition)。</p>
+<h3 id="_2">数据类型</h3>
+<p>在机器学习中，您会发现有两种非常常见的数据类型。</p>
+<p>MNIST由图像组成。图像通常属于“计算机视觉”领域。</p>
+<p>机器学习中使用的另一种常见数据格式是文本。比如“自然语言处理”。</p>
+<h3 id="_3">垃圾邮件分类</h3>
+<p>Gmail，Yahoo，Hotmail等会自动为您分类垃圾邮件和非垃圾邮件。他们并不总能做对，但非常好。</p>
+<p>这是怎么做到的？机器学习算法接收电子邮件作为输入，并输出预测：它将该电子邮件分类为垃圾邮件或非垃圾邮件。机器学习分类算法接受输入，并输出分类预测！</p>
+<h3 id="_4">业务场景</h3>
+<p>当然，必须有些不属于图像和文本的分类示例。企业正在利用机器学习来改善服务并赚更多钱。比如在线广告，这通常采用横幅广告或视频广告的形式。广告客户收集了一些您的数据。例如，他们知道您的年龄，性别和位置 …</p>
+                <a class="readmore" href="/ml_quick1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/pianfang.html" rel="bookmark"
                            title="Permalink to 偏方目录">偏方目录</a></h1>
                 </header>
@@ -374,45 +409,6 @@
 •纹理：天空具有相对均匀的图案，而沙子非常粗糙。</p>
 <p>需要应用特征提取来量化图像的内容 …</p>
                 <a class="readmore" href="/python_vision_deep3.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_vision_deep2.html" rel="bookmark"
-                           title="Permalink to python计算机视觉深度学习工具2图像基础">python计算机视觉深度学习工具2图像基础</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-12-24T21:35:00+08:00">
-                Published: 一 24 十二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/python_vision_deep.html">本文教程目录</a></p>
-<p>构建自己的图像分类器之前需要了解图像是什么。</p>
-<h3 id="_1">像素：图像的元素</h3>
-<p>像素是图像的基本元素。每个图像都由一组像素组成。没有比像素更细的粒度。</p>
-<p>通常像素是光的“颜色”或“强度”。</p>
-<p>下图的分辨率为1,000×750，这意味着它是1,000像素宽750像素高。我们可以将图像概念化为(多维)矩阵。图片中总共有1,000×750 = 750,000像素。</p>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-03baa175f901e0bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>大多数像素以两种方式表示：
-1.灰度/单通道
-2.颜色</p>
-<p>在灰度图像中，每个像素是0到255之间的标量值，其中零对应为“黑色”，255为“白色”。
-<img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-def6b6370b523d5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>彩色像素通常在RGB颜色空间中表示（其他颜色空间通常要转成RGB）。</p>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-588ed03546979273.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>黑色：(0, 0, 0)
-红色：(255, 0, 0)</p>
-<p>RGB色彩空间的主要缺点包括：
-•不使用“颜色选择器”工具时表示颜色不直观 …</p>
-                <a class="readmore" href="/python_vision_deep2.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
