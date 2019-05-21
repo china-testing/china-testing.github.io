@@ -49,7 +49,7 @@
 <li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
 <li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
 </ul>
-<p>## <a href="https://itbooks.pipipan.com/fs/18113597-375150755">Advanced Analytics with Spark - Patterns for Learning from Data at Scale, 2nd 2017.pdf</a> Spark高级数据分析（第2版）- 2018.pdf</p>
+<h2 id="advanced-analytics-with-spark-patterns-for-learning-from-data-at-scale-2nd-2017pdf-spark2-2018pdf"><a href="https://itbooks.pipipan.com/fs/18113597-375150755">Advanced Analytics with Spark - Patterns for Learning from Data at Scale, 2nd 2017.pdf</a> Spark高级数据分析（第2版）- 2018.pdf</h2>
 <p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-647583f3a5eab333.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <p>本书是使用Spark进行大规模数据分析的实战宝典，由知名数据科学家撰写。本书在第1版的基础上，针对Spark近年来的发展，对样例代码和所使用的资料进行了大量更新。新版Spark使用了全新的核心API，MLlib和Spark SQL两个子项目也发生了较大变化，本书为关注Spark发展趋势的读者提供了与时俱进的资料，例如Dataset和DataFrame的使用，以及与DataFrame API高度集成的Spark ML API。</p>
 <p>作为计算框架，Spark速度快，开发简单，能同时兼顾批处理和实时数据分析，因此很快被广大企业级用户所采纳，并随着近年人工智能的崛起而成为分析和挖掘大数据的重要得力工具。</p>
@@ -88,138 +88,141 @@
 <ul>
 <li>下载：中文版   <a href="https://itbooks.pipipan.com/fs/18113597-375150760">Advanced Analytics with Spark - Patterns for Learning from Data at Scale, 2nd 2017.pdf</a></li>
 </ul>
-<p>推荐序 ix
-译者序　xi
-序　xiii
-前言　xv
-第　1章 大数据分析　1
-1.1　数据科学面临的挑战　2
-1.2　认识Apache Spark　4
-1.3　关于本书　5
-1.4　第 2版说明　6
-第　2章 用Scala 和Spark 进行数据分析　8
-2.1　数据科学家的Scala　9
-2.2　Spark编程模型　10
-2.3　记录关联问题　10
-2.4　小试牛刀：Spark shell和SparkContext　11
-2.5　把数据从集群上获取到客户端　16
-2.6　把代码从客户端发送到集群　19
-2.7　从RDD到DataFrame　20
-2.8　用DataFrame API来分析数据　23
-2.9　DataFrame的统计信息　27
-2.10　DataFrame的转置和重塑　29
-2.11　DataFrame的连接和特征选择　32
-2.12　为生产环境准备模型　33
-2.13　评估模型　35
-2.14　小结　36
-第3章　音乐推荐和Audioscrobbler数据集　37
-3.1　数据集　38
-3.2　交替最小二乘推荐算法　39
-3.3　准备数据　41
-3.4　构建第 一个模型　44
-3.5　逐个检查推荐结果　47
-3.6　评价推荐质量　50
-3.7　计算AUC　51
-3.8　选择超参数　53
-3.9　产生推荐　55
-3.10　小结　56
-第4章　用决策树算法预测森林植被　58
-4.1　回归简介　59
-4.2　向量和特征　59
-4.3　样本训练　60
-4.4　决策树和决策森林　61
-4.5　Covtype数据集　63
-4.6　准备数据　64
-4.7　第 一棵决策树　66
-4.8　决策树的超参数　72
-4.9　决策树调优　73
-4.10　重谈类别型特征　77
-4.11　随机决策森林　79
-4.12　进行预测　81
-4.13　小结　82
-第5章　基于K均值聚类的网络流量异常检测　84
-5.1　异常检测　85
-5.2　K均值聚类　85
-5.3　网络入侵　86
-5.4　KDD Cup 1999数据集　86
-5.5　初步尝试聚类　87
-5.6　k的选择　90
-5.7　基于SparkR 的可视化　92
-5.8　特征的规范化　96
-5.9　类别型变量　98
-5.10　利用标号的熵信息　99
-5.11　聚类实战　100
-5.12　小结　102
-第6章　基于潜在语义分析算法分析维基百科　104
-6.1　文档－词项矩阵　105
-6.2　获取数据　106
-6.3　分析和准备数据　107
-6.4　词形归并　109
-6.5　计算TF-IDF　110
-6.6　奇异值分解　111
-6.7　找出重要的概念　113
-6.8　基于低维近似的查询和评分　117
-6.9　词项－词项相关度　117
-6.10　文档－文档相关度　119
-6.11　文档－词项相关度　121
-6.12　多词项查询　122
-6.13　小结　123
-第7章　用GraphX分析伴生网络　124
-7.1　对MEDLINE文献引用索引的网络分析　125
-7.2　获取数据　126
-7.3　用Scala XML工具解析XML文档　128
-7.4　分析MeSH主要主题及其伴生关系　130
-7.5　用GraphX来建立一个伴生网络　132
-7.6　理解网络结构　135
-7.6.1　连通组件　136
-7.6.2　度的分布　138
-7.7　过滤噪声边　140
-7.7.1　处理EdgeTriplet　141
-7.7.2　分析去掉噪声边的子图　142
-7.8　小世界网络　144
-7.8.1　系和聚类系数　144
-7.8.2　用Pregel计算平均路径长度　145
-7.9　小结　150
-第8章　纽约出租车轨迹的空间和时间数据分析　151
-8.1　数据的获取　152
-8.2　基于Spark的第三方库分析　153
-8.3　基于Esri Geometry API和Spray的地理空间数据处理　153
-8.3.1　认识Esri Geometry API　154
-8.3.2　GeoJSON简介　155
-8.4　纽约市出租车客运数据的预处理　157
-8.4.1　大规模数据中的非法记录处理　159
-8.4.2　地理空间分析　162
-8.5　基于Spark的会话分析　165
-8.6　小结　168
-第9章　基于蒙特卡罗模拟的金融风险评估　170
-9.1　术语　171
-9.2　VaR计算方法　172
-9.2.1　方差－协方差法　172
-9.2.2　历史模拟法　172
-9.2.3　蒙特卡罗模拟法　172
-9.3　我们的模型　173
-9.4　获取数据　173
-9.5　数据预处理　174
-9.6　确定市场因素的权重　177
-9.7　采样　179
-9.8　运行试验　182
-9.9　回报分布的可视化　185
-9.10　结果的评估　186
-9.11　小结　188
-第　10章 基因数据分析和BDG项目　190
-10.1　分离存储与模型　191
-10.2　用ADAM CLI导入基因学数据　193
-10.3　从ENCODE数据预测转录因子结合位点　201
-10.4　查询1000 Genomes项目中的基因型　207
-10.5　小结　210
-第　11章 基于PySpark和Thunder的神经图像数据分析　211
-11.1　PySpark简介　212
-11.2　Thunder工具包概况和安装　215
-11.3　用Thunder加载数据　215
-11.4　用Thunder对神经元进行分类　221
-11.5　小结　225
-作者介绍　226
-封面介绍　226</p>
+<div class="highlight"><pre><span></span><span class="err">推荐序</span> <span class="n">ix</span>
+<span class="err">译者序</span>　<span class="n">xi</span>
+<span class="err">序</span>　<span class="n">xiii</span>
+<span class="err">前言</span>　<span class="n">xv</span>
+<span class="err">第</span>　<span class="mi">1</span><span class="err">章</span> <span class="err">大数据分析</span>　<span class="mi">1</span>
+<span class="mf">1.1</span>　<span class="err">数据科学面临的挑战</span>　<span class="mi">2</span>
+<span class="mf">1.2</span>　<span class="err">认识</span><span class="n">Apache</span> <span class="n">Spark</span>　<span class="mi">4</span>
+<span class="mf">1.3</span>　<span class="err">关于本书</span>　<span class="mi">5</span>
+<span class="mf">1.4</span>　<span class="err">第</span> <span class="mi">2</span><span class="err">版说明</span>　<span class="mi">6</span>
+<span class="err">第</span>　<span class="mi">2</span><span class="err">章</span> <span class="err">用</span><span class="n">Scala</span> <span class="err">和</span><span class="n">Spark</span> <span class="err">进行数据分析</span>　<span class="mi">8</span>
+<span class="mf">2.1</span>　<span class="err">数据科学家的</span><span class="n">Scala</span>　<span class="mi">9</span>
+<span class="mf">2.2</span>　<span class="n">Spark编程模型</span>　<span class="mi">10</span>
+<span class="mf">2.3</span>　<span class="err">记录关联问题</span>　<span class="mi">10</span>
+<span class="mf">2.4</span>　<span class="err">小试牛刀：</span><span class="n">Spark</span> <span class="n">shell和SparkContext</span>　<span class="mi">11</span>
+<span class="mf">2.5</span>　<span class="err">把数据从集群上获取到客户端</span>　<span class="mi">16</span>
+<span class="mf">2.6</span>　<span class="err">把代码从客户端发送到集群</span>　<span class="mi">19</span>
+<span class="mf">2.7</span>　<span class="err">从</span><span class="n">RDD到DataFrame</span>　<span class="mi">20</span>
+<span class="mf">2.8</span>　<span class="err">用</span><span class="n">DataFrame</span> <span class="n">API来分析数据</span>　<span class="mi">23</span>
+<span class="mf">2.9</span>　<span class="n">DataFrame的统计信息</span>　<span class="mi">27</span>
+<span class="mf">2.10</span>　<span class="n">DataFrame的转置和重塑</span>　<span class="mi">29</span>
+<span class="mf">2.11</span>　<span class="n">DataFrame的连接和特征选择</span>　<span class="mi">32</span>
+<span class="mf">2.12</span>　<span class="err">为生产环境准备模型</span>　<span class="mi">33</span>
+<span class="mf">2.13</span>　<span class="err">评估模型</span>　<span class="mi">35</span>
+<span class="mf">2.14</span>　<span class="err">小结</span>　<span class="mi">36</span>
+<span class="err">第</span><span class="mi">3</span><span class="err">章</span>　<span class="err">音乐推荐和</span><span class="n">Audioscrobbler数据集</span>　<span class="mi">37</span>
+<span class="mf">3.1</span>　<span class="err">数据集</span>　<span class="mi">38</span>
+<span class="mf">3.2</span>　<span class="err">交替最小二乘推荐算法</span>　<span class="mi">39</span>
+<span class="mf">3.3</span>　<span class="err">准备数据</span>　<span class="mi">41</span>
+<span class="mf">3.4</span>　<span class="err">构建第</span> <span class="err">一个模型</span>　<span class="mi">44</span>
+<span class="mf">3.5</span>　<span class="err">逐个检查推荐结果</span>　<span class="mi">47</span>
+<span class="mf">3.6</span>　<span class="err">评价推荐质量</span>　<span class="mi">50</span>
+<span class="mf">3.7</span>　<span class="err">计算</span><span class="n">AUC</span>　<span class="mi">51</span>
+<span class="mf">3.8</span>　<span class="err">选择超参数</span>　<span class="mi">53</span>
+<span class="mf">3.9</span>　<span class="err">产生推荐</span>　<span class="mi">55</span>
+<span class="mf">3.10</span>　<span class="err">小结</span>　<span class="mi">56</span>
+<span class="err">第</span><span class="mi">4</span><span class="err">章</span>　<span class="err">用决策树算法预测森林植被</span>　<span class="mi">58</span>
+<span class="mf">4.1</span>　<span class="err">回归简介</span>　<span class="mi">59</span>
+<span class="mf">4.2</span>　<span class="err">向量和特征</span>　<span class="mi">59</span>
+<span class="mf">4.3</span>　<span class="err">样本训练</span>　<span class="mi">60</span>
+<span class="mf">4.4</span>　<span class="err">决策树和决策森林</span>　<span class="mi">61</span>
+<span class="mf">4.5</span>　<span class="n">Covtype数据集</span>　<span class="mi">63</span>
+<span class="mf">4.6</span>　<span class="err">准备数据</span>　<span class="mi">64</span>
+<span class="mf">4.7</span>　<span class="err">第</span> <span class="err">一棵决策树</span>　<span class="mi">66</span>
+<span class="mf">4.8</span>　<span class="err">决策树的超参数</span>　<span class="mi">72</span>
+<span class="mf">4.9</span>　<span class="err">决策树调优</span>　<span class="mi">73</span>
+<span class="mf">4.10</span>　<span class="err">重谈类别型特征</span>　<span class="mi">77</span>
+<span class="mf">4.11</span>　<span class="err">随机决策森林</span>　<span class="mi">79</span>
+<span class="mf">4.12</span>　<span class="err">进行预测</span>　<span class="mi">81</span>
+<span class="mf">4.13</span>　<span class="err">小结</span>　<span class="mi">82</span>
+<span class="err">第</span><span class="mi">5</span><span class="err">章</span>　<span class="err">基于</span><span class="n">K均值聚类的网络流量异常检测</span>　<span class="mi">84</span>
+<span class="mf">5.1</span>　<span class="err">异常检测</span>　<span class="mi">85</span>
+<span class="mf">5.2</span>　<span class="n">K均值聚类</span>　<span class="mi">85</span>
+<span class="mf">5.3</span>　<span class="err">网络入侵</span>　<span class="mi">86</span>
+<span class="mf">5.4</span>　<span class="n">KDD</span> <span class="n">Cup</span> <span class="mi">1999</span><span class="err">数据集</span>　<span class="mi">86</span>
+<span class="mf">5.5</span>　<span class="err">初步尝试聚类</span>　<span class="mi">87</span>
+<span class="mf">5.6</span>　<span class="n">k的选择</span>　<span class="mi">90</span>
+<span class="mf">5.7</span>　<span class="err">基于</span><span class="n">SparkR</span> <span class="err">的可视化</span>　<span class="mi">92</span>
+<span class="mf">5.8</span>　<span class="err">特征的规范化</span>　<span class="mi">96</span>
+<span class="mf">5.9</span>　<span class="err">类别型变量</span>　<span class="mi">98</span>
+<span class="mf">5.10</span>　<span class="err">利用标号的熵信息</span>　<span class="mi">99</span>
+<span class="mf">5.11</span>　<span class="err">聚类实战</span>　<span class="mi">100</span>
+<span class="mf">5.12</span>　<span class="err">小结</span>　<span class="mi">102</span>
+<span class="err">第</span><span class="mi">6</span><span class="err">章</span>　<span class="err">基于潜在语义分析算法分析维基百科</span>　<span class="mi">104</span>
+<span class="mf">6.1</span>　<span class="err">文档－词项矩阵</span>　<span class="mi">105</span>
+<span class="mf">6.2</span>　<span class="err">获取数据</span>　<span class="mi">106</span>
+<span class="mf">6.3</span>　<span class="err">分析和准备数据</span>　<span class="mi">107</span>
+<span class="mf">6.4</span>　<span class="err">词形归并</span>　<span class="mi">109</span>
+<span class="mf">6.5</span>　<span class="err">计算</span><span class="n">TF</span><span class="o">-</span><span class="n">IDF</span>　<span class="mi">110</span>
+<span class="mf">6.6</span>　<span class="err">奇异值分解</span>　<span class="mi">111</span>
+<span class="mf">6.7</span>　<span class="err">找出重要的概念</span>　<span class="mi">113</span>
+<span class="mf">6.8</span>　<span class="err">基于低维近似的查询和评分</span>　<span class="mi">117</span>
+<span class="mf">6.9</span>　<span class="err">词项－词项相关度</span>　<span class="mi">117</span>
+<span class="mf">6.10</span>　<span class="err">文档－文档相关度</span>　<span class="mi">119</span>
+<span class="mf">6.11</span>　<span class="err">文档－词项相关度</span>　<span class="mi">121</span>
+<span class="mf">6.12</span>　<span class="err">多词项查询</span>　<span class="mi">122</span>
+<span class="mf">6.13</span>　<span class="err">小结</span>　<span class="mi">123</span>
+<span class="err">第</span><span class="mi">7</span><span class="err">章</span>　<span class="err">用</span><span class="n">GraphX分析伴生网络</span>　<span class="mi">124</span>
+<span class="mf">7.1</span>　<span class="err">对</span><span class="n">MEDLINE文献引用索引的网络分析</span>　<span class="mi">125</span>
+<span class="mf">7.2</span>　<span class="err">获取数据</span>　<span class="mi">126</span>
+<span class="mf">7.3</span>　<span class="err">用</span><span class="n">Scala</span> <span class="n">XML工具解析XML文档</span>　<span class="mi">128</span>
+<span class="mf">7.4</span>　<span class="err">分析</span><span class="n">MeSH主要主题及其伴生关系</span>　<span class="mi">130</span>
+<span class="mf">7.5</span>　<span class="err">用</span><span class="n">GraphX来建立一个伴生网络</span>　<span class="mi">132</span>
+<span class="mf">7.6</span>　<span class="err">理解网络结构</span>　<span class="mi">135</span>
+<span class="mf">7.6</span><span class="o">.</span><span class="mi">1</span>　<span class="err">连通组件</span>　<span class="mi">136</span>
+<span class="mf">7.6</span><span class="o">.</span><span class="mi">2</span>　<span class="err">度的分布</span>　<span class="mi">138</span>
+<span class="mf">7.7</span>　<span class="err">过滤噪声边</span>　<span class="mi">140</span>
+<span class="mf">7.7</span><span class="o">.</span><span class="mi">1</span>　<span class="err">处理</span><span class="n">EdgeTriplet</span>　<span class="mi">141</span>
+<span class="mf">7.7</span><span class="o">.</span><span class="mi">2</span>　<span class="err">分析去掉噪声边的子图</span>　<span class="mi">142</span>
+<span class="mf">7.8</span>　<span class="err">小世界网络</span>　<span class="mi">144</span>
+<span class="mf">7.8</span><span class="o">.</span><span class="mi">1</span>　<span class="err">系和聚类系数</span>　<span class="mi">144</span>
+<span class="mf">7.8</span><span class="o">.</span><span class="mi">2</span>　<span class="err">用</span><span class="n">Pregel计算平均路径长度</span>　<span class="mi">145</span>
+<span class="mf">7.9</span>　<span class="err">小结</span>　<span class="mi">150</span>
+<span class="err">第</span><span class="mi">8</span><span class="err">章</span>　<span class="err">纽约出租车轨迹的空间和时间数据分析</span>　<span class="mi">151</span>
+<span class="mf">8.1</span>　<span class="err">数据的获取</span>　<span class="mi">152</span>
+<span class="mf">8.2</span>　<span class="err">基于</span><span class="n">Spark的第三方库分析</span>　<span class="mi">153</span>
+<span class="mf">8.3</span>　<span class="err">基于</span><span class="n">Esri</span> <span class="n">Geometry</span> <span class="n">API和Spray的地理空间数据处理</span>　<span class="mi">153</span>
+<span class="mf">8.3</span><span class="o">.</span><span class="mi">1</span>　<span class="err">认识</span><span class="n">Esri</span> <span class="n">Geometry</span> <span class="n">API</span>　<span class="mi">154</span>
+<span class="mf">8.3</span><span class="o">.</span><span class="mi">2</span>　<span class="n">GeoJSON简介</span>　<span class="mi">155</span>
+<span class="mf">8.4</span>　<span class="err">纽约市出租车客运数据的预处理</span>　<span class="mi">157</span>
+<span class="mf">8.4</span><span class="o">.</span><span class="mi">1</span>　<span class="err">大规模数据中的非法记录处理</span>　<span class="mi">159</span>
+<span class="mf">8.4</span><span class="o">.</span><span class="mi">2</span>　<span class="err">地理空间分析</span>　<span class="mi">162</span>
+<span class="mf">8.5</span>　<span class="err">基于</span><span class="n">Spark的会话分析</span>　<span class="mi">165</span>
+<span class="mf">8.6</span>　<span class="err">小结</span>　<span class="mi">168</span>
+<span class="err">第</span><span class="mi">9</span><span class="err">章</span>　<span class="err">基于蒙特卡罗模拟的金融风险评估</span>　<span class="mi">170</span>
+<span class="mf">9.1</span>　<span class="err">术语</span>　<span class="mi">171</span>
+<span class="mf">9.2</span>　<span class="n">VaR计算方法</span>　<span class="mi">172</span>
+<span class="mf">9.2</span><span class="o">.</span><span class="mi">1</span>　<span class="err">方差－协方差法</span>　<span class="mi">172</span>
+<span class="mf">9.2</span><span class="o">.</span><span class="mi">2</span>　<span class="err">历史模拟法</span>　<span class="mi">172</span>
+<span class="mf">9.2</span><span class="o">.</span><span class="mi">3</span>　<span class="err">蒙特卡罗模拟法</span>　<span class="mi">172</span>
+<span class="mf">9.3</span>　<span class="err">我们的模型</span>　<span class="mi">173</span>
+<span class="mf">9.4</span>　<span class="err">获取数据</span>　<span class="mi">173</span>
+<span class="mf">9.5</span>　<span class="err">数据预处理</span>　<span class="mi">174</span>
+<span class="mf">9.6</span>　<span class="err">确定市场因素的权重</span>　<span class="mi">177</span>
+<span class="mf">9.7</span>　<span class="err">采样</span>　<span class="mi">179</span>
+<span class="mf">9.8</span>　<span class="err">运行试验</span>　<span class="mi">182</span>
+<span class="mf">9.9</span>　<span class="err">回报分布的可视化</span>　<span class="mi">185</span>
+<span class="mf">9.10</span>　<span class="err">结果的评估</span>　<span class="mi">186</span>
+<span class="mf">9.11</span>　<span class="err">小结</span>　<span class="mi">188</span>
+<span class="err">第</span>　<span class="mi">10</span><span class="err">章</span> <span class="err">基因数据分析和</span><span class="n">BDG项目</span>　<span class="mi">190</span>
+<span class="mf">10.1</span>　<span class="err">分离存储与模型</span>　<span class="mi">191</span>
+<span class="mf">10.2</span>　<span class="err">用</span><span class="n">ADAM</span> <span class="n">CLI导入基因学数据</span>　<span class="mi">193</span>
+<span class="mf">10.3</span>　<span class="err">从</span><span class="n">ENCODE数据预测转录因子结合位点</span>　<span class="mi">201</span>
+<span class="mf">10.4</span>　<span class="err">查询</span><span class="mi">1000</span> <span class="n">Genomes项目中的基因型</span>　<span class="mi">207</span>
+<span class="mf">10.5</span>　<span class="err">小结</span>　<span class="mi">210</span>
+<span class="err">第</span>　<span class="mi">11</span><span class="err">章</span> <span class="err">基于</span><span class="n">PySpark和Thunder的神经图像数据分析</span>　<span class="mi">211</span>
+<span class="mf">11.1</span>　<span class="n">PySpark简介</span>　<span class="mi">212</span>
+<span class="mf">11.2</span>　<span class="n">Thunder工具包概况和安装</span>　<span class="mi">215</span>
+<span class="mf">11.3</span>　<span class="err">用</span><span class="n">Thunder加载数据</span>　<span class="mi">215</span>
+<span class="mf">11.4</span>　<span class="err">用</span><span class="n">Thunder对神经元进行分类</span>　<span class="mi">221</span>
+<span class="mf">11.5</span>　<span class="err">小结</span>　<span class="mi">225</span>
+<span class="err">作者介绍</span>　<span class="mi">226</span>
+<span class="err">封面介绍</span>　<span class="mi">226</span>
+</pre></div>
+
+
 <h2 id="learning-pyspark-2017pdf"><a href="https://itbooks.pipipan.com/fs/18113597-375034478">Learning PySpark - 2017.pdf</a></h2>
 <p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-2a3a663f34654b99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <p>在本地构建数据密集型应用程序，并使用Python和Spark 2.0的强大功能进行大规模部署。</p>
@@ -256,9 +259,9 @@
 <li>将本地构建的应用程序部署到群集</li>
 </ul>
 <h3 id="_7">面向读者</h3>
-<h2 id="pyspark-2017pdf"><a href="https://itbooks.pipipan.com/fs/18113597-375269270">pyspark实战指南 - 2017.pdf</a></h2>
+<p><a href="https://itbooks.pipipan.com/fs/18113597-375269270">pyspark实战指南 - 2017.pdf</a></p>
 <p>如果您是想要了解Apache Spark 2.0生态系统的Python开发人员，那么本书适合您。对Python的深刻理解有望在本书中发挥最大作用。熟悉Spark会很有用，但不是强制性的</p>
-<p>## <a href="https://itbooks.pipipan.com/fs/18113597-375034484">PySpark Recipes A Problem-Solution Approach with PySpark2 - 2018.pdf</a></p>
+<h2 id="pyspark-recipes-a-problem-solution-approach-with-pyspark2-2018pdf"><a href="https://itbooks.pipipan.com/fs/18113597-375034484">PySpark Recipes A Problem-Solution Approach with PySpark2 - 2018.pdf</a></h2>
 <p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/12713060-fbd686a1609d944c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <p>快速找到处理大数据时遇到的常见编程问题的解决方案。 内容以流行的问题解决方案格式呈现。 查找要解决的编程问题。 阅读解决方案。 直接在您自己的代码中应用解决方案。 问题解决了！</p>
 <p>PySpark Recipes涵盖了Hadoop及其缺点。 介绍了Spark，PySpark和RDD的体系结构。 您将学习如何应用RDD来解决日常的大数据问题。 包含Python和NumPy，使PySpark的新学习者能够轻松理解和采用该模型。</p>
