@@ -31,6 +31,35 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/ml_quick2.html" rel="bookmark"
+                           title="Permalink to 机器学习快速入门2分类的代码实现">机器学习快速入门2分类的代码实现</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-04-23T08:25:00+08:00">
+                Published: 二 23 四月 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->                <h3 id="_1">威斯康星乳腺癌数据集</h3>
+<p>威斯康星乳腺癌（Breast Cancer Wisconsin）数据集共包含569个恶性或者良性肿瘤细胞样本。数据集的前两列分别存储了样本唯一的ID以及对样本的诊断结果（M代表恶性，B代表良性）。数据集的3～32列包含了30个从细胞核照片中提取、用实数值标识的特征，它们可以用于构建判定模型，对肿瘤是良性还是恶性做出预测。威斯康星乳腺癌数据集已经存储在UCI机器学习数据集库中，关于此数据集更多的信息请访问链接：http://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/</p>
+<p>sklearn已经包含了该数据集。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">array</span><span class="p">([[</span><span class="mf">1.799e+01</span><span class="p">,</span> <span class="mf">1.038e+01</span><span class="p">,</span> <span class="mf">1.228e+02</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="mf">2 …</span></pre></div>
+                <a class="readmore" href="/ml_quick2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/ml_quick1.html" rel="bookmark"
                            title="Permalink to 机器学习快速入门1分类">机器学习快速入门1分类</a></h1>
                 </header>
@@ -367,48 +396,6 @@
 <span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;qun.jpg&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">size …</span></pre></div>
                 <a class="readmore" href="/img_rotate.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python_vision_deep3.html" rel="bookmark"
-                           title="Permalink to python计算机视觉深度学习3图像分类基础">python计算机视觉深度学习3图像分类基础</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-12-25T07:35:00+08:00">
-                Published: 二 25 十二月 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <p><a href="https://china-testing.github.io/python_vision_deep.html">本文教程目录</a></p>
-<h3 id="_1">什么是图像分类？</h3>
-<p>图像分类的核心任务是从预定义的一类图像中为图像分配标签。分析输入图像并返回标签对图像进行分类。标签始终来自一组预定义的可能类别。</p>
-<p>比如预定义的标签为：</p>
-<div class="highlight"><pre><span></span><span class="n">categories</span> <span class="o">=</span> <span class="p">{</span><span class="n">cat</span><span class="p">,</span> <span class="n">dog</span><span class="p">,</span> <span class="n">panda</span><span class="p">}</span>
-</pre></div>
-
-
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-f3241e2af4aeb025.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>分类系统还可以通过概率为图像分配多个标签。比如狗：95％;猫：4％;熊猫：1％。更重要的是，W×H像素输入图像有三个通道，Red，Green和Blue，分析W×H×3 = N像素图像，并弄清楚如何正确分类图像的内容。</p>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-54931b9b725c4a23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>在图像分类中，我们的数据集是图像的集合。因此，每个图像都是数据点。</p>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-4d820c1ca4b36890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>左边猫，右边狗，电脑看到的是像素矩阵。实际上，计算机并不知道图像中有动物。</p>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/10819934-a6ae0fd8aadc7d84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<p>上图可描述如下：
-•空间：天空位于图像的顶部，沙/海洋位于底部。
-•颜色：天空是深蓝色，海水浅蓝色，而沙子则是
-棕褐色。
-•纹理：天空具有相对均匀的图案，而沙子非常粗糙。</p>
-<p>需要应用特征提取来量化图像的内容 …</p>
-                <a class="readmore" href="/python_vision_deep3.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

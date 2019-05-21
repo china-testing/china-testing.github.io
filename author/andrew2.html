@@ -31,6 +31,51 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/data_warehouse_quick3.html" rel="bookmark"
+                           title="Permalink to 数据仓库快速入门教程3架构">数据仓库快速入门教程3架构</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-04-29T08:33:00+08:00">
+                Published: 一 29 四月 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="/category/da-shu-ju.html">大数据</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://china-testing.github.io/practices.html">python测试开发项目实战-目录</a></li>
+<li><a href="https://china-testing.github.io/python_books.html">python工具书籍下载-持续更新</a></li>
+</ul>
+<h2 id="_1">数据仓库的特点</h2>
+<p>数据仓库具有以下特征：</p>
+<ul>
+<li>面向主题</li>
+<li>集成</li>
+<li>时变</li>
+<li>非易失性</li>
+</ul>
+<h3 id="_2">面向主题</h3>
+<p>数据仓库以主题为导向，因为它提供有关主题的信息，而不是公司正在进行的操作。 这些主题可以是销售，营销，分发等。</p>
+<p>数据仓库从不关注正在进行的操作。 相反，它强调建模和分析数据以供<strong>决策</strong> 。 它还通过排除无助于支持决策过程的数据，提供围绕特定主题的简单而简洁的视图。</p>
+<h3 id="_3">集成</h3>
+<p>在数据仓库中，集成意味着为来自不同数据库的所有类似数据建立公共测量单位。 数据还需要以通用和普遍接受的方式存储在Datawarehouse中。</p>
+<p>数据仓库是通过集成来自各种来源的数据(如大型机，关系数据库，平面文件等)而开发的。此外，它必须保持一致的命名约定，格式和编码。</p>
+<p>集成有助于有效分析数据。 必须确保命名约定，属性度量，编码结构等的一致性。 请考虑以下示例：</p>
+<p><img alt="图片.png" src="https://upload-images.jianshu.io/upload_images/12713060-b7dadb500305a339.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>在上面的示例中，有三个不同的应用程序标记为A，B和C.存储在这些应用程序中的信息是Gender，Date和Balance。 但是，每个应用程序的数据都以不同的方式存储。</p>
+<ul>
+<li>在应用程序A中，性别字段存储逻辑值，如M或F.</li>
+<li>在应用B中，性别字段是数值 …</li></ul>
+                <a class="readmore" href="/data_warehouse_quick3.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/data_warehouse_quick2.html" rel="bookmark"
                            title="Permalink to 数据仓库快速入门教程2数据库与数据仓库的差异">数据仓库快速入门教程2数据库与数据仓库的差异</a></h1>
                 </header>
@@ -389,35 +434,6 @@
 </ul>
 <p>有几只蟑螂出现可能是卫生不太好，要即使通风，保持良好的空气环境。然而蟑螂突然爆发，增多，从风水学来讲，必定有意外之事发生。我们都知道，动物的耳朵要比人的耳朵灵验，能提前感知地震，蟑螂的爆发也说明了在不就之后会有地震发生 …</p>
                 <a class="readmore" href="/fengshui_zhanglang.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/ml_quick2.html" rel="bookmark"
-                           title="Permalink to 机器学习快速入门2分类的代码实现">机器学习快速入门2分类的代码实现</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2019-04-23T08:25:00+08:00">
-                Published: 二 23 四月 2019
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew.html">andrew</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="_1">威斯康星乳腺癌数据集</h3>
-<p>威斯康星乳腺癌（Breast Cancer Wisconsin）数据集共包含569个恶性或者良性肿瘤细胞样本。数据集的前两列分别存储了样本唯一的ID以及对样本的诊断结果（M代表恶性，B代表良性）。数据集的3～32列包含了30个从细胞核照片中提取、用实数值标识的特征，它们可以用于构建判定模型，对肿瘤是良性还是恶性做出预测。威斯康星乳腺癌数据集已经存储在UCI机器学习数据集库中，关于此数据集更多的信息请访问链接：http://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/</p>
-<p>sklearn已经包含了该数据集。</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">array</span><span class="p">([[</span><span class="mf">1.799e+01</span><span class="p">,</span> <span class="mf">1.038e+01</span><span class="p">,</span> <span class="mf">1.228e+02</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="mf">2 …</span></pre></div>
-                <a class="readmore" href="/ml_quick2.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
